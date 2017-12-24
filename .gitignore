@@ -35,6 +35,8 @@
 x64/
 Scansify/x64
 Scansify/GeneratedFiles
+Scansify/*
+
 
 # Files built by Visual Studio
 *_i.c
@@ -61,6 +63,7 @@ Scansify/GeneratedFiles
 *.pidb
 *.svclog
 *.scc
+*.vcxproj
 
 # Visual C++ cache files
 ipch/
