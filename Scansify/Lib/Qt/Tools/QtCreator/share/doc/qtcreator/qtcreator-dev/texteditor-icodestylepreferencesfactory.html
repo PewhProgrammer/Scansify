@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>ICodeStylePreferencesFactory Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ICodeStylePreferencesFactory</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ICodeStylePreferencesFactory Class</h1>
+<span class="small-subtitle">(<a href="texteditor-icodestylepreferencesfactory.html">TextEditor::ICodeStylePreferencesFactory</a>)<br/></span>
+<ul>
+<li><a href="texteditor-icodestylepreferencesfactory-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-icodestylepreferencesfactory.html#ICodeStylePreferencesFactory">ICodeStylePreferencesFactory</a></b>(QObject *<i>parent</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ICodeStylePreferences *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-icodestylepreferencesfactory.html#createCodeStyle">createCodeStyle</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QWidget *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-icodestylepreferencesfactory.html#createEditor">createEditor</a></b>(ICodeStylePreferences *<i>preferences</i>, QWidget *<i>parent</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual TextEditor::Indenter *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-icodestylepreferencesfactory.html#createIndenter">createIndenter</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-icodestylepreferencesfactory.html#displayName">displayName</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::Id </td><td class="memItemRight bottomAlign"><b><a href="texteditor-icodestylepreferencesfactory.html#languageId">languageId</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-icodestylepreferencesfactory.html#previewText">previewText</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual SnippetProvider *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-icodestylepreferencesfactory.html#snippetProvider">snippetProvider</a></b>() const = 0</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ICodeStylePreferencesFactory[overload1]$$$ICodeStylePreferencesFactoryQObject* -->
+<h3 class="fn" id="ICodeStylePreferencesFactory"><a name="ICodeStylePreferencesFactory"></a>ICodeStylePreferencesFactory::<span class="name">ICodeStylePreferencesFactory</span>(<span class="type">QObject</span> *<i>parent</i> = 0)</h3>
+<p>Default constructs an instance of ICodeStylePreferencesFactory.</p><!-- @@@ICodeStylePreferencesFactory -->
+<!-- $$$createCodeStyle[overload1]$$$createCodeStyle -->
+<h3 class="fn" id="createCodeStyle"><a name="createCodeStyle"></a><code>[pure virtual] </code><span class="type"><a href="texteditor-icodestylepreferences.html">ICodeStylePreferences</a></span> *ICodeStylePreferencesFactory::<span class="name">createCodeStyle</span>() const</h3>
+<!-- @@@createCodeStyle -->
+<!-- $$$createEditor[overload1]$$$createEditorICodeStylePreferences*QWidget* -->
+<h3 class="fn" id="createEditor"><a name="createEditor"></a><code>[pure virtual] </code><span class="type">QWidget</span> *ICodeStylePreferencesFactory::<span class="name">createEditor</span>(<span class="type"><a href="texteditor-icodestylepreferences.html">ICodeStylePreferences</a></span> *<i>preferences</i>, <span class="type">QWidget</span> *<i>parent</i>) const</h3>
+<!-- @@@createEditor -->
+<!-- $$$createIndenter[overload1]$$$createIndenter -->
+<h3 class="fn" id="createIndenter"><a name="createIndenter"></a><code>[pure virtual] </code><span class="type"><a href="texteditor-indenter.html">TextEditor::Indenter</a></span> *ICodeStylePreferencesFactory::<span class="name">createIndenter</span>() const</h3>
+<!-- @@@createIndenter -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><code>[pure virtual] </code><span class="type">QString</span> ICodeStylePreferencesFactory::<span class="name">displayName</span>()</h3>
+<!-- @@@displayName -->
+<!-- $$$languageId[overload1]$$$languageId -->
+<h3 class="fn" id="languageId"><a name="languageId"></a><code>[pure virtual] </code><span class="type"><a href="core-id.html">Core::Id</a></span> ICodeStylePreferencesFactory::<span class="name">languageId</span>()</h3>
+<!-- @@@languageId -->
+<!-- $$$previewText[overload1]$$$previewText -->
+<h3 class="fn" id="previewText"><a name="previewText"></a><code>[pure virtual] </code><span class="type">QString</span> ICodeStylePreferencesFactory::<span class="name">previewText</span>() const</h3>
+<!-- @@@previewText -->
+<!-- $$$snippetProvider[overload1]$$$snippetProvider -->
+<h3 class="fn" id="snippetProvider"><a name="snippetProvider"></a><code>[pure virtual] </code><span class="type"><a href="texteditor-snippetprovider.html">SnippetProvider</a></span> *ICodeStylePreferencesFactory::<span class="name">snippetProvider</span>() const</h3>
+<!-- @@@snippetProvider -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

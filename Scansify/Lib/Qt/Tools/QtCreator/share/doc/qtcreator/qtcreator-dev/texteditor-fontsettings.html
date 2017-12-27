@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>FontSettings Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >FontSettings</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">FontSettings Class</h1>
+<span class="small-subtitle">(<a href="texteditor-fontsettings.html">TextEditor::FontSettings</a>)<br/></span>
+<ul>
+<li><a href="texteditor-fontsettings-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#FormatDescriptions-typedef">FormatDescriptions</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#FontSettings">FontSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#antialias">antialias</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#clear">clear</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ColorScheme &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#colorScheme">colorScheme</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#colorSchemeFileName">colorSchemeFileName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#equals">equals</a></b>(const FontSettings &amp;<i>f</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#family">family</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QFont </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#font">font</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#fontSize">fontSize</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#fontZoom">fontZoom</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Format &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#formatFor">formatFor</a></b>(TextStyle <i>category</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Format </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#formatFor-1">formatFor</a></b>(TextStyle <i>category</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#fromSettings">fromSettings</a></b>(const QString &amp;<i>category</i>, const FormatDescriptions &amp;<i>descriptions</i>, const QSettings *<i>s</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#isEmpty">isEmpty</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#loadColorScheme">loadColorScheme</a></b>(const QString &amp;<i>fileName</i>, const FormatDescriptions &amp;<i>descriptions</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#saveColorScheme">saveColorScheme</a></b>(const QString &amp;<i>fileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#setAntialias">setAntialias</a></b>(bool <i>antialias</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#setColorScheme">setColorScheme</a></b>(const ColorScheme &amp;<i>scheme</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#setColorSchemeFileName">setColorSchemeFileName</a></b>(const QString &amp;<i>fileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#setFamily">setFamily</a></b>(const QString &amp;<i>family</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#setFontSize">setFontSize</a></b>(int <i>size</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#setFontZoom">setFontZoom</a></b>(int <i>zoom</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#toSettings">toSettings</a></b>(const QString &amp;<i>category</i>, QSettings *<i>s</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QTextCharFormat </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#toTextCharFormat">toTextCharFormat</a></b>(TextStyle <i>category</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QTextCharFormat </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#toTextCharFormat-1">toTextCharFormat</a></b>(TextStyles <i>textStyles</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVector&lt;QTextCharFormat&gt; </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#toTextCharFormats">toTextCharFormats</a></b>(const QVector&lt;TextStyle&gt; &amp;<i>categories</i>) const</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#defaultFixedFontFamily">defaultFixedFontFamily</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#defaultFontSize">defaultFontSize</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettings.html#defaultSchemeFileName">defaultSchemeFileName</a></b>(const QString &amp;<i>fileName</i> = QString())</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$FormatDescriptions -->
+<h3 class="fn" id="FormatDescriptions-typedef"><a name="FormatDescriptions-typedef"></a>typedef FontSettings::<span class="name">FormatDescriptions</span></h3>
+<!-- @@@FormatDescriptions -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$FontSettings[overload1]$$$FontSettings -->
+<h3 class="fn" id="FontSettings"><a name="FontSettings"></a>FontSettings::<span class="name">FontSettings</span>()</h3>
+<p>Default constructs an instance of FontSettings.</p><!-- @@@FontSettings -->
+<!-- $$$antialias[overload1]$$$antialias -->
+<h3 class="fn" id="antialias"><a name="antialias"></a><span class="type">bool</span> FontSettings::<span class="name">antialias</span>() const</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#setAntialias">setAntialias</a>().</p>
+<!-- @@@antialias -->
+<!-- $$$clear[overload1]$$$clear -->
+<h3 class="fn" id="clear"><a name="clear"></a><span class="type">void</span> FontSettings::<span class="name">clear</span>()</h3>
+<!-- @@@clear -->
+<!-- $$$colorScheme[overload1]$$$colorScheme -->
+<h3 class="fn" id="colorScheme"><a name="colorScheme"></a>const <span class="type">ColorScheme</span> &amp;FontSettings::<span class="name">colorScheme</span>() const</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#setColorScheme">setColorScheme</a>().</p>
+<!-- @@@colorScheme -->
+<!-- $$$colorSchemeFileName[overload1]$$$colorSchemeFileName -->
+<h3 class="fn" id="colorSchemeFileName"><a name="colorSchemeFileName"></a><span class="type">QString</span> FontSettings::<span class="name">colorSchemeFileName</span>() const</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#setColorSchemeFileName">setColorSchemeFileName</a>().</p>
+<!-- @@@colorSchemeFileName -->
+<!-- $$$defaultFixedFontFamily[overload1]$$$defaultFixedFontFamily -->
+<h3 class="fn" id="defaultFixedFontFamily"><a name="defaultFixedFontFamily"></a><code>[static] </code><span class="type">QString</span> FontSettings::<span class="name">defaultFixedFontFamily</span>()</h3>
+<!-- @@@defaultFixedFontFamily -->
+<!-- $$$defaultFontSize[overload1]$$$defaultFontSize -->
+<h3 class="fn" id="defaultFontSize"><a name="defaultFontSize"></a><code>[static] </code><span class="type">int</span> FontSettings::<span class="name">defaultFontSize</span>()</h3>
+<!-- @@@defaultFontSize -->
+<!-- $$$defaultSchemeFileName[overload1]$$$defaultSchemeFileNameconstQString& -->
+<h3 class="fn" id="defaultSchemeFileName"><a name="defaultSchemeFileName"></a><code>[static] </code><span class="type">QString</span> FontSettings::<span class="name">defaultSchemeFileName</span>(const <span class="type">QString</span> &amp;<i>fileName</i> = QString())</h3>
+<!-- @@@defaultSchemeFileName -->
+<!-- $$$equals[overload1]$$$equalsconstFontSettings& -->
+<h3 class="fn" id="equals"><a name="equals"></a><span class="type">bool</span> FontSettings::<span class="name">equals</span>(const <span class="type"><a href="texteditor-fontsettings.html#FontSettings">FontSettings</a></span> &amp;<i>f</i>) const</h3>
+<!-- @@@equals -->
+<!-- $$$family[overload1]$$$family -->
+<h3 class="fn" id="family"><a name="family"></a><span class="type">QString</span> FontSettings::<span class="name">family</span>() const</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#setFamily">setFamily</a>().</p>
+<!-- @@@family -->
+<!-- $$$font[overload1]$$$font -->
+<h3 class="fn" id="font"><a name="font"></a><span class="type">QFont</span> FontSettings::<span class="name">font</span>() const</h3>
+<!-- @@@font -->
+<!-- $$$fontSize[overload1]$$$fontSize -->
+<h3 class="fn" id="fontSize"><a name="fontSize"></a><span class="type">int</span> FontSettings::<span class="name">fontSize</span>() const</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#setFontSize">setFontSize</a>().</p>
+<!-- @@@fontSize -->
+<!-- $$$fontZoom[overload1]$$$fontZoom -->
+<h3 class="fn" id="fontZoom"><a name="fontZoom"></a><span class="type">int</span> FontSettings::<span class="name">fontZoom</span>() const</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#setFontZoom">setFontZoom</a>().</p>
+<!-- @@@fontZoom -->
+<!-- $$$formatFor[overload1]$$$formatForTextStyle -->
+<h3 class="fn" id="formatFor"><a name="formatFor"></a><span class="type">Format</span> &amp;FontSettings::<span class="name">formatFor</span>(<span class="type"><a href="texteditor.html#TextStyle-enum">TextStyle</a></span> <i>category</i>)</h3>
+<!-- @@@formatFor -->
+<!-- $$$formatFor$$$formatForTextStyle -->
+<h3 class="fn" id="formatFor-1"><a name="formatFor-1"></a><span class="type">Format</span> FontSettings::<span class="name">formatFor</span>(<span class="type"><a href="texteditor.html#TextStyle-enum">TextStyle</a></span> <i>category</i>) const</h3>
+<!-- @@@formatFor -->
+<!-- $$$fromSettings[overload1]$$$fromSettingsconstQString&constFormatDescriptions&constQSettings* -->
+<h3 class="fn" id="fromSettings"><a name="fromSettings"></a><span class="type">bool</span> FontSettings::<span class="name">fromSettings</span>(const <span class="type">QString</span> &amp;<i>category</i>, const <span class="type"><a href="texteditor-fontsettings.html#FormatDescriptions-typedef">FormatDescriptions</a></span> &amp;<i>descriptions</i>, const <span class="type">QSettings</span> *<i>s</i>)</h3>
+<!-- @@@fromSettings -->
+<!-- $$$isEmpty[overload1]$$$isEmpty -->
+<h3 class="fn" id="isEmpty"><a name="isEmpty"></a><span class="type">bool</span> FontSettings::<span class="name">isEmpty</span>() const</h3>
+<!-- @@@isEmpty -->
+<!-- $$$loadColorScheme[overload1]$$$loadColorSchemeconstQString&constFormatDescriptions& -->
+<h3 class="fn" id="loadColorScheme"><a name="loadColorScheme"></a><span class="type">bool</span> FontSettings::<span class="name">loadColorScheme</span>(const <span class="type">QString</span> &amp;<i>fileName</i>, const <span class="type"><a href="texteditor-fontsettings.html#FormatDescriptions-typedef">FormatDescriptions</a></span> &amp;<i>descriptions</i>)</h3>
+<!-- @@@loadColorScheme -->
+<!-- $$$saveColorScheme[overload1]$$$saveColorSchemeconstQString& -->
+<h3 class="fn" id="saveColorScheme"><a name="saveColorScheme"></a><span class="type">bool</span> FontSettings::<span class="name">saveColorScheme</span>(const <span class="type">QString</span> &amp;<i>fileName</i>)</h3>
+<!-- @@@saveColorScheme -->
+<!-- $$$setAntialias[overload1]$$$setAntialiasbool -->
+<h3 class="fn" id="setAntialias"><a name="setAntialias"></a><span class="type">void</span> FontSettings::<span class="name">setAntialias</span>(<span class="type">bool</span> <i>antialias</i>)</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#antialias">antialias</a>().</p>
+<!-- @@@setAntialias -->
+<!-- $$$setColorScheme[overload1]$$$setColorSchemeconstColorScheme& -->
+<h3 class="fn" id="setColorScheme"><a name="setColorScheme"></a><span class="type">void</span> FontSettings::<span class="name">setColorScheme</span>(const <span class="type">ColorScheme</span> &amp;<i>scheme</i>)</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#colorScheme">colorScheme</a>().</p>
+<!-- @@@setColorScheme -->
+<!-- $$$setColorSchemeFileName[overload1]$$$setColorSchemeFileNameconstQString& -->
+<h3 class="fn" id="setColorSchemeFileName"><a name="setColorSchemeFileName"></a><span class="type">void</span> FontSettings::<span class="name">setColorSchemeFileName</span>(const <span class="type">QString</span> &amp;<i>fileName</i>)</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#colorSchemeFileName">colorSchemeFileName</a>().</p>
+<!-- @@@setColorSchemeFileName -->
+<!-- $$$setFamily[overload1]$$$setFamilyconstQString& -->
+<h3 class="fn" id="setFamily"><a name="setFamily"></a><span class="type">void</span> FontSettings::<span class="name">setFamily</span>(const <span class="type">QString</span> &amp;<i>family</i>)</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#family">family</a>().</p>
+<!-- @@@setFamily -->
+<!-- $$$setFontSize[overload1]$$$setFontSizeint -->
+<h3 class="fn" id="setFontSize"><a name="setFontSize"></a><span class="type">void</span> FontSettings::<span class="name">setFontSize</span>(<span class="type">int</span> <i>size</i>)</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#fontSize">fontSize</a>().</p>
+<!-- @@@setFontSize -->
+<!-- $$$setFontZoom[overload1]$$$setFontZoomint -->
+<h3 class="fn" id="setFontZoom"><a name="setFontZoom"></a><span class="type">void</span> FontSettings::<span class="name">setFontZoom</span>(<span class="type">int</span> <i>zoom</i>)</h3>
+<p><b>See also </b><a href="texteditor-fontsettings.html#fontZoom">fontZoom</a>().</p>
+<!-- @@@setFontZoom -->
+<!-- $$$toSettings[overload1]$$$toSettingsconstQString&QSettings* -->
+<h3 class="fn" id="toSettings"><a name="toSettings"></a><span class="type">void</span> FontSettings::<span class="name">toSettings</span>(const <span class="type">QString</span> &amp;<i>category</i>, <span class="type">QSettings</span> *<i>s</i>) const</h3>
+<!-- @@@toSettings -->
+<!-- $$$toTextCharFormat[overload1]$$$toTextCharFormatTextStyle -->
+<h3 class="fn" id="toTextCharFormat"><a name="toTextCharFormat"></a><span class="type">QTextCharFormat</span> FontSettings::<span class="name">toTextCharFormat</span>(<span class="type"><a href="texteditor.html#TextStyle-enum">TextStyle</a></span> <i>category</i>) const</h3>
+<!-- @@@toTextCharFormat -->
+<!-- $$$toTextCharFormat$$$toTextCharFormatTextStyles -->
+<h3 class="fn" id="toTextCharFormat-1"><a name="toTextCharFormat-1"></a><span class="type">QTextCharFormat</span> FontSettings::<span class="name">toTextCharFormat</span>(<span class="type"><a href="texteditor-textstyles.html">TextStyles</a></span> <i>textStyles</i>) const</h3>
+<!-- @@@toTextCharFormat -->
+<!-- $$$toTextCharFormats[overload1]$$$toTextCharFormatsconstQVector<TextStyle>& -->
+<h3 class="fn" id="toTextCharFormats"><a name="toTextCharFormats"></a><span class="type">QVector</span>&lt;<span class="type">QTextCharFormat</span>&gt; FontSettings::<span class="name">toTextCharFormats</span>(const <span class="type">QVector</span>&lt;<span class="type"><a href="texteditor.html#TextStyle-enum">TextStyle</a></span>&gt; &amp;<i>categories</i>) const</h3>
+<!-- @@@toTextCharFormats -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

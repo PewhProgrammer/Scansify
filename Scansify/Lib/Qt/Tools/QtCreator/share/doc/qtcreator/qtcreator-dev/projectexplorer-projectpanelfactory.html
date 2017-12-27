@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>ProjectPanelFactory Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ProjectPanelFactory</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ProjectPanelFactory Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-projectpanelfactory.html">ProjectExplorer::ProjectPanelFactory</a>)<br/></span>
+<ul>
+<li><a href="projectexplorer-projectpanelfactory-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#ProjectPanelFactory">ProjectPanelFactory</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::TreeItem *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#createPanelItem">createPanelItem</a></b>(Project *<i>project</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#createWidget">createWidget</a></b>(Project *<i>project</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#displayName">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#icon">icon</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#priority">priority</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#setCreateWidgetFunction">setCreateWidgetFunction</a></b>(const WidgetCreator &amp;<i>createWidgetFunction</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#setDisplayName">setDisplayName</a></b>(const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#setIcon">setIcon</a></b>(const QString &amp;<i>icon</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#setPriority">setPriority</a></b>(int <i>priority</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#setSupportsFunction">setSupportsFunction</a></b>(std::function&lt;bool( Project * ) &gt; <i>function</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#supports">supports</a></b>(Project *<i>project</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;ProjectPanelFactory *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#factories">factories</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectpanelfactory.html#registerFactory">registerFactory</a></b>(ProjectPanelFactory *<i>factory</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ProjectPanelFactory[overload1]$$$ProjectPanelFactory -->
+<h3 class="fn" id="ProjectPanelFactory"><a name="ProjectPanelFactory"></a>ProjectPanelFactory::<span class="name">ProjectPanelFactory</span>()</h3>
+<p>Default constructs an instance of ProjectPanelFactory.</p><!-- @@@ProjectPanelFactory -->
+<!-- $$$createPanelItem[overload1]$$$createPanelItemProject* -->
+<h3 class="fn" id="createPanelItem"><a name="createPanelItem"></a><span class="type"><a href="utils-treeitem.html">Utils::TreeItem</a></span> *ProjectPanelFactory::<span class="name">createPanelItem</span>(<span class="type"><a href="projectexplorer-project.html">Project</a></span> *<i>project</i>)</h3>
+<!-- @@@createPanelItem -->
+<!-- $$$createWidget[overload1]$$$createWidgetProject* -->
+<h3 class="fn" id="createWidget"><a name="createWidget"></a><span class="type">QWidget</span> *ProjectPanelFactory::<span class="name">createWidget</span>(<span class="type"><a href="projectexplorer-project.html">Project</a></span> *<i>project</i>) const</h3>
+<!-- @@@createWidget -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><span class="type">QString</span> ProjectPanelFactory::<span class="name">displayName</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-projectpanelfactory.html#setDisplayName">setDisplayName</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$factories[overload1]$$$factories -->
+<h3 class="fn" id="factories"><a name="factories"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-projectpanelfactory.html#ProjectPanelFactory">ProjectPanelFactory</a></span> *&gt; ProjectPanelFactory::<span class="name">factories</span>()</h3>
+<!-- @@@factories -->
+<!-- $$$icon[overload1]$$$icon -->
+<h3 class="fn" id="icon"><a name="icon"></a><span class="type">QString</span> ProjectPanelFactory::<span class="name">icon</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-projectpanelfactory.html#setIcon">setIcon</a>().</p>
+<!-- @@@icon -->
+<!-- $$$priority[overload1]$$$priority -->
+<h3 class="fn" id="priority"><a name="priority"></a><span class="type">int</span> ProjectPanelFactory::<span class="name">priority</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-projectpanelfactory.html#setPriority">setPriority</a>().</p>
+<!-- @@@priority -->
+<!-- $$$registerFactory[overload1]$$$registerFactoryProjectPanelFactory* -->
+<h3 class="fn" id="registerFactory"><a name="registerFactory"></a><code>[static] </code><span class="type">void</span> ProjectPanelFactory::<span class="name">registerFactory</span>(<span class="type"><a href="projectexplorer-projectpanelfactory.html#ProjectPanelFactory">ProjectPanelFactory</a></span> *<i>factory</i>)</h3>
+<!-- @@@registerFactory -->
+<!-- $$$setCreateWidgetFunction[overload1]$$$setCreateWidgetFunctionconstWidgetCreator& -->
+<h3 class="fn" id="setCreateWidgetFunction"><a name="setCreateWidgetFunction"></a><span class="type">void</span> ProjectPanelFactory::<span class="name">setCreateWidgetFunction</span>(const <span class="type">WidgetCreator</span> &amp;<i>createWidgetFunction</i>)</h3>
+<!-- @@@setCreateWidgetFunction -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" id="setDisplayName"><a name="setDisplayName"></a><span class="type">void</span> ProjectPanelFactory::<span class="name">setDisplayName</span>(const <span class="type">QString</span> &amp;<i>name</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-projectpanelfactory.html#displayName">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setIcon[overload1]$$$setIconconstQString& -->
+<h3 class="fn" id="setIcon"><a name="setIcon"></a><span class="type">void</span> ProjectPanelFactory::<span class="name">setIcon</span>(const <span class="type">QString</span> &amp;<i>icon</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-projectpanelfactory.html#icon">icon</a>().</p>
+<!-- @@@setIcon -->
+<!-- $$$setPriority[overload1]$$$setPriorityint -->
+<h3 class="fn" id="setPriority"><a name="setPriority"></a><span class="type">void</span> ProjectPanelFactory::<span class="name">setPriority</span>(<span class="type">int</span> <i>priority</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-projectpanelfactory.html#priority">priority</a>().</p>
+<!-- @@@setPriority -->
+<!-- $$$setSupportsFunction[overload1]$$$setSupportsFunctionstd::function<bool(Project*)> -->
+<h3 class="fn" id="setSupportsFunction"><a name="setSupportsFunction"></a><span class="type">void</span> ProjectPanelFactory::<span class="name">setSupportsFunction</span>(<span class="type">std::function</span>&lt;<span class="type">bool</span>( <span class="type"><a href="projectexplorer-project.html">Project</a></span> * ) &gt; <i>function</i>)</h3>
+<!-- @@@setSupportsFunction -->
+<!-- $$$supports[overload1]$$$supportsProject* -->
+<h3 class="fn" id="supports"><a name="supports"></a><span class="type">bool</span> ProjectPanelFactory::<span class="name">supports</span>(<span class="type"><a href="projectexplorer-project.html">Project</a></span> *<i>project</i>)</h3>
+<!-- @@@supports -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

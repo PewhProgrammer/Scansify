@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>BaseTextFind Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >BaseTextFind</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">BaseTextFind Class</h1>
+<span class="small-subtitle">(<a href="core-basetextfind.html">Core::BaseTextFind</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="core-ifindsupport.html">Core::IFindSupport</a></td></tr></table></div><ul>
+<li><a href="core-basetextfind-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#BaseTextFind">BaseTextFind</a></b>(QPlainTextEdit *<i>editor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#BaseTextFind-1">BaseTextFind</a></b>(QTextEdit *<i>editor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#dtor.BaseTextFind">~BaseTextFind</a></b>()</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#clearFindScope">clearFindScope</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#clearHighlights">clearHighlights</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#completedFindString">completedFindString</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#currentFindString">currentFindString</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#defineFindScope">defineFindScope</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Result </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#findIncremental">findIncremental</a></b>(const QString &amp;<i>txt</i>, FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Result </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#findStep">findStep</a></b>(const QString &amp;<i>txt</i>, FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#highlightAll">highlightAll</a></b>(const QString &amp;<i>txt</i>, FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#replace">replace</a></b>(const QString &amp;<i>before</i>, const QString &amp;<i>after</i>, FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#replaceAll">replaceAll</a></b>(const QString &amp;<i>before</i>, const QString &amp;<i>after</i>, FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#replaceStep">replaceStep</a></b>(const QString &amp;<i>before</i>, const QString &amp;<i>after</i>, FindFlags <i>findFlags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#resetIncrementalSearch">resetIncrementalSearch</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual FindFlags </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#supportedFindFlags">supportedFindFlags</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#supportsReplace">supportsReplace</a></b>() const</td></tr>
+</table></div>
+<ul>
+<li class="fn">14 public functions inherited from <a href="core-ifindsupport.html#public-functions">Core::IFindSupport</a></li>
+</ul>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#findScopeChanged">findScopeChanged</a></b>(const QTextCursor &amp;<i>start</i>, const QTextCursor &amp;<i>end</i>, int <i>verticalBlockSelectionFirstColumn</i>, int <i>verticalBlockSelectionLastColumn</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-basetextfind.html#highlightAllRequested">highlightAllRequested</a></b>(const QString &amp;<i>txt</i>, Core::FindFlags <i>findFlags</i>)</td></tr>
+</table></div>
+<ul>
+<li class="fn">1 signal inherited from <a href="core-ifindsupport.html#signals">Core::IFindSupport</a></li>
+</ul>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">1 static public member inherited from <a href="core-ifindsupport.html#static-public-members">Core::IFindSupport</a></li>
+</ul>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$BaseTextFind[overload1]$$$BaseTextFindQPlainTextEdit* -->
+<h3 class="fn" id="BaseTextFind"><a name="BaseTextFind"></a>BaseTextFind::<span class="name">BaseTextFind</span>(<span class="type">QPlainTextEdit</span> *<i>editor</i>)</h3>
+<p>Default constructs an instance of BaseTextFind.</p><!-- @@@BaseTextFind -->
+<!-- $$$BaseTextFind$$$BaseTextFindQTextEdit* -->
+<h3 class="fn" id="BaseTextFind-1"><a name="BaseTextFind-1"></a>BaseTextFind::<span class="name">BaseTextFind</span>(<span class="type">QTextEdit</span> *<i>editor</i>)</h3>
+<p>Default constructs an instance of BaseTextFind.</p><!-- @@@BaseTextFind -->
+<!-- $$$~BaseTextFind[overload1]$$$~BaseTextFind -->
+<h3 class="fn" id="dtor.BaseTextFind"><a name="dtor.BaseTextFind"></a><code>[virtual] </code>BaseTextFind::<span class="name">~BaseTextFind</span>()</h3>
+<p>Destroys the instance of BaseTextFind. The destructor is virtual.</p><!-- @@@~BaseTextFind -->
+<!-- $$$clearFindScope[overload1]$$$clearFindScope -->
+<h3 class="fn" id="clearFindScope"><a name="clearFindScope"></a><code>[virtual] </code><span class="type">void</span> BaseTextFind::<span class="name">clearFindScope</span>()</h3>
+<!-- @@@clearFindScope -->
+<!-- $$$clearHighlights[overload1]$$$clearHighlights -->
+<h3 class="fn" id="clearHighlights"><a name="clearHighlights"></a><code>[virtual] </code><span class="type">void</span> BaseTextFind::<span class="name">clearHighlights</span>()</h3>
+<!-- @@@clearHighlights -->
+<!-- $$$completedFindString[overload1]$$$completedFindString -->
+<h3 class="fn" id="completedFindString"><a name="completedFindString"></a><code>[virtual] </code><span class="type">QString</span> BaseTextFind::<span class="name">completedFindString</span>() const</h3>
+<!-- @@@completedFindString -->
+<!-- $$$currentFindString[overload1]$$$currentFindString -->
+<h3 class="fn" id="currentFindString"><a name="currentFindString"></a><code>[virtual] </code><span class="type">QString</span> BaseTextFind::<span class="name">currentFindString</span>() const</h3>
+<!-- @@@currentFindString -->
+<!-- $$$defineFindScope[overload1]$$$defineFindScope -->
+<h3 class="fn" id="defineFindScope"><a name="defineFindScope"></a><code>[virtual] </code><span class="type">void</span> BaseTextFind::<span class="name">defineFindScope</span>()</h3>
+<!-- @@@defineFindScope -->
+<!-- $$$findIncremental[overload1]$$$findIncrementalconstQString&FindFlags -->
+<h3 class="fn" id="findIncremental"><a name="findIncremental"></a><code>[virtual] </code><span class="type"><a href="core-ifindsupport.html#Result-enum">Result</a></span> BaseTextFind::<span class="name">findIncremental</span>(const <span class="type">QString</span> &amp;<i>txt</i>, <span class="type"><a href="core.html#FindFlag-enum">FindFlags</a></span> <i>findFlags</i>)</h3>
+<!-- @@@findIncremental -->
+<!-- $$$findScopeChanged[overload1]$$$findScopeChangedconstQTextCursor&constQTextCursor&intint -->
+<h3 class="fn" id="findScopeChanged"><a name="findScopeChanged"></a><code>[signal] </code><span class="type">void</span> BaseTextFind::<span class="name">findScopeChanged</span>(const <span class="type">QTextCursor</span> &amp;<i>start</i>, const <span class="type">QTextCursor</span> &amp;<i>end</i>, <span class="type">int</span> <i>verticalBlockSelectionFirstColumn</i>, <span class="type">int</span> <i>verticalBlockSelectionLastColumn</i>)</h3>
+<!-- @@@findScopeChanged -->
+<!-- $$$findStep[overload1]$$$findStepconstQString&FindFlags -->
+<h3 class="fn" id="findStep"><a name="findStep"></a><code>[virtual] </code><span class="type"><a href="core-ifindsupport.html#Result-enum">Result</a></span> BaseTextFind::<span class="name">findStep</span>(const <span class="type">QString</span> &amp;<i>txt</i>, <span class="type"><a href="core.html#FindFlag-enum">FindFlags</a></span> <i>findFlags</i>)</h3>
+<!-- @@@findStep -->
+<!-- $$$highlightAll[overload1]$$$highlightAllconstQString&FindFlags -->
+<h3 class="fn" id="highlightAll"><a name="highlightAll"></a><code>[virtual] </code><span class="type">void</span> BaseTextFind::<span class="name">highlightAll</span>(const <span class="type">QString</span> &amp;<i>txt</i>, <span class="type"><a href="core.html#FindFlag-enum">FindFlags</a></span> <i>findFlags</i>)</h3>
+<!-- @@@highlightAll -->
+<!-- $$$highlightAllRequested[overload1]$$$highlightAllRequestedconstQString&Core::FindFlags -->
+<h3 class="fn" id="highlightAllRequested"><a name="highlightAllRequested"></a><code>[signal] </code><span class="type">void</span> BaseTextFind::<span class="name">highlightAllRequested</span>(const <span class="type">QString</span> &amp;<i>txt</i>, <span class="type"><a href="core.html#FindFlag-enum">Core::FindFlags</a></span> <i>findFlags</i>)</h3>
+<!-- @@@highlightAllRequested -->
+<!-- $$$replace[overload1]$$$replaceconstQString&constQString&FindFlags -->
+<h3 class="fn" id="replace"><a name="replace"></a><code>[virtual] </code><span class="type">void</span> BaseTextFind::<span class="name">replace</span>(const <span class="type">QString</span> &amp;<i>before</i>, const <span class="type">QString</span> &amp;<i>after</i>, <span class="type"><a href="core.html#FindFlag-enum">FindFlags</a></span> <i>findFlags</i>)</h3>
+<!-- @@@replace -->
+<!-- $$$replaceAll[overload1]$$$replaceAllconstQString&constQString&FindFlags -->
+<h3 class="fn" id="replaceAll"><a name="replaceAll"></a><code>[virtual] </code><span class="type">int</span> BaseTextFind::<span class="name">replaceAll</span>(const <span class="type">QString</span> &amp;<i>before</i>, const <span class="type">QString</span> &amp;<i>after</i>, <span class="type"><a href="core.html#FindFlag-enum">FindFlags</a></span> <i>findFlags</i>)</h3>
+<!-- @@@replaceAll -->
+<!-- $$$replaceStep[overload1]$$$replaceStepconstQString&constQString&FindFlags -->
+<h3 class="fn" id="replaceStep"><a name="replaceStep"></a><code>[virtual] </code><span class="type">bool</span> BaseTextFind::<span class="name">replaceStep</span>(const <span class="type">QString</span> &amp;<i>before</i>, const <span class="type">QString</span> &amp;<i>after</i>, <span class="type"><a href="core.html#FindFlag-enum">FindFlags</a></span> <i>findFlags</i>)</h3>
+<!-- @@@replaceStep -->
+<!-- $$$resetIncrementalSearch[overload1]$$$resetIncrementalSearch -->
+<h3 class="fn" id="resetIncrementalSearch"><a name="resetIncrementalSearch"></a><code>[virtual] </code><span class="type">void</span> BaseTextFind::<span class="name">resetIncrementalSearch</span>()</h3>
+<!-- @@@resetIncrementalSearch -->
+<!-- $$$supportedFindFlags[overload1]$$$supportedFindFlags -->
+<h3 class="fn" id="supportedFindFlags"><a name="supportedFindFlags"></a><code>[virtual] </code><span class="type"><a href="core.html#FindFlag-enum">FindFlags</a></span> BaseTextFind::<span class="name">supportedFindFlags</span>() const</h3>
+<!-- @@@supportedFindFlags -->
+<!-- $$$supportsReplace[overload1]$$$supportsReplace -->
+<h3 class="fn" id="supportsReplace"><a name="supportsReplace"></a><code>[virtual] </code><span class="type">bool</span> BaseTextFind::<span class="name">supportsReplace</span>() const</h3>
+<!-- @@@supportsReplace -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

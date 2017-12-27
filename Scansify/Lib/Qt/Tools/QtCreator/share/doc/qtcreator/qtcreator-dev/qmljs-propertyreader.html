@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>PropertyReader Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >PropertyReader</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">PropertyReader Class</h1>
+<span class="small-subtitle">(<a href="qmljs-propertyreader.html">QmlJS::PropertyReader</a>)<br/></span>
+<ul>
+<li><a href="qmljs-propertyreader-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-propertyreader.html#PropertyReader">PropertyReader</a></b>(Document::Ptr <i>doc</i>, AST::UiObjectInitializer *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-propertyreader.html#hasProperty">hasProperty</a></b>(const QString &amp;<i>propertyName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-propertyreader.html#isBindingOrEnum">isBindingOrEnum</a></b>(const QString &amp;<i>propertyName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QLinearGradient </td><td class="memItemRight bottomAlign"><b><a href="qmljs-propertyreader.html#parseGradient">parseGradient</a></b>(const QString &amp;<i>propertyName</i>, bool *<i>isBound</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="qmljs-propertyreader.html#properties">properties</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-propertyreader.html#readAstValue">readAstValue</a></b>(const QString &amp;<i>propertyName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVariant </td><td class="memItemRight bottomAlign"><b><a href="qmljs-propertyreader.html#readProperty">readProperty</a></b>(const QString &amp;<i>propertyName</i>) const</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$PropertyReader[overload1]$$$PropertyReaderDocument::PtrAST::UiObjectInitializer* -->
+<h3 class="fn" id="PropertyReader"><a name="PropertyReader"></a>PropertyReader::<span class="name">PropertyReader</span>(<span class="type"><a href="qmljs-document.html#Ptr-typedef">Document::Ptr</a></span> <i>doc</i>, <span class="type">AST::UiObjectInitializer</span> *<i>ast</i>)</h3>
+<p>Default constructs an instance of PropertyReader.</p><!-- @@@PropertyReader -->
+<!-- $$$hasProperty[overload1]$$$hasPropertyconstQString& -->
+<h3 class="fn" id="hasProperty"><a name="hasProperty"></a><span class="type">bool</span> PropertyReader::<span class="name">hasProperty</span>(const <span class="type">QString</span> &amp;<i>propertyName</i>) const</h3>
+<!-- @@@hasProperty -->
+<!-- $$$isBindingOrEnum[overload1]$$$isBindingOrEnumconstQString& -->
+<h3 class="fn" id="isBindingOrEnum"><a name="isBindingOrEnum"></a><span class="type">bool</span> PropertyReader::<span class="name">isBindingOrEnum</span>(const <span class="type">QString</span> &amp;<i>propertyName</i>) const</h3>
+<!-- @@@isBindingOrEnum -->
+<!-- $$$parseGradient[overload1]$$$parseGradientconstQString&bool* -->
+<h3 class="fn" id="parseGradient"><a name="parseGradient"></a><span class="type">QLinearGradient</span> PropertyReader::<span class="name">parseGradient</span>(const <span class="type">QString</span> &amp;<i>propertyName</i>, <span class="type">bool</span> *<i>isBound</i>) const</h3>
+<!-- @@@parseGradient -->
+<!-- $$$properties[overload1]$$$properties -->
+<h3 class="fn" id="properties"><a name="properties"></a><span class="type">QStringList</span> PropertyReader::<span class="name">properties</span>() const</h3>
+<!-- @@@properties -->
+<!-- $$$readAstValue[overload1]$$$readAstValueconstQString& -->
+<h3 class="fn" id="readAstValue"><a name="readAstValue"></a><span class="type">QString</span> PropertyReader::<span class="name">readAstValue</span>(const <span class="type">QString</span> &amp;<i>propertyName</i>) const</h3>
+<!-- @@@readAstValue -->
+<!-- $$$readProperty[overload1]$$$readPropertyconstQString& -->
+<h3 class="fn" id="readProperty"><a name="readProperty"></a><span class="type">QVariant</span> PropertyReader::<span class="name">readProperty</span>(const <span class="type">QString</span> &amp;<i>propertyName</i>) const</h3>
+<!-- @@@readProperty -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

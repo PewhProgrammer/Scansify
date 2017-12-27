@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>FindCdbBreakpoint Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >FindCdbBreakpoint</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">FindCdbBreakpoint Class</h1>
+<span class="small-subtitle">(<a href="cplusplus-findcdbbreakpoint.html">CPlusPlus::FindCdbBreakpoint</a>)<br/></span>
+<ul>
+<li><a href="cplusplus-findcdbbreakpoint-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#FindCdbBreakpoint">FindCdbBreakpoint</a></b>(TranslationUnit *<i>unit</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> unsigned </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#searchFrom">searchFrom</a></b>(unsigned <i>line</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> unsigned </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#operator-28-29">operator()</a></b>(unsigned <i>line</i>)</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> unsigned </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#endLine">endLine</a></b>(unsigned <i>tokenIndex</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> unsigned </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#endLine-1">endLine</a></b>(AST *<i>ast</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#foundLine">foundLine</a></b>(unsigned <i>tokenIndex</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#preVisit">preVisit</a></b>(AST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit">visit</a></b>(FunctionDefinitionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-1">visit</a></b>(QtMemberDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-2">visit</a></b>(CompoundStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-3">visit</a></b>(DeclarationStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-4">visit</a></b>(DoStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-5">visit</a></b>(ExpressionStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-6">visit</a></b>(ForeachStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-7">visit</a></b>(RangeBasedForStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-8">visit</a></b>(ForStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-9">visit</a></b>(IfStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-10">visit</a></b>(LabeledStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-11">visit</a></b>(BreakStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-12">visit</a></b>(ContinueStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-13">visit</a></b>(GotoStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-14">visit</a></b>(ReturnStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-15">visit</a></b>(SwitchStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-16">visit</a></b>(TryBlockStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-17">visit</a></b>(CatchClauseAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-18">visit</a></b>(WhileStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-19">visit</a></b>(ObjCFastEnumerationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findcdbbreakpoint.html#visit-20">visit</a></b>(ObjCSynchronizedStatementAST *<i>ast</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$FindCdbBreakpoint[overload1]$$$FindCdbBreakpointTranslationUnit* -->
+<h3 class="fn" id="FindCdbBreakpoint"><a name="FindCdbBreakpoint"></a>FindCdbBreakpoint::<span class="name">FindCdbBreakpoint</span>(<span class="type">TranslationUnit</span> *<i>unit</i>)</h3>
+<p>Default constructs an instance of FindCdbBreakpoint.</p><!-- @@@FindCdbBreakpoint -->
+<!-- $$$endLine[overload1]$$$endLineunsigned -->
+<h3 class="fn" id="endLine"><a name="endLine"></a><code>[protected] </code><span class="type">unsigned</span> FindCdbBreakpoint::<span class="name">endLine</span>(<span class="type">unsigned</span> <i>tokenIndex</i>) const</h3>
+<!-- @@@endLine -->
+<!-- $$$endLine$$$endLineAST* -->
+<h3 class="fn" id="endLine-1"><a name="endLine-1"></a><code>[protected] </code><span class="type">unsigned</span> FindCdbBreakpoint::<span class="name">endLine</span>(<span class="type">AST</span> *<i>ast</i>) const</h3>
+<!-- @@@endLine -->
+<!-- $$$foundLine[overload1]$$$foundLineunsigned -->
+<h3 class="fn" id="foundLine"><a name="foundLine"></a><code>[protected] </code><span class="type">void</span> FindCdbBreakpoint::<span class="name">foundLine</span>(<span class="type">unsigned</span> <i>tokenIndex</i>)</h3>
+<!-- @@@foundLine -->
+<!-- $$$preVisit[overload1]$$$preVisitAST* -->
+<h3 class="fn" id="preVisit"><a name="preVisit"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">preVisit</span>(<span class="type">AST</span> *<i>ast</i>)</h3>
+<!-- @@@preVisit -->
+<!-- $$$searchFrom[overload1]$$$searchFromunsigned -->
+<h3 class="fn" id="searchFrom"><a name="searchFrom"></a><span class="type">unsigned</span> FindCdbBreakpoint::<span class="name">searchFrom</span>(<span class="type">unsigned</span> <i>line</i>)</h3>
+<!-- @@@searchFrom -->
+<!-- $$$visit[overload1]$$$visitFunctionDefinitionAST* -->
+<h3 class="fn" id="visit"><a name="visit"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">FunctionDefinitionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQtMemberDeclarationAST* -->
+<h3 class="fn" id="visit-1"><a name="visit-1"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">QtMemberDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCompoundStatementAST* -->
+<h3 class="fn" id="visit-2"><a name="visit-2"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">CompoundStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitDeclarationStatementAST* -->
+<h3 class="fn" id="visit-3"><a name="visit-3"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">DeclarationStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitDoStatementAST* -->
+<h3 class="fn" id="visit-4"><a name="visit-4"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">DoStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitExpressionStatementAST* -->
+<h3 class="fn" id="visit-5"><a name="visit-5"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">ExpressionStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitForeachStatementAST* -->
+<h3 class="fn" id="visit-6"><a name="visit-6"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">ForeachStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitRangeBasedForStatementAST* -->
+<h3 class="fn" id="visit-7"><a name="visit-7"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">RangeBasedForStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitForStatementAST* -->
+<h3 class="fn" id="visit-8"><a name="visit-8"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">ForStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitIfStatementAST* -->
+<h3 class="fn" id="visit-9"><a name="visit-9"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">IfStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitLabeledStatementAST* -->
+<h3 class="fn" id="visit-10"><a name="visit-10"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">LabeledStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitBreakStatementAST* -->
+<h3 class="fn" id="visit-11"><a name="visit-11"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">BreakStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitContinueStatementAST* -->
+<h3 class="fn" id="visit-12"><a name="visit-12"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">ContinueStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitGotoStatementAST* -->
+<h3 class="fn" id="visit-13"><a name="visit-13"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">GotoStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitReturnStatementAST* -->
+<h3 class="fn" id="visit-14"><a name="visit-14"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">ReturnStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitSwitchStatementAST* -->
+<h3 class="fn" id="visit-15"><a name="visit-15"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">SwitchStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTryBlockStatementAST* -->
+<h3 class="fn" id="visit-16"><a name="visit-16"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">TryBlockStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCatchClauseAST* -->
+<h3 class="fn" id="visit-17"><a name="visit-17"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">CatchClauseAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitWhileStatementAST* -->
+<h3 class="fn" id="visit-18"><a name="visit-18"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">WhileStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCFastEnumerationAST* -->
+<h3 class="fn" id="visit-19"><a name="visit-19"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">ObjCFastEnumerationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCSynchronizedStatementAST* -->
+<h3 class="fn" id="visit-20"><a name="visit-20"></a><code>[protected] </code><span class="type">bool</span> FindCdbBreakpoint::<span class="name">visit</span>(<span class="type">ObjCSynchronizedStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$operator()[overload1]$$$operator()unsigned -->
+<h3 class="fn" id="operator-28-29"><a name="operator-28-29"></a><span class="type">unsigned</span> FindCdbBreakpoint::<span class="name">operator()</span>(<span class="type">unsigned</span> <i>line</i>)</h3>
+<!-- @@@operator() -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

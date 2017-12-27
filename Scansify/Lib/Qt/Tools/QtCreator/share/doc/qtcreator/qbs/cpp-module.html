@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- cpp-module.qdoc -->
+  <title>Module cpp | Qbs Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="index.html">Qbs Manual</a></td><td ><a href="list-of-modules.html">List of Modules</a></td><td >Module cpp</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qbs 1.9.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<p class="naviNextPrevious headerNavi">
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#general-properties">General Properties</a></li>
+<li class="level1"><a href="#properties-specific-to-apple-platforms">Properties Specific to Apple Platforms</a></li>
+<li class="level1"><a href="#properties-specific-to-unix-platforms">Properties Specific to Unix Platforms</a></li>
+<li class="level1"><a href="#properties-specific-to-windows">Properties Specific to Windows</a></li>
+<li class="level1"><a href="#advanced-properties">Advanced Properties</a></li>
+<li class="level1"><a href="#dependency-parameters">Dependency Parameters</a></li>
+<li class="level1"><a href="#relevant-file-tags">Relevant File Tags</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Module cpp</h1>
+<span class="subtitle"></span>
+<!-- $$$cpp-module.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>The <code>cpp</code> module contains the properties and rules for toolchains of the C/C++ family. On Apple platforms this includes support for Objective-C/C++.</p>
+<a name="general-properties"></a>
+<h2 id="general-properties">General Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Since</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >allowUnresolvedSymbols</td><td ><code>bool</code></td><td >1.2</td><td ><code>false</code></td><td >Switch this on if you want the linking step to succeed even if the resulting binary contains unresolved symbols. Normally this makes little sense, but in special cases it is possible that the respective symbols will be available at load time even if they are not present during linking.</td></tr>
+<tr valign="top" class="even"><td >architecture</td><td ><code>string</code></td><td >1.0</td><td ><code>qbs.architecture</code></td><td >Target architecture. See <code>qbs.architecture</code>.</td></tr>
+<tr valign="top" class="odd"><td >endianness</td><td ><code>string</code></td><td >1.9</td><td >Specifies the endianness of the target platform's processor architecture (<code>&quot;big&quot;</code> or <code>&quot;little&quot;</code>). The value is automatically detected from the compiler's defaults, but can also be manually set in order to select a specific endianness when targeting bi-endian architectures like MIPS and PowerPC.</td></tr>
+<tr valign="top" class="even"><td >debugInformation</td><td ><code>bool</code></td><td >1.0</td><td ><code>qbs.debugInformation</code></td><td >Generate debug information. See <code>qbs.debugInformation</code>.</td></tr>
+<tr valign="top" class="odd"><td >combineCSources</td><td ><code>bool</code></td><td >1.8</td><td ><code>false</code></td><td >Enabling this property on a product instructs the <a href="filetagger-item.html">file tagger</a> to attach the tag <code>&quot;c.combine&quot;</code> to C sources, rather than <code>&quot;c&quot;</code>. As a result, all C sources of the product will be combined into a single file which is then compiled. This can speed up initial compilation significantly, but is of course detrimental in the context of incremental builds. Also, perfectly legal code may fail to compile with this option due to the merging of translation units. If you want to enable this property in a product that has some sources which cannot be merged, you need to put these into a dedicated <a href="group-item.html">group</a> and set their file tag to <code>&quot;c&quot;</code>, overriding the file tagger.<p><b>Note: </b>Module properties set on specific source files (that is, at the Group level) will not be taken into account when building the combined file. You either need to set these properties at the product level instead or prevent the respective files from getting combined via the mechanism described above.</p></td></tr>
+<tr valign="top" class="even"><td >combineCxxSources</td><td ><code>bool</code></td><td >1.8</td><td ><code>false</code></td><td >Like <code>combineCSources</code>, but for C++. The relevant file tags are <code>&quot;cpp&quot;</code> and <code>&quot;cpp.combine&quot;</code>.</td></tr>
+<tr valign="top" class="odd"><td >combineObjcSources</td><td ><code>bool</code></td><td >1.8</td><td ><code>false</code></td><td >Like <code>combineCSources</code>, but for Objective-C. The relevant file tags are <code>&quot;objc&quot;</code> and <code>&quot;objc.combine&quot;</code>.</td></tr>
+<tr valign="top" class="even"><td >combineObjcxxSources</td><td ><code>bool</code></td><td >1.8</td><td ><code>false</code></td><td >Like <code>combineCSources</code>, but for Objective-C++. The relevant file tags are <code>&quot;objcpp&quot;</code> and <code>&quot;objcpp.combine&quot;</code>.</td></tr>
+<tr valign="top" class="odd"><td >separateDebugInformation</td><td ><code>bool</code></td><td >1.4</td><td ><code>false</code> for gcc/clang, <code>true</code> for MSVC</td><td >Whether to store debug information in an external file or bundle instead of within the binary.</td></tr>
+<tr valign="top" class="even"><td >defines</td><td ><code>stringList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of preprocessor macros that gets passed to the compiler. To set macro values use the following syntax: <code>cpp.defines: [&quot;USE_COLORS=1&quot;, 'COLOR_STR=&quot;blanched almond&quot;']</code></td></tr>
+<tr valign="top" class="odd"><td >platformDefines</td><td ><code>stringList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of preprocessor macros that are used for all projects that are built for the current target platform. User project files usually do not set this property.</td></tr>
+<tr valign="top" class="even"><td >includePaths</td><td ><code>pathList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of include paths. Relative paths are considered to be relative to the .qbs product file they are used in.</td></tr>
+<tr valign="top" class="odd"><td >systemIncludePaths</td><td ><code>pathList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of include paths that are passed as system include paths to the compiler. For header files in those paths warnings will be ignored. Relative paths are considered to be relative to the .qbs product file they are used in.</td></tr>
+<tr valign="top" class="even"><td >systemRunPaths</td><td ><code>stringList</code></td><td >1.6</td><td >Auto-detected for host builds on Linux via <code>ldconfig</code>, <code>[&quot;/lib&quot;, &quot;/usr/lib&quot;]</code> otherwise on Unix, empty on Windows</td><td >The paths the dynamic linker uses on process start-up to locate dynamic libraries.</td></tr>
+<tr valign="top" class="odd"><td >libraryPaths</td><td ><code>pathList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of library search paths. Relative paths are considered to be relative to the .qbs product file they are used in.</td></tr>
+<tr valign="top" class="even"><td >dynamicLibraries</td><td ><code>stringList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of dynamic libraries to be linked. If the library is part of your project, consider using a Depends item instead.</td></tr>
+<tr valign="top" class="odd"><td >staticLibraries</td><td ><code>stringList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of static libraries to be linked. If the library is part of your project, consider using a Depends item instead.</td></tr>
+<tr valign="top" class="even"><td >prefixHeaders</td><td ><code>pathList</code></td><td >1.0&#x2e;1</td><td ><code>undefined</code></td><td >List of files to automatically include at the beginning of each source file in the product.</td></tr>
+<tr valign="top" class="odd"><td >optimization</td><td ><code>string</code></td><td >1.0</td><td ><code>qbs.optimization</code></td><td >Optimization level. See <code>qbs.optimization</code>.</td></tr>
+<tr valign="top" class="even"><td >treatWarningsAsErrors</td><td ><code>bool</code></td><td >1.0</td><td ><code>false</code></td><td >Warnings will be handled as errors and cause the build to fail.</td></tr>
+<tr valign="top" class="odd"><td >useCPrecompiledHeader, useCxxPrecompiledHeader, useObjcPrecompiledHeader, useObjcxxPrecompiledHeader</td><td ><code>bool</code></td><td >1.5</td><td ><code>true</code></td><td >Specifies whether to use a precompiled header for the respective language, if one is present (see <a href="wix-module.html#relevant-file-tags">below</a> for the associated file tags).</td></tr>
+<tr valign="top" class="even"><td >warningLevel</td><td ><code>string</code></td><td >1.0</td><td ><code>&quot;all&quot;</code></td><td >Specifies the warning level for the compiler - <code>&quot;none&quot;</code> or <code>&quot;all&quot;</code>.</td></tr>
+<tr valign="top" class="odd"><td >driverFlags</td><td ><code>stringList</code></td><td >1.6</td><td >undefined</td><td >Flags that are added to all compilation and linking commands performed by the compiler driver, independently of the language.</td></tr>
+<tr valign="top" class="even"><td >commonCompilerFlags</td><td ><code>stringList</code></td><td >1.0&#x2e;1</td><td >undefined</td><td >Flags that are added to all compilation commands independently of the language.</td></tr>
+<tr valign="top" class="odd"><td >compilerVersionMajor</td><td ><code>int</code></td><td >1.4</td><td >undefined</td><td >The major version of the compiler.</td></tr>
+<tr valign="top" class="even"><td >compilerVersionMinor</td><td ><code>int</code></td><td >1.4</td><td >undefined</td><td >The minor version of the compiler.</td></tr>
+<tr valign="top" class="odd"><td >compilerVersionPatch</td><td ><code>int</code></td><td >1.4</td><td >undefined</td><td >The patch level component of the compiler version.</td></tr>
+<tr valign="top" class="even"><td >assemblerFlags</td><td ><code>stringList</code></td><td >1.5</td><td >undefined</td><td >Additional flags for the assembler.</td></tr>
+<tr valign="top" class="odd"><td >cppFlags</td><td ><code>stringList</code></td><td >1.0</td><td >undefined</td><td >Additional flags for the C preprocessor.</td></tr>
+<tr valign="top" class="even"><td >cFlags</td><td ><code>stringList</code></td><td >1.0</td><td >undefined</td><td >Additional flags for the C compiler.</td></tr>
+<tr valign="top" class="odd"><td >cxxFlags</td><td ><code>stringList</code></td><td >1.0</td><td >undefined</td><td >Additional flags for the C++ compiler.</td></tr>
+<tr valign="top" class="even"><td >cLanguageVersion</td><td ><code>string</code></td><td >1.4</td><td >undefined</td><td >The version of the C standard with which the code must comply. If this property is set, corresponding compiler and/or linker flags will be added, depending on the toolchain. If the value is left undefined, the compiler default will be used. Possible values include: <code>&quot;c89&quot;</code>, <code>&quot;c99&quot;</code>, <code>&quot;c11&quot;</code></td></tr>
+<tr valign="top" class="odd"><td >cxxLanguageVersion</td><td ><code>string</code></td><td >1.4</td><td >undefined</td><td >The version of the C++ standard with which the code must comply. If this property is set, corresponding compiler and/or linker flags will be added, depending on the toolchain. If the value is left undefined, the compiler default will be used. Possible values include: <code>&quot;c++98&quot;</code>, <code>&quot;c++11&quot;</code>, <code>&quot;c++14&quot;</code></td></tr>
+<tr valign="top" class="even"><td >cxxStandardLibrary</td><td ><code>string</code></td><td >1.4</td><td >undefined</td><td >The C++ standard library to link to. If this property is set, corresponding compiler and/or linker flags will be added, assuming the value is valid for the current toolchain. If the value is left undefined, the compiler default will be used. Possible values include: <code>&quot;libstdc++&quot;</code>, <code>&quot;libc++&quot;</code></td></tr>
+<tr valign="top" class="odd"><td >objcFlags</td><td ><code>stringList</code></td><td >1.0</td><td >undefined</td><td >Additional flags for the Objective-C compiler.</td></tr>
+<tr valign="top" class="even"><td >objcxxFlags</td><td ><code>stringList</code></td><td >1.0</td><td >undefined</td><td >Additional flags for the Objective-C++ compiler.</td></tr>
+<tr valign="top" class="odd"><td >linkerFlags</td><td ><code>stringList</code></td><td >1.0</td><td >undefined</td><td >Additional flags for the linker. These flags should <i>not</i> be escaped using the -Wl or -Xlinker syntaxes, as Qbs will do this automatically based on the linker being used. See cpp.linkerMode for additional information.</td></tr>
+<tr valign="top" class="even"><td >assemblerName</td><td ><code>string</code></td><td >1.5</td><td >determined by qbs-setup-toolchains</td><td >Name of the assembler binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="odd"><td >assemblerPath</td><td ><code>string</code></td><td >1.5</td><td >determined by qbs-setup-toolchains</td><td >Full path of the assembler binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="even"><td >compilerName</td><td ><code>string</code></td><td >1.0</td><td >determined by qbs-setup-toolchains</td><td >Name of the main compiler binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="odd"><td >compilerPath</td><td ><code>string</code></td><td >1.0</td><td >determined by qbs-setup-toolchains</td><td >Full path of the main compiler binary. This is set in the build profile. If the toolchain provides different compilers for different languages, then <code>compilerPathByLanguage</code> is used.</td></tr>
+<tr valign="top" class="even"><td >compilerPathByLanguage</td><td ><code>string</code> to <code>string</code> map</td><td >1.3</td><td >determined by qbs-setup-toolchains</td><td >Maps file tags to full paths of compiler binaries. This is set in the build profile.</td></tr>
+<tr valign="top" class="odd"><td >compilerWrapper</td><td ><code>stringList</code></td><td >1.1</td><td ><code>undefined</code></td><td >Wrapper binary and its arguments for wrapping compiler calls. This is useful for compiler wrappers like ccache and alike.</td></tr>
+<tr valign="top" class="even"><td >linkerName</td><td ><code>string</code></td><td >1.1&#x2e;1</td><td >determined by qbs-setup-toolchains</td><td >Name of the linker binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="odd"><td >linkerPath</td><td ><code>string</code></td><td >1.1&#x2e;1</td><td >determined by qbs-setup-toolchains</td><td >Full path of the linker binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="even"><td >linkerWrapper</td><td ><code>stringList</code></td><td >1.6&#x2e;2</td><td ><code>undefined</code></td><td >Wrapper binary and its arguments for wrapping linker calls. This is useful for linker wrappers as needed by Bullseye Coverage, for example.</td></tr>
+<tr valign="top" class="odd"><td >entryPoint</td><td ><code>string</code></td><td >1.3</td><td ><code>undefined</code></td><td >Name of the entry point of an executable or dynamic library. If this property is undefined, the toolchain's default is used.</td></tr>
+<tr valign="top" class="even"><td >runtimeLibrary</td><td ><code>string</code></td><td >1.3&#x2e;3</td><td ><code>&quot;dynamic&quot;</code> for MSVC, <code>undefined</code> for others</td><td >Type of the used runtime library. Accepted values are <code>&quot;static&quot;</code> and <code>&quot;dynamic&quot;</code>. If this property is set to <code>undefined</code>, then the default runtime library of the toolchain is used.<p><b>Note: </b>For MSVC the default value is <code>&quot;dynamic&quot;</code>.</p><p><b>Note: </b>At the moment this property is only functional for MSVC.</p></td></tr>
+<tr valign="top" class="odd"><td >enableExceptions</td><td ><code>bool</code></td><td >1.5</td><td ><code>true</code></td><td >Whether to enable exceptions in C++ code.</td></tr>
+<tr valign="top" class="even"><td >exceptionHandlingModel</td><td ><code>string</code></td><td >1.5</td><td ><code>&quot;default&quot;</code></td><td >The exception handling model to use. For MSVC, this can be <code>&quot;default&quot;</code>, <code>&quot;seh&quot;</code> or <code>&quot;externc&quot;</code>. For all other compilers, <code>&quot;default&quot;</code> indicates the default or only exception handling model.</td></tr>
+<tr valign="top" class="odd"><td >enableRtti</td><td ><code>bool</code></td><td >1.5</td><td ><code>undefined</code></td><td >Whether to enable runtime type information in C++ code.</td></tr>
+<tr valign="top" class="even"><td >enableReproducibleBuilds</td><td ><code>bool</code></td><td >1.5</td><td ><code>false</code></td><td >Try to generate reproducible object files. Some compilers (notably gcc) use random numbers for generating symbol names that have to be different in every compilation unit. This is avoided by setting this property to <code>true</code>.</td></tr>
+<tr valign="top" class="odd"><td >treatSystemHeadersAsDependencies</td><td ><code>bool</code></td><td >1.8</td><td ><code>false</code></td><td >If this property is enabled, then included header files found via <code>systemIncludePaths</code>, <code>distributionIncludePaths</code> or <code>compilerIncludePaths</code> will be added to the dependencies of the respective object file. This means that modification of such header files (or any of the headers they include) will cause recompilation.</td></tr>
+</table></div>
+<a name="properties-specific-to-apple-platforms"></a>
+<h2 id="properties-specific-to-apple-platforms">Properties Specific to Apple Platforms</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Since</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >dsymutilFlags</td><td ><code>stringList</code></td><td >1.4&#x2e;1</td><td >undefined</td><td >Additional flags for the dsymutil tool.</td></tr>
+<tr valign="top" class="even"><td >dsymutilPath</td><td ><code>string</code></td><td >1.4</td><td >determined by qbs-setup-toolchains</td><td >Full path of the dsymutil binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="odd"><td >lipoPath</td><td ><code>string</code></td><td >1.9</td><td >determined automatically</td><td >Full path of the lipo binary.</td></tr>
+<tr valign="top" class="even"><td >frameworkPaths</td><td ><code>pathList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of framework search paths. Relative paths are considered to be relative to the .qbs product file they are used in.</td></tr>
+<tr valign="top" class="odd"><td >systemFrameworkPaths</td><td ><code>pathList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of framework search paths. Relative paths are considered to be relative to the .qbs product file they are used in. Header files in frameworks in those paths will not cause warnings.</td></tr>
+<tr valign="top" class="even"><td >frameworks</td><td ><code>stringList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of frameworks to be linked. If the framework is part of your project, consider using a Depends item instead.</td></tr>
+<tr valign="top" class="odd"><td >weakFrameworks</td><td ><code>stringList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of frameworks to be weakly linked. If the framework is part of your project, consider using a Depends item instead.</td></tr>
+<tr valign="top" class="even"><td >automaticReferenceCounting</td><td ><code>bool</code></td><td >1.4</td><td ><code>undefined</code></td><td >Whether to enable Automatic Reference Counting (ARC) for Objective-C and Objective-C++ source code. If <code>undefined</code>, uses the compiler default (probably <code>false</code>).</td></tr>
+<tr valign="top" class="odd"><td >requireAppExtensionSafeApi</td><td ><code>bool</code></td><td >1.4</td><td ><code>undefined</code></td><td >Whether to enforce the use of only app-extension-safe APIs on Apple platforms. This is necessary for building Application Extensions in OS X Yosemite and iOS 8 and above. If <code>undefined</code>, uses the compiler and linker defaults (probably <code>false</code>).</td></tr>
+<tr valign="top" class="even"><td >minimumIosVersion</td><td ><code>string</code></td><td >1.0</td><td >undefined, but may be set by generated profiles</td><td >A version number in the format [major].[minor] indicating the earliest version of iOS that the product should run on. Passes -miphoneos-version-min=&lt;version&gt; to the compiler. If undefined, compiler defaults will be used.</td></tr>
+<tr valign="top" class="odd"><td >minimumOsxVersion</td><td ><code>string</code></td><td >1.0&#x2e;1</td><td >undefined, but may be set by generated profiles</td><td >Deprecated in Qbs 1.5&#x2e;2&#x2e; Use <code>minimumMacosVersion</code> instead.</td></tr>
+<tr valign="top" class="even"><td >minimumMacosVersion</td><td ><code>string</code></td><td >1.5&#x2e;2</td><td >undefined, but may be set by generated profiles</td><td >A version number in the format [major].[minor] indicating the earliest version of macOS that the product should run on. Passes -mmacosx-version-min=&lt;version&gt; to the compiler. If undefined, compiler defaults will be used.</td></tr>
+<tr valign="top" class="odd"><td >minimumWatchosVersion</td><td ><code>string</code></td><td >1.5</td><td >undefined, but may be set by generated profiles</td><td >A version number in the format [major].[minor] indicating the earliest version of Apple watchOS that the product should run on. If undefined, compiler defaults will be used.</td></tr>
+<tr valign="top" class="even"><td >minimumTvosVersion</td><td ><code>string</code></td><td >1.5</td><td >undefined, but may be set by generated profiles</td><td >A version number in the format [major].[minor] indicating the earliest version of Apple tvOS that the product should run on. If undefined, compiler defaults will be used.</td></tr>
+</table></div>
+<a name="properties-specific-to-unix-platforms"></a>
+<h2 id="properties-specific-to-unix-platforms">Properties Specific to Unix Platforms</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Since</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >archiverName</td><td ><code>string</code></td><td >1.0</td><td ><code>&quot;ar&quot;</code></td><td >Name of the archiver binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="even"><td >archiverPath</td><td ><code>string</code></td><td >1.0</td><td >determined by qbs-setup-toolchains</td><td >Full path of the archiver binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="odd"><td >exportedSymbolsCheckMode</td><td ><code>string</code></td><td >1.4&#x2e;1</td><td >&quot;ignore-undefined&quot;</td><td >Controls how Qbs determines whether an updated dynamic library causes relinking of dependents. The default value is <code>&quot;ignore-undefined&quot;</code>, which means that undefined symbols being added or removed do not cause any relinking. If that should happen, for example because dependent products are linked with an option such as <code>&quot;--no-undefined&quot;</code>, then this property can be set to <code>&quot;strict&quot;</code>.</td></tr>
+<tr valign="top" class="even"><td >linkerMode</td><td ><code>string</code></td><td >1.6</td><td >&quot;automatic&quot;</td><td >Controls whether to automatically use an appropriate compiler frontend in place of the system linker when linking binaries. The default is <code>&quot;automatic&quot;</code>, which chooses either the C++ compiler, C compiler, or system linker specified by the <code>linkerName</code> and <code>linkerPath</code> properties, depending on the type of object files present on the linker command line. <code>&quot;manual&quot;</code> allows you to explicitly specify the linker using the <code>linkerName</code> and <code>linkerPath</code> properties.</td></tr>
+<tr valign="top" class="odd"><td >nmName</td><td ><code>string</code></td><td >1.2</td><td ><code>&quot;nm&quot;</code></td><td >Name of the nm binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="even"><td >nmPath</td><td ><code>string</code></td><td >1.2</td><td >determined by qbs-setup-toolchains</td><td >Full path of the nm binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="odd"><td >objcopyName</td><td ><code>string</code></td><td >1.4</td><td ><code>&quot;objcopy&quot;</code></td><td >Name of the objcopy binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="even"><td >objcopyPath</td><td ><code>string</code></td><td >1.4</td><td >determined by qbs-setup-toolchains</td><td >Full path of the objcopy binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="odd"><td >stripName</td><td ><code>string</code></td><td >1.4</td><td ><code>&quot;strip&quot;</code></td><td >Name of the strip binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="even"><td >stripPath</td><td ><code>string</code></td><td >1.4</td><td >determined by qbs-setup-toolchains</td><td >Full path of the strip binary. This is set in the build profile.</td></tr>
+<tr valign="top" class="odd"><td >positionIndependentCode</td><td ><code>bool</code></td><td >1.0</td><td ><code>undefined</code></td><td >Generate position independent code. If this property is <code>undefined</code>, then position independent code is generated for libraries, but not for applications.</td></tr>
+<tr valign="top" class="even"><td >rpaths</td><td ><code>stringList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of rpaths that are passed to the linker. Paths that also appear in <code>systemRunPaths</code> are ignored.</td></tr>
+<tr valign="top" class="odd"><td >sonamePrefix</td><td ><code>string</code></td><td >1.5</td><td ><code>undefined</code></td><td >If defined, the value of this variable is used as a path to be prepended to the built shared library's <code>SONAME</code> identifier. The <code>SONAME</code> (<code>LC_ID_DYLIB</code> on Apple platforms, <code>DT_SONAME</code> on other Unix-like platforms) is the identifier that the dynamic linker will later use to reference the library. In general, this reference may be a library name or full library path.<p>On Apple platforms, the path may contain the following placeholders:</p>
+<ul>
+<li><b>@rpath</b> - Expands to paths defined by LC_RPATH Mach-O commands in the current process executable or the referring libraries.</li>
+<li><b>@executable_path</b> - Expands to the current process executable location.</li>
+<li><b>@loader_path</b> - Expands to the referring executable or library location.</li>
+</ul>
+<p>In most cases, using <code>@rpath</code> is sufficient and recommended. However, the prefix may be also specified using different placeholders, or an absolute path.</p>
+<p>For more information, see the <a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/dyld.1.html">dyld documentation</a> on dynamic library install names.</p>
+</td></tr>
+<tr valign="top" class="even"><td >soVersion</td><td ><code>string</code></td><td >1.7</td><td >Major part of <code>product.version</code> if a version is set, otherwise the empty string</td><td >The version to be appended to the soname in ELF shared libraries.</td></tr>
+<tr valign="top" class="odd"><td >useRPaths</td><td ><code>bool</code></td><td >1.3</td><td ><code>true</code></td><td >Set this property to <code>false</code> to prevent the linker from writing rpaths to the binary.</td></tr>
+<tr valign="top" class="even"><td >useRPathLink</td><td ><code>bool</code></td><td >1.8</td><td ><code>true</code> on non-Darwin Unix platforms or when targeting macOS 10.4&#x2e;x and older.</td><td >Use the <code>-rpath-link</code> linker option for transitive shared objects.</td></tr>
+<tr valign="top" class="odd"><td >visibility</td><td ><code>string</code></td><td >1.0</td><td ><code>&quot;default&quot;</code></td><td >Visibility level for exported symbols. Possible values include: <code>&quot;default&quot;</code>, <code>&quot;hidden&quot;</code>, <code>&quot;hiddenInlines&quot;</code>, and <code>&quot;minimal&quot;</code>, which combines <code>&quot;hidden&quot;</code> and <code>&quot;hiddenInlines&quot;</code>.</td></tr>
+</table></div>
+<a name="properties-specific-to-windows"></a>
+<h2 id="properties-specific-to-windows">Properties Specific to Windows</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Since</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >generateManifestFile</td><td ><code>bool</code></td><td >1.5&#x2e;0</td><td ><code>true</code></td><td >Specifies whether to auto-generate a manifest file and include it in the binary. Disable this property if you provide your own rc file.</td></tr>
+<tr valign="top" class="even"><td >windowsApiCharacterSet</td><td ><code>string</code></td><td >1.0&#x2e;1</td><td ><code>&quot;unicode&quot;</code></td><td >Specifies the character set used in the Win32 API. &quot;unicode&quot; will define the preprocessor symbols UNICODE and _UNICODE, &quot;mbcs&quot; will define _MBCS, and setting the value to undefined will use the default character set.</td></tr>
+<tr valign="top" class="odd"><td >minimumWindowsVersion</td><td ><code>string</code></td><td >1.0</td><td >undefined, but may be set by generated profiles</td><td >A version number in the format [major].[minor] indicating the earliest version of Windows that the product should run on. Defines WINVER, _WIN32_WINNT, and _WIN32_WINDOWS, and applies a version number to the linker flags /SUBSYSTEM and /OSVERSION for MSVC or --major-subsystem-version, --minor-subsystem-version, --major-os-version and --minor-os-version for MinGW. If undefined, compiler defaults will be used.</td></tr>
+</table></div>
+<a name="advanced-properties"></a>
+<h2 id="advanced-properties">Advanced Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Since</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >alwaysUseLipo</td><td >{bool}</td><td >1.9</td><td ><code>false</code></td><td >Whether to always use lipo when combining Mach-O output files on Apple platforms, even if there is only one CPU architecture. The should not normally need to be changed.</td></tr>
+<tr valign="top" class="even"><td >compilerDefines</td><td ><code>stringList</code></td><td >1.0</td><td ><code>undefined</code></td><td >List of preprocessor macros that are used for all projects that are using the current toolchain. User project files usually do not set this property.</td></tr>
+<tr valign="top" class="odd"><td >compilerIncludePaths</td><td ><code>pathList</code></td><td >1.6</td><td >determined automatically</td><td >List of #include search paths that are used for all projects that are using the current toolchain. Determined automatically by probing the compiler. User project files usually do not set this property.</td></tr>
+<tr valign="top" class="even"><td >compilerFrameworkPaths</td><td ><code>pathList</code></td><td >1.6</td><td >determined automatically</td><td >List of framework search paths that are used for all projects that are using the current toolchain. Determined automatically by probing the compiler. User project files usually do not set this property.</td></tr>
+<tr valign="top" class="odd"><td >compilerLibraryPaths</td><td ><code>pathList</code></td><td >1.6</td><td >determined automatically</td><td >List of library search paths that are used for all projects that are using the current toolchain. Determined automatically by probing the compiler. User project files usually do not set this property.</td></tr>
+<tr valign="top" class="even"><td >distributionFrameworkPaths</td><td ><code>pathList</code></td><td >1.8</td><td ><code>undefined</code></td><td >List of distribution-specific framework search paths, prioritized after <code>systemFrameworkPaths</code>. Intended for use by module authors implementing support for new operating systems/distributions. User project files should not set this property.</td></tr>
+<tr valign="top" class="odd"><td >distributionIncludePaths</td><td ><code>pathList</code></td><td >1.8</td><td ><code>undefined</code></td><td >List of distribution-specific include paths that are passed as system include paths to the compiler, prioritized after <code>systemIncludePaths</code>. Intended for use by module authors implementing support for new operating systems/distributions. User project files should not set this property.</td></tr>
+<tr valign="top" class="even"><td >distributionLibraryPaths</td><td ><code>pathList</code></td><td >1.8</td><td ><code>undefined</code></td><td >List of distribution-specific library search paths, prioritized after <code>systemLibraryPaths</code>. Intended for use by module authors implementing support for new operating systems/distributions. User project files should not set this property.</td></tr>
+</table></div>
+<a name="dependency-parameters"></a>
+<h2 id="dependency-parameters">Dependency Parameters</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Parameter</th><th >Type</th><th >Since</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><code>link</code></td><td ><code>bool</code></td><td >1.9</td><td >undefined</td><td >If <code>false</code>, the dependency will not be linked, even if it is a valid input for a linker rule. This property affects library dependencies only.</td></tr>
+<tr valign="top" class="even"><td ><code>linkWholeArchive</code></td><td ><code>bool</code></td><td >1.9</td><td >undefined</td><td >If <code>true</code>, then if the dependency is a static library, all of its objects will be pulled into target binary, even if their symbols do not appear to be used. This parameter is mainly useful when creating a dynamic library from static libraries.</td></tr>
+<tr valign="top" class="odd"><td ><code>symbolLinkMode</code></td><td ><code>string</code></td><td >1.9</td><td >undefined</td><td >Attribute specifying how the library or framework will be linked. May contain the values: &quot;weak&quot;, &quot;lazy&quot;, &quot;reexport&quot;, and &quot;upward&quot;; refer to the Apple ld64 man page for full details. <code>undefined</code> uses normal linking. Currently only applies when linking for Apple platforms.</td></tr>
+</table></div>
+<a name="relevant-file-tags"></a>
+<h2 id="relevant-file-tags">Relevant File Tags</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Tag</th><th >Auto-tagged File Names</th><th >Since</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><code>&quot;application&quot;</code></td><td >n/a</td><td >1.0&#x2e;1</td><td >The rule that creates executable files (typically via a linker) attaches this tag to its output artifact.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;asm&quot;</code></td><td ><code>*.s</code> (for GCC-like toolchains), <code>*.asm</code> (for MSVC)</td><td >1.1&#x2e;0</td><td >Source files with this tag serve as inputs to a rule invoking the toolchain's assembler. One object file is generated for each such file.</td></tr>
+<tr valign="top" class="odd"><td ><code>&quot;asm_cpp&quot;</code></td><td ><code>*.S</code>, <code>*.sx</code></td><td >1.1&#x2e;0</td><td >Like <code>&quot;asm&quot;</code>, but for source files that need preprocessing. This tag only has an effect with GCC-like toolchains.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;c&quot;</code></td><td ><code>*.c</code> (if <code>combineCSources</code> is not enabled)</td><td >1.0&#x2e;1</td><td >Source files with this tag serve as inputs to a rule invoking the toolchain's C compiler. One object file is generated for each such file.</td></tr>
+<tr valign="top" class="odd"><td ><code>&quot;c.combine&quot;</code></td><td ><code>*.c</code> (if <code>combineCSources</code> is enabled)</td><td >1.8</td><td >Source files with this tag serve as inputs to a rule combining them into a single C file, which will then be compiled.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;cpp&quot;</code></td><td ><code>*.C</code>, <code>*.cpp</code>, <code>*.cxx</code>, <code>*.c++</code>, <code>*.cc</code> (if <code>combineCxxSources</code> is not enabled)</td><td >1.0&#x2e;1</td><td >Source files with this tag serve as inputs to a rule invoking the toolchain's C++ compiler. One object file is generated for each such file.</td></tr>
+<tr valign="top" class="odd"><td ><code>&quot;cpp.combine&quot;</code></td><td ><code>*.C</code>, <code>*.cpp</code>, <code>*.cxx</code>, <code>*.c++</code>, <code>*.cc</code> (if <code>combineCxxSources</code> is enabled)</td><td >1.8</td><td >Source files with this tag serve as inputs to a rule combining them into a single C++ file, which will then be compiled.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;c_pch_src&quot;</code>, <code>&quot;cpp_pch_src&quot;</code>, <code>&quot;objc_pch_src&quot;</code>, <code>&quot;objcpp_pch_src&quot;</code></td><td >-</td><td >1.5</td><td >Files with this tag will be turned into precompiled headers for C, C++, Objective-C and Objective-C++, respectively. There can be only one such file per product and language.</td></tr>
+<tr valign="top" class="odd"><td ><code>&quot;dynamiclibrary&quot;</code></td><td >n/a</td><td >1.0&#x2e;1</td><td >The rule that creates dynamic libraries (typically via a linker) attaches this tag to its output artifact.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;hpp&quot;</code></td><td ><code>*.h</code>, <code>*.H</code>, <code>*.hpp</code>, <code>*.hxx</code>, <code>*.h++</code></td><td >1.0&#x2e;1</td><td >This tag is used for header files (C, C++, Objective-C and Objective-C++). No rule in this module generates output artifacts from such files directly, but the compiler rule will have a dependency on all rules that create such files.</td></tr>
+<tr valign="top" class="odd"><td ><code>&quot;linkerscript&quot;</code></td><td >-</td><td >1.5&#x2e;0</td><td >This tag is used for <code>ld</code> linker scripts. You can provide such a file if you need to replace the default linker script. This file tag only has an effect with GCC-like toolchains. The linker needs to be <code>ld</code>-compatible.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;obj&quot;</code></td><td >n/a</td><td >1.0&#x2e;1</td><td >The rule that creates object files (typically via a compiler) attaches this tag to its output artifacts. Such files are usually intermediate artifacts of the build process and rarely need to be referenced in project files.</td></tr>
+<tr valign="top" class="odd"><td ><code>&quot;objc&quot;</code></td><td ><code>*.m</code> (if <code>combineObjcSources</code> is not enabled)</td><td >1.1&#x2e;0</td><td >Source files with this tag serve as inputs to a rule invoking the toolchain's Objective-C compiler. One object file is generated for each such file.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;objc.combine&quot;</code></td><td ><code>*.m</code> (if <code>combineObjcSources</code> is enabled)</td><td >1.8</td><td >Source files with this tag serve as inputs to a rule combining them into a single Objective-C file, which will then be compiled.</td></tr>
+<tr valign="top" class="odd"><td ><code>&quot;objcpp&quot;</code></td><td ><code>*.mm</code> (if <code>combineObjcxxSources</code> is not enabled)</td><td >1.1&#x2e;0</td><td >Source files with this tag serve as inputs to a rule invoking the toolchain's Objective-C++ compiler. One object file is generated for each such file.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;objcpp.combine&quot;</code></td><td ><code>*.mm</code> (if <code>combineObjcxxSources</code> is enabled)</td><td >1.8</td><td >Source files with this tag serve as inputs to a rule combining them into a single Objective-C++ file, which will then be compiled.</td></tr>
+<tr valign="top" class="odd"><td ><code>&quot;rc&quot;</code></td><td ><code>*.rc</code></td><td >1.1&#x2e;0</td><td >Files with this tag serve as inputs to the Windows resource compiler. One object file is generated for each such file. The tag has no effect on target platforms other than Windows.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;staticlibrary&quot;</code></td><td >n/a</td><td >1.0&#x2e;1</td><td >The rule that creates static libraries (typically via a linker) attaches this tag to its output artifact.</td></tr>
+<tr valign="top" class="odd"><td ><code>&quot;versionscript&quot;</code></td><td >-</td><td >1.5&#x2e;0</td><td >This tag is used for <code>ld</code> linker scripts. You can provide such a file if you need fine-grained control over the symbols present in a shared library. This file tag only has an effect with GCC-like toolchains. The linker needs to be <code>ld</code>-compatible.</td></tr>
+</table></div>
+</div>
+<!-- @@@cpp-module.html -->
+<p class="naviNextPrevious footerNavi">
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>SimpleCodeStylePreferences Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >SimpleCodeStylePreferences</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-protected-functions">Reimplemented Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">SimpleCodeStylePreferences Class</h1>
+<span class="small-subtitle">(<a href="texteditor-simplecodestylepreferences.html">TextEditor::SimpleCodeStylePreferences</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="texteditor-icodestylepreferences.html">TextEditor::ICodeStylePreferences</a></td></tr></table></div><ul>
+<li><a href="texteditor-simplecodestylepreferences-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-simplecodestylepreferences.html#SimpleCodeStylePreferences">SimpleCodeStylePreferences</a></b>(QObject *<i>parentObject</i> = 0)</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-simplecodestylepreferences.html#setValue">setValue</a></b>(<i>const QVariant &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QVariant </td><td class="memItemRight bottomAlign"><b><a href="texteditor-simplecodestylepreferences.html#value">value</a></b>() const</td></tr>
+</table></div>
+<ul>
+<li class="fn">23 public functions inherited from <a href="texteditor-icodestylepreferences.html#public-functions">TextEditor::ICodeStylePreferences</a></li>
+</ul>
+<a name="reimplemented-protected-functions"></a>
+<h2 id="reimplemented-protected-functions">Reimplemented Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-simplecodestylepreferences.html#settingsSuffix">settingsSuffix</a></b>() const</td></tr>
+</table></div>
+<ul>
+<li class="fn">1 protected function inherited from <a href="texteditor-icodestylepreferences.html#protected-functions">TextEditor::ICodeStylePreferences</a></li>
+</ul>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">1 property inherited from <a href="texteditor-icodestylepreferences.html#properties">TextEditor::ICodeStylePreferences</a></li>
+<li class="fn">7 signals inherited from <a href="texteditor-icodestylepreferences.html#signals">TextEditor::ICodeStylePreferences</a></li>
+<li class="fn">1 protected function inherited from <a href="texteditor-icodestylepreferences.html#protected-functions">TextEditor::ICodeStylePreferences</a></li>
+</ul>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$SimpleCodeStylePreferences[overload1]$$$SimpleCodeStylePreferencesQObject* -->
+<h3 class="fn" id="SimpleCodeStylePreferences"><a name="SimpleCodeStylePreferences"></a>SimpleCodeStylePreferences::<span class="name">SimpleCodeStylePreferences</span>(<span class="type">QObject</span> *<i>parentObject</i> = 0)</h3>
+<p>Default constructs an instance of SimpleCodeStylePreferences.</p><!-- @@@SimpleCodeStylePreferences -->
+<!-- $$$setValue[overload1]$$$setValueconstQVariant& -->
+<h3 class="fn" id="setValue"><a name="setValue"></a><code>[virtual] </code><span class="type">void</span> SimpleCodeStylePreferences::<span class="name">setValue</span>(<i>const QVariant &amp;</i>)</h3>
+<p><b>See also </b><a href="texteditor-simplecodestylepreferences.html#value">value</a>().</p>
+<!-- @@@setValue -->
+<!-- $$$settingsSuffix[overload1]$$$settingsSuffix -->
+<h3 class="fn" id="settingsSuffix"><a name="settingsSuffix"></a><code>[virtual protected] </code><span class="type">QString</span> SimpleCodeStylePreferences::<span class="name">settingsSuffix</span>() const</h3>
+<!-- @@@settingsSuffix -->
+<!-- $$$value[overload1]$$$value -->
+<h3 class="fn" id="value"><a name="value"></a><code>[virtual] </code><span class="type">QVariant</span> SimpleCodeStylePreferences::<span class="name">value</span>() const</h3>
+<p><b>See also </b><a href="texteditor-simplecodestylepreferences.html#setValue">setValue</a>().</p>
+<!-- @@@value -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

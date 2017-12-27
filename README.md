@@ -24,8 +24,9 @@ All notable changes to this project will be documented in this file.
 
 * [Kinect] - Hardware
 * [Visual Studio 2017] - IDE
-* [Qt] - GUI application
-* [PCL] - framework for computer vision/imaging processing
+* [Qt 5.9.3] - GUI application
+* [PCL 1.8.1] - framework for computer vision/imaging processing
+* [Unit Test] - framework for testing c++ apps
 
 ## Installation
 

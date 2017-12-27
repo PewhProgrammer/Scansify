@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Token Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Token</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Token Class</h1>
+<span class="small-subtitle">(<a href="qmljs-token.html">QmlJS::Token</a>)<br/></span>
+<ul>
+<li><a href="qmljs-token-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="qmljs-token.html#Kind-enum">Kind</a></b> { EndOfFile, Keyword, Identifier, String, ..., RegExp }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-token.html#Token">Token</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-token.html#Token-1">Token</a></b>(int <i>o</i>, int <i>l</i>, Kind <i>k</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="qmljs-token.html#begin">begin</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="qmljs-token.html#end">end</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-token.html#is">is</a></b>(int <i>k</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-token.html#isNot">isNot</a></b>(int <i>k</i>) const</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$Kind$$$EndOfFile$$$Keyword$$$Identifier$$$String$$$Comment$$$Number$$$LeftParenthesis$$$RightParenthesis$$$LeftBrace$$$RightBrace$$$LeftBracket$$$RightBracket$$$Semicolon$$$Colon$$$Comma$$$Dot$$$Delimiter$$$RegExp -->
+<h3 class="fn" id="Kind-enum"><a name="Kind-enum"></a>enum Token::<span class="name">Kind</span></h3>
+<!-- @@@Kind -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Token[overload1]$$$Token -->
+<h3 class="fn" id="Token"><a name="Token"></a>Token::<span class="name">Token</span>()</h3>
+<p>Default constructs an instance of Token.</p><!-- @@@Token -->
+<!-- $$$Token$$$TokenintintKind -->
+<h3 class="fn" id="Token-1"><a name="Token-1"></a>Token::<span class="name">Token</span>(<span class="type">int</span> <i>o</i>, <span class="type">int</span> <i>l</i>, <span class="type"><a href="qmljs-token.html#Kind-enum">Kind</a></span> <i>k</i>)</h3>
+<p>Default constructs an instance of Token.</p><!-- @@@Token -->
+<!-- $$$begin[overload1]$$$begin -->
+<h3 class="fn" id="begin"><a name="begin"></a><span class="type">int</span> Token::<span class="name">begin</span>() const</h3>
+<!-- @@@begin -->
+<!-- $$$end[overload1]$$$end -->
+<h3 class="fn" id="end"><a name="end"></a><span class="type">int</span> Token::<span class="name">end</span>() const</h3>
+<!-- @@@end -->
+<!-- $$$is[overload1]$$$isint -->
+<h3 class="fn" id="is"><a name="is"></a><span class="type">bool</span> Token::<span class="name">is</span>(<span class="type">int</span> <i>k</i>) const</h3>
+<!-- @@@is -->
+<!-- $$$isNot[overload1]$$$isNotint -->
+<h3 class="fn" id="isNot"><a name="isNot"></a><span class="type">bool</span> Token::<span class="name">isNot</span>(<span class="type">int</span> <i>k</i>) const</h3>
+<!-- @@@isNot -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

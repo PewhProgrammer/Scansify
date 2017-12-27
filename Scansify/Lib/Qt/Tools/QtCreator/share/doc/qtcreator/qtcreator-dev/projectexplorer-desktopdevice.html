@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>DesktopDevice Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >DesktopDevice</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">DesktopDevice Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-desktopdevice.html">ProjectExplorer::DesktopDevice</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="projectexplorer-idevice.html">ProjectExplorer::IDevice</a></td></tr></table></div><ul>
+<li><a href="projectexplorer-desktopdevice-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;Core::Id&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#actionIds">actionIds</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#canAutoDetectPorts">canAutoDetectPorts</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#canCreateProcess">canCreateProcess</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#canCreateProcessModel">canCreateProcessModel</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual IDevice::Ptr </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#clone">clone</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual DeviceProcess *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#createProcess">createProcess</a></b>(QObject *<i>parent</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual DeviceProcessList *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#createProcessListModel">createProcessListModel</a></b>(QObject *<i>parent</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual IDeviceWidget *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#createWidget">createWidget</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual IDevice::DeviceInfo </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#deviceInformation">deviceInformation</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#displayNameForActionId">displayNameForActionId</a></b>(Core::Id <i>actionId</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#displayType">displayType</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual DeviceEnvironmentFetcher::Ptr </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#environmentFetcher">environmentFetcher</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#executeAction">executeAction</a></b>(Core::Id <i>actionId</i>, QWidget *<i>parent</i> = 0) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Utils::OsType </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#osType">osType</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ProjectExplorer::PortsGatheringMethod::Ptr </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#portsGatheringMethod">portsGatheringMethod</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual DeviceProcessSignalOperation::Ptr </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#signalOperation">signalOperation</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QUrl </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#toolControlChannel">toolControlChannel</a></b>(<i>const ControlChannelHint &amp;</i>) const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">38 public functions inherited from <a href="projectexplorer-idevice.html#public-functions">ProjectExplorer::IDevice</a></li>
+</ul>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#DesktopDevice">DesktopDevice</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-desktopdevice.html#DesktopDevice-1">DesktopDevice</a></b>(const DesktopDevice &amp;<i>other</i>)</td></tr>
+</table></div>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">38 public functions inherited from <a href="projectexplorer-idevice.html#public-functions">ProjectExplorer::IDevice</a></li>
+<li class="fn">4 static public members inherited from <a href="projectexplorer-idevice.html#static-public-members">ProjectExplorer::IDevice</a></li>
+</ul>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$DesktopDevice[overload1]$$$DesktopDevice -->
+<h3 class="fn" id="DesktopDevice"><a name="DesktopDevice"></a><code>[protected] </code>DesktopDevice::<span class="name">DesktopDevice</span>()</h3>
+<p>Default constructs an instance of DesktopDevice.</p><!-- @@@DesktopDevice -->
+<!-- $$$DesktopDevice$$$DesktopDeviceconstDesktopDevice& -->
+<h3 class="fn" id="DesktopDevice-1"><a name="DesktopDevice-1"></a><code>[protected] </code>DesktopDevice::<span class="name">DesktopDevice</span>(const <span class="type"><a href="projectexplorer-desktopdevice.html#DesktopDevice">DesktopDevice</a></span> &amp;<i>other</i>)</h3>
+<p>Copy constructor.</p><!-- @@@DesktopDevice -->
+<!-- $$$actionIds[overload1]$$$actionIds -->
+<h3 class="fn" id="actionIds"><a name="actionIds"></a><code>[override virtual] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-id.html">Core::Id</a></span>&gt; DesktopDevice::<span class="name">actionIds</span>() const</h3>
+<!-- @@@actionIds -->
+<!-- $$$canAutoDetectPorts[overload1]$$$canAutoDetectPorts -->
+<h3 class="fn" id="canAutoDetectPorts"><a name="canAutoDetectPorts"></a><code>[override virtual] </code><span class="type">bool</span> DesktopDevice::<span class="name">canAutoDetectPorts</span>() const</h3>
+<!-- @@@canAutoDetectPorts -->
+<!-- $$$canCreateProcess[overload1]$$$canCreateProcess -->
+<h3 class="fn" id="canCreateProcess"><a name="canCreateProcess"></a><code>[override virtual] </code><span class="type">bool</span> DesktopDevice::<span class="name">canCreateProcess</span>() const</h3>
+<!-- @@@canCreateProcess -->
+<!-- $$$canCreateProcessModel[overload1]$$$canCreateProcessModel -->
+<h3 class="fn" id="canCreateProcessModel"><a name="canCreateProcessModel"></a><code>[override virtual] </code><span class="type">bool</span> DesktopDevice::<span class="name">canCreateProcessModel</span>() const</h3>
+<!-- @@@canCreateProcessModel -->
+<!-- $$$clone[overload1]$$$clone -->
+<h3 class="fn" id="clone"><a name="clone"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-idevice.html#Ptr-typedef">IDevice::Ptr</a></span> DesktopDevice::<span class="name">clone</span>() const</h3>
+<!-- @@@clone -->
+<!-- $$$createProcess[overload1]$$$createProcessQObject* -->
+<h3 class="fn" id="createProcess"><a name="createProcess"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-deviceprocess.html">DeviceProcess</a></span> *DesktopDevice::<span class="name">createProcess</span>(<span class="type">QObject</span> *<i>parent</i>) const</h3>
+<!-- @@@createProcess -->
+<!-- $$$createProcessListModel[overload1]$$$createProcessListModelQObject* -->
+<h3 class="fn" id="createProcessListModel"><a name="createProcessListModel"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-deviceprocesslist.html">DeviceProcessList</a></span> *DesktopDevice::<span class="name">createProcessListModel</span>(<span class="type">QObject</span> *<i>parent</i>) const</h3>
+<!-- @@@createProcessListModel -->
+<!-- $$$createWidget[overload1]$$$createWidget -->
+<h3 class="fn" id="createWidget"><a name="createWidget"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-idevicewidget.html">IDeviceWidget</a></span> *DesktopDevice::<span class="name">createWidget</span>()</h3>
+<!-- @@@createWidget -->
+<!-- $$$deviceInformation[overload1]$$$deviceInformation -->
+<h3 class="fn" id="deviceInformation"><a name="deviceInformation"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-idevice.html#DeviceInfo-typedef">IDevice::DeviceInfo</a></span> DesktopDevice::<span class="name">deviceInformation</span>() const</h3>
+<!-- @@@deviceInformation -->
+<!-- $$$displayNameForActionId[overload1]$$$displayNameForActionIdCore::Id -->
+<h3 class="fn" id="displayNameForActionId"><a name="displayNameForActionId"></a><code>[override virtual] </code><span class="type">QString</span> DesktopDevice::<span class="name">displayNameForActionId</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>actionId</i>) const</h3>
+<!-- @@@displayNameForActionId -->
+<!-- $$$displayType[overload1]$$$displayType -->
+<h3 class="fn" id="displayType"><a name="displayType"></a><code>[override virtual] </code><span class="type">QString</span> DesktopDevice::<span class="name">displayType</span>() const</h3>
+<!-- @@@displayType -->
+<!-- $$$environmentFetcher[overload1]$$$environmentFetcher -->
+<h3 class="fn" id="environmentFetcher"><a name="environmentFetcher"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-deviceenvironmentfetcher.html#Ptr-typedef">DeviceEnvironmentFetcher::Ptr</a></span> DesktopDevice::<span class="name">environmentFetcher</span>() const</h3>
+<!-- @@@environmentFetcher -->
+<!-- $$$executeAction[overload1]$$$executeActionCore::IdQWidget* -->
+<h3 class="fn" id="executeAction"><a name="executeAction"></a><code>[override virtual] </code><span class="type">void</span> DesktopDevice::<span class="name">executeAction</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>actionId</i>, <span class="type">QWidget</span> *<i>parent</i> = 0)</h3>
+<!-- @@@executeAction -->
+<!-- $$$osType[overload1]$$$osType -->
+<h3 class="fn" id="osType"><a name="osType"></a><code>[override virtual] </code><span class="type"><a href="utils.html#OsType-enum">Utils::OsType</a></span> DesktopDevice::<span class="name">osType</span>() const</h3>
+<!-- @@@osType -->
+<!-- $$$portsGatheringMethod[overload1]$$$portsGatheringMethod -->
+<h3 class="fn" id="portsGatheringMethod"><a name="portsGatheringMethod"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-portsgatheringmethod.html#Ptr-typedef">ProjectExplorer::PortsGatheringMethod::Ptr</a></span> DesktopDevice::<span class="name">portsGatheringMethod</span>() const</h3>
+<!-- @@@portsGatheringMethod -->
+<!-- $$$signalOperation[overload1]$$$signalOperation -->
+<h3 class="fn" id="signalOperation"><a name="signalOperation"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-deviceprocesssignaloperation.html#Ptr-typedef">DeviceProcessSignalOperation::Ptr</a></span> DesktopDevice::<span class="name">signalOperation</span>() const</h3>
+<!-- @@@signalOperation -->
+<!-- $$$toolControlChannel[overload1]$$$toolControlChannelconstControlChannelHint& -->
+<h3 class="fn" id="toolControlChannel"><a name="toolControlChannel"></a><code>[override virtual] </code><span class="type">QUrl</span> DesktopDevice::<span class="name">toolControlChannel</span>(<i>const ControlChannelHint &amp;</i>) const</h3>
+<!-- @@@toolControlChannel -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

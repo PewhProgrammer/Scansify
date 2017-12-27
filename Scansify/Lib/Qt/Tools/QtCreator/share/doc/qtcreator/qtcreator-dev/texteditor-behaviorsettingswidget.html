@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>BehaviorSettingsWidget Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >BehaviorSettingsWidget</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">BehaviorSettingsWidget Class</h1>
+<span class="small-subtitle">(<a href="texteditor-behaviorsettingswidget.html">TextEditor::BehaviorSettingsWidget</a>)<br/></span>
+<ul>
+<li><a href="texteditor-behaviorsettingswidget-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#BehaviorSettingsWidget">BehaviorSettingsWidget</a></b>(QWidget *<i>parent</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#dtor.BehaviorSettingsWidget">~BehaviorSettingsWidget</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#assignedBehaviorSettings">assignedBehaviorSettings</a></b>(BehaviorSettings *<i>behaviorSettings</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QTextCodec *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#assignedCodec">assignedCodec</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#assignedExtraEncodingSettings">assignedExtraEncodingSettings</a></b>(ExtraEncodingSettings *<i>encodingSettings</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#assignedStorageSettings">assignedStorageSettings</a></b>(StorageSettings *<i>storageSettings</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#assignedTypingSettings">assignedTypingSettings</a></b>(TypingSettings *<i>typingSettings</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#setActive">setActive</a></b>(bool <i>active</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#setAssignedBehaviorSettings">setAssignedBehaviorSettings</a></b>(const BehaviorSettings &amp;<i>behaviorSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#setAssignedCodec">setAssignedCodec</a></b>(QTextCodec *<i>codec</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#setAssignedExtraEncodingSettings">setAssignedExtraEncodingSettings</a></b>(const ExtraEncodingSettings &amp;<i>encodingSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#setAssignedStorageSettings">setAssignedStorageSettings</a></b>(const StorageSettings &amp;<i>storageSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#setAssignedTypingSettings">setAssignedTypingSettings</a></b>(const TypingSettings &amp;<i>typingSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#setCodeStyle">setCodeStyle</a></b>(ICodeStylePreferences *<i>preferences</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TabSettingsWidget *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#tabSettingsWidget">tabSettingsWidget</a></b>() const</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#behaviorSettingsChanged">behaviorSettingsChanged</a></b>(const TextEditor::BehaviorSettings &amp;<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#extraEncodingSettingsChanged">extraEncodingSettingsChanged</a></b>(const TextEditor::ExtraEncodingSettings &amp;<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#storageSettingsChanged">storageSettingsChanged</a></b>(const TextEditor::StorageSettings &amp;<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#textCodecChanged">textCodecChanged</a></b>(QTextCodec *<i>codec</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-behaviorsettingswidget.html#typingSettingsChanged">typingSettingsChanged</a></b>(const TextEditor::TypingSettings &amp;<i>settings</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$BehaviorSettingsWidget[overload1]$$$BehaviorSettingsWidgetQWidget* -->
+<h3 class="fn" id="BehaviorSettingsWidget"><a name="BehaviorSettingsWidget"></a>BehaviorSettingsWidget::<span class="name">BehaviorSettingsWidget</span>(<span class="type">QWidget</span> *<i>parent</i> = 0)</h3>
+<p>Default constructs an instance of BehaviorSettingsWidget.</p><!-- @@@BehaviorSettingsWidget -->
+<!-- $$$~BehaviorSettingsWidget[overload1]$$$~BehaviorSettingsWidget -->
+<h3 class="fn" id="dtor.BehaviorSettingsWidget"><a name="dtor.BehaviorSettingsWidget"></a><code>[virtual] </code>BehaviorSettingsWidget::<span class="name">~BehaviorSettingsWidget</span>()</h3>
+<p>Destroys the instance of BehaviorSettingsWidget. The destructor is virtual.</p><!-- @@@~BehaviorSettingsWidget -->
+<!-- $$$assignedBehaviorSettings[overload1]$$$assignedBehaviorSettingsBehaviorSettings* -->
+<h3 class="fn" id="assignedBehaviorSettings"><a name="assignedBehaviorSettings"></a><span class="type">void</span> BehaviorSettingsWidget::<span class="name">assignedBehaviorSettings</span>(<span class="type"><a href="texteditor-behaviorsettings.html">BehaviorSettings</a></span> *<i>behaviorSettings</i>) const</h3>
+<p><b>See also </b><a href="texteditor-behaviorsettingswidget.html#setAssignedBehaviorSettings">setAssignedBehaviorSettings</a>().</p>
+<!-- @@@assignedBehaviorSettings -->
+<!-- $$$assignedCodec[overload1]$$$assignedCodec -->
+<h3 class="fn" id="assignedCodec"><a name="assignedCodec"></a><span class="type">QTextCodec</span> *BehaviorSettingsWidget::<span class="name">assignedCodec</span>() const</h3>
+<p><b>See also </b><a href="texteditor-behaviorsettingswidget.html#setAssignedCodec">setAssignedCodec</a>().</p>
+<!-- @@@assignedCodec -->
+<!-- $$$assignedExtraEncodingSettings[overload1]$$$assignedExtraEncodingSettingsExtraEncodingSettings* -->
+<h3 class="fn" id="assignedExtraEncodingSettings"><a name="assignedExtraEncodingSettings"></a><span class="type">void</span> BehaviorSettingsWidget::<span class="name">assignedExtraEncodingSettings</span>(<span class="type"><a href="texteditor-extraencodingsettings.html">ExtraEncodingSettings</a></span> *<i>encodingSettings</i>) const</h3>
+<p><b>See also </b><a href="texteditor-behaviorsettingswidget.html#setAssignedExtraEncodingSettings">setAssignedExtraEncodingSettings</a>().</p>
+<!-- @@@assignedExtraEncodingSettings -->
+<!-- $$$assignedStorageSettings[overload1]$$$assignedStorageSettingsStorageSettings* -->
+<h3 class="fn" id="assignedStorageSettings"><a name="assignedStorageSettings"></a><span class="type">void</span> BehaviorSettingsWidget::<span class="name">assignedStorageSettings</span>(<span class="type"><a href="texteditor-storagesettings.html">StorageSettings</a></span> *<i>storageSettings</i>) const</h3>
+<p><b>See also </b><a href="texteditor-behaviorsettingswidget.html#setAssignedStorageSettings">setAssignedStorageSettings</a>().</p>
+<!-- @@@assignedStorageSettings -->
+<!-- $$$assignedTypingSettings[overload1]$$$assignedTypingSettingsTypingSettings* -->
+<h3 class="fn" id="assignedTypingSettings"><a name="assignedTypingSettings"></a><span class="type">void</span> BehaviorSettingsWidget::<span class="name">assignedTypingSettings</span>(<span class="type"><a href="texteditor-typingsettings.html">TypingSettings</a></span> *<i>typingSettings</i>) const</h3>
+<p><b>See also </b><a href="texteditor-behaviorsettingswidget.html#setAssignedTypingSettings">setAssignedTypingSettings</a>().</p>
+<!-- @@@assignedTypingSettings -->
+<!-- $$$behaviorSettingsChanged[overload1]$$$behaviorSettingsChangedconstTextEditor::BehaviorSettings& -->
+<h3 class="fn" id="behaviorSettingsChanged"><a name="behaviorSettingsChanged"></a><code>[signal] </code><span class="type">void</span> BehaviorSettingsWidget::<span class="name">behaviorSettingsChanged</span>(const <span class="type"><a href="texteditor-behaviorsettings.html">TextEditor::BehaviorSettings</a></span> &amp;<i>settings</i>)</h3>
+<!-- @@@behaviorSettingsChanged -->
+<!-- $$$extraEncodingSettingsChanged[overload1]$$$extraEncodingSettingsChangedconstTextEditor::ExtraEncodingSettings& -->
+<h3 class="fn" id="extraEncodingSettingsChanged"><a name="extraEncodingSettingsChanged"></a><code>[signal] </code><span class="type">void</span> BehaviorSettingsWidget::<span class="name">extraEncodingSettingsChanged</span>(const <span class="type"><a href="texteditor-extraencodingsettings.html">TextEditor::ExtraEncodingSettings</a></span> &amp;<i>settings</i>)</h3>
+<!-- @@@extraEncodingSettingsChanged -->
+<!-- $$$setActive[overload1]$$$setActivebool -->
+<h3 class="fn" id="setActive"><a name="setActive"></a><span class="type">void</span> BehaviorSettingsWidget::<span class="name">setActive</span>(<span class="type">bool</span> <i>active</i>)</h3>
+<!-- @@@setActive -->
+<!-- $$$setAssignedBehaviorSettings[overload1]$$$setAssignedBehaviorSettingsconstBehaviorSettings& -->
+<h3 class="fn" id="setAssignedBehaviorSettings"><a name="setAssignedBehaviorSettings"></a><span class="type">void</span> BehaviorSettingsWidget::<span class="name">setAssignedBehaviorSettings</span>(const <span class="type"><a href="texteditor-behaviorsettings.html">BehaviorSettings</a></span> &amp;<i>behaviorSettings</i>)</h3>
+<p><b>See also </b><a href="texteditor-behaviorsettingswidget.html#assignedBehaviorSettings">assignedBehaviorSettings</a>().</p>
+<!-- @@@setAssignedBehaviorSettings -->
+<!-- $$$setAssignedCodec[overload1]$$$setAssignedCodecQTextCodec* -->
+<h3 class="fn" id="setAssignedCodec"><a name="setAssignedCodec"></a><span class="type">void</span> BehaviorSettingsWidget::<span class="name">setAssignedCodec</span>(<span class="type">QTextCodec</span> *<i>codec</i>)</h3>
+<p><b>See also </b><a href="texteditor-behaviorsettingswidget.html#assignedCodec">assignedCodec</a>().</p>
+<!-- @@@setAssignedCodec -->
+<!-- $$$setAssignedExtraEncodingSettings[overload1]$$$setAssignedExtraEncodingSettingsconstExtraEncodingSettings& -->
+<h3 class="fn" id="setAssignedExtraEncodingSettings"><a name="setAssignedExtraEncodingSettings"></a><span class="type">void</span> BehaviorSettingsWidget::<span class="name">setAssignedExtraEncodingSettings</span>(const <span class="type"><a href="texteditor-extraencodingsettings.html">ExtraEncodingSettings</a></span> &amp;<i>encodingSettings</i>)</h3>
+<p><b>See also </b><a href="texteditor-behaviorsettingswidget.html#assignedExtraEncodingSettings">assignedExtraEncodingSettings</a>().</p>
+<!-- @@@setAssignedExtraEncodingSettings -->
+<!-- $$$setAssignedStorageSettings[overload1]$$$setAssignedStorageSettingsconstStorageSettings& -->
+<h3 class="fn" id="setAssignedStorageSettings"><a name="setAssignedStorageSettings"></a><span class="type">void</span> BehaviorSettingsWidget::<span class="name">setAssignedStorageSettings</span>(const <span class="type"><a href="texteditor-storagesettings.html">StorageSettings</a></span> &amp;<i>storageSettings</i>)</h3>
+<p><b>See also </b><a href="texteditor-behaviorsettingswidget.html#assignedStorageSettings">assignedStorageSettings</a>().</p>
+<!-- @@@setAssignedStorageSettings -->
+<!-- $$$setAssignedTypingSettings[overload1]$$$setAssignedTypingSettingsconstTypingSettings& -->
+<h3 class="fn" id="setAssignedTypingSettings"><a name="setAssignedTypingSettings"></a><span class="type">void</span> BehaviorSettingsWidget::<span class="name">setAssignedTypingSettings</span>(const <span class="type"><a href="texteditor-typingsettings.html">TypingSettings</a></span> &amp;<i>typingSettings</i>)</h3>
+<p><b>See also </b><a href="texteditor-behaviorsettingswidget.html#assignedTypingSettings">assignedTypingSettings</a>().</p>
+<!-- @@@setAssignedTypingSettings -->
+<!-- $$$setCodeStyle[overload1]$$$setCodeStyleICodeStylePreferences* -->
+<h3 class="fn" id="setCodeStyle"><a name="setCodeStyle"></a><span class="type">void</span> BehaviorSettingsWidget::<span class="name">setCodeStyle</span>(<span class="type"><a href="texteditor-icodestylepreferences.html">ICodeStylePreferences</a></span> *<i>preferences</i>)</h3>
+<!-- @@@setCodeStyle -->
+<!-- $$$storageSettingsChanged[overload1]$$$storageSettingsChangedconstTextEditor::StorageSettings& -->
+<h3 class="fn" id="storageSettingsChanged"><a name="storageSettingsChanged"></a><code>[signal] </code><span class="type">void</span> BehaviorSettingsWidget::<span class="name">storageSettingsChanged</span>(const <span class="type"><a href="texteditor-storagesettings.html">TextEditor::StorageSettings</a></span> &amp;<i>settings</i>)</h3>
+<!-- @@@storageSettingsChanged -->
+<!-- $$$tabSettingsWidget[overload1]$$$tabSettingsWidget -->
+<h3 class="fn" id="tabSettingsWidget"><a name="tabSettingsWidget"></a><span class="type"><a href="texteditor-tabsettingswidget.html">TabSettingsWidget</a></span> *BehaviorSettingsWidget::<span class="name">tabSettingsWidget</span>() const</h3>
+<!-- @@@tabSettingsWidget -->
+<!-- $$$textCodecChanged[overload1]$$$textCodecChangedQTextCodec* -->
+<h3 class="fn" id="textCodecChanged"><a name="textCodecChanged"></a><code>[signal] </code><span class="type">void</span> BehaviorSettingsWidget::<span class="name">textCodecChanged</span>(<span class="type">QTextCodec</span> *<i>codec</i>)</h3>
+<!-- @@@textCodecChanged -->
+<!-- $$$typingSettingsChanged[overload1]$$$typingSettingsChangedconstTextEditor::TypingSettings& -->
+<h3 class="fn" id="typingSettingsChanged"><a name="typingSettingsChanged"></a><code>[signal] </code><span class="type">void</span> BehaviorSettingsWidget::<span class="name">typingSettingsChanged</span>(const <span class="type"><a href="texteditor-typingsettings.html">TextEditor::TypingSettings</a></span> &amp;<i>settings</i>)</h3>
+<!-- @@@typingSettingsChanged -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

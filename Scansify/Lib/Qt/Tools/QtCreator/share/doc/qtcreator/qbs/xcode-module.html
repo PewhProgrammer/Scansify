@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- xcode-module.qdoc -->
+  <title>Module xcode | Qbs Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="index.html">Qbs Manual</a></td><td ><a href="list-of-modules.html">List of Modules</a></td><td >Module xcode</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qbs 1.9.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<p class="naviNextPrevious headerNavi">
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#general-properties">General Properties</a></li>
+<li class="level1"><a href="#read-only-properties">Read-only Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Module xcode</h1>
+<span class="subtitle"></span>
+<!-- $$$xcode-module.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>The <code>xcode</code> module contains properties and rules for Xcode-based development. This module provides the foundation for several other modules on Apple platforms, including the <code>cpp</code> and <code>ib</code> modules.</p>
+<a name="general-properties"></a>
+<h2 id="general-properties">General Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Since</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >developerPath</td><td >path</td><td >1.5</td><td ><code>&quot;/Applications/Xcode.app/Contents/Developer&quot;</code></td><td >Developer directory of the Xcode installation. By default this is set to the developer directory of the Xcode installation at its default location in /Applications. Corresponds to the <code>DEVELOPER_DIR</code> environment variable.</td></tr>
+<tr valign="top" class="even"><td >sdk</td><td >string</td><td >1.5</td><td >determined by <code>qbs.targetOS</code></td><td >Version of the Xcode SDK used to build products. This can be specified as a full canonical SDK name (i.e&#x2e; <code>&quot;macosx10.10&quot;</code>), a platform version number (i.e&#x2e; <code>&quot;10.10&quot;</code>), or a platform identifier (i.e&#x2e; <code>&quot;macosx&quot;</code>) in which case the latest SDK available for that platform will be used. The default is the latest SDK available in the Xcode installation for the current platform.</td></tr>
+<tr valign="top" class="odd"><td >targetDevices</td><td >stringList</td><td >1.5</td><td >determined by <code>qbs.targetOS</code></td><td >List of the Apple devices targeted by this product. For macOS, watchOS, and tvOS, this should always be &quot;mac&quot;, &quot;watch&quot;, and &quot;tv&quot;, respectively. For iOS, this can be one or both of &quot;iphone&quot; and &quot;ipad&quot;. The default is the list of all device types supported by the current platform.</td></tr>
+</table></div>
+<a name="read-only-properties"></a>
+<h2 id="read-only-properties">Read-only Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Since</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >sdkName</td><td >string</td><td >1.5</td><td >determined by <code>xcode.sdk</code></td><td >Canonical name of the SDK used to build products. For example, macosx10.9&#x2e;</td></tr>
+<tr valign="top" class="even"><td >sdkVersion</td><td >string</td><td >1.5</td><td >determined by <code>xcode.sdk</code></td><td >Version number of the SDK used to build products. For example, 10.9&#x2e;</td></tr>
+<tr valign="top" class="odd"><td >latestSdkName</td><td >string</td><td >1.5</td><td >determined by <code>xcode.developerPath</code></td><td >Canonical name of the latest SDK available in the Xcode installation. For example, macosx10.10.</td></tr>
+<tr valign="top" class="even"><td >latestSdkVersion</td><td >string</td><td >1.5</td><td >determined by <code>xcode.developerPath</code></td><td >Version number of the latest SDK available in the Xcode installation. For example, 10.10.</td></tr>
+<tr valign="top" class="odd"><td >availableSdkNames</td><td >stringList</td><td >1.5</td><td >determined by <code>xcode.developerPath</code></td><td >Canonical names of all SDKs available in the Xcode installation for the current platform. For example, [macosx10.9, macosx10.10].</td></tr>
+<tr valign="top" class="even"><td >availableSdkVersions</td><td >stringList</td><td >1.5</td><td >determined by <code>xcode.developerPath</code></td><td >Version numbers of all SDK available in the Xcode installation for the current platform. For example, [10.9, 10.10].</td></tr>
+<tr valign="top" class="odd"><td >platformPath</td><td >path</td><td >1.5</td><td >determined by <code>xcode.developerPath</code></td><td >Path of the platform directory containing <code>xcode.sdkPath</code>.</td></tr>
+<tr valign="top" class="even"><td >sdkPath</td><td >path</td><td >1.5</td><td >determined by <code>xcode.developerPath</code> and <code>xcode.sdk</code></td><td >Path of the SDK used to build products. Equivalent to <code>cpp.sysroot</code>.</td></tr>
+</table></div>
+</div>
+<!-- @@@xcode-module.html -->
+<p class="naviNextPrevious footerNavi">
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

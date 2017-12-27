@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>LookupContext Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >LookupContext</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">LookupContext Class</h1>
+<span class="small-subtitle">(<a href="cplusplus-lookupcontext.html">CPlusPlus::LookupContext</a>)<br/></span>
+<ul>
+<li><a href="cplusplus-lookupcontext-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#LookupContext">LookupContext</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#LookupContext-1">LookupContext</a></b>(Document::Ptr <i>thisDocument</i>, const Snapshot &amp;<i>snapshot</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#LookupContext-2">LookupContext</a></b>(Document::Ptr <i>expressionDocument</i>, Document::Ptr <i>thisDocument</i>, const Snapshot &amp;<i>snapshot</i>, QSharedPointer&lt;CreateBindings&gt; <i>bindings</i> = QSharedPointer&lt;CreateBindings&gt; ())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#LookupContext-3">LookupContext</a></b>(const LookupContext &amp;<i>other</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QSharedPointer&lt;CreateBindings&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#bindings">bindings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Document::Ptr </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#document">document</a></b>(const QString &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Document::Ptr </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#expressionDocument">expressionDocument</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ClassOrNamespace *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#globalNamespace">globalNamespace</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;LookupItem&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#lookup">lookup</a></b>(const Name *<i>name</i>, Scope *<i>scope</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ClassOrNamespace *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#lookupParent">lookupParent</a></b>(Symbol *<i>symbol</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ClassOrNamespace *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#lookupType">lookupType</a></b>(const Name *<i>name</i>, Scope *<i>scope</i>, ClassOrNamespace *<i>enclosingBinding</i> = 0, QSet&lt;const Declaration *&gt; <i>typedefsBeingResolved</i> = QSet&lt;const Declaration *&gt; ()) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ClassOrNamespace *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#lookupType-1">lookupType</a></b>(Symbol *<i>symbol</i>, ClassOrNamespace *<i>enclosingBinding</i> = 0) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#setExpandTemplates">setExpandTemplates</a></b>(bool <i>expandTemplates</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Snapshot </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#snapshot">snapshot</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Document::Ptr </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#thisDocument">thisDocument</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> LookupContext &amp;</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#operator-eq">operator=</a></b>(const LookupContext &amp;<i>other</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;const Name *&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#fullyQualifiedName">fullyQualifiedName</a></b>(Symbol *<i>symbol</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Name *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#minimalName">minimalName</a></b>(Symbol *<i>symbol</i>, ClassOrNamespace *<i>target</i>, Control *<i>control</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;const Name *&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-lookupcontext.html#path">path</a></b>(Symbol *<i>symbol</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$LookupContext[overload1]$$$LookupContext -->
+<h3 class="fn" id="LookupContext"><a name="LookupContext"></a>LookupContext::<span class="name">LookupContext</span>()</h3>
+<p>Default constructs an instance of LookupContext.</p><!-- @@@LookupContext -->
+<!-- $$$LookupContext$$$LookupContextDocument::PtrconstSnapshot& -->
+<h3 class="fn" id="LookupContext-1"><a name="LookupContext-1"></a>LookupContext::<span class="name">LookupContext</span>(<span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> <i>thisDocument</i>, const <span class="type"><a href="cplusplus-snapshot.html">Snapshot</a></span> &amp;<i>snapshot</i>)</h3>
+<p>Default constructs an instance of LookupContext.</p><!-- @@@LookupContext -->
+<!-- $$$LookupContext$$$LookupContextDocument::PtrDocument::PtrconstSnapshot&QSharedPointer<CreateBindings> -->
+<h3 class="fn" id="LookupContext-2"><a name="LookupContext-2"></a>LookupContext::<span class="name">LookupContext</span>(<span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> <i>expressionDocument</i>, <span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> <i>thisDocument</i>, const <span class="type"><a href="cplusplus-snapshot.html">Snapshot</a></span> &amp;<i>snapshot</i>, <span class="type">QSharedPointer</span>&lt;<span class="type"><a href="cplusplus-createbindings.html">CreateBindings</a></span>&gt; <i>bindings</i> = QSharedPointer&lt;CreateBindings&gt; ())</h3>
+<p>Default constructs an instance of LookupContext.</p><!-- @@@LookupContext -->
+<!-- $$$LookupContext$$$LookupContextconstLookupContext& -->
+<h3 class="fn" id="LookupContext-3"><a name="LookupContext-3"></a>LookupContext::<span class="name">LookupContext</span>(const <span class="type"><a href="cplusplus-lookupcontext.html#LookupContext">LookupContext</a></span> &amp;<i>other</i>)</h3>
+<p>Copy constructor.</p><!-- @@@LookupContext -->
+<!-- $$$bindings[overload1]$$$bindings -->
+<h3 class="fn" id="bindings"><a name="bindings"></a><span class="type">QSharedPointer</span>&lt;<span class="type"><a href="cplusplus-createbindings.html">CreateBindings</a></span>&gt; LookupContext::<span class="name">bindings</span>() const</h3>
+<!-- @@@bindings -->
+<!-- $$$document[overload1]$$$documentconstQString& -->
+<h3 class="fn" id="document"><a name="document"></a><span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> LookupContext::<span class="name">document</span>(const <span class="type">QString</span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@document -->
+<!-- $$$expressionDocument[overload1]$$$expressionDocument -->
+<h3 class="fn" id="expressionDocument"><a name="expressionDocument"></a><span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> LookupContext::<span class="name">expressionDocument</span>() const</h3>
+<!-- @@@expressionDocument -->
+<!-- $$$fullyQualifiedName[overload1]$$$fullyQualifiedNameSymbol* -->
+<h3 class="fn" id="fullyQualifiedName"><a name="fullyQualifiedName"></a><code>[static] </code><span class="type">QList</span>&lt;const <span class="type">Name</span> *&gt; LookupContext::<span class="name">fullyQualifiedName</span>(<span class="type">Symbol</span> *<i>symbol</i>)</h3>
+<!-- @@@fullyQualifiedName -->
+<!-- $$$globalNamespace[overload1]$$$globalNamespace -->
+<h3 class="fn" id="globalNamespace"><a name="globalNamespace"></a><span class="type"><a href="cplusplus-classornamespace.html">ClassOrNamespace</a></span> *LookupContext::<span class="name">globalNamespace</span>() const</h3>
+<!-- @@@globalNamespace -->
+<!-- $$$lookup[overload1]$$$lookupconstName*Scope* -->
+<h3 class="fn" id="lookup"><a name="lookup"></a><span class="type">QList</span>&lt;<span class="type"><a href="cplusplus-lookupitem.html">LookupItem</a></span>&gt; LookupContext::<span class="name">lookup</span>(const <span class="type">Name</span> *<i>name</i>, <span class="type">Scope</span> *<i>scope</i>) const</h3>
+<!-- @@@lookup -->
+<!-- $$$lookupParent[overload1]$$$lookupParentSymbol* -->
+<h3 class="fn" id="lookupParent"><a name="lookupParent"></a><span class="type"><a href="cplusplus-classornamespace.html">ClassOrNamespace</a></span> *LookupContext::<span class="name">lookupParent</span>(<span class="type">Symbol</span> *<i>symbol</i>) const</h3>
+<!-- @@@lookupParent -->
+<!-- $$$lookupType[overload1]$$$lookupTypeconstName*Scope*ClassOrNamespace*QSet<constDeclaration*> -->
+<h3 class="fn" id="lookupType"><a name="lookupType"></a><span class="type"><a href="cplusplus-classornamespace.html">ClassOrNamespace</a></span> *LookupContext::<span class="name">lookupType</span>(const <span class="type">Name</span> *<i>name</i>, <span class="type">Scope</span> *<i>scope</i>, <span class="type"><a href="cplusplus-classornamespace.html">ClassOrNamespace</a></span> *<i>enclosingBinding</i> = 0, <span class="type">QSet</span>&lt;const <span class="type">Declaration</span> *&gt; <i>typedefsBeingResolved</i> = QSet&lt;const Declaration *&gt; ()) const</h3>
+<!-- @@@lookupType -->
+<!-- $$$lookupType$$$lookupTypeSymbol*ClassOrNamespace* -->
+<h3 class="fn" id="lookupType-1"><a name="lookupType-1"></a><span class="type"><a href="cplusplus-classornamespace.html">ClassOrNamespace</a></span> *LookupContext::<span class="name">lookupType</span>(<span class="type">Symbol</span> *<i>symbol</i>, <span class="type"><a href="cplusplus-classornamespace.html">ClassOrNamespace</a></span> *<i>enclosingBinding</i> = 0) const</h3>
+<!-- @@@lookupType -->
+<!-- $$$minimalName[overload1]$$$minimalNameSymbol*ClassOrNamespace*Control* -->
+<h3 class="fn" id="minimalName"><a name="minimalName"></a><code>[static] </code>const <span class="type">Name</span> *LookupContext::<span class="name">minimalName</span>(<span class="type">Symbol</span> *<i>symbol</i>, <span class="type"><a href="cplusplus-classornamespace.html">ClassOrNamespace</a></span> *<i>target</i>, <span class="type">Control</span> *<i>control</i>)</h3>
+<!-- @@@minimalName -->
+<!-- $$$path[overload1]$$$pathSymbol* -->
+<h3 class="fn" id="path"><a name="path"></a><code>[static] </code><span class="type">QList</span>&lt;const <span class="type">Name</span> *&gt; LookupContext::<span class="name">path</span>(<span class="type">Symbol</span> *<i>symbol</i>)</h3>
+<!-- @@@path -->
+<!-- $$$setExpandTemplates[overload1]$$$setExpandTemplatesbool -->
+<h3 class="fn" id="setExpandTemplates"><a name="setExpandTemplates"></a><span class="type">void</span> LookupContext::<span class="name">setExpandTemplates</span>(<span class="type">bool</span> <i>expandTemplates</i>)</h3>
+<!-- @@@setExpandTemplates -->
+<!-- $$$snapshot[overload1]$$$snapshot -->
+<h3 class="fn" id="snapshot"><a name="snapshot"></a><span class="type"><a href="cplusplus-snapshot.html">Snapshot</a></span> LookupContext::<span class="name">snapshot</span>() const</h3>
+<!-- @@@snapshot -->
+<!-- $$$thisDocument[overload1]$$$thisDocument -->
+<h3 class="fn" id="thisDocument"><a name="thisDocument"></a><span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> LookupContext::<span class="name">thisDocument</span>() const</h3>
+<!-- @@@thisDocument -->
+<!-- $$$operator=[overload1]$$$operator=constLookupContext& -->
+<h3 class="fn" id="operator-eq"><a name="operator-eq"></a><span class="type"><a href="cplusplus-lookupcontext.html#LookupContext">LookupContext</a></span> &amp;LookupContext::<span class="name">operator=</span>(const <span class="type"><a href="cplusplus-lookupcontext.html#LookupContext">LookupContext</a></span> &amp;<i>other</i>)</h3>
+<p>Copy-assignment operator.</p><!-- @@@operator= -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

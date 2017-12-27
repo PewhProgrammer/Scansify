@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- customwizard.cpp -->
+  <title>CustomProjectWizard Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >CustomProjectWizard</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#reimplemented-protected-functions">Reimplemented Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">CustomProjectWizard Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-customprojectwizard.html">ProjectExplorer::CustomProjectWizard</a>)<br/></span>
+<!-- $$$CustomProjectWizard-brief -->
+<p>The <a href="projectexplorer-customprojectwizard.html">CustomProjectWizard</a> class provides a custom project wizard. <a href="#details">More...</a></p>
+<!-- @@@CustomProjectWizard -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;CustomProjectWizard&gt;</span>
+</td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="projectexplorer-customwizard.html">ProjectExplorer::CustomWizard</a></td></tr></table></div><ul>
+<li><a href="projectexplorer-customprojectwizard-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-customprojectwizard.html#CustomProjectWizard">CustomProjectWizard</a></b>()</td></tr>
+</table></div>
+<ul>
+<li class="fn">2 public functions inherited from <a href="projectexplorer-customwizard.html#public-functions">ProjectExplorer::CustomWizard</a></li>
+<li class="fn">28 public functions inherited from <a href="core-iwizardfactory.html#public-functions">Core::IWizardFactory</a></li>
+</ul>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-customprojectwizard.html#projectLocationChanged">projectLocationChanged</a></b>(const QString &amp;<i>path</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-customprojectwizard.html#postGenerateOpen">postGenerateOpen</a></b>(const Core::GeneratedFiles &amp;<i>l</i>, QString *<i>errorMessage</i> = nullptr)</td></tr>
+</table></div>
+<ul>
+<li class="fn">3 static public members inherited from <a href="projectexplorer-customwizard.html#static-public-members">ProjectExplorer::CustomWizard</a></li>
+<li class="fn">1 static public member inherited from <a href="core-basefilewizardfactory.html#static-public-members">Core::BaseFileWizardFactory</a></li>
+<li class="fn">8 static public members inherited from <a href="core-iwizardfactory.html#static-public-members">Core::IWizardFactory</a></li>
+</ul>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Core::BaseFileWizard *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-customprojectwizard.html#create">create</a></b>(QWidget *<i>parent</i>, const Core::WizardDialogParameters &amp;<i>parameters</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-customprojectwizard.html#initProjectWizardDialog">initProjectWizardDialog</a></b>(BaseProjectWizardDialog *<i>w</i>, const QString &amp;<i>defaultPath</i>, const QList&lt;QWizardPage *&gt; &amp;<i>extensionPages</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-customprojectwizard.html#postGenerateFiles">postGenerateFiles</a></b>(const QWizard *<i>w</i>, const Core::GeneratedFiles &amp;<i>l</i>, QString *<i>errorMessage</i>) const override</td></tr>
+</table></div>
+<a name="reimplemented-protected-functions"></a>
+<h2 id="reimplemented-protected-functions">Reimplemented Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::GeneratedFiles </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-customprojectwizard.html#generateFiles">generateFiles</a></b>(const QWizard *<i>w</i>, QString *<i>errorMessage</i>) const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">5 protected functions inherited from <a href="projectexplorer-customwizard.html#protected-functions">ProjectExplorer::CustomWizard</a></li>
+<li class="fn">5 protected functions inherited from <a href="core-basefilewizardfactory.html#protected-functions">Core::BaseFileWizardFactory</a></li>
+<li class="fn">3 protected functions inherited from <a href="core-iwizardfactory.html#protected-functions">Core::IWizardFactory</a></li>
+</ul>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">1 static protected member inherited from <a href="projectexplorer-customwizard.html#static-protected-members">ProjectExplorer::CustomWizard</a></li>
+<li class="fn">2 static protected members inherited from <a href="core-basefilewizardfactory.html#static-protected-members">Core::BaseFileWizardFactory</a></li>
+</ul>
+<a name="details"></a>
+<!-- $$$CustomProjectWizard-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="projectexplorer-customprojectwizard.html">CustomProjectWizard</a> class provides a custom project wizard.</p>
+<p>Presents a CustomProjectWizardDialog (Project intro page and fields page) for wizards of type &quot;project&quot;. Overwrites <a href="projectexplorer-customprojectwizard.html#postGenerateFiles">postGenerateFiles</a>() to open the project files according to the file attributes. Also inserts <code>'%ProjectName%'</code> into the base replacement map once the intro page is left to have it available for QLineEdit-type fields' default text.</p>
+</div>
+<!-- @@@CustomProjectWizard -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$CustomProjectWizard[overload1]$$$CustomProjectWizard -->
+<h3 class="fn" id="CustomProjectWizard"><a name="CustomProjectWizard"></a>CustomProjectWizard::<span class="name">CustomProjectWizard</span>()</h3>
+<p>Default constructs an instance of CustomProjectWizard.</p><!-- @@@CustomProjectWizard -->
+<!-- $$$create[overload1]$$$createQWidget*constCore::WizardDialogParameters& -->
+<h3 class="fn" id="create"><a name="create"></a><code>[protected] </code><span class="type"><a href="core-basefilewizard.html">Core::BaseFileWizard</a></span> *CustomProjectWizard::<span class="name">create</span>(<span class="type">QWidget</span> *<i>parent</i>, const <span class="type"><a href="core-wizarddialogparameters.html">Core::WizardDialogParameters</a></span> &amp;<i>parameters</i>) const</h3>
+<p>Can be reimplemented to create custom project wizards.</p>
+<p><a href="projectexplorer-customprojectwizard.html#initProjectWizardDialog">initProjectWizardDialog</a>() needs to be called.</p>
+<!-- @@@create -->
+<!-- $$$generateFiles[overload1]$$$generateFilesconstQWizard*QString* -->
+<h3 class="fn" id="generateFiles"><a name="generateFiles"></a><code>[override virtual protected] </code><span class="type"><a href="core.html#GeneratedFiles-typedef">Core::GeneratedFiles</a></span> CustomProjectWizard::<span class="name">generateFiles</span>(const <span class="type">QWizard</span> *<i>w</i>, <span class="type">QString</span> *<i>errorMessage</i>) const</h3>
+<!-- @@@generateFiles -->
+<!-- $$$initProjectWizardDialog[overload1]$$$initProjectWizardDialogBaseProjectWizardDialog*constQString&constQList<QWizardPage*>& -->
+<h3 class="fn" id="initProjectWizardDialog"><a name="initProjectWizardDialog"></a><code>[protected] </code><span class="type">void</span> CustomProjectWizard::<span class="name">initProjectWizardDialog</span>(<span class="type"><a href="projectexplorer-baseprojectwizarddialog.html">BaseProjectWizardDialog</a></span> *<i>w</i>, const <span class="type">QString</span> &amp;<i>defaultPath</i>, const <span class="type">QList</span>&lt;<span class="type">QWizardPage</span> *&gt; &amp;<i>extensionPages</i>) const</h3>
+<!-- @@@initProjectWizardDialog -->
+<!-- $$$postGenerateFiles[overload1]$$$postGenerateFilesconstQWizard*constCore::GeneratedFiles&QString* -->
+<h3 class="fn" id="postGenerateFiles"><a name="postGenerateFiles"></a><code>[protected] </code><span class="type">bool</span> CustomProjectWizard::<span class="name">postGenerateFiles</span>(const <span class="type">QWizard</span> *<i>w</i>, const <span class="type"><a href="core.html#GeneratedFiles-typedef">Core::GeneratedFiles</a></span> &amp;<i>l</i>, <span class="type">QString</span> *<i>errorMessage</i>) const</h3>
+<!-- @@@postGenerateFiles -->
+<!-- $$$postGenerateOpen[overload1]$$$postGenerateOpenconstCore::GeneratedFiles&QString* -->
+<h3 class="fn" id="postGenerateOpen"><a name="postGenerateOpen"></a><code>[static] </code><span class="type">bool</span> CustomProjectWizard::<span class="name">postGenerateOpen</span>(const <span class="type"><a href="core.html#GeneratedFiles-typedef">Core::GeneratedFiles</a></span> &amp;<i>l</i>, <span class="type">QString</span> *<i>errorMessage</i> = nullptr)</h3>
+<p>Opens the projects and editors for the files that have the respective attributes set.</p>
+<!-- @@@postGenerateOpen -->
+<!-- $$$projectLocationChanged[overload1]$$$projectLocationChangedconstQString& -->
+<h3 class="fn" id="projectLocationChanged"><a name="projectLocationChanged"></a><code>[signal] </code><span class="type">void</span> CustomProjectWizard::<span class="name">projectLocationChanged</span>(const <span class="type">QString</span> &amp;<i>path</i>)</h3>
+<!-- @@@projectLocationChanged -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

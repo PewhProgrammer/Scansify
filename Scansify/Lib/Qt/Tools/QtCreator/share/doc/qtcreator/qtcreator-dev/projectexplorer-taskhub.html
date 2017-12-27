@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>TaskHub Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >TaskHub</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">TaskHub Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-taskhub.html">ProjectExplorer::TaskHub</a>)<br/></span>
+<ul>
+<li><a href="projectexplorer-taskhub-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-slots"></a>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#addTask-1">addTask</a></b>(ProjectExplorer::Task <i>task</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#clearTasks">clearTasks</a></b>(Core::Id <i>categoryId</i> = Core::Id())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#removeTask">removeTask</a></b>(const ProjectExplorer::Task &amp;<i>task</i>)</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#categoryAdded">categoryAdded</a></b>(Core::Id <i>categoryId</i>, const QString &amp;<i>displayName</i>, bool <i>visible</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#categoryVisibilityChanged">categoryVisibilityChanged</a></b>(Core::Id <i>categoryId</i>, bool <i>visible</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#openTask">openTask</a></b>(unsigned int <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#popupRequested">popupRequested</a></b>(<i>int</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#showTask">showTask</a></b>(unsigned int <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#taskAdded">taskAdded</a></b>(const ProjectExplorer::Task &amp;<i>task</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#taskFileNameUpdated">taskFileNameUpdated</a></b>(unsigned int <i>id</i>, const QString &amp;<i>fileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#taskLineNumberUpdated">taskLineNumberUpdated</a></b>(unsigned int <i>id</i>, int <i>line</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#taskRemoved">taskRemoved</a></b>(const ProjectExplorer::Task &amp;<i>task</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#tasksCleared">tasksCleared</a></b>(Core::Id <i>categoryId</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#addCategory">addCategory</a></b>(Core::Id <i>categoryId</i>, const QString &amp;<i>displayName</i>, bool <i>visible</i> = true)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#addTask">addTask</a></b>(Task::TaskType <i>type</i>, const QString &amp;<i>description</i>, Core::Id <i>category</i>, const Utils::FileName &amp;<i>file</i> = Utils::FileName(), int <i>line</i> = -1)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TaskHub *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#instance">instance</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#requestPopup">requestPopup</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#setCategoryVisibility">setCategoryVisibility</a></b>(Core::Id <i>categoryId</i>, bool <i>visible</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#showTaskInEditor">showTaskInEditor</a></b>(unsigned int <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#taskMarkClicked">taskMarkClicked</a></b>(unsigned int <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#updateTaskFileName">updateTaskFileName</a></b>(unsigned int <i>id</i>, const QString &amp;<i>fileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-taskhub.html#updateTaskLineNumber">updateTaskLineNumber</a></b>(unsigned int <i>id</i>, int <i>line</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$addCategory[overload1]$$$addCategoryCore::IdconstQString&bool -->
+<h3 class="fn" id="addCategory"><a name="addCategory"></a><code>[static] </code><span class="type">void</span> TaskHub::<span class="name">addCategory</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>categoryId</i>, const <span class="type">QString</span> &amp;<i>displayName</i>, <span class="type">bool</span> <i>visible</i> = true)</h3>
+<!-- @@@addCategory -->
+<!-- $$$addTask[overload1]$$$addTaskTask::TaskTypeconstQString&Core::IdconstUtils::FileName&int -->
+<h3 class="fn" id="addTask"><a name="addTask"></a><code>[static] </code><span class="type">void</span> TaskHub::<span class="name">addTask</span>(<span class="type"><a href="projectexplorer-task.html#TaskType-enum">Task::TaskType</a></span> <i>type</i>, const <span class="type">QString</span> &amp;<i>description</i>, <span class="type"><a href="core-id.html">Core::Id</a></span> <i>category</i>, const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>file</i> = Utils::FileName(), <span class="type">int</span> <i>line</i> = -1)</h3>
+<!-- @@@addTask -->
+<!-- $$$addTask$$$addTaskProjectExplorer::Task -->
+<h3 class="fn" id="addTask-1"><a name="addTask-1"></a><code>[static slot] </code><span class="type">void</span> TaskHub::<span class="name">addTask</span>(<span class="type"><a href="projectexplorer-task.html">ProjectExplorer::Task</a></span> <i>task</i>)</h3>
+<!-- @@@addTask -->
+<!-- $$$categoryAdded[overload1]$$$categoryAddedCore::IdconstQString&bool -->
+<h3 class="fn" id="categoryAdded"><a name="categoryAdded"></a><code>[signal] </code><span class="type">void</span> TaskHub::<span class="name">categoryAdded</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>categoryId</i>, const <span class="type">QString</span> &amp;<i>displayName</i>, <span class="type">bool</span> <i>visible</i>)</h3>
+<!-- @@@categoryAdded -->
+<!-- $$$categoryVisibilityChanged[overload1]$$$categoryVisibilityChangedCore::Idbool -->
+<h3 class="fn" id="categoryVisibilityChanged"><a name="categoryVisibilityChanged"></a><code>[signal] </code><span class="type">void</span> TaskHub::<span class="name">categoryVisibilityChanged</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>categoryId</i>, <span class="type">bool</span> <i>visible</i>)</h3>
+<!-- @@@categoryVisibilityChanged -->
+<!-- $$$clearTasks[overload1]$$$clearTasksCore::Id -->
+<h3 class="fn" id="clearTasks"><a name="clearTasks"></a><code>[static slot] </code><span class="type">void</span> TaskHub::<span class="name">clearTasks</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>categoryId</i> = Core::Id())</h3>
+<!-- @@@clearTasks -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" id="instance"><a name="instance"></a><code>[static] </code><span class="type">TaskHub</span> *TaskHub::<span class="name">instance</span>()</h3>
+<!-- @@@instance -->
+<!-- $$$openTask[overload1]$$$openTaskunsignedint -->
+<h3 class="fn" id="openTask"><a name="openTask"></a><code>[signal] </code><span class="type">void</span> TaskHub::<span class="name">openTask</span>(<span class="type">unsigned</span> <span class="type">int</span> <i>id</i>)</h3>
+<!-- @@@openTask -->
+<!-- $$$popupRequested[overload1]$$$popupRequestedint -->
+<h3 class="fn" id="popupRequested"><a name="popupRequested"></a><code>[signal] </code><span class="type">void</span> TaskHub::<span class="name">popupRequested</span>(<i>int</i>)</h3>
+<!-- @@@popupRequested -->
+<!-- $$$removeTask[overload1]$$$removeTaskconstProjectExplorer::Task& -->
+<h3 class="fn" id="removeTask"><a name="removeTask"></a><code>[static slot] </code><span class="type">void</span> TaskHub::<span class="name">removeTask</span>(const <span class="type"><a href="projectexplorer-task.html">ProjectExplorer::Task</a></span> &amp;<i>task</i>)</h3>
+<!-- @@@removeTask -->
+<!-- $$$requestPopup[overload1]$$$requestPopup -->
+<h3 class="fn" id="requestPopup"><a name="requestPopup"></a><code>[static] </code><span class="type">void</span> TaskHub::<span class="name">requestPopup</span>()</h3>
+<!-- @@@requestPopup -->
+<!-- $$$setCategoryVisibility[overload1]$$$setCategoryVisibilityCore::Idbool -->
+<h3 class="fn" id="setCategoryVisibility"><a name="setCategoryVisibility"></a><code>[static] </code><span class="type">void</span> TaskHub::<span class="name">setCategoryVisibility</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>categoryId</i>, <span class="type">bool</span> <i>visible</i>)</h3>
+<!-- @@@setCategoryVisibility -->
+<!-- $$$showTask[overload1]$$$showTaskunsignedint -->
+<h3 class="fn" id="showTask"><a name="showTask"></a><code>[signal] </code><span class="type">void</span> TaskHub::<span class="name">showTask</span>(<span class="type">unsigned</span> <span class="type">int</span> <i>id</i>)</h3>
+<!-- @@@showTask -->
+<!-- $$$showTaskInEditor[overload1]$$$showTaskInEditorunsignedint -->
+<h3 class="fn" id="showTaskInEditor"><a name="showTaskInEditor"></a><code>[static] </code><span class="type">void</span> TaskHub::<span class="name">showTaskInEditor</span>(<span class="type">unsigned</span> <span class="type">int</span> <i>id</i>)</h3>
+<!-- @@@showTaskInEditor -->
+<!-- $$$taskAdded[overload1]$$$taskAddedconstProjectExplorer::Task& -->
+<h3 class="fn" id="taskAdded"><a name="taskAdded"></a><code>[signal] </code><span class="type">void</span> TaskHub::<span class="name">taskAdded</span>(const <span class="type"><a href="projectexplorer-task.html">ProjectExplorer::Task</a></span> &amp;<i>task</i>)</h3>
+<!-- @@@taskAdded -->
+<!-- $$$taskFileNameUpdated[overload1]$$$taskFileNameUpdatedunsignedintconstQString& -->
+<h3 class="fn" id="taskFileNameUpdated"><a name="taskFileNameUpdated"></a><code>[signal] </code><span class="type">void</span> TaskHub::<span class="name">taskFileNameUpdated</span>(<span class="type">unsigned</span> <span class="type">int</span> <i>id</i>, const <span class="type">QString</span> &amp;<i>fileName</i>)</h3>
+<!-- @@@taskFileNameUpdated -->
+<!-- $$$taskLineNumberUpdated[overload1]$$$taskLineNumberUpdatedunsignedintint -->
+<h3 class="fn" id="taskLineNumberUpdated"><a name="taskLineNumberUpdated"></a><code>[signal] </code><span class="type">void</span> TaskHub::<span class="name">taskLineNumberUpdated</span>(<span class="type">unsigned</span> <span class="type">int</span> <i>id</i>, <span class="type">int</span> <i>line</i>)</h3>
+<!-- @@@taskLineNumberUpdated -->
+<!-- $$$taskMarkClicked[overload1]$$$taskMarkClickedunsignedint -->
+<h3 class="fn" id="taskMarkClicked"><a name="taskMarkClicked"></a><code>[static] </code><span class="type">void</span> TaskHub::<span class="name">taskMarkClicked</span>(<span class="type">unsigned</span> <span class="type">int</span> <i>id</i>)</h3>
+<!-- @@@taskMarkClicked -->
+<!-- $$$taskRemoved[overload1]$$$taskRemovedconstProjectExplorer::Task& -->
+<h3 class="fn" id="taskRemoved"><a name="taskRemoved"></a><code>[signal] </code><span class="type">void</span> TaskHub::<span class="name">taskRemoved</span>(const <span class="type"><a href="projectexplorer-task.html">ProjectExplorer::Task</a></span> &amp;<i>task</i>)</h3>
+<!-- @@@taskRemoved -->
+<!-- $$$tasksCleared[overload1]$$$tasksClearedCore::Id -->
+<h3 class="fn" id="tasksCleared"><a name="tasksCleared"></a><code>[signal] </code><span class="type">void</span> TaskHub::<span class="name">tasksCleared</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>categoryId</i>)</h3>
+<!-- @@@tasksCleared -->
+<!-- $$$updateTaskFileName[overload1]$$$updateTaskFileNameunsignedintconstQString& -->
+<h3 class="fn" id="updateTaskFileName"><a name="updateTaskFileName"></a><code>[static] </code><span class="type">void</span> TaskHub::<span class="name">updateTaskFileName</span>(<span class="type">unsigned</span> <span class="type">int</span> <i>id</i>, const <span class="type">QString</span> &amp;<i>fileName</i>)</h3>
+<!-- @@@updateTaskFileName -->
+<!-- $$$updateTaskLineNumber[overload1]$$$updateTaskLineNumberunsignedintint -->
+<h3 class="fn" id="updateTaskLineNumber"><a name="updateTaskLineNumber"></a><code>[static] </code><span class="type">void</span> TaskHub::<span class="name">updateTaskLineNumber</span>(<span class="type">unsigned</span> <span class="type">int</span> <i>id</i>, <span class="type">int</span> <i>line</i>)</h3>
+<!-- @@@updateTaskLineNumber -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

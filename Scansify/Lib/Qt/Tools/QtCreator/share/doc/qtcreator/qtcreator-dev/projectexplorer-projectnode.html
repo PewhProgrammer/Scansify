@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- projectnodes.cpp -->
+  <title>ProjectNode Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ProjectNode</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ProjectNode Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-projectnode.html">ProjectExplorer::ProjectNode</a>)<br/></span>
+<!-- $$$ProjectNode-brief -->
+<p>The <a href="projectexplorer-projectnode.html">ProjectNode</a> class is an in-memory presentation of a Project. <a href="#details">More...</a></p>
+<!-- @@@ProjectNode -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;ProjectNode&gt;</span>
+</td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="projectexplorer-foldernode.html">ProjectExplorer::FolderNode</a></td></tr></table></div><ul>
+<li><a href="projectexplorer-projectnode-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#addSubProject">addSubProject</a></b>(const QString &amp;<i>proFile</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#canAddSubProject">canAddSubProject</a></b>(const QString &amp;<i>proFilePath</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#deploysFolder">deploysFolder</a></b>(const QString &amp;<i>folder</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ProjectNode *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#projectNodex">projectNode</a></b>(const Utils::FileName &amp;<i>file</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#removeSubProject">removeSubProject</a></b>(const QString &amp;<i>proFilePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;RunConfiguration *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#runConfigurations">runConfigurations</a></b>() const</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#addFiles">addFiles</a></b>(const QStringList &amp;<i>filePaths</i>, QStringList *<i>notAdded</i> = 0) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ProjectNode *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#asProjectNode">asProjectNode</a></b>() final</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const ProjectNode *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#asProjectNode-1">asProjectNode</a></b>() const final</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#canRenameFile">canRenameFile</a></b>(const QString &amp;<i>filePath</i>, const QString &amp;<i>newFilePath</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#deleteFiles">deleteFiles</a></b>(const QStringList &amp;<i>filePaths</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#removeFiles">removeFiles</a></b>(const QStringList &amp;<i>filePaths</i>, QStringList *<i>notRemoved</i> = 0) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#renameFile">renameFile</a></b>(const QString &amp;<i>filePath</i>, const QString &amp;<i>newFilePath</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#supportsAction">supportsAction</a></b>(ProjectAction <i>action</i>, Node *<i>node</i>) const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">32 public functions inherited from <a href="projectexplorer-foldernode.html#public-functions">ProjectExplorer::FolderNode</a></li>
+<li class="fn">27 public functions inherited from <a href="projectexplorer-node.html#public-functions">ProjectExplorer::Node</a></li>
+</ul>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectnode.html#ProjectNode">ProjectNode</a></b>(const Utils::FileName &amp;<i>projectFilePath</i>, const QByteArray &amp;<i>id</i> = {})</td></tr>
+</table></div>
+<ul>
+<li class="fn">2 protected functions inherited from <a href="projectexplorer-node.html#protected-functions">ProjectExplorer::Node</a></li>
+</ul>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">3 static public members inherited from <a href="projectexplorer-node.html#static-public-members">ProjectExplorer::Node</a></li>
+</ul>
+<a name="details"></a>
+<!-- $$$ProjectNode-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="projectexplorer-projectnode.html">ProjectNode</a> class is an in-memory presentation of a Project.</p>
+<p>A concrete subclass must implement the persistent data.</p>
+</div>
+<p><b>See also </b><a href="projectexplorer-filenode.html">ProjectExplorer::FileNode</a> and <a href="projectexplorer-foldernode.html">ProjectExplorer::FolderNode</a>.</p>
+<!-- @@@ProjectNode -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ProjectNode[overload1]$$$ProjectNodeconstUtils::FileName&constQByteArray& -->
+<h3 class="fn" id="ProjectNode"><a name="ProjectNode"></a><code>[protected] </code>ProjectNode::<span class="name">ProjectNode</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>projectFilePath</i>, const <span class="type">QByteArray</span> &amp;<i>id</i> = {})</h3>
+<p>Creates an uninitialized project node object.</p>
+<!-- @@@ProjectNode -->
+<!-- $$$addFiles[overload1]$$$addFilesconstQStringList&QStringList* -->
+<h3 class="fn" id="addFiles"><a name="addFiles"></a><code>[override virtual] </code><span class="type">bool</span> ProjectNode::<span class="name">addFiles</span>(const <span class="type">QStringList</span> &amp;<i>filePaths</i>, <span class="type">QStringList</span> *<i>notAdded</i> = 0)</h3>
+<!-- @@@addFiles -->
+<!-- $$$addSubProject[overload1]$$$addSubProjectconstQString& -->
+<h3 class="fn" id="addSubProject"><a name="addSubProject"></a><code>[virtual] </code><span class="type">bool</span> ProjectNode::<span class="name">addSubProject</span>(const <span class="type">QString</span> &amp;<i>proFile</i>)</h3>
+<!-- @@@addSubProject -->
+<!-- $$$asProjectNode[overload1]$$$asProjectNode -->
+<h3 class="fn" id="asProjectNode"><a name="asProjectNode"></a><code>[final virtual] </code><span class="type"><a href="projectexplorer-projectnode.html#ProjectNode">ProjectNode</a></span> *ProjectNode::<span class="name">asProjectNode</span>()</h3>
+<!-- @@@asProjectNode -->
+<!-- $$$asProjectNode$$$asProjectNode -->
+<h3 class="fn" id="asProjectNode-1"><a name="asProjectNode-1"></a><code>[final virtual] </code>const <span class="type"><a href="projectexplorer-projectnode.html#ProjectNode">ProjectNode</a></span> *ProjectNode::<span class="name">asProjectNode</span>() const</h3>
+<!-- @@@asProjectNode -->
+<!-- $$$canAddSubProject[overload1]$$$canAddSubProjectconstQString& -->
+<h3 class="fn" id="canAddSubProject"><a name="canAddSubProject"></a><code>[virtual] </code><span class="type">bool</span> ProjectNode::<span class="name">canAddSubProject</span>(const <span class="type">QString</span> &amp;<i>proFilePath</i>) const</h3>
+<!-- @@@canAddSubProject -->
+<!-- $$$canRenameFile[overload1]$$$canRenameFileconstQString&constQString& -->
+<h3 class="fn" id="canRenameFile"><a name="canRenameFile"></a><code>[override virtual] </code><span class="type">bool</span> ProjectNode::<span class="name">canRenameFile</span>(const <span class="type">QString</span> &amp;<i>filePath</i>, const <span class="type">QString</span> &amp;<i>newFilePath</i>)</h3>
+<!-- @@@canRenameFile -->
+<!-- $$$deleteFiles[overload1]$$$deleteFilesconstQStringList& -->
+<h3 class="fn" id="deleteFiles"><a name="deleteFiles"></a><code>[override virtual] </code><span class="type">bool</span> ProjectNode::<span class="name">deleteFiles</span>(const <span class="type">QStringList</span> &amp;<i>filePaths</i>)</h3>
+<!-- @@@deleteFiles -->
+<!-- $$$deploysFolder[overload1]$$$deploysFolderconstQString& -->
+<h3 class="fn" id="deploysFolder"><a name="deploysFolder"></a><code>[virtual] </code><span class="type">bool</span> ProjectNode::<span class="name">deploysFolder</span>(const <span class="type">QString</span> &amp;<i>folder</i>) const</h3>
+<!-- @@@deploysFolder -->
+<!-- $$$projectNode[overload1]$$$projectNodeconstUtils::FileName& -->
+<h3 class="fn" id="projectNodex"><a name="projectNodex"></a><span class="type"><a href="projectexplorer-projectnode.html#ProjectNode">ProjectNode</a></span> *ProjectNode::<span class="name">projectNode</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>file</i>) const</h3>
+<!-- @@@projectNode -->
+<!-- $$$removeFiles[overload1]$$$removeFilesconstQStringList&QStringList* -->
+<h3 class="fn" id="removeFiles"><a name="removeFiles"></a><code>[override virtual] </code><span class="type">bool</span> ProjectNode::<span class="name">removeFiles</span>(const <span class="type">QStringList</span> &amp;<i>filePaths</i>, <span class="type">QStringList</span> *<i>notRemoved</i> = 0)</h3>
+<!-- @@@removeFiles -->
+<!-- $$$removeSubProject[overload1]$$$removeSubProjectconstQString& -->
+<h3 class="fn" id="removeSubProject"><a name="removeSubProject"></a><code>[virtual] </code><span class="type">bool</span> ProjectNode::<span class="name">removeSubProject</span>(const <span class="type">QString</span> &amp;<i>proFilePath</i>)</h3>
+<!-- @@@removeSubProject -->
+<!-- $$$renameFile[overload1]$$$renameFileconstQString&constQString& -->
+<h3 class="fn" id="renameFile"><a name="renameFile"></a><code>[override virtual] </code><span class="type">bool</span> ProjectNode::<span class="name">renameFile</span>(const <span class="type">QString</span> &amp;<i>filePath</i>, const <span class="type">QString</span> &amp;<i>newFilePath</i>)</h3>
+<!-- @@@renameFile -->
+<!-- $$$runConfigurations[overload1]$$$runConfigurations -->
+<h3 class="fn" id="runConfigurations"><a name="runConfigurations"></a><code>[virtual] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-runconfiguration.html">RunConfiguration</a></span> *&gt; ProjectNode::<span class="name">runConfigurations</span>() const</h3>
+<p>Returns a list of <code>RunConfiguration</code> suitable for this node.</p>
+<!-- @@@runConfigurations -->
+<!-- $$$supportsAction[overload1]$$$supportsActionProjectActionNode* -->
+<h3 class="fn" id="supportsAction"><a name="supportsAction"></a><code>[override virtual] </code><span class="type">bool</span> ProjectNode::<span class="name">supportsAction</span>(<span class="type"><a href="projectexplorer.html#ProjectAction-enum">ProjectAction</a></span> <i>action</i>, <span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> *<i>node</i>) const</h3>
+<!-- @@@supportsAction -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

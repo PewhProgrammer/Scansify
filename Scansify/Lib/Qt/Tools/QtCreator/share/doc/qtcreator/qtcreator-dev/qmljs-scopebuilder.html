@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>ScopeBuilder Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ScopeBuilder</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ScopeBuilder Class</h1>
+<span class="small-subtitle">(<a href="qmljs-scopebuilder.html">QmlJS::ScopeBuilder</a>)<br/></span>
+<ul>
+<li><a href="qmljs-scopebuilder-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-scopebuilder.html#ScopeBuilder">ScopeBuilder</a></b>(ScopeChain *<i>scopeChain</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-scopebuilder.html#dtor.ScopeBuilder">~ScopeBuilder</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-scopebuilder.html#pop">pop</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-scopebuilder.html#push">push</a></b>(AST::Node *<i>node</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-scopebuilder.html#push-1">push</a></b>(const QList&lt;AST::Node *&gt; &amp;<i>nodes</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-scopebuilder.html#isPropertyChangesObject">isPropertyChangesObject</a></b>(const ContextPtr &amp;<i>context</i>, const ObjectValue *<i>object</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ScopeBuilder[overload1]$$$ScopeBuilderScopeChain* -->
+<h3 class="fn" id="ScopeBuilder"><a name="ScopeBuilder"></a>ScopeBuilder::<span class="name">ScopeBuilder</span>(<span class="type"><a href="qmljs-scopechain.html">ScopeChain</a></span> *<i>scopeChain</i>)</h3>
+<p>Default constructs an instance of ScopeBuilder.</p><!-- @@@ScopeBuilder -->
+<!-- $$$~ScopeBuilder[overload1]$$$~ScopeBuilder -->
+<h3 class="fn" id="dtor.ScopeBuilder"><a name="dtor.ScopeBuilder"></a>ScopeBuilder::<span class="name">~ScopeBuilder</span>()</h3>
+<p>Destroys the instance of ScopeBuilder.</p><!-- @@@~ScopeBuilder -->
+<!-- $$$isPropertyChangesObject[overload1]$$$isPropertyChangesObjectconstContextPtr&constObjectValue* -->
+<h3 class="fn" id="isPropertyChangesObject"><a name="isPropertyChangesObject"></a><code>[static] </code>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ScopeBuilder::<span class="name">isPropertyChangesObject</span>(const <span class="type"><a href="qmljs.html#ContextPtr-typedef">ContextPtr</a></span> &amp;<i>context</i>, const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *<i>object</i>)</h3>
+<!-- @@@isPropertyChangesObject -->
+<!-- $$$pop[overload1]$$$pop -->
+<h3 class="fn" id="pop"><a name="pop"></a><span class="type">void</span> ScopeBuilder::<span class="name">pop</span>()</h3>
+<!-- @@@pop -->
+<!-- $$$push[overload1]$$$pushAST::Node* -->
+<h3 class="fn" id="push"><a name="push"></a><span class="type">void</span> ScopeBuilder::<span class="name">push</span>(<span class="type">AST::Node</span> *<i>node</i>)</h3>
+<!-- @@@push -->
+<!-- $$$push$$$pushconstQList<AST::Node*>& -->
+<h3 class="fn" id="push-1"><a name="push-1"></a><span class="type">void</span> ScopeBuilder::<span class="name">push</span>(const <span class="type">QList</span>&lt;<span class="type">AST::Node</span> *&gt; &amp;<i>nodes</i>)</h3>
+<!-- @@@push -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

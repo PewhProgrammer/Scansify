@@ -1,0 +1,13 @@
+prefix=E:\\Utility\\Qt\\5.9.3\\mingw53_32
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 3DQuickInput
+Description: Qt 3DQuickInput module
+Version: 5.9.3
+Libs: -L${libdir} -lQt53DQuickInputd 
+Cflags: -I${includedir}/Qt3DQuickInput -I${includedir}
+Requires: Qt5Core Qt5Gui Qt5Qml Qt53DCore Qt53DInput Qt53DQuick
+

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- applicationlauncher.cpp -->
+  <title>ApplicationLauncher Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ApplicationLauncher</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ApplicationLauncher Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-applicationlauncher.html">ProjectExplorer::ApplicationLauncher</a>)<br/></span>
+<!-- $$$ApplicationLauncher-brief -->
+<p>The <a href="projectexplorer-applicationlauncher.html">ApplicationLauncher</a> class is the application launcher of the <a href="projectexplorer.html">ProjectExplorer</a> plugin. <a href="#details">More...</a></p>
+<!-- @@@ApplicationLauncher -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;ApplicationLauncher&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="projectexplorer-applicationlauncher-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#Mode-enum">Mode</a></b> { Console, Gui }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#ApplicationLauncher">ApplicationLauncher</a></b>(QObject *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#dtor.ApplicationLauncher">~ApplicationLauncher</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::ProcessHandle </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#applicationPID">applicationPID</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#bringToForeground">bringToForeground</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#errorString">errorString</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#isRunning">isRunning</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QProcess::ProcessError </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#processError">processError</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#setProcessChannelMode">setProcessChannelMode</a></b>(QProcess::ProcessChannelMode <i>mode</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#start">start</a></b>(const Runnable &amp;<i>runnable</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#start-1">start</a></b>(const Runnable &amp;<i>runnable</i>, const IDevice::ConstPtr &amp;<i>device</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#stop">stop</a></b>()</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#appendMessage">appendMessage</a></b>(const QString &amp;<i>message</i>, Utils::OutputFormat <i>format</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#error">error</a></b>(QProcess::ProcessError <i>error</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#finished">finished</a></b>(bool <i>success</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#processExited">processExited</a></b>(int <i>exitCode</i>, <i>QProcess::ExitStatus</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#processStarted">processStarted</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#remoteProcessStarted">remoteProcessStarted</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#remoteStderr">remoteStderr</a></b>(const QString &amp;<i>output</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#remoteStdout">remoteStdout</a></b>(const QString &amp;<i>output</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#reportError">reportError</a></b>(const QString &amp;<i>errorOutput</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#reportProgress">reportProgress</a></b>(const QString &amp;<i>progressOutput</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-applicationlauncher.html#msgWinCannotRetrieveDebuggingOutput">msgWinCannotRetrieveDebuggingOutput</a></b>()</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$ApplicationLauncher-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="projectexplorer-applicationlauncher.html">ApplicationLauncher</a> class is the application launcher of the <a href="projectexplorer.html">ProjectExplorer</a> plugin.</p>
+<p>Encapsulates processes running in a console or as GUI processes, captures debug output of GUI processes on Windows (outputDebugString()).</p>
+</div>
+<p><b>See also </b><a href="utils-consoleprocess.html">Utils::ConsoleProcess</a>.</p>
+<!-- @@@ApplicationLauncher -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$Mode$$$Console$$$Gui -->
+<h3 class="fn" id="Mode-enum"><a name="Mode-enum"></a>enum ApplicationLauncher::<span class="name">Mode</span></h3>
+<!-- @@@Mode -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ApplicationLauncher[overload1]$$$ApplicationLauncherQObject* -->
+<h3 class="fn" id="ApplicationLauncher"><a name="ApplicationLauncher"></a>ApplicationLauncher::<span class="name">ApplicationLauncher</span>(<span class="type">QObject</span> *<i>parent</i> = nullptr)</h3>
+<p>Default constructs an instance of ApplicationLauncher.</p><!-- @@@ApplicationLauncher -->
+<!-- $$$~ApplicationLauncher[overload1]$$$~ApplicationLauncher -->
+<h3 class="fn" id="dtor.ApplicationLauncher"><a name="dtor.ApplicationLauncher"></a>ApplicationLauncher::<span class="name">~ApplicationLauncher</span>()</h3>
+<p>Destroys the instance of ApplicationLauncher.</p><!-- @@@~ApplicationLauncher -->
+<!-- $$$appendMessage[overload1]$$$appendMessageconstQString&Utils::OutputFormat -->
+<h3 class="fn" id="appendMessage"><a name="appendMessage"></a><code>[signal] </code><span class="type">void</span> ApplicationLauncher::<span class="name">appendMessage</span>(const <span class="type">QString</span> &amp;<i>message</i>, <span class="type"><a href="utils.html#OutputFormat-enum">Utils::OutputFormat</a></span> <i>format</i>)</h3>
+<!-- @@@appendMessage -->
+<!-- $$$applicationPID[overload1]$$$applicationPID -->
+<h3 class="fn" id="applicationPID"><a name="applicationPID"></a><span class="type"><a href="utils-processhandle.html">Utils::ProcessHandle</a></span> ApplicationLauncher::<span class="name">applicationPID</span>() const</h3>
+<!-- @@@applicationPID -->
+<!-- $$$bringToForeground[overload1]$$$bringToForeground -->
+<h3 class="fn" id="bringToForeground"><a name="bringToForeground"></a><span class="type">void</span> ApplicationLauncher::<span class="name">bringToForeground</span>()</h3>
+<!-- @@@bringToForeground -->
+<!-- $$$error[overload1]$$$errorQProcess::ProcessError -->
+<h3 class="fn" id="error"><a name="error"></a><code>[signal] </code><span class="type">void</span> ApplicationLauncher::<span class="name">error</span>(<span class="type">QProcess::ProcessError</span> <i>error</i>)</h3>
+<!-- @@@error -->
+<!-- $$$errorString[overload1]$$$errorString -->
+<h3 class="fn" id="errorString"><a name="errorString"></a><span class="type">QString</span> ApplicationLauncher::<span class="name">errorString</span>() const</h3>
+<!-- @@@errorString -->
+<!-- $$$finished[overload1]$$$finishedbool -->
+<h3 class="fn" id="finished"><a name="finished"></a><code>[signal] </code><span class="type">void</span> ApplicationLauncher::<span class="name">finished</span>(<span class="type">bool</span> <i>success</i>)</h3>
+<!-- @@@finished -->
+<!-- $$$isRunning[overload1]$$$isRunning -->
+<h3 class="fn" id="isRunning"><a name="isRunning"></a><span class="type">bool</span> ApplicationLauncher::<span class="name">isRunning</span>() const</h3>
+<!-- @@@isRunning -->
+<!-- $$$msgWinCannotRetrieveDebuggingOutput[overload1]$$$msgWinCannotRetrieveDebuggingOutput -->
+<h3 class="fn" id="msgWinCannotRetrieveDebuggingOutput"><a name="msgWinCannotRetrieveDebuggingOutput"></a><code>[static] </code><span class="type">QString</span> ApplicationLauncher::<span class="name">msgWinCannotRetrieveDebuggingOutput</span>()</h3>
+<!-- @@@msgWinCannotRetrieveDebuggingOutput -->
+<!-- $$$processError[overload1]$$$processError -->
+<h3 class="fn" id="processError"><a name="processError"></a><span class="type">QProcess::ProcessError</span> ApplicationLauncher::<span class="name">processError</span>() const</h3>
+<!-- @@@processError -->
+<!-- $$$processExited[overload1]$$$processExitedintQProcess::ExitStatus -->
+<h3 class="fn" id="processExited"><a name="processExited"></a><code>[signal] </code><span class="type">void</span> ApplicationLauncher::<span class="name">processExited</span>(<span class="type">int</span> <i>exitCode</i>, <i>QProcess::ExitStatus</i>)</h3>
+<!-- @@@processExited -->
+<!-- $$$processStarted[overload1]$$$processStarted -->
+<h3 class="fn" id="processStarted"><a name="processStarted"></a><code>[signal] </code><span class="type">void</span> ApplicationLauncher::<span class="name">processStarted</span>()</h3>
+<!-- @@@processStarted -->
+<!-- $$$remoteProcessStarted[overload1]$$$remoteProcessStarted -->
+<h3 class="fn" id="remoteProcessStarted"><a name="remoteProcessStarted"></a><code>[signal] </code><span class="type">void</span> ApplicationLauncher::<span class="name">remoteProcessStarted</span>()</h3>
+<!-- @@@remoteProcessStarted -->
+<!-- $$$remoteStderr[overload1]$$$remoteStderrconstQString& -->
+<h3 class="fn" id="remoteStderr"><a name="remoteStderr"></a><code>[signal] </code><span class="type">void</span> ApplicationLauncher::<span class="name">remoteStderr</span>(const <span class="type">QString</span> &amp;<i>output</i>)</h3>
+<!-- @@@remoteStderr -->
+<!-- $$$remoteStdout[overload1]$$$remoteStdoutconstQString& -->
+<h3 class="fn" id="remoteStdout"><a name="remoteStdout"></a><code>[signal] </code><span class="type">void</span> ApplicationLauncher::<span class="name">remoteStdout</span>(const <span class="type">QString</span> &amp;<i>output</i>)</h3>
+<!-- @@@remoteStdout -->
+<!-- $$$reportError[overload1]$$$reportErrorconstQString& -->
+<h3 class="fn" id="reportError"><a name="reportError"></a><code>[signal] </code><span class="type">void</span> ApplicationLauncher::<span class="name">reportError</span>(const <span class="type">QString</span> &amp;<i>errorOutput</i>)</h3>
+<!-- @@@reportError -->
+<!-- $$$reportProgress[overload1]$$$reportProgressconstQString& -->
+<h3 class="fn" id="reportProgress"><a name="reportProgress"></a><code>[signal] </code><span class="type">void</span> ApplicationLauncher::<span class="name">reportProgress</span>(const <span class="type">QString</span> &amp;<i>progressOutput</i>)</h3>
+<!-- @@@reportProgress -->
+<!-- $$$setProcessChannelMode[overload1]$$$setProcessChannelModeQProcess::ProcessChannelMode -->
+<h3 class="fn" id="setProcessChannelMode"><a name="setProcessChannelMode"></a><span class="type">void</span> ApplicationLauncher::<span class="name">setProcessChannelMode</span>(<span class="type">QProcess::ProcessChannelMode</span> <i>mode</i>)</h3>
+<!-- @@@setProcessChannelMode -->
+<!-- $$$start[overload1]$$$startconstRunnable& -->
+<h3 class="fn" id="start"><a name="start"></a><span class="type">void</span> ApplicationLauncher::<span class="name">start</span>(const <span class="type">Runnable</span> &amp;<i>runnable</i>)</h3>
+<!-- @@@start -->
+<!-- $$$start$$$startconstRunnable&constIDevice::ConstPtr& -->
+<h3 class="fn" id="start-1"><a name="start-1"></a><span class="type">void</span> ApplicationLauncher::<span class="name">start</span>(const <span class="type">Runnable</span> &amp;<i>runnable</i>, const <span class="type"><a href="projectexplorer-idevice.html#ConstPtr-typedef">IDevice::ConstPtr</a></span> &amp;<i>device</i>)</h3>
+<!-- @@@start -->
+<!-- $$$stop[overload1]$$$stop -->
+<h3 class="fn" id="stop"><a name="stop"></a><span class="type">void</span> ApplicationLauncher::<span class="name">stop</span>()</h3>
+<!-- @@@stop -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

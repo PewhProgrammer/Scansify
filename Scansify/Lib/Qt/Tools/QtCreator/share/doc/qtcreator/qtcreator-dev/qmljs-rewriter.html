@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Rewriter Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Rewriter</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Rewriter Class</h1>
+<span class="small-subtitle">(<a href="qmljs-rewriter.html">QmlJS::Rewriter</a>)<br/></span>
+<ul>
+<li><a href="qmljs-rewriter-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#BindingType-enum">BindingType</a></b> { ScriptBinding, ObjectBinding, ArrayBinding }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#Range-typedef">Range</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#Rewriter">Rewriter</a></b>(const QString &amp;<i>originalText</i>, Utils::ChangeSet *<i>changeSet</i>, const QStringList &amp;<i>propertyOrder</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Range </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#addBinding">addBinding</a></b>(AST::UiObjectInitializer *<i>ast</i>, const QString &amp;<i>propertyName</i>, const QString &amp;<i>propertyValue</i>, BindingType <i>bindingType</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Range </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#addBinding-1">addBinding</a></b>(AST::UiObjectInitializer *<i>ast</i>, const QString &amp;<i>propertyName</i>, const QString &amp;<i>propertyValue</i>, BindingType <i>bindingType</i>, AST::UiObjectMemberList *<i>insertAfter</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Range </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#addObject">addObject</a></b>(AST::UiObjectInitializer *<i>ast</i>, const QString &amp;<i>content</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Range </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#addObject-1">addObject</a></b>(AST::UiObjectInitializer *<i>ast</i>, const QString &amp;<i>content</i>, AST::UiObjectMemberList *<i>insertAfter</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Range </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#addObject-2">addObject</a></b>(AST::UiArrayBinding *<i>ast</i>, const QString &amp;<i>content</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Range </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#addObject-3">addObject</a></b>(AST::UiArrayBinding *<i>ast</i>, const QString &amp;<i>content</i>, AST::UiArrayMemberList *<i>insertAfter</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#appendToArrayBinding">appendToArrayBinding</a></b>(AST::UiArrayBinding *<i>arrayBinding</i>, const QString &amp;<i>content</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#changeBinding">changeBinding</a></b>(AST::UiObjectInitializer *<i>ast</i>, const QString &amp;<i>propertyName</i>, const QString &amp;<i>newValue</i>, BindingType <i>binding</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#removeBindingByName">removeBindingByName</a></b>(AST::UiObjectInitializer *<i>ast</i>, const QString &amp;<i>propertyName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#removeObjectMember">removeObjectMember</a></b>(AST::UiObjectMember *<i>member</i>, AST::UiObjectMember *<i>parent</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#includeEmptyGroupedProperty">includeEmptyGroupedProperty</a></b>(AST::UiObjectDefinition *<i>groupedProperty</i>, AST::UiObjectMember *<i>memberToBeRemoved</i>, int &amp;<i>start</i>, int &amp;<i>end</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#includeLeadingEmptyLine">includeLeadingEmptyLine</a></b>(const QString &amp;<i>source</i>, int &amp;<i>start</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#includeSurroundingWhitespace">includeSurroundingWhitespace</a></b>(const QString &amp;<i>source</i>, int &amp;<i>start</i>, int &amp;<i>end</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> AST::UiObjectMemberList *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#searchMemberToInsertAfter">searchMemberToInsertAfter</a></b>(AST::UiObjectMemberList *<i>members</i>, const QStringList &amp;<i>propertyOrder</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> AST::UiArrayMemberList *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#searchMemberToInsertAfter-1">searchMemberToInsertAfter</a></b>(AST::UiArrayMemberList *<i>members</i>, const QStringList &amp;<i>propertyOrder</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> AST::UiObjectMemberList *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-rewriter.html#searchMemberToInsertAfter-2">searchMemberToInsertAfter</a></b>(AST::UiObjectMemberList *<i>members</i>, const QString &amp;<i>propertyName</i>, const QStringList &amp;<i>propertyOrder</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$BindingType$$$ScriptBinding$$$ObjectBinding$$$ArrayBinding -->
+<h3 class="fn" id="BindingType-enum"><a name="BindingType-enum"></a>enum Rewriter::<span class="name">BindingType</span></h3>
+<!-- @@@BindingType -->
+<!-- $$$Range -->
+<h3 class="fn" id="Range-typedef"><a name="Range-typedef"></a>typedef Rewriter::<span class="name">Range</span></h3>
+<!-- @@@Range -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Rewriter[overload1]$$$RewriterconstQString&Utils::ChangeSet*constQStringList& -->
+<h3 class="fn" id="Rewriter"><a name="Rewriter"></a>Rewriter::<span class="name">Rewriter</span>(const <span class="type">QString</span> &amp;<i>originalText</i>, <span class="type"><a href="utils-changeset.html">Utils::ChangeSet</a></span> *<i>changeSet</i>, const <span class="type">QStringList</span> &amp;<i>propertyOrder</i>)</h3>
+<p>Default constructs an instance of Rewriter.</p><!-- @@@Rewriter -->
+<!-- $$$addBinding[overload1]$$$addBindingAST::UiObjectInitializer*constQString&constQString&BindingType -->
+<h3 class="fn" id="addBinding"><a name="addBinding"></a><span class="type"><a href="qmljs-rewriter.html#Range-typedef">Range</a></span> Rewriter::<span class="name">addBinding</span>(<span class="type">AST::UiObjectInitializer</span> *<i>ast</i>, const <span class="type">QString</span> &amp;<i>propertyName</i>, const <span class="type">QString</span> &amp;<i>propertyValue</i>, <span class="type"><a href="qmljs-rewriter.html#BindingType-enum">BindingType</a></span> <i>bindingType</i>)</h3>
+<!-- @@@addBinding -->
+<!-- $$$addBinding$$$addBindingAST::UiObjectInitializer*constQString&constQString&BindingTypeAST::UiObjectMemberList* -->
+<h3 class="fn" id="addBinding-1"><a name="addBinding-1"></a><span class="type"><a href="qmljs-rewriter.html#Range-typedef">Range</a></span> Rewriter::<span class="name">addBinding</span>(<span class="type">AST::UiObjectInitializer</span> *<i>ast</i>, const <span class="type">QString</span> &amp;<i>propertyName</i>, const <span class="type">QString</span> &amp;<i>propertyValue</i>, <span class="type"><a href="qmljs-rewriter.html#BindingType-enum">BindingType</a></span> <i>bindingType</i>, <span class="type">AST::UiObjectMemberList</span> *<i>insertAfter</i>)</h3>
+<!-- @@@addBinding -->
+<!-- $$$addObject[overload1]$$$addObjectAST::UiObjectInitializer*constQString& -->
+<h3 class="fn" id="addObject"><a name="addObject"></a><span class="type"><a href="qmljs-rewriter.html#Range-typedef">Range</a></span> Rewriter::<span class="name">addObject</span>(<span class="type">AST::UiObjectInitializer</span> *<i>ast</i>, const <span class="type">QString</span> &amp;<i>content</i>)</h3>
+<!-- @@@addObject -->
+<!-- $$$addObject$$$addObjectAST::UiObjectInitializer*constQString&AST::UiObjectMemberList* -->
+<h3 class="fn" id="addObject-1"><a name="addObject-1"></a><span class="type"><a href="qmljs-rewriter.html#Range-typedef">Range</a></span> Rewriter::<span class="name">addObject</span>(<span class="type">AST::UiObjectInitializer</span> *<i>ast</i>, const <span class="type">QString</span> &amp;<i>content</i>, <span class="type">AST::UiObjectMemberList</span> *<i>insertAfter</i>)</h3>
+<!-- @@@addObject -->
+<!-- $$$addObject$$$addObjectAST::UiArrayBinding*constQString& -->
+<h3 class="fn" id="addObject-2"><a name="addObject-2"></a><span class="type"><a href="qmljs-rewriter.html#Range-typedef">Range</a></span> Rewriter::<span class="name">addObject</span>(<span class="type">AST::UiArrayBinding</span> *<i>ast</i>, const <span class="type">QString</span> &amp;<i>content</i>)</h3>
+<!-- @@@addObject -->
+<!-- $$$addObject$$$addObjectAST::UiArrayBinding*constQString&AST::UiArrayMemberList* -->
+<h3 class="fn" id="addObject-3"><a name="addObject-3"></a><span class="type"><a href="qmljs-rewriter.html#Range-typedef">Range</a></span> Rewriter::<span class="name">addObject</span>(<span class="type">AST::UiArrayBinding</span> *<i>ast</i>, const <span class="type">QString</span> &amp;<i>content</i>, <span class="type">AST::UiArrayMemberList</span> *<i>insertAfter</i>)</h3>
+<!-- @@@addObject -->
+<!-- $$$appendToArrayBinding[overload1]$$$appendToArrayBindingAST::UiArrayBinding*constQString& -->
+<h3 class="fn" id="appendToArrayBinding"><a name="appendToArrayBinding"></a><span class="type">void</span> Rewriter::<span class="name">appendToArrayBinding</span>(<span class="type">AST::UiArrayBinding</span> *<i>arrayBinding</i>, const <span class="type">QString</span> &amp;<i>content</i>)</h3>
+<!-- @@@appendToArrayBinding -->
+<!-- $$$changeBinding[overload1]$$$changeBindingAST::UiObjectInitializer*constQString&constQString&BindingType -->
+<h3 class="fn" id="changeBinding"><a name="changeBinding"></a><span class="type">void</span> Rewriter::<span class="name">changeBinding</span>(<span class="type">AST::UiObjectInitializer</span> *<i>ast</i>, const <span class="type">QString</span> &amp;<i>propertyName</i>, const <span class="type">QString</span> &amp;<i>newValue</i>, <span class="type"><a href="qmljs-rewriter.html#BindingType-enum">BindingType</a></span> <i>binding</i>)</h3>
+<!-- @@@changeBinding -->
+<!-- $$$includeEmptyGroupedProperty[overload1]$$$includeEmptyGroupedPropertyAST::UiObjectDefinition*AST::UiObjectMember*int&int& -->
+<h3 class="fn" id="includeEmptyGroupedProperty"><a name="includeEmptyGroupedProperty"></a><code>[static] </code><span class="type">void</span> Rewriter::<span class="name">includeEmptyGroupedProperty</span>(<span class="type">AST::UiObjectDefinition</span> *<i>groupedProperty</i>, <span class="type">AST::UiObjectMember</span> *<i>memberToBeRemoved</i>, <span class="type">int</span> &amp;<i>start</i>, <span class="type">int</span> &amp;<i>end</i>)</h3>
+<!-- @@@includeEmptyGroupedProperty -->
+<!-- $$$includeLeadingEmptyLine[overload1]$$$includeLeadingEmptyLineconstQString&int& -->
+<h3 class="fn" id="includeLeadingEmptyLine"><a name="includeLeadingEmptyLine"></a><code>[static] </code><span class="type">void</span> Rewriter::<span class="name">includeLeadingEmptyLine</span>(const <span class="type">QString</span> &amp;<i>source</i>, <span class="type">int</span> &amp;<i>start</i>)</h3>
+<!-- @@@includeLeadingEmptyLine -->
+<!-- $$$includeSurroundingWhitespace[overload1]$$$includeSurroundingWhitespaceconstQString&int&int& -->
+<h3 class="fn" id="includeSurroundingWhitespace"><a name="includeSurroundingWhitespace"></a><code>[static] </code><span class="type">bool</span> Rewriter::<span class="name">includeSurroundingWhitespace</span>(const <span class="type">QString</span> &amp;<i>source</i>, <span class="type">int</span> &amp;<i>start</i>, <span class="type">int</span> &amp;<i>end</i>)</h3>
+<!-- @@@includeSurroundingWhitespace -->
+<!-- $$$removeBindingByName[overload1]$$$removeBindingByNameAST::UiObjectInitializer*constQString& -->
+<h3 class="fn" id="removeBindingByName"><a name="removeBindingByName"></a><span class="type">void</span> Rewriter::<span class="name">removeBindingByName</span>(<span class="type">AST::UiObjectInitializer</span> *<i>ast</i>, const <span class="type">QString</span> &amp;<i>propertyName</i>)</h3>
+<!-- @@@removeBindingByName -->
+<!-- $$$removeObjectMember[overload1]$$$removeObjectMemberAST::UiObjectMember*AST::UiObjectMember* -->
+<h3 class="fn" id="removeObjectMember"><a name="removeObjectMember"></a><span class="type">void</span> Rewriter::<span class="name">removeObjectMember</span>(<span class="type">AST::UiObjectMember</span> *<i>member</i>, <span class="type">AST::UiObjectMember</span> *<i>parent</i>)</h3>
+<!-- @@@removeObjectMember -->
+<!-- $$$searchMemberToInsertAfter[overload1]$$$searchMemberToInsertAfterAST::UiObjectMemberList*constQStringList& -->
+<h3 class="fn" id="searchMemberToInsertAfter"><a name="searchMemberToInsertAfter"></a><code>[static] </code><span class="type">AST::UiObjectMemberList</span> *Rewriter::<span class="name">searchMemberToInsertAfter</span>(<span class="type">AST::UiObjectMemberList</span> *<i>members</i>, const <span class="type">QStringList</span> &amp;<i>propertyOrder</i>)</h3>
+<!-- @@@searchMemberToInsertAfter -->
+<!-- $$$searchMemberToInsertAfter$$$searchMemberToInsertAfterAST::UiArrayMemberList*constQStringList& -->
+<h3 class="fn" id="searchMemberToInsertAfter-1"><a name="searchMemberToInsertAfter-1"></a><code>[static] </code><span class="type">AST::UiArrayMemberList</span> *Rewriter::<span class="name">searchMemberToInsertAfter</span>(<span class="type">AST::UiArrayMemberList</span> *<i>members</i>, const <span class="type">QStringList</span> &amp;<i>propertyOrder</i>)</h3>
+<!-- @@@searchMemberToInsertAfter -->
+<!-- $$$searchMemberToInsertAfter$$$searchMemberToInsertAfterAST::UiObjectMemberList*constQString&constQStringList& -->
+<h3 class="fn" id="searchMemberToInsertAfter-2"><a name="searchMemberToInsertAfter-2"></a><code>[static] </code><span class="type">AST::UiObjectMemberList</span> *Rewriter::<span class="name">searchMemberToInsertAfter</span>(<span class="type">AST::UiObjectMemberList</span> *<i>members</i>, const <span class="type">QString</span> &amp;<i>propertyName</i>, const <span class="type">QStringList</span> &amp;<i>propertyOrder</i>)</h3>
+<!-- @@@searchMemberToInsertAfter -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

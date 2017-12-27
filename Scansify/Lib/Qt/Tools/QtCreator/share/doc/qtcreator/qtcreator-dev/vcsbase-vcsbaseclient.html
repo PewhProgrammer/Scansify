@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- vcsbaseclient.cpp -->
+  <title>VcsBaseClient Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >VcsBaseClient</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#protected-types">Protected Types</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">VcsBaseClient Class</h1>
+<span class="small-subtitle">(<a href="vcsbase-vcsbaseclient.html">VcsBase::VcsBaseClient</a>)<br/></span>
+<!-- $$$VcsBaseClient-brief -->
+<p>The <a href="vcsbase-vcsbaseclient.html">VcsBaseClient</a> class is the base class for Mercurial and Bazaar 'clients'. <a href="#details">More...</a></p>
+<!-- @@@VcsBaseClient -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;VcsBaseClient&gt;</span>
+</td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="vcsbase-vcsbaseclientimpl.html">VcsBase::VcsBaseClientImpl</a></td></tr></table></div><ul>
+<li><a href="vcsbase-vcsbaseclient-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient-statusitem.html">StatusItem</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#VcsBaseClient">VcsBaseClient</a></b>(VcsBaseClientSettings *<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#dtor.VcsBaseClient">~VcsBaseClient</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#commit">commit</a></b>(const QString &amp;<i>repositoryRoot</i>, const QStringList &amp;<i>files</i>, const QString &amp;<i>commitMessageFile</i>, const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#diff">diff</a></b>(const QString &amp;<i>workingDir</i>, const QStringList &amp;<i>files</i> = QStringList(), const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#emitParsedStatus">emitParsedStatus</a></b>(const QString &amp;<i>repository</i>, const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#findTopLevelForFile">findTopLevelForFile</a></b>(const QFileInfo &amp;<i>file</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#import">import</a></b>(const QString &amp;<i>repositoryRoot</i>, const QStringList &amp;<i>files</i>, const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#log">log</a></b>(const QString &amp;<i>workingDir</i>, const QStringList &amp;<i>files</i> = QStringList(), const QStringList &amp;<i>extraOptions</i> = QStringList(), bool <i>enableAnnotationContextMenu</i> = false)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#revertAll">revertAll</a></b>(const QString &amp;<i>workingDir</i>, const QString &amp;<i>revision</i> = QString(), const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#revertFile">revertFile</a></b>(const QString &amp;<i>workingDir</i>, const QString &amp;<i>file</i>, const QString &amp;<i>revision</i> = QString(), const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#status">status</a></b>(const QString &amp;<i>workingDir</i>, const QString &amp;<i>file</i> = QString(), const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#synchronousAdd">synchronousAdd</a></b>(const QString &amp;<i>workingDir</i>, const QString &amp;<i>fileName</i>, const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#synchronousClone">synchronousClone</a></b>(const QString &amp;<i>workingDir</i>, const QString &amp;<i>srcLocation</i>, const QString &amp;<i>dstLocation</i>, const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#synchronousCreateRepository">synchronousCreateRepository</a></b>(const QString &amp;<i>workingDir</i>, const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#synchronousMove">synchronousMove</a></b>(const QString &amp;<i>workingDir</i>, const QString &amp;<i>from</i>, const QString &amp;<i>to</i>, const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#synchronousPull">synchronousPull</a></b>(const QString &amp;<i>workingDir</i>, const QString &amp;<i>srcLocation</i>, const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#synchronousPush">synchronousPush</a></b>(const QString &amp;<i>workingDir</i>, const QString &amp;<i>dstLocation</i>, const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#synchronousRemove">synchronousRemove</a></b>(const QString &amp;<i>workingDir</i>, const QString &amp;<i>fileName</i>, const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#update">update</a></b>(const QString &amp;<i>repositoryRoot</i>, const QString &amp;<i>revision</i> = QString(), const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#view">view</a></b>(const QString &amp;<i>source</i>, const QString &amp;<i>id</i>, const QStringList &amp;<i>extraOptions</i> = QStringList())</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual VcsBaseEditorWidget *</td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#annotate">annotate</a></b>(const QString &amp;<i>workingDir</i>, const QString &amp;<i>file</i>, const QString &amp;<i>revision</i> = QString(), int <i>lineNumber</i> = -1, const QStringList &amp;<i>extraOptions</i> = QStringList()) override</td></tr>
+</table></div>
+<ul>
+<li class="fn">11 public functions inherited from <a href="vcsbase-vcsbaseclientimpl.html#public-functions">VcsBase::VcsBaseClientImpl</a></li>
+</ul>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#changed">changed</a></b>(const QVariant &amp;<i>v</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#parsedStatus">parsedStatus</a></b>(const QList&lt;VcsBase::VcsBaseClient::StatusItem&gt; &amp;<i>statusList</i>)</td></tr>
+</table></div>
+<a name="protected-types"></a>
+<h2 id="protected-types">Protected Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#ConfigCreator-typedef">ConfigCreator</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#VcsCommandTag-enum">VcsCommandTag</a></b> { CreateRepositoryCommand, CloneCommand, AddCommand, RemoveCommand, ..., StatusCommand }</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Utils::ExitCodeInterpreter </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#exitCodeInterpreter">exitCodeInterpreter</a></b>(VcsCommandTag <i>cmd</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual StatusItem </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#parseStatusLine">parseStatusLine</a></b>(const QString &amp;<i>line</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QStringList </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#revisionSpec">revisionSpec</a></b>(const QString &amp;<i>revision</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#setDiffConfigCreator">setDiffConfigCreator</a></b>(ConfigCreator <i>creator</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#setLogConfigCreator">setLogConfigCreator</a></b>(ConfigCreator <i>creator</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#vcsCommandString">vcsCommandString</a></b>(VcsCommandTag <i>cmd</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::Id </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#vcsEditorKind">vcsEditorKind</a></b>(VcsCommandTag <i>cmd</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsbaseclient.html#vcsEditorTitle">vcsEditorTitle</a></b>(const QString &amp;<i>vcsCmd</i>, const QString &amp;<i>sourceId</i>) const</td></tr>
+</table></div>
+<ul>
+<li class="fn">3 protected functions inherited from <a href="vcsbase-vcsbaseclientimpl.html#protected-functions">VcsBase::VcsBaseClientImpl</a></li>
+</ul>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">4 static public members inherited from <a href="vcsbase-vcsbaseclientimpl.html#static-public-members">VcsBase::VcsBaseClientImpl</a></li>
+</ul>
+<a name="details"></a>
+<!-- $$$VcsBaseClient-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="vcsbase-vcsbaseclient.html">VcsBaseClient</a> class is the base class for Mercurial and Bazaar 'clients'.</p>
+<p>Provides base functionality for common commands (diff, log, etc).</p>
+</div>
+<p><b>See also </b>VcsBase::VcsJobRunner.</p>
+<!-- @@@VcsBaseClient -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$ConfigCreator -->
+<h3 class="fn" id="ConfigCreator-typedef"><a name="ConfigCreator-typedef"></a>typedef VcsBaseClient::<span class="name">ConfigCreator</span></h3>
+<!-- @@@ConfigCreator -->
+<!-- $$$VcsCommandTag$$$CreateRepositoryCommand$$$CloneCommand$$$AddCommand$$$RemoveCommand$$$MoveCommand$$$PullCommand$$$PushCommand$$$CommitCommand$$$ImportCommand$$$UpdateCommand$$$RevertCommand$$$AnnotateCommand$$$DiffCommand$$$LogCommand$$$StatusCommand -->
+<h3 class="fn" id="VcsCommandTag-enum"><a name="VcsCommandTag-enum"></a>enum VcsBaseClient::<span class="name">VcsCommandTag</span></h3>
+<!-- @@@VcsCommandTag -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$VcsBaseClient[overload1]$$$VcsBaseClientVcsBaseClientSettings* -->
+<h3 class="fn" id="VcsBaseClient"><a name="VcsBaseClient"></a>VcsBaseClient::<span class="name">VcsBaseClient</span>(<span class="type"><a href="vcsbase-vcsbaseclientsettings.html">VcsBaseClientSettings</a></span> *<i>settings</i>)</h3>
+<p>Default constructs an instance of VcsBaseClient.</p><!-- @@@VcsBaseClient -->
+<!-- $$$~VcsBaseClient[overload1]$$$~VcsBaseClient -->
+<h3 class="fn" id="dtor.VcsBaseClient"><a name="dtor.VcsBaseClient"></a>VcsBaseClient::<span class="name">~VcsBaseClient</span>()</h3>
+<p>Destroys the instance of VcsBaseClient.</p><!-- @@@~VcsBaseClient -->
+<!-- $$$annotate[overload1]$$$annotateconstQString&constQString&constQString&intconstQStringList& -->
+<h3 class="fn" id="annotate"><a name="annotate"></a><code>[override virtual] </code><span class="type"><a href="vcsbase-vcsbaseeditorwidget.html">VcsBaseEditorWidget</a></span> *VcsBaseClient::<span class="name">annotate</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QString</span> &amp;<i>file</i>, const <span class="type">QString</span> &amp;<i>revision</i> = QString(), <span class="type">int</span> <i>lineNumber</i> = -1, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@annotate -->
+<!-- $$$changed[overload1]$$$changedconstQVariant& -->
+<h3 class="fn" id="changed"><a name="changed"></a><code>[signal] </code><span class="type">void</span> VcsBaseClient::<span class="name">changed</span>(const <span class="type">QVariant</span> &amp;<i>v</i>)</h3>
+<!-- @@@changed -->
+<!-- $$$commit[overload1]$$$commitconstQString&constQStringList&constQString&constQStringList& -->
+<h3 class="fn" id="commit"><a name="commit"></a><code>[virtual] </code><span class="type">void</span> VcsBaseClient::<span class="name">commit</span>(const <span class="type">QString</span> &amp;<i>repositoryRoot</i>, const <span class="type">QStringList</span> &amp;<i>files</i>, const <span class="type">QString</span> &amp;<i>commitMessageFile</i>, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@commit -->
+<!-- $$$diff[overload1]$$$diffconstQString&constQStringList&constQStringList& -->
+<h3 class="fn" id="diff"><a name="diff"></a><code>[virtual] </code><span class="type">void</span> VcsBaseClient::<span class="name">diff</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QStringList</span> &amp;<i>files</i> = QStringList(), const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@diff -->
+<!-- $$$emitParsedStatus[overload1]$$$emitParsedStatusconstQString&constQStringList& -->
+<h3 class="fn" id="emitParsedStatus"><a name="emitParsedStatus"></a><code>[virtual] </code><span class="type">void</span> VcsBaseClient::<span class="name">emitParsedStatus</span>(const <span class="type">QString</span> &amp;<i>repository</i>, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@emitParsedStatus -->
+<!-- $$$exitCodeInterpreter[overload1]$$$exitCodeInterpreterVcsCommandTag -->
+<h3 class="fn" id="exitCodeInterpreter"><a name="exitCodeInterpreter"></a><code>[virtual protected] </code><span class="type">Utils::ExitCodeInterpreter</span> VcsBaseClient::<span class="name">exitCodeInterpreter</span>(<span class="type"><a href="vcsbase-vcsbaseclient.html#VcsCommandTag-enum">VcsCommandTag</a></span> <i>cmd</i>) const</h3>
+<!-- @@@exitCodeInterpreter -->
+<!-- $$$findTopLevelForFile[overload1]$$$findTopLevelForFileconstQFileInfo& -->
+<h3 class="fn" id="findTopLevelForFile"><a name="findTopLevelForFile"></a><code>[pure virtual] </code><span class="type">QString</span> VcsBaseClient::<span class="name">findTopLevelForFile</span>(const <span class="type">QFileInfo</span> &amp;<i>file</i>) const</h3>
+<!-- @@@findTopLevelForFile -->
+<!-- $$$import[overload1]$$$importconstQString&constQStringList&constQStringList& -->
+<h3 class="fn" id="import"><a name="import"></a><code>[virtual] </code><span class="type">void</span> VcsBaseClient::<span class="name">import</span>(const <span class="type">QString</span> &amp;<i>repositoryRoot</i>, const <span class="type">QStringList</span> &amp;<i>files</i>, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@import -->
+<!-- $$$log[overload1]$$$logconstQString&constQStringList&constQStringList&bool -->
+<h3 class="fn" id="log"><a name="log"></a><code>[virtual] </code><span class="type">void</span> VcsBaseClient::<span class="name">log</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QStringList</span> &amp;<i>files</i> = QStringList(), const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList(), <span class="type">bool</span> <i>enableAnnotationContextMenu</i> = false)</h3>
+<!-- @@@log -->
+<!-- $$$parseStatusLine[overload1]$$$parseStatusLineconstQString& -->
+<h3 class="fn" id="parseStatusLine"><a name="parseStatusLine"></a><code>[pure virtual protected] </code><span class="type"><a href="vcsbase-vcsbaseclient-statusitem.html">StatusItem</a></span> VcsBaseClient::<span class="name">parseStatusLine</span>(const <span class="type">QString</span> &amp;<i>line</i>) const</h3>
+<!-- @@@parseStatusLine -->
+<!-- $$$parsedStatus[overload1]$$$parsedStatusconstQList<VcsBase::VcsBaseClient::StatusItem>& -->
+<h3 class="fn" id="parsedStatus"><a name="parsedStatus"></a><code>[signal] </code><span class="type">void</span> VcsBaseClient::<span class="name">parsedStatus</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="vcsbase-vcsbaseclient-statusitem.html">VcsBase::VcsBaseClient::StatusItem</a></span>&gt; &amp;<i>statusList</i>)</h3>
+<!-- @@@parsedStatus -->
+<!-- $$$revertAll[overload1]$$$revertAllconstQString&constQString&constQStringList& -->
+<h3 class="fn" id="revertAll"><a name="revertAll"></a><code>[virtual] </code><span class="type">void</span> VcsBaseClient::<span class="name">revertAll</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QString</span> &amp;<i>revision</i> = QString(), const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@revertAll -->
+<!-- $$$revertFile[overload1]$$$revertFileconstQString&constQString&constQString&constQStringList& -->
+<h3 class="fn" id="revertFile"><a name="revertFile"></a><code>[virtual] </code><span class="type">void</span> VcsBaseClient::<span class="name">revertFile</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QString</span> &amp;<i>file</i>, const <span class="type">QString</span> &amp;<i>revision</i> = QString(), const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@revertFile -->
+<!-- $$$revisionSpec[overload1]$$$revisionSpecconstQString& -->
+<h3 class="fn" id="revisionSpec"><a name="revisionSpec"></a><code>[pure virtual protected] </code><span class="type">QStringList</span> VcsBaseClient::<span class="name">revisionSpec</span>(const <span class="type">QString</span> &amp;<i>revision</i>) const</h3>
+<!-- @@@revisionSpec -->
+<!-- $$$setDiffConfigCreator[overload1]$$$setDiffConfigCreatorConfigCreator -->
+<h3 class="fn" id="setDiffConfigCreator"><a name="setDiffConfigCreator"></a><code>[protected] </code><span class="type">void</span> VcsBaseClient::<span class="name">setDiffConfigCreator</span>(<span class="type"><a href="vcsbase-vcsbaseclient.html#ConfigCreator-typedef">ConfigCreator</a></span> <i>creator</i>)</h3>
+<!-- @@@setDiffConfigCreator -->
+<!-- $$$setLogConfigCreator[overload1]$$$setLogConfigCreatorConfigCreator -->
+<h3 class="fn" id="setLogConfigCreator"><a name="setLogConfigCreator"></a><code>[protected] </code><span class="type">void</span> VcsBaseClient::<span class="name">setLogConfigCreator</span>(<span class="type"><a href="vcsbase-vcsbaseclient.html#ConfigCreator-typedef">ConfigCreator</a></span> <i>creator</i>)</h3>
+<!-- @@@setLogConfigCreator -->
+<!-- $$$status[overload1]$$$statusconstQString&constQString&constQStringList& -->
+<h3 class="fn" id="status"><a name="status"></a><code>[virtual] </code><span class="type">void</span> VcsBaseClient::<span class="name">status</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QString</span> &amp;<i>file</i> = QString(), const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@status -->
+<!-- $$$synchronousAdd[overload1]$$$synchronousAddconstQString&constQString&constQStringList& -->
+<h3 class="fn" id="synchronousAdd"><a name="synchronousAdd"></a><code>[virtual] </code><span class="type">bool</span> VcsBaseClient::<span class="name">synchronousAdd</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QString</span> &amp;<i>fileName</i>, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@synchronousAdd -->
+<!-- $$$synchronousClone[overload1]$$$synchronousCloneconstQString&constQString&constQString&constQStringList& -->
+<h3 class="fn" id="synchronousClone"><a name="synchronousClone"></a><code>[virtual] </code><span class="type">bool</span> VcsBaseClient::<span class="name">synchronousClone</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QString</span> &amp;<i>srcLocation</i>, const <span class="type">QString</span> &amp;<i>dstLocation</i>, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@synchronousClone -->
+<!-- $$$synchronousCreateRepository[overload1]$$$synchronousCreateRepositoryconstQString&constQStringList& -->
+<h3 class="fn" id="synchronousCreateRepository"><a name="synchronousCreateRepository"></a><code>[virtual] </code><span class="type">bool</span> VcsBaseClient::<span class="name">synchronousCreateRepository</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@synchronousCreateRepository -->
+<!-- $$$synchronousMove[overload1]$$$synchronousMoveconstQString&constQString&constQString&constQStringList& -->
+<h3 class="fn" id="synchronousMove"><a name="synchronousMove"></a><code>[virtual] </code><span class="type">bool</span> VcsBaseClient::<span class="name">synchronousMove</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QString</span> &amp;<i>from</i>, const <span class="type">QString</span> &amp;<i>to</i>, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@synchronousMove -->
+<!-- $$$synchronousPull[overload1]$$$synchronousPullconstQString&constQString&constQStringList& -->
+<h3 class="fn" id="synchronousPull"><a name="synchronousPull"></a><code>[virtual] </code><span class="type">bool</span> VcsBaseClient::<span class="name">synchronousPull</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QString</span> &amp;<i>srcLocation</i>, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@synchronousPull -->
+<!-- $$$synchronousPush[overload1]$$$synchronousPushconstQString&constQString&constQStringList& -->
+<h3 class="fn" id="synchronousPush"><a name="synchronousPush"></a><code>[virtual] </code><span class="type">bool</span> VcsBaseClient::<span class="name">synchronousPush</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QString</span> &amp;<i>dstLocation</i>, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@synchronousPush -->
+<!-- $$$synchronousRemove[overload1]$$$synchronousRemoveconstQString&constQString&constQStringList& -->
+<h3 class="fn" id="synchronousRemove"><a name="synchronousRemove"></a><code>[virtual] </code><span class="type">bool</span> VcsBaseClient::<span class="name">synchronousRemove</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type">QString</span> &amp;<i>fileName</i>, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@synchronousRemove -->
+<!-- $$$update[overload1]$$$updateconstQString&constQString&constQStringList& -->
+<h3 class="fn" id="update"><a name="update"></a><code>[virtual] </code><span class="type">void</span> VcsBaseClient::<span class="name">update</span>(const <span class="type">QString</span> &amp;<i>repositoryRoot</i>, const <span class="type">QString</span> &amp;<i>revision</i> = QString(), const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@update -->
+<!-- $$$vcsCommandString[overload1]$$$vcsCommandStringVcsCommandTag -->
+<h3 class="fn" id="vcsCommandString"><a name="vcsCommandString"></a><code>[virtual protected] </code><span class="type">QString</span> VcsBaseClient::<span class="name">vcsCommandString</span>(<span class="type"><a href="vcsbase-vcsbaseclient.html#VcsCommandTag-enum">VcsCommandTag</a></span> <i>cmd</i>) const</h3>
+<!-- @@@vcsCommandString -->
+<!-- $$$vcsEditorKind[overload1]$$$vcsEditorKindVcsCommandTag -->
+<h3 class="fn" id="vcsEditorKind"><a name="vcsEditorKind"></a><code>[pure virtual protected] </code><span class="type"><a href="core-id.html">Core::Id</a></span> VcsBaseClient::<span class="name">vcsEditorKind</span>(<span class="type"><a href="vcsbase-vcsbaseclient.html#VcsCommandTag-enum">VcsCommandTag</a></span> <i>cmd</i>) const</h3>
+<!-- @@@vcsEditorKind -->
+<!-- $$$vcsEditorTitle[overload1]$$$vcsEditorTitleconstQString&constQString& -->
+<h3 class="fn" id="vcsEditorTitle"><a name="vcsEditorTitle"></a><code>[protected] </code><span class="type">QString</span> VcsBaseClient::<span class="name">vcsEditorTitle</span>(const <span class="type">QString</span> &amp;<i>vcsCmd</i>, const <span class="type">QString</span> &amp;<i>sourceId</i>) const</h3>
+<!-- @@@vcsEditorTitle -->
+<!-- $$$view[overload1]$$$viewconstQString&constQString&constQStringList& -->
+<h3 class="fn" id="view"><a name="view"></a><code>[virtual] </code><span class="type">void</span> VcsBaseClient::<span class="name">view</span>(const <span class="type">QString</span> &amp;<i>source</i>, const <span class="type">QString</span> &amp;<i>id</i>, const <span class="type">QStringList</span> &amp;<i>extraOptions</i> = QStringList())</h3>
+<!-- @@@view -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

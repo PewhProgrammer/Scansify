@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Field Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Field</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Field Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-jsonfieldpage-field.html">ProjectExplorer::JsonFieldPage::Field</a>)<br/></span>
+<ul>
+<li><a href="projectexplorer-jsonfieldpage-field-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#Field">Field</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#dtor.Field">~Field</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#adjustState">adjustState</a></b>(Utils::MacroExpander *<i>expander</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#cleanup">cleanup</a></b>(Utils::MacroExpander *<i>expander</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#createWidget">createWidget</a></b>(JsonFieldPage *<i>page</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#displayName">displayName</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#hasSpan">hasSpan</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#initialize">initialize</a></b>(Utils::MacroExpander *<i>expander</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#isMandatory">isMandatory</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#name">name</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#setEnabled">setEnabled</a></b>(bool <i>e</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#setVisible">setVisible</a></b>(bool <i>v</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#suppressName">suppressName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#toolTip">toolTip</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#validate">validate</a></b>(Utils::MacroExpander *<i>expander</i>, QString *<i>message</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#widget">widget</a></b>(const QString &amp;<i>displayName</i>, JsonFieldPage *<i>page</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Field *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#parse">parse</a></b>(const QVariant &amp;<i>input</i>, QString *<i>errorMessage</i>)</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QWidget *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#createWidget-1">createWidget</a></b>(const QString &amp;<i>displayName</i>, JsonFieldPage *<i>page</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#initializeData">initializeData</a></b>(Utils::MacroExpander *<i>expander</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#parseData">parseData</a></b>(const QVariant &amp;<i>data</i>, QString *<i>errorMessage</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#setup">setup</a></b>(JsonFieldPage *<i>page</i>, const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonfieldpage-field.html#widget-1">widget</a></b>() const</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Field[overload1]$$$Field -->
+<h3 class="fn" id="Field"><a name="Field"></a>Field::<span class="name">Field</span>()</h3>
+<p>Default constructs an instance of Field.</p><!-- @@@Field -->
+<!-- $$$~Field[overload1]$$$~Field -->
+<h3 class="fn" id="dtor.Field"><a name="dtor.Field"></a><code>[virtual] </code>Field::<span class="name">~Field</span>()</h3>
+<p>Destroys the instance of Field. The destructor is virtual.</p><!-- @@@~Field -->
+<!-- $$$adjustState[overload1]$$$adjustStateUtils::MacroExpander* -->
+<h3 class="fn" id="adjustState"><a name="adjustState"></a><span class="type">void</span> Field::<span class="name">adjustState</span>(<span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *<i>expander</i>)</h3>
+<!-- @@@adjustState -->
+<!-- $$$cleanup[overload1]$$$cleanupUtils::MacroExpander* -->
+<h3 class="fn" id="cleanup"><a name="cleanup"></a><code>[virtual] </code><span class="type">void</span> Field::<span class="name">cleanup</span>(<span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *<i>expander</i>)</h3>
+<!-- @@@cleanup -->
+<!-- $$$createWidget[overload1]$$$createWidgetJsonFieldPage* -->
+<h3 class="fn" id="createWidget"><a name="createWidget"></a><span class="type">void</span> Field::<span class="name">createWidget</span>(<span class="type"><a href="projectexplorer-jsonfieldpage.html#JsonFieldPage">JsonFieldPage</a></span> *<i>page</i>)</h3>
+<!-- @@@createWidget -->
+<!-- $$$createWidget$$$createWidgetconstQString&JsonFieldPage* -->
+<h3 class="fn" id="createWidget-1"><a name="createWidget-1"></a><code>[pure virtual protected] </code><span class="type">QWidget</span> *Field::<span class="name">createWidget</span>(const <span class="type">QString</span> &amp;<i>displayName</i>, <span class="type"><a href="projectexplorer-jsonfieldpage.html#JsonFieldPage">JsonFieldPage</a></span> *<i>page</i>)</h3>
+<!-- @@@createWidget -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><span class="type">QString</span> Field::<span class="name">displayName</span>()</h3>
+<!-- @@@displayName -->
+<!-- $$$hasSpan[overload1]$$$hasSpan -->
+<h3 class="fn" id="hasSpan"><a name="hasSpan"></a><span class="type">bool</span> Field::<span class="name">hasSpan</span>()</h3>
+<!-- @@@hasSpan -->
+<!-- $$$initialize[overload1]$$$initializeUtils::MacroExpander* -->
+<h3 class="fn" id="initialize"><a name="initialize"></a><span class="type">void</span> Field::<span class="name">initialize</span>(<span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *<i>expander</i>)</h3>
+<!-- @@@initialize -->
+<!-- $$$initializeData[overload1]$$$initializeDataUtils::MacroExpander* -->
+<h3 class="fn" id="initializeData"><a name="initializeData"></a><code>[virtual protected] </code><span class="type">void</span> Field::<span class="name">initializeData</span>(<span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *<i>expander</i>)</h3>
+<!-- @@@initializeData -->
+<!-- $$$isMandatory[overload1]$$$isMandatory -->
+<h3 class="fn" id="isMandatory"><a name="isMandatory"></a><span class="type">bool</span> Field::<span class="name">isMandatory</span>()</h3>
+<!-- @@@isMandatory -->
+<!-- $$$name[overload1]$$$name -->
+<h3 class="fn" id="name"><a name="name"></a><span class="type">QString</span> Field::<span class="name">name</span>()</h3>
+<!-- @@@name -->
+<!-- $$$parse[overload1]$$$parseconstQVariant&QString* -->
+<h3 class="fn" id="parse"><a name="parse"></a><code>[static] </code><span class="type"><a href="projectexplorer-jsonfieldpage-field.html#Field">Field</a></span> *Field::<span class="name">parse</span>(const <span class="type">QVariant</span> &amp;<i>input</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@parse -->
+<!-- $$$parseData[overload1]$$$parseDataconstQVariant&QString* -->
+<h3 class="fn" id="parseData"><a name="parseData"></a><code>[pure virtual protected] </code><span class="type">bool</span> Field::<span class="name">parseData</span>(const <span class="type">QVariant</span> &amp;<i>data</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@parseData -->
+<!-- $$$setEnabled[overload1]$$$setEnabledbool -->
+<h3 class="fn" id="setEnabled"><a name="setEnabled"></a><code>[virtual] </code><span class="type">void</span> Field::<span class="name">setEnabled</span>(<span class="type">bool</span> <i>e</i>)</h3>
+<!-- @@@setEnabled -->
+<!-- $$$setVisible[overload1]$$$setVisiblebool -->
+<h3 class="fn" id="setVisible"><a name="setVisible"></a><span class="type">void</span> Field::<span class="name">setVisible</span>(<span class="type">bool</span> <i>v</i>)</h3>
+<!-- @@@setVisible -->
+<!-- $$$setup[overload1]$$$setupJsonFieldPage*constQString& -->
+<h3 class="fn" id="setup"><a name="setup"></a><code>[virtual protected] </code><span class="type">void</span> Field::<span class="name">setup</span>(<span class="type"><a href="projectexplorer-jsonfieldpage.html#JsonFieldPage">JsonFieldPage</a></span> *<i>page</i>, const <span class="type">QString</span> &amp;<i>name</i>)</h3>
+<!-- @@@setup -->
+<!-- $$$suppressName[overload1]$$$suppressName -->
+<h3 class="fn" id="suppressName"><a name="suppressName"></a><code>[virtual] </code><span class="type">bool</span> Field::<span class="name">suppressName</span>() const</h3>
+<!-- @@@suppressName -->
+<!-- $$$toolTip[overload1]$$$toolTip -->
+<h3 class="fn" id="toolTip"><a name="toolTip"></a><span class="type">QString</span> Field::<span class="name">toolTip</span>()</h3>
+<!-- @@@toolTip -->
+<!-- $$$validate[overload1]$$$validateUtils::MacroExpander*QString* -->
+<h3 class="fn" id="validate"><a name="validate"></a><code>[virtual] </code><span class="type">bool</span> Field::<span class="name">validate</span>(<span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *<i>expander</i>, <span class="type">QString</span> *<i>message</i>)</h3>
+<!-- @@@validate -->
+<!-- $$$widget[overload1]$$$widgetconstQString&JsonFieldPage* -->
+<h3 class="fn" id="widget"><a name="widget"></a><span class="type">QWidget</span> *Field::<span class="name">widget</span>(const <span class="type">QString</span> &amp;<i>displayName</i>, <span class="type"><a href="projectexplorer-jsonfieldpage.html#JsonFieldPage">JsonFieldPage</a></span> *<i>page</i>)</h3>
+<!-- @@@widget -->
+<!-- $$$widget$$$widget -->
+<h3 class="fn" id="widget-1"><a name="widget-1"></a><code>[protected] </code><span class="type">QWidget</span> *Field::<span class="name">widget</span>() const</h3>
+<!-- @@@widget -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

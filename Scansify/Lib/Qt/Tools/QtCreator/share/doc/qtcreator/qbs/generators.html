@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- qbs.qdoc -->
+  <title>Generators | Qbs Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="index.html">Qbs Manual</a></td><td >Generators</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qbs 1.9.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="shell.html" />
+  <link rel="next" href="custom-modules.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="shell.html">Using the Shell</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="custom-modules.html">Custom Modules and Items</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#using-generators">Using Generators</a></li>
+<li class="level1"><a href="#limitations">Limitations</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Generators</h1>
+<span class="subtitle"></span>
+<!-- $$$generators.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>Generators are a Qbs sub-tool and set of APIs which enable arbitrary processing to be performed on the build graph. Currently they are used to implement IDE integration with popular IDEs like Visual Studio.</p>
+<a name="using-generators"></a>
+<h2 id="using-generators">Using Generators</h2>
+<p>To generate a project for another build system like Visual Studio, use the <code>qbs-generate</code> sub-command and specify a generator using the <code>-g</code> option. For example:</p>
+<pre class="cpp">
+
+  <span class="preprocessor"># For Visual Studio</span>
+  qbs generate <span class="operator">-</span>g visualstudio2015
+
+</pre>
+<p>Qbs will then generate a series of files in the current directory, based on the generator that was chosen. For the Visual Studio generator, the resulting project files can be opened in the respective IDEs and all work can be performed there.</p>
+<p>The project files will expose as much information as possible to the IDE and will use Qbs to perform the actual build.</p>
+<p><b>Note: </b>You cannot modify build system files and expect the changes to be reflected in Qbs; you must edit your Qbs project files and re-run <code>qbs-generate</code> in order for the changes to be reflected in your IDE.</p><a name="limitations"></a>
+<h2 id="limitations">Limitations</h2>
+<p>Due to the high flexibility of the Qbs project format and build engine, some projects may be too complex to produce an equivalent project file for another build system.</p>
+<p>This list of limitations aims to be as small as possible, but one of the most notable (at least for the Visual Studio generator) is that certain properties must contain the same value across all build configurations. For example, the following is not allowed:</p>
+<pre class="cpp">
+
+  Product {
+      <span class="comment">// ERROR: 'name' property cannot have different values based on the configuration</span>
+      name: qbs<span class="operator">.</span>configuration <span class="operator">=</span><span class="operator">=</span><span class="operator">=</span> <span class="string">&quot;debug&quot;</span>
+          <span class="operator">?</span> <span class="string">&quot;MyProduct_debug&quot;</span>
+          : <span class="string">&quot;MyProduct&quot;</span>
+  }
+
+</pre>
+<p>Note that this limitation only applies when property values are varied on the configuration name. For example, the following is OK (as long as the value of xyz itself does not vary across configurations):</p>
+<pre class="cpp">
+
+  Product {
+      <span class="comment">// OK</span>
+      property bool isDebug: <span class="operator">&lt;</span>some value<span class="operator">&gt;</span>
+      name: isDebug <span class="operator">?</span> <span class="string">&quot;MyProduct_debug&quot;</span> : <span class="string">&quot;MyProduct&quot;</span>
+  }
+
+</pre>
+<p>The properties to which the limitation applies includes but is not limited to:</p>
+<ul>
+<li><a href="product-item.html">Product</a>.name</li>
+<li><a href="bundle-module.html">bundle</a>.isBundle</li>
+</ul>
+<p>If a simple workaround is possible in a particular case (e.g&#x2e; varying Product.targetName across configuration instead of Product.name), the generator will typically suggest it in the error message.</p>
+</div>
+<!-- @@@generators.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="shell.html">Using the Shell</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="custom-modules.html">Custom Modules and Items</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

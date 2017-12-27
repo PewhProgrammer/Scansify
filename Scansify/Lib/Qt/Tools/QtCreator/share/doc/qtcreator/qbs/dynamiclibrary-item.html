@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- dynamiclibrary.qdoc -->
+  <title>DynamicLibrary Item | Qbs Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="index.html">Qbs Manual</a></td><td >DynamicLibrary Item</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qbs 1.9.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="cppapplication-item.html" />
+  <link rel="next" href="innosetup-item.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="cppapplication-item.html">CppApplication Item</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="innosetup-item.html">InnoSetup Item</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#dynamiclibrary-properties">DynamicLibrary Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">DynamicLibrary Item</h1>
+<span class="subtitle"></span>
+<!-- $$$dynamiclibrary-item.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>A <code>DynamicLibrary</code> item is a <code>Product</code> that has its type set to &quot;dynamiclibrary&quot;. It exists for the convenience of project file authors.</p>
+<p>For Android targets, the following applies:</p>
+<ul>
+<li>The product type contains &quot;android.nativelibrary&quot; in addition to &quot;dynamiclibrary&quot;.</li>
+<li>There is a dependency on the <a href="cpp-module.html">cpp</a> and <a href="android-ndk-module.html">Android.ndk</a> modules.</li>
+</ul>
+<a name="dynamiclibrary-properties"></a>
+<h2 id="dynamiclibrary-properties">DynamicLibrary Properties</h2>
+<p>The following properties are available in addition to the ones inherited from <code>Product</code>.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >architectures</td><td >stringList</td><td >see below</td><td >This property is only relevant for Android targets. There, it specifies for which architectures to build, with the default value <code>[&quot;armeabi&quot;]</code>. This information influences the <code>profiles</code> property.</td></tr>
+<tr valign="top" class="even"><td >bundleExtension</td><td >string</td><td >empty</td><td >The extension to use for the product's bundle. Only relevant on Darwin systems.</td></tr>
+</table></div>
+</div>
+<!-- @@@dynamiclibrary-item.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="cppapplication-item.html">CppApplication Item</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="innosetup-item.html">InnoSetup Item</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

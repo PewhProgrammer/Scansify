@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Indenter Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Indenter</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Indenter Class</h1>
+<span class="small-subtitle">(<a href="texteditor-indenter.html">TextEditor::Indenter</a>)<br/></span>
+<ul>
+<li><a href="texteditor-indenter-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-indenter.html#Indenter">Indenter</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="texteditor-indenter.html#dtor.Indenter">~Indenter</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-indenter.html#indent">indent</a></b>(QTextDocument *<i>doc</i>, const QTextCursor &amp;<i>cursor</i>, const QChar &amp;<i>typedChar</i>, const TabSettings &amp;<i>tabSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-indenter.html#indentBlock">indentBlock</a></b>(QTextDocument *<i>doc</i>, const QTextBlock &amp;<i>block</i>, const QChar &amp;<i>typedChar</i>, const TabSettings &amp;<i>tabSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-indenter.html#indentFor">indentFor</a></b>(const QTextBlock &amp;<i>block</i>, const TextEditor::TabSettings &amp;<i>tabSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual IndentationForBlock </td><td class="memItemRight bottomAlign"><b><a href="texteditor-indenter.html#indentationForBlocks">indentationForBlocks</a></b>(const QVector&lt;QTextBlock&gt; &amp;<i>blocks</i>, const TextEditor::TabSettings &amp;<i>tabSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-indenter.html#invalidateCache">invalidateCache</a></b>(QTextDocument *<i>doc</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-indenter.html#isElectricCharacter">isElectricCharacter</a></b>(const QChar &amp;<i>ch</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-indenter.html#reindent">reindent</a></b>(QTextDocument *<i>doc</i>, const QTextCursor &amp;<i>cursor</i>, const TabSettings &amp;<i>tabSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-indenter.html#setCodeStylePreferences">setCodeStylePreferences</a></b>(ICodeStylePreferences *<i>preferences</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Indenter[overload1]$$$Indenter -->
+<h3 class="fn" id="Indenter"><a name="Indenter"></a>Indenter::<span class="name">Indenter</span>()</h3>
+<p>Default constructs an instance of Indenter.</p><!-- @@@Indenter -->
+<!-- $$$~Indenter[overload1]$$$~Indenter -->
+<h3 class="fn" id="dtor.Indenter"><a name="dtor.Indenter"></a><code>[virtual] </code>Indenter::<span class="name">~Indenter</span>()</h3>
+<p>Destroys the instance of Indenter. The destructor is virtual.</p><!-- @@@~Indenter -->
+<!-- $$$indent[overload1]$$$indentQTextDocument*constQTextCursor&constQChar&constTabSettings& -->
+<h3 class="fn" id="indent"><a name="indent"></a><code>[virtual] </code><span class="type">void</span> Indenter::<span class="name">indent</span>(<span class="type">QTextDocument</span> *<i>doc</i>, const <span class="type">QTextCursor</span> &amp;<i>cursor</i>, const <span class="type">QChar</span> &amp;<i>typedChar</i>, const <span class="type"><a href="texteditor-tabsettings.html">TabSettings</a></span> &amp;<i>tabSettings</i>)</h3>
+<!-- @@@indent -->
+<!-- $$$indentBlock[overload1]$$$indentBlockQTextDocument*constQTextBlock&constQChar&constTabSettings& -->
+<h3 class="fn" id="indentBlock"><a name="indentBlock"></a><code>[virtual] </code><span class="type">void</span> Indenter::<span class="name">indentBlock</span>(<span class="type">QTextDocument</span> *<i>doc</i>, const <span class="type">QTextBlock</span> &amp;<i>block</i>, const <span class="type">QChar</span> &amp;<i>typedChar</i>, const <span class="type"><a href="texteditor-tabsettings.html">TabSettings</a></span> &amp;<i>tabSettings</i>)</h3>
+<!-- @@@indentBlock -->
+<!-- $$$indentFor[overload1]$$$indentForconstQTextBlock&constTextEditor::TabSettings& -->
+<h3 class="fn" id="indentFor"><a name="indentFor"></a><code>[virtual] </code><span class="type">int</span> Indenter::<span class="name">indentFor</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>, const <span class="type"><a href="texteditor-tabsettings.html">TextEditor::TabSettings</a></span> &amp;<i>tabSettings</i>)</h3>
+<!-- @@@indentFor -->
+<!-- $$$indentationForBlocks[overload1]$$$indentationForBlocksconstQVector<QTextBlock>&constTextEditor::TabSettings& -->
+<h3 class="fn" id="indentationForBlocks"><a name="indentationForBlocks"></a><code>[virtual] </code><span class="type">IndentationForBlock</span> Indenter::<span class="name">indentationForBlocks</span>(const <span class="type">QVector</span>&lt;<span class="type">QTextBlock</span>&gt; &amp;<i>blocks</i>, const <span class="type"><a href="texteditor-tabsettings.html">TextEditor::TabSettings</a></span> &amp;<i>tabSettings</i>)</h3>
+<!-- @@@indentationForBlocks -->
+<!-- $$$invalidateCache[overload1]$$$invalidateCacheQTextDocument* -->
+<h3 class="fn" id="invalidateCache"><a name="invalidateCache"></a><code>[virtual] </code><span class="type">void</span> Indenter::<span class="name">invalidateCache</span>(<span class="type">QTextDocument</span> *<i>doc</i>)</h3>
+<!-- @@@invalidateCache -->
+<!-- $$$isElectricCharacter[overload1]$$$isElectricCharacterconstQChar& -->
+<h3 class="fn" id="isElectricCharacter"><a name="isElectricCharacter"></a><code>[virtual] </code><span class="type">bool</span> Indenter::<span class="name">isElectricCharacter</span>(const <span class="type">QChar</span> &amp;<i>ch</i>) const</h3>
+<!-- @@@isElectricCharacter -->
+<!-- $$$reindent[overload1]$$$reindentQTextDocument*constQTextCursor&constTabSettings& -->
+<h3 class="fn" id="reindent"><a name="reindent"></a><code>[virtual] </code><span class="type">void</span> Indenter::<span class="name">reindent</span>(<span class="type">QTextDocument</span> *<i>doc</i>, const <span class="type">QTextCursor</span> &amp;<i>cursor</i>, const <span class="type"><a href="texteditor-tabsettings.html">TabSettings</a></span> &amp;<i>tabSettings</i>)</h3>
+<!-- @@@reindent -->
+<!-- $$$setCodeStylePreferences[overload1]$$$setCodeStylePreferencesICodeStylePreferences* -->
+<h3 class="fn" id="setCodeStylePreferences"><a name="setCodeStylePreferences"></a><code>[virtual] </code><span class="type">void</span> Indenter::<span class="name">setCodeStylePreferences</span>(<span class="type"><a href="texteditor-icodestylepreferences.html">ICodeStylePreferences</a></span> *<i>preferences</i>)</h3>
+<!-- @@@setCodeStylePreferences -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

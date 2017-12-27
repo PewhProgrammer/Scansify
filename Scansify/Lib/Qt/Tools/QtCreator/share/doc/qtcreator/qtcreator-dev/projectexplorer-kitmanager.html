@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>KitManager Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >KitManager</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">KitManager Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-kitmanager.html">ProjectExplorer::KitManager</a>)<br/></span>
+<ul>
+<li><a href="projectexplorer-kitmanager-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#dtor.KitManager">~KitManager</a></b>() override</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#defaultkitChanged">defaultkitChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#kitAdded">kitAdded</a></b>(<i>ProjectExplorer::Kit *</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#kitRemoved">kitRemoved</a></b>(<i>ProjectExplorer::Kit *</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#kitUpdated">kitUpdated</a></b>(<i>ProjectExplorer::Kit *</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#kitsChanged">kitsChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#kitsLoaded">kitsLoaded</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#unmanagedKitUpdated">unmanagedKitUpdated</a></b>(<i>ProjectExplorer::Kit *</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QSet&lt;Core::Id&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#availableFeatures">availableFeatures</a></b>(Core::Id <i>platformId</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Internal::KitManagerConfigWidget *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#createConfigWidget">createConfigWidget</a></b>(Kit *<i>k</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Kit *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#defaultKit">defaultKit</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#deleteKit">deleteKit</a></b>(Kit *<i>k</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#deregisterKit">deregisterKit</a></b>(Kit *<i>k</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#deregisterKitInformation">deregisterKitInformation</a></b>(KitInformation *<i>ki</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> KitManager *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#instance">instance</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#isLoaded">isLoaded</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Kit *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#kit">kit</a></b>(const Kit::Predicate &amp;<i>predicate</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Kit *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#kit-1">kit</a></b>(Core::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;KitInformation *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#kitInformation">kitInformation</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;Kit *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#kits">kits</a></b>(const Kit::Predicate &amp;<i>predicate</i> = Kit::Predicate())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#registerKit">registerKit</a></b>(Kit *<i>k</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#registerKitInformation">registerKitInformation</a></b>(KitInformation *<i>ki</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#saveKits">saveKits</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#setDefaultKit">setDefaultKit</a></b>(Kit *<i>k</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;Kit *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#sortKits">sortKits</a></b>(const QList&lt;Kit *&gt; <i>kits</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QSet&lt;Core::Id&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-kitmanager.html#supportedPlatforms">supportedPlatforms</a></b>()</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$~KitManager[overload1]$$$~KitManager -->
+<h3 class="fn" id="dtor.KitManager"><a name="dtor.KitManager"></a>KitManager::<span class="name">~KitManager</span>()</h3>
+<p>Destroys the instance of KitManager.</p><!-- @@@~KitManager -->
+<!-- $$$availableFeatures[overload1]$$$availableFeaturesCore::Id -->
+<h3 class="fn" id="availableFeatures"><a name="availableFeatures"></a><code>[static] </code><span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Core::Id</a></span>&gt; KitManager::<span class="name">availableFeatures</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>platformId</i>)</h3>
+<!-- @@@availableFeatures -->
+<!-- $$$createConfigWidget[overload1]$$$createConfigWidgetKit* -->
+<h3 class="fn" id="createConfigWidget"><a name="createConfigWidget"></a><code>[static] </code><span class="type"><a href="projectexplorer-internal-kitmanagerconfigwidget.html">Internal::KitManagerConfigWidget</a></span> *KitManager::<span class="name">createConfigWidget</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>)</h3>
+<!-- @@@createConfigWidget -->
+<!-- $$$defaultKit[overload1]$$$defaultKit -->
+<h3 class="fn" id="defaultKit"><a name="defaultKit"></a><code>[static] </code><span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *KitManager::<span class="name">defaultKit</span>()</h3>
+<p><b>See also </b><a href="projectexplorer-kitmanager.html#setDefaultKit">setDefaultKit</a>().</p>
+<!-- @@@defaultKit -->
+<!-- $$$defaultkitChanged[overload1]$$$defaultkitChanged -->
+<h3 class="fn" id="defaultkitChanged"><a name="defaultkitChanged"></a><code>[signal] </code><span class="type">void</span> KitManager::<span class="name">defaultkitChanged</span>()</h3>
+<!-- @@@defaultkitChanged -->
+<!-- $$$deleteKit[overload1]$$$deleteKitKit* -->
+<h3 class="fn" id="deleteKit"><a name="deleteKit"></a><code>[static] </code><span class="type">void</span> KitManager::<span class="name">deleteKit</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>)</h3>
+<!-- @@@deleteKit -->
+<!-- $$$deregisterKit[overload1]$$$deregisterKitKit* -->
+<h3 class="fn" id="deregisterKit"><a name="deregisterKit"></a><code>[static] </code><span class="type">void</span> KitManager::<span class="name">deregisterKit</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>)</h3>
+<!-- @@@deregisterKit -->
+<!-- $$$deregisterKitInformation[overload1]$$$deregisterKitInformationKitInformation* -->
+<h3 class="fn" id="deregisterKitInformation"><a name="deregisterKitInformation"></a><code>[static] </code><span class="type">void</span> KitManager::<span class="name">deregisterKitInformation</span>(<span class="type"><a href="projectexplorer-kitinformation.html">KitInformation</a></span> *<i>ki</i>)</h3>
+<!-- @@@deregisterKitInformation -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" id="instance"><a name="instance"></a><code>[static] </code><span class="type">KitManager</span> *KitManager::<span class="name">instance</span>()</h3>
+<!-- @@@instance -->
+<!-- $$$isLoaded[overload1]$$$isLoaded -->
+<h3 class="fn" id="isLoaded"><a name="isLoaded"></a><code>[static] </code><span class="type">bool</span> KitManager::<span class="name">isLoaded</span>()</h3>
+<!-- @@@isLoaded -->
+<!-- $$$kit[overload1]$$$kitconstKit::Predicate& -->
+<h3 class="fn" id="kit"><a name="kit"></a><code>[static] </code><span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *KitManager::<span class="name">kit</span>(const <span class="type">Kit::Predicate</span> &amp;<i>predicate</i>)</h3>
+<!-- @@@kit -->
+<!-- $$$kit$$$kitCore::Id -->
+<h3 class="fn" id="kit-1"><a name="kit-1"></a><code>[static] </code><span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *KitManager::<span class="name">kit</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>)</h3>
+<!-- @@@kit -->
+<!-- $$$kitAdded[overload1]$$$kitAddedProjectExplorer::Kit* -->
+<h3 class="fn" id="kitAdded"><a name="kitAdded"></a><code>[signal] </code><span class="type">void</span> KitManager::<span class="name">kitAdded</span>(<i>ProjectExplorer::Kit *</i>)</h3>
+<!-- @@@kitAdded -->
+<!-- $$$kitInformation[overload1]$$$kitInformation -->
+<h3 class="fn" id="kitInformation"><a name="kitInformation"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-kitinformation.html">KitInformation</a></span> *&gt; KitManager::<span class="name">kitInformation</span>()</h3>
+<!-- @@@kitInformation -->
+<!-- $$$kitRemoved[overload1]$$$kitRemovedProjectExplorer::Kit* -->
+<h3 class="fn" id="kitRemoved"><a name="kitRemoved"></a><code>[signal] </code><span class="type">void</span> KitManager::<span class="name">kitRemoved</span>(<i>ProjectExplorer::Kit *</i>)</h3>
+<!-- @@@kitRemoved -->
+<!-- $$$kitUpdated[overload1]$$$kitUpdatedProjectExplorer::Kit* -->
+<h3 class="fn" id="kitUpdated"><a name="kitUpdated"></a><code>[signal] </code><span class="type">void</span> KitManager::<span class="name">kitUpdated</span>(<i>ProjectExplorer::Kit *</i>)</h3>
+<!-- @@@kitUpdated -->
+<!-- $$$kits[overload1]$$$kitsconstKit::Predicate& -->
+<h3 class="fn" id="kits"><a name="kits"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *&gt; KitManager::<span class="name">kits</span>(const <span class="type">Kit::Predicate</span> &amp;<i>predicate</i> = Kit::Predicate())</h3>
+<!-- @@@kits -->
+<!-- $$$kitsChanged[overload1]$$$kitsChanged -->
+<h3 class="fn" id="kitsChanged"><a name="kitsChanged"></a><code>[signal] </code><span class="type">void</span> KitManager::<span class="name">kitsChanged</span>()</h3>
+<!-- @@@kitsChanged -->
+<!-- $$$kitsLoaded[overload1]$$$kitsLoaded -->
+<h3 class="fn" id="kitsLoaded"><a name="kitsLoaded"></a><code>[signal] </code><span class="type">void</span> KitManager::<span class="name">kitsLoaded</span>()</h3>
+<!-- @@@kitsLoaded -->
+<!-- $$$registerKit[overload1]$$$registerKitKit* -->
+<h3 class="fn" id="registerKit"><a name="registerKit"></a><code>[static] </code><span class="type">bool</span> KitManager::<span class="name">registerKit</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>)</h3>
+<!-- @@@registerKit -->
+<!-- $$$registerKitInformation[overload1]$$$registerKitInformationKitInformation* -->
+<h3 class="fn" id="registerKitInformation"><a name="registerKitInformation"></a><code>[static] </code><span class="type">void</span> KitManager::<span class="name">registerKitInformation</span>(<span class="type"><a href="projectexplorer-kitinformation.html">KitInformation</a></span> *<i>ki</i>)</h3>
+<!-- @@@registerKitInformation -->
+<!-- $$$saveKits[overload1]$$$saveKits -->
+<h3 class="fn" id="saveKits"><a name="saveKits"></a><code>[static] </code><span class="type">void</span> KitManager::<span class="name">saveKits</span>()</h3>
+<!-- @@@saveKits -->
+<!-- $$$setDefaultKit[overload1]$$$setDefaultKitKit* -->
+<h3 class="fn" id="setDefaultKit"><a name="setDefaultKit"></a><code>[static] </code><span class="type">void</span> KitManager::<span class="name">setDefaultKit</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-kitmanager.html#defaultKit">defaultKit</a>().</p>
+<!-- @@@setDefaultKit -->
+<!-- $$$sortKits[overload1]$$$sortKitsconstQList<Kit*> -->
+<h3 class="fn" id="sortKits"><a name="sortKits"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *&gt; KitManager::<span class="name">sortKits</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *&gt; <i>kits</i>)</h3>
+<!-- @@@sortKits -->
+<!-- $$$supportedPlatforms[overload1]$$$supportedPlatforms -->
+<h3 class="fn" id="supportedPlatforms"><a name="supportedPlatforms"></a><code>[static] </code><span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Core::Id</a></span>&gt; KitManager::<span class="name">supportedPlatforms</span>()</h3>
+<!-- @@@supportedPlatforms -->
+<!-- $$$unmanagedKitUpdated[overload1]$$$unmanagedKitUpdatedProjectExplorer::Kit* -->
+<h3 class="fn" id="unmanagedKitUpdated"><a name="unmanagedKitUpdated"></a><code>[signal] </code><span class="type">void</span> KitManager::<span class="name">unmanagedKitUpdated</span>(<i>ProjectExplorer::Kit *</i>)</h3>
+<!-- @@@unmanagedKitUpdated -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

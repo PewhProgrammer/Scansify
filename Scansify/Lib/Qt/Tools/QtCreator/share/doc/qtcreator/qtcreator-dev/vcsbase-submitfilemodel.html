@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- submitfilemodel.cpp -->
+  <title>SubmitFileModel Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >SubmitFileModel</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">SubmitFileModel Class</h1>
+<span class="small-subtitle">(<a href="vcsbase-submitfilemodel.html">VcsBase::SubmitFileModel</a>)<br/></span>
+<!-- $$$SubmitFileModel-brief -->
+<p>The <a href="vcsbase-submitfilemodel.html">SubmitFileModel</a> class is a 2-column (checkable, state, file name) model to be used to list the files in the submit editor. <a href="#details">More...</a></p>
+<!-- @@@SubmitFileModel -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;SubmitFileModel&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="vcsbase-submitfilemodel-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#FileStatusHint-enum">FileStatusHint</a></b> { FileStatusUnknown, FileAdded, FileModified, FileDeleted, FileRenamed, FileUnmerged }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#FileStatusQualifier-typedef">FileStatusQualifier</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#SubmitFileModel">SubmitFileModel</a></b>(QObject *<i>parent</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;QStandardItem *&gt; </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#addFile">addFile</a></b>(const QString &amp;<i>fileName</i>, const QString &amp;<i>status</i> = QString(), CheckMode <i>checkMode</i> = Checked, const QVariant &amp;<i>data</i> = QVariant())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#checked">checked</a></b>(int <i>row</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVariant </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#extraData">extraData</a></b>(int <i>row</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#file">file</a></b>(int <i>row</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FileStatusQualifier &amp;</td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#fileStatusQualifier">fileStatusQualifier</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> unsigned int </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#filterFiles">filterFiles</a></b>(const QStringList &amp;<i>filter</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#hasCheckedFiles">hasCheckedFiles</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#isCheckable">isCheckable</a></b>(int <i>row</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const QString &amp;</td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#repositoryRoot">repositoryRoot</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#setAllChecked">setAllChecked</a></b>(bool <i>check</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#setChecked">setChecked</a></b>(int <i>row</i>, bool <i>check</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#setFileStatusQualifier">setFileStatusQualifier</a></b>(FileStatusQualifier &amp;&amp;<i>func</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#setRepositoryRoot">setRepositoryRoot</a></b>(const QString &amp;<i>repoRoot</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#state">state</a></b>(int <i>row</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submitfilemodel.html#updateSelections">updateSelections</a></b>(SubmitFileModel *<i>source</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$SubmitFileModel-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="vcsbase-submitfilemodel.html">SubmitFileModel</a> class is a 2-column (checkable, state, file name) model to be used to list the files in the submit editor.</p>
+<p>Provides header items and a convenience function to add files.</p>
+</div>
+<!-- @@@SubmitFileModel -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$FileStatusHint$$$FileStatusUnknown$$$FileAdded$$$FileModified$$$FileDeleted$$$FileRenamed$$$FileUnmerged -->
+<h3 class="fn" id="FileStatusHint-enum"><a name="FileStatusHint-enum"></a>enum SubmitFileModel::<span class="name">FileStatusHint</span></h3>
+<!-- @@@FileStatusHint -->
+<!-- $$$FileStatusQualifier -->
+<h3 class="fn" id="FileStatusQualifier-typedef"><a name="FileStatusQualifier-typedef"></a>typedef SubmitFileModel::<span class="name">FileStatusQualifier</span></h3>
+<!-- @@@FileStatusQualifier -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$SubmitFileModel[overload1]$$$SubmitFileModelQObject* -->
+<h3 class="fn" id="SubmitFileModel"><a name="SubmitFileModel"></a>SubmitFileModel::<span class="name">SubmitFileModel</span>(<span class="type">QObject</span> *<i>parent</i> = 0)</h3>
+<p>Default constructs an instance of SubmitFileModel.</p><!-- @@@SubmitFileModel -->
+<!-- $$$addFile[overload1]$$$addFileconstQString&constQString&CheckModeconstQVariant& -->
+<h3 class="fn" id="addFile"><a name="addFile"></a><span class="type">QList</span>&lt;<span class="type">QStandardItem</span> *&gt; SubmitFileModel::<span class="name">addFile</span>(const <span class="type">QString</span> &amp;<i>fileName</i>, const <span class="type">QString</span> &amp;<i>status</i> = QString(), <span class="type"><a href="vcsbase.html#CheckMode-enum">CheckMode</a></span> <i>checkMode</i> = Checked, const <span class="type">QVariant</span> &amp;<i>data</i> = QVariant())</h3>
+<!-- @@@addFile -->
+<!-- $$$checked[overload1]$$$checkedint -->
+<h3 class="fn" id="checked"><a name="checked"></a><span class="type">bool</span> SubmitFileModel::<span class="name">checked</span>(<span class="type">int</span> <i>row</i>) const</h3>
+<p><b>See also </b><a href="vcsbase-submitfilemodel.html#setChecked">setChecked</a>().</p>
+<!-- @@@checked -->
+<!-- $$$extraData[overload1]$$$extraDataint -->
+<h3 class="fn" id="extraData"><a name="extraData"></a><span class="type">QVariant</span> SubmitFileModel::<span class="name">extraData</span>(<span class="type">int</span> <i>row</i>) const</h3>
+<!-- @@@extraData -->
+<!-- $$$file[overload1]$$$fileint -->
+<h3 class="fn" id="file"><a name="file"></a><span class="type">QString</span> SubmitFileModel::<span class="name">file</span>(<span class="type">int</span> <i>row</i>) const</h3>
+<!-- @@@file -->
+<!-- $$$fileStatusQualifier[overload1]$$$fileStatusQualifier -->
+<h3 class="fn" id="fileStatusQualifier"><a name="fileStatusQualifier"></a>const <span class="type"><a href="vcsbase-submitfilemodel.html#FileStatusQualifier-typedef">FileStatusQualifier</a></span> &amp;SubmitFileModel::<span class="name">fileStatusQualifier</span>() const</h3>
+<p><b>See also </b><a href="vcsbase-submitfilemodel.html#setFileStatusQualifier">setFileStatusQualifier</a>().</p>
+<!-- @@@fileStatusQualifier -->
+<!-- $$$filterFiles[overload1]$$$filterFilesconstQStringList& -->
+<h3 class="fn" id="filterFiles"><a name="filterFiles"></a><span class="type">unsigned</span> <span class="type">int</span> SubmitFileModel::<span class="name">filterFiles</span>(const <span class="type">QStringList</span> &amp;<i>filter</i>)</h3>
+<!-- @@@filterFiles -->
+<!-- $$$hasCheckedFiles[overload1]$$$hasCheckedFiles -->
+<h3 class="fn" id="hasCheckedFiles"><a name="hasCheckedFiles"></a><span class="type">bool</span> SubmitFileModel::<span class="name">hasCheckedFiles</span>() const</h3>
+<!-- @@@hasCheckedFiles -->
+<!-- $$$isCheckable[overload1]$$$isCheckableint -->
+<h3 class="fn" id="isCheckable"><a name="isCheckable"></a><span class="type">bool</span> SubmitFileModel::<span class="name">isCheckable</span>(<span class="type">int</span> <i>row</i>) const</h3>
+<!-- @@@isCheckable -->
+<!-- $$$repositoryRoot[overload1]$$$repositoryRoot -->
+<h3 class="fn" id="repositoryRoot"><a name="repositoryRoot"></a>const <span class="type">QString</span> &amp;SubmitFileModel::<span class="name">repositoryRoot</span>() const</h3>
+<p><b>See also </b><a href="vcsbase-submitfilemodel.html#setRepositoryRoot">setRepositoryRoot</a>().</p>
+<!-- @@@repositoryRoot -->
+<!-- $$$setAllChecked[overload1]$$$setAllCheckedbool -->
+<h3 class="fn" id="setAllChecked"><a name="setAllChecked"></a><span class="type">void</span> SubmitFileModel::<span class="name">setAllChecked</span>(<span class="type">bool</span> <i>check</i>)</h3>
+<!-- @@@setAllChecked -->
+<!-- $$$setChecked[overload1]$$$setCheckedintbool -->
+<h3 class="fn" id="setChecked"><a name="setChecked"></a><span class="type">void</span> SubmitFileModel::<span class="name">setChecked</span>(<span class="type">int</span> <i>row</i>, <span class="type">bool</span> <i>check</i>)</h3>
+<p><b>See also </b><a href="vcsbase-submitfilemodel.html#checked">checked</a>().</p>
+<!-- @@@setChecked -->
+<!-- $$$setFileStatusQualifier[overload1]$$$setFileStatusQualifierFileStatusQualifier&& -->
+<h3 class="fn" id="setFileStatusQualifier"><a name="setFileStatusQualifier"></a><span class="type">void</span> SubmitFileModel::<span class="name">setFileStatusQualifier</span>(<span class="type"><a href="vcsbase-submitfilemodel.html#FileStatusQualifier-typedef">FileStatusQualifier</a></span> &amp;&amp;<i>func</i>)</h3>
+<p><b>See also </b><a href="vcsbase-submitfilemodel.html#fileStatusQualifier">fileStatusQualifier</a>().</p>
+<!-- @@@setFileStatusQualifier -->
+<!-- $$$setRepositoryRoot[overload1]$$$setRepositoryRootconstQString& -->
+<h3 class="fn" id="setRepositoryRoot"><a name="setRepositoryRoot"></a><span class="type">void</span> SubmitFileModel::<span class="name">setRepositoryRoot</span>(const <span class="type">QString</span> &amp;<i>repoRoot</i>)</h3>
+<p><b>See also </b><a href="vcsbase-submitfilemodel.html#repositoryRoot">repositoryRoot</a>().</p>
+<!-- @@@setRepositoryRoot -->
+<!-- $$$state[overload1]$$$stateint -->
+<h3 class="fn" id="state"><a name="state"></a><span class="type">QString</span> SubmitFileModel::<span class="name">state</span>(<span class="type">int</span> <i>row</i>) const</h3>
+<!-- @@@state -->
+<!-- $$$updateSelections[overload1]$$$updateSelectionsSubmitFileModel* -->
+<h3 class="fn" id="updateSelections"><a name="updateSelections"></a><code>[virtual] </code><span class="type">void</span> SubmitFileModel::<span class="name">updateSelections</span>(<span class="type"><a href="vcsbase-submitfilemodel.html#SubmitFileModel">SubmitFileModel</a></span> *<i>source</i>)</h3>
+<p>Updates user selections from <i>source</i> model.</p>
+<p>Assumes that both models are sorted with the same order, and there are no duplicate entries.</p>
+<!-- @@@updateSelections -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

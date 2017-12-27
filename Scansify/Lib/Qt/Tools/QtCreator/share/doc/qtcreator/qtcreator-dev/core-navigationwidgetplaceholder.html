@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>NavigationWidgetPlaceHolder Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >NavigationWidgetPlaceHolder</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">NavigationWidgetPlaceHolder Class</h1>
+<span class="small-subtitle">(<a href="core-navigationwidgetplaceholder.html">Core::NavigationWidgetPlaceHolder</a>)<br/></span>
+<ul>
+<li><a href="core-navigationwidgetplaceholder-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidgetplaceholder.html#NavigationWidgetPlaceHolder">NavigationWidgetPlaceHolder</a></b>(Id <i>mode</i>, Side <i>side</i>, QWidget *<i>parent</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidgetplaceholder.html#dtor.NavigationWidgetPlaceHolder">~NavigationWidgetPlaceHolder</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidgetplaceholder.html#applyStoredSize">applyStoredSize</a></b>()</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> NavigationWidgetPlaceHolder *</td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidgetplaceholder.html#current">current</a></b>(Side <i>side</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidgetplaceholder.html#setCurrent">setCurrent</a></b>(Side <i>side</i>, NavigationWidgetPlaceHolder *<i>navWidget</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$NavigationWidgetPlaceHolder[overload1]$$$NavigationWidgetPlaceHolderIdSideQWidget* -->
+<h3 class="fn" id="NavigationWidgetPlaceHolder"><a name="NavigationWidgetPlaceHolder"></a>NavigationWidgetPlaceHolder::<span class="name">NavigationWidgetPlaceHolder</span>(<span class="type"><a href="core-id.html">Id</a></span> <i>mode</i>, <span class="type"><a href="core.html#Side-enum">Side</a></span> <i>side</i>, <span class="type">QWidget</span> *<i>parent</i> = 0)</h3>
+<p>Default constructs an instance of NavigationWidgetPlaceHolder.</p><!-- @@@NavigationWidgetPlaceHolder -->
+<!-- $$$~NavigationWidgetPlaceHolder[overload1]$$$~NavigationWidgetPlaceHolder -->
+<h3 class="fn" id="dtor.NavigationWidgetPlaceHolder"><a name="dtor.NavigationWidgetPlaceHolder"></a><code>[virtual] </code>NavigationWidgetPlaceHolder::<span class="name">~NavigationWidgetPlaceHolder</span>()</h3>
+<p>Destroys the instance of NavigationWidgetPlaceHolder. The destructor is virtual.</p><!-- @@@~NavigationWidgetPlaceHolder -->
+<!-- $$$applyStoredSize[overload1]$$$applyStoredSize -->
+<h3 class="fn" id="applyStoredSize"><a name="applyStoredSize"></a><span class="type">void</span> NavigationWidgetPlaceHolder::<span class="name">applyStoredSize</span>()</h3>
+<!-- @@@applyStoredSize -->
+<!-- $$$current[overload1]$$$currentSide -->
+<h3 class="fn" id="current"><a name="current"></a><code>[static] </code><span class="type"><a href="core-navigationwidgetplaceholder.html#NavigationWidgetPlaceHolder">NavigationWidgetPlaceHolder</a></span> *NavigationWidgetPlaceHolder::<span class="name">current</span>(<span class="type"><a href="core.html#Side-enum">Side</a></span> <i>side</i>)</h3>
+<p><b>See also </b><a href="core-navigationwidgetplaceholder.html#setCurrent">setCurrent</a>().</p>
+<!-- @@@current -->
+<!-- $$$setCurrent[overload1]$$$setCurrentSideNavigationWidgetPlaceHolder* -->
+<h3 class="fn" id="setCurrent"><a name="setCurrent"></a><code>[static] </code><span class="type">void</span> NavigationWidgetPlaceHolder::<span class="name">setCurrent</span>(<span class="type"><a href="core.html#Side-enum">Side</a></span> <i>side</i>, <span class="type"><a href="core-navigationwidgetplaceholder.html#NavigationWidgetPlaceHolder">NavigationWidgetPlaceHolder</a></span> *<i>navWidget</i>)</h3>
+<p><b>See also </b><a href="core-navigationwidgetplaceholder.html#current">current</a>().</p>
+<!-- @@@setCurrent -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

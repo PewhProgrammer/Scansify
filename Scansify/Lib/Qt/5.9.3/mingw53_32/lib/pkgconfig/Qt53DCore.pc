@@ -1,0 +1,13 @@
+prefix=E:\\Utility\\Qt\\5.9.3\\mingw53_32
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 3DCore
+Description: Qt 3DCore module
+Version: 5.9.3
+Libs: -L${libdir} -lQt53DCored 
+Cflags: -I${includedir}/Qt3DCore -I${includedir}
+Requires: Qt5Core Qt5Gui Qt5Network
+

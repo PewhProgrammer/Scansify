@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- persistenttrie.cpp -->
+  <title>Trie Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Trie</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Trie Class</h1>
+<span class="small-subtitle">(<a href="qmljs-persistenttrie-trie.html">QmlJS::PersistentTrie::Trie</a>)<br/></span>
+<!-- $$$Trie-brief -->
+<p>The Trie class implements a trie that is persistent (not on disk but in memory). <a href="#details">More...</a></p>
+<!-- @@@Trie -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;Trie&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="qmljs-persistenttrie-trie-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#Trie-1">Trie</a></b>(const TrieNode::Ptr &amp;<i>t</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#Trie-2">Trie</a></b>(const Trie &amp;<i>o</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#complete">complete</a></b>(const QString &amp;<i>root</i>, const QString &amp;<i>base</i> = QString(), LookupFlags <i>flags</i> = LookupFlags( CaseInsensitive | Partial )) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#contains">contains</a></b>(const QString &amp;<i>value</i>, LookupFlags <i>flags</i> = LookupFlags( 0 )) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#insert">insert</a></b>(const QString &amp;<i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Trie </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#insertF">insertF</a></b>(const QString &amp;<i>value</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#intersect">intersect</a></b>(const Trie &amp;<i>v</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Trie </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#intersectF">intersectF</a></b>(const Trie &amp;<i>v</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#isEmpty">isEmpty</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#merge">merge</a></b>(const Trie &amp;<i>v</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Trie </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#mergeF">mergeF</a></b>(const Trie &amp;<i>v</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#replace">replace</a></b>(const QHash&lt;QString, QString&gt; &amp;<i>replacements</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Trie </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#replaceF">replaceF</a></b>(const QHash&lt;QString, QString&gt; &amp;<i>replacements</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#stringList">stringList</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#operator-not-eq">operator!=</a></b>(const Trie &amp;<i>o</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trie.html#operator-eq-eq">operator==</a></b>(const Trie &amp;<i>o</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$Trie-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The Trie class implements a trie that is persistent (not on disk but in memory).</p>
+<p>This means that several versions can coexist, as adding an element is non-destructive, and as much as possible is shared.</p>
+<p>The trie is only <i>partially</i> ordered. It preserves the order of the inserted elements as much as possible. This makes some operations a bit slower, but is considered a feature. This means the order in which you insert the elements matters.</p>
+<p>An important use case for this is completions, and several strategies are available. Results order can be improved by using the matching strength.</p>
+<p>All const operations are threadsafe, and copy is cheap (only a QSharedPointer copy).</p>
+<p>Assigning a shared pointer is not threadsafe, so updating the head is not threadsafe, and should be done only on a local instance (shared pointer used only from a single thread), or protected with locks.</p>
+<p>This is a two-level implementation, based on a fully functional implementation (<a href="qmljs-persistenttrie-trie.html">PersistentTrie::Trie</a>), which could be private but was left public because deemed useful.</p>
+<p>Would gain from some memory optimization, or direct string implementation.</p>
+</div>
+<!-- @@@Trie -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Trie[overload1]$$$Trie -->
+<h3 class="fn" id="Trie"><a name="Trie"></a>Trie::<span class="name">Trie</span>()</h3>
+<p>Default constructs an instance of Trie.</p><!-- @@@Trie -->
+<!-- $$$Trie$$$TrieconstTrieNode::Ptr& -->
+<h3 class="fn" id="Trie-1"><a name="Trie-1"></a>Trie::<span class="name">Trie</span>(const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">TrieNode::Ptr</a></span> &amp;<i>t</i>)</h3>
+<p>Copy constructor.</p><!-- @@@Trie -->
+<!-- $$$Trie$$$TrieconstTrie& -->
+<h3 class="fn" id="Trie-2"><a name="Trie-2"></a>Trie::<span class="name">Trie</span>(const <span class="type"><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></span> &amp;<i>o</i>)</h3>
+<p>Copy constructor.</p><!-- @@@Trie -->
+<!-- $$$complete[overload1]$$$completeconstQString&constQString&LookupFlags -->
+<h3 class="fn" id="complete"><a name="complete"></a><span class="type">QStringList</span> Trie::<span class="name">complete</span>(const <span class="type">QString</span> &amp;<i>root</i>, const <span class="type">QString</span> &amp;<i>base</i> = QString(), <span class="type"><a href="qmljs-persistenttrie.html#LookupFlags-enum">LookupFlags</a></span> <i>flags</i> = LookupFlags( CaseInsensitive | Partial )) const</h3>
+<!-- @@@complete -->
+<!-- $$$contains[overload1]$$$containsconstQString&LookupFlags -->
+<h3 class="fn" id="contains"><a name="contains"></a><span class="type">bool</span> Trie::<span class="name">contains</span>(const <span class="type">QString</span> &amp;<i>value</i>, <span class="type"><a href="qmljs-persistenttrie.html#LookupFlags-enum">LookupFlags</a></span> <i>flags</i> = LookupFlags( 0 )) const</h3>
+<!-- @@@contains -->
+<!-- $$$insert[overload1]$$$insertconstQString& -->
+<h3 class="fn" id="insert"><a name="insert"></a><span class="type">void</span> Trie::<span class="name">insert</span>(const <span class="type">QString</span> &amp;<i>value</i>)</h3>
+<p>Inserts into the current trie.</p>
+<p>Non threadsafe. Only use this function on an instance that is used only in a single thread, or that is protected by locks.</p>
+<!-- @@@insert -->
+<!-- $$$insertF[overload1]$$$insertFconstQString& -->
+<h3 class="fn" id="insertF"><a name="insertF"></a><span class="type"><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></span> Trie::<span class="name">insertF</span>(const <span class="type">QString</span> &amp;<i>value</i>) const</h3>
+<!-- @@@insertF -->
+<!-- $$$intersect[overload1]$$$intersectconstTrie& -->
+<h3 class="fn" id="intersect"><a name="intersect"></a><span class="type">void</span> Trie::<span class="name">intersect</span>(const <span class="type"><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></span> &amp;<i>v</i>)</h3>
+<p>Intersects into the current trie.</p>
+<p>Non threadsafe. Only use this function on an instance that is used only in a single thread, or that is protected by locks.</p>
+<!-- @@@intersect -->
+<!-- $$$intersectF[overload1]$$$intersectFconstTrie& -->
+<h3 class="fn" id="intersectF"><a name="intersectF"></a><span class="type"><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></span> Trie::<span class="name">intersectF</span>(const <span class="type"><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></span> &amp;<i>v</i>) const</h3>
+<!-- @@@intersectF -->
+<!-- $$$isEmpty[overload1]$$$isEmpty -->
+<h3 class="fn" id="isEmpty"><a name="isEmpty"></a><span class="type">bool</span> Trie::<span class="name">isEmpty</span>() const</h3>
+<!-- @@@isEmpty -->
+<!-- $$$merge[overload1]$$$mergeconstTrie& -->
+<h3 class="fn" id="merge"><a name="merge"></a><span class="type">void</span> Trie::<span class="name">merge</span>(const <span class="type"><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></span> &amp;<i>v</i>)</h3>
+<p>Merges the given trie into the current one.</p>
+<p>Non threadsafe. Only use this function on an instance that is used only in a single thread, or that is protected by locks.</p>
+<!-- @@@merge -->
+<!-- $$$mergeF[overload1]$$$mergeFconstTrie& -->
+<h3 class="fn" id="mergeF"><a name="mergeF"></a><span class="type"><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></span> Trie::<span class="name">mergeF</span>(const <span class="type"><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></span> &amp;<i>v</i>) const</h3>
+<!-- @@@mergeF -->
+<!-- $$$replace[overload1]$$$replaceconstQHash<QString,QString>& -->
+<h3 class="fn" id="replace"><a name="replace"></a><span class="type">void</span> Trie::<span class="name">replace</span>(const <span class="type">QHash</span>&lt;<span class="type">QString</span>, <span class="type">QString</span>&gt; &amp;<i>replacements</i>)</h3>
+<!-- @@@replace -->
+<!-- $$$replaceF[overload1]$$$replaceFconstQHash<QString,QString>& -->
+<h3 class="fn" id="replaceF"><a name="replaceF"></a><span class="type"><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></span> Trie::<span class="name">replaceF</span>(const <span class="type">QHash</span>&lt;<span class="type">QString</span>, <span class="type">QString</span>&gt; &amp;<i>replacements</i>) const</h3>
+<!-- @@@replaceF -->
+<!-- $$$stringList[overload1]$$$stringList -->
+<h3 class="fn" id="stringList"><a name="stringList"></a><span class="type">QStringList</span> Trie::<span class="name">stringList</span>() const</h3>
+<!-- @@@stringList -->
+<!-- $$$operator!=[overload1]$$$operator!=constTrie& -->
+<h3 class="fn" id="operator-not-eq"><a name="operator-not-eq"></a><span class="type">bool</span> Trie::<span class="name">operator!=</span>(const <span class="type"><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></span> &amp;<i>o</i>)</h3>
+<!-- @@@operator!= -->
+<!-- $$$operator==[overload1]$$$operator==constTrie& -->
+<h3 class="fn" id="operator-eq-eq"><a name="operator-eq-eq"></a><span class="type">bool</span> Trie::<span class="name">operator==</span>(const <span class="type"><a href="qmljs-persistenttrie-trie.html#Trie">Trie</a></span> &amp;<i>o</i>)</h3>
+<!-- @@@operator== -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

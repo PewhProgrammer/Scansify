@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- submiteditorwidget.cpp -->
+  <title>SubmitEditorWidget Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >SubmitEditorWidget</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#properties">Properties</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#protected-slots">Protected Slots</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">SubmitEditorWidget Class</h1>
+<span class="small-subtitle">(<a href="vcsbase-submiteditorwidget.html">VcsBase::SubmitEditorWidget</a>)<br/></span>
+<!-- $$$SubmitEditorWidget-brief -->
+<p>The <a href="vcsbase-submiteditorwidget.html">SubmitEditorWidget</a> class presents a VCS commit message in a text editor and a checkable list of modified files in a list window. <a href="#details">More...</a></p>
+<!-- @@@SubmitEditorWidget -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;SubmitEditorWidget&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="vcsbase-submiteditorwidget-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="properties"></a>
+<h2 id="properties">Properties</h2>
+<div class="table"><table class="propsummary">
+<tr><td class="topAlign"><ul>
+<li class="fn"><b><a href="vcsbase-submiteditorwidget.html#descriptionMandatory-prop">descriptionMandatory</a></b> : bool</li>
+<li class="fn"><b><a href="vcsbase-submiteditorwidget.html#descriptionText-prop">descriptionText</a></b> : QString</li>
+<li class="fn"><b><a href="vcsbase-submiteditorwidget.html#emptyFileListEnabled-prop">emptyFileListEnabled</a></b> : bool</li>
+</ul></td><td class="topAlign"><ul>
+<li class="fn"><b><a href="vcsbase-submiteditorwidget.html#fileListSelectionMode-prop">fileListSelectionMode</a></b> : QAbstractItemView::SelectionMode</li>
+<li class="fn"><b><a href="vcsbase-submiteditorwidget.html#lineWrap-prop">lineWrap</a></b> : bool</li>
+<li class="fn"><b><a href="vcsbase-submiteditorwidget.html#lineWrapWidth-prop">lineWrapWidth</a></b> : int</li>
+</ul>
+</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#SubmitEditorWidget">SubmitEditorWidget</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#dtor.SubmitEditorWidget">~SubmitEditorWidget</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#addDescriptionEditContextMenuAction">addDescriptionEditContextMenuAction</a></b>(QAction *<i>a</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#addSubmitFieldWidget">addSubmitFieldWidget</a></b>(SubmitFieldWidget *<i>f</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#canSubmit">canSubmit</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#checkedFiles">checkedFiles</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::CompletingTextEdit *</td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#descriptionEdit">descriptionEdit</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#descriptionText-prop">descriptionText</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QAbstractItemView::SelectionMode </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#fileListSelectionMode-prop">fileListSelectionMode</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> SubmitFileModel *</td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#fileModel">fileModel</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#insertDescriptionEditContextMenuAction">insertDescriptionEditContextMenuAction</a></b>(int <i>pos</i>, QAction *<i>a</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#descriptionMandatory-prop">isDescriptionMandatory</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#emptyFileListEnabled-prop">isEmptyFileListEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#lineWrap-prop">lineWrap</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#lineWrapWidth-prop">lineWrapWidth</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#registerActions">registerActions</a></b>(QAction *<i>editorUndoAction</i>, QAction *<i>editorRedoAction</i>, QAction *<i>submitAction</i> = 0, QAction *<i>diffAction</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;int&gt; </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#selectedRows">selectedRows</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#descriptionMandatory-prop">setDescriptionMandatory</a></b>(<i>bool</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#descriptionText-prop">setDescriptionText</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#emptyFileListEnabled-prop">setEmptyFileListEnabled</a></b>(bool <i>e</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#fileListSelectionMode-prop">setFileListSelectionMode</a></b>(QAbstractItemView::SelectionMode <i>sm</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#setFileModel">setFileModel</a></b>(SubmitFileModel *<i>model</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#lineWrap-prop">setLineWrap</a></b>(<i>bool</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#lineWrapWidth-prop">setLineWrapWidth</a></b>(<i>int</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#setSelectedRows">setSelectedRows</a></b>(const QList&lt;int&gt; &amp;<i>rows</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#setUpdateInProgress">setUpdateInProgress</a></b>(bool <i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;SubmitFieldWidget *&gt; </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#submitFieldWidgets">submitFieldWidgets</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#unregisterActions">unregisterActions</a></b>(QAction *<i>editorUndoAction</i>, QAction *<i>editorRedoAction</i>, QAction *<i>submitAction</i> = 0, QAction *<i>diffAction</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#updateInProgress">updateInProgress</a></b>() const</td></tr>
+</table></div>
+<a name="public-slots"></a>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#updateSubmitAction">updateSubmitAction</a></b>()</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#diffSelected">diffSelected</a></b>(<i>const QList&lt;int&gt; &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#fileSelectionChanged">fileSelectionChanged</a></b>(bool <i>someFileSelected</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#submitActionEnabledChanged">submitActionEnabledChanged</a></b>(<i>bool</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#submitActionTextChanged">submitActionTextChanged</a></b>(<i>const QString &amp;</i>)</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#addSubmitButtonMenu">addSubmitButtonMenu</a></b>(QMenu *<i>menu</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#cleanupDescription">cleanupDescription</a></b>(<i>const QString &amp;</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#commitName">commitName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#hideDescription">hideDescription</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#insertLeftWidget">insertLeftWidget</a></b>(QWidget *<i>w</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#insertTopWidget">insertTopWidget</a></b>(QWidget *<i>w</i>)</td></tr>
+</table></div>
+<a name="protected-slots"></a>
+<h2 id="protected-slots">Protected Slots</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-submiteditorwidget.html#descriptionTextChanged">descriptionTextChanged</a></b>()</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$SubmitEditorWidget-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="vcsbase-submiteditorwidget.html">SubmitEditorWidget</a> class presents a VCS commit message in a text editor and a checkable list of modified files in a list window.</p>
+<p>The user can delete files from the list by unchecking them or diff the selection by doubleclicking. A list model which contains state and file columns should be set using <a href="vcsbase-submiteditorwidget.html#setFileModel">setFileModel</a>().</p>
+<p>Additionally, standard creator actions can be registered: Undo/redo will be set up to work with the description editor. Submit will be set up to be enabled according to checkstate. Diff will be set up to trigger <a href="vcsbase-submiteditorwidget.html#diffSelected">diffSelected</a>().</p>
+<p>Note that the actions are connected by signals; in the rare event that there are several instances of the <a href="vcsbase-submiteditorwidget.html">SubmitEditorWidget</a> belonging to the same context active, the actions must be registered/unregistered in the editor change event. Care should be taken to ensure the widget is deleted properly when the editor closes.</p>
+</div>
+<!-- @@@SubmitEditorWidget -->
+<div class="prop">
+<h2>Property Documentation</h2>
+<!-- $$$descriptionMandatory-prop$$$isDescriptionMandatory$$$setDescriptionMandatorybool -->
+<h3 class="fn" id="descriptionMandatory-prop"><a name="descriptionMandatory-prop"></a><span class="name">descriptionMandatory</span> : <span class="type">bool</span></h3>
+<p><b>Access functions:</b></p>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft topAlign rightAlign"> bool </td><td class="memItemRight bottomAlign"><span class="name"><b>isDescriptionMandatory</b></span>() const</td></tr>
+<tr><td class="memItemLeft topAlign rightAlign"> void </td><td class="memItemRight bottomAlign"><span class="name"><b>setDescriptionMandatory</b></span>(<i>bool</i>)</td></tr>
+</table></div>
+<!-- @@@descriptionMandatory -->
+<!-- $$$descriptionText-prop$$$descriptionText$$$setDescriptionTextconstQString& -->
+<h3 class="fn" id="descriptionText-prop"><a name="descriptionText-prop"></a><span class="name">descriptionText</span> : <span class="type">QString</span></h3>
+<p><b>Access functions:</b></p>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft topAlign rightAlign"> QString </td><td class="memItemRight bottomAlign"><span class="name"><b>descriptionText</b></span>() const</td></tr>
+<tr><td class="memItemLeft topAlign rightAlign"> void </td><td class="memItemRight bottomAlign"><span class="name"><b>setDescriptionText</b></span>(const QString &amp;<i>text</i>)</td></tr>
+</table></div>
+<!-- @@@descriptionText -->
+<!-- $$$emptyFileListEnabled-prop$$$isEmptyFileListEnabled$$$setEmptyFileListEnabledbool -->
+<h3 class="fn" id="emptyFileListEnabled-prop"><a name="emptyFileListEnabled-prop"></a><span class="name">emptyFileListEnabled</span> : <span class="type">bool</span></h3>
+<p><b>Access functions:</b></p>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft topAlign rightAlign"> bool </td><td class="memItemRight bottomAlign"><span class="name"><b>isEmptyFileListEnabled</b></span>() const</td></tr>
+<tr><td class="memItemLeft topAlign rightAlign"> void </td><td class="memItemRight bottomAlign"><span class="name"><b>setEmptyFileListEnabled</b></span>(bool <i>e</i>)</td></tr>
+</table></div>
+<!-- @@@emptyFileListEnabled -->
+<!-- $$$fileListSelectionMode-prop$$$fileListSelectionMode$$$setFileListSelectionModeQAbstractItemView::SelectionMode -->
+<h3 class="fn" id="fileListSelectionMode-prop"><a name="fileListSelectionMode-prop"></a><span class="name">fileListSelectionMode</span> : <span class="type">QAbstractItemView::SelectionMode</span></h3>
+<p><b>Access functions:</b></p>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft topAlign rightAlign"> QAbstractItemView::SelectionMode </td><td class="memItemRight bottomAlign"><span class="name"><b>fileListSelectionMode</b></span>() const</td></tr>
+<tr><td class="memItemLeft topAlign rightAlign"> void </td><td class="memItemRight bottomAlign"><span class="name"><b>setFileListSelectionMode</b></span>(QAbstractItemView::SelectionMode <i>sm</i>)</td></tr>
+</table></div>
+<!-- @@@fileListSelectionMode -->
+<!-- $$$lineWrap-prop$$$lineWrap$$$setLineWrapbool -->
+<h3 class="fn" id="lineWrap-prop"><a name="lineWrap-prop"></a><span class="name">lineWrap</span> : <span class="type">bool</span></h3>
+<p><b>Access functions:</b></p>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft topAlign rightAlign"> bool </td><td class="memItemRight bottomAlign"><span class="name"><b>lineWrap</b></span>() const</td></tr>
+<tr><td class="memItemLeft topAlign rightAlign"> void </td><td class="memItemRight bottomAlign"><span class="name"><b>setLineWrap</b></span>(<i>bool</i>)</td></tr>
+</table></div>
+<!-- @@@lineWrap -->
+<!-- $$$lineWrapWidth-prop$$$lineWrapWidth$$$setLineWrapWidthint -->
+<h3 class="fn" id="lineWrapWidth-prop"><a name="lineWrapWidth-prop"></a><span class="name">lineWrapWidth</span> : <span class="type">int</span></h3>
+<p><b>Access functions:</b></p>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft topAlign rightAlign"> int </td><td class="memItemRight bottomAlign"><span class="name"><b>lineWrapWidth</b></span>() const</td></tr>
+<tr><td class="memItemLeft topAlign rightAlign"> void </td><td class="memItemRight bottomAlign"><span class="name"><b>setLineWrapWidth</b></span>(<i>int</i>)</td></tr>
+</table></div>
+<!-- @@@lineWrapWidth -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$SubmitEditorWidget[overload1]$$$SubmitEditorWidget -->
+<h3 class="fn" id="SubmitEditorWidget"><a name="SubmitEditorWidget"></a>SubmitEditorWidget::<span class="name">SubmitEditorWidget</span>()</h3>
+<p>Default constructs an instance of SubmitEditorWidget.</p><!-- @@@SubmitEditorWidget -->
+<!-- $$$~SubmitEditorWidget[overload1]$$$~SubmitEditorWidget -->
+<h3 class="fn" id="dtor.SubmitEditorWidget"><a name="dtor.SubmitEditorWidget"></a>SubmitEditorWidget::<span class="name">~SubmitEditorWidget</span>()</h3>
+<p>Destroys the instance of SubmitEditorWidget.</p><!-- @@@~SubmitEditorWidget -->
+<!-- $$$addDescriptionEditContextMenuAction[overload1]$$$addDescriptionEditContextMenuActionQAction* -->
+<h3 class="fn" id="addDescriptionEditContextMenuAction"><a name="addDescriptionEditContextMenuAction"></a><span class="type">void</span> SubmitEditorWidget::<span class="name">addDescriptionEditContextMenuAction</span>(<span class="type">QAction</span> *<i>a</i>)</h3>
+<!-- @@@addDescriptionEditContextMenuAction -->
+<!-- $$$addSubmitButtonMenu[overload1]$$$addSubmitButtonMenuQMenu* -->
+<h3 class="fn" id="addSubmitButtonMenu"><a name="addSubmitButtonMenu"></a><code>[protected] </code><span class="type">void</span> SubmitEditorWidget::<span class="name">addSubmitButtonMenu</span>(<span class="type">QMenu</span> *<i>menu</i>)</h3>
+<!-- @@@addSubmitButtonMenu -->
+<!-- $$$addSubmitFieldWidget[overload1]$$$addSubmitFieldWidgetSubmitFieldWidget* -->
+<h3 class="fn" id="addSubmitFieldWidget"><a name="addSubmitFieldWidget"></a><span class="type">void</span> SubmitEditorWidget::<span class="name">addSubmitFieldWidget</span>(<span class="type"><a href="vcsbase-submitfieldwidget.html">SubmitFieldWidget</a></span> *<i>f</i>)</h3>
+<!-- @@@addSubmitFieldWidget -->
+<!-- $$$canSubmit[overload1]$$$canSubmit -->
+<h3 class="fn" id="canSubmit"><a name="canSubmit"></a><code>[virtual] </code><span class="type">bool</span> SubmitEditorWidget::<span class="name">canSubmit</span>() const</h3>
+<!-- @@@canSubmit -->
+<!-- $$$checkedFiles[overload1]$$$checkedFiles -->
+<h3 class="fn" id="checkedFiles"><a name="checkedFiles"></a><span class="type">QStringList</span> SubmitEditorWidget::<span class="name">checkedFiles</span>() const</h3>
+<!-- @@@checkedFiles -->
+<!-- $$$cleanupDescription[overload1]$$$cleanupDescriptionconstQString& -->
+<h3 class="fn" id="cleanupDescription"><a name="cleanupDescription"></a><code>[virtual protected] </code><span class="type">QString</span> SubmitEditorWidget::<span class="name">cleanupDescription</span>(<i>const QString &amp;</i>) const</h3>
+<!-- @@@cleanupDescription -->
+<!-- $$$commitName[overload1]$$$commitName -->
+<h3 class="fn" id="commitName"><a name="commitName"></a><code>[virtual protected] </code><span class="type">QString</span> SubmitEditorWidget::<span class="name">commitName</span>() const</h3>
+<!-- @@@commitName -->
+<!-- $$$descriptionEdit[overload1]$$$descriptionEdit -->
+<h3 class="fn" id="descriptionEdit"><a name="descriptionEdit"></a><span class="type"><a href="utils-completingtextedit.html">Utils::CompletingTextEdit</a></span> *SubmitEditorWidget::<span class="name">descriptionEdit</span>() const</h3>
+<!-- @@@descriptionEdit -->
+<!-- $$$descriptionTextChanged[overload1]$$$descriptionTextChanged -->
+<h3 class="fn" id="descriptionTextChanged"><a name="descriptionTextChanged"></a><code>[protected slot] </code><span class="type">void</span> SubmitEditorWidget::<span class="name">descriptionTextChanged</span>()</h3>
+<!-- @@@descriptionTextChanged -->
+<!-- $$$diffSelected[overload1]$$$diffSelectedconstQList<int>& -->
+<h3 class="fn" id="diffSelected"><a name="diffSelected"></a><code>[signal] </code><span class="type">void</span> SubmitEditorWidget::<span class="name">diffSelected</span>(<i>const QList&lt;int&gt; &amp;</i>)</h3>
+<!-- @@@diffSelected -->
+<!-- $$$fileModel[overload1]$$$fileModel -->
+<h3 class="fn" id="fileModel"><a name="fileModel"></a><span class="type"><a href="vcsbase-submitfilemodel.html">SubmitFileModel</a></span> *SubmitEditorWidget::<span class="name">fileModel</span>() const</h3>
+<p><b>See also </b><a href="vcsbase-submiteditorwidget.html#setFileModel">setFileModel</a>().</p>
+<!-- @@@fileModel -->
+<!-- $$$fileSelectionChanged[overload1]$$$fileSelectionChangedbool -->
+<h3 class="fn" id="fileSelectionChanged"><a name="fileSelectionChanged"></a><code>[signal] </code><span class="type">void</span> SubmitEditorWidget::<span class="name">fileSelectionChanged</span>(<span class="type">bool</span> <i>someFileSelected</i>)</h3>
+<!-- @@@fileSelectionChanged -->
+<!-- $$$hideDescription[overload1]$$$hideDescription -->
+<h3 class="fn" id="hideDescription"><a name="hideDescription"></a><code>[protected] </code><span class="type">void</span> SubmitEditorWidget::<span class="name">hideDescription</span>()</h3>
+<!-- @@@hideDescription -->
+<!-- $$$insertDescriptionEditContextMenuAction[overload1]$$$insertDescriptionEditContextMenuActionintQAction* -->
+<h3 class="fn" id="insertDescriptionEditContextMenuAction"><a name="insertDescriptionEditContextMenuAction"></a><span class="type">void</span> SubmitEditorWidget::<span class="name">insertDescriptionEditContextMenuAction</span>(<span class="type">int</span> <i>pos</i>, <span class="type">QAction</span> *<i>a</i>)</h3>
+<!-- @@@insertDescriptionEditContextMenuAction -->
+<!-- $$$insertLeftWidget[overload1]$$$insertLeftWidgetQWidget* -->
+<h3 class="fn" id="insertLeftWidget"><a name="insertLeftWidget"></a><code>[protected] </code><span class="type">void</span> SubmitEditorWidget::<span class="name">insertLeftWidget</span>(<span class="type">QWidget</span> *<i>w</i>)</h3>
+<!-- @@@insertLeftWidget -->
+<!-- $$$insertTopWidget[overload1]$$$insertTopWidgetQWidget* -->
+<h3 class="fn" id="insertTopWidget"><a name="insertTopWidget"></a><code>[protected] </code><span class="type">void</span> SubmitEditorWidget::<span class="name">insertTopWidget</span>(<span class="type">QWidget</span> *<i>w</i>)</h3>
+<!-- @@@insertTopWidget -->
+<!-- $$$registerActions[overload1]$$$registerActionsQAction*QAction*QAction*QAction* -->
+<h3 class="fn" id="registerActions"><a name="registerActions"></a><span class="type">void</span> SubmitEditorWidget::<span class="name">registerActions</span>(<span class="type">QAction</span> *<i>editorUndoAction</i>, <span class="type">QAction</span> *<i>editorRedoAction</i>, <span class="type">QAction</span> *<i>submitAction</i> = 0, <span class="type">QAction</span> *<i>diffAction</i> = 0)</h3>
+<!-- @@@registerActions -->
+<!-- $$$selectedRows[overload1]$$$selectedRows -->
+<h3 class="fn" id="selectedRows"><a name="selectedRows"></a><span class="type">QList</span>&lt;<span class="type">int</span>&gt; SubmitEditorWidget::<span class="name">selectedRows</span>() const</h3>
+<p><b>See also </b><a href="vcsbase-submiteditorwidget.html#setSelectedRows">setSelectedRows</a>().</p>
+<!-- @@@selectedRows -->
+<!-- $$$setFileModel[overload1]$$$setFileModelSubmitFileModel* -->
+<h3 class="fn" id="setFileModel"><a name="setFileModel"></a><span class="type">void</span> SubmitEditorWidget::<span class="name">setFileModel</span>(<span class="type"><a href="vcsbase-submitfilemodel.html">SubmitFileModel</a></span> *<i>model</i>)</h3>
+<p><b>See also </b><a href="vcsbase-submiteditorwidget.html#fileModel">fileModel</a>().</p>
+<!-- @@@setFileModel -->
+<!-- $$$setSelectedRows[overload1]$$$setSelectedRowsconstQList<int>& -->
+<h3 class="fn" id="setSelectedRows"><a name="setSelectedRows"></a><span class="type">void</span> SubmitEditorWidget::<span class="name">setSelectedRows</span>(const <span class="type">QList</span>&lt;<span class="type">int</span>&gt; &amp;<i>rows</i>)</h3>
+<p><b>See also </b><a href="vcsbase-submiteditorwidget.html#selectedRows">selectedRows</a>().</p>
+<!-- @@@setSelectedRows -->
+<!-- $$$setUpdateInProgress[overload1]$$$setUpdateInProgressbool -->
+<h3 class="fn" id="setUpdateInProgress"><a name="setUpdateInProgress"></a><span class="type">void</span> SubmitEditorWidget::<span class="name">setUpdateInProgress</span>(<span class="type">bool</span> <i>value</i>)</h3>
+<p><b>See also </b><a href="vcsbase-submiteditorwidget.html#updateInProgress">updateInProgress</a>().</p>
+<!-- @@@setUpdateInProgress -->
+<!-- $$$submitActionEnabledChanged[overload1]$$$submitActionEnabledChangedbool -->
+<h3 class="fn" id="submitActionEnabledChanged"><a name="submitActionEnabledChanged"></a><code>[signal] </code><span class="type">void</span> SubmitEditorWidget::<span class="name">submitActionEnabledChanged</span>(<i>bool</i>)</h3>
+<!-- @@@submitActionEnabledChanged -->
+<!-- $$$submitActionTextChanged[overload1]$$$submitActionTextChangedconstQString& -->
+<h3 class="fn" id="submitActionTextChanged"><a name="submitActionTextChanged"></a><code>[signal] </code><span class="type">void</span> SubmitEditorWidget::<span class="name">submitActionTextChanged</span>(<i>const QString &amp;</i>)</h3>
+<!-- @@@submitActionTextChanged -->
+<!-- $$$submitFieldWidgets[overload1]$$$submitFieldWidgets -->
+<h3 class="fn" id="submitFieldWidgets"><a name="submitFieldWidgets"></a><span class="type">QList</span>&lt;<span class="type"><a href="vcsbase-submitfieldwidget.html">SubmitFieldWidget</a></span> *&gt; SubmitEditorWidget::<span class="name">submitFieldWidgets</span>() const</h3>
+<!-- @@@submitFieldWidgets -->
+<!-- $$$unregisterActions[overload1]$$$unregisterActionsQAction*QAction*QAction*QAction* -->
+<h3 class="fn" id="unregisterActions"><a name="unregisterActions"></a><span class="type">void</span> SubmitEditorWidget::<span class="name">unregisterActions</span>(<span class="type">QAction</span> *<i>editorUndoAction</i>, <span class="type">QAction</span> *<i>editorRedoAction</i>, <span class="type">QAction</span> *<i>submitAction</i> = 0, <span class="type">QAction</span> *<i>diffAction</i> = 0)</h3>
+<!-- @@@unregisterActions -->
+<!-- $$$updateInProgress[overload1]$$$updateInProgress -->
+<h3 class="fn" id="updateInProgress"><a name="updateInProgress"></a><span class="type">bool</span> SubmitEditorWidget::<span class="name">updateInProgress</span>() const</h3>
+<p><b>See also </b><a href="vcsbase-submiteditorwidget.html#setUpdateInProgress">setUpdateInProgress</a>().</p>
+<!-- @@@updateInProgress -->
+<!-- $$$updateSubmitAction[overload1]$$$updateSubmitAction -->
+<h3 class="fn" id="updateSubmitAction"><a name="updateSubmitAction"></a><code>[slot] </code><span class="type">void</span> SubmitEditorWidget::<span class="name">updateSubmitAction</span>()</h3>
+<!-- @@@updateSubmitAction -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

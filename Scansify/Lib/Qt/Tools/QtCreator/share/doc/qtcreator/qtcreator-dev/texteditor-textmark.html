@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>TextMark Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >TextMark</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">TextMark Class</h1>
+<span class="small-subtitle">(<a href="texteditor-textmark.html">TextEditor::TextMark</a>)<br/></span>
+<ul>
+<li><a href="texteditor-textmark-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark-annotationrects.html">AnnotationRects</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#Priority-enum">Priority</a></b> { LowPriority, NormalPriority, HighPriority }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#TextMark">TextMark</a></b>(const QString &amp;<i>fileName</i>, int <i>lineNumber</i>, Core::Id <i>category</i>, double <i>widthFactor</i> = 1.0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#TextMark-1">TextMark</a></b>() = delete</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#dtor.TextMark">~TextMark</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#addToToolTipLayout">addToToolTipLayout</a></b>(QGridLayout *<i>target</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#addToolTipContent">addToolTipContent</a></b>(QLayout *<i>target</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> AnnotationRects </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#annotationRects">annotationRects</a></b>(const QRectF &amp;<i>boundingRect</i>, const QFontMetrics &amp;<i>fm</i>, const qreal <i>fadeInOffset</i>, const qreal <i>fadeOutOffset</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TextDocument *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#baseTextDocument">baseTextDocument</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Id </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#category">category</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#clicked">clicked</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Theme::Color </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#color">color</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#defaultToolTip">defaultToolTip</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#dragToLine">dragToLine</a></b>(int <i>lineNumber</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#fileName">fileName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#hasColor">hasColor</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const QIcon &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#icon">icon</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#isClickable">isClickable</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#isDraggable">isDraggable</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#isVisible">isVisible</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#lineAnnotation">lineAnnotation</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#lineNumber">lineNumber</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#move">move</a></b>(int <i>line</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#paintAnnotation">paintAnnotation</a></b>(QPainter &amp;<i>painter</i>, QRectF *<i>annotationRect</i>, const qreal <i>fadeInOffset</i>, const qreal <i>fadeOutOffset</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#paintIcon">paintIcon</a></b>(QPainter *<i>painter</i>, const QRect &amp;<i>rect</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Priority </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#priority">priority</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#removedFromEditor">removedFromEditor</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#setBaseTextDocument">setBaseTextDocument</a></b>(TextDocument *<i>baseTextDocument</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#setColor">setColor</a></b>(const Utils::Theme::Color &amp;<i>color</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#setDefaultToolTip">setDefaultToolTip</a></b>(const QString &amp;<i>toolTip</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#setIcon">setIcon</a></b>(const QIcon &amp;<i>icon</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#setLineAnnotation">setLineAnnotation</a></b>(const QString &amp;<i>lineAnnotation</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#setPriority">setPriority</a></b>(Priority <i>prioriy</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#setToolTip">setToolTip</a></b>(const QString &amp;<i>toolTip</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#setVisible">setVisible</a></b>(bool <i>isVisible</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#setWidthFactor">setWidthFactor</a></b>(double <i>factor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#toolTip">toolTip</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#updateBlock">updateBlock</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#updateFileName">updateFileName</a></b>(const QString &amp;<i>fileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#updateLineNumber">updateLineNumber</a></b>(int <i>lineNumber</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#updateMarker">updateMarker</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> double </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textmark.html#widthFactor">widthFactor</a></b>() const</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$Priority$$$LowPriority$$$NormalPriority$$$HighPriority -->
+<h3 class="fn" id="Priority-enum"><a name="Priority-enum"></a>enum TextMark::<span class="name">Priority</span></h3>
+<!-- @@@Priority -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$TextMark[overload1]$$$TextMarkconstQString&intCore::Iddouble -->
+<h3 class="fn" id="TextMark"><a name="TextMark"></a>TextMark::<span class="name">TextMark</span>(const <span class="type">QString</span> &amp;<i>fileName</i>, <span class="type">int</span> <i>lineNumber</i>, <span class="type"><a href="core-id.html">Core::Id</a></span> <i>category</i>, <span class="type">double</span> <i>widthFactor</i> = 1.0)</h3>
+<p>Default constructs an instance of TextMark.</p><!-- @@@TextMark -->
+<!-- $$$TextMark$$$TextMark -->
+<h3 class="fn" id="TextMark-1"><a name="TextMark-1"></a><code>[delete] </code>TextMark::<span class="name">TextMark</span>()</h3>
+<p>Default constructs an instance of TextMark.</p><!-- @@@TextMark -->
+<!-- $$$~TextMark[overload1]$$$~TextMark -->
+<h3 class="fn" id="dtor.TextMark"><a name="dtor.TextMark"></a><code>[virtual] </code>TextMark::<span class="name">~TextMark</span>()</h3>
+<p>Destroys the instance of TextMark. The destructor is virtual.</p><!-- @@@~TextMark -->
+<!-- $$$addToToolTipLayout[overload1]$$$addToToolTipLayoutQGridLayout* -->
+<h3 class="fn" id="addToToolTipLayout"><a name="addToToolTipLayout"></a><span class="type">void</span> TextMark::<span class="name">addToToolTipLayout</span>(<span class="type">QGridLayout</span> *<i>target</i>) const</h3>
+<!-- @@@addToToolTipLayout -->
+<!-- $$$addToolTipContent[overload1]$$$addToolTipContentQLayout* -->
+<h3 class="fn" id="addToolTipContent"><a name="addToolTipContent"></a><code>[virtual] </code><span class="type">bool</span> TextMark::<span class="name">addToolTipContent</span>(<span class="type">QLayout</span> *<i>target</i>) const</h3>
+<!-- @@@addToolTipContent -->
+<!-- $$$annotationRects[overload1]$$$annotationRectsconstQRectF&constQFontMetrics&constqrealconstqreal -->
+<h3 class="fn" id="annotationRects"><a name="annotationRects"></a><span class="type"><a href="texteditor-textmark-annotationrects.html">AnnotationRects</a></span> TextMark::<span class="name">annotationRects</span>(const <span class="type">QRectF</span> &amp;<i>boundingRect</i>, const <span class="type">QFontMetrics</span> &amp;<i>fm</i>, const <span class="type">qreal</span> <i>fadeInOffset</i>, const <span class="type">qreal</span> <i>fadeOutOffset</i>) const</h3>
+<!-- @@@annotationRects -->
+<!-- $$$baseTextDocument[overload1]$$$baseTextDocument -->
+<h3 class="fn" id="baseTextDocument"><a name="baseTextDocument"></a><span class="type"><a href="texteditor-textdocument.html">TextDocument</a></span> *TextMark::<span class="name">baseTextDocument</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#setBaseTextDocument">setBaseTextDocument</a>().</p>
+<!-- @@@baseTextDocument -->
+<!-- $$$category[overload1]$$$category -->
+<h3 class="fn" id="category"><a name="category"></a><span class="type"><a href="core-id.html">Core::Id</a></span> TextMark::<span class="name">category</span>() const</h3>
+<!-- @@@category -->
+<!-- $$$clicked[overload1]$$$clicked -->
+<h3 class="fn" id="clicked"><a name="clicked"></a><code>[virtual] </code><span class="type">void</span> TextMark::<span class="name">clicked</span>()</h3>
+<!-- @@@clicked -->
+<!-- $$$color[overload1]$$$color -->
+<h3 class="fn" id="color"><a name="color"></a><span class="type"><a href="utils-theme.html#Color-enum">Utils::Theme::Color</a></span> TextMark::<span class="name">color</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#setColor">setColor</a>().</p>
+<!-- @@@color -->
+<!-- $$$defaultToolTip[overload1]$$$defaultToolTip -->
+<h3 class="fn" id="defaultToolTip"><a name="defaultToolTip"></a><span class="type">QString</span> TextMark::<span class="name">defaultToolTip</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#setDefaultToolTip">setDefaultToolTip</a>().</p>
+<!-- @@@defaultToolTip -->
+<!-- $$$dragToLine[overload1]$$$dragToLineint -->
+<h3 class="fn" id="dragToLine"><a name="dragToLine"></a><code>[virtual] </code><span class="type">void</span> TextMark::<span class="name">dragToLine</span>(<span class="type">int</span> <i>lineNumber</i>)</h3>
+<!-- @@@dragToLine -->
+<!-- $$$fileName[overload1]$$$fileName -->
+<h3 class="fn" id="fileName"><a name="fileName"></a><span class="type">QString</span> TextMark::<span class="name">fileName</span>() const</h3>
+<!-- @@@fileName -->
+<!-- $$$hasColor[overload1]$$$hasColor -->
+<h3 class="fn" id="hasColor"><a name="hasColor"></a><span class="type">bool</span> TextMark::<span class="name">hasColor</span>() const</h3>
+<!-- @@@hasColor -->
+<!-- $$$icon[overload1]$$$icon -->
+<h3 class="fn" id="icon"><a name="icon"></a>const <span class="type">QIcon</span> &amp;TextMark::<span class="name">icon</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#setIcon">setIcon</a>().</p>
+<!-- @@@icon -->
+<!-- $$$isClickable[overload1]$$$isClickable -->
+<h3 class="fn" id="isClickable"><a name="isClickable"></a><code>[virtual] </code><span class="type">bool</span> TextMark::<span class="name">isClickable</span>() const</h3>
+<!-- @@@isClickable -->
+<!-- $$$isDraggable[overload1]$$$isDraggable -->
+<h3 class="fn" id="isDraggable"><a name="isDraggable"></a><code>[virtual] </code><span class="type">bool</span> TextMark::<span class="name">isDraggable</span>() const</h3>
+<!-- @@@isDraggable -->
+<!-- $$$isVisible[overload1]$$$isVisible -->
+<h3 class="fn" id="isVisible"><a name="isVisible"></a><span class="type">bool</span> TextMark::<span class="name">isVisible</span>() const</h3>
+<!-- @@@isVisible -->
+<!-- $$$lineAnnotation[overload1]$$$lineAnnotation -->
+<h3 class="fn" id="lineAnnotation"><a name="lineAnnotation"></a><span class="type">QString</span> TextMark::<span class="name">lineAnnotation</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#setLineAnnotation">setLineAnnotation</a>().</p>
+<!-- @@@lineAnnotation -->
+<!-- $$$lineNumber[overload1]$$$lineNumber -->
+<h3 class="fn" id="lineNumber"><a name="lineNumber"></a><span class="type">int</span> TextMark::<span class="name">lineNumber</span>() const</h3>
+<!-- @@@lineNumber -->
+<!-- $$$move[overload1]$$$moveint -->
+<h3 class="fn" id="move"><a name="move"></a><code>[virtual] </code><span class="type">void</span> TextMark::<span class="name">move</span>(<span class="type">int</span> <i>line</i>)</h3>
+<!-- @@@move -->
+<!-- $$$paintAnnotation[overload1]$$$paintAnnotationQPainter&QRectF*constqrealconstqreal -->
+<h3 class="fn" id="paintAnnotation"><a name="paintAnnotation"></a><code>[virtual] </code><span class="type">void</span> TextMark::<span class="name">paintAnnotation</span>(<span class="type">QPainter</span> &amp;<i>painter</i>, <span class="type">QRectF</span> *<i>annotationRect</i>, const <span class="type">qreal</span> <i>fadeInOffset</i>, const <span class="type">qreal</span> <i>fadeOutOffset</i>) const</h3>
+<!-- @@@paintAnnotation -->
+<!-- $$$paintIcon[overload1]$$$paintIconQPainter*constQRect& -->
+<h3 class="fn" id="paintIcon"><a name="paintIcon"></a><code>[virtual] </code><span class="type">void</span> TextMark::<span class="name">paintIcon</span>(<span class="type">QPainter</span> *<i>painter</i>, const <span class="type">QRect</span> &amp;<i>rect</i>) const</h3>
+<!-- @@@paintIcon -->
+<!-- $$$priority[overload1]$$$priority -->
+<h3 class="fn" id="priority"><a name="priority"></a><span class="type"><a href="texteditor-textmark.html#Priority-enum">Priority</a></span> TextMark::<span class="name">priority</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#setPriority">setPriority</a>().</p>
+<!-- @@@priority -->
+<!-- $$$removedFromEditor[overload1]$$$removedFromEditor -->
+<h3 class="fn" id="removedFromEditor"><a name="removedFromEditor"></a><code>[virtual] </code><span class="type">void</span> TextMark::<span class="name">removedFromEditor</span>()</h3>
+<!-- @@@removedFromEditor -->
+<!-- $$$setBaseTextDocument[overload1]$$$setBaseTextDocumentTextDocument* -->
+<h3 class="fn" id="setBaseTextDocument"><a name="setBaseTextDocument"></a><span class="type">void</span> TextMark::<span class="name">setBaseTextDocument</span>(<span class="type"><a href="texteditor-textdocument.html">TextDocument</a></span> *<i>baseTextDocument</i>)</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#baseTextDocument">baseTextDocument</a>().</p>
+<!-- @@@setBaseTextDocument -->
+<!-- $$$setColor[overload1]$$$setColorconstUtils::Theme::Color& -->
+<h3 class="fn" id="setColor"><a name="setColor"></a><span class="type">void</span> TextMark::<span class="name">setColor</span>(const <span class="type"><a href="utils-theme.html#Color-enum">Utils::Theme::Color</a></span> &amp;<i>color</i>)</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#color">color</a>().</p>
+<!-- @@@setColor -->
+<!-- $$$setDefaultToolTip[overload1]$$$setDefaultToolTipconstQString& -->
+<h3 class="fn" id="setDefaultToolTip"><a name="setDefaultToolTip"></a><span class="type">void</span> TextMark::<span class="name">setDefaultToolTip</span>(const <span class="type">QString</span> &amp;<i>toolTip</i>)</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#defaultToolTip">defaultToolTip</a>().</p>
+<!-- @@@setDefaultToolTip -->
+<!-- $$$setIcon[overload1]$$$setIconconstQIcon& -->
+<h3 class="fn" id="setIcon"><a name="setIcon"></a><span class="type">void</span> TextMark::<span class="name">setIcon</span>(const <span class="type">QIcon</span> &amp;<i>icon</i>)</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#icon">icon</a>().</p>
+<!-- @@@setIcon -->
+<!-- $$$setLineAnnotation[overload1]$$$setLineAnnotationconstQString& -->
+<h3 class="fn" id="setLineAnnotation"><a name="setLineAnnotation"></a><span class="type">void</span> TextMark::<span class="name">setLineAnnotation</span>(const <span class="type">QString</span> &amp;<i>lineAnnotation</i>)</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#lineAnnotation">lineAnnotation</a>().</p>
+<!-- @@@setLineAnnotation -->
+<!-- $$$setPriority[overload1]$$$setPriorityPriority -->
+<h3 class="fn" id="setPriority"><a name="setPriority"></a><span class="type">void</span> TextMark::<span class="name">setPriority</span>(<span class="type"><a href="texteditor-textmark.html#Priority-enum">Priority</a></span> <i>prioriy</i>)</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#priority">priority</a>().</p>
+<!-- @@@setPriority -->
+<!-- $$$setToolTip[overload1]$$$setToolTipconstQString& -->
+<h3 class="fn" id="setToolTip"><a name="setToolTip"></a><span class="type">void</span> TextMark::<span class="name">setToolTip</span>(const <span class="type">QString</span> &amp;<i>toolTip</i>)</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#toolTip">toolTip</a>().</p>
+<!-- @@@setToolTip -->
+<!-- $$$setVisible[overload1]$$$setVisiblebool -->
+<h3 class="fn" id="setVisible"><a name="setVisible"></a><span class="type">void</span> TextMark::<span class="name">setVisible</span>(<span class="type">bool</span> <i>isVisible</i>)</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#isVisible">isVisible</a>().</p>
+<!-- @@@setVisible -->
+<!-- $$$setWidthFactor[overload1]$$$setWidthFactordouble -->
+<h3 class="fn" id="setWidthFactor"><a name="setWidthFactor"></a><span class="type">void</span> TextMark::<span class="name">setWidthFactor</span>(<span class="type">double</span> <i>factor</i>)</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#widthFactor">widthFactor</a>().</p>
+<!-- @@@setWidthFactor -->
+<!-- $$$toolTip[overload1]$$$toolTip -->
+<h3 class="fn" id="toolTip"><a name="toolTip"></a><span class="type">QString</span> TextMark::<span class="name">toolTip</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#setToolTip">setToolTip</a>().</p>
+<!-- @@@toolTip -->
+<!-- $$$updateBlock[overload1]$$$updateBlockconstQTextBlock& -->
+<h3 class="fn" id="updateBlock"><a name="updateBlock"></a><code>[virtual] </code><span class="type">void</span> TextMark::<span class="name">updateBlock</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<!-- @@@updateBlock -->
+<!-- $$$updateFileName[overload1]$$$updateFileNameconstQString& -->
+<h3 class="fn" id="updateFileName"><a name="updateFileName"></a><code>[virtual] </code><span class="type">void</span> TextMark::<span class="name">updateFileName</span>(const <span class="type">QString</span> &amp;<i>fileName</i>)</h3>
+<!-- @@@updateFileName -->
+<!-- $$$updateLineNumber[overload1]$$$updateLineNumberint -->
+<h3 class="fn" id="updateLineNumber"><a name="updateLineNumber"></a><code>[virtual] </code><span class="type">void</span> TextMark::<span class="name">updateLineNumber</span>(<span class="type">int</span> <i>lineNumber</i>)</h3>
+<!-- @@@updateLineNumber -->
+<!-- $$$updateMarker[overload1]$$$updateMarker -->
+<h3 class="fn" id="updateMarker"><a name="updateMarker"></a><span class="type">void</span> TextMark::<span class="name">updateMarker</span>()</h3>
+<!-- @@@updateMarker -->
+<!-- $$$widthFactor[overload1]$$$widthFactor -->
+<h3 class="fn" id="widthFactor"><a name="widthFactor"></a><span class="type">double</span> TextMark::<span class="name">widthFactor</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textmark.html#setWidthFactor">setWidthFactor</a>().</p>
+<!-- @@@widthFactor -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

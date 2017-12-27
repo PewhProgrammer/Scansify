@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>DocumentModel Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >DocumentModel</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">DocumentModel Class</h1>
+<span class="small-subtitle">(<a href="core-documentmodel.html">Core::DocumentModel</a>)<br/></span>
+<ul>
+<li><a href="core-documentmodel-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel-entry.html">Entry</a></b></td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#destroy">destroy</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> IDocument *</td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#documentForFilePath">documentForFilePath</a></b>(const QString &amp;<i>filePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;IEditor *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#editorsForDocument">editorsForDocument</a></b>(IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;IEditor *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#editorsForDocuments">editorsForDocuments</a></b>(const QList&lt;IDocument *&gt; &amp;<i>entries</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;IEditor *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#editorsForFilePath">editorsForFilePath</a></b>(const QString &amp;<i>filePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;IEditor *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#editorsForOpenedDocuments">editorsForOpenedDocuments</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;Entry *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#entries">entries</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Entry *</td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#entryAtRow">entryAtRow</a></b>(int <i>row</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#entryCount">entryCount</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Entry *</td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#entryForDocument">entryForDocument</a></b>(IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Entry *</td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#entryForFilePath">entryForFilePath</a></b>(const Utils::FileName &amp;<i>filePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#indexOfDocument">indexOfDocument</a></b>(IDocument *<i>document</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#init">init</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QIcon </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#lockedIcon">lockedIcon</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QAbstractItemModel *</td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#model">model</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;IDocument *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#openedDocuments">openedDocuments</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="core-documentmodel.html#rowOfDocument">rowOfDocument</a></b>(IDocument *<i>document</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$destroy[overload1]$$$destroy -->
+<h3 class="fn" id="destroy"><a name="destroy"></a><code>[static] </code><span class="type">void</span> DocumentModel::<span class="name">destroy</span>()</h3>
+<!-- @@@destroy -->
+<!-- $$$documentForFilePath[overload1]$$$documentForFilePathconstQString& -->
+<h3 class="fn" id="documentForFilePath"><a name="documentForFilePath"></a><code>[static] </code><span class="type"><a href="core-idocument.html">IDocument</a></span> *DocumentModel::<span class="name">documentForFilePath</span>(const <span class="type">QString</span> &amp;<i>filePath</i>)</h3>
+<!-- @@@documentForFilePath -->
+<!-- $$$editorsForDocument[overload1]$$$editorsForDocumentIDocument* -->
+<h3 class="fn" id="editorsForDocument"><a name="editorsForDocument"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-ieditor.html">IEditor</a></span> *&gt; DocumentModel::<span class="name">editorsForDocument</span>(<span class="type"><a href="core-idocument.html">IDocument</a></span> *<i>document</i>)</h3>
+<!-- @@@editorsForDocument -->
+<!-- $$$editorsForDocuments[overload1]$$$editorsForDocumentsconstQList<IDocument*>& -->
+<h3 class="fn" id="editorsForDocuments"><a name="editorsForDocuments"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-ieditor.html">IEditor</a></span> *&gt; DocumentModel::<span class="name">editorsForDocuments</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html">IDocument</a></span> *&gt; &amp;<i>entries</i>)</h3>
+<!-- @@@editorsForDocuments -->
+<!-- $$$editorsForFilePath[overload1]$$$editorsForFilePathconstQString& -->
+<h3 class="fn" id="editorsForFilePath"><a name="editorsForFilePath"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-ieditor.html">IEditor</a></span> *&gt; DocumentModel::<span class="name">editorsForFilePath</span>(const <span class="type">QString</span> &amp;<i>filePath</i>)</h3>
+<!-- @@@editorsForFilePath -->
+<!-- $$$editorsForOpenedDocuments[overload1]$$$editorsForOpenedDocuments -->
+<h3 class="fn" id="editorsForOpenedDocuments"><a name="editorsForOpenedDocuments"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-ieditor.html">IEditor</a></span> *&gt; DocumentModel::<span class="name">editorsForOpenedDocuments</span>()</h3>
+<!-- @@@editorsForOpenedDocuments -->
+<!-- $$$entries[overload1]$$$entries -->
+<h3 class="fn" id="entries"><a name="entries"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-documentmodel-entry.html">Entry</a></span> *&gt; DocumentModel::<span class="name">entries</span>()</h3>
+<!-- @@@entries -->
+<!-- $$$entryAtRow[overload1]$$$entryAtRowint -->
+<h3 class="fn" id="entryAtRow"><a name="entryAtRow"></a><code>[static] </code><span class="type"><a href="core-documentmodel-entry.html">Entry</a></span> *DocumentModel::<span class="name">entryAtRow</span>(<span class="type">int</span> <i>row</i>)</h3>
+<!-- @@@entryAtRow -->
+<!-- $$$entryCount[overload1]$$$entryCount -->
+<h3 class="fn" id="entryCount"><a name="entryCount"></a><code>[static] </code><span class="type">int</span> DocumentModel::<span class="name">entryCount</span>()</h3>
+<!-- @@@entryCount -->
+<!-- $$$entryForDocument[overload1]$$$entryForDocumentIDocument* -->
+<h3 class="fn" id="entryForDocument"><a name="entryForDocument"></a><code>[static] </code><span class="type"><a href="core-documentmodel-entry.html">Entry</a></span> *DocumentModel::<span class="name">entryForDocument</span>(<span class="type"><a href="core-idocument.html">IDocument</a></span> *<i>document</i>)</h3>
+<!-- @@@entryForDocument -->
+<!-- $$$entryForFilePath[overload1]$$$entryForFilePathconstUtils::FileName& -->
+<h3 class="fn" id="entryForFilePath"><a name="entryForFilePath"></a><code>[static] </code><span class="type"><a href="core-documentmodel-entry.html">Entry</a></span> *DocumentModel::<span class="name">entryForFilePath</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>filePath</i>)</h3>
+<!-- @@@entryForFilePath -->
+<!-- $$$indexOfDocument[overload1]$$$indexOfDocumentIDocument* -->
+<h3 class="fn" id="indexOfDocument"><a name="indexOfDocument"></a><code>[static] </code><span class="type">int</span> DocumentModel::<span class="name">indexOfDocument</span>(<span class="type"><a href="core-idocument.html">IDocument</a></span> *<i>document</i>)</h3>
+<!-- @@@indexOfDocument -->
+<!-- $$$init[overload1]$$$init -->
+<h3 class="fn" id="init"><a name="init"></a><code>[static] </code><span class="type">void</span> DocumentModel::<span class="name">init</span>()</h3>
+<!-- @@@init -->
+<!-- $$$lockedIcon[overload1]$$$lockedIcon -->
+<h3 class="fn" id="lockedIcon"><a name="lockedIcon"></a><code>[static] </code><span class="type">QIcon</span> DocumentModel::<span class="name">lockedIcon</span>()</h3>
+<!-- @@@lockedIcon -->
+<!-- $$$model[overload1]$$$model -->
+<h3 class="fn" id="model"><a name="model"></a><code>[static] </code><span class="type">QAbstractItemModel</span> *DocumentModel::<span class="name">model</span>()</h3>
+<!-- @@@model -->
+<!-- $$$openedDocuments[overload1]$$$openedDocuments -->
+<h3 class="fn" id="openedDocuments"><a name="openedDocuments"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-idocument.html">IDocument</a></span> *&gt; DocumentModel::<span class="name">openedDocuments</span>()</h3>
+<!-- @@@openedDocuments -->
+<!-- $$$rowOfDocument[overload1]$$$rowOfDocumentIDocument* -->
+<h3 class="fn" id="rowOfDocument"><a name="rowOfDocument"></a><code>[static] </code><span class="type">int</span> DocumentModel::<span class="name">rowOfDocument</span>(<span class="type"><a href="core-idocument.html">IDocument</a></span> *<i>document</i>)</h3>
+<!-- @@@rowOfDocument -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

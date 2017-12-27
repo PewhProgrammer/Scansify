@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>BaseTextDocument Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >BaseTextDocument</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">BaseTextDocument Class</h1>
+<span class="small-subtitle">(<a href="core-basetextdocument.html">Core::BaseTextDocument</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="core-idocument.html">Core::IDocument</a></td></tr></table></div><ul>
+<li><a href="core-basetextdocument-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#ReadResult-typedef">ReadResult</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#BaseTextDocument">BaseTextDocument</a></b>(QObject *<i>parent</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#dtor.BaseTextDocument">~BaseTextDocument</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const QTextCodec *</td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#codec">codec</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QByteArray </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#decodingErrorSample">decodingErrorSample</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::TextFileFormat </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#format">format</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#hasDecodingError">hasDecodingError</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ReadResult </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#read">read</a></b>(const QString &amp;<i>fileName</i>, QStringList *<i>plainTextList</i>, QString *<i>errorString</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ReadResult </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#read-1">read</a></b>(const QString &amp;<i>fileName</i>, QString *<i>plainText</i>, QString *<i>errorString</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#setCodec">setCodec</a></b>(<i>const QTextCodec *</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#setSupportsUtf8Bom">setSupportsUtf8Bom</a></b>(bool <i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#supportsUtf8Bom">supportsUtf8Bom</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#switchUtf8Bom">switchUtf8Bom</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#write">write</a></b>(const QString &amp;<i>fileName</i>, const QString &amp;<i>data</i>, QString *<i>errorMessage</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-basetextdocument.html#write-1">write</a></b>(const QString &amp;<i>fileName</i>, const Utils::TextFileFormat &amp;<i>format</i>, const QString &amp;<i>data</i>, QString *<i>errorMessage</i>) const</td></tr>
+</table></div>
+<ul>
+<li class="fn">33 public functions inherited from <a href="core-idocument.html#public-functions">Core::IDocument</a></li>
+</ul>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">6 signals inherited from <a href="core-idocument.html#signals">Core::IDocument</a></li>
+</ul>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$ReadResult -->
+<h3 class="fn" id="ReadResult-typedef"><a name="ReadResult-typedef"></a>typedef BaseTextDocument::<span class="name">ReadResult</span></h3>
+<!-- @@@ReadResult -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$BaseTextDocument[overload1]$$$BaseTextDocumentQObject* -->
+<h3 class="fn" id="BaseTextDocument"><a name="BaseTextDocument"></a>BaseTextDocument::<span class="name">BaseTextDocument</span>(<span class="type">QObject</span> *<i>parent</i> = 0)</h3>
+<p>Default constructs an instance of BaseTextDocument.</p><!-- @@@BaseTextDocument -->
+<!-- $$$~BaseTextDocument[overload1]$$$~BaseTextDocument -->
+<h3 class="fn" id="dtor.BaseTextDocument"><a name="dtor.BaseTextDocument"></a>BaseTextDocument::<span class="name">~BaseTextDocument</span>()</h3>
+<p>Destroys the instance of BaseTextDocument.</p><!-- @@@~BaseTextDocument -->
+<!-- $$$codec[overload1]$$$codec -->
+<h3 class="fn" id="codec"><a name="codec"></a>const <span class="type">QTextCodec</span> *BaseTextDocument::<span class="name">codec</span>() const</h3>
+<p><b>See also </b><a href="core-basetextdocument.html#setCodec">setCodec</a>().</p>
+<!-- @@@codec -->
+<!-- $$$decodingErrorSample[overload1]$$$decodingErrorSample -->
+<h3 class="fn" id="decodingErrorSample"><a name="decodingErrorSample"></a><span class="type">QByteArray</span> BaseTextDocument::<span class="name">decodingErrorSample</span>() const</h3>
+<!-- @@@decodingErrorSample -->
+<!-- $$$format[overload1]$$$format -->
+<h3 class="fn" id="format"><a name="format"></a><span class="type"><a href="utils-textfileformat.html">Utils::TextFileFormat</a></span> BaseTextDocument::<span class="name">format</span>() const</h3>
+<!-- @@@format -->
+<!-- $$$hasDecodingError[overload1]$$$hasDecodingError -->
+<h3 class="fn" id="hasDecodingError"><a name="hasDecodingError"></a><span class="type">bool</span> BaseTextDocument::<span class="name">hasDecodingError</span>() const</h3>
+<!-- @@@hasDecodingError -->
+<!-- $$$read[overload1]$$$readconstQString&QStringList*QString* -->
+<h3 class="fn" id="read"><a name="read"></a><span class="type"><a href="core-basetextdocument.html#ReadResult-typedef">ReadResult</a></span> BaseTextDocument::<span class="name">read</span>(const <span class="type">QString</span> &amp;<i>fileName</i>, <span class="type">QStringList</span> *<i>plainTextList</i>, <span class="type">QString</span> *<i>errorString</i>)</h3>
+<!-- @@@read -->
+<!-- $$$read$$$readconstQString&QString*QString* -->
+<h3 class="fn" id="read-1"><a name="read-1"></a><span class="type"><a href="core-basetextdocument.html#ReadResult-typedef">ReadResult</a></span> BaseTextDocument::<span class="name">read</span>(const <span class="type">QString</span> &amp;<i>fileName</i>, <span class="type">QString</span> *<i>plainText</i>, <span class="type">QString</span> *<i>errorString</i>)</h3>
+<!-- @@@read -->
+<!-- $$$setCodec[overload1]$$$setCodecconstQTextCodec* -->
+<h3 class="fn" id="setCodec"><a name="setCodec"></a><span class="type">void</span> BaseTextDocument::<span class="name">setCodec</span>(<i>const QTextCodec *</i>)</h3>
+<p><b>See also </b><a href="core-basetextdocument.html#codec">codec</a>().</p>
+<!-- @@@setCodec -->
+<!-- $$$setSupportsUtf8Bom[overload1]$$$setSupportsUtf8Bombool -->
+<h3 class="fn" id="setSupportsUtf8Bom"><a name="setSupportsUtf8Bom"></a><span class="type">void</span> BaseTextDocument::<span class="name">setSupportsUtf8Bom</span>(<span class="type">bool</span> <i>value</i>)</h3>
+<p><b>See also </b><a href="core-basetextdocument.html#supportsUtf8Bom">supportsUtf8Bom</a>().</p>
+<!-- @@@setSupportsUtf8Bom -->
+<!-- $$$supportsUtf8Bom[overload1]$$$supportsUtf8Bom -->
+<h3 class="fn" id="supportsUtf8Bom"><a name="supportsUtf8Bom"></a><span class="type">bool</span> BaseTextDocument::<span class="name">supportsUtf8Bom</span>() const</h3>
+<p><b>See also </b><a href="core-basetextdocument.html#setSupportsUtf8Bom">setSupportsUtf8Bom</a>().</p>
+<!-- @@@supportsUtf8Bom -->
+<!-- $$$switchUtf8Bom[overload1]$$$switchUtf8Bom -->
+<h3 class="fn" id="switchUtf8Bom"><a name="switchUtf8Bom"></a><span class="type">void</span> BaseTextDocument::<span class="name">switchUtf8Bom</span>()</h3>
+<!-- @@@switchUtf8Bom -->
+<!-- $$$write[overload1]$$$writeconstQString&constQString&QString* -->
+<h3 class="fn" id="write"><a name="write"></a><span class="type">bool</span> BaseTextDocument::<span class="name">write</span>(const <span class="type">QString</span> &amp;<i>fileName</i>, const <span class="type">QString</span> &amp;<i>data</i>, <span class="type">QString</span> *<i>errorMessage</i>) const</h3>
+<!-- @@@write -->
+<!-- $$$write$$$writeconstQString&constUtils::TextFileFormat&constQString&QString* -->
+<h3 class="fn" id="write-1"><a name="write-1"></a><span class="type">bool</span> BaseTextDocument::<span class="name">write</span>(const <span class="type">QString</span> &amp;<i>fileName</i>, const <span class="type"><a href="utils-textfileformat.html">Utils::TextFileFormat</a></span> &amp;<i>format</i>, const <span class="type">QString</span> &amp;<i>data</i>, <span class="type">QString</span> *<i>errorMessage</i>) const</h3>
+<!-- @@@write -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

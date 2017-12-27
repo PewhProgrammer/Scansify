@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>AutoCompleter Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >AutoCompleter</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">AutoCompleter Class</h1>
+<span class="small-subtitle">(<a href="texteditor-autocompleter.html">TextEditor::AutoCompleter</a>)<br/></span>
+<ul>
+<li><a href="texteditor-autocompleter-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#AutoCompleter">AutoCompleter</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#dtor.AutoCompleter">~AutoCompleter</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#autoBackspace">autoBackspace</a></b>(QTextCursor &amp;<i>cursor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#autoComplete">autoComplete</a></b>(QTextCursor &amp;<i>cursor</i>, const QString &amp;<i>text</i>, bool <i>skipChars</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#contextAllowsAutoBrackets">contextAllowsAutoBrackets</a></b>(const QTextCursor &amp;<i>cursor</i>, const QString &amp;<i>textToInsert</i> = QString()) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#contextAllowsAutoQuotes">contextAllowsAutoQuotes</a></b>(const QTextCursor &amp;<i>cursor</i>, const QString &amp;<i>textToInsert</i> = QString()) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#contextAllowsElectricCharacters">contextAllowsElectricCharacters</a></b>(const QTextCursor &amp;<i>cursor</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#insertMatchingBrace">insertMatchingBrace</a></b>(const QTextCursor &amp;<i>cursor</i>, const QString &amp;<i>text</i>, QChar <i>lookAhead</i>, bool <i>skipChars</i>, int *<i>skippedChars</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#insertMatchingQuote">insertMatchingQuote</a></b>(const QTextCursor &amp;<i>cursor</i>, const QString &amp;<i>text</i>, QChar <i>lookAhead</i>, bool <i>skipChars</i>, int *<i>skippedChars</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#insertParagraphSeparator">insertParagraphSeparator</a></b>(const QTextCursor &amp;<i>cursor</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#isAutoInsertBracketsEnabled">isAutoInsertBracketsEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#isAutoInsertQuotesEnabled">isAutoInsertQuotesEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#isInComment">isInComment</a></b>(const QTextCursor &amp;<i>cursor</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#isInString">isInString</a></b>(const QTextCursor &amp;<i>cursor</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#isNextBlockIndented">isNextBlockIndented</a></b>(const QTextBlock &amp;<i>currentBlock</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#isSurroundWithBracketsEnabled">isSurroundWithBracketsEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#isSurroundWithQuotesEnabled">isSurroundWithQuotesEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#paragraphSeparatorAboutToBeInserted">paragraphSeparatorAboutToBeInserted</a></b>(QTextCursor &amp;<i>cursor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#setAutoInsertBracketsEnabled">setAutoInsertBracketsEnabled</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#setAutoInsertQuotesEnabled">setAutoInsertQuotesEnabled</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#setSurroundWithBracketsEnabled">setSurroundWithBracketsEnabled</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#setSurroundWithQuotesEnabled">setSurroundWithQuotesEnabled</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#setTabSettings">setTabSettings</a></b>(const TabSettings &amp;<i>tabSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const TabSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#tabSettings">tabSettings</a></b>() const</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-autocompleter.html#isQuote">isQuote</a></b>(const QString &amp;<i>text</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$AutoCompleter[overload1]$$$AutoCompleter -->
+<h3 class="fn" id="AutoCompleter"><a name="AutoCompleter"></a>AutoCompleter::<span class="name">AutoCompleter</span>()</h3>
+<p>Default constructs an instance of AutoCompleter.</p><!-- @@@AutoCompleter -->
+<!-- $$$~AutoCompleter[overload1]$$$~AutoCompleter -->
+<h3 class="fn" id="dtor.AutoCompleter"><a name="dtor.AutoCompleter"></a><code>[virtual] </code>AutoCompleter::<span class="name">~AutoCompleter</span>()</h3>
+<p>Destroys the instance of AutoCompleter. The destructor is virtual.</p><!-- @@@~AutoCompleter -->
+<!-- $$$autoBackspace[overload1]$$$autoBackspaceQTextCursor& -->
+<h3 class="fn" id="autoBackspace"><a name="autoBackspace"></a><code>[virtual] </code><span class="type">bool</span> AutoCompleter::<span class="name">autoBackspace</span>(<span class="type">QTextCursor</span> &amp;<i>cursor</i>)</h3>
+<!-- @@@autoBackspace -->
+<!-- $$$autoComplete[overload1]$$$autoCompleteQTextCursor&constQString&bool -->
+<h3 class="fn" id="autoComplete"><a name="autoComplete"></a><code>[virtual] </code><span class="type">QString</span> AutoCompleter::<span class="name">autoComplete</span>(<span class="type">QTextCursor</span> &amp;<i>cursor</i>, const <span class="type">QString</span> &amp;<i>text</i>, <span class="type">bool</span> <i>skipChars</i>) const</h3>
+<!-- @@@autoComplete -->
+<!-- $$$contextAllowsAutoBrackets[overload1]$$$contextAllowsAutoBracketsconstQTextCursor&constQString& -->
+<h3 class="fn" id="contextAllowsAutoBrackets"><a name="contextAllowsAutoBrackets"></a><code>[virtual] </code><span class="type">bool</span> AutoCompleter::<span class="name">contextAllowsAutoBrackets</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>, const <span class="type">QString</span> &amp;<i>textToInsert</i> = QString()) const</h3>
+<!-- @@@contextAllowsAutoBrackets -->
+<!-- $$$contextAllowsAutoQuotes[overload1]$$$contextAllowsAutoQuotesconstQTextCursor&constQString& -->
+<h3 class="fn" id="contextAllowsAutoQuotes"><a name="contextAllowsAutoQuotes"></a><code>[virtual] </code><span class="type">bool</span> AutoCompleter::<span class="name">contextAllowsAutoQuotes</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>, const <span class="type">QString</span> &amp;<i>textToInsert</i> = QString()) const</h3>
+<!-- @@@contextAllowsAutoQuotes -->
+<!-- $$$contextAllowsElectricCharacters[overload1]$$$contextAllowsElectricCharactersconstQTextCursor& -->
+<h3 class="fn" id="contextAllowsElectricCharacters"><a name="contextAllowsElectricCharacters"></a><code>[virtual] </code><span class="type">bool</span> AutoCompleter::<span class="name">contextAllowsElectricCharacters</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>) const</h3>
+<!-- @@@contextAllowsElectricCharacters -->
+<!-- $$$insertMatchingBrace[overload1]$$$insertMatchingBraceconstQTextCursor&constQString&QCharboolint* -->
+<h3 class="fn" id="insertMatchingBrace"><a name="insertMatchingBrace"></a><code>[virtual] </code><span class="type">QString</span> AutoCompleter::<span class="name">insertMatchingBrace</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>, const <span class="type">QString</span> &amp;<i>text</i>, <span class="type">QChar</span> <i>lookAhead</i>, <span class="type">bool</span> <i>skipChars</i>, <span class="type">int</span> *<i>skippedChars</i>) const</h3>
+<!-- @@@insertMatchingBrace -->
+<!-- $$$insertMatchingQuote[overload1]$$$insertMatchingQuoteconstQTextCursor&constQString&QCharboolint* -->
+<h3 class="fn" id="insertMatchingQuote"><a name="insertMatchingQuote"></a><code>[virtual] </code><span class="type">QString</span> AutoCompleter::<span class="name">insertMatchingQuote</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>, const <span class="type">QString</span> &amp;<i>text</i>, <span class="type">QChar</span> <i>lookAhead</i>, <span class="type">bool</span> <i>skipChars</i>, <span class="type">int</span> *<i>skippedChars</i>) const</h3>
+<!-- @@@insertMatchingQuote -->
+<!-- $$$insertParagraphSeparator[overload1]$$$insertParagraphSeparatorconstQTextCursor& -->
+<h3 class="fn" id="insertParagraphSeparator"><a name="insertParagraphSeparator"></a><code>[virtual] </code><span class="type">QString</span> AutoCompleter::<span class="name">insertParagraphSeparator</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>) const</h3>
+<!-- @@@insertParagraphSeparator -->
+<!-- $$$isAutoInsertBracketsEnabled[overload1]$$$isAutoInsertBracketsEnabled -->
+<h3 class="fn" id="isAutoInsertBracketsEnabled"><a name="isAutoInsertBracketsEnabled"></a><span class="type">bool</span> AutoCompleter::<span class="name">isAutoInsertBracketsEnabled</span>() const</h3>
+<!-- @@@isAutoInsertBracketsEnabled -->
+<!-- $$$isAutoInsertQuotesEnabled[overload1]$$$isAutoInsertQuotesEnabled -->
+<h3 class="fn" id="isAutoInsertQuotesEnabled"><a name="isAutoInsertQuotesEnabled"></a><span class="type">bool</span> AutoCompleter::<span class="name">isAutoInsertQuotesEnabled</span>() const</h3>
+<!-- @@@isAutoInsertQuotesEnabled -->
+<!-- $$$isInComment[overload1]$$$isInCommentconstQTextCursor& -->
+<h3 class="fn" id="isInComment"><a name="isInComment"></a><code>[virtual] </code><span class="type">bool</span> AutoCompleter::<span class="name">isInComment</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>) const</h3>
+<!-- @@@isInComment -->
+<!-- $$$isInString[overload1]$$$isInStringconstQTextCursor& -->
+<h3 class="fn" id="isInString"><a name="isInString"></a><code>[virtual] </code><span class="type">bool</span> AutoCompleter::<span class="name">isInString</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>) const</h3>
+<!-- @@@isInString -->
+<!-- $$$isNextBlockIndented[overload1]$$$isNextBlockIndentedconstQTextBlock& -->
+<h3 class="fn" id="isNextBlockIndented"><a name="isNextBlockIndented"></a><span class="type">bool</span> AutoCompleter::<span class="name">isNextBlockIndented</span>(const <span class="type">QTextBlock</span> &amp;<i>currentBlock</i>) const</h3>
+<!-- @@@isNextBlockIndented -->
+<!-- $$$isQuote[overload1]$$$isQuoteconstQString& -->
+<h3 class="fn" id="isQuote"><a name="isQuote"></a><code>[static] </code><span class="type">bool</span> AutoCompleter::<span class="name">isQuote</span>(const <span class="type">QString</span> &amp;<i>text</i>)</h3>
+<!-- @@@isQuote -->
+<!-- $$$isSurroundWithBracketsEnabled[overload1]$$$isSurroundWithBracketsEnabled -->
+<h3 class="fn" id="isSurroundWithBracketsEnabled"><a name="isSurroundWithBracketsEnabled"></a><span class="type">bool</span> AutoCompleter::<span class="name">isSurroundWithBracketsEnabled</span>() const</h3>
+<!-- @@@isSurroundWithBracketsEnabled -->
+<!-- $$$isSurroundWithQuotesEnabled[overload1]$$$isSurroundWithQuotesEnabled -->
+<h3 class="fn" id="isSurroundWithQuotesEnabled"><a name="isSurroundWithQuotesEnabled"></a><span class="type">bool</span> AutoCompleter::<span class="name">isSurroundWithQuotesEnabled</span>() const</h3>
+<!-- @@@isSurroundWithQuotesEnabled -->
+<!-- $$$paragraphSeparatorAboutToBeInserted[overload1]$$$paragraphSeparatorAboutToBeInsertedQTextCursor& -->
+<h3 class="fn" id="paragraphSeparatorAboutToBeInserted"><a name="paragraphSeparatorAboutToBeInserted"></a><code>[virtual] </code><span class="type">int</span> AutoCompleter::<span class="name">paragraphSeparatorAboutToBeInserted</span>(<span class="type">QTextCursor</span> &amp;<i>cursor</i>)</h3>
+<!-- @@@paragraphSeparatorAboutToBeInserted -->
+<!-- $$$setAutoInsertBracketsEnabled[overload1]$$$setAutoInsertBracketsEnabledbool -->
+<h3 class="fn" id="setAutoInsertBracketsEnabled"><a name="setAutoInsertBracketsEnabled"></a><span class="type">void</span> AutoCompleter::<span class="name">setAutoInsertBracketsEnabled</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-autocompleter.html#isAutoInsertBracketsEnabled">isAutoInsertBracketsEnabled</a>().</p>
+<!-- @@@setAutoInsertBracketsEnabled -->
+<!-- $$$setAutoInsertQuotesEnabled[overload1]$$$setAutoInsertQuotesEnabledbool -->
+<h3 class="fn" id="setAutoInsertQuotesEnabled"><a name="setAutoInsertQuotesEnabled"></a><span class="type">void</span> AutoCompleter::<span class="name">setAutoInsertQuotesEnabled</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-autocompleter.html#isAutoInsertQuotesEnabled">isAutoInsertQuotesEnabled</a>().</p>
+<!-- @@@setAutoInsertQuotesEnabled -->
+<!-- $$$setSurroundWithBracketsEnabled[overload1]$$$setSurroundWithBracketsEnabledbool -->
+<h3 class="fn" id="setSurroundWithBracketsEnabled"><a name="setSurroundWithBracketsEnabled"></a><span class="type">void</span> AutoCompleter::<span class="name">setSurroundWithBracketsEnabled</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-autocompleter.html#isSurroundWithBracketsEnabled">isSurroundWithBracketsEnabled</a>().</p>
+<!-- @@@setSurroundWithBracketsEnabled -->
+<!-- $$$setSurroundWithQuotesEnabled[overload1]$$$setSurroundWithQuotesEnabledbool -->
+<h3 class="fn" id="setSurroundWithQuotesEnabled"><a name="setSurroundWithQuotesEnabled"></a><span class="type">void</span> AutoCompleter::<span class="name">setSurroundWithQuotesEnabled</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-autocompleter.html#isSurroundWithQuotesEnabled">isSurroundWithQuotesEnabled</a>().</p>
+<!-- @@@setSurroundWithQuotesEnabled -->
+<!-- $$$setTabSettings[overload1]$$$setTabSettingsconstTabSettings& -->
+<h3 class="fn" id="setTabSettings"><a name="setTabSettings"></a><span class="type">void</span> AutoCompleter::<span class="name">setTabSettings</span>(const <span class="type"><a href="texteditor-tabsettings.html">TabSettings</a></span> &amp;<i>tabSettings</i>)</h3>
+<p><b>See also </b><a href="texteditor-autocompleter.html#tabSettings">tabSettings</a>().</p>
+<!-- @@@setTabSettings -->
+<!-- $$$tabSettings[overload1]$$$tabSettings -->
+<h3 class="fn" id="tabSettings"><a name="tabSettings"></a>const <span class="type"><a href="texteditor-tabsettings.html">TabSettings</a></span> &amp;AutoCompleter::<span class="name">tabSettings</span>() const</h3>
+<p><b>See also </b><a href="texteditor-autocompleter.html#setTabSettings">setTabSettings</a>().</p>
+<!-- @@@tabSettings -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

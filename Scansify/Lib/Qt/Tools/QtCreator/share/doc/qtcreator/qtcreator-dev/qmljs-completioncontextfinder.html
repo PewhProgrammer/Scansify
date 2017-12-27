@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>CompletionContextFinder Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >CompletionContextFinder</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">CompletionContextFinder Class</h1>
+<span class="small-subtitle">(<a href="qmljs-completioncontextfinder.html">QmlJS::CompletionContextFinder</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="qmljs-lineinfo.html">QmlJS::LineInfo</a></td></tr></table></div><ul>
+<li><a href="qmljs-completioncontextfinder-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-completioncontextfinder.html#CompletionContextFinder">CompletionContextFinder</a></b>(const QTextCursor &amp;<i>cursor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="qmljs-completioncontextfinder.html#bindingPropertyName">bindingPropertyName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-completioncontextfinder.html#isAfterOnInLhsOfBinding">isAfterOnInLhsOfBinding</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-completioncontextfinder.html#isInImport">isInImport</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-completioncontextfinder.html#isInLhsOfBinding">isInLhsOfBinding</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-completioncontextfinder.html#isInQmlContext">isInQmlContext</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-completioncontextfinder.html#isInRhsOfBinding">isInRhsOfBinding</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-completioncontextfinder.html#isInStringLiteral">isInStringLiteral</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-completioncontextfinder.html#libVersionImport">libVersionImport</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="qmljs-completioncontextfinder.html#qmlObjectTypeName">qmlObjectTypeName</a></b>() const</td></tr>
+</table></div>
+<ul>
+<li class="fn">3 public functions inherited from <a href="qmljs-lineinfo.html#public-functions">QmlJS::LineInfo</a></li>
+</ul>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">9 protected functions inherited from <a href="qmljs-lineinfo.html#protected-functions">QmlJS::LineInfo</a></li>
+</ul>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$CompletionContextFinder[overload1]$$$CompletionContextFinderconstQTextCursor& -->
+<h3 class="fn" id="CompletionContextFinder"><a name="CompletionContextFinder"></a>CompletionContextFinder::<span class="name">CompletionContextFinder</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>)</h3>
+<p>Default constructs an instance of CompletionContextFinder.</p><!-- @@@CompletionContextFinder -->
+<!-- $$$bindingPropertyName[overload1]$$$bindingPropertyName -->
+<h3 class="fn" id="bindingPropertyName"><a name="bindingPropertyName"></a><span class="type">QStringList</span> CompletionContextFinder::<span class="name">bindingPropertyName</span>() const</h3>
+<!-- @@@bindingPropertyName -->
+<!-- $$$isAfterOnInLhsOfBinding[overload1]$$$isAfterOnInLhsOfBinding -->
+<h3 class="fn" id="isAfterOnInLhsOfBinding"><a name="isAfterOnInLhsOfBinding"></a><span class="type">bool</span> CompletionContextFinder::<span class="name">isAfterOnInLhsOfBinding</span>() const</h3>
+<p>Returns true if the cursor after &quot;Type on&quot; in the left hand side of a binding, false otherwise.</p>
+<!-- @@@isAfterOnInLhsOfBinding -->
+<!-- $$$isInImport[overload1]$$$isInImport -->
+<h3 class="fn" id="isInImport"><a name="isInImport"></a><span class="type">bool</span> CompletionContextFinder::<span class="name">isInImport</span>() const</h3>
+<!-- @@@isInImport -->
+<!-- $$$isInLhsOfBinding[overload1]$$$isInLhsOfBinding -->
+<h3 class="fn" id="isInLhsOfBinding"><a name="isInLhsOfBinding"></a><span class="type">bool</span> CompletionContextFinder::<span class="name">isInLhsOfBinding</span>() const</h3>
+<!-- @@@isInLhsOfBinding -->
+<!-- $$$isInQmlContext[overload1]$$$isInQmlContext -->
+<h3 class="fn" id="isInQmlContext"><a name="isInQmlContext"></a><span class="type">bool</span> CompletionContextFinder::<span class="name">isInQmlContext</span>() const</h3>
+<!-- @@@isInQmlContext -->
+<!-- $$$isInRhsOfBinding[overload1]$$$isInRhsOfBinding -->
+<h3 class="fn" id="isInRhsOfBinding"><a name="isInRhsOfBinding"></a><span class="type">bool</span> CompletionContextFinder::<span class="name">isInRhsOfBinding</span>() const</h3>
+<!-- @@@isInRhsOfBinding -->
+<!-- $$$isInStringLiteral[overload1]$$$isInStringLiteral -->
+<h3 class="fn" id="isInStringLiteral"><a name="isInStringLiteral"></a><span class="type">bool</span> CompletionContextFinder::<span class="name">isInStringLiteral</span>() const</h3>
+<!-- @@@isInStringLiteral -->
+<!-- $$$libVersionImport[overload1]$$$libVersionImport -->
+<h3 class="fn" id="libVersionImport"><a name="libVersionImport"></a><span class="type">QString</span> CompletionContextFinder::<span class="name">libVersionImport</span>() const</h3>
+<!-- @@@libVersionImport -->
+<!-- $$$qmlObjectTypeName[overload1]$$$qmlObjectTypeName -->
+<h3 class="fn" id="qmlObjectTypeName"><a name="qmlObjectTypeName"></a><span class="type">QStringList</span> CompletionContextFinder::<span class="name">qmlObjectTypeName</span>() const</h3>
+<!-- @@@qmlObjectTypeName -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

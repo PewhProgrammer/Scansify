@@ -1,0 +1,322 @@
+<Packages>
+    <ApplicationName>Qt 5.9.3</ApplicationName>
+    <ApplicationVersion>1.0.0</ApplicationVersion>
+    <Package>
+        <Name>qt</Name>
+        <Title>Qt 5.9.3</Title>
+        <Description>Qt 5.9.3</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>0</Size>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593</Name>
+        <Title>Qt 5.9.3</Title>
+        <Description>Qt 5.9.3</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>0</Size>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.doc</Name>
+        <Title>Qt 5.9.3 Documentation</Title>
+        <Description>Qt 5.9.3 documentation</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>497116983</Size>
+        <Dependencies>qt.tools</Dependencies>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.doc.qtspeech</Name>
+        <Title>Documentation for Qt Speech (Technology Preview)</Title>
+        <Description>Documentation for Qt Speech (Technology Preview)</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>587444</Size>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.doc.qtvirtualkeyboard</Name>
+        <Title>Documentation for Qt 5.9.3 GPLv3 components (QtVirtualKeyboard)</Title>
+        <Description>Documentation for Qt 5.9.3 GPLv3 components (QtVirtualKeyboard)</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>2189793</Size>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.doc.qtwebengine</Name>
+        <Title>Documentation for QtWebEngine</Title>
+        <Description>Documentation for QtWebEngine</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>12304702</Size>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.examples</Name>
+        <Title>Qt 5.9.3 Examples</Title>
+        <Description>Qt 5.9.3 Examples</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>95185798</Size>
+        <Dependencies>qt.tools</Dependencies>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.examples.qtspeech</Name>
+        <Title>Examples for Qt Speech (Technology Preview)</Title>
+        <Description>Examples for Qt Speech (Technology Preview)</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>58611</Size>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.examples.qtvirtualkeyboard</Name>
+        <Title>Examples for Qt 5.9.3 GPLv3 components (QtVirtualKeyboard)</Title>
+        <Description>Examples for Qt 5.9.3 GPLv3 components (QtVirtualKeyboard)</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>43733</Size>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.examples.qtwebengine</Name>
+        <Title>Examples for QtWebEngine</Title>
+        <Description>Examples for QtWebEngine</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>2393105</Size>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.qtspeech</Name>
+        <Title>Qt Speech (TP)</Title>
+        <Description>The Qt Speech module allows using text to speech engines.&lt;br>&lt;br>The release of Qt Speech with Qt 5.9 is a Technology Preview.</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>0</Size>
+        <Dependencies>qt.593.doc.qtspeech,qt.593.examples.qtspeech</Dependencies>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.qtspeech.win32_mingw53</Name>
+        <Title>Qt Speech for MinGW 5.3.0 32-bit</Title>
+        <Description></Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>4632073</Size>
+        <Dependencies>qt.593.win32_mingw53</Dependencies>
+        <AutoDependOn>qt.593.qtspeech,qt.593.win32_mingw53</AutoDependOn>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.qtspeech.win64_msvc2017_64</Name>
+        <Title>Qt Speech for msvc2017_64-bit</Title>
+        <Description></Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>459700</Size>
+        <Dependencies>qt.593.win64_msvc2017_64</Dependencies>
+        <AutoDependOn>qt.593.qtspeech,qt.593.win64_msvc2017_64</AutoDependOn>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.qtvirtualkeyboard</Name>
+        <Title>Qt Virtual Keyboard</Title>
+        <Description>The Qt Virtual Keyboard is a Qt Quick virtual keyboard that you can plug in to your platform or application. You can extend it with your own layouts and styles.</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>0</Size>
+        <Dependencies>qt.593.doc.qtvirtualkeyboard,qt.593.examples.qtvirtualkeyboard</Dependencies>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.qtvirtualkeyboard.win32_mingw53</Name>
+        <Title>Qt Virtual Keyboard for MinGW 5.3.0 32-bit</Title>
+        <Description></Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>20609192</Size>
+        <Dependencies>qt.593.win32_mingw53</Dependencies>
+        <AutoDependOn>qt.593.qtvirtualkeyboard,qt.593.win32_mingw53</AutoDependOn>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.qtvirtualkeyboard.win64_msvc2017_64</Name>
+        <Title>Qt Virtual Keyboard for msvc2017 64-bit</Title>
+        <Description></Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>2081287</Size>
+        <Dependencies>qt.593.win64_msvc2017_64</Dependencies>
+        <AutoDependOn>qt.593.qtvirtualkeyboard,qt.593.win64_msvc2017_64</AutoDependOn>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.qtwebengine</Name>
+        <Title>Qt WebEngine</Title>
+        <Description>The Qt WebEngine module integrates the fast moving Chromium web platform into Qt and provides a convenient API for both Qt Widgets and Qt Quick to utilize Chromium's web capabilities. Qt WebEngine takes full benefit of the whole Qt graphics stack integration allowing seamless mix and overlay of native Qt controls with web content and OpenGL shaders.</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>0</Size>
+        <Dependencies>qt.593.doc.qtwebengine,qt.593.examples.qtwebengine</Dependencies>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.qtwebengine.win64_msvc2017_64</Name>
+        <Title>Qt WebEngine for msvc2017 64-bit</Title>
+        <Description></Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>293537118</Size>
+        <Dependencies>qt.593.win64_msvc2017_64</Dependencies>
+        <AutoDependOn>qt.593.qtwebengine,qt.593.win64_msvc2017_64</AutoDependOn>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.win32_mingw53</Name>
+        <Title>MinGW 5.3.0 32 bit</Title>
+        <Description>Qt 5.9.3 Prebuilt Components for MinGW 5.3.0 32-bit</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>3479161689</Size>
+        <Dependencies>qt.tools.qtcreator,qt.tools.win32_mingw530,qt.593.doc,qt.593.examples</Dependencies>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.593.win64_msvc2017_64</Name>
+        <Title>msvc2017 64-bit</Title>
+        <Description>Qt 5.9.3 Prebuilt Components for msvc2017 64-bit</Description>
+        <Version>5.9.3-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>507300839</Size>
+        <Dependencies>qt.tools.qtcreator,qt.593.doc,qt.593.examples</Dependencies>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.installer.changelog</Name>
+        <Title>Qt Installer Changelog</Title>
+        <Description></Description>
+        <Version>1.0.2</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>1702</Size>
+        <AutoDependOn>qt</AutoDependOn>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.license.python</Name>
+        <Title>Python Software Foundation License Version 2</Title>
+        <Description></Description>
+        <Version>1.0.0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>0</Size>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.tools</Name>
+        <Title>Tools</Title>
+        <Description>IDE, Internationalization, Design and other tools to accelerate development.</Description>
+        <Version>1.0.8-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>0</Size>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.tools.qtcreator</Name>
+        <Title>Qt Creator 4.4.1</Title>
+        <Description>IDE for Qt application development</Description>
+        <Version>4.4.1-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>349595106</Size>
+        <Dependencies>qt.tools.vcredist_msvc2015_x86,qt.tools.vcredist_msvc2015_x64</Dependencies>
+        <ForcedInstallation>true</ForcedInstallation>
+    </Package>
+    <Package>
+        <Name>qt.tools.qtcreatorcdbext</Name>
+        <Title>Qt Creator 4.4.1 CDB Debugger Support</Title>
+        <Description>CDB Debugger support for Qt Creator</Description>
+        <Version>4.4.1-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>9757438</Size>
+        <Dependencies>qt.tools.qtcreator,qt.license.python</Dependencies>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.tools.vcredist_msvc2015_x64</Name>
+        <Title>VCRedist for MSVC 2015 64bit</Title>
+        <Description>Visual C++ Redistributable Packages for Visual Studio 2015 64 bit</Description>
+        <Version>2017-03-22-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>14572040</Size>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.tools.vcredist_msvc2015_x86</Name>
+        <Title>VCRedist for MSVC 2015 32bit</Title>
+        <Description>Visual C++ Redistributable Packages for Visual Studio 2015 32 bit</Description>
+        <Version>2017-02-01-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>14456912</Size>
+        <Virtual>true</Virtual>
+        <Checkable>true</Checkable>
+    </Package>
+    <Package>
+        <Name>qt.tools.win32_mingw530</Name>
+        <Title>MinGW 5.3.0</Title>
+        <Description>MinGW-builds 5.3.0 32 bit toolchain.</Description>
+        <Version>5.3.0-2</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2017-12-24</InstallDate>
+        <Size>400664148</Size>
+        <Dependencies>qt.tools.qtcreator</Dependencies>
+        <Checkable>true</Checkable>
+    </Package>
+</Packages>

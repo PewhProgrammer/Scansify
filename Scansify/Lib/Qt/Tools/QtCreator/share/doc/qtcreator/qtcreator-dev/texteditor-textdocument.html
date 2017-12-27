@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>TextDocument Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >TextDocument</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">TextDocument Class</h1>
+<span class="small-subtitle">(<a href="texteditor-textdocument.html">TextEditor::TextDocument</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="core-basetextdocument.html">Core::BaseTextDocument</a></td></tr></table></div><ul>
+<li><a href="texteditor-textdocument-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#TextDocument">TextDocument</a></b>(Core::Id <i>id</i> = Core::Id())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#dtor.TextDocument">~TextDocument</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#addMark">addMark</a></b>(TextMark *<i>mark</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#autoIndent">autoIndent</a></b>(const QTextCursor &amp;<i>cursor</i>, QChar <i>typedChar</i> = QChar::Null)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#autoReindent">autoReindent</a></b>(const QTextCursor &amp;<i>cursor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QChar </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#characterAt">characterAt</a></b>(int <i>pos</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#cleanWhitespace">cleanWhitespace</a></b>(const QTextCursor &amp;<i>cursor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual CompletionAssistProvider *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#completionAssistProvider">completionAssistProvider</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QTextDocument *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#document">document</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ExtraEncodingSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#extraEncodingSettings">extraEncodingSettings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FontSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#fontSettings">fontSettings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QTextCursor </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#indent">indent</a></b>(const QTextCursor &amp;<i>cursor</i>, bool <i>blockSelection</i> = false, int <i>column</i> = 0, int *<i>offset</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Indenter *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#indenter">indenter</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TextMarks </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#marks">marks</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TextMarks </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#marksAt">marksAt</a></b>(int <i>line</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#moveMark">moveMark</a></b>(TextMark *<i>mark</i>, int <i>previousLine</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#plainText">plainText</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QuickFixAssistProvider *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#quickFixAssistProvider">quickFixAssistProvider</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#reload-1">reload</a></b>(QString *<i>errorString</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#reload-2">reload</a></b>(QString *<i>errorString</i>, const QString &amp;<i>realFileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#reload-3">reload</a></b>(QString *<i>errorString</i>, QTextCodec *<i>codec</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#removeMark">removeMark</a></b>(TextMark *<i>mark</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#removeMarkFromMarksCache">removeMarkFromMarksCache</a></b>(TextMark *<i>mark</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setCompletionAssistProvider">setCompletionAssistProvider</a></b>(CompletionAssistProvider *<i>provider</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setExtraEncodingSettings">setExtraEncodingSettings</a></b>(const ExtraEncodingSettings &amp;<i>extraEncodingSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setFallbackSaveAsFileName">setFallbackSaveAsFileName</a></b>(const QString &amp;<i>fallbackSaveAsFileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setFallbackSaveAsPath">setFallbackSaveAsPath</a></b>(const QString &amp;<i>fallbackSaveAsPath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setFontSettings">setFontSettings</a></b>(const TextEditor::FontSettings &amp;<i>fontSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setIndenter">setIndenter</a></b>(Indenter *<i>indenter</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setPlainText">setPlainText</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setStorageSettings">setStorageSettings</a></b>(const StorageSettings &amp;<i>storageSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setSyntaxHighlighter">setSyntaxHighlighter</a></b>(SyntaxHighlighter *<i>highlighter</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setTabSettings">setTabSettings</a></b>(const TextEditor::TabSettings &amp;<i>tabSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setTypingSettings">setTypingSettings</a></b>(const TypingSettings &amp;<i>typingSettings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const StorageSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#storageSettings">storageSettings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> SyntaxHighlighter *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#syntaxHighlighter">syntaxHighlighter</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const TabSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#tabSettings">tabSettings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#textAt">textAt</a></b>(int <i>pos</i>, int <i>length</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#triggerPendingUpdates">triggerPendingUpdates</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const TypingSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#typingSettings">typingSettings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QTextCursor </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#unindent">unindent</a></b>(const QTextCursor &amp;<i>cursor</i>, bool <i>blockSelection</i> = false, int <i>column</i> = 0, int *<i>offset</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#updateMark">updateMark</a></b>(TextMark *<i>mark</i>)</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#checkPermissions">checkPermissions</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QByteArray </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#contents">contents</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#fallbackSaveAsFileName">fallbackSaveAsFileName</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#fallbackSaveAsPath">fallbackSaveAsPath</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#isFileReadOnly">isFileReadOnly</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#isModified">isModified</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#isSaveAsAllowed">isSaveAsAllowed</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual OpenResult </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#open">open</a></b>(QString *<i>errorString</i>, const QString &amp;<i>fileName</i>, const QString &amp;<i>realFileName</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#reload">reload</a></b>(QString *<i>errorString</i>, ReloadFlag <i>flag</i>, ChangeType <i>type</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#save">save</a></b>(QString *<i>errorString</i>, const QString &amp;<i>fileName</i>, bool <i>autoSave</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setContents">setContents</a></b>(const QByteArray &amp;<i>contents</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#setFilePath">setFilePath</a></b>(const Utils::FileName &amp;<i>newName</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#shouldAutoSave">shouldAutoSave</a></b>() const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">12 public functions inherited from <a href="core-basetextdocument.html#public-functions">Core::BaseTextDocument</a></li>
+<li class="fn">33 public functions inherited from <a href="core-idocument.html#public-functions">Core::IDocument</a></li>
+</ul>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#aboutToOpen">aboutToOpen</a></b>(const QString &amp;<i>fileName</i>, const QString &amp;<i>realFileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#contentsChangedWithPosition">contentsChangedWithPosition</a></b>(int <i>position</i>, int <i>charsRemoved</i>, int <i>charsAdded</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#fontSettingsChanged">fontSettingsChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#openFinishedSuccessfully">openFinishedSuccessfully</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#tabSettingsChanged">tabSettingsChanged</a></b>()</td></tr>
+</table></div>
+<ul>
+<li class="fn">6 signals inherited from <a href="core-idocument.html#signals">Core::IDocument</a></li>
+</ul>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> TextDocument *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#currentTextDocument">currentTextDocument</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QMap&lt;QString, QString&gt; </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#openedTextDocumentContents">openedTextDocumentContents</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QMap&lt;QString, QTextCodec *&gt; </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#openedTextDocumentEncodings">openedTextDocumentEncodings</a></b>()</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocument.html#applyFontSettings">applyFontSettings</a></b>()</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$TextDocument[overload1]$$$TextDocumentCore::Id -->
+<h3 class="fn" id="TextDocument"><a name="TextDocument"></a>TextDocument::<span class="name">TextDocument</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i> = Core::Id())</h3>
+<p>Default constructs an instance of TextDocument.</p><!-- @@@TextDocument -->
+<!-- $$$~TextDocument[overload1]$$$~TextDocument -->
+<h3 class="fn" id="dtor.TextDocument"><a name="dtor.TextDocument"></a>TextDocument::<span class="name">~TextDocument</span>()</h3>
+<p>Destroys the instance of TextDocument.</p><!-- @@@~TextDocument -->
+<!-- $$$aboutToOpen[overload1]$$$aboutToOpenconstQString&constQString& -->
+<h3 class="fn" id="aboutToOpen"><a name="aboutToOpen"></a><code>[signal] </code><span class="type">void</span> TextDocument::<span class="name">aboutToOpen</span>(const <span class="type">QString</span> &amp;<i>fileName</i>, const <span class="type">QString</span> &amp;<i>realFileName</i>)</h3>
+<!-- @@@aboutToOpen -->
+<!-- $$$addMark[overload1]$$$addMarkTextMark* -->
+<h3 class="fn" id="addMark"><a name="addMark"></a><span class="type">bool</span> TextDocument::<span class="name">addMark</span>(<span class="type"><a href="texteditor-textmark.html">TextMark</a></span> *<i>mark</i>)</h3>
+<!-- @@@addMark -->
+<!-- $$$applyFontSettings[overload1]$$$applyFontSettings -->
+<h3 class="fn" id="applyFontSettings"><a name="applyFontSettings"></a><code>[virtual protected] </code><span class="type">void</span> TextDocument::<span class="name">applyFontSettings</span>()</h3>
+<!-- @@@applyFontSettings -->
+<!-- $$$autoIndent[overload1]$$$autoIndentconstQTextCursor&QChar -->
+<h3 class="fn" id="autoIndent"><a name="autoIndent"></a><span class="type">void</span> TextDocument::<span class="name">autoIndent</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>, <span class="type">QChar</span> <i>typedChar</i> = QChar::Null)</h3>
+<!-- @@@autoIndent -->
+<!-- $$$autoReindent[overload1]$$$autoReindentconstQTextCursor& -->
+<h3 class="fn" id="autoReindent"><a name="autoReindent"></a><span class="type">void</span> TextDocument::<span class="name">autoReindent</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>)</h3>
+<!-- @@@autoReindent -->
+<!-- $$$characterAt[overload1]$$$characterAtint -->
+<h3 class="fn" id="characterAt"><a name="characterAt"></a><code>[virtual] </code><span class="type">QChar</span> TextDocument::<span class="name">characterAt</span>(<span class="type">int</span> <i>pos</i>) const</h3>
+<!-- @@@characterAt -->
+<!-- $$$checkPermissions[overload1]$$$checkPermissions -->
+<h3 class="fn" id="checkPermissions"><a name="checkPermissions"></a><code>[override virtual] </code><span class="type">void</span> TextDocument::<span class="name">checkPermissions</span>()</h3>
+<!-- @@@checkPermissions -->
+<!-- $$$cleanWhitespace[overload1]$$$cleanWhitespaceconstQTextCursor& -->
+<h3 class="fn" id="cleanWhitespace"><a name="cleanWhitespace"></a><span class="type">void</span> TextDocument::<span class="name">cleanWhitespace</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>)</h3>
+<!-- @@@cleanWhitespace -->
+<!-- $$$completionAssistProvider[overload1]$$$completionAssistProvider -->
+<h3 class="fn" id="completionAssistProvider"><a name="completionAssistProvider"></a><code>[virtual] </code><span class="type"><a href="texteditor-completionassistprovider.html">CompletionAssistProvider</a></span> *TextDocument::<span class="name">completionAssistProvider</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setCompletionAssistProvider">setCompletionAssistProvider</a>().</p>
+<!-- @@@completionAssistProvider -->
+<!-- $$$contents[overload1]$$$contents -->
+<h3 class="fn" id="contents"><a name="contents"></a><code>[override virtual] </code><span class="type">QByteArray</span> TextDocument::<span class="name">contents</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setContents">setContents</a>().</p>
+<!-- @@@contents -->
+<!-- $$$contentsChangedWithPosition[overload1]$$$contentsChangedWithPositionintintint -->
+<h3 class="fn" id="contentsChangedWithPosition"><a name="contentsChangedWithPosition"></a><code>[signal] </code><span class="type">void</span> TextDocument::<span class="name">contentsChangedWithPosition</span>(<span class="type">int</span> <i>position</i>, <span class="type">int</span> <i>charsRemoved</i>, <span class="type">int</span> <i>charsAdded</i>)</h3>
+<!-- @@@contentsChangedWithPosition -->
+<!-- $$$currentTextDocument[overload1]$$$currentTextDocument -->
+<h3 class="fn" id="currentTextDocument"><a name="currentTextDocument"></a><code>[static] </code><span class="type"><a href="texteditor-textdocument.html#TextDocument">TextDocument</a></span> *TextDocument::<span class="name">currentTextDocument</span>()</h3>
+<!-- @@@currentTextDocument -->
+<!-- $$$document[overload1]$$$document -->
+<h3 class="fn" id="document"><a name="document"></a><span class="type">QTextDocument</span> *TextDocument::<span class="name">document</span>() const</h3>
+<!-- @@@document -->
+<!-- $$$extraEncodingSettings[overload1]$$$extraEncodingSettings -->
+<h3 class="fn" id="extraEncodingSettings"><a name="extraEncodingSettings"></a>const <span class="type"><a href="texteditor-extraencodingsettings.html">ExtraEncodingSettings</a></span> &amp;TextDocument::<span class="name">extraEncodingSettings</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setExtraEncodingSettings">setExtraEncodingSettings</a>().</p>
+<!-- @@@extraEncodingSettings -->
+<!-- $$$fallbackSaveAsFileName[overload1]$$$fallbackSaveAsFileName -->
+<h3 class="fn" id="fallbackSaveAsFileName"><a name="fallbackSaveAsFileName"></a><code>[override virtual] </code><span class="type">QString</span> TextDocument::<span class="name">fallbackSaveAsFileName</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setFallbackSaveAsFileName">setFallbackSaveAsFileName</a>().</p>
+<!-- @@@fallbackSaveAsFileName -->
+<!-- $$$fallbackSaveAsPath[overload1]$$$fallbackSaveAsPath -->
+<h3 class="fn" id="fallbackSaveAsPath"><a name="fallbackSaveAsPath"></a><code>[override virtual] </code><span class="type">QString</span> TextDocument::<span class="name">fallbackSaveAsPath</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setFallbackSaveAsPath">setFallbackSaveAsPath</a>().</p>
+<!-- @@@fallbackSaveAsPath -->
+<!-- $$$fontSettings[overload1]$$$fontSettings -->
+<h3 class="fn" id="fontSettings"><a name="fontSettings"></a>const <span class="type"><a href="texteditor-fontsettings.html">FontSettings</a></span> &amp;TextDocument::<span class="name">fontSettings</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setFontSettings">setFontSettings</a>().</p>
+<!-- @@@fontSettings -->
+<!-- $$$fontSettingsChanged[overload1]$$$fontSettingsChanged -->
+<h3 class="fn" id="fontSettingsChanged"><a name="fontSettingsChanged"></a><code>[signal] </code><span class="type">void</span> TextDocument::<span class="name">fontSettingsChanged</span>()</h3>
+<!-- @@@fontSettingsChanged -->
+<!-- $$$indent[overload1]$$$indentconstQTextCursor&boolintint* -->
+<h3 class="fn" id="indent"><a name="indent"></a><span class="type">QTextCursor</span> TextDocument::<span class="name">indent</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>, <span class="type">bool</span> <i>blockSelection</i> = false, <span class="type">int</span> <i>column</i> = 0, <span class="type">int</span> *<i>offset</i> = 0)</h3>
+<!-- @@@indent -->
+<!-- $$$indenter[overload1]$$$indenter -->
+<h3 class="fn" id="indenter"><a name="indenter"></a><span class="type"><a href="texteditor-indenter.html">Indenter</a></span> *TextDocument::<span class="name">indenter</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setIndenter">setIndenter</a>().</p>
+<!-- @@@indenter -->
+<!-- $$$isFileReadOnly[overload1]$$$isFileReadOnly -->
+<h3 class="fn" id="isFileReadOnly"><a name="isFileReadOnly"></a><code>[override virtual] </code><span class="type">bool</span> TextDocument::<span class="name">isFileReadOnly</span>() const</h3>
+<!-- @@@isFileReadOnly -->
+<!-- $$$isModified[overload1]$$$isModified -->
+<h3 class="fn" id="isModified"><a name="isModified"></a><code>[override virtual] </code><span class="type">bool</span> TextDocument::<span class="name">isModified</span>() const</h3>
+<!-- @@@isModified -->
+<!-- $$$isSaveAsAllowed[overload1]$$$isSaveAsAllowed -->
+<h3 class="fn" id="isSaveAsAllowed"><a name="isSaveAsAllowed"></a><code>[override virtual] </code><span class="type">bool</span> TextDocument::<span class="name">isSaveAsAllowed</span>() const</h3>
+<!-- @@@isSaveAsAllowed -->
+<!-- $$$marks[overload1]$$$marks -->
+<h3 class="fn" id="marks"><a name="marks"></a><span class="type"><a href="texteditor.html#TextMarks-typedef">TextMarks</a></span> TextDocument::<span class="name">marks</span>() const</h3>
+<!-- @@@marks -->
+<!-- $$$marksAt[overload1]$$$marksAtint -->
+<h3 class="fn" id="marksAt"><a name="marksAt"></a><span class="type"><a href="texteditor.html#TextMarks-typedef">TextMarks</a></span> TextDocument::<span class="name">marksAt</span>(<span class="type">int</span> <i>line</i>) const</h3>
+<!-- @@@marksAt -->
+<!-- $$$moveMark[overload1]$$$moveMarkTextMark*int -->
+<h3 class="fn" id="moveMark"><a name="moveMark"></a><span class="type">void</span> TextDocument::<span class="name">moveMark</span>(<span class="type"><a href="texteditor-textmark.html">TextMark</a></span> *<i>mark</i>, <span class="type">int</span> <i>previousLine</i>)</h3>
+<!-- @@@moveMark -->
+<!-- $$$open[overload1]$$$openQString*constQString&constQString& -->
+<h3 class="fn" id="open"><a name="open"></a><code>[override virtual] </code><span class="type"><a href="core-idocument.html#OpenResult-enum">OpenResult</a></span> TextDocument::<span class="name">open</span>(<span class="type">QString</span> *<i>errorString</i>, const <span class="type">QString</span> &amp;<i>fileName</i>, const <span class="type">QString</span> &amp;<i>realFileName</i>)</h3>
+<!-- @@@open -->
+<!-- $$$openFinishedSuccessfully[overload1]$$$openFinishedSuccessfully -->
+<h3 class="fn" id="openFinishedSuccessfully"><a name="openFinishedSuccessfully"></a><code>[signal] </code><span class="type">void</span> TextDocument::<span class="name">openFinishedSuccessfully</span>()</h3>
+<!-- @@@openFinishedSuccessfully -->
+<!-- $$$openedTextDocumentContents[overload1]$$$openedTextDocumentContents -->
+<h3 class="fn" id="openedTextDocumentContents"><a name="openedTextDocumentContents"></a><code>[static] </code><span class="type">QMap</span>&lt;<span class="type">QString</span>, <span class="type">QString</span>&gt; TextDocument::<span class="name">openedTextDocumentContents</span>()</h3>
+<!-- @@@openedTextDocumentContents -->
+<!-- $$$openedTextDocumentEncodings[overload1]$$$openedTextDocumentEncodings -->
+<h3 class="fn" id="openedTextDocumentEncodings"><a name="openedTextDocumentEncodings"></a><code>[static] </code><span class="type">QMap</span>&lt;<span class="type">QString</span>, <span class="type">QTextCodec</span> *&gt; TextDocument::<span class="name">openedTextDocumentEncodings</span>()</h3>
+<!-- @@@openedTextDocumentEncodings -->
+<!-- $$$plainText[overload1]$$$plainText -->
+<h3 class="fn" id="plainText"><a name="plainText"></a><code>[virtual] </code><span class="type">QString</span> TextDocument::<span class="name">plainText</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setPlainText">setPlainText</a>().</p>
+<!-- @@@plainText -->
+<!-- $$$quickFixAssistProvider[overload1]$$$quickFixAssistProvider -->
+<h3 class="fn" id="quickFixAssistProvider"><a name="quickFixAssistProvider"></a><code>[virtual] </code><span class="type"><a href="texteditor-quickfixassistprovider.html">QuickFixAssistProvider</a></span> *TextDocument::<span class="name">quickFixAssistProvider</span>() const</h3>
+<!-- @@@quickFixAssistProvider -->
+<!-- $$$reload[overload1]$$$reloadQString*ReloadFlagChangeType -->
+<h3 class="fn" id="reload"><a name="reload"></a><code>[override virtual] </code><span class="type">bool</span> TextDocument::<span class="name">reload</span>(<span class="type">QString</span> *<i>errorString</i>, <span class="type"><a href="core-idocument.html#ReloadFlag-enum">ReloadFlag</a></span> <i>flag</i>, <span class="type"><a href="core-idocument.html#ChangeType-enum">ChangeType</a></span> <i>type</i>)</h3>
+<!-- @@@reload -->
+<!-- $$$reload$$$reloadQString* -->
+<h3 class="fn" id="reload-1"><a name="reload-1"></a><code>[virtual] </code><span class="type">bool</span> TextDocument::<span class="name">reload</span>(<span class="type">QString</span> *<i>errorString</i>)</h3>
+<!-- @@@reload -->
+<!-- $$$reload$$$reloadQString*constQString& -->
+<h3 class="fn" id="reload-2"><a name="reload-2"></a><span class="type">bool</span> TextDocument::<span class="name">reload</span>(<span class="type">QString</span> *<i>errorString</i>, const <span class="type">QString</span> &amp;<i>realFileName</i>)</h3>
+<!-- @@@reload -->
+<!-- $$$reload$$$reloadQString*QTextCodec* -->
+<h3 class="fn" id="reload-3"><a name="reload-3"></a><span class="type">bool</span> TextDocument::<span class="name">reload</span>(<span class="type">QString</span> *<i>errorString</i>, <span class="type">QTextCodec</span> *<i>codec</i>)</h3>
+<!-- @@@reload -->
+<!-- $$$removeMark[overload1]$$$removeMarkTextMark* -->
+<h3 class="fn" id="removeMark"><a name="removeMark"></a><span class="type">void</span> TextDocument::<span class="name">removeMark</span>(<span class="type"><a href="texteditor-textmark.html">TextMark</a></span> *<i>mark</i>)</h3>
+<!-- @@@removeMark -->
+<!-- $$$removeMarkFromMarksCache[overload1]$$$removeMarkFromMarksCacheTextMark* -->
+<h3 class="fn" id="removeMarkFromMarksCache"><a name="removeMarkFromMarksCache"></a><span class="type">void</span> TextDocument::<span class="name">removeMarkFromMarksCache</span>(<span class="type"><a href="texteditor-textmark.html">TextMark</a></span> *<i>mark</i>)</h3>
+<!-- @@@removeMarkFromMarksCache -->
+<!-- $$$save[overload1]$$$saveQString*constQString&bool -->
+<h3 class="fn" id="save"><a name="save"></a><code>[override virtual] </code><span class="type">bool</span> TextDocument::<span class="name">save</span>(<span class="type">QString</span> *<i>errorString</i>, const <span class="type">QString</span> &amp;<i>fileName</i>, <span class="type">bool</span> <i>autoSave</i>)</h3>
+<!-- @@@save -->
+<!-- $$$setCompletionAssistProvider[overload1]$$$setCompletionAssistProviderCompletionAssistProvider* -->
+<h3 class="fn" id="setCompletionAssistProvider"><a name="setCompletionAssistProvider"></a><span class="type">void</span> TextDocument::<span class="name">setCompletionAssistProvider</span>(<span class="type"><a href="texteditor-completionassistprovider.html">CompletionAssistProvider</a></span> *<i>provider</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#completionAssistProvider">completionAssistProvider</a>().</p>
+<!-- @@@setCompletionAssistProvider -->
+<!-- $$$setContents[overload1]$$$setContentsconstQByteArray& -->
+<h3 class="fn" id="setContents"><a name="setContents"></a><code>[override virtual] </code><span class="type">bool</span> TextDocument::<span class="name">setContents</span>(const <span class="type">QByteArray</span> &amp;<i>contents</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#contents">contents</a>().</p>
+<!-- @@@setContents -->
+<!-- $$$setExtraEncodingSettings[overload1]$$$setExtraEncodingSettingsconstExtraEncodingSettings& -->
+<h3 class="fn" id="setExtraEncodingSettings"><a name="setExtraEncodingSettings"></a><span class="type">void</span> TextDocument::<span class="name">setExtraEncodingSettings</span>(const <span class="type"><a href="texteditor-extraencodingsettings.html">ExtraEncodingSettings</a></span> &amp;<i>extraEncodingSettings</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#extraEncodingSettings">extraEncodingSettings</a>().</p>
+<!-- @@@setExtraEncodingSettings -->
+<!-- $$$setFallbackSaveAsFileName[overload1]$$$setFallbackSaveAsFileNameconstQString& -->
+<h3 class="fn" id="setFallbackSaveAsFileName"><a name="setFallbackSaveAsFileName"></a><span class="type">void</span> TextDocument::<span class="name">setFallbackSaveAsFileName</span>(const <span class="type">QString</span> &amp;<i>fallbackSaveAsFileName</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#fallbackSaveAsFileName">fallbackSaveAsFileName</a>().</p>
+<!-- @@@setFallbackSaveAsFileName -->
+<!-- $$$setFallbackSaveAsPath[overload1]$$$setFallbackSaveAsPathconstQString& -->
+<h3 class="fn" id="setFallbackSaveAsPath"><a name="setFallbackSaveAsPath"></a><span class="type">void</span> TextDocument::<span class="name">setFallbackSaveAsPath</span>(const <span class="type">QString</span> &amp;<i>fallbackSaveAsPath</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#fallbackSaveAsPath">fallbackSaveAsPath</a>().</p>
+<!-- @@@setFallbackSaveAsPath -->
+<!-- $$$setFilePath[overload1]$$$setFilePathconstUtils::FileName& -->
+<h3 class="fn" id="setFilePath"><a name="setFilePath"></a><code>[override virtual] </code><span class="type">void</span> TextDocument::<span class="name">setFilePath</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>newName</i>)</h3>
+<!-- @@@setFilePath -->
+<!-- $$$setFontSettings[overload1]$$$setFontSettingsconstTextEditor::FontSettings& -->
+<h3 class="fn" id="setFontSettings"><a name="setFontSettings"></a><span class="type">void</span> TextDocument::<span class="name">setFontSettings</span>(const <span class="type"><a href="texteditor-fontsettings.html">TextEditor::FontSettings</a></span> &amp;<i>fontSettings</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#fontSettings">fontSettings</a>().</p>
+<!-- @@@setFontSettings -->
+<!-- $$$setIndenter[overload1]$$$setIndenterIndenter* -->
+<h3 class="fn" id="setIndenter"><a name="setIndenter"></a><span class="type">void</span> TextDocument::<span class="name">setIndenter</span>(<span class="type"><a href="texteditor-indenter.html">Indenter</a></span> *<i>indenter</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#indenter">indenter</a>().</p>
+<!-- @@@setIndenter -->
+<!-- $$$setPlainText[overload1]$$$setPlainTextconstQString& -->
+<h3 class="fn" id="setPlainText"><a name="setPlainText"></a><span class="type">bool</span> TextDocument::<span class="name">setPlainText</span>(const <span class="type">QString</span> &amp;<i>text</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#plainText">plainText</a>().</p>
+<!-- @@@setPlainText -->
+<!-- $$$setStorageSettings[overload1]$$$setStorageSettingsconstStorageSettings& -->
+<h3 class="fn" id="setStorageSettings"><a name="setStorageSettings"></a><span class="type">void</span> TextDocument::<span class="name">setStorageSettings</span>(const <span class="type"><a href="texteditor-storagesettings.html">StorageSettings</a></span> &amp;<i>storageSettings</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#storageSettings">storageSettings</a>().</p>
+<!-- @@@setStorageSettings -->
+<!-- $$$setSyntaxHighlighter[overload1]$$$setSyntaxHighlighterSyntaxHighlighter* -->
+<h3 class="fn" id="setSyntaxHighlighter"><a name="setSyntaxHighlighter"></a><span class="type">void</span> TextDocument::<span class="name">setSyntaxHighlighter</span>(<span class="type"><a href="texteditor-syntaxhighlighter.html">SyntaxHighlighter</a></span> *<i>highlighter</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#syntaxHighlighter">syntaxHighlighter</a>().</p>
+<!-- @@@setSyntaxHighlighter -->
+<!-- $$$setTabSettings[overload1]$$$setTabSettingsconstTextEditor::TabSettings& -->
+<h3 class="fn" id="setTabSettings"><a name="setTabSettings"></a><span class="type">void</span> TextDocument::<span class="name">setTabSettings</span>(const <span class="type"><a href="texteditor-tabsettings.html">TextEditor::TabSettings</a></span> &amp;<i>tabSettings</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#tabSettings">tabSettings</a>().</p>
+<!-- @@@setTabSettings -->
+<!-- $$$setTypingSettings[overload1]$$$setTypingSettingsconstTypingSettings& -->
+<h3 class="fn" id="setTypingSettings"><a name="setTypingSettings"></a><span class="type">void</span> TextDocument::<span class="name">setTypingSettings</span>(const <span class="type"><a href="texteditor-typingsettings.html">TypingSettings</a></span> &amp;<i>typingSettings</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#typingSettings">typingSettings</a>().</p>
+<!-- @@@setTypingSettings -->
+<!-- $$$shouldAutoSave[overload1]$$$shouldAutoSave -->
+<h3 class="fn" id="shouldAutoSave"><a name="shouldAutoSave"></a><code>[override virtual] </code><span class="type">bool</span> TextDocument::<span class="name">shouldAutoSave</span>() const</h3>
+<!-- @@@shouldAutoSave -->
+<!-- $$$storageSettings[overload1]$$$storageSettings -->
+<h3 class="fn" id="storageSettings"><a name="storageSettings"></a>const <span class="type"><a href="texteditor-storagesettings.html">StorageSettings</a></span> &amp;TextDocument::<span class="name">storageSettings</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setStorageSettings">setStorageSettings</a>().</p>
+<!-- @@@storageSettings -->
+<!-- $$$syntaxHighlighter[overload1]$$$syntaxHighlighter -->
+<h3 class="fn" id="syntaxHighlighter"><a name="syntaxHighlighter"></a><span class="type"><a href="texteditor-syntaxhighlighter.html">SyntaxHighlighter</a></span> *TextDocument::<span class="name">syntaxHighlighter</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setSyntaxHighlighter">setSyntaxHighlighter</a>().</p>
+<!-- @@@syntaxHighlighter -->
+<!-- $$$tabSettings[overload1]$$$tabSettings -->
+<h3 class="fn" id="tabSettings"><a name="tabSettings"></a>const <span class="type"><a href="texteditor-tabsettings.html">TabSettings</a></span> &amp;TextDocument::<span class="name">tabSettings</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setTabSettings">setTabSettings</a>().</p>
+<!-- @@@tabSettings -->
+<!-- $$$tabSettingsChanged[overload1]$$$tabSettingsChanged -->
+<h3 class="fn" id="tabSettingsChanged"><a name="tabSettingsChanged"></a><code>[signal] </code><span class="type">void</span> TextDocument::<span class="name">tabSettingsChanged</span>()</h3>
+<!-- @@@tabSettingsChanged -->
+<!-- $$$textAt[overload1]$$$textAtintint -->
+<h3 class="fn" id="textAt"><a name="textAt"></a><code>[virtual] </code><span class="type">QString</span> TextDocument::<span class="name">textAt</span>(<span class="type">int</span> <i>pos</i>, <span class="type">int</span> <i>length</i>) const</h3>
+<!-- @@@textAt -->
+<!-- $$$triggerPendingUpdates[overload1]$$$triggerPendingUpdates -->
+<h3 class="fn" id="triggerPendingUpdates"><a name="triggerPendingUpdates"></a><code>[virtual] </code><span class="type">void</span> TextDocument::<span class="name">triggerPendingUpdates</span>()</h3>
+<!-- @@@triggerPendingUpdates -->
+<!-- $$$typingSettings[overload1]$$$typingSettings -->
+<h3 class="fn" id="typingSettings"><a name="typingSettings"></a>const <span class="type"><a href="texteditor-typingsettings.html">TypingSettings</a></span> &amp;TextDocument::<span class="name">typingSettings</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textdocument.html#setTypingSettings">setTypingSettings</a>().</p>
+<!-- @@@typingSettings -->
+<!-- $$$unindent[overload1]$$$unindentconstQTextCursor&boolintint* -->
+<h3 class="fn" id="unindent"><a name="unindent"></a><span class="type">QTextCursor</span> TextDocument::<span class="name">unindent</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>, <span class="type">bool</span> <i>blockSelection</i> = false, <span class="type">int</span> <i>column</i> = 0, <span class="type">int</span> *<i>offset</i> = 0)</h3>
+<!-- @@@unindent -->
+<!-- $$$updateMark[overload1]$$$updateMarkTextMark* -->
+<h3 class="fn" id="updateMark"><a name="updateMark"></a><span class="type">void</span> TextDocument::<span class="name">updateMark</span>(<span class="type"><a href="texteditor-textmark.html">TextMark</a></span> *<i>mark</i>)</h3>
+<!-- @@@updateMark -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

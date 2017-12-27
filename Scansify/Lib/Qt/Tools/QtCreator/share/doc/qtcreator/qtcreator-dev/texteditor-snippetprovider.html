@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- snippetprovider.cpp -->
+  <title>SnippetProvider Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >SnippetProvider</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">SnippetProvider Class</h1>
+<span class="small-subtitle">(<a href="texteditor-snippetprovider.html">TextEditor::SnippetProvider</a>)<br/></span>
+<!-- $$$SnippetProvider-brief -->
+<p>The <a href="texteditor-snippetprovider.html">SnippetProvider</a> class acts as an interface for providing groups of snippets. <a href="#details">More...</a></p>
+<!-- @@@SnippetProvider -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;SnippetProvider&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="texteditor-snippetprovider-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-snippetprovider.html#decorateEditor">decorateEditor</a></b>(TextEditorWidget *<i>editor</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-snippetprovider.html#displayName">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> EditorDecorator </td><td class="memItemRight bottomAlign"><b><a href="texteditor-snippetprovider.html#editorDecorator">editorDecorator</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-snippetprovider.html#groupId">groupId</a></b>() const</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-snippetprovider.html#registerGroup">registerGroup</a></b>(const QString &amp;<i>groupId</i>, const QString &amp;<i>displayName</i>, EditorDecorator <i>editorDecorator</i> = EditorDecorator())</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$SnippetProvider-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="texteditor-snippetprovider.html">SnippetProvider</a> class acts as an interface for providing groups of snippets.</p>
+</div>
+<!-- @@@SnippetProvider -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$decorateEditor[overload1]$$$decorateEditorTextEditorWidget* -->
+<h3 class="fn" id="decorateEditor"><a name="decorateEditor"></a><span class="type">void</span> SnippetProvider::<span class="name">decorateEditor</span>(<span class="type"><a href="texteditor-texteditorwidget.html">TextEditorWidget</a></span> *<i>editor</i>) const</h3>
+<p>Applies customizations such as highlighting or indentation to the snippet editor.</p>
+<!-- @@@decorateEditor -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><span class="type">QString</span> SnippetProvider::<span class="name">displayName</span>() const</h3>
+<p>Returns the name to be displayed in the user interface for snippets that belong to the group associated with this provider.</p>
+<!-- @@@displayName -->
+<!-- $$$editorDecorator[overload1]$$$editorDecorator -->
+<h3 class="fn" id="editorDecorator"><a name="editorDecorator"></a><span class="type">EditorDecorator</span> SnippetProvider::<span class="name">editorDecorator</span>() const</h3>
+<p>EditorDecorator is a hook which allows you to apply customizations such as highlighting or indentation to the snippet editor.</p>
+<!-- @@@editorDecorator -->
+<!-- $$$groupId[overload1]$$$groupId -->
+<h3 class="fn" id="groupId"><a name="groupId"></a><span class="type">QString</span> SnippetProvider::<span class="name">groupId</span>() const</h3>
+<p>Returns the unique group id to which this provider is associated.</p>
+<!-- @@@groupId -->
+<!-- $$$registerGroup[overload1]$$$registerGroupconstQString&constQString&EditorDecorator -->
+<h3 class="fn" id="registerGroup"><a name="registerGroup"></a><code>[static] </code><span class="type">void</span> SnippetProvider::<span class="name">registerGroup</span>(const <span class="type">QString</span> &amp;<i>groupId</i>, const <span class="type">QString</span> &amp;<i>displayName</i>, <span class="type">EditorDecorator</span> <i>editorDecorator</i> = EditorDecorator())</h3>
+<p>Registers a snippet group with <i>groupId</i>, <i>displayName</i> and <i>editorDecorator</i>.</p>
+<!-- @@@registerGroup -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

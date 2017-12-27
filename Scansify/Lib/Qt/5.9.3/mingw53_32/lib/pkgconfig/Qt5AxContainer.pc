@@ -1,0 +1,14 @@
+prefix=E:\\Utility\\Qt\\5.9.3\\mingw53_32
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 AxContainer
+Description: Qt AxContainer module
+Version: 5.9.3
+Libs: -L${libdir} -lQt5AxContainerd 
+Libs.private: -LC:\utils\my_sql\my_sql\lib -LC:\utils\postgresql\pgsql\lib -LC:\Users\qt\work\qt\qtactiveqt\lib C:\Users\qt\work\qt\qtactiveqt\lib\libQt5AxBased.a -LE:/Utility/Qt/5.9.3/mingw53_32\lib -lole32 -loleaut32 -luser32 -lgdi32 -ladvapi32 -luuid E:/Utility/Qt/5.9.3/mingw53_32\lib\libQt5Widgetsd.a E:/Utility/Qt/5.9.3/mingw53_32\lib\libQt5Guid.a E:/Utility/Qt/5.9.3/mingw53_32\lib\libQt5Cored.a  
+Cflags: -I${includedir}/QtAxContainer -I${includedir}
+Requires: Qt5Core Qt5Gui Qt5Widgets Qt5AxBase
+

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- runconfiguration.cpp -->
+  <title>List of All Members for RunControl | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >RunControl</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">List of All Members for RunControl</h1>
+<p>This is the complete list of members for <a href="projectexplorer-runcontrol.html">ProjectExplorer::RunControl</a>, including inherited members.</p>
+<div class="table"><table class="propsummary">
+<tr><td class="topAlign"><ul>
+<li class="fn">class <span class="name"><b><a href="projectexplorer-runcontrol-workerfactory.html">WorkerFactory</a></b></span></li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#RunControl">RunControl</a></b></span>(RunConfiguration *, Core::Id )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#dtor.RunControl">~RunControl</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#abi">abi</a></b></span>() const : Abi</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#aboutToStart">aboutToStart</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#appendMessage">appendMessage</a></b></span>(const QString &amp;, Utils::OutputFormat )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#appendMessageRequested">appendMessageRequested</a></b></span>(ProjectExplorer::RunControl *, const QString &amp;, Utils::OutputFormat )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#applicationProcessHandle">applicationProcessHandle</a></b></span>() const : Utils::ProcessHandle</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#applicationProcessHandleChanged">applicationProcessHandleChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#canReUseOutputPane">canReUseOutputPane</a></b></span>(const RunControl *) const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#createWorker">createWorker</a></b></span>(Core::Id ) : RunWorker *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#device">device</a></b></span>() const : IDevice::ConstPtr</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#displayName">displayName</a></b></span>() const : QString</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#finished">finished</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#icon">icon</a></b></span>() const : Utils::Icon</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#initiateFinish">initiateFinish</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#initiateReStart">initiateReStart</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#initiateStart">initiateStart</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#initiateStop">initiateStop</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#isRunning">isRunning</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#isStarting">isStarting</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#isStopped">isStopped</a></b></span>() const : bool</li>
+</ul></td><td class="topAlign"><ul>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#isStopping">isStopping</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#outputFormatter">outputFormatter</a></b></span>() const : Utils::OutputFormatter *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#producer">producer</a></b></span>(RunConfiguration *, Core::Id ) : WorkerCreator</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#project">project</a></b></span>() const : Project *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#promptToStop">promptToStop</a></b></span>(bool *) const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#registerWorker">registerWorker</a></b></span>(Core::Id , const WorkerCreator &amp;, const Constraint &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#registerWorker-1">registerWorker</a></b></span>(Core::Id , const Constraint &amp;, int )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#registerWorker-2">registerWorker</a></b></span>(Core::Id , int )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#registerWorkerCreator">registerWorkerCreator</a></b></span>(Core::Id , const WorkerCreator &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#runConfiguration">runConfiguration</a></b></span>() const : RunConfiguration *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#runMode">runMode</a></b></span>() const : Core::Id</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#runnable">runnable</a></b></span>() const : const Runnable &amp;</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#setApplicationProcessHandle">setApplicationProcessHandle</a></b></span>(const Utils::ProcessHandle &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#setDisplayName">setDisplayName</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#setIcon">setIcon</a></b></span>(const Utils::Icon &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#setPromptToStop">setPromptToStop</a></b></span>(const std::function&lt;bool( bool * ) &gt; &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#setRunnable">setRunnable</a></b></span>(const Runnable &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#showPromptToStopDialog">showPromptToStopDialog</a></b></span>(const QString &amp;, const QString &amp;, const QString &amp;, const QString &amp;, bool *) : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#started">started</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#stopped">stopped</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-runcontrol.html#supportsReRunning">supportsReRunning</a></b></span>() const : bool</li>
+</ul>
+</td></tr>
+</table></div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

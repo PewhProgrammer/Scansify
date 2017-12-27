@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>TextEditorSettings Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >TextEditorSettings</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">TextEditorSettings Class</h1>
+<span class="small-subtitle">(<a href="texteditor-texteditorsettings.html">TextEditor::TextEditorSettings</a>)<br/></span>
+<ul>
+<li><a href="texteditor-texteditorsettings-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#TextEditorSettings">TextEditorSettings</a></b>(QObject *<i>parent</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#dtor.TextEditorSettings">~TextEditorSettings</a></b>()</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#behaviorSettingsChanged">behaviorSettingsChanged</a></b>(<i>const TextEditor::BehaviorSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#commentsSettingsChanged">commentsSettingsChanged</a></b>(<i>const TextEditor::CommentsSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#completionSettingsChanged">completionSettingsChanged</a></b>(<i>const TextEditor::CompletionSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#displaySettingsChanged">displaySettingsChanged</a></b>(<i>const TextEditor::DisplaySettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#extraEncodingSettingsChanged">extraEncodingSettingsChanged</a></b>(<i>const TextEditor::ExtraEncodingSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#fontSettingsChanged">fontSettingsChanged</a></b>(<i>const TextEditor::FontSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#marginSettingsChanged">marginSettingsChanged</a></b>(<i>const TextEditor::MarginSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#storageSettingsChanged">storageSettingsChanged</a></b>(<i>const TextEditor::StorageSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#typingSettingsChanged">typingSettingsChanged</a></b>(<i>const TextEditor::TypingSettings &amp;</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> const BehaviorSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#behaviorSettings">behaviorSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ICodeStylePreferences *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#codeStyle">codeStyle</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ICodeStylePreferences *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#codeStyle-1">codeStyle</a></b>(Core::Id <i>languageId</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QMap&lt;Core::Id, ICodeStylePreferencesFactory *&gt; </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#codeStyleFactories">codeStyleFactories</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ICodeStylePreferencesFactory *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#codeStyleFactory">codeStyleFactory</a></b>(Core::Id <i>languageId</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> CodeStylePool *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#codeStylePool">codeStylePool</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> CodeStylePool *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#codeStylePool-1">codeStylePool</a></b>(Core::Id <i>languageId</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QMap&lt;Core::Id, ICodeStylePreferences *&gt; </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#codeStyles">codeStyles</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const CommentsSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#commentsSettings">commentsSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const CompletionSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#completionSettings">completionSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const DisplaySettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#displaySettings">displaySettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ExtraEncodingSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#extraEncodingSettings">extraEncodingSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FontSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#fontSettings">fontSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const HighlighterSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#highlighterSettings">highlighterSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#increaseFontZoom">increaseFontZoom</a></b>(int <i>step</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TextEditorSettings *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#instance">instance</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Id </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#languageId">languageId</a></b>(const QString &amp;<i>mimeType</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const MarginSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#marginSettings">marginSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#registerCodeStyle">registerCodeStyle</a></b>(Core::Id <i>languageId</i>, ICodeStylePreferences *<i>prefs</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#registerCodeStyleFactory">registerCodeStyleFactory</a></b>(ICodeStylePreferencesFactory *<i>codeStyleFactory</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#registerCodeStylePool">registerCodeStylePool</a></b>(Core::Id <i>languageId</i>, CodeStylePool *<i>pool</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#registerMimeTypeForLanguageId">registerMimeTypeForLanguageId</a></b>(const char *<i>mimeType</i>, Core::Id <i>languageId</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#resetFontZoom">resetFontZoom</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const StorageSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#storageSettings">storageSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const TypingSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#typingSettings">typingSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#unregisterCodeStyle">unregisterCodeStyle</a></b>(Core::Id <i>languageId</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#unregisterCodeStyleFactory">unregisterCodeStyleFactory</a></b>(Core::Id <i>languageId</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorsettings.html#unregisterCodeStylePool">unregisterCodeStylePool</a></b>(Core::Id <i>languageId</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$TextEditorSettings[overload1]$$$TextEditorSettingsQObject* -->
+<h3 class="fn" id="TextEditorSettings"><a name="TextEditorSettings"></a>TextEditorSettings::<span class="name">TextEditorSettings</span>(<span class="type">QObject</span> *<i>parent</i>)</h3>
+<p>Default constructs an instance of TextEditorSettings.</p><!-- @@@TextEditorSettings -->
+<!-- $$$~TextEditorSettings[overload1]$$$~TextEditorSettings -->
+<h3 class="fn" id="dtor.TextEditorSettings"><a name="dtor.TextEditorSettings"></a>TextEditorSettings::<span class="name">~TextEditorSettings</span>()</h3>
+<p>Destroys the instance of TextEditorSettings.</p><!-- @@@~TextEditorSettings -->
+<!-- $$$behaviorSettings[overload1]$$$behaviorSettings -->
+<h3 class="fn" id="behaviorSettings"><a name="behaviorSettings"></a><code>[static] </code>const <span class="type"><a href="texteditor-behaviorsettings.html">BehaviorSettings</a></span> &amp;TextEditorSettings::<span class="name">behaviorSettings</span>()</h3>
+<!-- @@@behaviorSettings -->
+<!-- $$$behaviorSettingsChanged[overload1]$$$behaviorSettingsChangedconstTextEditor::BehaviorSettings& -->
+<h3 class="fn" id="behaviorSettingsChanged"><a name="behaviorSettingsChanged"></a><code>[signal] </code><span class="type">void</span> TextEditorSettings::<span class="name">behaviorSettingsChanged</span>(<i>const TextEditor::BehaviorSettings &amp;</i>)</h3>
+<!-- @@@behaviorSettingsChanged -->
+<!-- $$$codeStyle[overload1]$$$codeStyle -->
+<h3 class="fn" id="codeStyle"><a name="codeStyle"></a><code>[static] </code><span class="type"><a href="texteditor-icodestylepreferences.html">ICodeStylePreferences</a></span> *TextEditorSettings::<span class="name">codeStyle</span>()</h3>
+<!-- @@@codeStyle -->
+<!-- $$$codeStyle$$$codeStyleCore::Id -->
+<h3 class="fn" id="codeStyle-1"><a name="codeStyle-1"></a><code>[static] </code><span class="type"><a href="texteditor-icodestylepreferences.html">ICodeStylePreferences</a></span> *TextEditorSettings::<span class="name">codeStyle</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>languageId</i>)</h3>
+<!-- @@@codeStyle -->
+<!-- $$$codeStyleFactories[overload1]$$$codeStyleFactories -->
+<h3 class="fn" id="codeStyleFactories"><a name="codeStyleFactories"></a><code>[static] </code><span class="type">QMap</span>&lt;<span class="type"><a href="core-id.html">Core::Id</a></span>, <span class="type"><a href="texteditor-icodestylepreferencesfactory.html">ICodeStylePreferencesFactory</a></span> *&gt; TextEditorSettings::<span class="name">codeStyleFactories</span>()</h3>
+<!-- @@@codeStyleFactories -->
+<!-- $$$codeStyleFactory[overload1]$$$codeStyleFactoryCore::Id -->
+<h3 class="fn" id="codeStyleFactory"><a name="codeStyleFactory"></a><code>[static] </code><span class="type"><a href="texteditor-icodestylepreferencesfactory.html">ICodeStylePreferencesFactory</a></span> *TextEditorSettings::<span class="name">codeStyleFactory</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>languageId</i>)</h3>
+<!-- @@@codeStyleFactory -->
+<!-- $$$codeStylePool[overload1]$$$codeStylePool -->
+<h3 class="fn" id="codeStylePool"><a name="codeStylePool"></a><code>[static] </code><span class="type"><a href="texteditor-codestylepool.html">CodeStylePool</a></span> *TextEditorSettings::<span class="name">codeStylePool</span>()</h3>
+<!-- @@@codeStylePool -->
+<!-- $$$codeStylePool$$$codeStylePoolCore::Id -->
+<h3 class="fn" id="codeStylePool-1"><a name="codeStylePool-1"></a><code>[static] </code><span class="type"><a href="texteditor-codestylepool.html">CodeStylePool</a></span> *TextEditorSettings::<span class="name">codeStylePool</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>languageId</i>)</h3>
+<!-- @@@codeStylePool -->
+<!-- $$$codeStyles[overload1]$$$codeStyles -->
+<h3 class="fn" id="codeStyles"><a name="codeStyles"></a><code>[static] </code><span class="type">QMap</span>&lt;<span class="type"><a href="core-id.html">Core::Id</a></span>, <span class="type"><a href="texteditor-icodestylepreferences.html">ICodeStylePreferences</a></span> *&gt; TextEditorSettings::<span class="name">codeStyles</span>()</h3>
+<!-- @@@codeStyles -->
+<!-- $$$commentsSettings[overload1]$$$commentsSettings -->
+<h3 class="fn" id="commentsSettings"><a name="commentsSettings"></a><code>[static] </code>const <span class="type"><a href="texteditor-commentssettings.html">CommentsSettings</a></span> &amp;TextEditorSettings::<span class="name">commentsSettings</span>()</h3>
+<!-- @@@commentsSettings -->
+<!-- $$$commentsSettingsChanged[overload1]$$$commentsSettingsChangedconstTextEditor::CommentsSettings& -->
+<h3 class="fn" id="commentsSettingsChanged"><a name="commentsSettingsChanged"></a><code>[signal] </code><span class="type">void</span> TextEditorSettings::<span class="name">commentsSettingsChanged</span>(<i>const TextEditor::CommentsSettings &amp;</i>)</h3>
+<!-- @@@commentsSettingsChanged -->
+<!-- $$$completionSettings[overload1]$$$completionSettings -->
+<h3 class="fn" id="completionSettings"><a name="completionSettings"></a><code>[static] </code>const <span class="type"><a href="texteditor-completionsettings.html">CompletionSettings</a></span> &amp;TextEditorSettings::<span class="name">completionSettings</span>()</h3>
+<!-- @@@completionSettings -->
+<!-- $$$completionSettingsChanged[overload1]$$$completionSettingsChangedconstTextEditor::CompletionSettings& -->
+<h3 class="fn" id="completionSettingsChanged"><a name="completionSettingsChanged"></a><code>[signal] </code><span class="type">void</span> TextEditorSettings::<span class="name">completionSettingsChanged</span>(<i>const TextEditor::CompletionSettings &amp;</i>)</h3>
+<!-- @@@completionSettingsChanged -->
+<!-- $$$displaySettings[overload1]$$$displaySettings -->
+<h3 class="fn" id="displaySettings"><a name="displaySettings"></a><code>[static] </code>const <span class="type"><a href="texteditor-displaysettings.html">DisplaySettings</a></span> &amp;TextEditorSettings::<span class="name">displaySettings</span>()</h3>
+<!-- @@@displaySettings -->
+<!-- $$$displaySettingsChanged[overload1]$$$displaySettingsChangedconstTextEditor::DisplaySettings& -->
+<h3 class="fn" id="displaySettingsChanged"><a name="displaySettingsChanged"></a><code>[signal] </code><span class="type">void</span> TextEditorSettings::<span class="name">displaySettingsChanged</span>(<i>const TextEditor::DisplaySettings &amp;</i>)</h3>
+<!-- @@@displaySettingsChanged -->
+<!-- $$$extraEncodingSettings[overload1]$$$extraEncodingSettings -->
+<h3 class="fn" id="extraEncodingSettings"><a name="extraEncodingSettings"></a><code>[static] </code>const <span class="type"><a href="texteditor-extraencodingsettings.html">ExtraEncodingSettings</a></span> &amp;TextEditorSettings::<span class="name">extraEncodingSettings</span>()</h3>
+<!-- @@@extraEncodingSettings -->
+<!-- $$$extraEncodingSettingsChanged[overload1]$$$extraEncodingSettingsChangedconstTextEditor::ExtraEncodingSettings& -->
+<h3 class="fn" id="extraEncodingSettingsChanged"><a name="extraEncodingSettingsChanged"></a><code>[signal] </code><span class="type">void</span> TextEditorSettings::<span class="name">extraEncodingSettingsChanged</span>(<i>const TextEditor::ExtraEncodingSettings &amp;</i>)</h3>
+<!-- @@@extraEncodingSettingsChanged -->
+<!-- $$$fontSettings[overload1]$$$fontSettings -->
+<h3 class="fn" id="fontSettings"><a name="fontSettings"></a><code>[static] </code>const <span class="type"><a href="texteditor-fontsettings.html">FontSettings</a></span> &amp;TextEditorSettings::<span class="name">fontSettings</span>()</h3>
+<!-- @@@fontSettings -->
+<!-- $$$fontSettingsChanged[overload1]$$$fontSettingsChangedconstTextEditor::FontSettings& -->
+<h3 class="fn" id="fontSettingsChanged"><a name="fontSettingsChanged"></a><code>[signal] </code><span class="type">void</span> TextEditorSettings::<span class="name">fontSettingsChanged</span>(<i>const TextEditor::FontSettings &amp;</i>)</h3>
+<!-- @@@fontSettingsChanged -->
+<!-- $$$highlighterSettings[overload1]$$$highlighterSettings -->
+<h3 class="fn" id="highlighterSettings"><a name="highlighterSettings"></a><code>[static] </code>const <span class="type"><a href="texteditor-highlightersettings.html">HighlighterSettings</a></span> &amp;TextEditorSettings::<span class="name">highlighterSettings</span>()</h3>
+<!-- @@@highlighterSettings -->
+<!-- $$$increaseFontZoom[overload1]$$$increaseFontZoomint -->
+<h3 class="fn" id="increaseFontZoom"><a name="increaseFontZoom"></a><code>[static] </code><span class="type">int</span> TextEditorSettings::<span class="name">increaseFontZoom</span>(<span class="type">int</span> <i>step</i>)</h3>
+<!-- @@@increaseFontZoom -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" id="instance"><a name="instance"></a><code>[static] </code><span class="type"><a href="texteditor-texteditorsettings.html#TextEditorSettings">TextEditorSettings</a></span> *TextEditorSettings::<span class="name">instance</span>()</h3>
+<!-- @@@instance -->
+<!-- $$$languageId[overload1]$$$languageIdconstQString& -->
+<h3 class="fn" id="languageId"><a name="languageId"></a><code>[static] </code><span class="type"><a href="core-id.html">Core::Id</a></span> TextEditorSettings::<span class="name">languageId</span>(const <span class="type">QString</span> &amp;<i>mimeType</i>)</h3>
+<!-- @@@languageId -->
+<!-- $$$marginSettings[overload1]$$$marginSettings -->
+<h3 class="fn" id="marginSettings"><a name="marginSettings"></a><code>[static] </code>const <span class="type"><a href="texteditor-marginsettings.html">MarginSettings</a></span> &amp;TextEditorSettings::<span class="name">marginSettings</span>()</h3>
+<!-- @@@marginSettings -->
+<!-- $$$marginSettingsChanged[overload1]$$$marginSettingsChangedconstTextEditor::MarginSettings& -->
+<h3 class="fn" id="marginSettingsChanged"><a name="marginSettingsChanged"></a><code>[signal] </code><span class="type">void</span> TextEditorSettings::<span class="name">marginSettingsChanged</span>(<i>const TextEditor::MarginSettings &amp;</i>)</h3>
+<!-- @@@marginSettingsChanged -->
+<!-- $$$registerCodeStyle[overload1]$$$registerCodeStyleCore::IdICodeStylePreferences* -->
+<h3 class="fn" id="registerCodeStyle"><a name="registerCodeStyle"></a><code>[static] </code><span class="type">void</span> TextEditorSettings::<span class="name">registerCodeStyle</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>languageId</i>, <span class="type"><a href="texteditor-icodestylepreferences.html">ICodeStylePreferences</a></span> *<i>prefs</i>)</h3>
+<!-- @@@registerCodeStyle -->
+<!-- $$$registerCodeStyleFactory[overload1]$$$registerCodeStyleFactoryICodeStylePreferencesFactory* -->
+<h3 class="fn" id="registerCodeStyleFactory"><a name="registerCodeStyleFactory"></a><code>[static] </code><span class="type">void</span> TextEditorSettings::<span class="name">registerCodeStyleFactory</span>(<span class="type"><a href="texteditor-icodestylepreferencesfactory.html">ICodeStylePreferencesFactory</a></span> *<i>codeStyleFactory</i>)</h3>
+<!-- @@@registerCodeStyleFactory -->
+<!-- $$$registerCodeStylePool[overload1]$$$registerCodeStylePoolCore::IdCodeStylePool* -->
+<h3 class="fn" id="registerCodeStylePool"><a name="registerCodeStylePool"></a><code>[static] </code><span class="type">void</span> TextEditorSettings::<span class="name">registerCodeStylePool</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>languageId</i>, <span class="type"><a href="texteditor-codestylepool.html">CodeStylePool</a></span> *<i>pool</i>)</h3>
+<!-- @@@registerCodeStylePool -->
+<!-- $$$registerMimeTypeForLanguageId[overload1]$$$registerMimeTypeForLanguageIdconstchar*Core::Id -->
+<h3 class="fn" id="registerMimeTypeForLanguageId"><a name="registerMimeTypeForLanguageId"></a><code>[static] </code><span class="type">void</span> TextEditorSettings::<span class="name">registerMimeTypeForLanguageId</span>(const <span class="type">char</span> *<i>mimeType</i>, <span class="type"><a href="core-id.html">Core::Id</a></span> <i>languageId</i>)</h3>
+<!-- @@@registerMimeTypeForLanguageId -->
+<!-- $$$resetFontZoom[overload1]$$$resetFontZoom -->
+<h3 class="fn" id="resetFontZoom"><a name="resetFontZoom"></a><code>[static] </code><span class="type">void</span> TextEditorSettings::<span class="name">resetFontZoom</span>()</h3>
+<!-- @@@resetFontZoom -->
+<!-- $$$storageSettings[overload1]$$$storageSettings -->
+<h3 class="fn" id="storageSettings"><a name="storageSettings"></a><code>[static] </code>const <span class="type"><a href="texteditor-storagesettings.html">StorageSettings</a></span> &amp;TextEditorSettings::<span class="name">storageSettings</span>()</h3>
+<!-- @@@storageSettings -->
+<!-- $$$storageSettingsChanged[overload1]$$$storageSettingsChangedconstTextEditor::StorageSettings& -->
+<h3 class="fn" id="storageSettingsChanged"><a name="storageSettingsChanged"></a><code>[signal] </code><span class="type">void</span> TextEditorSettings::<span class="name">storageSettingsChanged</span>(<i>const TextEditor::StorageSettings &amp;</i>)</h3>
+<!-- @@@storageSettingsChanged -->
+<!-- $$$typingSettings[overload1]$$$typingSettings -->
+<h3 class="fn" id="typingSettings"><a name="typingSettings"></a><code>[static] </code>const <span class="type"><a href="texteditor-typingsettings.html">TypingSettings</a></span> &amp;TextEditorSettings::<span class="name">typingSettings</span>()</h3>
+<!-- @@@typingSettings -->
+<!-- $$$typingSettingsChanged[overload1]$$$typingSettingsChangedconstTextEditor::TypingSettings& -->
+<h3 class="fn" id="typingSettingsChanged"><a name="typingSettingsChanged"></a><code>[signal] </code><span class="type">void</span> TextEditorSettings::<span class="name">typingSettingsChanged</span>(<i>const TextEditor::TypingSettings &amp;</i>)</h3>
+<!-- @@@typingSettingsChanged -->
+<!-- $$$unregisterCodeStyle[overload1]$$$unregisterCodeStyleCore::Id -->
+<h3 class="fn" id="unregisterCodeStyle"><a name="unregisterCodeStyle"></a><code>[static] </code><span class="type">void</span> TextEditorSettings::<span class="name">unregisterCodeStyle</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>languageId</i>)</h3>
+<!-- @@@unregisterCodeStyle -->
+<!-- $$$unregisterCodeStyleFactory[overload1]$$$unregisterCodeStyleFactoryCore::Id -->
+<h3 class="fn" id="unregisterCodeStyleFactory"><a name="unregisterCodeStyleFactory"></a><code>[static] </code><span class="type">void</span> TextEditorSettings::<span class="name">unregisterCodeStyleFactory</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>languageId</i>)</h3>
+<!-- @@@unregisterCodeStyleFactory -->
+<!-- $$$unregisterCodeStylePool[overload1]$$$unregisterCodeStylePoolCore::Id -->
+<h3 class="fn" id="unregisterCodeStylePool"><a name="unregisterCodeStylePool"></a><code>[static] </code><span class="type">void</span> TextEditorSettings::<span class="name">unregisterCodeStylePool</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>languageId</i>)</h3>
+<!-- @@@unregisterCodeStylePool -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

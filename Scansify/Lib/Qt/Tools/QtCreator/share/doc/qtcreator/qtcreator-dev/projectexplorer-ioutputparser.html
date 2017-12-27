@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- ioutputparser.cpp -->
+  <title>IOutputParser Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >IOutputParser</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">IOutputParser Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-ioutputparser.html">ProjectExplorer::IOutputParser</a>)<br/></span>
+<!-- $$$IOutputParser-brief -->
+<p>The <a href="projectexplorer-ioutputparser.html">IOutputParser</a> class provides an interface for an output parser that emits issues (tasks). <a href="#details">More...</a></p>
+<!-- @@@IOutputParser -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;IOutputParser&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="projectexplorer-ioutputparser-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#IOutputParser">IOutputParser</a></b>() = default</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#dtor.IOutputParser">~IOutputParser</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#appendOutputParser">appendOutputParser</a></b>(IOutputParser *<i>parser</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> IOutputParser *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#childParser">childParser</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#flush">flush</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#hasFatalErrors">hasFatalErrors</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#setChildParser">setChildParser</a></b>(IOutputParser *<i>parser</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#setWorkingDirectory">setWorkingDirectory</a></b>(const QString &amp;<i>workingDirectory</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#stdError">stdError</a></b>(const QString &amp;<i>line</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#stdOutput">stdOutput</a></b>(const QString &amp;<i>line</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> IOutputParser *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#takeOutputParserChain">takeOutputParserChain</a></b>()</td></tr>
+</table></div>
+<a name="public-slots"></a>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#outputAdded">outputAdded</a></b>(const QString &amp;<i>string</i>, ProjectExplorer::BuildStep::OutputFormat <i>format</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#taskAdded">taskAdded</a></b>(const ProjectExplorer::Task &amp;<i>task</i>, int <i>linkedOutputLines</i> = 0, int <i>skipLines</i> = 0)</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#addOutput">addOutput</a></b>(const QString &amp;<i>string</i>, ProjectExplorer::BuildStep::OutputFormat <i>format</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#addTask">addTask</a></b>(const ProjectExplorer::Task &amp;<i>task</i>, int <i>linkedOutputLines</i> = 0, int <i>skipLines</i> = 0)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-ioutputparser.html#rightTrimmed">rightTrimmed</a></b>(const QString &amp;<i>in</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$IOutputParser-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="projectexplorer-ioutputparser.html">IOutputParser</a> class provides an interface for an output parser that emits issues (tasks).</p>
+</div>
+<p><b>See also </b><a href="projectexplorer-task.html">ProjectExplorer::Task</a>.</p>
+<!-- @@@IOutputParser -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$IOutputParser[overload1]$$$IOutputParser -->
+<h3 class="fn" id="IOutputParser"><a name="IOutputParser"></a><code>[default] </code>IOutputParser::<span class="name">IOutputParser</span>()</h3>
+<p>Default constructs an instance of IOutputParser.</p><!-- @@@IOutputParser -->
+<!-- $$$~IOutputParser[overload1]$$$~IOutputParser -->
+<h3 class="fn" id="dtor.IOutputParser"><a name="dtor.IOutputParser"></a>IOutputParser::<span class="name">~IOutputParser</span>()</h3>
+<p>Destroys the instance of IOutputParser.</p><!-- @@@~IOutputParser -->
+<!-- $$$addOutput[overload1]$$$addOutputconstQString&ProjectExplorer::BuildStep::OutputFormat -->
+<h3 class="fn" id="addOutput"><a name="addOutput"></a><code>[signal] </code><span class="type">void</span> IOutputParser::<span class="name">addOutput</span>(const <span class="type">QString</span> &amp;<i>string</i>, <span class="type"><a href="projectexplorer-buildstep.html#OutputFormat-enum">ProjectExplorer::BuildStep::OutputFormat</a></span> <i>format</i>)</h3>
+<p>Should be emitted whenever some additional information should be added to the output.</p>
+<p><b>Note: </b>This is additional information. There is no need to add each line.</p><!-- @@@addOutput -->
+<!-- $$$addTask[overload1]$$$addTaskconstProjectExplorer::Task&intint -->
+<h3 class="fn" id="addTask"><a name="addTask"></a><code>[signal] </code><span class="type">void</span> IOutputParser::<span class="name">addTask</span>(const <span class="type"><a href="projectexplorer-task.html">ProjectExplorer::Task</a></span> &amp;<i>task</i>, <span class="type">int</span> <i>linkedOutputLines</i> = 0, <span class="type">int</span> <i>skipLines</i> = 0)</h3>
+<!-- @@@addTask -->
+<!-- $$$appendOutputParser[overload1]$$$appendOutputParserIOutputParser* -->
+<h3 class="fn" id="appendOutputParser"><a name="appendOutputParser"></a><code>[virtual] </code><span class="type">void</span> IOutputParser::<span class="name">appendOutputParser</span>(<span class="type"><a href="projectexplorer-ioutputparser.html#IOutputParser">IOutputParser</a></span> *<i>parser</i>)</h3>
+<p>Appends a subparser to this parser, of which <a href="projectexplorer-ioutputparser.html">IOutputParser</a> will take ownership.</p>
+<!-- @@@appendOutputParser -->
+<!-- $$$childParser[overload1]$$$childParser -->
+<h3 class="fn" id="childParser"><a name="childParser"></a><span class="type"><a href="projectexplorer-ioutputparser.html#IOutputParser">IOutputParser</a></span> *IOutputParser::<span class="name">childParser</span>() const</h3>
+<p>Returns the head of this parser's output parser children. <a href="projectexplorer-ioutputparser.html">IOutputParser</a> keeps ownership.</p>
+<p><b>See also </b><a href="projectexplorer-ioutputparser.html#setChildParser">setChildParser</a>().</p>
+<!-- @@@childParser -->
+<!-- $$$flush[overload1]$$$flush -->
+<h3 class="fn" id="flush"><a name="flush"></a><span class="type">void</span> IOutputParser::<span class="name">flush</span>()</h3>
+<!-- @@@flush -->
+<!-- $$$hasFatalErrors[overload1]$$$hasFatalErrors -->
+<h3 class="fn" id="hasFatalErrors"><a name="hasFatalErrors"></a><code>[virtual] </code><span class="type">bool</span> IOutputParser::<span class="name">hasFatalErrors</span>() const</h3>
+<p>This is mainly a Symbian specific quirk.</p>
+<!-- @@@hasFatalErrors -->
+<!-- $$$outputAdded[overload1]$$$outputAddedconstQString&ProjectExplorer::BuildStep::OutputFormat -->
+<h3 class="fn" id="outputAdded"><a name="outputAdded"></a><code>[virtual slot] </code><span class="type">void</span> IOutputParser::<span class="name">outputAdded</span>(const <span class="type">QString</span> &amp;<i>string</i>, <span class="type"><a href="projectexplorer-buildstep.html#OutputFormat-enum">ProjectExplorer::BuildStep::OutputFormat</a></span> <i>format</i>)</h3>
+<p>This function can be overwritten to change the string.</p>
+<!-- @@@outputAdded -->
+<!-- $$$rightTrimmed[overload1]$$$rightTrimmedconstQString& -->
+<h3 class="fn" id="rightTrimmed"><a name="rightTrimmed"></a><code>[static] </code><span class="type">QString</span> IOutputParser::<span class="name">rightTrimmed</span>(const <span class="type">QString</span> &amp;<i>in</i>)</h3>
+<!-- @@@rightTrimmed -->
+<!-- $$$setChildParser[overload1]$$$setChildParserIOutputParser* -->
+<h3 class="fn" id="setChildParser"><a name="setChildParser"></a><span class="type">void</span> IOutputParser::<span class="name">setChildParser</span>(<span class="type"><a href="projectexplorer-ioutputparser.html#IOutputParser">IOutputParser</a></span> *<i>parser</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-ioutputparser.html#childParser">childParser</a>().</p>
+<!-- @@@setChildParser -->
+<!-- $$$setWorkingDirectory[overload1]$$$setWorkingDirectoryconstQString& -->
+<h3 class="fn" id="setWorkingDirectory"><a name="setWorkingDirectory"></a><code>[virtual] </code><span class="type">void</span> IOutputParser::<span class="name">setWorkingDirectory</span>(const <span class="type">QString</span> &amp;<i>workingDirectory</i>)</h3>
+<!-- @@@setWorkingDirectory -->
+<!-- $$$stdError[overload1]$$$stdErrorconstQString& -->
+<h3 class="fn" id="stdError"><a name="stdError"></a><code>[virtual] </code><span class="type">void</span> IOutputParser::<span class="name">stdError</span>(const <span class="type">QString</span> &amp;<i>line</i>)</h3>
+<p>Called once for each line if standard error to parse.</p>
+<!-- @@@stdError -->
+<!-- $$$stdOutput[overload1]$$$stdOutputconstQString& -->
+<h3 class="fn" id="stdOutput"><a name="stdOutput"></a><code>[virtual] </code><span class="type">void</span> IOutputParser::<span class="name">stdOutput</span>(const <span class="type">QString</span> &amp;<i>line</i>)</h3>
+<p>Called once for each line if standard output to parse.</p>
+<!-- @@@stdOutput -->
+<!-- $$$takeOutputParserChain[overload1]$$$takeOutputParserChain -->
+<h3 class="fn" id="takeOutputParserChain"><a name="takeOutputParserChain"></a><span class="type"><a href="projectexplorer-ioutputparser.html#IOutputParser">IOutputParser</a></span> *IOutputParser::<span class="name">takeOutputParserChain</span>()</h3>
+<p>Removes the appended outputparser chain from this parser, transferring ownership of the parser chain to the caller.</p>
+<!-- @@@takeOutputParserChain -->
+<!-- $$$taskAdded[overload1]$$$taskAddedconstProjectExplorer::Task&intint -->
+<h3 class="fn" id="taskAdded"><a name="taskAdded"></a><code>[virtual slot] </code><span class="type">void</span> IOutputParser::<span class="name">taskAdded</span>(const <span class="type"><a href="projectexplorer-task.html">ProjectExplorer::Task</a></span> &amp;<i>task</i>, <span class="type">int</span> <i>linkedOutputLines</i> = 0, <span class="type">int</span> <i>skipLines</i> = 0)</h3>
+<!-- @@@taskAdded -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

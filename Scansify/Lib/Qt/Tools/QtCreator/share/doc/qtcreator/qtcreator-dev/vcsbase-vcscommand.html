@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>VcsCommand Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >VcsCommand</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">VcsCommand Class</h1>
+<span class="small-subtitle">(<a href="vcsbase-vcscommand.html">VcsBase::VcsCommand</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="core-shellcommand.html">Core::ShellCommand</a></td></tr></table></div><ul>
+<li><a href="vcsbase-vcscommand-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcscommand.html#VcsRunFlags-enum">VcsRunFlags</a></b> { SshPasswordPrompt, ExpectRepoChanges }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcscommand.html#VcsCommand">VcsCommand</a></b>(const QString &amp;<i>defaultWorkingDirectory</i>, const QProcessEnvironment &amp;<i>environment</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::SynchronousProcessResponse </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcscommand.html#runCommand">runCommand</a></b>(const Utils::FileName &amp;<i>binary</i>, const QStringList &amp;<i>arguments</i>, int <i>timeoutS</i>, const QString &amp;<i>workDirectory</i> = QString(), const Utils::ExitCodeInterpreter &amp;<i>interpreter</i> = Utils::defaultExitCodeInterpreter) override</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const QProcessEnvironment </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcscommand.html#processEnvironment">processEnvironment</a></b>() const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">23 public functions inherited from <a href="utils-shellcommand.html#public-functions">Utils::ShellCommand</a></li>
+</ul>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">5 signals inherited from <a href="utils-shellcommand.html#signals">Utils::ShellCommand</a></li>
+<li class="fn">2 protected functions inherited from <a href="core-shellcommand.html#protected-functions">Core::ShellCommand</a></li>
+<li class="fn">3 protected functions inherited from <a href="utils-shellcommand.html#protected-functions">Utils::ShellCommand</a></li>
+</ul>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$VcsRunFlags$$$SshPasswordPrompt$$$ExpectRepoChanges -->
+<h3 class="fn" id="VcsRunFlags-enum"><a name="VcsRunFlags-enum"></a>enum VcsCommand::<span class="name">VcsRunFlags</span></h3>
+<!-- @@@VcsRunFlags -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$VcsCommand[overload1]$$$VcsCommandconstQString&constQProcessEnvironment& -->
+<h3 class="fn" id="VcsCommand"><a name="VcsCommand"></a>VcsCommand::<span class="name">VcsCommand</span>(const <span class="type">QString</span> &amp;<i>defaultWorkingDirectory</i>, const <span class="type">QProcessEnvironment</span> &amp;<i>environment</i>)</h3>
+<p>Default constructs an instance of VcsCommand.</p><!-- @@@VcsCommand -->
+<!-- $$$processEnvironment[overload1]$$$processEnvironment -->
+<h3 class="fn" id="processEnvironment"><a name="processEnvironment"></a><code>[override virtual] </code>const <span class="type">QProcessEnvironment</span> VcsCommand::<span class="name">processEnvironment</span>() const</h3>
+<!-- @@@processEnvironment -->
+<!-- $$$runCommand[overload1]$$$runCommandconstUtils::FileName&constQStringList&intconstQString&constUtils::ExitCodeInterpreter& -->
+<h3 class="fn" id="runCommand"><a name="runCommand"></a><span class="type"><a href="utils-synchronousprocessresponse.html">Utils::SynchronousProcessResponse</a></span> VcsCommand::<span class="name">runCommand</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>binary</i>, const <span class="type">QStringList</span> &amp;<i>arguments</i>, <span class="type">int</span> <i>timeoutS</i>, const <span class="type">QString</span> &amp;<i>workDirectory</i> = QString(), const <span class="type">Utils::ExitCodeInterpreter</span> &amp;<i>interpreter</i> = Utils::defaultExitCodeInterpreter)</h3>
+<!-- @@@runCommand -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

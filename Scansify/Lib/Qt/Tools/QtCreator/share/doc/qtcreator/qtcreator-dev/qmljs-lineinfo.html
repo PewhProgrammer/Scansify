@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>LineInfo Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >LineInfo</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#protected-types">Protected Types</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">LineInfo Class</h1>
+<span class="small-subtitle">(<a href="qmljs-lineinfo.html">QmlJS::LineInfo</a>)<br/></span>
+<ul>
+<li><a href="qmljs-lineinfo-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#LineInfo">LineInfo</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#dtor.LineInfo">~LineInfo</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#initialize">initialize</a></b>(QTextBlock <i>begin</i>, QTextBlock <i>end</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#isContinuationLine">isContinuationLine</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#isUnfinishedLine">isUnfinishedLine</a></b>()</td></tr>
+</table></div>
+<a name="protected-types"></a>
+<h2 id="protected-types">Protected Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo-linizerstate.html">LinizerState</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo-program.html">Program</a></b></td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#bottomLineStartsInMultilineComment">bottomLineStartsInMultilineComment</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QChar </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#firstNonWhiteSpace">firstNonWhiteSpace</a></b>(const QString &amp;<i>t</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#hasUnclosedParenOrBracket">hasUnclosedParenOrBracket</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Token </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#lastToken">lastToken</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#matchBracelessControlStatement">matchBracelessControlStatement</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#readLine">readLine</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#startLinizer">startLinizer</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringRef </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#tokenText">tokenText</a></b>(const Token &amp;<i>token</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-lineinfo.html#trimmedCodeLine">trimmedCodeLine</a></b>(const QString &amp;<i>t</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$LineInfo[overload1]$$$LineInfo -->
+<h3 class="fn" id="LineInfo"><a name="LineInfo"></a>LineInfo::<span class="name">LineInfo</span>()</h3>
+<p>Default constructs an instance of LineInfo.</p><!-- @@@LineInfo -->
+<!-- $$$~LineInfo[overload1]$$$~LineInfo -->
+<h3 class="fn" id="dtor.LineInfo"><a name="dtor.LineInfo"></a><code>[virtual] </code>LineInfo::<span class="name">~LineInfo</span>()</h3>
+<p>Destroys the instance of LineInfo. The destructor is virtual.</p><!-- @@@~LineInfo -->
+<!-- $$$bottomLineStartsInMultilineComment[overload1]$$$bottomLineStartsInMultilineComment -->
+<h3 class="fn" id="bottomLineStartsInMultilineComment"><a name="bottomLineStartsInMultilineComment"></a><code>[protected] </code><span class="type">bool</span> LineInfo::<span class="name">bottomLineStartsInMultilineComment</span>()</h3>
+<!-- @@@bottomLineStartsInMultilineComment -->
+<!-- $$$firstNonWhiteSpace[overload1]$$$firstNonWhiteSpaceconstQString& -->
+<h3 class="fn" id="firstNonWhiteSpace"><a name="firstNonWhiteSpace"></a><code>[protected] </code><span class="type">QChar</span> LineInfo::<span class="name">firstNonWhiteSpace</span>(const <span class="type">QString</span> &amp;<i>t</i>) const</h3>
+<!-- @@@firstNonWhiteSpace -->
+<!-- $$$hasUnclosedParenOrBracket[overload1]$$$hasUnclosedParenOrBracket -->
+<h3 class="fn" id="hasUnclosedParenOrBracket"><a name="hasUnclosedParenOrBracket"></a><code>[protected] </code><span class="type">bool</span> LineInfo::<span class="name">hasUnclosedParenOrBracket</span>() const</h3>
+<!-- @@@hasUnclosedParenOrBracket -->
+<!-- $$$initialize[overload1]$$$initializeQTextBlockQTextBlock -->
+<h3 class="fn" id="initialize"><a name="initialize"></a><span class="type">void</span> LineInfo::<span class="name">initialize</span>(<span class="type">QTextBlock</span> <i>begin</i>, <span class="type">QTextBlock</span> <i>end</i>)</h3>
+<!-- @@@initialize -->
+<!-- $$$isContinuationLine[overload1]$$$isContinuationLine -->
+<h3 class="fn" id="isContinuationLine"><a name="isContinuationLine"></a><span class="type">bool</span> LineInfo::<span class="name">isContinuationLine</span>()</h3>
+<!-- @@@isContinuationLine -->
+<!-- $$$isUnfinishedLine[overload1]$$$isUnfinishedLine -->
+<h3 class="fn" id="isUnfinishedLine"><a name="isUnfinishedLine"></a><span class="type">bool</span> LineInfo::<span class="name">isUnfinishedLine</span>()</h3>
+<!-- @@@isUnfinishedLine -->
+<!-- $$$lastToken[overload1]$$$lastToken -->
+<h3 class="fn" id="lastToken"><a name="lastToken"></a><code>[protected] </code><span class="type"><a href="qmljs-token.html">Token</a></span> LineInfo::<span class="name">lastToken</span>() const</h3>
+<!-- @@@lastToken -->
+<!-- $$$matchBracelessControlStatement[overload1]$$$matchBracelessControlStatement -->
+<h3 class="fn" id="matchBracelessControlStatement"><a name="matchBracelessControlStatement"></a><code>[protected] </code><span class="type">bool</span> LineInfo::<span class="name">matchBracelessControlStatement</span>()</h3>
+<!-- @@@matchBracelessControlStatement -->
+<!-- $$$readLine[overload1]$$$readLine -->
+<h3 class="fn" id="readLine"><a name="readLine"></a><code>[protected] </code><span class="type">bool</span> LineInfo::<span class="name">readLine</span>()</h3>
+<!-- @@@readLine -->
+<!-- $$$startLinizer[overload1]$$$startLinizer -->
+<h3 class="fn" id="startLinizer"><a name="startLinizer"></a><code>[protected] </code><span class="type">void</span> LineInfo::<span class="name">startLinizer</span>()</h3>
+<!-- @@@startLinizer -->
+<!-- $$$tokenText[overload1]$$$tokenTextconstToken& -->
+<h3 class="fn" id="tokenText"><a name="tokenText"></a><code>[protected] </code><span class="type">QStringRef</span> LineInfo::<span class="name">tokenText</span>(const <span class="type"><a href="qmljs-token.html">Token</a></span> &amp;<i>token</i>) const</h3>
+<!-- @@@tokenText -->
+<!-- $$$trimmedCodeLine[overload1]$$$trimmedCodeLineconstQString& -->
+<h3 class="fn" id="trimmedCodeLine"><a name="trimmedCodeLine"></a><code>[protected] </code><span class="type">QString</span> LineInfo::<span class="name">trimmedCodeLine</span>(const <span class="type">QString</span> &amp;<i>t</i>)</h3>
+<!-- @@@trimmedCodeLine -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

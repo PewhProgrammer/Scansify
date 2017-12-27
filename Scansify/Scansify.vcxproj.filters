@@ -28,6 +28,24 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Tests">
+      <UniqueIdentifier>{e164ae7b-edb0-4891-a923-60eb37e5d6f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\PCLTests">
+      <UniqueIdentifier>{bf04dc48-49d9-4276-9d4a-6309f1a3e670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tests\PCLTests\ICPTests">
+      <UniqueIdentifier>{9a1950da-9ce0-42bd-be60-2e2c843ea8c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PCL">
+      <UniqueIdentifier>{2ac9126e-ba47-4776-81a9-eaa40920d9dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Kinect">
+      <UniqueIdentifier>{ce2d9962-de38-45b2-ad49-c2515fecab29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderer">
+      <UniqueIdentifier>{7415cd7c-d74b-4ed1-ab78-24428d4f0a95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,11 +57,17 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_Scansify.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_Scansify.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_Scansify.cpp">
       <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ICP.cpp">
+      <Filter>Source Files\PCL</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameSource.cpp">
+      <Filter>Source Files\Kinect</Filter>
+    </ClCompile>
+    <ClCompile Include="OGLWidget.cpp">
+      <Filter>Source Files\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,5 +85,17 @@
     <ClInclude Include="GeneratedFiles\ui_Scansify.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="ICP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameSource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OGLWidget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

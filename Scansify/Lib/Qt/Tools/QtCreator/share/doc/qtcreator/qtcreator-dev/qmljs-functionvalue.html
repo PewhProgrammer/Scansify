@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>FunctionValue Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >FunctionValue</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">FunctionValue Class</h1>
+<span class="small-subtitle">(<a href="qmljs-functionvalue.html">QmlJS::FunctionValue</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="qmljs-objectvalue.html">QmlJS::ObjectValue</a></td></tr></table></div><ul>
+<li><a href="qmljs-functionvalue-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-functionvalue.html#FunctionValue">FunctionValue</a></b>(ValueOwner *<i>valueOwner</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-functionvalue.html#dtor.FunctionValue">~FunctionValue</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const Value *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-functionvalue.html#argument">argument</a></b>(int <i>index</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-functionvalue.html#argumentName">argumentName</a></b>(int <i>index</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-functionvalue.html#isVariadic">isVariadic</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="qmljs-functionvalue.html#namedArgumentCount">namedArgumentCount</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="qmljs-functionvalue.html#optionalNamedArgumentCount">optionalNamedArgumentCount</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const Value *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-functionvalue.html#returnValue">returnValue</a></b>() const</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-functionvalue.html#accept">accept</a></b>(ValueVisitor *<i>visitor</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const FunctionValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-functionvalue.html#asFunctionValue">asFunctionValue</a></b>() const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">16 public functions inherited from <a href="qmljs-objectvalue.html#public-functions">QmlJS::ObjectValue</a></li>
+<li class="fn">29 public functions inherited from <a href="qmljs-value.html#public-functions">QmlJS::Value</a></li>
+</ul>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$FunctionValue[overload1]$$$FunctionValueValueOwner* -->
+<h3 class="fn" id="FunctionValue"><a name="FunctionValue"></a>FunctionValue::<span class="name">FunctionValue</span>(<span class="type"><a href="qmljs-valueowner.html">ValueOwner</a></span> *<i>valueOwner</i>)</h3>
+<p>Default constructs an instance of FunctionValue.</p><!-- @@@FunctionValue -->
+<!-- $$$~FunctionValue[overload1]$$$~FunctionValue -->
+<h3 class="fn" id="dtor.FunctionValue"><a name="dtor.FunctionValue"></a>FunctionValue::<span class="name">~FunctionValue</span>()</h3>
+<p>Destroys the instance of FunctionValue.</p><!-- @@@~FunctionValue -->
+<!-- $$$accept[overload1]$$$acceptValueVisitor* -->
+<h3 class="fn" id="accept"><a name="accept"></a><code>[override virtual] </code><span class="type">void</span> FunctionValue::<span class="name">accept</span>(<span class="type"><a href="qmljs-valuevisitor.html">ValueVisitor</a></span> *<i>visitor</i>) const</h3>
+<!-- @@@accept -->
+<!-- $$$argument[overload1]$$$argumentint -->
+<h3 class="fn" id="argument"><a name="argument"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-value.html#Value">Value</a></span> *FunctionValue::<span class="name">argument</span>(<span class="type">int</span> <i>index</i>) const</h3>
+<!-- @@@argument -->
+<!-- $$$argumentName[overload1]$$$argumentNameint -->
+<h3 class="fn" id="argumentName"><a name="argumentName"></a><code>[virtual] </code><span class="type">QString</span> FunctionValue::<span class="name">argumentName</span>(<span class="type">int</span> <i>index</i>) const</h3>
+<!-- @@@argumentName -->
+<!-- $$$asFunctionValue[overload1]$$$asFunctionValue -->
+<h3 class="fn" id="asFunctionValue"><a name="asFunctionValue"></a><code>[override virtual] </code>const <span class="type"><a href="qmljs-functionvalue.html#FunctionValue">FunctionValue</a></span> *FunctionValue::<span class="name">asFunctionValue</span>() const</h3>
+<!-- @@@asFunctionValue -->
+<!-- $$$isVariadic[overload1]$$$isVariadic -->
+<h3 class="fn" id="isVariadic"><a name="isVariadic"></a><code>[virtual] </code><span class="type">bool</span> FunctionValue::<span class="name">isVariadic</span>() const</h3>
+<!-- @@@isVariadic -->
+<!-- $$$namedArgumentCount[overload1]$$$namedArgumentCount -->
+<h3 class="fn" id="namedArgumentCount"><a name="namedArgumentCount"></a><code>[virtual] </code><span class="type">int</span> FunctionValue::<span class="name">namedArgumentCount</span>() const</h3>
+<!-- @@@namedArgumentCount -->
+<!-- $$$optionalNamedArgumentCount[overload1]$$$optionalNamedArgumentCount -->
+<h3 class="fn" id="optionalNamedArgumentCount"><a name="optionalNamedArgumentCount"></a><code>[virtual] </code><span class="type">int</span> FunctionValue::<span class="name">optionalNamedArgumentCount</span>() const</h3>
+<!-- @@@optionalNamedArgumentCount -->
+<!-- $$$returnValue[overload1]$$$returnValue -->
+<h3 class="fn" id="returnValue"><a name="returnValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-value.html#Value">Value</a></span> *FunctionValue::<span class="name">returnValue</span>() const</h3>
+<!-- @@@returnValue -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

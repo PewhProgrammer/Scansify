@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- actionmanager.cpp -->
+  <title>ActionManager Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ActionManager</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+<li class="level2"><a href="#contexts">Contexts</a></li>
+<li class="level2"><a href="#registering-actions">Registering Actions</a></li>
+<li class="level2"><a href="#important-guidelines">Important Guidelines:</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ActionManager Class</h1>
+<span class="small-subtitle">(<a href="core-actionmanager.html">Core::ActionManager</a>)<br/></span>
+<!-- $$$ActionManager-brief -->
+<p>The <a href="core-actionmanager.html">ActionManager</a> class is responsible for registration of menus and menu items and keyboard shortcuts. <a href="#details">More...</a></p>
+<!-- @@@ActionManager -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;ActionManager&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="core-actionmanager-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#commandAdded">commandAdded</a></b>(Core::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#commandListChanged">commandListChanged</a></b>()</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> ActionContainer *</td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#actionContainer">actionContainer</a></b>(Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Command *</td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#command">command</a></b>(Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;Command *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#commands">commands</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ActionContainer *</td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#createMenu">createMenu</a></b>(Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ActionContainer *</td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#createMenuBar">createMenuBar</a></b>(Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ActionManager *</td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#instance">instance</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#isPresentationModeEnabled">isPresentationModeEnabled</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Command *</td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#registerAction">registerAction</a></b>(QAction *<i>action</i>, Id <i>id</i>, const Context &amp;<i>context</i> = Context( Constants::C_GLOBAL ), bool <i>scriptable</i> = false)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#setPresentationModeEnabled">setPresentationModeEnabled</a></b>(bool <i>enabled</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#unregisterAction">unregisterAction</a></b>(QAction *<i>action</i>, Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-actionmanager.html#withNumberAccelerator">withNumberAccelerator</a></b>(const QString &amp;<i>text</i>, const int <i>number</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$ActionManager-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="core-actionmanager.html">ActionManager</a> class is responsible for registration of menus and menu items and keyboard shortcuts.</p>
+<p>The <a href="core-actionmanager.html">ActionManager</a> is the central bookkeeper of actions and their shortcuts and layout. It is a singleton containing mostly static functions. If you need access to the instance, e.g&#x2e; for connecting to signals, is its <a href="core-actionmanager.html#instance">ActionManager::instance</a>() function.</p>
+<p>The main reasons for the need of this class is to provide a central place where the user can specify all his keyboard shortcuts, and to provide a solution for actions that should behave differently in different contexts (like the copy/replace/undo/redo actions).</p>
+<a name="contexts"></a>
+<h3 >Contexts</h3>
+<p>All actions that are registered with the same Id (but different context lists) are considered to be overloads of the same command, represented by an instance of the Command class. Exactly only one of the registered actions with the same ID is active at any time. Which action this is, is defined by the context list that the actions were registered with:</p>
+<p>If the current focus widget was registered via <a href="core-icore.html#addContextObject">ICore::addContextObject</a>(), all the contexts returned by its <a href="core-icontext.html">IContext</a> object are active. In addition all contexts set via <a href="core-icore.html#addAdditionalContext">ICore::addAdditionalContext</a>() are active as well. If one of the actions was registered for one of these active contexts, it is the one active action, and receives <code>triggered</code> and <code>toggled</code> signals. Also the appearance of the visible action for this ID might be adapted to this active action (depending on the settings of the corresponding <a href="core-command.html">Command</a> object).</p>
+<p>The action that is visible to the user is the one returned by <a href="core-command.html#action">Command::action</a>(). If you provide yourself a user visible representation of your action you need to use <a href="core-command.html#action">Command::action</a>() for this. When this action is invoked by the user, the signal is forwarded to the registered action that is valid for the current context.</p>
+<a name="registering-actions"></a>
+<h3 >Registering Actions</h3>
+<p>To register a globally active action &quot;My Action&quot; put the following in your plugin's IPlugin::initialize function:</p>
+<pre class="cpp">
+
+  <span class="type">QAction</span> <span class="operator">*</span>myAction <span class="operator">=</span> <span class="keyword">new</span> <span class="type">QAction</span>(tr(<span class="string">&quot;My Action&quot;</span>)<span class="operator">,</span> <span class="keyword">this</span>);
+  Command <span class="operator">*</span>cmd <span class="operator">=</span> ActionManager<span class="operator">::</span>registerAction(myAction<span class="operator">,</span>
+                                           <span class="string">&quot;myplugin.myaction&quot;</span><span class="operator">,</span>
+                                           Context(C_GLOBAL));
+  cmd<span class="operator">-</span><span class="operator">&gt;</span>setDefaultKeySequence(<span class="type">QKeySequence</span>(tr(<span class="string">&quot;Ctrl+Alt+u&quot;</span>)));
+  connect(myAction<span class="operator">,</span> <span class="operator">&amp;</span><span class="type">QAction</span><span class="operator">::</span>triggered<span class="operator">,</span> <span class="keyword">this</span><span class="operator">,</span> <span class="operator">&amp;</span>MyPlugin<span class="operator">::</span>performMyAction);
+
+</pre>
+<p>So the <code>connect</code> is done to your own QAction instance. If you create e.g&#x2e; a tool button that should represent the action you add the action from <a href="core-command.html#action">Command::action</a>() to it:</p>
+<pre class="cpp">
+
+  <span class="type">QToolButton</span> <span class="operator">*</span>myButton <span class="operator">=</span> <span class="keyword">new</span> <span class="type">QToolButton</span>(someParentWidget);
+  myButton<span class="operator">-</span><span class="operator">&gt;</span>setDefaultAction(cmd<span class="operator">-</span><span class="operator">&gt;</span>action());
+
+</pre>
+<p>Also use the <a href="core-actionmanager.html">ActionManager</a> to add items to registered action containers like the applications menu bar or menus in that menu bar. To do this, you register your action via the <a href="core-actionmanager.html#registerAction">registerAction</a> functions, get the action container for a specific ID (like specified in the <a href="core-constants.html">Core::Constants</a> namespace) with a call of <a href="core-actionmanager.html#actionContainer">actionContainer</a>(const Id&amp;) and add your command to this container.</p>
+<p>Following the example adding &quot;My Action&quot; to the &quot;Tools&quot; menu would be done by</p>
+<pre class="cpp">
+
+  ActionManager<span class="operator">::</span>actionContainer(M_TOOLS)<span class="operator">-</span><span class="operator">&gt;</span>addAction(cmd);
+
+</pre>
+<a name="important-guidelines"></a>
+<h3 >Important Guidelines:</h3>
+<ul>
+<li>Always register your actions and shortcuts!</li>
+<li>Register your actions and shortcuts during your plugin's <a href="extensionsystem-iplugin.html#initialize">ExtensionSystem::IPlugin::initialize</a>() or <a href="extensionsystem-iplugin.html#extensionsInitialized">ExtensionSystem::IPlugin::extensionsInitialized</a>() functions, otherwise the shortcuts won't appear in the keyboard settings dialog from the beginning.</li>
+<li>When registering an action with <code>cmd=registerAction(action, id, contexts)</code> be sure to connect your own action <code>connect(action, SIGNAL..&#x2e;)</code> but make <code>cmd-&gt;action()</code> visible to the user, i.e&#x2e; <code>widget-&gt;addAction(cmd-&gt;action())</code>.</li>
+<li>Use this class to add actions to the applications menus</li>
+</ul>
+</div>
+<p><b>See also </b><a href="core-icore.html">Core::ICore</a>, <a href="core-command.html">Core::Command</a>, <a href="core-actioncontainer.html">Core::ActionContainer</a>, and <a href="core-icontext.html">Core::IContext</a>.</p>
+<!-- @@@ActionManager -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$actionContainer[overload1]$$$actionContainerId -->
+<h3 class="fn" id="actionContainer"><a name="actionContainer"></a><code>[static] </code><span class="type"><a href="core-actioncontainer.html">ActionContainer</a></span> *ActionManager::<span class="name">actionContainer</span>(<span class="type"><a href="core-id.html">Id</a></span> <i>id</i>)</h3>
+<p>Returns the IActionContainter object that is know to the system under the given <i>id</i>.</p>
+<p><b>See also </b><a href="core-actionmanager.html#createMenu">ActionManager::createMenu</a>() and <a href="core-actionmanager.html#createMenuBar">ActionManager::createMenuBar</a>().</p>
+<!-- @@@actionContainer -->
+<!-- $$$command[overload1]$$$commandId -->
+<h3 class="fn" id="command"><a name="command"></a><code>[static] </code><span class="type"><a href="core-command.html">Command</a></span> *ActionManager::<span class="name">command</span>(<span class="type"><a href="core-id.html">Id</a></span> <i>id</i>)</h3>
+<p>Returns the Command object that is known to the system under the given <i>id</i>.</p>
+<p><b>See also </b><a href="core-actionmanager.html#registerAction">ActionManager::registerAction</a>().</p>
+<!-- @@@command -->
+<!-- $$$commandAdded[overload1]$$$commandAddedCore::Id -->
+<h3 class="fn" id="commandAdded"><a name="commandAdded"></a><code>[signal] </code><span class="type">void</span> ActionManager::<span class="name">commandAdded</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>)</h3>
+<!-- @@@commandAdded -->
+<!-- $$$commandListChanged[overload1]$$$commandListChanged -->
+<h3 class="fn" id="commandListChanged"><a name="commandListChanged"></a><code>[signal] </code><span class="type">void</span> ActionManager::<span class="name">commandListChanged</span>()</h3>
+<p>Emitted when the command list has changed.</p>
+<!-- @@@commandListChanged -->
+<!-- $$$commands[overload1]$$$commands -->
+<h3 class="fn" id="commands"><a name="commands"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-command.html">Command</a></span> *&gt; ActionManager::<span class="name">commands</span>()</h3>
+<p>Returns all commands that have been registered.</p>
+<!-- @@@commands -->
+<!-- $$$createMenu[overload1]$$$createMenuId -->
+<h3 class="fn" id="createMenu"><a name="createMenu"></a><code>[static] </code><span class="type"><a href="core-actioncontainer.html">ActionContainer</a></span> *ActionManager::<span class="name">createMenu</span>(<span class="type"><a href="core-id.html">Id</a></span> <i>id</i>)</h3>
+<p>Creates a new menu with the given <i>id</i>.</p>
+<p>Returns a new <a href="core-actioncontainer.html">ActionContainer</a> that you can use to get the QMenu instance or to add menu items to the menu. The <a href="core-actionmanager.html">ActionManager</a> owns the returned <a href="core-actioncontainer.html">ActionContainer</a>. Add your menu to some other menu or a menu bar via the <a href="core-actionmanager.html#actionContainer">ActionManager::actionContainer</a> and <a href="core-actioncontainer.html#addMenu">ActionContainer::addMenu</a> functions.</p>
+<!-- @@@createMenu -->
+<!-- $$$createMenuBar[overload1]$$$createMenuBarId -->
+<h3 class="fn" id="createMenuBar"><a name="createMenuBar"></a><code>[static] </code><span class="type"><a href="core-actioncontainer.html">ActionContainer</a></span> *ActionManager::<span class="name">createMenuBar</span>(<span class="type"><a href="core-id.html">Id</a></span> <i>id</i>)</h3>
+<p>Creates a new menu bar with the given <i>id</i>.</p>
+<p>Returns a new <a href="core-actioncontainer.html">ActionContainer</a> that you can use to get the QMenuBar instance or to add menus to the menu bar. The <a href="core-actionmanager.html">ActionManager</a> owns the returned <a href="core-actioncontainer.html">ActionContainer</a>.</p>
+<!-- @@@createMenuBar -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" id="instance"><a name="instance"></a><code>[static] </code><span class="type">ActionManager</span> *ActionManager::<span class="name">instance</span>()</h3>
+<p>Returns the pointer to the instance, which is only used for connecting to signals.</p>
+<!-- @@@instance -->
+<!-- $$$isPresentationModeEnabled[overload1]$$$isPresentationModeEnabled -->
+<h3 class="fn" id="isPresentationModeEnabled"><a name="isPresentationModeEnabled"></a><code>[static] </code><span class="type">bool</span> ActionManager::<span class="name">isPresentationModeEnabled</span>()</h3>
+<!-- @@@isPresentationModeEnabled -->
+<!-- $$$registerAction[overload1]$$$registerActionQAction*IdconstContext&bool -->
+<h3 class="fn" id="registerAction"><a name="registerAction"></a><code>[static] </code><span class="type"><a href="core-command.html">Command</a></span> *ActionManager::<span class="name">registerAction</span>(<span class="type">QAction</span> *<i>action</i>, <span class="type"><a href="core-id.html">Id</a></span> <i>id</i>, const <span class="type"><a href="core-context.html">Context</a></span> &amp;<i>context</i> = Context( Constants::C_GLOBAL ), <span class="type">bool</span> <i>scriptable</i> = false)</h3>
+<p>Makes an <i>action</i> known to the system under the specified <i>id</i>.</p>
+<p>Returns a command object that represents the action in the application and is owned by the <a href="core-actionmanager.html">ActionManager</a>. You can register several actions with the same <i>id</i> as long as the <i>context</i> is different. In this case a trigger of the actual action is forwarded to the registered QAction for the currently active context. If the optional <i>context</i> argument is not specified, the global context will be assumed. A scriptable action can be called from a script without the need for the user to interact with it.</p>
+<!-- @@@registerAction -->
+<!-- $$$setPresentationModeEnabled[overload1]$$$setPresentationModeEnabledbool -->
+<h3 class="fn" id="setPresentationModeEnabled"><a name="setPresentationModeEnabled"></a><code>[static] </code><span class="type">void</span> ActionManager::<span class="name">setPresentationModeEnabled</span>(<span class="type">bool</span> <i>enabled</i>)</h3>
+<p>Handles the display of the used shortcuts in the presentation mode. The presentation mode is enabled when starting Qt Creator with the command line argument <code>-presentationMode</code>. In the presentation mode, Qt Creator displays any pressed shortcut in a grey box.</p>
+<p><b>See also </b><a href="core-actionmanager.html#isPresentationModeEnabled">isPresentationModeEnabled</a>().</p>
+<!-- @@@setPresentationModeEnabled -->
+<!-- $$$unregisterAction[overload1]$$$unregisterActionQAction*Id -->
+<h3 class="fn" id="unregisterAction"><a name="unregisterAction"></a><code>[static] </code><span class="type">void</span> ActionManager::<span class="name">unregisterAction</span>(<span class="type">QAction</span> *<i>action</i>, <span class="type"><a href="core-id.html">Id</a></span> <i>id</i>)</h3>
+<p>Removes the knowledge about an <i>action</i> under the specified <i>id</i>.</p>
+<p>Usually you do not need to unregister actions. The only valid use case for unregistering actions, is for actions that represent user definable actions, like for the custom Locator filters. If the user removes such an action, it also has to be unregistered from the action manager, to make it disappear from shortcut settings etc.</p>
+<!-- @@@unregisterAction -->
+<!-- $$$withNumberAccelerator[overload1]$$$withNumberAcceleratorconstQString&constint -->
+<h3 class="fn" id="withNumberAccelerator"><a name="withNumberAccelerator"></a><code>[static] </code><span class="type">QString</span> ActionManager::<span class="name">withNumberAccelerator</span>(const <span class="type">QString</span> &amp;<i>text</i>, const <span class="type">int</span> <i>number</i>)</h3>
+<!-- @@@withNumberAccelerator -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

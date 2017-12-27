@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- archiver-module.qdoc -->
+  <title>Module archiver | Qbs Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="index.html">Qbs Manual</a></td><td ><a href="list-of-modules.html">List of Modules</a></td><td >Module archiver</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qbs 1.9.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<p class="naviNextPrevious headerNavi">
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#archiver-properties">archiver Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Module archiver</h1>
+<span class="subtitle"></span>
+<!-- $$$archiver-module.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>The <code>archiver</code> module contains the properties and rules for creating (compressed) archives. The output artifact has the file tag &quot;archiver.archive&quot;. The sole input artifact is a text file containing the list of files to package, with one file path per line. The paths can be relative, in which case they will be looked for at <code>archiver.workingDirectory</code>. The file tag of this input artifact is &quot;archiver.input-list&quot;.</p>
+<a name="archiver-properties"></a>
+<h2 id="archiver-properties">archiver Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Since</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >flags</td><td >stringList</td><td >1.4</td><td >empty list</td><td >Custom options not covered by any of the other properties.</td></tr>
+<tr valign="top" class="even"><td >archiveBaseName</td><td >string</td><td >1.4</td><td ><code>product.targetName</code></td><td >The base name of the archive file (in other words, the file name without any extensions).</td></tr>
+<tr valign="top" class="odd"><td >compressionLevel</td><td >string</td><td >1.4</td><td ><code>undefined</code></td><td >How much effort to put into the compression of a 7-Zip or zip archive. Possible values are <code>undefined</code>, &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot; and &quot;9&quot; Higher numbers result in a smaller archive, but the compressing process will take more time. 7-Zip only supports 0 and odd numbers. A value of <code>undefined</code> means to use the default compression level.</td></tr>
+<tr valign="top" class="even"><td >compressionType</td><td >string</td><td >1.4</td><td ><code>&quot;gz&quot;</code> for tar archives, otherwise <code>undefined</code></td><td >How to compress a tar or zip archive. Possible options are &quot;none&quot;, &quot;gz&quot;, &quot;bz2&quot;, &quot;Z&quot;, &quot;xz&quot;, &quot;deflate&quot;, &quot;store&quot;. <code>undefined</code> uses the archiver's default compression type.</td></tr>
+<tr valign="top" class="odd"><td >outputDirectory</td><td >string</td><td >1.4</td><td ><code>product.destinationDirectory</code></td><td >Where to put the archive file.</td></tr>
+<tr valign="top" class="even"><td >type</td><td >string</td><td >1.4</td><td ><code>undefined</code></td><td >Which kind of archiver to use. The currently supported values are: &quot;tar&quot;, &quot;7zip&quot;, &quot;zip&quot;.</td></tr>
+<tr valign="top" class="odd"><td ><a href="jsextension-process.html#workingdirectory">workingDirectory</a></td><td >string</td><td >1.4</td><td >undefined</td><td >The directory in which to execute <code>command</code>.</td></tr>
+<tr valign="top" class="even"><td >command</td><td >string</td><td >1.4</td><td >Depends on <code>type</code>.</td><td >The command with which to invoke the archiver.</td></tr>
+</table></div>
+</div>
+<!-- @@@archiver-module.html -->
+<p class="naviNextPrevious footerNavi">
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

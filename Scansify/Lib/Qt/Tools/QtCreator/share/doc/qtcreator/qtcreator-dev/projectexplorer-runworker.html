@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- runconfiguration.cpp -->
+  <title>RunWorker Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >RunWorker</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">RunWorker Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-runworker.html">ProjectExplorer::RunWorker</a>)<br/></span>
+<!-- $$$RunWorker-brief -->
+<p>The <a href="projectexplorer-runworker.html">RunWorker</a> class encapsulates a task that forms part, or the whole of the operation of a tool for a certain <code>RunConfiguration</code> according to some <code>RunMode</code>. <a href="#details">More...</a></p>
+<!-- @@@RunWorker -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;RunWorker&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="projectexplorer-runworker-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#RunWorker">RunWorker</a></b>(RunControl *<i>runControl</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#dtor.RunWorker">~RunWorker</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#addStartDependency">addStartDependency</a></b>(RunWorker *<i>dependency</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#addStopDependency">addStopDependency</a></b>(RunWorker *<i>dependency</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#appendMessage">appendMessage</a></b>(const QString &amp;<i>msg</i>, Utils::OutputFormat <i>format</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> IDevice::ConstPtr </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#device">device</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#initiateStart">initiateStart</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#initiateStop">initiateStop</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#isEssential">isEssential</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#recordData">recordData</a></b>(const QString &amp;<i>channel</i>, const QVariant &amp;<i>data</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVariant </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#recordedData">recordedData</a></b>(const QString &amp;<i>channel</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#reportDone">reportDone</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#reportFailure">reportFailure</a></b>(const QString &amp;<i>msg</i> = QString())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#reportStarted">reportStarted</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#reportStopped">reportStopped</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> RunControl *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#runControl">runControl</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Id </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#runMode">runMode</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Runnable &amp;</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#runnable">runnable</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#setDisplayName">setDisplayName</a></b>(const QString &amp;<i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#setEssential">setEssential</a></b>(bool <i>essential</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#setId">setId</a></b>(const QString &amp;<i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#setStartTimeout">setStartTimeout</a></b>(int <i>ms</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#setStopTimeout">setStopTimeout</a></b>(int <i>ms</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#setSupportsReRunning">setSupportsReRunning</a></b>(bool <i>reRunningSupported</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#supportsReRunning">supportsReRunning</a></b>() const</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#started">started</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#stopped">stopped</a></b>()</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-runworker.html#userMessageForProcessError">userMessageForProcessError</a></b>(<i>QProcess::ProcessError</i>, const QString &amp;<i>programName</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$RunWorker-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="projectexplorer-runworker.html">RunWorker</a> class encapsulates a task that forms part, or the whole of the operation of a tool for a certain <code>RunConfiguration</code> according to some <code>RunMode</code>.</p>
+<p>A typical example for a <code>RunWorker</code> is a process, either the application process itself, or a helper process, such as a watchdog or a log parser.</p>
+<p>A <code>RunWorker</code> has a simple state model covering the <code>Initialized</code>, <code>Starting</code>, <code>Running</code>, <code>Stopping</code>, and <code>Done</code> states.</p>
+<p>In the course of the operation of tools several <code>RunWorkers</code> may co-operate and form a combined state that is presented to the user as <code>RunControl</code>, with direct interaction made possible through the buttons in the <b>Application Output</b> pane.</p>
+<p>RunWorkers are typically created together with their <a href="projectexplorer-runcontrol.html">RunControl</a>. The startup order of RunWorkers under a <a href="projectexplorer-runcontrol.html">RunControl</a> can be specified by making a <a href="projectexplorer-runworker.html">RunWorker</a> dependent on others.</p>
+<p>When a <a href="projectexplorer-runcontrol.html">RunControl</a> starts, it calls <code>initiateStart()</code> on RunWorkers with fulfilled dependencies until all workers are <code>Running</code>, or in case of short-lived helper tasks, <code>Done</code>.</p>
+<p>A <a href="projectexplorer-runworker.html">RunWorker</a> can stop spontaneously, for example when the main application process ends. In this case, it typically calls <code>initiateStop()</code> on its <a href="projectexplorer-runcontrol.html">RunControl</a>, which in turn passes this to all sibling RunWorkers.</p>
+<p>Pressing the stop button in the <b>Application Output</b> pane also calls <code>initiateStop</code> on the <a href="projectexplorer-runcontrol.html">RunControl</a>.</p>
+</div>
+<!-- @@@RunWorker -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$RunWorker[overload1]$$$RunWorkerRunControl* -->
+<h3 class="fn" id="RunWorker"><a name="RunWorker"></a>RunWorker::<span class="name">RunWorker</span>(<span class="type"><a href="projectexplorer-runcontrol.html">RunControl</a></span> *<i>runControl</i>)</h3>
+<p>Default constructs an instance of RunWorker.</p><!-- @@@RunWorker -->
+<!-- $$$~RunWorker[overload1]$$$~RunWorker -->
+<h3 class="fn" id="dtor.RunWorker"><a name="dtor.RunWorker"></a>RunWorker::<span class="name">~RunWorker</span>()</h3>
+<p>Destroys the instance of RunWorker.</p><!-- @@@~RunWorker -->
+<!-- $$$addStartDependency[overload1]$$$addStartDependencyRunWorker* -->
+<h3 class="fn" id="addStartDependency"><a name="addStartDependency"></a><span class="type">void</span> RunWorker::<span class="name">addStartDependency</span>(<span class="type"><a href="projectexplorer-runworker.html#RunWorker">RunWorker</a></span> *<i>dependency</i>)</h3>
+<!-- @@@addStartDependency -->
+<!-- $$$addStopDependency[overload1]$$$addStopDependencyRunWorker* -->
+<h3 class="fn" id="addStopDependency"><a name="addStopDependency"></a><span class="type">void</span> RunWorker::<span class="name">addStopDependency</span>(<span class="type"><a href="projectexplorer-runworker.html#RunWorker">RunWorker</a></span> *<i>dependency</i>)</h3>
+<!-- @@@addStopDependency -->
+<!-- $$$appendMessage[overload1]$$$appendMessageconstQString&Utils::OutputFormat -->
+<h3 class="fn" id="appendMessage"><a name="appendMessage"></a><span class="type">void</span> RunWorker::<span class="name">appendMessage</span>(const <span class="type">QString</span> &amp;<i>msg</i>, <span class="type"><a href="utils.html#OutputFormat-enum">Utils::OutputFormat</a></span> <i>format</i>)</h3>
+<!-- @@@appendMessage -->
+<!-- $$$device[overload1]$$$device -->
+<h3 class="fn" id="device"><a name="device"></a><span class="type"><a href="projectexplorer-idevice.html#ConstPtr-typedef">IDevice::ConstPtr</a></span> RunWorker::<span class="name">device</span>() const</h3>
+<!-- @@@device -->
+<!-- $$$initiateStart[overload1]$$$initiateStart -->
+<h3 class="fn" id="initiateStart"><a name="initiateStart"></a><span class="type">void</span> RunWorker::<span class="name">initiateStart</span>()</h3>
+<p>This function is called by the <a href="projectexplorer-runcontrol.html">RunControl</a> once all dependencies are fulfilled.</p>
+<!-- @@@initiateStart -->
+<!-- $$$initiateStop[overload1]$$$initiateStop -->
+<h3 class="fn" id="initiateStop"><a name="initiateStop"></a><span class="type">void</span> RunWorker::<span class="name">initiateStop</span>()</h3>
+<p>This function is called by the <a href="projectexplorer-runcontrol.html">RunControl</a> in its own <code>initiateStop</code> implementation, which is triggered in response to pressing the stop button in the <b>Application Output</b> pane or on direct request of one of the sibling RunWorkers.</p>
+<!-- @@@initiateStop -->
+<!-- $$$isEssential[overload1]$$$isEssential -->
+<h3 class="fn" id="isEssential"><a name="isEssential"></a><span class="type">bool</span> RunWorker::<span class="name">isEssential</span>() const</h3>
+<!-- @@@isEssential -->
+<!-- $$$recordData[overload1]$$$recordDataconstQString&constQVariant& -->
+<h3 class="fn" id="recordData"><a name="recordData"></a><span class="type">void</span> RunWorker::<span class="name">recordData</span>(const <span class="type">QString</span> &amp;<i>channel</i>, const <span class="type">QVariant</span> &amp;<i>data</i>)</h3>
+<!-- @@@recordData -->
+<!-- $$$recordedData[overload1]$$$recordedDataconstQString& -->
+<h3 class="fn" id="recordedData"><a name="recordedData"></a><span class="type">QVariant</span> RunWorker::<span class="name">recordedData</span>(const <span class="type">QString</span> &amp;<i>channel</i>) const</h3>
+<!-- @@@recordedData -->
+<!-- $$$reportDone[overload1]$$$reportDone -->
+<h3 class="fn" id="reportDone"><a name="reportDone"></a><span class="type">void</span> RunWorker::<span class="name">reportDone</span>()</h3>
+<p>This function can be called by a <a href="projectexplorer-runworker.html">RunWorker</a> implementation for short-lived tasks to notify its <a href="projectexplorer-runcontrol.html">RunControl</a> about this task being successful finished. Dependent startup tasks can proceed, in cases of spontaneous or scheduled stops, the effect is the same as <code>reportStopped()</code>.</p>
+<!-- @@@reportDone -->
+<!-- $$$reportFailure[overload1]$$$reportFailureconstQString& -->
+<h3 class="fn" id="reportFailure"><a name="reportFailure"></a><span class="type">void</span> RunWorker::<span class="name">reportFailure</span>(const <span class="type">QString</span> &amp;<i>msg</i> = QString())</h3>
+<p>This function can be called by a <a href="projectexplorer-runworker.html">RunWorker</a> implementation to signal a problem in the operation in this worker. The <a href="projectexplorer-runcontrol.html">RunControl</a> will start to ramp down through <a href="projectexplorer-runworker.html#initiateStop">initiateStop</a>().</p>
+<!-- @@@reportFailure -->
+<!-- $$$reportStarted[overload1]$$$reportStarted -->
+<h3 class="fn" id="reportStarted"><a name="reportStarted"></a><span class="type">void</span> RunWorker::<span class="name">reportStarted</span>()</h3>
+<p>This function has to be called by a <a href="projectexplorer-runworker.html">RunWorker</a> implementation to notify its <a href="projectexplorer-runcontrol.html">RunControl</a> about the successful start of this <a href="projectexplorer-runworker.html">RunWorker</a>.</p>
+<p>The <a href="projectexplorer-runcontrol.html">RunControl</a> may start other RunWorkers in response.</p>
+<!-- @@@reportStarted -->
+<!-- $$$reportStopped[overload1]$$$reportStopped -->
+<h3 class="fn" id="reportStopped"><a name="reportStopped"></a><span class="type">void</span> RunWorker::<span class="name">reportStopped</span>()</h3>
+<p>This function has to be called by a <a href="projectexplorer-runworker.html">RunWorker</a> implementation to notify its <a href="projectexplorer-runcontrol.html">RunControl</a> about this <a href="projectexplorer-runworker.html">RunWorker</a> having stopped.</p>
+<p>The stop can be spontaneous, or in response to an <a href="projectexplorer-runworker.html#initiateStop">initiateStop</a>() or an initiateFinish() call.</p>
+<p>The <a href="projectexplorer-runcontrol.html">RunControl</a> will adjust its global state in response.</p>
+<!-- @@@reportStopped -->
+<!-- $$$runControl[overload1]$$$runControl -->
+<h3 class="fn" id="runControl"><a name="runControl"></a><span class="type"><a href="projectexplorer-runcontrol.html">RunControl</a></span> *RunWorker::<span class="name">runControl</span>() const</h3>
+<!-- @@@runControl -->
+<!-- $$$runMode[overload1]$$$runMode -->
+<h3 class="fn" id="runMode"><a name="runMode"></a><span class="type"><a href="core-id.html">Core::Id</a></span> RunWorker::<span class="name">runMode</span>() const</h3>
+<!-- @@@runMode -->
+<!-- $$$runnable[overload1]$$$runnable -->
+<h3 class="fn" id="runnable"><a name="runnable"></a>const <span class="type">Runnable</span> &amp;RunWorker::<span class="name">runnable</span>() const</h3>
+<!-- @@@runnable -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" id="setDisplayName"><a name="setDisplayName"></a><span class="type">void</span> RunWorker::<span class="name">setDisplayName</span>(const <span class="type">QString</span> &amp;<i>id</i>)</h3>
+<!-- @@@setDisplayName -->
+<!-- $$$setEssential[overload1]$$$setEssentialbool -->
+<h3 class="fn" id="setEssential"><a name="setEssential"></a><span class="type">void</span> RunWorker::<span class="name">setEssential</span>(<span class="type">bool</span> <i>essential</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-runworker.html#isEssential">isEssential</a>().</p>
+<!-- @@@setEssential -->
+<!-- $$$setId[overload1]$$$setIdconstQString& -->
+<h3 class="fn" id="setId"><a name="setId"></a><span class="type">void</span> RunWorker::<span class="name">setId</span>(const <span class="type">QString</span> &amp;<i>id</i>)</h3>
+<!-- @@@setId -->
+<!-- $$$setStartTimeout[overload1]$$$setStartTimeoutint -->
+<h3 class="fn" id="setStartTimeout"><a name="setStartTimeout"></a><span class="type">void</span> RunWorker::<span class="name">setStartTimeout</span>(<span class="type">int</span> <i>ms</i>)</h3>
+<!-- @@@setStartTimeout -->
+<!-- $$$setStopTimeout[overload1]$$$setStopTimeoutint -->
+<h3 class="fn" id="setStopTimeout"><a name="setStopTimeout"></a><span class="type">void</span> RunWorker::<span class="name">setStopTimeout</span>(<span class="type">int</span> <i>ms</i>)</h3>
+<!-- @@@setStopTimeout -->
+<!-- $$$setSupportsReRunning[overload1]$$$setSupportsReRunningbool -->
+<h3 class="fn" id="setSupportsReRunning"><a name="setSupportsReRunning"></a><span class="type">void</span> RunWorker::<span class="name">setSupportsReRunning</span>(<span class="type">bool</span> <i>reRunningSupported</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-runworker.html#supportsReRunning">supportsReRunning</a>().</p>
+<!-- @@@setSupportsReRunning -->
+<!-- $$$started[overload1]$$$started -->
+<h3 class="fn" id="started"><a name="started"></a><code>[signal] </code><span class="type">void</span> RunWorker::<span class="name">started</span>()</h3>
+<!-- @@@started -->
+<!-- $$$stopped[overload1]$$$stopped -->
+<h3 class="fn" id="stopped"><a name="stopped"></a><code>[signal] </code><span class="type">void</span> RunWorker::<span class="name">stopped</span>()</h3>
+<!-- @@@stopped -->
+<!-- $$$supportsReRunning[overload1]$$$supportsReRunning -->
+<h3 class="fn" id="supportsReRunning"><a name="supportsReRunning"></a><span class="type">bool</span> RunWorker::<span class="name">supportsReRunning</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-runworker.html#setSupportsReRunning">setSupportsReRunning</a>().</p>
+<!-- @@@supportsReRunning -->
+<!-- $$$userMessageForProcessError[overload1]$$$userMessageForProcessErrorQProcess::ProcessErrorconstQString& -->
+<h3 class="fn" id="userMessageForProcessError"><a name="userMessageForProcessError"></a><code>[static] </code><span class="type">QString</span> RunWorker::<span class="name">userMessageForProcessError</span>(<i>QProcess::ProcessError</i>, const <span class="type">QString</span> &amp;<i>programName</i>)</h3>
+<!-- @@@userMessageForProcessError -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

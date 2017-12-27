@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>FunctionHintProposalWidget Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >FunctionHintProposalWidget</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">FunctionHintProposalWidget Class</h1>
+<span class="small-subtitle">(<a href="texteditor-functionhintproposalwidget.html">TextEditor::FunctionHintProposalWidget</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="texteditor-iassistproposalwidget.html">TextEditor::IAssistProposalWidget</a></td></tr></table></div><ul>
+<li><a href="texteditor-functionhintproposalwidget-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#FunctionHintProposalWidget">FunctionHintProposalWidget</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#dtor.FunctionHintProposalWidget">~FunctionHintProposalWidget</a></b>()</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#closeProposal">closeProposal</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#setAssistant">setAssistant</a></b>(CodeAssistant *<i>assistant</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#setDisplayRect">setDisplayRect</a></b>(const QRect &amp;<i>rect</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#setIsSynchronized">setIsSynchronized</a></b>(bool <i>isSync</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#setKind">setKind</a></b>(AssistKind <i>kind</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#setModel">setModel</a></b>(IAssistProposalModel *<i>model</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#setReason">setReason</a></b>(AssistReason <i>reason</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#setUnderlyingWidget">setUnderlyingWidget</a></b>(const QWidget *<i>underlyingWidget</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#showProposal">showProposal</a></b>(const QString &amp;<i>prefix</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#updateProposal">updateProposal</a></b>(const QString &amp;<i>prefix</i>) override</td></tr>
+</table></div>
+<ul>
+<li class="fn">10 public functions inherited from <a href="texteditor-iassistproposalwidget.html#public-functions">TextEditor::IAssistProposalWidget</a></li>
+</ul>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-functionhintproposalwidget.html#eventFilter">eventFilter</a></b>(QObject *<i>o</i>, QEvent *<i>e</i>) override</td></tr>
+</table></div>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">3 signals inherited from <a href="texteditor-iassistproposalwidget.html#signals">TextEditor::IAssistProposalWidget</a></li>
+</ul>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$FunctionHintProposalWidget[overload1]$$$FunctionHintProposalWidget -->
+<h3 class="fn" id="FunctionHintProposalWidget"><a name="FunctionHintProposalWidget"></a>FunctionHintProposalWidget::<span class="name">FunctionHintProposalWidget</span>()</h3>
+<p>Default constructs an instance of FunctionHintProposalWidget.</p><!-- @@@FunctionHintProposalWidget -->
+<!-- $$$~FunctionHintProposalWidget[overload1]$$$~FunctionHintProposalWidget -->
+<h3 class="fn" id="dtor.FunctionHintProposalWidget"><a name="dtor.FunctionHintProposalWidget"></a>FunctionHintProposalWidget::<span class="name">~FunctionHintProposalWidget</span>()</h3>
+<p>Destroys the instance of FunctionHintProposalWidget.</p><!-- @@@~FunctionHintProposalWidget -->
+<!-- $$$closeProposal[overload1]$$$closeProposal -->
+<h3 class="fn" id="closeProposal"><a name="closeProposal"></a><code>[override virtual] </code><span class="type">void</span> FunctionHintProposalWidget::<span class="name">closeProposal</span>()</h3>
+<!-- @@@closeProposal -->
+<!-- $$$eventFilter[overload1]$$$eventFilterQObject*QEvent* -->
+<h3 class="fn" id="eventFilter"><a name="eventFilter"></a><code>[protected] </code><span class="type">bool</span> FunctionHintProposalWidget::<span class="name">eventFilter</span>(<span class="type">QObject</span> *<i>o</i>, <span class="type">QEvent</span> *<i>e</i>)</h3>
+<!-- @@@eventFilter -->
+<!-- $$$setAssistant[overload1]$$$setAssistantCodeAssistant* -->
+<h3 class="fn" id="setAssistant"><a name="setAssistant"></a><code>[override virtual] </code><span class="type">void</span> FunctionHintProposalWidget::<span class="name">setAssistant</span>(<span class="type"><a href="texteditor-codeassistant.html">CodeAssistant</a></span> *<i>assistant</i>)</h3>
+<!-- @@@setAssistant -->
+<!-- $$$setDisplayRect[overload1]$$$setDisplayRectconstQRect& -->
+<h3 class="fn" id="setDisplayRect"><a name="setDisplayRect"></a><code>[override virtual] </code><span class="type">void</span> FunctionHintProposalWidget::<span class="name">setDisplayRect</span>(const <span class="type">QRect</span> &amp;<i>rect</i>)</h3>
+<!-- @@@setDisplayRect -->
+<!-- $$$setIsSynchronized[overload1]$$$setIsSynchronizedbool -->
+<h3 class="fn" id="setIsSynchronized"><a name="setIsSynchronized"></a><code>[override virtual] </code><span class="type">void</span> FunctionHintProposalWidget::<span class="name">setIsSynchronized</span>(<span class="type">bool</span> <i>isSync</i>)</h3>
+<!-- @@@setIsSynchronized -->
+<!-- $$$setKind[overload1]$$$setKindAssistKind -->
+<h3 class="fn" id="setKind"><a name="setKind"></a><code>[override virtual] </code><span class="type">void</span> FunctionHintProposalWidget::<span class="name">setKind</span>(<span class="type"><a href="texteditor.html#AssistKind-enum">AssistKind</a></span> <i>kind</i>)</h3>
+<!-- @@@setKind -->
+<!-- $$$setModel[overload1]$$$setModelIAssistProposalModel* -->
+<h3 class="fn" id="setModel"><a name="setModel"></a><code>[override virtual] </code><span class="type">void</span> FunctionHintProposalWidget::<span class="name">setModel</span>(<span class="type"><a href="texteditor-iassistproposalmodel.html">IAssistProposalModel</a></span> *<i>model</i>)</h3>
+<!-- @@@setModel -->
+<!-- $$$setReason[overload1]$$$setReasonAssistReason -->
+<h3 class="fn" id="setReason"><a name="setReason"></a><code>[override virtual] </code><span class="type">void</span> FunctionHintProposalWidget::<span class="name">setReason</span>(<span class="type"><a href="texteditor.html#AssistReason-enum">AssistReason</a></span> <i>reason</i>)</h3>
+<!-- @@@setReason -->
+<!-- $$$setUnderlyingWidget[overload1]$$$setUnderlyingWidgetconstQWidget* -->
+<h3 class="fn" id="setUnderlyingWidget"><a name="setUnderlyingWidget"></a><code>[override virtual] </code><span class="type">void</span> FunctionHintProposalWidget::<span class="name">setUnderlyingWidget</span>(const <span class="type">QWidget</span> *<i>underlyingWidget</i>)</h3>
+<!-- @@@setUnderlyingWidget -->
+<!-- $$$showProposal[overload1]$$$showProposalconstQString& -->
+<h3 class="fn" id="showProposal"><a name="showProposal"></a><code>[override virtual] </code><span class="type">void</span> FunctionHintProposalWidget::<span class="name">showProposal</span>(const <span class="type">QString</span> &amp;<i>prefix</i>)</h3>
+<!-- @@@showProposal -->
+<!-- $$$updateProposal[overload1]$$$updateProposalconstQString& -->
+<h3 class="fn" id="updateProposal"><a name="updateProposal"></a><code>[override virtual] </code><span class="type">void</span> FunctionHintProposalWidget::<span class="name">updateProposal</span>(const <span class="type">QString</span> &amp;<i>prefix</i>)</h3>
+<!-- @@@updateProposal -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

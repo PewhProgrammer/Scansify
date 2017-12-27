@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>FormatDescription Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >FormatDescription</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">FormatDescription Class</h1>
+<span class="small-subtitle">(<a href="texteditor-formatdescription.html">TextEditor::FormatDescription</a>)<br/></span>
+<ul>
+<li><a href="texteditor-formatdescription-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#ShowControls-enum">ShowControls</a></b> { ShowForegroundControl, ShowBackgroundControl, ShowFontControls, ShowUnderlineControl, ..., AllControlsExceptUnderline }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#FormatDescription">FormatDescription</a></b>() = default</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#FormatDescription-1">FormatDescription</a></b>(TextStyle <i>id</i>, const QString &amp;<i>displayName</i>, const QString &amp;<i>tooltipText</i>, ShowControls <i>showControls</i> = AllControls)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#FormatDescription-2">FormatDescription</a></b>(TextStyle <i>id</i>, const QString &amp;<i>displayName</i>, const QString &amp;<i>tooltipText</i>, const QColor &amp;<i>foreground</i>, ShowControls <i>showControls</i> = AllControls)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#FormatDescription-3">FormatDescription</a></b>(TextStyle <i>id</i>, const QString &amp;<i>displayName</i>, const QString &amp;<i>tooltipText</i>, const Format &amp;<i>format</i>, ShowControls <i>showControls</i> = AllControls)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#FormatDescription-4">FormatDescription</a></b>(TextStyle <i>id</i>, const QString &amp;<i>displayName</i>, const QString &amp;<i>tooltipText</i>, const QColor &amp;<i>underlineColor</i>, const QTextCharFormat::UnderlineStyle <i>underlineStyle</i>, ShowControls <i>showControls</i> = AllControls)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#displayName">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Format &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#format">format</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Format &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#format-1">format</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TextStyle </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#id">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#showControl">showControl</a></b>(ShowControls <i>showControl</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#tooltipText">tooltipText</a></b>() const</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QColor </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#defaultBackground">defaultBackground</a></b>(TextStyle <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QColor </td><td class="memItemRight bottomAlign"><b><a href="texteditor-formatdescription.html#defaultForeground">defaultForeground</a></b>(TextStyle <i>id</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$ShowControls$$$ShowForegroundControl$$$ShowBackgroundControl$$$ShowFontControls$$$ShowUnderlineControl$$$ShowRelativeForegroundControl$$$ShowRelativeBackgroundControl$$$ShowFontUnderlineAndRelativeControls$$$AllControls$$$AllControlsExceptUnderline -->
+<h3 class="fn" id="ShowControls-enum"><a name="ShowControls-enum"></a>enum FormatDescription::<span class="name">ShowControls</span></h3>
+<!-- @@@ShowControls -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$FormatDescription[overload1]$$$FormatDescription -->
+<h3 class="fn" id="FormatDescription"><a name="FormatDescription"></a><code>[default] </code>FormatDescription::<span class="name">FormatDescription</span>()</h3>
+<p>Default constructs an instance of FormatDescription.</p><!-- @@@FormatDescription -->
+<!-- $$$FormatDescription$$$FormatDescriptionTextStyleconstQString&constQString&ShowControls -->
+<h3 class="fn" id="FormatDescription-1"><a name="FormatDescription-1"></a>FormatDescription::<span class="name">FormatDescription</span>(<span class="type"><a href="texteditor.html#TextStyle-enum">TextStyle</a></span> <i>id</i>, const <span class="type">QString</span> &amp;<i>displayName</i>, const <span class="type">QString</span> &amp;<i>tooltipText</i>, <span class="type"><a href="texteditor-formatdescription.html#ShowControls-enum">ShowControls</a></span> <i>showControls</i> = AllControls)</h3>
+<p>Default constructs an instance of FormatDescription.</p><!-- @@@FormatDescription -->
+<!-- $$$FormatDescription$$$FormatDescriptionTextStyleconstQString&constQString&constQColor&ShowControls -->
+<h3 class="fn" id="FormatDescription-2"><a name="FormatDescription-2"></a>FormatDescription::<span class="name">FormatDescription</span>(<span class="type"><a href="texteditor.html#TextStyle-enum">TextStyle</a></span> <i>id</i>, const <span class="type">QString</span> &amp;<i>displayName</i>, const <span class="type">QString</span> &amp;<i>tooltipText</i>, const <span class="type">QColor</span> &amp;<i>foreground</i>, <span class="type"><a href="texteditor-formatdescription.html#ShowControls-enum">ShowControls</a></span> <i>showControls</i> = AllControls)</h3>
+<p>Default constructs an instance of FormatDescription.</p><!-- @@@FormatDescription -->
+<!-- $$$FormatDescription$$$FormatDescriptionTextStyleconstQString&constQString&constFormat&ShowControls -->
+<h3 class="fn" id="FormatDescription-3"><a name="FormatDescription-3"></a>FormatDescription::<span class="name">FormatDescription</span>(<span class="type"><a href="texteditor.html#TextStyle-enum">TextStyle</a></span> <i>id</i>, const <span class="type">QString</span> &amp;<i>displayName</i>, const <span class="type">QString</span> &amp;<i>tooltipText</i>, const <span class="type">Format</span> &amp;<i>format</i>, <span class="type"><a href="texteditor-formatdescription.html#ShowControls-enum">ShowControls</a></span> <i>showControls</i> = AllControls)</h3>
+<p>Default constructs an instance of FormatDescription.</p><!-- @@@FormatDescription -->
+<!-- $$$FormatDescription$$$FormatDescriptionTextStyleconstQString&constQString&constQColor&constQTextCharFormat::UnderlineStyleShowControls -->
+<h3 class="fn" id="FormatDescription-4"><a name="FormatDescription-4"></a>FormatDescription::<span class="name">FormatDescription</span>(<span class="type"><a href="texteditor.html#TextStyle-enum">TextStyle</a></span> <i>id</i>, const <span class="type">QString</span> &amp;<i>displayName</i>, const <span class="type">QString</span> &amp;<i>tooltipText</i>, const <span class="type">QColor</span> &amp;<i>underlineColor</i>, const <span class="type">QTextCharFormat::UnderlineStyle</span> <i>underlineStyle</i>, <span class="type"><a href="texteditor-formatdescription.html#ShowControls-enum">ShowControls</a></span> <i>showControls</i> = AllControls)</h3>
+<p>Default constructs an instance of FormatDescription.</p><!-- @@@FormatDescription -->
+<!-- $$$defaultBackground[overload1]$$$defaultBackgroundTextStyle -->
+<h3 class="fn" id="defaultBackground"><a name="defaultBackground"></a><code>[static] </code><span class="type">QColor</span> FormatDescription::<span class="name">defaultBackground</span>(<span class="type"><a href="texteditor.html#TextStyle-enum">TextStyle</a></span> <i>id</i>)</h3>
+<!-- @@@defaultBackground -->
+<!-- $$$defaultForeground[overload1]$$$defaultForegroundTextStyle -->
+<h3 class="fn" id="defaultForeground"><a name="defaultForeground"></a><code>[static] </code><span class="type">QColor</span> FormatDescription::<span class="name">defaultForeground</span>(<span class="type"><a href="texteditor.html#TextStyle-enum">TextStyle</a></span> <i>id</i>)</h3>
+<!-- @@@defaultForeground -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><span class="type">QString</span> FormatDescription::<span class="name">displayName</span>() const</h3>
+<!-- @@@displayName -->
+<!-- $$$format[overload1]$$$format -->
+<h3 class="fn" id="format"><a name="format"></a>const <span class="type">Format</span> &amp;FormatDescription::<span class="name">format</span>() const</h3>
+<!-- @@@format -->
+<!-- $$$format$$$format -->
+<h3 class="fn" id="format-1"><a name="format-1"></a><span class="type">Format</span> &amp;FormatDescription::<span class="name">format</span>()</h3>
+<!-- @@@format -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" id="id"><a name="id"></a><span class="type"><a href="texteditor.html#TextStyle-enum">TextStyle</a></span> FormatDescription::<span class="name">id</span>() const</h3>
+<!-- @@@id -->
+<!-- $$$showControl[overload1]$$$showControlShowControls -->
+<h3 class="fn" id="showControl"><a name="showControl"></a><span class="type">bool</span> FormatDescription::<span class="name">showControl</span>(<span class="type"><a href="texteditor-formatdescription.html#ShowControls-enum">ShowControls</a></span> <i>showControl</i>) const</h3>
+<!-- @@@showControl -->
+<!-- $$$tooltipText[overload1]$$$tooltipText -->
+<h3 class="fn" id="tooltipText"><a name="tooltipText"></a><span class="type">QString</span> FormatDescription::<span class="name">tooltipText</span>() const</h3>
+<!-- @@@tooltipText -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

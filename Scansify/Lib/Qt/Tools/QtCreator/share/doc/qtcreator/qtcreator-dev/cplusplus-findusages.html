@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>FindUsages Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >FindUsages</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#static-protected-members">Static Protected Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">FindUsages Class</h1>
+<span class="small-subtitle">(<a href="cplusplus-findusages.html">CPlusPlus::FindUsages</a>)<br/></span>
+<ul>
+<li><a href="cplusplus-findusages-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#FindUsages">FindUsages</a></b>(const QByteArray &amp;<i>originalSource</i>, Document::Ptr <i>doc</i>, const Snapshot &amp;<i>snapshot</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#FindUsages-1">FindUsages</a></b>(const LookupContext &amp;<i>context</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;int&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#references">references</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;Usage&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#usages">usages</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#operator-28-29">operator()</a></b>(Symbol *<i>symbol</i>)</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#attribute">attribute</a></b>(GnuAttributeAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#baseSpecifier">baseSpecifier</a></b>(BaseSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#capture">capture</a></b>(CaptureAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#checkCandidates">checkCandidates</a></b>(const QList&lt;LookupItem&gt; &amp;<i>candidates</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#checkExpression">checkExpression</a></b>(unsigned <i>startToken</i>, unsigned <i>endToken</i>, Scope *<i>scope</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#coreDeclarator">coreDeclarator</a></b>(CoreDeclaratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#cppOperator">cppOperator</a></b>(OperatorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#ctorInitializer">ctorInitializer</a></b>(CtorInitializerAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#declaration">declaration</a></b>(DeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#declarator">declarator</a></b>(DeclaratorAST *<i>ast</i>, Scope *<i>symbol</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#enumerator">enumerator</a></b>(EnumeratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#exceptionSpecification">exceptionSpecification</a></b>(ExceptionSpecificationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#expression">expression</a></b>(ExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#lambdaCapture">lambdaCapture</a></b>(LambdaCaptureAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#lambdaDeclarator">lambdaDeclarator</a></b>(LambdaDeclaratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#lambdaIntroducer">lambdaIntroducer</a></b>(LambdaIntroducerAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#matchingLine">matchingLine</a></b>(const Token &amp;<i>tk</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#memInitializer">memInitializer</a></b>(MemInitializerAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Name *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#name">name</a></b>(NameAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#nestedNameSpecifier">nestedNameSpecifier</a></b>(NestedNameSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#newArrayDeclarator">newArrayDeclarator</a></b>(NewArrayDeclaratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#newPlacement">newPlacement</a></b>(ExpressionListParenAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#newTypeId">newTypeId</a></b>(NewTypeIdAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#objCInstanceVariablesDeclaration">objCInstanceVariablesDeclaration</a></b>(ObjCInstanceVariablesDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#objCMessageArgument">objCMessageArgument</a></b>(ObjCMessageArgumentAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#objCMessageArgumentDeclaration">objCMessageArgumentDeclaration</a></b>(ObjCMessageArgumentDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#objCMethodPrototype">objCMethodPrototype</a></b>(ObjCMethodPrototypeAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#objCPropertyAttribute">objCPropertyAttribute</a></b>(ObjCPropertyAttributeAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#objCProtocolRefs">objCProtocolRefs</a></b>(ObjCProtocolRefsAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#objCSelectorArgument">objCSelectorArgument</a></b>(ObjCSelectorArgumentAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#objCSynthesizedProperty">objCSynthesizedProperty</a></b>(ObjCSynthesizedPropertyAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#objCTypeName">objCTypeName</a></b>(ObjCTypeNameAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#parameterDeclarationClause">parameterDeclarationClause</a></b>(ParameterDeclarationClauseAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#postfixDeclarator">postfixDeclarator</a></b>(PostfixDeclaratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#ptrOperator">ptrOperator</a></b>(PtrOperatorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#qtInterfaceName">qtInterfaceName</a></b>(QtInterfaceNameAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#qtPropertyDeclarationItem">qtPropertyDeclarationItem</a></b>(QtPropertyDeclarationItemAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#reportResult">reportResult</a></b>(unsigned <i>tokenIndex</i>, const Name *<i>name</i>, Scope *<i>scope</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#reportResult-1">reportResult</a></b>(unsigned <i>tokenIndex</i>, const Identifier *<i>id</i>, Scope *<i>scope</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#reportResult-2">reportResult</a></b>(unsigned <i>tokenIndex</i>, const QList&lt;LookupItem&gt; &amp;<i>candidates</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#reportResult-3">reportResult</a></b>(unsigned <i>tokenIndex</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#specifier">specifier</a></b>(SpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#statement">statement</a></b>(StatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Scope *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#switchScope">switchScope</a></b>(Scope *<i>scope</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#trailingReturnType">trailingReturnType</a></b>(TrailingReturnTypeAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#translationUnit">translationUnit</a></b>(TranslationUnitAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit">visit</a></b>(ObjCSelectorArgumentAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-1">visit</a></b>(GnuAttributeAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-36">visit</a></b>(ForeachStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-37">visit</a></b>(RangeBasedForStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-38">visit</a></b>(ForStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-39">visit</a></b>(IfStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-40">visit</a></b>(LabeledStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-41">visit</a></b>(BreakStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-42">visit</a></b>(ContinueStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-43">visit</a></b>(GotoStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-44">visit</a></b>(ReturnStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-45">visit</a></b>(SwitchStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-46">visit</a></b>(TryBlockStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-47">visit</a></b>(CatchClauseAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-48">visit</a></b>(WhileStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-49">visit</a></b>(ObjCFastEnumerationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-50">visit</a></b>(ObjCSynchronizedStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-51">visit</a></b>(IdExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-52">visit</a></b>(CompoundExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-53">visit</a></b>(CompoundLiteralAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-54">visit</a></b>(QtMethodAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-55">visit</a></b>(BinaryExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-56">visit</a></b>(CastExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-57">visit</a></b>(ConditionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-58">visit</a></b>(ConditionalExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-59">visit</a></b>(CppCastExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-60">visit</a></b>(DeleteExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-61">visit</a></b>(ArrayInitializerAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-62">visit</a></b>(NewExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-63">visit</a></b>(TypeidExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-64">visit</a></b>(TypenameCallExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-65">visit</a></b>(TypeConstructorCallAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-66">visit</a></b>(SizeofExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-67">visit</a></b>(PointerLiteralAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-68">visit</a></b>(NumericLiteralAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-69">visit</a></b>(BoolLiteralAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-70">visit</a></b>(ThisExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-71">visit</a></b>(NestedExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-2">visit</a></b>(DeclaratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-72">visit</a></b>(StringLiteralAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-73">visit</a></b>(ThrowExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-74">visit</a></b>(NoExceptOperatorExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-75">visit</a></b>(TypeIdAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-76">visit</a></b>(UnaryExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-77">visit</a></b>(ObjCMessageExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-78">visit</a></b>(ObjCProtocolExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-79">visit</a></b>(ObjCEncodeExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-80">visit</a></b>(ObjCSelectorExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-81">visit</a></b>(LambdaExpressionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-82">visit</a></b>(BracedInitializerAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-83">visit</a></b>(ExpressionListParenAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-84">visit</a></b>(SimpleDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-85">visit</a></b>(EmptyDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-86">visit</a></b>(AccessDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-87">visit</a></b>(QtObjectTagAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-88">visit</a></b>(QtPrivateSlotAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-89">visit</a></b>(QtPropertyDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-90">visit</a></b>(QtEnumDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-91">visit</a></b>(QtFlagsDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-92">visit</a></b>(QtInterfacesDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-93">visit</a></b>(AsmDefinitionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-94">visit</a></b>(ExceptionDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-95">visit</a></b>(FunctionDefinitionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-96">visit</a></b>(LinkageBodyAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-97">visit</a></b>(LinkageSpecificationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-98">visit</a></b>(NamespaceAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-99">visit</a></b>(NamespaceAliasDefinitionAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-100">visit</a></b>(ParameterDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-101">visit</a></b>(StaticAssertDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-102">visit</a></b>(TemplateDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-103">visit</a></b>(TypenameTypeParameterAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-104">visit</a></b>(TemplateTypeParameterAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-105">visit</a></b>(UsingAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-106">visit</a></b>(UsingDirectiveAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-107">visit</a></b>(ObjCClassForwardDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-3">visit</a></b>(QtPropertyDeclarationItemAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-108">visit</a></b>(ObjCClassDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-109">visit</a></b>(ObjCProtocolForwardDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-110">visit</a></b>(ObjCProtocolDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-111">visit</a></b>(ObjCVisibilityDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-112">visit</a></b>(ObjCPropertyDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-113">visit</a></b>(ObjCMethodDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-114">visit</a></b>(ObjCSynthesizedPropertiesDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-115">visit</a></b>(ObjCDynamicPropertiesDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-116">visit</a></b>(ObjCSelectorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-117">visit</a></b>(QualifiedNameAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-118">visit</a></b>(OperatorFunctionIdAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-119">visit</a></b>(ConversionFunctionIdAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-120">visit</a></b>(SimpleNameAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-121">visit</a></b>(TemplateIdAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-122">visit</a></b>(SimpleSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-123">visit</a></b>(GnuAttributeSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-124">visit</a></b>(TypeofSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-125">visit</a></b>(DecltypeSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-126">visit</a></b>(ClassSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-127">visit</a></b>(NamedTypeSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-128">visit</a></b>(ElaboratedTypeSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-129">visit</a></b>(EnumSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-130">visit</a></b>(PointerToMemberAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-131">visit</a></b>(PointerAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-132">visit</a></b>(ReferenceAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-133">visit</a></b>(CallAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-134">visit</a></b>(ArrayAccessAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-135">visit</a></b>(PostIncrDecrAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-136">visit</a></b>(MemberAccessAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-137">visit</a></b>(DeclaratorIdAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-138">visit</a></b>(NestedDeclaratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-139">visit</a></b>(FunctionDeclaratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-140">visit</a></b>(ArrayDeclaratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-4">visit</a></b>(QtInterfaceNameAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-5">visit</a></b>(BaseSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-6">visit</a></b>(CtorInitializerAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-7">visit</a></b>(EnumeratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-8">visit</a></b>(DynamicExceptionSpecificationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-9">visit</a></b>(MemInitializerAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-10">visit</a></b>(NestedNameSpecifierAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-11">visit</a></b>(NewArrayDeclaratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-12">visit</a></b>(NewTypeIdAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-13">visit</a></b>(OperatorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-14">visit</a></b>(ParameterDeclarationClauseAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-15">visit</a></b>(TranslationUnitAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-16">visit</a></b>(ObjCProtocolRefsAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-17">visit</a></b>(ObjCMessageArgumentAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-18">visit</a></b>(ObjCTypeNameAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-19">visit</a></b>(ObjCInstanceVariablesDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-20">visit</a></b>(ObjCPropertyAttributeAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-21">visit</a></b>(ObjCMessageArgumentDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-22">visit</a></b>(ObjCMethodPrototypeAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-23">visit</a></b>(ObjCSynthesizedPropertyAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-24">visit</a></b>(LambdaIntroducerAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-25">visit</a></b>(LambdaCaptureAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-26">visit</a></b>(CaptureAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-27">visit</a></b>(LambdaDeclaratorAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-28">visit</a></b>(TrailingReturnTypeAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-29">visit</a></b>(QtMemberDeclarationAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-30">visit</a></b>(CaseStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-31">visit</a></b>(CompoundStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-32">visit</a></b>(DeclarationStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-33">visit</a></b>(DoStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-34">visit</a></b>(ExpressionOrDeclarationStatementAST *<i>ast</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#visit-35">visit</a></b>(ExpressionStatementAST *<i>ast</i>)</td></tr>
+</table></div>
+<a name="static-protected-members"></a>
+<h2 id="static-protected-members">Static Protected Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-findusages.html#isLocalScope">isLocalScope</a></b>(Scope *<i>scope</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$FindUsages[overload1]$$$FindUsagesconstQByteArray&Document::PtrconstSnapshot& -->
+<h3 class="fn" id="FindUsages"><a name="FindUsages"></a>FindUsages::<span class="name">FindUsages</span>(const <span class="type">QByteArray</span> &amp;<i>originalSource</i>, <span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> <i>doc</i>, const <span class="type"><a href="cplusplus-snapshot.html">Snapshot</a></span> &amp;<i>snapshot</i>)</h3>
+<p>Default constructs an instance of FindUsages.</p><!-- @@@FindUsages -->
+<!-- $$$FindUsages$$$FindUsagesconstLookupContext& -->
+<h3 class="fn" id="FindUsages-1"><a name="FindUsages-1"></a>FindUsages::<span class="name">FindUsages</span>(const <span class="type"><a href="cplusplus-lookupcontext.html">LookupContext</a></span> &amp;<i>context</i>)</h3>
+<p>Default constructs an instance of FindUsages.</p><!-- @@@FindUsages -->
+<!-- $$$attribute[overload1]$$$attributeGnuAttributeAST* -->
+<h3 class="fn" id="attribute"><a name="attribute"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">attribute</span>(<span class="type">GnuAttributeAST</span> *<i>ast</i>)</h3>
+<!-- @@@attribute -->
+<!-- $$$baseSpecifier[overload1]$$$baseSpecifierBaseSpecifierAST* -->
+<h3 class="fn" id="baseSpecifier"><a name="baseSpecifier"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">baseSpecifier</span>(<span class="type">BaseSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@baseSpecifier -->
+<!-- $$$capture[overload1]$$$captureCaptureAST* -->
+<h3 class="fn" id="capture"><a name="capture"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">capture</span>(<span class="type">CaptureAST</span> *<i>ast</i>)</h3>
+<!-- @@@capture -->
+<!-- $$$checkCandidates[overload1]$$$checkCandidatesconstQList<LookupItem>& -->
+<h3 class="fn" id="checkCandidates"><a name="checkCandidates"></a><code>[protected] </code><span class="type">bool</span> FindUsages::<span class="name">checkCandidates</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="cplusplus-lookupitem.html">LookupItem</a></span>&gt; &amp;<i>candidates</i>) const</h3>
+<!-- @@@checkCandidates -->
+<!-- $$$checkExpression[overload1]$$$checkExpressionunsignedunsignedScope* -->
+<h3 class="fn" id="checkExpression"><a name="checkExpression"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">checkExpression</span>(<span class="type">unsigned</span> <i>startToken</i>, <span class="type">unsigned</span> <i>endToken</i>, <span class="type">Scope</span> *<i>scope</i> = 0)</h3>
+<!-- @@@checkExpression -->
+<!-- $$$coreDeclarator[overload1]$$$coreDeclaratorCoreDeclaratorAST* -->
+<h3 class="fn" id="coreDeclarator"><a name="coreDeclarator"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">coreDeclarator</span>(<span class="type">CoreDeclaratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@coreDeclarator -->
+<!-- $$$cppOperator[overload1]$$$cppOperatorOperatorAST* -->
+<h3 class="fn" id="cppOperator"><a name="cppOperator"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">cppOperator</span>(<span class="type">OperatorAST</span> *<i>ast</i>)</h3>
+<!-- @@@cppOperator -->
+<!-- $$$ctorInitializer[overload1]$$$ctorInitializerCtorInitializerAST* -->
+<h3 class="fn" id="ctorInitializer"><a name="ctorInitializer"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">ctorInitializer</span>(<span class="type">CtorInitializerAST</span> *<i>ast</i>)</h3>
+<!-- @@@ctorInitializer -->
+<!-- $$$declaration[overload1]$$$declarationDeclarationAST* -->
+<h3 class="fn" id="declaration"><a name="declaration"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">declaration</span>(<span class="type">DeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@declaration -->
+<!-- $$$declarator[overload1]$$$declaratorDeclaratorAST*Scope* -->
+<h3 class="fn" id="declarator"><a name="declarator"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">declarator</span>(<span class="type">DeclaratorAST</span> *<i>ast</i>, <span class="type">Scope</span> *<i>symbol</i> = 0)</h3>
+<!-- @@@declarator -->
+<!-- $$$enumerator[overload1]$$$enumeratorEnumeratorAST* -->
+<h3 class="fn" id="enumerator"><a name="enumerator"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">enumerator</span>(<span class="type">EnumeratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@enumerator -->
+<!-- $$$exceptionSpecification[overload1]$$$exceptionSpecificationExceptionSpecificationAST* -->
+<h3 class="fn" id="exceptionSpecification"><a name="exceptionSpecification"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">exceptionSpecification</span>(<span class="type">ExceptionSpecificationAST</span> *<i>ast</i>)</h3>
+<!-- @@@exceptionSpecification -->
+<!-- $$$expression[overload1]$$$expressionExpressionAST* -->
+<h3 class="fn" id="expression"><a name="expression"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">expression</span>(<span class="type">ExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@expression -->
+<!-- $$$isLocalScope[overload1]$$$isLocalScopeScope* -->
+<h3 class="fn" id="isLocalScope"><a name="isLocalScope"></a><code>[static protected] </code><span class="type">bool</span> FindUsages::<span class="name">isLocalScope</span>(<span class="type">Scope</span> *<i>scope</i>)</h3>
+<!-- @@@isLocalScope -->
+<!-- $$$lambdaCapture[overload1]$$$lambdaCaptureLambdaCaptureAST* -->
+<h3 class="fn" id="lambdaCapture"><a name="lambdaCapture"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">lambdaCapture</span>(<span class="type">LambdaCaptureAST</span> *<i>ast</i>)</h3>
+<!-- @@@lambdaCapture -->
+<!-- $$$lambdaDeclarator[overload1]$$$lambdaDeclaratorLambdaDeclaratorAST* -->
+<h3 class="fn" id="lambdaDeclarator"><a name="lambdaDeclarator"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">lambdaDeclarator</span>(<span class="type">LambdaDeclaratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@lambdaDeclarator -->
+<!-- $$$lambdaIntroducer[overload1]$$$lambdaIntroducerLambdaIntroducerAST* -->
+<h3 class="fn" id="lambdaIntroducer"><a name="lambdaIntroducer"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">lambdaIntroducer</span>(<span class="type">LambdaIntroducerAST</span> *<i>ast</i>)</h3>
+<!-- @@@lambdaIntroducer -->
+<!-- $$$matchingLine[overload1]$$$matchingLineconstToken& -->
+<h3 class="fn" id="matchingLine"><a name="matchingLine"></a><code>[protected] </code><span class="type">QString</span> FindUsages::<span class="name">matchingLine</span>(const <span class="type">Token</span> &amp;<i>tk</i>) const</h3>
+<!-- @@@matchingLine -->
+<!-- $$$memInitializer[overload1]$$$memInitializerMemInitializerAST* -->
+<h3 class="fn" id="memInitializer"><a name="memInitializer"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">memInitializer</span>(<span class="type">MemInitializerAST</span> *<i>ast</i>)</h3>
+<!-- @@@memInitializer -->
+<!-- $$$name[overload1]$$$nameNameAST* -->
+<h3 class="fn" id="name"><a name="name"></a><code>[protected] </code>const <span class="type">Name</span> *FindUsages::<span class="name">name</span>(<span class="type">NameAST</span> *<i>ast</i>)</h3>
+<!-- @@@name -->
+<!-- $$$nestedNameSpecifier[overload1]$$$nestedNameSpecifierNestedNameSpecifierAST* -->
+<h3 class="fn" id="nestedNameSpecifier"><a name="nestedNameSpecifier"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">nestedNameSpecifier</span>(<span class="type">NestedNameSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@nestedNameSpecifier -->
+<!-- $$$newArrayDeclarator[overload1]$$$newArrayDeclaratorNewArrayDeclaratorAST* -->
+<h3 class="fn" id="newArrayDeclarator"><a name="newArrayDeclarator"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">newArrayDeclarator</span>(<span class="type">NewArrayDeclaratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@newArrayDeclarator -->
+<!-- $$$newPlacement[overload1]$$$newPlacementExpressionListParenAST* -->
+<h3 class="fn" id="newPlacement"><a name="newPlacement"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">newPlacement</span>(<span class="type">ExpressionListParenAST</span> *<i>ast</i>)</h3>
+<!-- @@@newPlacement -->
+<!-- $$$newTypeId[overload1]$$$newTypeIdNewTypeIdAST* -->
+<h3 class="fn" id="newTypeId"><a name="newTypeId"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">newTypeId</span>(<span class="type">NewTypeIdAST</span> *<i>ast</i>)</h3>
+<!-- @@@newTypeId -->
+<!-- $$$objCInstanceVariablesDeclaration[overload1]$$$objCInstanceVariablesDeclarationObjCInstanceVariablesDeclarationAST* -->
+<h3 class="fn" id="objCInstanceVariablesDeclaration"><a name="objCInstanceVariablesDeclaration"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">objCInstanceVariablesDeclaration</span>(<span class="type">ObjCInstanceVariablesDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@objCInstanceVariablesDeclaration -->
+<!-- $$$objCMessageArgument[overload1]$$$objCMessageArgumentObjCMessageArgumentAST* -->
+<h3 class="fn" id="objCMessageArgument"><a name="objCMessageArgument"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">objCMessageArgument</span>(<span class="type">ObjCMessageArgumentAST</span> *<i>ast</i>)</h3>
+<!-- @@@objCMessageArgument -->
+<!-- $$$objCMessageArgumentDeclaration[overload1]$$$objCMessageArgumentDeclarationObjCMessageArgumentDeclarationAST* -->
+<h3 class="fn" id="objCMessageArgumentDeclaration"><a name="objCMessageArgumentDeclaration"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">objCMessageArgumentDeclaration</span>(<span class="type">ObjCMessageArgumentDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@objCMessageArgumentDeclaration -->
+<!-- $$$objCMethodPrototype[overload1]$$$objCMethodPrototypeObjCMethodPrototypeAST* -->
+<h3 class="fn" id="objCMethodPrototype"><a name="objCMethodPrototype"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">objCMethodPrototype</span>(<span class="type">ObjCMethodPrototypeAST</span> *<i>ast</i>)</h3>
+<!-- @@@objCMethodPrototype -->
+<!-- $$$objCPropertyAttribute[overload1]$$$objCPropertyAttributeObjCPropertyAttributeAST* -->
+<h3 class="fn" id="objCPropertyAttribute"><a name="objCPropertyAttribute"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">objCPropertyAttribute</span>(<span class="type">ObjCPropertyAttributeAST</span> *<i>ast</i>)</h3>
+<!-- @@@objCPropertyAttribute -->
+<!-- $$$objCProtocolRefs[overload1]$$$objCProtocolRefsObjCProtocolRefsAST* -->
+<h3 class="fn" id="objCProtocolRefs"><a name="objCProtocolRefs"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">objCProtocolRefs</span>(<span class="type">ObjCProtocolRefsAST</span> *<i>ast</i>)</h3>
+<!-- @@@objCProtocolRefs -->
+<!-- $$$objCSelectorArgument[overload1]$$$objCSelectorArgumentObjCSelectorArgumentAST* -->
+<h3 class="fn" id="objCSelectorArgument"><a name="objCSelectorArgument"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">objCSelectorArgument</span>(<span class="type">ObjCSelectorArgumentAST</span> *<i>ast</i>)</h3>
+<!-- @@@objCSelectorArgument -->
+<!-- $$$objCSynthesizedProperty[overload1]$$$objCSynthesizedPropertyObjCSynthesizedPropertyAST* -->
+<h3 class="fn" id="objCSynthesizedProperty"><a name="objCSynthesizedProperty"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">objCSynthesizedProperty</span>(<span class="type">ObjCSynthesizedPropertyAST</span> *<i>ast</i>)</h3>
+<!-- @@@objCSynthesizedProperty -->
+<!-- $$$objCTypeName[overload1]$$$objCTypeNameObjCTypeNameAST* -->
+<h3 class="fn" id="objCTypeName"><a name="objCTypeName"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">objCTypeName</span>(<span class="type">ObjCTypeNameAST</span> *<i>ast</i>)</h3>
+<!-- @@@objCTypeName -->
+<!-- $$$parameterDeclarationClause[overload1]$$$parameterDeclarationClauseParameterDeclarationClauseAST* -->
+<h3 class="fn" id="parameterDeclarationClause"><a name="parameterDeclarationClause"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">parameterDeclarationClause</span>(<span class="type">ParameterDeclarationClauseAST</span> *<i>ast</i>)</h3>
+<!-- @@@parameterDeclarationClause -->
+<!-- $$$postfixDeclarator[overload1]$$$postfixDeclaratorPostfixDeclaratorAST* -->
+<h3 class="fn" id="postfixDeclarator"><a name="postfixDeclarator"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">postfixDeclarator</span>(<span class="type">PostfixDeclaratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@postfixDeclarator -->
+<!-- $$$ptrOperator[overload1]$$$ptrOperatorPtrOperatorAST* -->
+<h3 class="fn" id="ptrOperator"><a name="ptrOperator"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">ptrOperator</span>(<span class="type">PtrOperatorAST</span> *<i>ast</i>)</h3>
+<!-- @@@ptrOperator -->
+<!-- $$$qtInterfaceName[overload1]$$$qtInterfaceNameQtInterfaceNameAST* -->
+<h3 class="fn" id="qtInterfaceName"><a name="qtInterfaceName"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">qtInterfaceName</span>(<span class="type">QtInterfaceNameAST</span> *<i>ast</i>)</h3>
+<!-- @@@qtInterfaceName -->
+<!-- $$$qtPropertyDeclarationItem[overload1]$$$qtPropertyDeclarationItemQtPropertyDeclarationItemAST* -->
+<h3 class="fn" id="qtPropertyDeclarationItem"><a name="qtPropertyDeclarationItem"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">qtPropertyDeclarationItem</span>(<span class="type">QtPropertyDeclarationItemAST</span> *<i>ast</i>)</h3>
+<!-- @@@qtPropertyDeclarationItem -->
+<!-- $$$references[overload1]$$$references -->
+<h3 class="fn" id="references"><a name="references"></a><span class="type">QList</span>&lt;<span class="type">int</span>&gt; FindUsages::<span class="name">references</span>() const</h3>
+<!-- @@@references -->
+<!-- $$$reportResult[overload1]$$$reportResultunsignedconstName*Scope* -->
+<h3 class="fn" id="reportResult"><a name="reportResult"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">reportResult</span>(<span class="type">unsigned</span> <i>tokenIndex</i>, const <span class="type">Name</span> *<i>name</i>, <span class="type">Scope</span> *<i>scope</i> = 0)</h3>
+<!-- @@@reportResult -->
+<!-- $$$reportResult$$$reportResultunsignedconstIdentifier*Scope* -->
+<h3 class="fn" id="reportResult-1"><a name="reportResult-1"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">reportResult</span>(<span class="type">unsigned</span> <i>tokenIndex</i>, const <span class="type">Identifier</span> *<i>id</i>, <span class="type">Scope</span> *<i>scope</i> = 0)</h3>
+<!-- @@@reportResult -->
+<!-- $$$reportResult$$$reportResultunsignedconstQList<LookupItem>& -->
+<h3 class="fn" id="reportResult-2"><a name="reportResult-2"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">reportResult</span>(<span class="type">unsigned</span> <i>tokenIndex</i>, const <span class="type">QList</span>&lt;<span class="type"><a href="cplusplus-lookupitem.html">LookupItem</a></span>&gt; &amp;<i>candidates</i>)</h3>
+<!-- @@@reportResult -->
+<!-- $$$reportResult$$$reportResultunsigned -->
+<h3 class="fn" id="reportResult-3"><a name="reportResult-3"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">reportResult</span>(<span class="type">unsigned</span> <i>tokenIndex</i>)</h3>
+<!-- @@@reportResult -->
+<!-- $$$specifier[overload1]$$$specifierSpecifierAST* -->
+<h3 class="fn" id="specifier"><a name="specifier"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">specifier</span>(<span class="type">SpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@specifier -->
+<!-- $$$statement[overload1]$$$statementStatementAST* -->
+<h3 class="fn" id="statement"><a name="statement"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">statement</span>(<span class="type">StatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@statement -->
+<!-- $$$switchScope[overload1]$$$switchScopeScope* -->
+<h3 class="fn" id="switchScope"><a name="switchScope"></a><code>[protected] </code><span class="type">Scope</span> *FindUsages::<span class="name">switchScope</span>(<span class="type">Scope</span> *<i>scope</i>)</h3>
+<!-- @@@switchScope -->
+<!-- $$$trailingReturnType[overload1]$$$trailingReturnTypeTrailingReturnTypeAST* -->
+<h3 class="fn" id="trailingReturnType"><a name="trailingReturnType"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">trailingReturnType</span>(<span class="type">TrailingReturnTypeAST</span> *<i>ast</i>)</h3>
+<!-- @@@trailingReturnType -->
+<!-- $$$translationUnit[overload1]$$$translationUnitTranslationUnitAST* -->
+<h3 class="fn" id="translationUnit"><a name="translationUnit"></a><code>[protected] </code><span class="type">void</span> FindUsages::<span class="name">translationUnit</span>(<span class="type">TranslationUnitAST</span> *<i>ast</i>)</h3>
+<!-- @@@translationUnit -->
+<!-- $$$usages[overload1]$$$usages -->
+<h3 class="fn" id="usages"><a name="usages"></a><span class="type">QList</span>&lt;<span class="type"><a href="cplusplus-usage.html">Usage</a></span>&gt; FindUsages::<span class="name">usages</span>() const</h3>
+<!-- @@@usages -->
+<!-- $$$visit[overload1]$$$visitObjCSelectorArgumentAST* -->
+<h3 class="fn" id="visit"><a name="visit"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCSelectorArgumentAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitGnuAttributeAST* -->
+<h3 class="fn" id="visit-1"><a name="visit-1"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">GnuAttributeAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitForeachStatementAST* -->
+<h3 class="fn" id="visit-36"><a name="visit-36"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ForeachStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitRangeBasedForStatementAST* -->
+<h3 class="fn" id="visit-37"><a name="visit-37"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">RangeBasedForStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitForStatementAST* -->
+<h3 class="fn" id="visit-38"><a name="visit-38"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ForStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitIfStatementAST* -->
+<h3 class="fn" id="visit-39"><a name="visit-39"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">IfStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitLabeledStatementAST* -->
+<h3 class="fn" id="visit-40"><a name="visit-40"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">LabeledStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitBreakStatementAST* -->
+<h3 class="fn" id="visit-41"><a name="visit-41"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">BreakStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitContinueStatementAST* -->
+<h3 class="fn" id="visit-42"><a name="visit-42"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ContinueStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitGotoStatementAST* -->
+<h3 class="fn" id="visit-43"><a name="visit-43"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">GotoStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitReturnStatementAST* -->
+<h3 class="fn" id="visit-44"><a name="visit-44"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ReturnStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitSwitchStatementAST* -->
+<h3 class="fn" id="visit-45"><a name="visit-45"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">SwitchStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTryBlockStatementAST* -->
+<h3 class="fn" id="visit-46"><a name="visit-46"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TryBlockStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCatchClauseAST* -->
+<h3 class="fn" id="visit-47"><a name="visit-47"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">CatchClauseAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitWhileStatementAST* -->
+<h3 class="fn" id="visit-48"><a name="visit-48"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">WhileStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCFastEnumerationAST* -->
+<h3 class="fn" id="visit-49"><a name="visit-49"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCFastEnumerationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCSynchronizedStatementAST* -->
+<h3 class="fn" id="visit-50"><a name="visit-50"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCSynchronizedStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitIdExpressionAST* -->
+<h3 class="fn" id="visit-51"><a name="visit-51"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">IdExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCompoundExpressionAST* -->
+<h3 class="fn" id="visit-52"><a name="visit-52"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">CompoundExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCompoundLiteralAST* -->
+<h3 class="fn" id="visit-53"><a name="visit-53"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">CompoundLiteralAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQtMethodAST* -->
+<h3 class="fn" id="visit-54"><a name="visit-54"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">QtMethodAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitBinaryExpressionAST* -->
+<h3 class="fn" id="visit-55"><a name="visit-55"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">BinaryExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCastExpressionAST* -->
+<h3 class="fn" id="visit-56"><a name="visit-56"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">CastExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitConditionAST* -->
+<h3 class="fn" id="visit-57"><a name="visit-57"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ConditionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitConditionalExpressionAST* -->
+<h3 class="fn" id="visit-58"><a name="visit-58"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ConditionalExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCppCastExpressionAST* -->
+<h3 class="fn" id="visit-59"><a name="visit-59"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">CppCastExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitDeleteExpressionAST* -->
+<h3 class="fn" id="visit-60"><a name="visit-60"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">DeleteExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitArrayInitializerAST* -->
+<h3 class="fn" id="visit-61"><a name="visit-61"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ArrayInitializerAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitNewExpressionAST* -->
+<h3 class="fn" id="visit-62"><a name="visit-62"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">NewExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTypeidExpressionAST* -->
+<h3 class="fn" id="visit-63"><a name="visit-63"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TypeidExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTypenameCallExpressionAST* -->
+<h3 class="fn" id="visit-64"><a name="visit-64"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TypenameCallExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTypeConstructorCallAST* -->
+<h3 class="fn" id="visit-65"><a name="visit-65"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TypeConstructorCallAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitSizeofExpressionAST* -->
+<h3 class="fn" id="visit-66"><a name="visit-66"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">SizeofExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitPointerLiteralAST* -->
+<h3 class="fn" id="visit-67"><a name="visit-67"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">PointerLiteralAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitNumericLiteralAST* -->
+<h3 class="fn" id="visit-68"><a name="visit-68"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">NumericLiteralAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitBoolLiteralAST* -->
+<h3 class="fn" id="visit-69"><a name="visit-69"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">BoolLiteralAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitThisExpressionAST* -->
+<h3 class="fn" id="visit-70"><a name="visit-70"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ThisExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitNestedExpressionAST* -->
+<h3 class="fn" id="visit-71"><a name="visit-71"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">NestedExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitDeclaratorAST* -->
+<h3 class="fn" id="visit-2"><a name="visit-2"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">DeclaratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitStringLiteralAST* -->
+<h3 class="fn" id="visit-72"><a name="visit-72"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">StringLiteralAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitThrowExpressionAST* -->
+<h3 class="fn" id="visit-73"><a name="visit-73"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ThrowExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitNoExceptOperatorExpressionAST* -->
+<h3 class="fn" id="visit-74"><a name="visit-74"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">NoExceptOperatorExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTypeIdAST* -->
+<h3 class="fn" id="visit-75"><a name="visit-75"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TypeIdAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitUnaryExpressionAST* -->
+<h3 class="fn" id="visit-76"><a name="visit-76"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">UnaryExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCMessageExpressionAST* -->
+<h3 class="fn" id="visit-77"><a name="visit-77"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCMessageExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCProtocolExpressionAST* -->
+<h3 class="fn" id="visit-78"><a name="visit-78"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCProtocolExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCEncodeExpressionAST* -->
+<h3 class="fn" id="visit-79"><a name="visit-79"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCEncodeExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCSelectorExpressionAST* -->
+<h3 class="fn" id="visit-80"><a name="visit-80"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCSelectorExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitLambdaExpressionAST* -->
+<h3 class="fn" id="visit-81"><a name="visit-81"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">LambdaExpressionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitBracedInitializerAST* -->
+<h3 class="fn" id="visit-82"><a name="visit-82"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">BracedInitializerAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitExpressionListParenAST* -->
+<h3 class="fn" id="visit-83"><a name="visit-83"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ExpressionListParenAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitSimpleDeclarationAST* -->
+<h3 class="fn" id="visit-84"><a name="visit-84"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">SimpleDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitEmptyDeclarationAST* -->
+<h3 class="fn" id="visit-85"><a name="visit-85"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">EmptyDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitAccessDeclarationAST* -->
+<h3 class="fn" id="visit-86"><a name="visit-86"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">AccessDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQtObjectTagAST* -->
+<h3 class="fn" id="visit-87"><a name="visit-87"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">QtObjectTagAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQtPrivateSlotAST* -->
+<h3 class="fn" id="visit-88"><a name="visit-88"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">QtPrivateSlotAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQtPropertyDeclarationAST* -->
+<h3 class="fn" id="visit-89"><a name="visit-89"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">QtPropertyDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQtEnumDeclarationAST* -->
+<h3 class="fn" id="visit-90"><a name="visit-90"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">QtEnumDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQtFlagsDeclarationAST* -->
+<h3 class="fn" id="visit-91"><a name="visit-91"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">QtFlagsDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQtInterfacesDeclarationAST* -->
+<h3 class="fn" id="visit-92"><a name="visit-92"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">QtInterfacesDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitAsmDefinitionAST* -->
+<h3 class="fn" id="visit-93"><a name="visit-93"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">AsmDefinitionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitExceptionDeclarationAST* -->
+<h3 class="fn" id="visit-94"><a name="visit-94"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ExceptionDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitFunctionDefinitionAST* -->
+<h3 class="fn" id="visit-95"><a name="visit-95"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">FunctionDefinitionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitLinkageBodyAST* -->
+<h3 class="fn" id="visit-96"><a name="visit-96"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">LinkageBodyAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitLinkageSpecificationAST* -->
+<h3 class="fn" id="visit-97"><a name="visit-97"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">LinkageSpecificationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitNamespaceAST* -->
+<h3 class="fn" id="visit-98"><a name="visit-98"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">NamespaceAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitNamespaceAliasDefinitionAST* -->
+<h3 class="fn" id="visit-99"><a name="visit-99"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">NamespaceAliasDefinitionAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitParameterDeclarationAST* -->
+<h3 class="fn" id="visit-100"><a name="visit-100"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ParameterDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitStaticAssertDeclarationAST* -->
+<h3 class="fn" id="visit-101"><a name="visit-101"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">StaticAssertDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTemplateDeclarationAST* -->
+<h3 class="fn" id="visit-102"><a name="visit-102"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TemplateDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTypenameTypeParameterAST* -->
+<h3 class="fn" id="visit-103"><a name="visit-103"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TypenameTypeParameterAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTemplateTypeParameterAST* -->
+<h3 class="fn" id="visit-104"><a name="visit-104"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TemplateTypeParameterAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitUsingAST* -->
+<h3 class="fn" id="visit-105"><a name="visit-105"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">UsingAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitUsingDirectiveAST* -->
+<h3 class="fn" id="visit-106"><a name="visit-106"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">UsingDirectiveAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCClassForwardDeclarationAST* -->
+<h3 class="fn" id="visit-107"><a name="visit-107"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCClassForwardDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQtPropertyDeclarationItemAST* -->
+<h3 class="fn" id="visit-3"><a name="visit-3"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">QtPropertyDeclarationItemAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCClassDeclarationAST* -->
+<h3 class="fn" id="visit-108"><a name="visit-108"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCClassDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCProtocolForwardDeclarationAST* -->
+<h3 class="fn" id="visit-109"><a name="visit-109"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCProtocolForwardDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCProtocolDeclarationAST* -->
+<h3 class="fn" id="visit-110"><a name="visit-110"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCProtocolDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCVisibilityDeclarationAST* -->
+<h3 class="fn" id="visit-111"><a name="visit-111"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCVisibilityDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCPropertyDeclarationAST* -->
+<h3 class="fn" id="visit-112"><a name="visit-112"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCPropertyDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCMethodDeclarationAST* -->
+<h3 class="fn" id="visit-113"><a name="visit-113"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCMethodDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCSynthesizedPropertiesDeclarationAST* -->
+<h3 class="fn" id="visit-114"><a name="visit-114"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCSynthesizedPropertiesDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCDynamicPropertiesDeclarationAST* -->
+<h3 class="fn" id="visit-115"><a name="visit-115"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCDynamicPropertiesDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCSelectorAST* -->
+<h3 class="fn" id="visit-116"><a name="visit-116"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCSelectorAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQualifiedNameAST* -->
+<h3 class="fn" id="visit-117"><a name="visit-117"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">QualifiedNameAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitOperatorFunctionIdAST* -->
+<h3 class="fn" id="visit-118"><a name="visit-118"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">OperatorFunctionIdAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitConversionFunctionIdAST* -->
+<h3 class="fn" id="visit-119"><a name="visit-119"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ConversionFunctionIdAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitSimpleNameAST* -->
+<h3 class="fn" id="visit-120"><a name="visit-120"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">SimpleNameAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTemplateIdAST* -->
+<h3 class="fn" id="visit-121"><a name="visit-121"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TemplateIdAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitSimpleSpecifierAST* -->
+<h3 class="fn" id="visit-122"><a name="visit-122"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">SimpleSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitGnuAttributeSpecifierAST* -->
+<h3 class="fn" id="visit-123"><a name="visit-123"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">GnuAttributeSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTypeofSpecifierAST* -->
+<h3 class="fn" id="visit-124"><a name="visit-124"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TypeofSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitDecltypeSpecifierAST* -->
+<h3 class="fn" id="visit-125"><a name="visit-125"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">DecltypeSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitClassSpecifierAST* -->
+<h3 class="fn" id="visit-126"><a name="visit-126"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ClassSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitNamedTypeSpecifierAST* -->
+<h3 class="fn" id="visit-127"><a name="visit-127"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">NamedTypeSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitElaboratedTypeSpecifierAST* -->
+<h3 class="fn" id="visit-128"><a name="visit-128"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ElaboratedTypeSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitEnumSpecifierAST* -->
+<h3 class="fn" id="visit-129"><a name="visit-129"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">EnumSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitPointerToMemberAST* -->
+<h3 class="fn" id="visit-130"><a name="visit-130"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">PointerToMemberAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitPointerAST* -->
+<h3 class="fn" id="visit-131"><a name="visit-131"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">PointerAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitReferenceAST* -->
+<h3 class="fn" id="visit-132"><a name="visit-132"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ReferenceAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCallAST* -->
+<h3 class="fn" id="visit-133"><a name="visit-133"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">CallAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitArrayAccessAST* -->
+<h3 class="fn" id="visit-134"><a name="visit-134"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ArrayAccessAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitPostIncrDecrAST* -->
+<h3 class="fn" id="visit-135"><a name="visit-135"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">PostIncrDecrAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitMemberAccessAST* -->
+<h3 class="fn" id="visit-136"><a name="visit-136"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">MemberAccessAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitDeclaratorIdAST* -->
+<h3 class="fn" id="visit-137"><a name="visit-137"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">DeclaratorIdAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitNestedDeclaratorAST* -->
+<h3 class="fn" id="visit-138"><a name="visit-138"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">NestedDeclaratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitFunctionDeclaratorAST* -->
+<h3 class="fn" id="visit-139"><a name="visit-139"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">FunctionDeclaratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitArrayDeclaratorAST* -->
+<h3 class="fn" id="visit-140"><a name="visit-140"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ArrayDeclaratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQtInterfaceNameAST* -->
+<h3 class="fn" id="visit-4"><a name="visit-4"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">QtInterfaceNameAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitBaseSpecifierAST* -->
+<h3 class="fn" id="visit-5"><a name="visit-5"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">BaseSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCtorInitializerAST* -->
+<h3 class="fn" id="visit-6"><a name="visit-6"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">CtorInitializerAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitEnumeratorAST* -->
+<h3 class="fn" id="visit-7"><a name="visit-7"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">EnumeratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitDynamicExceptionSpecificationAST* -->
+<h3 class="fn" id="visit-8"><a name="visit-8"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">DynamicExceptionSpecificationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitMemInitializerAST* -->
+<h3 class="fn" id="visit-9"><a name="visit-9"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">MemInitializerAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitNestedNameSpecifierAST* -->
+<h3 class="fn" id="visit-10"><a name="visit-10"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">NestedNameSpecifierAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitNewArrayDeclaratorAST* -->
+<h3 class="fn" id="visit-11"><a name="visit-11"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">NewArrayDeclaratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitNewTypeIdAST* -->
+<h3 class="fn" id="visit-12"><a name="visit-12"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">NewTypeIdAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitOperatorAST* -->
+<h3 class="fn" id="visit-13"><a name="visit-13"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">OperatorAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitParameterDeclarationClauseAST* -->
+<h3 class="fn" id="visit-14"><a name="visit-14"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ParameterDeclarationClauseAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTranslationUnitAST* -->
+<h3 class="fn" id="visit-15"><a name="visit-15"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TranslationUnitAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCProtocolRefsAST* -->
+<h3 class="fn" id="visit-16"><a name="visit-16"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCProtocolRefsAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCMessageArgumentAST* -->
+<h3 class="fn" id="visit-17"><a name="visit-17"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCMessageArgumentAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCTypeNameAST* -->
+<h3 class="fn" id="visit-18"><a name="visit-18"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCTypeNameAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCInstanceVariablesDeclarationAST* -->
+<h3 class="fn" id="visit-19"><a name="visit-19"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCInstanceVariablesDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCPropertyAttributeAST* -->
+<h3 class="fn" id="visit-20"><a name="visit-20"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCPropertyAttributeAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCMessageArgumentDeclarationAST* -->
+<h3 class="fn" id="visit-21"><a name="visit-21"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCMessageArgumentDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCMethodPrototypeAST* -->
+<h3 class="fn" id="visit-22"><a name="visit-22"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCMethodPrototypeAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitObjCSynthesizedPropertyAST* -->
+<h3 class="fn" id="visit-23"><a name="visit-23"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ObjCSynthesizedPropertyAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitLambdaIntroducerAST* -->
+<h3 class="fn" id="visit-24"><a name="visit-24"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">LambdaIntroducerAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitLambdaCaptureAST* -->
+<h3 class="fn" id="visit-25"><a name="visit-25"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">LambdaCaptureAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCaptureAST* -->
+<h3 class="fn" id="visit-26"><a name="visit-26"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">CaptureAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitLambdaDeclaratorAST* -->
+<h3 class="fn" id="visit-27"><a name="visit-27"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">LambdaDeclaratorAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitTrailingReturnTypeAST* -->
+<h3 class="fn" id="visit-28"><a name="visit-28"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">TrailingReturnTypeAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitQtMemberDeclarationAST* -->
+<h3 class="fn" id="visit-29"><a name="visit-29"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">QtMemberDeclarationAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCaseStatementAST* -->
+<h3 class="fn" id="visit-30"><a name="visit-30"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">CaseStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitCompoundStatementAST* -->
+<h3 class="fn" id="visit-31"><a name="visit-31"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">CompoundStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitDeclarationStatementAST* -->
+<h3 class="fn" id="visit-32"><a name="visit-32"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">DeclarationStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitDoStatementAST* -->
+<h3 class="fn" id="visit-33"><a name="visit-33"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">DoStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitExpressionOrDeclarationStatementAST* -->
+<h3 class="fn" id="visit-34"><a name="visit-34"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ExpressionOrDeclarationStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$visit$$$visitExpressionStatementAST* -->
+<h3 class="fn" id="visit-35"><a name="visit-35"></a><code>[virtual protected] </code><span class="type">bool</span> FindUsages::<span class="name">visit</span>(<span class="type">ExpressionStatementAST</span> *<i>ast</i>)</h3>
+<!-- @@@visit -->
+<!-- $$$operator()[overload1]$$$operator()Symbol* -->
+<h3 class="fn" id="operator-28-29"><a name="operator-28-29"></a><span class="type">void</span> FindUsages::<span class="name">operator()</span>(<span class="type">Symbol</span> *<i>symbol</i>)</h3>
+<!-- @@@operator() -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

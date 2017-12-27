@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>ProjectImporter Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ProjectImporter</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#protected-types">Protected Types</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ProjectImporter Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-projectimporter.html">ProjectExplorer::ProjectImporter</a>)<br/></span>
+<ul>
+<li><a href="projectexplorer-projectimporter-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter-toolchaindata.html">ToolChainData</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#ProjectImporter">ProjectImporter</a></b>(const Utils::FileName &amp;<i>path</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#dtor.ProjectImporter">~ProjectImporter</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#addProject">addProject</a></b>(Kit *<i>k</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#cleanupKit">cleanupKit</a></b>(Kit *<i>k</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;BuildInfo *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#import">import</a></b>(const Utils::FileName &amp;<i>importPath</i>, bool <i>silent</i> = false)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QStringList </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#importCandidates">importCandidates</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#isTemporaryKit">isTemporaryKit</a></b>(Kit *<i>k</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#isUpdating">isUpdating</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#makePersistent">makePersistent</a></b>(Kit *<i>k</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Target *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#preferredTarget">preferredTarget</a></b>(const QList&lt;Target *&gt; &amp;<i>possibleTargets</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Utils::FileName </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#projectDirectory">projectDirectory</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Utils::FileName </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#projectFilePath">projectFilePath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#removeProject">removeProject</a></b>(Kit *<i>k</i>) const</td></tr>
+</table></div>
+<a name="protected-types"></a>
+<h2 id="protected-types">Protected Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter-updateguard.html">UpdateGuard</a></b></td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#addTemporaryData">addTemporaryData</a></b>(Core::Id <i>id</i>, const QVariant &amp;<i>cleanupData</i>, Kit *<i>k</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;BuildInfo *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#buildInfoListForKit">buildInfoListForKit</a></b>(const Kit *<i>k</i>, void *<i>directoryData</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Kit *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#createKit">createKit</a></b>(void *<i>directoryData</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ProjectExplorer::Kit *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#createTemporaryKit">createTemporaryKit</a></b>(const KitSetupFunction &amp;<i>setup</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#deleteDirectoryData">deleteDirectoryData</a></b>(void *<i>directoryData</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;void *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#examineDirectory">examineDirectory</a></b>(const Utils::FileName &amp;<i>importPath</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ToolChainData </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#findOrCreateToolChains">findOrCreateToolChains</a></b>(const Utils::FileName &amp;<i>toolChainPath</i>, const Core::Id &amp;<i>language</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#hasKitWithTemporaryData">hasKitWithTemporaryData</a></b>(Core::Id <i>id</i>, const QVariant &amp;<i>data</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#matchKit">matchKit</a></b>(void *<i>directoryData</i>, const Kit *<i>k</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectimporter.html#useTemporaryKitInformation">useTemporaryKitInformation</a></b>(Core::Id <i>id</i>, CleanupFunction <i>cleanup</i>, PersistFunction <i>persist</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ProjectImporter[overload1]$$$ProjectImporterconstUtils::FileName& -->
+<h3 class="fn" id="ProjectImporter"><a name="ProjectImporter"></a>ProjectImporter::<span class="name">ProjectImporter</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>path</i>)</h3>
+<p>Default constructs an instance of ProjectImporter.</p><!-- @@@ProjectImporter -->
+<!-- $$$~ProjectImporter[overload1]$$$~ProjectImporter -->
+<h3 class="fn" id="dtor.ProjectImporter"><a name="dtor.ProjectImporter"></a><code>[virtual] </code>ProjectImporter::<span class="name">~ProjectImporter</span>()</h3>
+<p>Destroys the instance of ProjectImporter. The destructor is virtual.</p><!-- @@@~ProjectImporter -->
+<!-- $$$addProject[overload1]$$$addProjectKit* -->
+<h3 class="fn" id="addProject"><a name="addProject"></a><span class="type">void</span> ProjectImporter::<span class="name">addProject</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@addProject -->
+<!-- $$$addTemporaryData[overload1]$$$addTemporaryDataCore::IdconstQVariant&Kit* -->
+<h3 class="fn" id="addTemporaryData"><a name="addTemporaryData"></a><code>[protected] </code><span class="type">void</span> ProjectImporter::<span class="name">addTemporaryData</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>, const <span class="type">QVariant</span> &amp;<i>cleanupData</i>, <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@addTemporaryData -->
+<!-- $$$buildInfoListForKit[overload1]$$$buildInfoListForKitconstKit*void* -->
+<h3 class="fn" id="buildInfoListForKit"><a name="buildInfoListForKit"></a><code>[pure virtual protected] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-buildinfo.html">BuildInfo</a></span> *&gt; ProjectImporter::<span class="name">buildInfoListForKit</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>, <span class="type">void</span> *<i>directoryData</i>) const</h3>
+<!-- @@@buildInfoListForKit -->
+<!-- $$$cleanupKit[overload1]$$$cleanupKitKit* -->
+<h3 class="fn" id="cleanupKit"><a name="cleanupKit"></a><span class="type">void</span> ProjectImporter::<span class="name">cleanupKit</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@cleanupKit -->
+<!-- $$$createKit[overload1]$$$createKitvoid* -->
+<h3 class="fn" id="createKit"><a name="createKit"></a><code>[pure virtual protected] </code><span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *ProjectImporter::<span class="name">createKit</span>(<span class="type">void</span> *<i>directoryData</i>) const</h3>
+<!-- @@@createKit -->
+<!-- $$$createTemporaryKit[overload1]$$$createTemporaryKitconstKitSetupFunction& -->
+<h3 class="fn" id="createTemporaryKit"><a name="createTemporaryKit"></a><code>[protected] </code><span class="type"><a href="projectexplorer-kit.html">ProjectExplorer::Kit</a></span> *ProjectImporter::<span class="name">createTemporaryKit</span>(const <span class="type">KitSetupFunction</span> &amp;<i>setup</i>) const</h3>
+<!-- @@@createTemporaryKit -->
+<!-- $$$deleteDirectoryData[overload1]$$$deleteDirectoryDatavoid* -->
+<h3 class="fn" id="deleteDirectoryData"><a name="deleteDirectoryData"></a><code>[pure virtual protected] </code><span class="type">void</span> ProjectImporter::<span class="name">deleteDirectoryData</span>(<span class="type">void</span> *<i>directoryData</i>) const</h3>
+<!-- @@@deleteDirectoryData -->
+<!-- $$$examineDirectory[overload1]$$$examineDirectoryconstUtils::FileName& -->
+<h3 class="fn" id="examineDirectory"><a name="examineDirectory"></a><code>[pure virtual protected] </code><span class="type">QList</span>&lt;<span class="type">void</span> *&gt; ProjectImporter::<span class="name">examineDirectory</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>importPath</i>) const</h3>
+<!-- @@@examineDirectory -->
+<!-- $$$findOrCreateToolChains[overload1]$$$findOrCreateToolChainsconstUtils::FileName&constCore::Id& -->
+<h3 class="fn" id="findOrCreateToolChains"><a name="findOrCreateToolChains"></a><code>[protected] </code><span class="type"><a href="projectexplorer-projectimporter-toolchaindata.html">ToolChainData</a></span> ProjectImporter::<span class="name">findOrCreateToolChains</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>toolChainPath</i>, const <span class="type"><a href="core-id.html">Core::Id</a></span> &amp;<i>language</i>) const</h3>
+<!-- @@@findOrCreateToolChains -->
+<!-- $$$hasKitWithTemporaryData[overload1]$$$hasKitWithTemporaryDataCore::IdconstQVariant& -->
+<h3 class="fn" id="hasKitWithTemporaryData"><a name="hasKitWithTemporaryData"></a><code>[protected] </code><span class="type">bool</span> ProjectImporter::<span class="name">hasKitWithTemporaryData</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>, const <span class="type">QVariant</span> &amp;<i>data</i>) const</h3>
+<!-- @@@hasKitWithTemporaryData -->
+<!-- $$$import[overload1]$$$importconstUtils::FileName&bool -->
+<h3 class="fn" id="import"><a name="import"></a><code>[virtual] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-buildinfo.html">BuildInfo</a></span> *&gt; ProjectImporter::<span class="name">import</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>importPath</i>, <span class="type">bool</span> <i>silent</i> = false)</h3>
+<!-- @@@import -->
+<!-- $$$importCandidates[overload1]$$$importCandidates -->
+<h3 class="fn" id="importCandidates"><a name="importCandidates"></a><code>[pure virtual] </code><span class="type">QStringList</span> ProjectImporter::<span class="name">importCandidates</span>()</h3>
+<!-- @@@importCandidates -->
+<!-- $$$isTemporaryKit[overload1]$$$isTemporaryKitKit* -->
+<h3 class="fn" id="isTemporaryKit"><a name="isTemporaryKit"></a><span class="type">bool</span> ProjectImporter::<span class="name">isTemporaryKit</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@isTemporaryKit -->
+<!-- $$$isUpdating[overload1]$$$isUpdating -->
+<h3 class="fn" id="isUpdating"><a name="isUpdating"></a><span class="type">bool</span> ProjectImporter::<span class="name">isUpdating</span>() const</h3>
+<!-- @@@isUpdating -->
+<!-- $$$makePersistent[overload1]$$$makePersistentKit* -->
+<h3 class="fn" id="makePersistent"><a name="makePersistent"></a><span class="type">void</span> ProjectImporter::<span class="name">makePersistent</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@makePersistent -->
+<!-- $$$matchKit[overload1]$$$matchKitvoid*constKit* -->
+<h3 class="fn" id="matchKit"><a name="matchKit"></a><code>[pure virtual protected] </code><span class="type">bool</span> ProjectImporter::<span class="name">matchKit</span>(<span class="type">void</span> *<i>directoryData</i>, const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@matchKit -->
+<!-- $$$preferredTarget[overload1]$$$preferredTargetconstQList<Target*>& -->
+<h3 class="fn" id="preferredTarget"><a name="preferredTarget"></a><code>[virtual] </code><span class="type"><a href="projectexplorer-target.html">Target</a></span> *ProjectImporter::<span class="name">preferredTarget</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-target.html">Target</a></span> *&gt; &amp;<i>possibleTargets</i>)</h3>
+<!-- @@@preferredTarget -->
+<!-- $$$projectDirectory[overload1]$$$projectDirectory -->
+<h3 class="fn" id="projectDirectory"><a name="projectDirectory"></a>const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> ProjectImporter::<span class="name">projectDirectory</span>() const</h3>
+<!-- @@@projectDirectory -->
+<!-- $$$projectFilePath[overload1]$$$projectFilePath -->
+<h3 class="fn" id="projectFilePath"><a name="projectFilePath"></a>const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> ProjectImporter::<span class="name">projectFilePath</span>() const</h3>
+<!-- @@@projectFilePath -->
+<!-- $$$removeProject[overload1]$$$removeProjectKit* -->
+<h3 class="fn" id="removeProject"><a name="removeProject"></a><span class="type">void</span> ProjectImporter::<span class="name">removeProject</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@removeProject -->
+<!-- $$$useTemporaryKitInformation[overload1]$$$useTemporaryKitInformationCore::IdCleanupFunctionPersistFunction -->
+<h3 class="fn" id="useTemporaryKitInformation"><a name="useTemporaryKitInformation"></a><code>[protected] </code><span class="type">void</span> ProjectImporter::<span class="name">useTemporaryKitInformation</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>, <span class="type">CleanupFunction</span> <i>cleanup</i>, <span class="type">PersistFunction</span> <i>persist</i>)</h3>
+<!-- @@@useTemporaryKitInformation -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

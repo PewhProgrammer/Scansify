@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>TextDocumentLayout Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >TextDocumentLayout</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">TextDocumentLayout Class</h1>
+<span class="small-subtitle">(<a href="texteditor-textdocumentlayout.html">TextEditor::TextDocumentLayout</a>)<br/></span>
+<ul>
+<li><a href="texteditor-textdocumentlayout-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout-foldvalidator.html">FoldValidator</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#TextDocumentLayout">TextDocumentLayout</a></b>(QTextDocument *<i>doc</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#dtor.TextDocumentLayout">~TextDocumentLayout</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TextMarks </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#documentClosing">documentClosing</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#documentReloaded">documentReloaded</a></b>(TextMarks <i>marks</i>, TextDocument *<i>baseextDocument</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QSizeF </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#documentSize">documentSize</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#emitDocumentSizeChanged">emitDocumentSizeChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#requestExtraAreaUpdate">requestExtraAreaUpdate</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#setRequiredWidth">setRequiredWidth</a></b>(int <i>width</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#updateMarksBlock">updateMarksBlock</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#updateMarksLineNumber">updateMarksLineNumber</a></b>()</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#updateExtraArea">updateExtraArea</a></b>()</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#braceDepth">braceDepth</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#braceDepthDelta">braceDepthDelta</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#canFold">canFold</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#changeBraceDepth">changeBraceDepth</a></b>(QTextBlock &amp;<i>block</i>, int <i>delta</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#changeFoldingIndent">changeFoldingIndent</a></b>(QTextBlock &amp;<i>block</i>, int <i>delta</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#clearIfdefedOut">clearIfdefedOut</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#clearParentheses">clearParentheses</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#doFoldOrUnfold">doFoldOrUnfold</a></b>(const QTextBlock &amp;<i>block</i>, bool <i>unfold</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#foldingIndent">foldingIndent</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#hasParentheses">hasParentheses</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#ifdefedOut">ifdefedOut</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#isFolded">isFolded</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#lexerState">lexerState</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Parentheses </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#parentheses">parentheses</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#setBraceDepth">setBraceDepth</a></b>(QTextBlock &amp;<i>block</i>, int <i>depth</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#setFolded">setFolded</a></b>(const QTextBlock &amp;<i>block</i>, bool <i>folded</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#setFoldingIndent">setFoldingIndent</a></b>(const QTextBlock &amp;<i>block</i>, int <i>indent</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#setIfdefedOut">setIfdefedOut</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#setLexerState">setLexerState</a></b>(const QTextBlock &amp;<i>block</i>, int <i>state</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#setParentheses">setParentheses</a></b>(const QTextBlock &amp;<i>block</i>, const Parentheses &amp;<i>parentheses</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TextBlockUserData *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#testUserData">testUserData</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TextBlockUserData *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textdocumentlayout.html#userData">userData</a></b>(const QTextBlock &amp;<i>block</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$TextDocumentLayout[overload1]$$$TextDocumentLayoutQTextDocument* -->
+<h3 class="fn" id="TextDocumentLayout"><a name="TextDocumentLayout"></a>TextDocumentLayout::<span class="name">TextDocumentLayout</span>(<span class="type">QTextDocument</span> *<i>doc</i>)</h3>
+<p>Default constructs an instance of TextDocumentLayout.</p><!-- @@@TextDocumentLayout -->
+<!-- $$$~TextDocumentLayout[overload1]$$$~TextDocumentLayout -->
+<h3 class="fn" id="dtor.TextDocumentLayout"><a name="dtor.TextDocumentLayout"></a>TextDocumentLayout::<span class="name">~TextDocumentLayout</span>()</h3>
+<p>Destroys the instance of TextDocumentLayout.</p><!-- @@@~TextDocumentLayout -->
+<!-- $$$braceDepth[overload1]$$$braceDepthconstQTextBlock& -->
+<h3 class="fn" id="braceDepth"><a name="braceDepth"></a><code>[static] </code><span class="type">int</span> TextDocumentLayout::<span class="name">braceDepth</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocumentlayout.html#setBraceDepth">setBraceDepth</a>().</p>
+<!-- @@@braceDepth -->
+<!-- $$$braceDepthDelta[overload1]$$$braceDepthDeltaconstQTextBlock& -->
+<h3 class="fn" id="braceDepthDelta"><a name="braceDepthDelta"></a><code>[static] </code><span class="type">int</span> TextDocumentLayout::<span class="name">braceDepthDelta</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<!-- @@@braceDepthDelta -->
+<!-- $$$canFold[overload1]$$$canFoldconstQTextBlock& -->
+<h3 class="fn" id="canFold"><a name="canFold"></a><code>[static] </code><span class="type">bool</span> TextDocumentLayout::<span class="name">canFold</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<!-- @@@canFold -->
+<!-- $$$changeBraceDepth[overload1]$$$changeBraceDepthQTextBlock&int -->
+<h3 class="fn" id="changeBraceDepth"><a name="changeBraceDepth"></a><code>[static] </code><span class="type">void</span> TextDocumentLayout::<span class="name">changeBraceDepth</span>(<span class="type">QTextBlock</span> &amp;<i>block</i>, <span class="type">int</span> <i>delta</i>)</h3>
+<!-- @@@changeBraceDepth -->
+<!-- $$$changeFoldingIndent[overload1]$$$changeFoldingIndentQTextBlock&int -->
+<h3 class="fn" id="changeFoldingIndent"><a name="changeFoldingIndent"></a><code>[static] </code><span class="type">void</span> TextDocumentLayout::<span class="name">changeFoldingIndent</span>(<span class="type">QTextBlock</span> &amp;<i>block</i>, <span class="type">int</span> <i>delta</i>)</h3>
+<!-- @@@changeFoldingIndent -->
+<!-- $$$clearIfdefedOut[overload1]$$$clearIfdefedOutconstQTextBlock& -->
+<h3 class="fn" id="clearIfdefedOut"><a name="clearIfdefedOut"></a><code>[static] </code><span class="type">bool</span> TextDocumentLayout::<span class="name">clearIfdefedOut</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<!-- @@@clearIfdefedOut -->
+<!-- $$$clearParentheses[overload1]$$$clearParenthesesconstQTextBlock& -->
+<h3 class="fn" id="clearParentheses"><a name="clearParentheses"></a><code>[static] </code><span class="type">void</span> TextDocumentLayout::<span class="name">clearParentheses</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<!-- @@@clearParentheses -->
+<!-- $$$doFoldOrUnfold[overload1]$$$doFoldOrUnfoldconstQTextBlock&bool -->
+<h3 class="fn" id="doFoldOrUnfold"><a name="doFoldOrUnfold"></a><code>[static] </code><span class="type">void</span> TextDocumentLayout::<span class="name">doFoldOrUnfold</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>, <span class="type">bool</span> <i>unfold</i>)</h3>
+<!-- @@@doFoldOrUnfold -->
+<!-- $$$documentClosing[overload1]$$$documentClosing -->
+<h3 class="fn" id="documentClosing"><a name="documentClosing"></a><span class="type"><a href="texteditor.html#TextMarks-typedef">TextMarks</a></span> TextDocumentLayout::<span class="name">documentClosing</span>()</h3>
+<!-- @@@documentClosing -->
+<!-- $$$documentReloaded[overload1]$$$documentReloadedTextMarksTextDocument* -->
+<h3 class="fn" id="documentReloaded"><a name="documentReloaded"></a><span class="type">void</span> TextDocumentLayout::<span class="name">documentReloaded</span>(<span class="type"><a href="texteditor.html#TextMarks-typedef">TextMarks</a></span> <i>marks</i>, <span class="type"><a href="texteditor-textdocument.html">TextDocument</a></span> *<i>baseextDocument</i>)</h3>
+<!-- @@@documentReloaded -->
+<!-- $$$documentSize[overload1]$$$documentSize -->
+<h3 class="fn" id="documentSize"><a name="documentSize"></a><span class="type">QSizeF</span> TextDocumentLayout::<span class="name">documentSize</span>() const</h3>
+<!-- @@@documentSize -->
+<!-- $$$emitDocumentSizeChanged[overload1]$$$emitDocumentSizeChanged -->
+<h3 class="fn" id="emitDocumentSizeChanged"><a name="emitDocumentSizeChanged"></a><span class="type">void</span> TextDocumentLayout::<span class="name">emitDocumentSizeChanged</span>()</h3>
+<!-- @@@emitDocumentSizeChanged -->
+<!-- $$$foldingIndent[overload1]$$$foldingIndentconstQTextBlock& -->
+<h3 class="fn" id="foldingIndent"><a name="foldingIndent"></a><code>[static] </code><span class="type">int</span> TextDocumentLayout::<span class="name">foldingIndent</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocumentlayout.html#setFoldingIndent">setFoldingIndent</a>().</p>
+<!-- @@@foldingIndent -->
+<!-- $$$hasParentheses[overload1]$$$hasParenthesesconstQTextBlock& -->
+<h3 class="fn" id="hasParentheses"><a name="hasParentheses"></a><code>[static] </code><span class="type">bool</span> TextDocumentLayout::<span class="name">hasParentheses</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<!-- @@@hasParentheses -->
+<!-- $$$ifdefedOut[overload1]$$$ifdefedOutconstQTextBlock& -->
+<h3 class="fn" id="ifdefedOut"><a name="ifdefedOut"></a><code>[static] </code><span class="type">bool</span> TextDocumentLayout::<span class="name">ifdefedOut</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocumentlayout.html#setIfdefedOut">setIfdefedOut</a>().</p>
+<!-- @@@ifdefedOut -->
+<!-- $$$isFolded[overload1]$$$isFoldedconstQTextBlock& -->
+<h3 class="fn" id="isFolded"><a name="isFolded"></a><code>[static] </code><span class="type">bool</span> TextDocumentLayout::<span class="name">isFolded</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<!-- @@@isFolded -->
+<!-- $$$lexerState[overload1]$$$lexerStateconstQTextBlock& -->
+<h3 class="fn" id="lexerState"><a name="lexerState"></a><code>[static] </code><span class="type">int</span> TextDocumentLayout::<span class="name">lexerState</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocumentlayout.html#setLexerState">setLexerState</a>().</p>
+<!-- @@@lexerState -->
+<!-- $$$parentheses[overload1]$$$parenthesesconstQTextBlock& -->
+<h3 class="fn" id="parentheses"><a name="parentheses"></a><code>[static] </code><span class="type"><a href="texteditor.html#Parentheses-typedef">Parentheses</a></span> TextDocumentLayout::<span class="name">parentheses</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocumentlayout.html#setParentheses">setParentheses</a>().</p>
+<!-- @@@parentheses -->
+<!-- $$$requestExtraAreaUpdate[overload1]$$$requestExtraAreaUpdate -->
+<h3 class="fn" id="requestExtraAreaUpdate"><a name="requestExtraAreaUpdate"></a><span class="type">void</span> TextDocumentLayout::<span class="name">requestExtraAreaUpdate</span>()</h3>
+<!-- @@@requestExtraAreaUpdate -->
+<!-- $$$setBraceDepth[overload1]$$$setBraceDepthQTextBlock&int -->
+<h3 class="fn" id="setBraceDepth"><a name="setBraceDepth"></a><code>[static] </code><span class="type">void</span> TextDocumentLayout::<span class="name">setBraceDepth</span>(<span class="type">QTextBlock</span> &amp;<i>block</i>, <span class="type">int</span> <i>depth</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocumentlayout.html#braceDepth">braceDepth</a>().</p>
+<!-- @@@setBraceDepth -->
+<!-- $$$setFolded[overload1]$$$setFoldedconstQTextBlock&bool -->
+<h3 class="fn" id="setFolded"><a name="setFolded"></a><code>[static] </code><span class="type">void</span> TextDocumentLayout::<span class="name">setFolded</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>, <span class="type">bool</span> <i>folded</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocumentlayout.html#isFolded">isFolded</a>().</p>
+<!-- @@@setFolded -->
+<!-- $$$setFoldingIndent[overload1]$$$setFoldingIndentconstQTextBlock&int -->
+<h3 class="fn" id="setFoldingIndent"><a name="setFoldingIndent"></a><code>[static] </code><span class="type">void</span> TextDocumentLayout::<span class="name">setFoldingIndent</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>, <span class="type">int</span> <i>indent</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocumentlayout.html#foldingIndent">foldingIndent</a>().</p>
+<!-- @@@setFoldingIndent -->
+<!-- $$$setIfdefedOut[overload1]$$$setIfdefedOutconstQTextBlock& -->
+<h3 class="fn" id="setIfdefedOut"><a name="setIfdefedOut"></a><code>[static] </code><span class="type">bool</span> TextDocumentLayout::<span class="name">setIfdefedOut</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocumentlayout.html#ifdefedOut">ifdefedOut</a>().</p>
+<!-- @@@setIfdefedOut -->
+<!-- $$$setLexerState[overload1]$$$setLexerStateconstQTextBlock&int -->
+<h3 class="fn" id="setLexerState"><a name="setLexerState"></a><code>[static] </code><span class="type">void</span> TextDocumentLayout::<span class="name">setLexerState</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>, <span class="type">int</span> <i>state</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocumentlayout.html#lexerState">lexerState</a>().</p>
+<!-- @@@setLexerState -->
+<!-- $$$setParentheses[overload1]$$$setParenthesesconstQTextBlock&constParentheses& -->
+<h3 class="fn" id="setParentheses"><a name="setParentheses"></a><code>[static] </code><span class="type">void</span> TextDocumentLayout::<span class="name">setParentheses</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>, const <span class="type"><a href="texteditor.html#Parentheses-typedef">Parentheses</a></span> &amp;<i>parentheses</i>)</h3>
+<p><b>See also </b><a href="texteditor-textdocumentlayout.html#parentheses">parentheses</a>().</p>
+<!-- @@@setParentheses -->
+<!-- $$$setRequiredWidth[overload1]$$$setRequiredWidthint -->
+<h3 class="fn" id="setRequiredWidth"><a name="setRequiredWidth"></a><span class="type">void</span> TextDocumentLayout::<span class="name">setRequiredWidth</span>(<span class="type">int</span> <i>width</i>)</h3>
+<!-- @@@setRequiredWidth -->
+<!-- $$$testUserData[overload1]$$$testUserDataconstQTextBlock& -->
+<h3 class="fn" id="testUserData"><a name="testUserData"></a><code>[static] </code><span class="type"><a href="texteditor-textblockuserdata.html">TextBlockUserData</a></span> *TextDocumentLayout::<span class="name">testUserData</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<!-- @@@testUserData -->
+<!-- $$$updateExtraArea[overload1]$$$updateExtraArea -->
+<h3 class="fn" id="updateExtraArea"><a name="updateExtraArea"></a><code>[signal] </code><span class="type">void</span> TextDocumentLayout::<span class="name">updateExtraArea</span>()</h3>
+<!-- @@@updateExtraArea -->
+<!-- $$$updateMarksBlock[overload1]$$$updateMarksBlockconstQTextBlock& -->
+<h3 class="fn" id="updateMarksBlock"><a name="updateMarksBlock"></a><span class="type">void</span> TextDocumentLayout::<span class="name">updateMarksBlock</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<!-- @@@updateMarksBlock -->
+<!-- $$$updateMarksLineNumber[overload1]$$$updateMarksLineNumber -->
+<h3 class="fn" id="updateMarksLineNumber"><a name="updateMarksLineNumber"></a><span class="type">void</span> TextDocumentLayout::<span class="name">updateMarksLineNumber</span>()</h3>
+<!-- @@@updateMarksLineNumber -->
+<!-- $$$userData[overload1]$$$userDataconstQTextBlock& -->
+<h3 class="fn" id="userData"><a name="userData"></a><code>[static] </code><span class="type"><a href="texteditor-textblockuserdata.html">TextBlockUserData</a></span> *TextDocumentLayout::<span class="name">userData</span>(const <span class="type">QTextBlock</span> &amp;<i>block</i>)</h3>
+<!-- @@@userData -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

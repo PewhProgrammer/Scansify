@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>RightPaneWidget Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >RightPaneWidget</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">RightPaneWidget Class</h1>
+<span class="small-subtitle">(<a href="core-rightpanewidget.html">Core::RightPaneWidget</a>)<br/></span>
+<ul>
+<li><a href="core-rightpanewidget-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-rightpanewidget.html#RightPaneWidget">RightPaneWidget</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-rightpanewidget.html#dtor.RightPaneWidget">~RightPaneWidget</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-rightpanewidget.html#isShown">isShown</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-rightpanewidget.html#readSettings">readSettings</a></b>(QSettings *<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-rightpanewidget.html#saveSettings">saveSettings</a></b>(QSettings *<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-rightpanewidget.html#setShown">setShown</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-rightpanewidget.html#setWidget">setWidget</a></b>(QWidget *<i>widget</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="core-rightpanewidget.html#storedWidth">storedWidth</a></b>()</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> RightPaneWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-rightpanewidget.html#instance">instance</a></b>()</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-rightpanewidget.html#resizeEvent">resizeEvent</a></b>(<i>QResizeEvent *</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$RightPaneWidget[overload1]$$$RightPaneWidget -->
+<h3 class="fn" id="RightPaneWidget"><a name="RightPaneWidget"></a>RightPaneWidget::<span class="name">RightPaneWidget</span>()</h3>
+<p>Default constructs an instance of RightPaneWidget.</p><!-- @@@RightPaneWidget -->
+<!-- $$$~RightPaneWidget[overload1]$$$~RightPaneWidget -->
+<h3 class="fn" id="dtor.RightPaneWidget"><a name="dtor.RightPaneWidget"></a>RightPaneWidget::<span class="name">~RightPaneWidget</span>()</h3>
+<p>Destroys the instance of RightPaneWidget.</p><!-- @@@~RightPaneWidget -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" id="instance"><a name="instance"></a><code>[static] </code><span class="type"><a href="core-rightpanewidget.html#RightPaneWidget">RightPaneWidget</a></span> *RightPaneWidget::<span class="name">instance</span>()</h3>
+<!-- @@@instance -->
+<!-- $$$isShown[overload1]$$$isShown -->
+<h3 class="fn" id="isShown"><a name="isShown"></a><span class="type">bool</span> RightPaneWidget::<span class="name">isShown</span>()</h3>
+<!-- @@@isShown -->
+<!-- $$$readSettings[overload1]$$$readSettingsQSettings* -->
+<h3 class="fn" id="readSettings"><a name="readSettings"></a><span class="type">void</span> RightPaneWidget::<span class="name">readSettings</span>(<span class="type">QSettings</span> *<i>settings</i>)</h3>
+<!-- @@@readSettings -->
+<!-- $$$resizeEvent[overload1]$$$resizeEventQResizeEvent* -->
+<h3 class="fn" id="resizeEvent"><a name="resizeEvent"></a><code>[protected] </code><span class="type">void</span> RightPaneWidget::<span class="name">resizeEvent</span>(<i>QResizeEvent *</i>)</h3>
+<!-- @@@resizeEvent -->
+<!-- $$$saveSettings[overload1]$$$saveSettingsQSettings* -->
+<h3 class="fn" id="saveSettings"><a name="saveSettings"></a><span class="type">void</span> RightPaneWidget::<span class="name">saveSettings</span>(<span class="type">QSettings</span> *<i>settings</i>)</h3>
+<!-- @@@saveSettings -->
+<!-- $$$setShown[overload1]$$$setShownbool -->
+<h3 class="fn" id="setShown"><a name="setShown"></a><span class="type">void</span> RightPaneWidget::<span class="name">setShown</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="core-rightpanewidget.html#isShown">isShown</a>().</p>
+<!-- @@@setShown -->
+<!-- $$$setWidget[overload1]$$$setWidgetQWidget* -->
+<h3 class="fn" id="setWidget"><a name="setWidget"></a><span class="type">void</span> RightPaneWidget::<span class="name">setWidget</span>(<span class="type">QWidget</span> *<i>widget</i>)</h3>
+<!-- @@@setWidget -->
+<!-- $$$storedWidth[overload1]$$$storedWidth -->
+<h3 class="fn" id="storedWidth"><a name="storedWidth"></a><span class="type">int</span> RightPaneWidget::<span class="name">storedWidth</span>()</h3>
+<!-- @@@storedWidth -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

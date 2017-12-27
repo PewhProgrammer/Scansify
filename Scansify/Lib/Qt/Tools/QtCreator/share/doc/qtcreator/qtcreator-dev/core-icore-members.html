@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- icore.cpp -->
+  <title>List of All Members for ICore | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ICore</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">List of All Members for ICore</h1>
+<p>This is the complete list of members for <a href="core-icore.html">Core::ICore</a>, including inherited members.</p>
+<div class="table"><table class="propsummary">
+<tr><td class="topAlign"><ul>
+<li class="fn">enum <span class="name"><b><a href="core-icore.html#ContextPriority-enum">ContextPriority</a></b></span></li>
+<li class="fn">enum <span class="name"><b><a href="core-icore.html#OpenFilesFlags-enum">OpenFilesFlags</a></b></span></li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#addAdditionalContext">addAdditionalContext</a></b></span>(const Context &amp;, ContextPriority )</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#addContextObject">addContextObject</a></b></span>(IContext *)</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#addPreCloseListener">addPreCloseListener</a></b></span>(const std::function&lt;bool() &gt; &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#additionalAboutInformation">additionalAboutInformation</a></b></span>() : QStringList</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#appendAboutInformation">appendAboutInformation</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#buildCompatibilityString">buildCompatibilityString</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#contextAboutToChange">contextAboutToChange</a></b></span>(const QList&lt;Core::IContext *&gt; &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#contextChanged">contextChanged</a></b></span>(const Core::Context &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#coreAboutToClose">coreAboutToClose</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#coreAboutToOpen">coreAboutToOpen</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#coreOpened">coreOpened</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#currentContextObject">currentContextObject</a></b></span>() : IContext *</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#dialogParent">dialogParent</a></b></span>() : QWidget *</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#documentationPath">documentationPath</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#instance">instance</a></b></span>() : ICore *</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#isNewItemDialogRunning">isNewItemDialogRunning</a></b></span>() : bool</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#libexecPath">libexecPath</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#mainWindow">mainWindow</a></b></span>() : QWidget *</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#msgShowOptionsDialog">msgShowOptionsDialog</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#msgShowOptionsDialogToolTip">msgShowOptionsDialogToolTip</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#newItemDialog">newItemDialog</a></b></span>() : QWidget *</li>
+</ul></td><td class="topAlign"><ul>
+<li class="fn"><span class="name"><b><a href="core-icore.html#newItemDialogStateChanged">newItemDialogStateChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#openFiles">openFiles</a></b></span>(const QStringList &amp;, OpenFilesFlags )</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#optionsDialogRequested">optionsDialogRequested</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#printer">printer</a></b></span>() : QPrinter *</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#raiseWindow">raiseWindow</a></b></span>(QWidget *)</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#registerWindow">registerWindow</a></b></span>(QWidget *, const Context &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#removeAdditionalContext">removeAdditionalContext</a></b></span>(const Context &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#removeContextObject">removeContextObject</a></b></span>(IContext *)</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#resourcePath">resourcePath</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#saveSettings">saveSettings</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#saveSettingsRequested">saveSettingsRequested</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#settings">settings</a></b></span>(QSettings::Scope ) : QSettings *</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#settingsDatabase">settingsDatabase</a></b></span>() : SettingsDatabase *</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#showNewItemDialog">showNewItemDialog</a></b></span>(const QString &amp;, const QList&lt;IWizardFactory *&gt; &amp;, const QString &amp;, const QVariantMap &amp;)</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#showOptionsDialog">showOptionsDialog</a></b></span>(Id , QWidget *) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#showWarningWithOptions">showWarningWithOptions</a></b></span>(const QString &amp;, const QString &amp;, const QString &amp;, Id , QWidget *) : bool</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#statusBar">statusBar</a></b></span>() : QStatusBar *</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#systemInformation">systemInformation</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#updateAdditionalContexts">updateAdditionalContexts</a></b></span>(const Context &amp;, const Context &amp;, ContextPriority )</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#userInterfaceLanguage">userInterfaceLanguage</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#userResourcePath">userResourcePath</a></b></span>() : QString</li>
+<li class="fn"><span class="name"><b><a href="core-icore.html#versionString">versionString</a></b></span>() : QString</li>
+</ul>
+</td></tr>
+</table></div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

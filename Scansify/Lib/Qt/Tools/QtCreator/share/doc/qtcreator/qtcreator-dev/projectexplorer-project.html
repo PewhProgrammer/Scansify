@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- project.cpp -->
+  <title>Project Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Project</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Project Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-project.html">ProjectExplorer::Project</a>)<br/></span>
+<!-- $$$Project-brief -->
+<p>The Project class implements a project node in the project explorer. <a href="#details">More...</a></p>
+<!-- @@@Project -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;Project&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="projectexplorer-project-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#FilesMode-enum">FilesMode</a></b> { SourceFiles, GeneratedFiles, AllFiles }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#ModelRoles-enum">ModelRoles</a></b> { FilePathRole, EnabledRole }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#RestoreResult-enum">RestoreResult</a></b> { Ok, Error, UserAbort }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#Project">Project</a></b>(const QString &amp;<i>mimeType</i>, const Utils::FileName &amp;<i>fileName</i>, const ProjectDocument::ProjectCallback &amp;<i>callback</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#dtor.Project">~Project</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Target *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#activeTarget">activeTarget</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#addTarget">addTarget</a></b>(Target *<i>target</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#configureAsExampleProject">configureAsExampleProject</a></b>(const QSet&lt;Core::Id&gt; &amp;<i>platforms</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ContainerNode *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#containerNode">containerNode</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Target *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#createTarget">createTarget</a></b>(Kit *<i>k</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#displayName">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::IDocument *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#document">document</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> EditorConfiguration *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#editorConfiguration">editorConfiguration</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#files">files</a></b>(FilesMode <i>fileMode</i>, const std::function&lt;bool( const Node * ) &gt; &amp;<i>filter</i> = {}) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QStringList </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#filesGeneratedFrom">filesGeneratedFrom</a></b>(const QString &amp;<i>sourceFile</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#hasActiveBuildSettings">hasActiveBuildSettings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Id </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#id">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#knowsAllBuildExecutables">knowsAllBuildExecutables</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::MacroExpander *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#macroExpander">macroExpander</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVariant </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#namedSettings">namedSettings</a></b>(const QString &amp;<i>name</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#needsConfiguration">needsConfiguration</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#needsSpecialDeployment">needsSpecialDeployment</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Kit::Predicate </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#preferredKitPredicate">preferredKitPredicate</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Context </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#projectContext">projectContext</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FileName </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#projectDirectory">projectDirectory</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FileName </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#projectFilePath">projectFilePath</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ProjectImporter *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#projectImporter">projectImporter</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Context </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#projectLanguages">projectLanguages</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#removeTarget">removeTarget</a></b>(Target *<i>target</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Kit::Predicate </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#requiredKitPredicate">requiredKitPredicate</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#requiresTargetPanel">requiresTargetPanel</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> RestoreResult </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#restoreSettings">restoreSettings</a></b>(QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Target *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#restoreTarget">restoreTarget</a></b>(const QVariantMap &amp;<i>data</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ProjectNode *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#rootProjectNode">rootProjectNode</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#saveSettings">saveSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#setNamedSettings">setNamedSettings</a></b>(const QString &amp;<i>name</i>, const QVariant &amp;<i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#setup">setup</a></b>(QList&lt;const BuildInfo *&gt; <i>infoList</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#supportsKit">supportsKit</a></b>(Kit *<i>k</i>, QString *<i>errorMessage</i> = nullptr) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Target *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#target">target</a></b>(Core::Id <i>id</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Target *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#target-1">target</a></b>(Kit *<i>k</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;Target *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#targets">targets</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QVariantMap </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#toMap">toMap</a></b>() const</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#aboutToRemoveTarget">aboutToRemoveTarget</a></b>(ProjectExplorer::Target *<i>target</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#aboutToSaveSettings">aboutToSaveSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#activeTargetChanged">activeTargetChanged</a></b>(ProjectExplorer::Target *<i>target</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#addedTarget">addedTarget</a></b>(ProjectExplorer::Target *<i>target</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#buildConfigurationEnabledChanged">buildConfigurationEnabledChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#buildDirectoryChanged">buildDirectoryChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#displayNameChanged">displayNameChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#environmentChanged">environmentChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#fileListChanged">fileListChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#parsingFinished">parsingFinished</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#projectContextUpdated">projectContextUpdated</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#projectLanguagesUpdated">projectLanguagesUpdated</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#removedTarget">removedTarget</a></b>(ProjectExplorer::Target *<i>target</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#settingsLoaded">settingsLoaded</a></b>()</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#copySteps">copySteps</a></b>(Target *<i>sourceTarget</i>, Target *<i>newTarget</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#makeUnique">makeUnique</a></b>(const QString &amp;<i>preferredName</i>, const QStringList &amp;<i>usedNames</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FileName </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#projectDirectory-1">projectDirectory</a></b>(const Utils::FileName &amp;<i>top</i>)</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#addProjectLanguage">addProjectLanguage</a></b>(Core::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual RestoreResult </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#fromMap">fromMap</a></b>(const QVariantMap &amp;<i>map</i>, QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#projectLoaded">projectLoaded</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#removeProjectLanguage">removeProjectLanguage</a></b>(Core::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#setDisplayName">setDisplayName</a></b>(const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#setId">setId</a></b>(Core::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#setPreferredKitPredicate">setPreferredKitPredicate</a></b>(const Kit::Predicate &amp;<i>predicate</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#setProjectContext">setProjectContext</a></b>(Core::Context <i>context</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#setProjectLanguage">setProjectLanguage</a></b>(Core::Id <i>id</i>, bool <i>enabled</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#setProjectLanguages">setProjectLanguages</a></b>(Core::Context <i>language</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#setRequiredKitPredicate">setRequiredKitPredicate</a></b>(const Kit::Predicate &amp;<i>predicate</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#setRootProjectNode">setRootProjectNode</a></b>(ProjectNode *<i>root</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-project.html#setupTarget">setupTarget</a></b>(Target *<i>t</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$Project-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The Project class implements a project node in the project explorer.</p>
+</div>
+<!-- @@@Project -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$FilesMode$$$SourceFiles$$$GeneratedFiles$$$AllFiles -->
+<h3 class="fn" id="FilesMode-enum"><a name="FilesMode-enum"></a>enum Project::<span class="name">FilesMode</span></h3>
+<!-- @@@FilesMode -->
+<!-- $$$ModelRoles$$$FilePathRole$$$EnabledRole -->
+<h3 class="fn" id="ModelRoles-enum"><a name="ModelRoles-enum"></a>enum Project::<span class="name">ModelRoles</span></h3>
+<!-- @@@ModelRoles -->
+<!-- $$$RestoreResult$$$Ok$$$Error$$$UserAbort -->
+<h3 class="fn" id="RestoreResult-enum"><a name="RestoreResult-enum"></a>enum Project::<span class="name">RestoreResult</span></h3>
+<!-- @@@RestoreResult -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Project[overload1]$$$ProjectconstQString&constUtils::FileName&constProjectDocument::ProjectCallback& -->
+<h3 class="fn" id="Project"><a name="Project"></a>Project::<span class="name">Project</span>(const <span class="type">QString</span> &amp;<i>mimeType</i>, const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>fileName</i>, const <span class="type">ProjectDocument::ProjectCallback</span> &amp;<i>callback</i> = {})</h3>
+<p>Copy constructor.</p><!-- @@@Project -->
+<!-- $$$~Project[overload1]$$$~Project -->
+<h3 class="fn" id="dtor.Project"><a name="dtor.Project"></a>Project::<span class="name">~Project</span>()</h3>
+<p>Destroys the instance of Project.</p><!-- @@@~Project -->
+<!-- $$$aboutToRemoveTarget[overload1]$$$aboutToRemoveTargetProjectExplorer::Target* -->
+<h3 class="fn" id="aboutToRemoveTarget"><a name="aboutToRemoveTarget"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">aboutToRemoveTarget</span>(<span class="type"><a href="projectexplorer-target.html">ProjectExplorer::Target</a></span> *<i>target</i>)</h3>
+<!-- @@@aboutToRemoveTarget -->
+<!-- $$$aboutToSaveSettings[overload1]$$$aboutToSaveSettings -->
+<h3 class="fn" id="aboutToSaveSettings"><a name="aboutToSaveSettings"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">aboutToSaveSettings</span>()</h3>
+<!-- @@@aboutToSaveSettings -->
+<!-- $$$activeTarget[overload1]$$$activeTarget -->
+<h3 class="fn" id="activeTarget"><a name="activeTarget"></a><span class="type"><a href="projectexplorer-target.html">Target</a></span> *Project::<span class="name">activeTarget</span>() const</h3>
+<!-- @@@activeTarget -->
+<!-- $$$activeTargetChanged[overload1]$$$activeTargetChangedProjectExplorer::Target* -->
+<h3 class="fn" id="activeTargetChanged"><a name="activeTargetChanged"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">activeTargetChanged</span>(<span class="type"><a href="projectexplorer-target.html">ProjectExplorer::Target</a></span> *<i>target</i>)</h3>
+<!-- @@@activeTargetChanged -->
+<!-- $$$addProjectLanguage[overload1]$$$addProjectLanguageCore::Id -->
+<h3 class="fn" id="addProjectLanguage"><a name="addProjectLanguage"></a><code>[protected] </code><span class="type">void</span> Project::<span class="name">addProjectLanguage</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>)</h3>
+<!-- @@@addProjectLanguage -->
+<!-- $$$addTarget[overload1]$$$addTargetTarget* -->
+<h3 class="fn" id="addTarget"><a name="addTarget"></a><span class="type">void</span> Project::<span class="name">addTarget</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>target</i>)</h3>
+<!-- @@@addTarget -->
+<!-- $$$addedTarget[overload1]$$$addedTargetProjectExplorer::Target* -->
+<h3 class="fn" id="addedTarget"><a name="addedTarget"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">addedTarget</span>(<span class="type"><a href="projectexplorer-target.html">ProjectExplorer::Target</a></span> *<i>target</i>)</h3>
+<!-- @@@addedTarget -->
+<!-- $$$buildConfigurationEnabledChanged[overload1]$$$buildConfigurationEnabledChanged -->
+<h3 class="fn" id="buildConfigurationEnabledChanged"><a name="buildConfigurationEnabledChanged"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">buildConfigurationEnabledChanged</span>()</h3>
+<p>A convenience signal emitted if activeBuildConfiguration emits isEnabledChanged() or if the active build configuration changes (including due to the active target changing).</p>
+<!-- @@@buildConfigurationEnabledChanged -->
+<!-- $$$buildDirectoryChanged[overload1]$$$buildDirectoryChanged -->
+<h3 class="fn" id="buildDirectoryChanged"><a name="buildDirectoryChanged"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">buildDirectoryChanged</span>()</h3>
+<!-- @@@buildDirectoryChanged -->
+<!-- $$$configureAsExampleProject[overload1]$$$configureAsExampleProjectconstQSet<Core::Id>& -->
+<h3 class="fn" id="configureAsExampleProject"><a name="configureAsExampleProject"></a><code>[virtual] </code><span class="type">void</span> Project::<span class="name">configureAsExampleProject</span>(const <span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Core::Id</a></span>&gt; &amp;<i>platforms</i>)</h3>
+<!-- @@@configureAsExampleProject -->
+<!-- $$$containerNode[overload1]$$$containerNode -->
+<h3 class="fn" id="containerNode"><a name="containerNode"></a><span class="type"><a href="projectexplorer-containernode.html">ContainerNode</a></span> *Project::<span class="name">containerNode</span>() const</h3>
+<!-- @@@containerNode -->
+<!-- $$$copySteps[overload1]$$$copyStepsTarget*Target* -->
+<h3 class="fn" id="copySteps"><a name="copySteps"></a><code>[static] </code><span class="type">bool</span> Project::<span class="name">copySteps</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>sourceTarget</i>, <span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>newTarget</i>)</h3>
+<!-- @@@copySteps -->
+<!-- $$$createTarget[overload1]$$$createTargetKit* -->
+<h3 class="fn" id="createTarget"><a name="createTarget"></a><span class="type"><a href="projectexplorer-target.html">Target</a></span> *Project::<span class="name">createTarget</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>)</h3>
+<!-- @@@createTarget -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><span class="type">QString</span> Project::<span class="name">displayName</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#setDisplayName">setDisplayName</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$displayNameChanged[overload1]$$$displayNameChanged -->
+<h3 class="fn" id="displayNameChanged"><a name="displayNameChanged"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">displayNameChanged</span>()</h3>
+<!-- @@@displayNameChanged -->
+<!-- $$$document[overload1]$$$document -->
+<h3 class="fn" id="document"><a name="document"></a><span class="type"><a href="core-idocument.html">Core::IDocument</a></span> *Project::<span class="name">document</span>() const</h3>
+<!-- @@@document -->
+<!-- $$$editorConfiguration[overload1]$$$editorConfiguration -->
+<h3 class="fn" id="editorConfiguration"><a name="editorConfiguration"></a><span class="type"><a href="projectexplorer-editorconfiguration.html">EditorConfiguration</a></span> *Project::<span class="name">editorConfiguration</span>() const</h3>
+<!-- @@@editorConfiguration -->
+<!-- $$$environmentChanged[overload1]$$$environmentChanged -->
+<h3 class="fn" id="environmentChanged"><a name="environmentChanged"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">environmentChanged</span>()</h3>
+<p>A convenience signal emitted if activeBuildConfiguration emits environmentChanged or if the active build configuration changes (including due to the active target changing).</p>
+<!-- @@@environmentChanged -->
+<!-- $$$fileListChanged[overload1]$$$fileListChanged -->
+<h3 class="fn" id="fileListChanged"><a name="fileListChanged"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">fileListChanged</span>()</h3>
+<!-- @@@fileListChanged -->
+<!-- $$$files[overload1]$$$filesFilesModeconststd::function<bool(constNode*)>& -->
+<h3 class="fn" id="files"><a name="files"></a><span class="type">QStringList</span> Project::<span class="name">files</span>(<span class="type"><a href="projectexplorer-project.html#FilesMode-enum">FilesMode</a></span> <i>fileMode</i>, const <span class="type">std::function</span>&lt;<span class="type">bool</span>( const <span class="type"><a href="projectexplorer-node.html">Node</a></span> * ) &gt; &amp;<i>filter</i> = {}) const</h3>
+<!-- @@@files -->
+<!-- $$$filesGeneratedFrom[overload1]$$$filesGeneratedFromconstQString& -->
+<h3 class="fn" id="filesGeneratedFrom"><a name="filesGeneratedFrom"></a><code>[virtual] </code><span class="type">QStringList</span> Project::<span class="name">filesGeneratedFrom</span>(const <span class="type">QString</span> &amp;<i>sourceFile</i>) const</h3>
+<!-- @@@filesGeneratedFrom -->
+<!-- $$$fromMap[overload1]$$$fromMapconstQVariantMap&QString* -->
+<h3 class="fn" id="fromMap"><a name="fromMap"></a><code>[virtual protected] </code><span class="type"><a href="projectexplorer-project.html#RestoreResult-enum">RestoreResult</a></span> Project::<span class="name">fromMap</span>(const <span class="type">QVariantMap</span> &amp;<i>map</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@fromMap -->
+<!-- $$$hasActiveBuildSettings[overload1]$$$hasActiveBuildSettings -->
+<h3 class="fn" id="hasActiveBuildSettings"><a name="hasActiveBuildSettings"></a><span class="type">bool</span> Project::<span class="name">hasActiveBuildSettings</span>() const</h3>
+<!-- @@@hasActiveBuildSettings -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" id="id"><a name="id"></a><span class="type"><a href="core-id.html">Core::Id</a></span> Project::<span class="name">id</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#setId">setId</a>().</p>
+<!-- @@@id -->
+<!-- $$$knowsAllBuildExecutables[overload1]$$$knowsAllBuildExecutables -->
+<h3 class="fn" id="knowsAllBuildExecutables"><a name="knowsAllBuildExecutables"></a><code>[virtual] </code><span class="type">bool</span> Project::<span class="name">knowsAllBuildExecutables</span>() const</h3>
+<!-- @@@knowsAllBuildExecutables -->
+<!-- $$$macroExpander[overload1]$$$macroExpander -->
+<h3 class="fn" id="macroExpander"><a name="macroExpander"></a><span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *Project::<span class="name">macroExpander</span>() const</h3>
+<!-- @@@macroExpander -->
+<!-- $$$makeUnique[overload1]$$$makeUniqueconstQString&constQStringList& -->
+<h3 class="fn" id="makeUnique"><a name="makeUnique"></a><code>[static] </code><span class="type">QString</span> Project::<span class="name">makeUnique</span>(const <span class="type">QString</span> &amp;<i>preferredName</i>, const <span class="type">QStringList</span> &amp;<i>usedNames</i>)</h3>
+<!-- @@@makeUnique -->
+<!-- $$$namedSettings[overload1]$$$namedSettingsconstQString& -->
+<h3 class="fn" id="namedSettings"><a name="namedSettings"></a><span class="type">QVariant</span> Project::<span class="name">namedSettings</span>(const <span class="type">QString</span> &amp;<i>name</i>) const</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#setNamedSettings">setNamedSettings</a>().</p>
+<!-- @@@namedSettings -->
+<!-- $$$needsConfiguration[overload1]$$$needsConfiguration -->
+<h3 class="fn" id="needsConfiguration"><a name="needsConfiguration"></a><code>[virtual] </code><span class="type">bool</span> Project::<span class="name">needsConfiguration</span>() const</h3>
+<!-- @@@needsConfiguration -->
+<!-- $$$needsSpecialDeployment[overload1]$$$needsSpecialDeployment -->
+<h3 class="fn" id="needsSpecialDeployment"><a name="needsSpecialDeployment"></a><code>[virtual] </code><span class="type">bool</span> Project::<span class="name">needsSpecialDeployment</span>() const</h3>
+<!-- @@@needsSpecialDeployment -->
+<!-- $$$parsingFinished[overload1]$$$parsingFinished -->
+<h3 class="fn" id="parsingFinished"><a name="parsingFinished"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">parsingFinished</span>()</h3>
+<!-- @@@parsingFinished -->
+<!-- $$$preferredKitPredicate[overload1]$$$preferredKitPredicate -->
+<h3 class="fn" id="preferredKitPredicate"><a name="preferredKitPredicate"></a><span class="type">Kit::Predicate</span> Project::<span class="name">preferredKitPredicate</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#setPreferredKitPredicate">setPreferredKitPredicate</a>().</p>
+<!-- @@@preferredKitPredicate -->
+<!-- $$$projectContext[overload1]$$$projectContext -->
+<h3 class="fn" id="projectContext"><a name="projectContext"></a><span class="type"><a href="core-context.html">Core::Context</a></span> Project::<span class="name">projectContext</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#setProjectContext">setProjectContext</a>().</p>
+<!-- @@@projectContext -->
+<!-- $$$projectContextUpdated[overload1]$$$projectContextUpdated -->
+<h3 class="fn" id="projectContextUpdated"><a name="projectContextUpdated"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">projectContextUpdated</span>()</h3>
+<!-- @@@projectContextUpdated -->
+<!-- $$$projectDirectory[overload1]$$$projectDirectory -->
+<h3 class="fn" id="projectDirectory"><a name="projectDirectory"></a><span class="type"><a href="utils-filename.html">Utils::FileName</a></span> Project::<span class="name">projectDirectory</span>() const</h3>
+<p>Returns the directory that contains the project.</p>
+<p>This includes the absolute path.</p>
+<!-- @@@projectDirectory -->
+<!-- $$$projectDirectory$$$projectDirectoryconstUtils::FileName& -->
+<h3 class="fn" id="projectDirectory-1"><a name="projectDirectory-1"></a><code>[static] </code><span class="type"><a href="utils-filename.html">Utils::FileName</a></span> Project::<span class="name">projectDirectory</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>top</i>)</h3>
+<p>Returns the directory that contains the file <i>top</i>.</p>
+<p>This includes the absolute path.</p>
+<!-- @@@projectDirectory -->
+<!-- $$$projectFilePath[overload1]$$$projectFilePath -->
+<h3 class="fn" id="projectFilePath"><a name="projectFilePath"></a><span class="type"><a href="utils-filename.html">Utils::FileName</a></span> Project::<span class="name">projectFilePath</span>() const</h3>
+<!-- @@@projectFilePath -->
+<!-- $$$projectImporter[overload1]$$$projectImporter -->
+<h3 class="fn" id="projectImporter"><a name="projectImporter"></a><code>[virtual] </code><span class="type"><a href="projectexplorer-projectimporter.html">ProjectImporter</a></span> *Project::<span class="name">projectImporter</span>() const</h3>
+<!-- @@@projectImporter -->
+<!-- $$$projectLanguages[overload1]$$$projectLanguages -->
+<h3 class="fn" id="projectLanguages"><a name="projectLanguages"></a><span class="type"><a href="core-context.html">Core::Context</a></span> Project::<span class="name">projectLanguages</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#setProjectLanguages">setProjectLanguages</a>().</p>
+<!-- @@@projectLanguages -->
+<!-- $$$projectLanguagesUpdated[overload1]$$$projectLanguagesUpdated -->
+<h3 class="fn" id="projectLanguagesUpdated"><a name="projectLanguagesUpdated"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">projectLanguagesUpdated</span>()</h3>
+<!-- @@@projectLanguagesUpdated -->
+<!-- $$$projectLoaded[overload1]$$$projectLoaded -->
+<h3 class="fn" id="projectLoaded"><a name="projectLoaded"></a><code>[virtual protected] </code><span class="type">void</span> Project::<span class="name">projectLoaded</span>()</h3>
+<!-- @@@projectLoaded -->
+<!-- $$$removeProjectLanguage[overload1]$$$removeProjectLanguageCore::Id -->
+<h3 class="fn" id="removeProjectLanguage"><a name="removeProjectLanguage"></a><code>[protected] </code><span class="type">void</span> Project::<span class="name">removeProjectLanguage</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>)</h3>
+<!-- @@@removeProjectLanguage -->
+<!-- $$$removeTarget[overload1]$$$removeTargetTarget* -->
+<h3 class="fn" id="removeTarget"><a name="removeTarget"></a><span class="type">bool</span> Project::<span class="name">removeTarget</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>target</i>)</h3>
+<!-- @@@removeTarget -->
+<!-- $$$removedTarget[overload1]$$$removedTargetProjectExplorer::Target* -->
+<h3 class="fn" id="removedTarget"><a name="removedTarget"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">removedTarget</span>(<span class="type"><a href="projectexplorer-target.html">ProjectExplorer::Target</a></span> *<i>target</i>)</h3>
+<!-- @@@removedTarget -->
+<!-- $$$requiredKitPredicate[overload1]$$$requiredKitPredicate -->
+<h3 class="fn" id="requiredKitPredicate"><a name="requiredKitPredicate"></a><span class="type">Kit::Predicate</span> Project::<span class="name">requiredKitPredicate</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#setRequiredKitPredicate">setRequiredKitPredicate</a>().</p>
+<!-- @@@requiredKitPredicate -->
+<!-- $$$requiresTargetPanel[overload1]$$$requiresTargetPanel -->
+<h3 class="fn" id="requiresTargetPanel"><a name="requiresTargetPanel"></a><code>[virtual] </code><span class="type">bool</span> Project::<span class="name">requiresTargetPanel</span>() const</h3>
+<!-- @@@requiresTargetPanel -->
+<!-- $$$restoreSettings[overload1]$$$restoreSettingsQString* -->
+<h3 class="fn" id="restoreSettings"><a name="restoreSettings"></a><span class="type"><a href="projectexplorer-project.html#RestoreResult-enum">RestoreResult</a></span> Project::<span class="name">restoreSettings</span>(<span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@restoreSettings -->
+<!-- $$$restoreTarget[overload1]$$$restoreTargetconstQVariantMap& -->
+<h3 class="fn" id="restoreTarget"><a name="restoreTarget"></a><span class="type"><a href="projectexplorer-target.html">Target</a></span> *Project::<span class="name">restoreTarget</span>(const <span class="type">QVariantMap</span> &amp;<i>data</i>)</h3>
+<!-- @@@restoreTarget -->
+<!-- $$$rootProjectNode[overload1]$$$rootProjectNode -->
+<h3 class="fn" id="rootProjectNode"><a name="rootProjectNode"></a><code>[virtual] </code><span class="type"><a href="projectexplorer-projectnode.html">ProjectNode</a></span> *Project::<span class="name">rootProjectNode</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#setRootProjectNode">setRootProjectNode</a>().</p>
+<!-- @@@rootProjectNode -->
+<!-- $$$saveSettings[overload1]$$$saveSettings -->
+<h3 class="fn" id="saveSettings"><a name="saveSettings"></a><span class="type">void</span> Project::<span class="name">saveSettings</span>()</h3>
+<!-- @@@saveSettings -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" id="setDisplayName"><a name="setDisplayName"></a><code>[protected] </code><span class="type">void</span> Project::<span class="name">setDisplayName</span>(const <span class="type">QString</span> &amp;<i>name</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#displayName">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setId[overload1]$$$setIdCore::Id -->
+<h3 class="fn" id="setId"><a name="setId"></a><code>[protected] </code><span class="type">void</span> Project::<span class="name">setId</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#id">id</a>().</p>
+<!-- @@@setId -->
+<!-- $$$setNamedSettings[overload1]$$$setNamedSettingsconstQString&constQVariant& -->
+<h3 class="fn" id="setNamedSettings"><a name="setNamedSettings"></a><span class="type">void</span> Project::<span class="name">setNamedSettings</span>(const <span class="type">QString</span> &amp;<i>name</i>, const <span class="type">QVariant</span> &amp;<i>value</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#namedSettings">namedSettings</a>().</p>
+<!-- @@@setNamedSettings -->
+<!-- $$$setPreferredKitPredicate[overload1]$$$setPreferredKitPredicateconstKit::Predicate& -->
+<h3 class="fn" id="setPreferredKitPredicate"><a name="setPreferredKitPredicate"></a><code>[protected] </code><span class="type">void</span> Project::<span class="name">setPreferredKitPredicate</span>(const <span class="type">Kit::Predicate</span> &amp;<i>predicate</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#preferredKitPredicate">preferredKitPredicate</a>().</p>
+<!-- @@@setPreferredKitPredicate -->
+<!-- $$$setProjectContext[overload1]$$$setProjectContextCore::Context -->
+<h3 class="fn" id="setProjectContext"><a name="setProjectContext"></a><code>[protected] </code><span class="type">void</span> Project::<span class="name">setProjectContext</span>(<span class="type"><a href="core-context.html">Core::Context</a></span> <i>context</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#projectContext">projectContext</a>().</p>
+<!-- @@@setProjectContext -->
+<!-- $$$setProjectLanguage[overload1]$$$setProjectLanguageCore::Idbool -->
+<h3 class="fn" id="setProjectLanguage"><a name="setProjectLanguage"></a><code>[protected] </code><span class="type">void</span> Project::<span class="name">setProjectLanguage</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>, <span class="type">bool</span> <i>enabled</i>)</h3>
+<!-- @@@setProjectLanguage -->
+<!-- $$$setProjectLanguages[overload1]$$$setProjectLanguagesCore::Context -->
+<h3 class="fn" id="setProjectLanguages"><a name="setProjectLanguages"></a><code>[protected] </code><span class="type">void</span> Project::<span class="name">setProjectLanguages</span>(<span class="type"><a href="core-context.html">Core::Context</a></span> <i>language</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#projectLanguages">projectLanguages</a>().</p>
+<!-- @@@setProjectLanguages -->
+<!-- $$$setRequiredKitPredicate[overload1]$$$setRequiredKitPredicateconstKit::Predicate& -->
+<h3 class="fn" id="setRequiredKitPredicate"><a name="setRequiredKitPredicate"></a><code>[protected] </code><span class="type">void</span> Project::<span class="name">setRequiredKitPredicate</span>(const <span class="type">Kit::Predicate</span> &amp;<i>predicate</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#requiredKitPredicate">requiredKitPredicate</a>().</p>
+<!-- @@@setRequiredKitPredicate -->
+<!-- $$$setRootProjectNode[overload1]$$$setRootProjectNodeProjectNode* -->
+<h3 class="fn" id="setRootProjectNode"><a name="setRootProjectNode"></a><code>[protected] </code><span class="type">void</span> Project::<span class="name">setRootProjectNode</span>(<span class="type"><a href="projectexplorer-projectnode.html">ProjectNode</a></span> *<i>root</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-project.html#rootProjectNode">rootProjectNode</a>().</p>
+<!-- @@@setRootProjectNode -->
+<!-- $$$settingsLoaded[overload1]$$$settingsLoaded -->
+<h3 class="fn" id="settingsLoaded"><a name="settingsLoaded"></a><code>[signal] </code><span class="type">void</span> Project::<span class="name">settingsLoaded</span>()</h3>
+<!-- @@@settingsLoaded -->
+<!-- $$$setup[overload1]$$$setupQList<constBuildInfo*> -->
+<h3 class="fn" id="setup"><a name="setup"></a><span class="type">void</span> Project::<span class="name">setup</span>(<span class="type">QList</span>&lt;const <span class="type"><a href="projectexplorer-buildinfo.html">BuildInfo</a></span> *&gt; <i>infoList</i>)</h3>
+<!-- @@@setup -->
+<!-- $$$setupTarget[overload1]$$$setupTargetTarget* -->
+<h3 class="fn" id="setupTarget"><a name="setupTarget"></a><code>[virtual protected] </code><span class="type">bool</span> Project::<span class="name">setupTarget</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>t</i>)</h3>
+<!-- @@@setupTarget -->
+<!-- $$$supportsKit[overload1]$$$supportsKitKit*QString* -->
+<h3 class="fn" id="supportsKit"><a name="supportsKit"></a><code>[virtual] </code><span class="type">bool</span> Project::<span class="name">supportsKit</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>, <span class="type">QString</span> *<i>errorMessage</i> = nullptr) const</h3>
+<!-- @@@supportsKit -->
+<!-- $$$target[overload1]$$$targetCore::Id -->
+<h3 class="fn" id="target"><a name="target"></a><span class="type"><a href="projectexplorer-target.html">Target</a></span> *Project::<span class="name">target</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>) const</h3>
+<!-- @@@target -->
+<!-- $$$target$$$targetKit* -->
+<h3 class="fn" id="target-1"><a name="target-1"></a><span class="type"><a href="projectexplorer-target.html">Target</a></span> *Project::<span class="name">target</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@target -->
+<!-- $$$targets[overload1]$$$targets -->
+<h3 class="fn" id="targets"><a name="targets"></a><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-target.html">Target</a></span> *&gt; Project::<span class="name">targets</span>() const</h3>
+<!-- @@@targets -->
+<!-- $$$toMap[overload1]$$$toMap -->
+<h3 class="fn" id="toMap"><a name="toMap"></a><code>[virtual] </code><span class="type">QVariantMap</span> Project::<span class="name">toMap</span>() const</h3>
+<p>Serializes all data into a QVariantMap.</p>
+<p>This map is then saved in the .user file of the project. Just put all your data into the map.</p>
+<p><b>Note: </b>Do not forget to call your base class' toMap function.</p><p><b>Note: </b>Do not forget to call setActiveBuildConfiguration when creating new build configurations.</p><!-- @@@toMap -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

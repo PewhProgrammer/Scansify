@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>GenericProposalModel Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >GenericProposalModel</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">GenericProposalModel Class</h1>
+<span class="small-subtitle">(<a href="texteditor-genericproposalmodel.html">TextEditor::GenericProposalModel</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="texteditor-iassistproposalmodel.html">TextEditor::IAssistProposalModel</a></td></tr></table></div><ul>
+<li><a href="texteditor-genericproposalmodel-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#GenericProposalModel">GenericProposalModel</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#dtor.GenericProposalModel">~GenericProposalModel</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#containsDuplicates">containsDuplicates</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#detail">detail</a></b>(int <i>index</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#filter">filter</a></b>(const QString &amp;<i>prefix</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#hasItemsToPropose">hasItemsToPropose</a></b>(const QString &amp;<i>prefix</i>, AssistReason <i>reason</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QIcon </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#icon">icon</a></b>(int <i>index</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#isPerfectMatch">isPerfectMatch</a></b>(const QString &amp;<i>prefix</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#isPrefiltered">isPrefiltered</a></b>(const QString &amp;<i>prefix</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#isSortable">isSortable</a></b>(const QString &amp;<i>prefix</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#keepPerfectMatch">keepPerfectMatch</a></b>(AssistReason <i>reason</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#loadContent">loadContent</a></b>(const QList&lt;AssistProposalItemInterface *&gt; &amp;<i>items</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#persistentId">persistentId</a></b>(int <i>index</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual AssistProposalItemInterface *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#proposalItem">proposalItem</a></b>(int <i>index</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#proposalPrefix">proposalPrefix</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#removeDuplicates">removeDuplicates</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#setPrefilterPrefix">setPrefilterPrefix</a></b>(const QString &amp;<i>prefix</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#sort">sort</a></b>(const QString &amp;<i>prefix</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#supportsPrefixExpansion">supportsPrefixExpansion</a></b>() const</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#reset">reset</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#size">size</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposalmodel.html#text">text</a></b>(int <i>index</i>) const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">3 public functions inherited from <a href="texteditor-iassistproposalmodel.html#public-functions">TextEditor::IAssistProposalModel</a></li>
+</ul>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$GenericProposalModel[overload1]$$$GenericProposalModel -->
+<h3 class="fn" id="GenericProposalModel"><a name="GenericProposalModel"></a>GenericProposalModel::<span class="name">GenericProposalModel</span>()</h3>
+<p>Default constructs an instance of GenericProposalModel.</p><!-- @@@GenericProposalModel -->
+<!-- $$$~GenericProposalModel[overload1]$$$~GenericProposalModel -->
+<h3 class="fn" id="dtor.GenericProposalModel"><a name="dtor.GenericProposalModel"></a>GenericProposalModel::<span class="name">~GenericProposalModel</span>()</h3>
+<p>Destroys the instance of GenericProposalModel.</p><!-- @@@~GenericProposalModel -->
+<!-- $$$containsDuplicates[overload1]$$$containsDuplicates -->
+<h3 class="fn" id="containsDuplicates"><a name="containsDuplicates"></a><code>[virtual] </code><span class="type">bool</span> GenericProposalModel::<span class="name">containsDuplicates</span>() const</h3>
+<!-- @@@containsDuplicates -->
+<!-- $$$detail[overload1]$$$detailint -->
+<h3 class="fn" id="detail"><a name="detail"></a><code>[virtual] </code><span class="type">QString</span> GenericProposalModel::<span class="name">detail</span>(<span class="type">int</span> <i>index</i>) const</h3>
+<!-- @@@detail -->
+<!-- $$$filter[overload1]$$$filterconstQString& -->
+<h3 class="fn" id="filter"><a name="filter"></a><code>[virtual] </code><span class="type">void</span> GenericProposalModel::<span class="name">filter</span>(const <span class="type">QString</span> &amp;<i>prefix</i>)</h3>
+<!-- @@@filter -->
+<!-- $$$hasItemsToPropose[overload1]$$$hasItemsToProposeconstQString&AssistReason -->
+<h3 class="fn" id="hasItemsToPropose"><a name="hasItemsToPropose"></a><span class="type">bool</span> GenericProposalModel::<span class="name">hasItemsToPropose</span>(const <span class="type">QString</span> &amp;<i>prefix</i>, <span class="type"><a href="texteditor.html#AssistReason-enum">AssistReason</a></span> <i>reason</i>) const</h3>
+<!-- @@@hasItemsToPropose -->
+<!-- $$$icon[overload1]$$$iconint -->
+<h3 class="fn" id="icon"><a name="icon"></a><code>[virtual] </code><span class="type">QIcon</span> GenericProposalModel::<span class="name">icon</span>(<span class="type">int</span> <i>index</i>) const</h3>
+<!-- @@@icon -->
+<!-- $$$isPerfectMatch[overload1]$$$isPerfectMatchconstQString& -->
+<h3 class="fn" id="isPerfectMatch"><a name="isPerfectMatch"></a><span class="type">bool</span> GenericProposalModel::<span class="name">isPerfectMatch</span>(const <span class="type">QString</span> &amp;<i>prefix</i>) const</h3>
+<!-- @@@isPerfectMatch -->
+<!-- $$$isPrefiltered[overload1]$$$isPrefilteredconstQString& -->
+<h3 class="fn" id="isPrefiltered"><a name="isPrefiltered"></a><span class="type">bool</span> GenericProposalModel::<span class="name">isPrefiltered</span>(const <span class="type">QString</span> &amp;<i>prefix</i>) const</h3>
+<!-- @@@isPrefiltered -->
+<!-- $$$isSortable[overload1]$$$isSortableconstQString& -->
+<h3 class="fn" id="isSortable"><a name="isSortable"></a><code>[virtual] </code><span class="type">bool</span> GenericProposalModel::<span class="name">isSortable</span>(const <span class="type">QString</span> &amp;<i>prefix</i>) const</h3>
+<!-- @@@isSortable -->
+<!-- $$$keepPerfectMatch[overload1]$$$keepPerfectMatchAssistReason -->
+<h3 class="fn" id="keepPerfectMatch"><a name="keepPerfectMatch"></a><code>[virtual] </code><span class="type">bool</span> GenericProposalModel::<span class="name">keepPerfectMatch</span>(<span class="type"><a href="texteditor.html#AssistReason-enum">AssistReason</a></span> <i>reason</i>) const</h3>
+<!-- @@@keepPerfectMatch -->
+<!-- $$$loadContent[overload1]$$$loadContentconstQList<AssistProposalItemInterface*>& -->
+<h3 class="fn" id="loadContent"><a name="loadContent"></a><span class="type">void</span> GenericProposalModel::<span class="name">loadContent</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="texteditor-assistproposaliteminterface.html">AssistProposalItemInterface</a></span> *&gt; &amp;<i>items</i>)</h3>
+<!-- @@@loadContent -->
+<!-- $$$persistentId[overload1]$$$persistentIdint -->
+<h3 class="fn" id="persistentId"><a name="persistentId"></a><code>[virtual] </code><span class="type">int</span> GenericProposalModel::<span class="name">persistentId</span>(<span class="type">int</span> <i>index</i>) const</h3>
+<!-- @@@persistentId -->
+<!-- $$$proposalItem[overload1]$$$proposalItemint -->
+<h3 class="fn" id="proposalItem"><a name="proposalItem"></a><code>[virtual] </code><span class="type"><a href="texteditor-assistproposaliteminterface.html">AssistProposalItemInterface</a></span> *GenericProposalModel::<span class="name">proposalItem</span>(<span class="type">int</span> <i>index</i>) const</h3>
+<!-- @@@proposalItem -->
+<!-- $$$proposalPrefix[overload1]$$$proposalPrefix -->
+<h3 class="fn" id="proposalPrefix"><a name="proposalPrefix"></a><code>[virtual] </code><span class="type">QString</span> GenericProposalModel::<span class="name">proposalPrefix</span>() const</h3>
+<!-- @@@proposalPrefix -->
+<!-- $$$removeDuplicates[overload1]$$$removeDuplicates -->
+<h3 class="fn" id="removeDuplicates"><a name="removeDuplicates"></a><code>[virtual] </code><span class="type">void</span> GenericProposalModel::<span class="name">removeDuplicates</span>()</h3>
+<!-- @@@removeDuplicates -->
+<!-- $$$reset[overload1]$$$reset -->
+<h3 class="fn" id="reset"><a name="reset"></a><code>[override virtual] </code><span class="type">void</span> GenericProposalModel::<span class="name">reset</span>()</h3>
+<!-- @@@reset -->
+<!-- $$$setPrefilterPrefix[overload1]$$$setPrefilterPrefixconstQString& -->
+<h3 class="fn" id="setPrefilterPrefix"><a name="setPrefilterPrefix"></a><span class="type">void</span> GenericProposalModel::<span class="name">setPrefilterPrefix</span>(const <span class="type">QString</span> &amp;<i>prefix</i>)</h3>
+<!-- @@@setPrefilterPrefix -->
+<!-- $$$size[overload1]$$$size -->
+<h3 class="fn" id="size"><a name="size"></a><code>[override virtual] </code><span class="type">int</span> GenericProposalModel::<span class="name">size</span>() const</h3>
+<!-- @@@size -->
+<!-- $$$sort[overload1]$$$sortconstQString& -->
+<h3 class="fn" id="sort"><a name="sort"></a><code>[virtual] </code><span class="type">void</span> GenericProposalModel::<span class="name">sort</span>(const <span class="type">QString</span> &amp;<i>prefix</i>)</h3>
+<!-- @@@sort -->
+<!-- $$$supportsPrefixExpansion[overload1]$$$supportsPrefixExpansion -->
+<h3 class="fn" id="supportsPrefixExpansion"><a name="supportsPrefixExpansion"></a><code>[virtual] </code><span class="type">bool</span> GenericProposalModel::<span class="name">supportsPrefixExpansion</span>() const</h3>
+<!-- @@@supportsPrefixExpansion -->
+<!-- $$$text[overload1]$$$textint -->
+<h3 class="fn" id="text"><a name="text"></a><code>[override virtual] </code><span class="type">QString</span> GenericProposalModel::<span class="name">text</span>(<span class="type">int</span> <i>index</i>) const</h3>
+<!-- @@@text -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

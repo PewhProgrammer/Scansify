@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>TrieNode Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >TrieNode</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">TrieNode Class</h1>
+<span class="small-subtitle">(<a href="qmljs-persistenttrie-trienode.html">QmlJS::PersistentTrie::TrieNode</a>)<br/></span>
+<ul>
+<li><a href="qmljs-persistenttrie-trienode-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#CTrie-typedef">CTrie</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#TrieNode">TrieNode</a></b>(const QString &amp;<i>pre</i> = QString(), QList&lt;Ptr&gt; <i>post</i> = QList&lt;Ptr&gt; ())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#TrieNode-1">TrieNode</a></b>(const TrieNode &amp;<i>o</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#complete">complete</a></b>(QStringList &amp;<i>results</i>, const Ptr &amp;<i>trie</i>, const QString &amp;<i>root</i>, const QString &amp;<i>base</i> = QString(), LookupFlags <i>flags</i> = LookupFlags( CaseInsensitive | Partial ))</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#contains">contains</a></b>(const Ptr &amp;<i>trie</i>, const QString &amp;<i>value</i>, LookupFlags <i>flags</i> = LookupFlags( 0 ))</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Ptr </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#create">create</a></b>(const QString &amp;<i>pre</i> = QString(), QList&lt;Ptr&gt; <i>post</i> = QList&lt;Ptr&gt; ())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QDebug &amp;</td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#describe">describe</a></b>(QDebug &amp;<i>dbg</i>, const Ptr &amp;<i>trie</i>, int <i>indent</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Ptr </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#insertF">insertF</a></b>(const Ptr &amp;<i>trie</i>, const QString &amp;<i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> std::pair&lt;Ptr, int&gt; </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#intersectF">intersectF</a></b>(const Ptr &amp;<i>v1</i>, const Ptr &amp;<i>v2</i>, int <i>index1</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#isSame">isSame</a></b>(const Ptr &amp;<i>trie1</i>, const Ptr &amp;<i>trie2</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> std::pair&lt;Ptr, int&gt; </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#mergeF">mergeF</a></b>(const Ptr &amp;<i>v1</i>, const Ptr &amp;<i>v2</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QDebug &amp;</td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#printStrings">printStrings</a></b>(QDebug &amp;<i>dbg</i>, const Ptr &amp;<i>trie</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Ptr </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#replaceF">replaceF</a></b>(const Ptr &amp;<i>trie</i>, const QHash&lt;QString, QString&gt; &amp;<i>replacements</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="qmljs-persistenttrie-trienode.html#stringList">stringList</a></b>(const Ptr &amp;<i>trie</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$CTrie -->
+<h3 class="fn" id="CTrie-typedef"><a name="CTrie-typedef"></a>typedef TrieNode::<span class="name">CTrie</span></h3>
+<!-- @@@CTrie -->
+<!-- $$$Ptr -->
+<h3 class="fn" id="Ptr-typedef"><a name="Ptr-typedef"></a>typedef TrieNode::<span class="name">Ptr</span></h3>
+<!-- @@@Ptr -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$TrieNode[overload1]$$$TrieNodeconstQString&QList<Ptr> -->
+<h3 class="fn" id="TrieNode"><a name="TrieNode"></a>TrieNode::<span class="name">TrieNode</span>(const <span class="type">QString</span> &amp;<i>pre</i> = QString(), <span class="type">QList</span>&lt;<span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span>&gt; <i>post</i> = QList&lt;Ptr&gt; ())</h3>
+<p>Default constructs an instance of TrieNode.</p><!-- @@@TrieNode -->
+<!-- $$$TrieNode$$$TrieNodeconstTrieNode& -->
+<h3 class="fn" id="TrieNode-1"><a name="TrieNode-1"></a>TrieNode::<span class="name">TrieNode</span>(const <span class="type"><a href="qmljs-persistenttrie-trienode.html#TrieNode">TrieNode</a></span> &amp;<i>o</i>)</h3>
+<p>Copy constructor.</p><!-- @@@TrieNode -->
+<!-- $$$complete[overload1]$$$completeQStringList&constPtr&constQString&constQString&LookupFlags -->
+<h3 class="fn" id="complete"><a name="complete"></a><code>[static] </code><span class="type">void</span> TrieNode::<span class="name">complete</span>(<span class="type">QStringList</span> &amp;<i>results</i>, const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>trie</i>, const <span class="type">QString</span> &amp;<i>root</i>, const <span class="type">QString</span> &amp;<i>base</i> = QString(), <span class="type"><a href="qmljs-persistenttrie.html#LookupFlags-enum">LookupFlags</a></span> <i>flags</i> = LookupFlags( CaseInsensitive | Partial ))</h3>
+<!-- @@@complete -->
+<!-- $$$contains[overload1]$$$containsconstPtr&constQString&LookupFlags -->
+<h3 class="fn" id="contains"><a name="contains"></a><code>[static] </code><span class="type">bool</span> TrieNode::<span class="name">contains</span>(const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>trie</i>, const <span class="type">QString</span> &amp;<i>value</i>, <span class="type"><a href="qmljs-persistenttrie.html#LookupFlags-enum">LookupFlags</a></span> <i>flags</i> = LookupFlags( 0 ))</h3>
+<!-- @@@contains -->
+<!-- $$$create[overload1]$$$createconstQString&QList<Ptr> -->
+<h3 class="fn" id="create"><a name="create"></a><code>[static] </code><span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> TrieNode::<span class="name">create</span>(const <span class="type">QString</span> &amp;<i>pre</i> = QString(), <span class="type">QList</span>&lt;<span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span>&gt; <i>post</i> = QList&lt;Ptr&gt; ())</h3>
+<!-- @@@create -->
+<!-- $$$describe[overload1]$$$describeQDebug&constPtr&int -->
+<h3 class="fn" id="describe"><a name="describe"></a><code>[static] </code><span class="type">QDebug</span> &amp;TrieNode::<span class="name">describe</span>(<span class="type">QDebug</span> &amp;<i>dbg</i>, const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>trie</i>, <span class="type">int</span> <i>indent</i>)</h3>
+<!-- @@@describe -->
+<!-- $$$insertF[overload1]$$$insertFconstPtr&constQString& -->
+<h3 class="fn" id="insertF"><a name="insertF"></a><code>[static] </code><span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> TrieNode::<span class="name">insertF</span>(const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>trie</i>, const <span class="type">QString</span> &amp;<i>value</i>)</h3>
+<!-- @@@insertF -->
+<!-- $$$intersectF[overload1]$$$intersectFconstPtr&constPtr&int -->
+<h3 class="fn" id="intersectF"><a name="intersectF"></a><code>[static] </code><span class="type">std::pair</span>&lt;<span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span>, <span class="type">int</span>&gt; TrieNode::<span class="name">intersectF</span>(const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>v1</i>, const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>v2</i>, <span class="type">int</span> <i>index1</i> = 0)</h3>
+<!-- @@@intersectF -->
+<!-- $$$isSame[overload1]$$$isSameconstPtr&constPtr& -->
+<h3 class="fn" id="isSame"><a name="isSame"></a><code>[static] </code><span class="type">bool</span> TrieNode::<span class="name">isSame</span>(const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>trie1</i>, const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>trie2</i>)</h3>
+<!-- @@@isSame -->
+<!-- $$$mergeF[overload1]$$$mergeFconstPtr&constPtr& -->
+<h3 class="fn" id="mergeF"><a name="mergeF"></a><code>[static] </code><span class="type">std::pair</span>&lt;<span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span>, <span class="type">int</span>&gt; TrieNode::<span class="name">mergeF</span>(const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>v1</i>, const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>v2</i>)</h3>
+<!-- @@@mergeF -->
+<!-- $$$printStrings[overload1]$$$printStringsQDebug&constPtr& -->
+<h3 class="fn" id="printStrings"><a name="printStrings"></a><code>[static] </code><span class="type">QDebug</span> &amp;TrieNode::<span class="name">printStrings</span>(<span class="type">QDebug</span> &amp;<i>dbg</i>, const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>trie</i>)</h3>
+<!-- @@@printStrings -->
+<!-- $$$replaceF[overload1]$$$replaceFconstPtr&constQHash<QString,QString>& -->
+<h3 class="fn" id="replaceF"><a name="replaceF"></a><code>[static] </code><span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> TrieNode::<span class="name">replaceF</span>(const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>trie</i>, const <span class="type">QHash</span>&lt;<span class="type">QString</span>, <span class="type">QString</span>&gt; &amp;<i>replacements</i>)</h3>
+<!-- @@@replaceF -->
+<!-- $$$stringList[overload1]$$$stringListconstPtr& -->
+<h3 class="fn" id="stringList"><a name="stringList"></a><code>[static] </code><span class="type">QStringList</span> TrieNode::<span class="name">stringList</span>(const <span class="type"><a href="qmljs-persistenttrie-trienode.html#Ptr-typedef">Ptr</a></span> &amp;<i>trie</i>)</h3>
+<!-- @@@stringList -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

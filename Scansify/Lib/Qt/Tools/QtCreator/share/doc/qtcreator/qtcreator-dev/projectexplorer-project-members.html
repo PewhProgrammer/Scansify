@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- project.cpp -->
+  <title>List of All Members for Project | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Project</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">List of All Members for Project</h1>
+<p>This is the complete list of members for <a href="projectexplorer-project.html">ProjectExplorer::Project</a>, including inherited members.</p>
+<div class="table"><table class="propsummary">
+<tr><td class="topAlign"><ul>
+<li class="fn">enum <span class="name"><b><a href="projectexplorer-project.html#FilesMode-enum">FilesMode</a></b></span></li>
+<li class="fn">enum <span class="name"><b><a href="projectexplorer-project.html#ModelRoles-enum">ModelRoles</a></b></span></li>
+<li class="fn">enum <span class="name"><b><a href="projectexplorer-project.html#RestoreResult-enum">RestoreResult</a></b></span></li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#Project">Project</a></b></span>(const QString &amp;, const Utils::FileName &amp;, const ProjectDocument::ProjectCallback &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#dtor.Project">~Project</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#aboutToRemoveTarget">aboutToRemoveTarget</a></b></span>(ProjectExplorer::Target *)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#aboutToSaveSettings">aboutToSaveSettings</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#activeTarget">activeTarget</a></b></span>() const : Target *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#activeTargetChanged">activeTargetChanged</a></b></span>(ProjectExplorer::Target *)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#addProjectLanguage">addProjectLanguage</a></b></span>(Core::Id )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#addTarget">addTarget</a></b></span>(Target *)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#addedTarget">addedTarget</a></b></span>(ProjectExplorer::Target *)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#buildConfigurationEnabledChanged">buildConfigurationEnabledChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#buildDirectoryChanged">buildDirectoryChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#configureAsExampleProject">configureAsExampleProject</a></b></span>(const QSet&lt;Core::Id&gt; &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#containerNode">containerNode</a></b></span>() const : ContainerNode *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#copySteps">copySteps</a></b></span>(Target *, Target *) : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#createTarget">createTarget</a></b></span>(Kit *) : Target *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#displayName">displayName</a></b></span>() const : QString</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#displayNameChanged">displayNameChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#document">document</a></b></span>() const : Core::IDocument *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#editorConfiguration">editorConfiguration</a></b></span>() const : EditorConfiguration *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#environmentChanged">environmentChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#fileListChanged">fileListChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#files">files</a></b></span>(FilesMode , const std::function&lt;bool( const Node * ) &gt; &amp;) const : QStringList</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#filesGeneratedFrom">filesGeneratedFrom</a></b></span>(const QString &amp;) const : QStringList</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#fromMap">fromMap</a></b></span>(const QVariantMap &amp;, QString *) : RestoreResult</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#hasActiveBuildSettings">hasActiveBuildSettings</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#id">id</a></b></span>() const : Core::Id</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#knowsAllBuildExecutables">knowsAllBuildExecutables</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#macroExpander">macroExpander</a></b></span>() const : Utils::MacroExpander *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#makeUnique">makeUnique</a></b></span>(const QString &amp;, const QStringList &amp;) : QString</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#namedSettings">namedSettings</a></b></span>(const QString &amp;) const : QVariant</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#needsConfiguration">needsConfiguration</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#needsSpecialDeployment">needsSpecialDeployment</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#parsingFinished">parsingFinished</a></b></span>()</li>
+</ul></td><td class="topAlign"><ul>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#preferredKitPredicate">preferredKitPredicate</a></b></span>() const : Kit::Predicate</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#projectContext">projectContext</a></b></span>() const : Core::Context</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#projectContextUpdated">projectContextUpdated</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#projectDirectory">projectDirectory</a></b></span>() const : Utils::FileName</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#projectDirectory-1">projectDirectory</a></b></span>(const Utils::FileName &amp;) : Utils::FileName</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#projectFilePath">projectFilePath</a></b></span>() const : Utils::FileName</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#projectImporter">projectImporter</a></b></span>() const : ProjectImporter *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#projectLanguages">projectLanguages</a></b></span>() const : Core::Context</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#projectLanguagesUpdated">projectLanguagesUpdated</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#projectLoaded">projectLoaded</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#removeProjectLanguage">removeProjectLanguage</a></b></span>(Core::Id )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#removeTarget">removeTarget</a></b></span>(Target *) : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#removedTarget">removedTarget</a></b></span>(ProjectExplorer::Target *)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#requiredKitPredicate">requiredKitPredicate</a></b></span>() const : Kit::Predicate</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#requiresTargetPanel">requiresTargetPanel</a></b></span>() const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#restoreSettings">restoreSettings</a></b></span>(QString *) : RestoreResult</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#restoreTarget">restoreTarget</a></b></span>(const QVariantMap &amp;) : Target *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#rootProjectNode">rootProjectNode</a></b></span>() const : ProjectNode *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#saveSettings">saveSettings</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#setDisplayName">setDisplayName</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#setId">setId</a></b></span>(Core::Id )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#setNamedSettings">setNamedSettings</a></b></span>(const QString &amp;, const QVariant &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#setPreferredKitPredicate">setPreferredKitPredicate</a></b></span>(const Kit::Predicate &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#setProjectContext">setProjectContext</a></b></span>(Core::Context )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#setProjectLanguage">setProjectLanguage</a></b></span>(Core::Id , bool )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#setProjectLanguages">setProjectLanguages</a></b></span>(Core::Context )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#setRequiredKitPredicate">setRequiredKitPredicate</a></b></span>(const Kit::Predicate &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#setRootProjectNode">setRootProjectNode</a></b></span>(ProjectNode *)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#settingsLoaded">settingsLoaded</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#setup">setup</a></b></span>(QList&lt;const BuildInfo *&gt; )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#setupTarget">setupTarget</a></b></span>(Target *) : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#supportsKit">supportsKit</a></b></span>(Kit *, QString *) const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#target">target</a></b></span>(Core::Id ) const : Target *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#target-1">target</a></b></span>(Kit *) const : Target *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#targets">targets</a></b></span>() const : QList&lt;Target *&gt;</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-project.html#toMap">toMap</a></b></span>() const : QVariantMap</li>
+</ul>
+</td></tr>
+</table></div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

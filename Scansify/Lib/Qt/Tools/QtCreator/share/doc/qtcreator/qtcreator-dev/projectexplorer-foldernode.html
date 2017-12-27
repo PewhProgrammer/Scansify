@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- projectnodes.cpp -->
+  <title>FolderNode Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >FolderNode</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">FolderNode Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-foldernode.html">ProjectExplorer::FolderNode</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;FolderNode&gt;</span>
+</td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="projectexplorer-node.html">ProjectExplorer::Node</a></td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="projectexplorer-projectnode.html">ProjectExplorer::ProjectNode</a> and <a href="projectexplorer-virtualfoldernode.html">ProjectExplorer::VirtualFolderNode</a></p>
+</td></tr></table></div><ul>
+<li><a href="projectexplorer-foldernode-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode-addnewinformation.html">AddNewInformation</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#FolderNode">FolderNode</a></b>(const Utils::FileName &amp;<i>folderPath</i>, NodeType <i>nodeType</i> = NodeType::Folder, const QString &amp;<i>displayName</i> = QString(), const QByteArray &amp;<i>id</i> = {})</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#dtor.FolderNode">~FolderNode</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#addFileFilter">addFileFilter</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#addFiles">addFiles</a></b>(const QStringList &amp;<i>filePaths</i>, QStringList *<i>notAdded</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#addNestedNode">addNestedNode</a></b>(FileNode *<i>fileNode</i>, const Utils::FileName &amp;<i>overrideBaseDir</i> = Utils::FileName(), const FolderNodeFactory &amp;<i>factory</i> = []( const Utils::FileName &amp; fn ) { return new FolderNode( fn ) ; })</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#addNestedNodes">addNestedNodes</a></b>(const QList&lt;FileNode *&gt; &amp;<i>files</i>, const Utils::FileName &amp;<i>overrideBaseDir</i> = Utils::FileName(), const FolderNodeFactory &amp;<i>factory</i> = []( const Utils::FileName &amp; fn ) { return new FolderNode( fn ) ; })</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual AddNewInformation </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#addNewInformation">addNewInformation</a></b>(const QStringList &amp;<i>files</i>, Node *<i>context</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#addNode">addNode</a></b>(Node *<i>node</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#canRenameFile">canRenameFile</a></b>(const QString &amp;<i>filePath</i>, const QString &amp;<i>newFilePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#compress">compress</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#deleteFiles">deleteFiles</a></b>(const QStringList &amp;<i>filePaths</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> FileNode *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#fileNode">fileNode</a></b>(const Utils::FileName &amp;<i>file</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;FileNode *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#fileNodes">fileNodes</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Node *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#findNode">findNode</a></b>(const std::function&lt;bool( Node * ) &gt; &amp;<i>filter</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;Node *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#findNodes">findNodes</a></b>(const std::function&lt;bool( Node * ) &gt; &amp;<i>filter</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;FolderNode *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#folderNodes">folderNodes</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#forEachGenericNode">forEachGenericNode</a></b>(const std::function&lt;void( Node * ) &gt; &amp;<i>genericTask</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#forEachNode">forEachNode</a></b>(const std::function&lt;void( FileNode * ) &gt; &amp;<i>fileTask</i>, const std::function&lt;void( FolderNode * ) &gt; &amp;<i>folderTask</i> = {}, const std::function&lt;bool( const FolderNode * ) &gt; &amp;<i>folderFilterTask</i> = {}) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QIcon </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#icon">icon</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#isAncesterOf">isAncesterOf</a></b>(Node *<i>n</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#isEmpty">isEmpty</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const QList&lt;Node *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#nodes">nodes</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#removeFiles">removeFiles</a></b>(const QStringList &amp;<i>filePaths</i>, QStringList *<i>notRemoved</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#removeNode">removeNode</a></b>(Node *<i>node</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#renameFile">renameFile</a></b>(const QString &amp;<i>filePath</i>, const QString &amp;<i>newFilePath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#replaceSubtree">replaceSubtree</a></b>(Node *<i>oldNode</i>, Node *<i>newNode</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#setDisplayName">setDisplayName</a></b>(const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#setIcon">setIcon</a></b>(const QIcon &amp;<i>icon</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#showInSimpleTree">showInSimpleTree</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#showWhenEmpty">showWhenEmpty</a></b>() const</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual FolderNode *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#asFolderNode">asFolderNode</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const FolderNode *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#asFolderNode-1">asFolderNode</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#displayName">displayName</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-foldernode.html#supportsAction">supportsAction</a></b>(ProjectAction <i>action</i>, Node *<i>node</i>) const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">27 public functions inherited from <a href="projectexplorer-node.html#public-functions">ProjectExplorer::Node</a></li>
+</ul>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">3 static public members inherited from <a href="projectexplorer-node.html#static-public-members">ProjectExplorer::Node</a></li>
+<li class="fn">2 protected functions inherited from <a href="projectexplorer-node.html#protected-functions">ProjectExplorer::Node</a></li>
+</ul>
+<a name="details"></a>
+<!-- $$$FolderNode-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>In-memory presentation of a folder. Note that the node itself + all children (files and folders) are &quot;managed&quot; by the owning project.</p>
+</div>
+<p><b>See also </b><a href="projectexplorer-filenode.html">ProjectExplorer::FileNode</a> and <a href="projectexplorer-projectnode.html">ProjectExplorer::ProjectNode</a>.</p>
+<!-- @@@FolderNode -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$FolderNode[overload1]$$$FolderNodeconstUtils::FileName&NodeTypeconstQString&constQByteArray& -->
+<h3 class="fn" id="FolderNode"><a name="FolderNode"></a>FolderNode::<span class="name">FolderNode</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>folderPath</i>, <span class="type"><a href="projectexplorer.html#NodeType-enum">NodeType</a></span> <i>nodeType</i> = NodeType::Folder, const <span class="type">QString</span> &amp;<i>displayName</i> = QString(), const <span class="type">QByteArray</span> &amp;<i>id</i> = {})</h3>
+<p>Default constructs an instance of FolderNode.</p><!-- @@@FolderNode -->
+<!-- $$$~FolderNode[overload1]$$$~FolderNode -->
+<h3 class="fn" id="dtor.FolderNode"><a name="dtor.FolderNode"></a>FolderNode::<span class="name">~FolderNode</span>()</h3>
+<p>Destroys the instance of FolderNode.</p><!-- @@@~FolderNode -->
+<!-- $$$addFileFilter[overload1]$$$addFileFilter -->
+<h3 class="fn" id="addFileFilter"><a name="addFileFilter"></a><code>[virtual] </code><span class="type">QString</span> FolderNode::<span class="name">addFileFilter</span>() const</h3>
+<!-- @@@addFileFilter -->
+<!-- $$$addFiles[overload1]$$$addFilesconstQStringList&QStringList* -->
+<h3 class="fn" id="addFiles"><a name="addFiles"></a><code>[virtual] </code><span class="type">bool</span> FolderNode::<span class="name">addFiles</span>(const <span class="type">QStringList</span> &amp;<i>filePaths</i>, <span class="type">QStringList</span> *<i>notAdded</i> = 0)</h3>
+<!-- @@@addFiles -->
+<!-- $$$addNestedNode[overload1]$$$addNestedNodeFileNode*constUtils::FileName&constFolderNodeFactory& -->
+<h3 class="fn" id="addNestedNode"><a name="addNestedNode"></a><span class="type">void</span> FolderNode::<span class="name">addNestedNode</span>(<span class="type"><a href="projectexplorer-filenode.html">FileNode</a></span> *<i>fileNode</i>, const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>overrideBaseDir</i> = Utils::FileName(), const <span class="type">FolderNodeFactory</span> &amp;<i>factory</i> = []( const Utils::FileName &amp; fn ) { return new FolderNode( fn ) ; })</h3>
+<!-- @@@addNestedNode -->
+<!-- $$$addNestedNodes[overload1]$$$addNestedNodesconstQList<FileNode*>&constUtils::FileName&constFolderNodeFactory& -->
+<h3 class="fn" id="addNestedNodes"><a name="addNestedNodes"></a><span class="type">void</span> FolderNode::<span class="name">addNestedNodes</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-filenode.html">FileNode</a></span> *&gt; &amp;<i>files</i>, const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>overrideBaseDir</i> = Utils::FileName(), const <span class="type">FolderNodeFactory</span> &amp;<i>factory</i> = []( const Utils::FileName &amp; fn ) { return new FolderNode( fn ) ; })</h3>
+<!-- @@@addNestedNodes -->
+<!-- $$$addNewInformation[overload1]$$$addNewInformationconstQStringList&Node* -->
+<h3 class="fn" id="addNewInformation"><a name="addNewInformation"></a><code>[virtual] </code><span class="type"><a href="projectexplorer-foldernode-addnewinformation.html">AddNewInformation</a></span> FolderNode::<span class="name">addNewInformation</span>(const <span class="type">QStringList</span> &amp;<i>files</i>, <span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> *<i>context</i>) const</h3>
+<!-- @@@addNewInformation -->
+<!-- $$$addNode[overload1]$$$addNodeNode* -->
+<h3 class="fn" id="addNode"><a name="addNode"></a><span class="type">void</span> FolderNode::<span class="name">addNode</span>(<span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> *<i>node</i>)</h3>
+<p>Adds a node specified by <i>node</i> to the internal list of nodes.</p>
+<!-- @@@addNode -->
+<!-- $$$asFolderNode[overload1]$$$asFolderNode -->
+<h3 class="fn" id="asFolderNode"><a name="asFolderNode"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-foldernode.html#FolderNode">FolderNode</a></span> *FolderNode::<span class="name">asFolderNode</span>()</h3>
+<!-- @@@asFolderNode -->
+<!-- $$$asFolderNode$$$asFolderNode -->
+<h3 class="fn" id="asFolderNode-1"><a name="asFolderNode-1"></a><code>[override virtual] </code>const <span class="type"><a href="projectexplorer-foldernode.html#FolderNode">FolderNode</a></span> *FolderNode::<span class="name">asFolderNode</span>() const</h3>
+<!-- @@@asFolderNode -->
+<!-- $$$canRenameFile[overload1]$$$canRenameFileconstQString&constQString& -->
+<h3 class="fn" id="canRenameFile"><a name="canRenameFile"></a><code>[virtual] </code><span class="type">bool</span> FolderNode::<span class="name">canRenameFile</span>(const <span class="type">QString</span> &amp;<i>filePath</i>, const <span class="type">QString</span> &amp;<i>newFilePath</i>)</h3>
+<!-- @@@canRenameFile -->
+<!-- $$$compress[overload1]$$$compress -->
+<h3 class="fn" id="compress"><a name="compress"></a><span class="type">void</span> FolderNode::<span class="name">compress</span>()</h3>
+<!-- @@@compress -->
+<!-- $$$deleteFiles[overload1]$$$deleteFilesconstQStringList& -->
+<h3 class="fn" id="deleteFiles"><a name="deleteFiles"></a><code>[virtual] </code><span class="type">bool</span> FolderNode::<span class="name">deleteFiles</span>(const <span class="type">QStringList</span> &amp;<i>filePaths</i>)</h3>
+<!-- @@@deleteFiles -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><code>[override virtual] </code><span class="type">QString</span> FolderNode::<span class="name">displayName</span>() const</h3>
+<p>Reimplemented from <a href="projectexplorer-node.html#displayName">Node::displayName</a>().</p>
+<p>Contains the display name that should be used in a view.</p>
+<p><b>See also </b><a href="projectexplorer-foldernode.html#setDisplayName">setDisplayName</a>() and setFolderName().</p>
+<!-- @@@displayName -->
+<!-- $$$fileNode[overload1]$$$fileNodeconstUtils::FileName& -->
+<h3 class="fn" id="fileNode"><a name="fileNode"></a><span class="type"><a href="projectexplorer-filenode.html">FileNode</a></span> *FolderNode::<span class="name">fileNode</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>file</i>) const</h3>
+<!-- @@@fileNode -->
+<!-- $$$fileNodes[overload1]$$$fileNodes -->
+<h3 class="fn" id="fileNodes"><a name="fileNodes"></a><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-filenode.html">FileNode</a></span> *&gt; FolderNode::<span class="name">fileNodes</span>() const</h3>
+<!-- @@@fileNodes -->
+<!-- $$$findNode[overload1]$$$findNodeconststd::function<bool(Node*)>& -->
+<h3 class="fn" id="findNode"><a name="findNode"></a><span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> *FolderNode::<span class="name">findNode</span>(const <span class="type">std::function</span>&lt;<span class="type">bool</span>( <span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> * ) &gt; &amp;<i>filter</i>)</h3>
+<!-- @@@findNode -->
+<!-- $$$findNodes[overload1]$$$findNodesconststd::function<bool(Node*)>& -->
+<h3 class="fn" id="findNodes"><a name="findNodes"></a><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> *&gt; FolderNode::<span class="name">findNodes</span>(const <span class="type">std::function</span>&lt;<span class="type">bool</span>( <span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> * ) &gt; &amp;<i>filter</i>)</h3>
+<!-- @@@findNodes -->
+<!-- $$$folderNodes[overload1]$$$folderNodes -->
+<h3 class="fn" id="folderNodes"><a name="folderNodes"></a><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-foldernode.html#FolderNode">FolderNode</a></span> *&gt; FolderNode::<span class="name">folderNodes</span>() const</h3>
+<!-- @@@folderNodes -->
+<!-- $$$forEachGenericNode[overload1]$$$forEachGenericNodeconststd::function<void(Node*)>& -->
+<h3 class="fn" id="forEachGenericNode"><a name="forEachGenericNode"></a><span class="type">void</span> FolderNode::<span class="name">forEachGenericNode</span>(const <span class="type">std::function</span>&lt;<span class="type">void</span>( <span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> * ) &gt; &amp;<i>genericTask</i>) const</h3>
+<!-- @@@forEachGenericNode -->
+<!-- $$$forEachNode[overload1]$$$forEachNodeconststd::function<void(FileNode*)>&conststd::function<void(FolderNode*)>&conststd::function<bool(constFolderNode*)>& -->
+<h3 class="fn" id="forEachNode"><a name="forEachNode"></a><span class="type">void</span> FolderNode::<span class="name">forEachNode</span>(const <span class="type">std::function</span>&lt;<span class="type">void</span>( <span class="type"><a href="projectexplorer-filenode.html">FileNode</a></span> * ) &gt; &amp;<i>fileTask</i>, const <span class="type">std::function</span>&lt;<span class="type">void</span>( <span class="type"><a href="projectexplorer-foldernode.html#FolderNode">FolderNode</a></span> * ) &gt; &amp;<i>folderTask</i> = {}, const <span class="type">std::function</span>&lt;<span class="type">bool</span>( const <span class="type"><a href="projectexplorer-foldernode.html#FolderNode">FolderNode</a></span> * ) &gt; &amp;<i>folderFilterTask</i> = {}) const</h3>
+<!-- @@@forEachNode -->
+<!-- $$$icon[overload1]$$$icon -->
+<h3 class="fn" id="icon"><a name="icon"></a><span class="type">QIcon</span> FolderNode::<span class="name">icon</span>() const</h3>
+<p>Contains the icon that should be used in a view. Default is the directory icon (QStyle::S_PDirIcon). s<i>setIcon()</i></p>
+<p><b>See also </b><a href="projectexplorer-foldernode.html#setIcon">setIcon</a>().</p>
+<!-- @@@icon -->
+<!-- $$$isAncesterOf[overload1]$$$isAncesterOfNode* -->
+<h3 class="fn" id="isAncesterOf"><a name="isAncesterOf"></a><span class="type">bool</span> FolderNode::<span class="name">isAncesterOf</span>(<span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> *<i>n</i>)</h3>
+<!-- @@@isAncesterOf -->
+<!-- $$$isEmpty[overload1]$$$isEmpty -->
+<h3 class="fn" id="isEmpty"><a name="isEmpty"></a><span class="type">bool</span> FolderNode::<span class="name">isEmpty</span>() const</h3>
+<!-- @@@isEmpty -->
+<!-- $$$nodes[overload1]$$$nodes -->
+<h3 class="fn" id="nodes"><a name="nodes"></a>const <span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> *&gt; FolderNode::<span class="name">nodes</span>() const</h3>
+<!-- @@@nodes -->
+<!-- $$$removeFiles[overload1]$$$removeFilesconstQStringList&QStringList* -->
+<h3 class="fn" id="removeFiles"><a name="removeFiles"></a><code>[virtual] </code><span class="type">bool</span> FolderNode::<span class="name">removeFiles</span>(const <span class="type">QStringList</span> &amp;<i>filePaths</i>, <span class="type">QStringList</span> *<i>notRemoved</i> = 0)</h3>
+<!-- @@@removeFiles -->
+<!-- $$$removeNode[overload1]$$$removeNodeNode* -->
+<h3 class="fn" id="removeNode"><a name="removeNode"></a><span class="type">void</span> FolderNode::<span class="name">removeNode</span>(<span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> *<i>node</i>)</h3>
+<p>Removes a node specified by <i>node</i> from the internal list of nodes. The node object itself is not deleted.</p>
+<!-- @@@removeNode -->
+<!-- $$$renameFile[overload1]$$$renameFileconstQString&constQString& -->
+<h3 class="fn" id="renameFile"><a name="renameFile"></a><code>[virtual] </code><span class="type">bool</span> FolderNode::<span class="name">renameFile</span>(const <span class="type">QString</span> &amp;<i>filePath</i>, const <span class="type">QString</span> &amp;<i>newFilePath</i>)</h3>
+<!-- @@@renameFile -->
+<!-- $$$replaceSubtree[overload1]$$$replaceSubtreeNode*Node* -->
+<h3 class="fn" id="replaceSubtree"><a name="replaceSubtree"></a><span class="type">bool</span> FolderNode::<span class="name">replaceSubtree</span>(<span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> *<i>oldNode</i>, <span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> *<i>newNode</i>)</h3>
+<!-- @@@replaceSubtree -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" id="setDisplayName"><a name="setDisplayName"></a><span class="type">void</span> FolderNode::<span class="name">setDisplayName</span>(const <span class="type">QString</span> &amp;<i>name</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-foldernode.html#displayName">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setIcon[overload1]$$$setIconconstQIcon& -->
+<h3 class="fn" id="setIcon"><a name="setIcon"></a><span class="type">void</span> FolderNode::<span class="name">setIcon</span>(const <span class="type">QIcon</span> &amp;<i>icon</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-foldernode.html#icon">icon</a>().</p>
+<!-- @@@setIcon -->
+<!-- $$$showInSimpleTree[overload1]$$$showInSimpleTree -->
+<h3 class="fn" id="showInSimpleTree"><a name="showInSimpleTree"></a><code>[virtual] </code><span class="type">bool</span> FolderNode::<span class="name">showInSimpleTree</span>() const</h3>
+<!-- @@@showInSimpleTree -->
+<!-- $$$showWhenEmpty[overload1]$$$showWhenEmpty -->
+<h3 class="fn" id="showWhenEmpty"><a name="showWhenEmpty"></a><code>[virtual] </code><span class="type">bool</span> FolderNode::<span class="name">showWhenEmpty</span>() const</h3>
+<!-- @@@showWhenEmpty -->
+<!-- $$$supportsAction[overload1]$$$supportsActionProjectActionNode* -->
+<h3 class="fn" id="supportsAction"><a name="supportsAction"></a><code>[override virtual] </code><span class="type">bool</span> FolderNode::<span class="name">supportsAction</span>(<span class="type"><a href="projectexplorer.html#ProjectAction-enum">ProjectAction</a></span> <i>action</i>, <span class="type"><a href="projectexplorer-node.html#Node">Node</a></span> *<i>node</i>) const</h3>
+<!-- @@@supportsAction -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

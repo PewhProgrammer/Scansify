@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>OutputWindow Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >OutputWindow</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">OutputWindow Class</h1>
+<span class="small-subtitle">(<a href="core-outputwindow.html">Core::OutputWindow</a>)<br/></span>
+<ul>
+<li><a href="core-outputwindow-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#OutputWindow">OutputWindow</a></b>(Context <i>context</i>, QWidget *<i>parent</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#dtor.OutputWindow">~OutputWindow</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#appendMessage">appendMessage</a></b>(const QString &amp;<i>out</i>, Utils::OutputFormat <i>format</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#appendText">appendText</a></b>(const QString &amp;<i>text</i>, const QTextCharFormat &amp;<i>format</i> = QTextCharFormat())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#clear">clear</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> float </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#fontZoom">fontZoom</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::OutputFormatter *</td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#formatter">formatter</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#grayOutOldContent">grayOutOldContent</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#maxLineCount">maxLineCount</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#scrollToBottom">scrollToBottom</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#setBaseFont">setBaseFont</a></b>(const QFont &amp;<i>newFont</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#setFontZoom">setFontZoom</a></b>(float <i>zoom</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#setFormatter">setFormatter</a></b>(Utils::OutputFormatter *<i>formatter</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#setMaxLineCount">setMaxLineCount</a></b>(int <i>count</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#setWheelZoomEnabled">setWheelZoomEnabled</a></b>(bool <i>enabled</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#showEvent">showEvent</a></b>(<i>QShowEvent *</i>) override</td></tr>
+</table></div>
+<a name="public-slots"></a>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#setWordWrapEnabled">setWordWrapEnabled</a></b>(bool <i>wrap</i>)</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#wheelZoom">wheelZoom</a></b>()</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#isScrollbarAtBottom">isScrollbarAtBottom</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#keyPressEvent">keyPressEvent</a></b>(QKeyEvent *<i>ev</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#mouseMoveEvent">mouseMoveEvent</a></b>(QMouseEvent *<i>e</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#mousePressEvent">mousePressEvent</a></b>(QMouseEvent *<i>e</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#mouseReleaseEvent">mouseReleaseEvent</a></b>(QMouseEvent *<i>e</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#resizeEvent">resizeEvent</a></b>(QResizeEvent *<i>e</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-outputwindow.html#wheelEvent">wheelEvent</a></b>(QWheelEvent *<i>e</i>) override</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$OutputWindow[overload1]$$$OutputWindowContextQWidget* -->
+<h3 class="fn" id="OutputWindow"><a name="OutputWindow"></a>OutputWindow::<span class="name">OutputWindow</span>(<span class="type"><a href="core-context.html">Context</a></span> <i>context</i>, <span class="type">QWidget</span> *<i>parent</i> = 0)</h3>
+<p>Default constructs an instance of OutputWindow.</p><!-- @@@OutputWindow -->
+<!-- $$$~OutputWindow[overload1]$$$~OutputWindow -->
+<h3 class="fn" id="dtor.OutputWindow"><a name="dtor.OutputWindow"></a>OutputWindow::<span class="name">~OutputWindow</span>()</h3>
+<p>Destroys the instance of OutputWindow.</p><!-- @@@~OutputWindow -->
+<!-- $$$appendMessage[overload1]$$$appendMessageconstQString&Utils::OutputFormat -->
+<h3 class="fn" id="appendMessage"><a name="appendMessage"></a><span class="type">void</span> OutputWindow::<span class="name">appendMessage</span>(const <span class="type">QString</span> &amp;<i>out</i>, <span class="type"><a href="utils.html#OutputFormat-enum">Utils::OutputFormat</a></span> <i>format</i>)</h3>
+<!-- @@@appendMessage -->
+<!-- $$$appendText[overload1]$$$appendTextconstQString&constQTextCharFormat& -->
+<h3 class="fn" id="appendText"><a name="appendText"></a><span class="type">void</span> OutputWindow::<span class="name">appendText</span>(const <span class="type">QString</span> &amp;<i>text</i>, const <span class="type">QTextCharFormat</span> &amp;<i>format</i> = QTextCharFormat())</h3>
+<!-- @@@appendText -->
+<!-- $$$clear[overload1]$$$clear -->
+<h3 class="fn" id="clear"><a name="clear"></a><span class="type">void</span> OutputWindow::<span class="name">clear</span>()</h3>
+<!-- @@@clear -->
+<!-- $$$fontZoom[overload1]$$$fontZoom -->
+<h3 class="fn" id="fontZoom"><a name="fontZoom"></a><span class="type">float</span> OutputWindow::<span class="name">fontZoom</span>() const</h3>
+<p><b>See also </b><a href="core-outputwindow.html#setFontZoom">setFontZoom</a>().</p>
+<!-- @@@fontZoom -->
+<!-- $$$formatter[overload1]$$$formatter -->
+<h3 class="fn" id="formatter"><a name="formatter"></a><span class="type"><a href="utils-outputformatter.html">Utils::OutputFormatter</a></span> *OutputWindow::<span class="name">formatter</span>() const</h3>
+<p><b>See also </b><a href="core-outputwindow.html#setFormatter">setFormatter</a>().</p>
+<!-- @@@formatter -->
+<!-- $$$grayOutOldContent[overload1]$$$grayOutOldContent -->
+<h3 class="fn" id="grayOutOldContent"><a name="grayOutOldContent"></a><span class="type">void</span> OutputWindow::<span class="name">grayOutOldContent</span>()</h3>
+<!-- @@@grayOutOldContent -->
+<!-- $$$isScrollbarAtBottom[overload1]$$$isScrollbarAtBottom -->
+<h3 class="fn" id="isScrollbarAtBottom"><a name="isScrollbarAtBottom"></a><code>[protected] </code><span class="type">bool</span> OutputWindow::<span class="name">isScrollbarAtBottom</span>() const</h3>
+<!-- @@@isScrollbarAtBottom -->
+<!-- $$$keyPressEvent[overload1]$$$keyPressEventQKeyEvent* -->
+<h3 class="fn" id="keyPressEvent"><a name="keyPressEvent"></a><code>[protected] </code><span class="type">void</span> OutputWindow::<span class="name">keyPressEvent</span>(<span class="type">QKeyEvent</span> *<i>ev</i>)</h3>
+<!-- @@@keyPressEvent -->
+<!-- $$$maxLineCount[overload1]$$$maxLineCount -->
+<h3 class="fn" id="maxLineCount"><a name="maxLineCount"></a><span class="type">int</span> OutputWindow::<span class="name">maxLineCount</span>() const</h3>
+<p><b>See also </b><a href="core-outputwindow.html#setMaxLineCount">setMaxLineCount</a>().</p>
+<!-- @@@maxLineCount -->
+<!-- $$$mouseMoveEvent[overload1]$$$mouseMoveEventQMouseEvent* -->
+<h3 class="fn" id="mouseMoveEvent"><a name="mouseMoveEvent"></a><code>[protected] </code><span class="type">void</span> OutputWindow::<span class="name">mouseMoveEvent</span>(<span class="type">QMouseEvent</span> *<i>e</i>)</h3>
+<!-- @@@mouseMoveEvent -->
+<!-- $$$mousePressEvent[overload1]$$$mousePressEventQMouseEvent* -->
+<h3 class="fn" id="mousePressEvent"><a name="mousePressEvent"></a><code>[protected] </code><span class="type">void</span> OutputWindow::<span class="name">mousePressEvent</span>(<span class="type">QMouseEvent</span> *<i>e</i>)</h3>
+<!-- @@@mousePressEvent -->
+<!-- $$$mouseReleaseEvent[overload1]$$$mouseReleaseEventQMouseEvent* -->
+<h3 class="fn" id="mouseReleaseEvent"><a name="mouseReleaseEvent"></a><code>[protected] </code><span class="type">void</span> OutputWindow::<span class="name">mouseReleaseEvent</span>(<span class="type">QMouseEvent</span> *<i>e</i>)</h3>
+<!-- @@@mouseReleaseEvent -->
+<!-- $$$resizeEvent[overload1]$$$resizeEventQResizeEvent* -->
+<h3 class="fn" id="resizeEvent"><a name="resizeEvent"></a><code>[protected] </code><span class="type">void</span> OutputWindow::<span class="name">resizeEvent</span>(<span class="type">QResizeEvent</span> *<i>e</i>)</h3>
+<!-- @@@resizeEvent -->
+<!-- $$$scrollToBottom[overload1]$$$scrollToBottom -->
+<h3 class="fn" id="scrollToBottom"><a name="scrollToBottom"></a><span class="type">void</span> OutputWindow::<span class="name">scrollToBottom</span>()</h3>
+<!-- @@@scrollToBottom -->
+<!-- $$$setBaseFont[overload1]$$$setBaseFontconstQFont& -->
+<h3 class="fn" id="setBaseFont"><a name="setBaseFont"></a><span class="type">void</span> OutputWindow::<span class="name">setBaseFont</span>(const <span class="type">QFont</span> &amp;<i>newFont</i>)</h3>
+<!-- @@@setBaseFont -->
+<!-- $$$setFontZoom[overload1]$$$setFontZoomfloat -->
+<h3 class="fn" id="setFontZoom"><a name="setFontZoom"></a><span class="type">void</span> OutputWindow::<span class="name">setFontZoom</span>(<span class="type">float</span> <i>zoom</i>)</h3>
+<p><b>See also </b><a href="core-outputwindow.html#fontZoom">fontZoom</a>().</p>
+<!-- @@@setFontZoom -->
+<!-- $$$setFormatter[overload1]$$$setFormatterUtils::OutputFormatter* -->
+<h3 class="fn" id="setFormatter"><a name="setFormatter"></a><span class="type">void</span> OutputWindow::<span class="name">setFormatter</span>(<span class="type"><a href="utils-outputformatter.html">Utils::OutputFormatter</a></span> *<i>formatter</i>)</h3>
+<p><b>See also </b><a href="core-outputwindow.html#formatter">formatter</a>().</p>
+<!-- @@@setFormatter -->
+<!-- $$$setMaxLineCount[overload1]$$$setMaxLineCountint -->
+<h3 class="fn" id="setMaxLineCount"><a name="setMaxLineCount"></a><span class="type">void</span> OutputWindow::<span class="name">setMaxLineCount</span>(<span class="type">int</span> <i>count</i>)</h3>
+<p><b>See also </b><a href="core-outputwindow.html#maxLineCount">maxLineCount</a>().</p>
+<!-- @@@setMaxLineCount -->
+<!-- $$$setWheelZoomEnabled[overload1]$$$setWheelZoomEnabledbool -->
+<h3 class="fn" id="setWheelZoomEnabled"><a name="setWheelZoomEnabled"></a><span class="type">void</span> OutputWindow::<span class="name">setWheelZoomEnabled</span>(<span class="type">bool</span> <i>enabled</i>)</h3>
+<!-- @@@setWheelZoomEnabled -->
+<!-- $$$setWordWrapEnabled[overload1]$$$setWordWrapEnabledbool -->
+<h3 class="fn" id="setWordWrapEnabled"><a name="setWordWrapEnabled"></a><code>[slot] </code><span class="type">void</span> OutputWindow::<span class="name">setWordWrapEnabled</span>(<span class="type">bool</span> <i>wrap</i>)</h3>
+<!-- @@@setWordWrapEnabled -->
+<!-- $$$showEvent[overload1]$$$showEventQShowEvent* -->
+<h3 class="fn" id="showEvent"><a name="showEvent"></a><span class="type">void</span> OutputWindow::<span class="name">showEvent</span>(<i>QShowEvent *</i>)</h3>
+<!-- @@@showEvent -->
+<!-- $$$wheelEvent[overload1]$$$wheelEventQWheelEvent* -->
+<h3 class="fn" id="wheelEvent"><a name="wheelEvent"></a><code>[protected] </code><span class="type">void</span> OutputWindow::<span class="name">wheelEvent</span>(<span class="type">QWheelEvent</span> *<i>e</i>)</h3>
+<!-- @@@wheelEvent -->
+<!-- $$$wheelZoom[overload1]$$$wheelZoom -->
+<h3 class="fn" id="wheelZoom"><a name="wheelZoom"></a><code>[signal] </code><span class="type">void</span> OutputWindow::<span class="name">wheelZoom</span>()</h3>
+<!-- @@@wheelZoom -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

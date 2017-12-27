@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>JsonWizard Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >JsonWizard</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#properties">Properties</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">JsonWizard Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-jsonwizard.html">ProjectExplorer::JsonWizard</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="utils-wizard.html">Utils::Wizard</a></td></tr></table></div><ul>
+<li><a href="projectexplorer-jsonwizard-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard-generatorfile.html">GeneratorFile</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard-optiondefinition.html">OptionDefinition</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">GeneratorFiles</a></b></td></tr>
+</table></div>
+<a name="properties"></a>
+<h2 id="properties">Properties</h2>
+<ul>
+<li class="fn"><b><a href="projectexplorer-jsonwizard.html#generateFileList-prop">generateFileList</a></b> : const GeneratorFiles</li>
+</ul>
+<ul>
+<li class="fn">1 property inherited from <a href="utils-wizard.html#properties">Utils::Wizard</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#JsonWizard">JsonWizard</a></b>(QWidget *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#dtor.JsonWizard">~JsonWizard</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#addGenerator">addGenerator</a></b>(JsonWizardGenerator *<i>gen</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#commitToFileList">commitToFileList</a></b>(const GeneratorFiles &amp;<i>list</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::MacroExpander *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#expander">expander</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> GeneratorFiles </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#generateFileList-prop">generateFileList</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#removeAttributeFromAllFiles">removeAttributeFromAllFiles</a></b>(Core::GeneratedFile::Attribute <i>a</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#setValue">setValue</a></b>(const QString &amp;<i>key</i>, const QVariant &amp;<i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#stringValue">stringValue</a></b>(const QString &amp;<i>n</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVariant </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#value">value</a></b>(const QString &amp;<i>n</i>) const</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QHash&lt;QString, QVariant&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#variables">variables</a></b>() const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">10 public functions inherited from <a href="utils-wizard.html#public-functions">Utils::Wizard</a></li>
+</ul>
+<a name="public-slots"></a>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#accept">accept</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#reject">reject</a></b>() override</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#allDone">allDone</a></b>(const JsonWizard::GeneratorFiles &amp;<i>files</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#filesPolished">filesPolished</a></b>(const JsonWizard::GeneratorFiles &amp;<i>files</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#filesReady">filesReady</a></b>(const JsonWizard::GeneratorFiles &amp;<i>files</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#postGenerateFiles">postGenerateFiles</a></b>(const JsonWizard::GeneratorFiles &amp;<i>files</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#postProcessFiles">postProcessFiles</a></b>(const JsonWizard::GeneratorFiles &amp;<i>files</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#preFormatFiles">preFormatFiles</a></b>(const JsonWizard::GeneratorFiles &amp;<i>files</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#preGenerateFiles">preGenerateFiles</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#prePromptForOverwrite">prePromptForOverwrite</a></b>(const JsonWizard::GeneratorFiles &amp;<i>files</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#preWriteFiles">preWriteFiles</a></b>(const JsonWizard::GeneratorFiles &amp;<i>files</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#boolFromVariant">boolFromVariant</a></b>(const QVariant &amp;<i>v</i>, Utils::MacroExpander *<i>expander</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;OptionDefinition&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#parseOptions">parseOptions</a></b>(const QVariant &amp;<i>v</i>, QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizard.html#stringListToArrayString">stringListToArrayString</a></b>(const QStringList &amp;<i>list</i>, const Utils::MacroExpander *<i>expander</i>)</td></tr>
+</table></div>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">3 protected functions inherited from <a href="utils-wizard.html#protected-functions">Utils::Wizard</a></li>
+</ul>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$GeneratorFiles -->
+<h3 class="fn" id="GeneratorFiles-typedef"><a name="GeneratorFiles-typedef"></a>typedef JsonWizard::<span class="name">GeneratorFiles</span></h3>
+<!-- @@@GeneratorFiles -->
+</div>
+<div class="prop">
+<h2>Property Documentation</h2>
+<!-- $$$generateFileList-prop$$$generateFileList -->
+<h3 class="fn" id="generateFileList-prop"><a name="generateFileList-prop"></a><span class="name">generateFileList</span> : const <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">GeneratorFiles</a></span></h3>
+<p><b>Access functions:</b></p>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft topAlign rightAlign"> GeneratorFiles </td><td class="memItemRight bottomAlign"><span class="name"><b>generateFileList</b></span>()</td></tr>
+</table></div>
+<!-- @@@generateFileList -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$JsonWizard[overload1]$$$JsonWizardQWidget* -->
+<h3 class="fn" id="JsonWizard"><a name="JsonWizard"></a>JsonWizard::<span class="name">JsonWizard</span>(<span class="type">QWidget</span> *<i>parent</i> = nullptr)</h3>
+<p>Default constructs an instance of JsonWizard.</p><!-- @@@JsonWizard -->
+<!-- $$$~JsonWizard[overload1]$$$~JsonWizard -->
+<h3 class="fn" id="dtor.JsonWizard"><a name="dtor.JsonWizard"></a>JsonWizard::<span class="name">~JsonWizard</span>()</h3>
+<p>Destroys the instance of JsonWizard.</p><!-- @@@~JsonWizard -->
+<!-- $$$accept[overload1]$$$accept -->
+<h3 class="fn" id="accept"><a name="accept"></a><code>[slot] </code><span class="type">void</span> JsonWizard::<span class="name">accept</span>()</h3>
+<!-- @@@accept -->
+<!-- $$$addGenerator[overload1]$$$addGeneratorJsonWizardGenerator* -->
+<h3 class="fn" id="addGenerator"><a name="addGenerator"></a><span class="type">void</span> JsonWizard::<span class="name">addGenerator</span>(<span class="type"><a href="projectexplorer-jsonwizardgenerator.html">JsonWizardGenerator</a></span> *<i>gen</i>)</h3>
+<!-- @@@addGenerator -->
+<!-- $$$allDone[overload1]$$$allDoneconstJsonWizard::GeneratorFiles& -->
+<h3 class="fn" id="allDone"><a name="allDone"></a><code>[signal] </code><span class="type">void</span> JsonWizard::<span class="name">allDone</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> &amp;<i>files</i>)</h3>
+<!-- @@@allDone -->
+<!-- $$$boolFromVariant[overload1]$$$boolFromVariantconstQVariant&Utils::MacroExpander* -->
+<h3 class="fn" id="boolFromVariant"><a name="boolFromVariant"></a><code>[static] </code><span class="type">bool</span> JsonWizard::<span class="name">boolFromVariant</span>(const <span class="type">QVariant</span> &amp;<i>v</i>, <span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *<i>expander</i>)</h3>
+<!-- @@@boolFromVariant -->
+<!-- $$$commitToFileList[overload1]$$$commitToFileListconstGeneratorFiles& -->
+<h3 class="fn" id="commitToFileList"><a name="commitToFileList"></a><span class="type">void</span> JsonWizard::<span class="name">commitToFileList</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">GeneratorFiles</a></span> &amp;<i>list</i>)</h3>
+<!-- @@@commitToFileList -->
+<!-- $$$expander[overload1]$$$expander -->
+<h3 class="fn" id="expander"><a name="expander"></a><span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *JsonWizard::<span class="name">expander</span>()</h3>
+<!-- @@@expander -->
+<!-- $$$filesPolished[overload1]$$$filesPolishedconstJsonWizard::GeneratorFiles& -->
+<h3 class="fn" id="filesPolished"><a name="filesPolished"></a><code>[signal] </code><span class="type">void</span> JsonWizard::<span class="name">filesPolished</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> &amp;<i>files</i>)</h3>
+<!-- @@@filesPolished -->
+<!-- $$$filesReady[overload1]$$$filesReadyconstJsonWizard::GeneratorFiles& -->
+<h3 class="fn" id="filesReady"><a name="filesReady"></a><code>[signal] </code><span class="type">void</span> JsonWizard::<span class="name">filesReady</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> &amp;<i>files</i>)</h3>
+<!-- @@@filesReady -->
+<!-- $$$parseOptions[overload1]$$$parseOptionsconstQVariant&QString* -->
+<h3 class="fn" id="parseOptions"><a name="parseOptions"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-jsonwizard-optiondefinition.html">OptionDefinition</a></span>&gt; JsonWizard::<span class="name">parseOptions</span>(const <span class="type">QVariant</span> &amp;<i>v</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@parseOptions -->
+<!-- $$$postGenerateFiles[overload1]$$$postGenerateFilesconstJsonWizard::GeneratorFiles& -->
+<h3 class="fn" id="postGenerateFiles"><a name="postGenerateFiles"></a><code>[signal] </code><span class="type">void</span> JsonWizard::<span class="name">postGenerateFiles</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> &amp;<i>files</i>)</h3>
+<!-- @@@postGenerateFiles -->
+<!-- $$$postProcessFiles[overload1]$$$postProcessFilesconstJsonWizard::GeneratorFiles& -->
+<h3 class="fn" id="postProcessFiles"><a name="postProcessFiles"></a><code>[signal] </code><span class="type">void</span> JsonWizard::<span class="name">postProcessFiles</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> &amp;<i>files</i>)</h3>
+<!-- @@@postProcessFiles -->
+<!-- $$$preFormatFiles[overload1]$$$preFormatFilesconstJsonWizard::GeneratorFiles& -->
+<h3 class="fn" id="preFormatFiles"><a name="preFormatFiles"></a><code>[signal] </code><span class="type">void</span> JsonWizard::<span class="name">preFormatFiles</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> &amp;<i>files</i>)</h3>
+<!-- @@@preFormatFiles -->
+<!-- $$$preGenerateFiles[overload1]$$$preGenerateFiles -->
+<h3 class="fn" id="preGenerateFiles"><a name="preGenerateFiles"></a><code>[signal] </code><span class="type">void</span> JsonWizard::<span class="name">preGenerateFiles</span>()</h3>
+<!-- @@@preGenerateFiles -->
+<!-- $$$prePromptForOverwrite[overload1]$$$prePromptForOverwriteconstJsonWizard::GeneratorFiles& -->
+<h3 class="fn" id="prePromptForOverwrite"><a name="prePromptForOverwrite"></a><code>[signal] </code><span class="type">void</span> JsonWizard::<span class="name">prePromptForOverwrite</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> &amp;<i>files</i>)</h3>
+<!-- @@@prePromptForOverwrite -->
+<!-- $$$preWriteFiles[overload1]$$$preWriteFilesconstJsonWizard::GeneratorFiles& -->
+<h3 class="fn" id="preWriteFiles"><a name="preWriteFiles"></a><code>[signal] </code><span class="type">void</span> JsonWizard::<span class="name">preWriteFiles</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> &amp;<i>files</i>)</h3>
+<!-- @@@preWriteFiles -->
+<!-- $$$reject[overload1]$$$reject -->
+<h3 class="fn" id="reject"><a name="reject"></a><code>[slot] </code><span class="type">void</span> JsonWizard::<span class="name">reject</span>()</h3>
+<!-- @@@reject -->
+<!-- $$$removeAttributeFromAllFiles[overload1]$$$removeAttributeFromAllFilesCore::GeneratedFile::Attribute -->
+<h3 class="fn" id="removeAttributeFromAllFiles"><a name="removeAttributeFromAllFiles"></a><span class="type">void</span> JsonWizard::<span class="name">removeAttributeFromAllFiles</span>(<span class="type"><a href="core-generatedfile.html#Attribute-enum">Core::GeneratedFile::Attribute</a></span> <i>a</i>)</h3>
+<!-- @@@removeAttributeFromAllFiles -->
+<!-- $$$setValue[overload1]$$$setValueconstQString&constQVariant& -->
+<h3 class="fn" id="setValue"><a name="setValue"></a><span class="type">void</span> JsonWizard::<span class="name">setValue</span>(const <span class="type">QString</span> &amp;<i>key</i>, const <span class="type">QVariant</span> &amp;<i>value</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-jsonwizard.html#value">value</a>().</p>
+<!-- @@@setValue -->
+<!-- $$$stringListToArrayString[overload1]$$$stringListToArrayStringconstQStringList&constUtils::MacroExpander* -->
+<h3 class="fn" id="stringListToArrayString"><a name="stringListToArrayString"></a><code>[static] </code><span class="type">QString</span> JsonWizard::<span class="name">stringListToArrayString</span>(const <span class="type">QStringList</span> &amp;<i>list</i>, const <span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *<i>expander</i>)</h3>
+<!-- @@@stringListToArrayString -->
+<!-- $$$stringValue[overload1]$$$stringValueconstQString& -->
+<h3 class="fn" id="stringValue"><a name="stringValue"></a><span class="type">QString</span> JsonWizard::<span class="name">stringValue</span>(const <span class="type">QString</span> &amp;<i>n</i>) const</h3>
+<!-- @@@stringValue -->
+<!-- $$$value[overload1]$$$valueconstQString& -->
+<h3 class="fn" id="value"><a name="value"></a><span class="type">QVariant</span> JsonWizard::<span class="name">value</span>(const <span class="type">QString</span> &amp;<i>n</i>) const</h3>
+<p><b>See also </b><a href="projectexplorer-jsonwizard.html#setValue">setValue</a>().</p>
+<!-- @@@value -->
+<!-- $$$variables[overload1]$$$variables -->
+<h3 class="fn" id="variables"><a name="variables"></a><code>[override virtual] </code><span class="type">QHash</span>&lt;<span class="type">QString</span>, <span class="type">QVariant</span>&gt; JsonWizard::<span class="name">variables</span>() const</h3>
+<!-- @@@variables -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>GenericProposal Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >GenericProposal</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">GenericProposal Class</h1>
+<span class="small-subtitle">(<a href="texteditor-genericproposal.html">TextEditor::GenericProposal</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="texteditor-iassistproposal.html">TextEditor::IAssistProposal</a></td></tr></table></div><ul>
+<li><a href="texteditor-genericproposal-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposal.html#GenericProposal">GenericProposal</a></b>(int <i>cursorPos</i>, GenericProposalModel *<i>model</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposal.html#GenericProposal-1">GenericProposal</a></b>(int <i>cursorPos</i>, const QList&lt;AssistProposalItemInterface *&gt; &amp;<i>items</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposal.html#dtor.GenericProposal">~GenericProposal</a></b>()</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual IAssistProposalWidget *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposal.html#createWidget">createWidget</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposal.html#hasItemsToPropose">hasItemsToPropose</a></b>(const QString &amp;<i>prefix</i>, AssistReason <i>reason</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposal.html#isFragile">isFragile</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual IAssistProposalModel *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposal.html#model">model</a></b>() const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">7 public functions inherited from <a href="texteditor-iassistproposal.html#public-functions">TextEditor::IAssistProposal</a></li>
+</ul>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-genericproposal.html#moveBasePosition">moveBasePosition</a></b>(int <i>length</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$GenericProposal[overload1]$$$GenericProposalintGenericProposalModel* -->
+<h3 class="fn" id="GenericProposal"><a name="GenericProposal"></a>GenericProposal::<span class="name">GenericProposal</span>(<span class="type">int</span> <i>cursorPos</i>, <span class="type"><a href="texteditor-genericproposalmodel.html">GenericProposalModel</a></span> *<i>model</i>)</h3>
+<p>Default constructs an instance of GenericProposal.</p><!-- @@@GenericProposal -->
+<!-- $$$GenericProposal$$$GenericProposalintconstQList<AssistProposalItemInterface*>& -->
+<h3 class="fn" id="GenericProposal-1"><a name="GenericProposal-1"></a>GenericProposal::<span class="name">GenericProposal</span>(<span class="type">int</span> <i>cursorPos</i>, const <span class="type">QList</span>&lt;<span class="type"><a href="texteditor-assistproposaliteminterface.html">AssistProposalItemInterface</a></span> *&gt; &amp;<i>items</i>)</h3>
+<p>Default constructs an instance of GenericProposal.</p><!-- @@@GenericProposal -->
+<!-- $$$~GenericProposal[overload1]$$$~GenericProposal -->
+<h3 class="fn" id="dtor.GenericProposal"><a name="dtor.GenericProposal"></a>GenericProposal::<span class="name">~GenericProposal</span>()</h3>
+<p>Destroys the instance of GenericProposal.</p><!-- @@@~GenericProposal -->
+<!-- $$$createWidget[overload1]$$$createWidget -->
+<h3 class="fn" id="createWidget"><a name="createWidget"></a><code>[override virtual] </code><span class="type"><a href="texteditor-iassistproposalwidget.html">IAssistProposalWidget</a></span> *GenericProposal::<span class="name">createWidget</span>() const</h3>
+<!-- @@@createWidget -->
+<!-- $$$hasItemsToPropose[overload1]$$$hasItemsToProposeconstQString&AssistReason -->
+<h3 class="fn" id="hasItemsToPropose"><a name="hasItemsToPropose"></a><code>[override virtual] </code><span class="type">bool</span> GenericProposal::<span class="name">hasItemsToPropose</span>(const <span class="type">QString</span> &amp;<i>prefix</i>, <span class="type"><a href="texteditor.html#AssistReason-enum">AssistReason</a></span> <i>reason</i>) const</h3>
+<!-- @@@hasItemsToPropose -->
+<!-- $$$isFragile[overload1]$$$isFragile -->
+<h3 class="fn" id="isFragile"><a name="isFragile"></a><code>[override virtual] </code><span class="type">bool</span> GenericProposal::<span class="name">isFragile</span>() const</h3>
+<!-- @@@isFragile -->
+<!-- $$$model[overload1]$$$model -->
+<h3 class="fn" id="model"><a name="model"></a><code>[override virtual] </code><span class="type"><a href="texteditor-iassistproposalmodel.html">IAssistProposalModel</a></span> *GenericProposal::<span class="name">model</span>() const</h3>
+<!-- @@@model -->
+<!-- $$$moveBasePosition[overload1]$$$moveBasePositionint -->
+<h3 class="fn" id="moveBasePosition"><a name="moveBasePosition"></a><code>[protected] </code><span class="type">void</span> GenericProposal::<span class="name">moveBasePosition</span>(<span class="type">int</span> <i>length</i>)</h3>
+<!-- @@@moveBasePosition -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

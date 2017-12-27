@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- depends.qdoc -->
+  <title>Depends Item | Qbs Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="index.html">Qbs Manual</a></td><td >Depends Item</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qbs 1.9.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="artifact-item.html" />
+  <link rel="next" href="export-item.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="artifact-item.html">Artifact Item</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="export-item.html">Export Item</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#dependency-parameters">Dependency Parameters</a></li>
+<li class="level1"><a href="#depends-properties">Depends Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Depends Item</h1>
+<span class="subtitle"></span>
+<!-- $$$depends-item.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>A <code>Depends</code> item can appear inside a <a href="product-item.html">Product Item</a> or <a href="module-item.html">Module Item</a>.</p>
+<p>For example, the following product will load the <code>cpp</code> module. In addition, it will try to load modules that may or may not exist, and in the latter case use a fallback.</p>
+<pre class="cpp">
+
+  Product {
+      Depends { name: <span class="string">&quot;cpp&quot;</span> }
+      Depends {
+          name: <span class="string">&quot;awesome_module&quot;</span>
+          versionAtLeast: <span class="string">&quot;2.0&quot;</span>
+          required: <span class="keyword">false</span>
+      }
+      Depends {
+          name: <span class="string">&quot;adequate_module&quot;</span>
+          condition: <span class="operator">!</span>awesome_module<span class="operator">.</span>present
+          required: <span class="keyword">false</span>
+      }
+      Depends {
+          name: <span class="string">&quot;inferior_module&quot;</span>
+          condition: <span class="operator">!</span>awesome_module<span class="operator">.</span>present <span class="operator">&amp;</span><span class="operator">&amp;</span> <span class="operator">!</span>adequate_module<span class="operator">.</span>present
+      }
+
+      <span class="comment">// ...</span>
+  }
+
+</pre>
+<a name="dependency-parameters"></a>
+<h2 id="dependency-parameters">Dependency Parameters</h2>
+<p>Sometimes it is desirable to have certain dependencies handled differently than others. For example, one might want to depend on a dynamic library without linking it.</p>
+<p>This can be done by setting the parameter <code>cpp.link</code> to <code>true</code> in the dynamic library dependency:</p>
+<pre class="cpp">
+
+  Product {
+      Depends { name: <span class="string">&quot;cpp&quot;</span> }
+      Depends { name: <span class="string">&quot;some_dynamic_lib&quot;</span>; cpp<span class="operator">.</span>link: <span class="keyword">false</span> }
+
+      <span class="comment">// ...</span>
+  }
+
+</pre>
+<p>Dependency parameters are a special type of property that can only be set within <code>Depends</code> and <code>Parameters</code> items. Dependency parameters are declared in the modules they belong to.</p>
+<p>In the example above, the <code>cpp</code> module declares the parameter <code>link</code>. The <code>Depends</code> item for <i>some_dynamic_lib</i> sets <code>cpp.link</code> to <code>false</code>, which tells the linker rule to ignore this particular dependency.</p>
+<a name="depends-properties"></a>
+<h2 id="depends-properties">Depends Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >condition</td><td >bool</td><td >true</td><td >Determines whether the dependency will actually be applied.</td></tr>
+<tr valign="top" class="even"><td >versionAtLeast</td><td >string</td><td >undefined</td><td >The minimum value that the dependency's <code>version</code> property needs to have. If the actual version is lower than that, loading the dependency will fail. The value consists of integers separated by dots.</td></tr>
+<tr valign="top" class="odd"><td >versionBelow</td><td >string</td><td >undefined</td><td >A value that the dependency's <code>version</code> property must be lower than. If the actual version is equal to or higher than that, loading the dependency will fail. The value consists of integers separated by dots.</td></tr>
+<tr valign="top" class="even"><td >productTypes</td><td >stringList</td><td >undefined</td><td >A list of product types. Any enabled product in the project that has a matching type will become a dependency of the product containing the <code>Depends</code> item. This property is mutually exclusive with the <code>name</code> and <code>submodules</code> properties. The <code>required</code> and <code>profiles</code> properties are ignored if <code>productTypes</code> is set.</td></tr>
+<tr valign="top" class="odd"><td >required</td><td >bool</td><td ><code>true</code></td><td >Setting this property to <code>false</code> creates a <i>soft dependency</i>, meaning that it is not considered an error if the given module cannot be found. In such a case, an instance of the respective module will be created, but only the <code>present</code> property will be available for querying, and it will be set to <code>false</code>.</td></tr>
+<tr valign="top" class="even"><td >name</td><td >string</td><td >undefined</td><td >The name of the dependent product or module.</td></tr>
+<tr valign="top" class="odd"><td >profiles</td><td >stringList</td><td ><code>[product.profile]</code></td><td >If the dependency is on a product and that product is going to be built for more than one profile, then you can specify here which instance of the product the dependency is on. See the <code>profiles</code> property of the <code>Product</code> item for more information. An empty list means a dependency on all instances of the product with the given name, regardless of their profile.</td></tr>
+<tr valign="top" class="even"><td >limitToSubProject</td><td >bool</td><td ><code>false</code></td><td >If <code>productTypes</code> is set and this property is <code>true</code>, then only products that are in the same sub-project as the product containing the <code>Depends</code> item are considered.</td></tr>
+<tr valign="top" class="odd"><td >submodules</td><td >stringList</td><td >undefined</td><td >The submodules of <code>module</code> to depend on, if applicable.</td></tr>
+</table></div>
+</div>
+<!-- @@@depends-item.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="artifact-item.html">Artifact Item</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="export-item.html">Export Item</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>DebuggerItem Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >DebuggerItem</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">DebuggerItem Class</h1>
+<span class="small-subtitle">(<a href="debugger-debuggeritem.html">Debugger::DebuggerItem</a>)<br/></span>
+<ul>
+<li><a href="debugger-debuggeritem-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#MatchLevel-enum">MatchLevel</a></b> { DoesNotMatch, MatchesSomewhat, MatchesWell, MatchesPerfectly }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#DebuggerItem">DebuggerItem</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#DebuggerItem-1">DebuggerItem</a></b>(const QVariantMap &amp;<i>data</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#abiNames">abiNames</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;ProjectExplorer::Abi&gt; </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#abis">abis</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#autoDetectionSource">autoDetectionSource</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#canClone">canClone</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FileName </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#command">command</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#createId">createId</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QIcon </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#decoration">decoration</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#displayName">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> DebuggerEngineType </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#engineType">engineType</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#engineTypeName">engineTypeName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVariant </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#id">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#isAutoDetected">isAutoDetected</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#isValid">isValid</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QDateTime </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#lastModified">lastModified</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> MatchLevel </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#matchTarget">matchTarget</a></b>(const ProjectExplorer::Abi &amp;<i>targetAbi</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#reinitializeFromFile">reinitializeFromFile</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#setAbi">setAbi</a></b>(const ProjectExplorer::Abi &amp;<i>abi</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#setAbis">setAbis</a></b>(const QList&lt;ProjectExplorer::Abi&gt; &amp;<i>abis</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#setAutoDetected">setAutoDetected</a></b>(bool <i>isAutoDetected</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#setAutoDetectionSource">setAutoDetectionSource</a></b>(const QString &amp;<i>autoDetectionSource</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#setCommand">setCommand</a></b>(const Utils::FileName &amp;<i>command</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#setEngineType">setEngineType</a></b>(const DebuggerEngineType &amp;<i>engineType</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#setUnexpandedDisplayName">setUnexpandedDisplayName</a></b>(const QString &amp;<i>unexpandedDisplayName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#setVersion">setVersion</a></b>(const QString &amp;<i>version</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#setWorkingDirectory">setWorkingDirectory</a></b>(const Utils::FileName &amp;<i>workingPath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QVariantMap </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#toMap">toMap</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#unexpandedDisplayName">unexpandedDisplayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#validityMessage">validityMessage</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#version">version</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FileName </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#workingDirectory">workingDirectory</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#operator-not-eq">operator!=</a></b>(const DebuggerItem &amp;<i>other</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="debugger-debuggeritem.html#operator-eq-eq">operator==</a></b>(const DebuggerItem &amp;<i>other</i>) const</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$MatchLevel$$$DoesNotMatch$$$MatchesSomewhat$$$MatchesWell$$$MatchesPerfectly -->
+<h3 class="fn" id="MatchLevel-enum"><a name="MatchLevel-enum"></a>enum DebuggerItem::<span class="name">MatchLevel</span></h3>
+<!-- @@@MatchLevel -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$DebuggerItem[overload1]$$$DebuggerItem -->
+<h3 class="fn" id="DebuggerItem"><a name="DebuggerItem"></a>DebuggerItem::<span class="name">DebuggerItem</span>()</h3>
+<p>Default constructs an instance of DebuggerItem.</p><!-- @@@DebuggerItem -->
+<!-- $$$DebuggerItem$$$DebuggerItemconstQVariantMap& -->
+<h3 class="fn" id="DebuggerItem-1"><a name="DebuggerItem-1"></a>DebuggerItem::<span class="name">DebuggerItem</span>(const <span class="type">QVariantMap</span> &amp;<i>data</i>)</h3>
+<p>Default constructs an instance of DebuggerItem.</p><!-- @@@DebuggerItem -->
+<!-- $$$abiNames[overload1]$$$abiNames -->
+<h3 class="fn" id="abiNames"><a name="abiNames"></a><span class="type">QStringList</span> DebuggerItem::<span class="name">abiNames</span>() const</h3>
+<!-- @@@abiNames -->
+<!-- $$$abis[overload1]$$$abis -->
+<h3 class="fn" id="abis"><a name="abis"></a><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-abi.html">ProjectExplorer::Abi</a></span>&gt; DebuggerItem::<span class="name">abis</span>() const</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#setAbis">setAbis</a>().</p>
+<!-- @@@abis -->
+<!-- $$$autoDetectionSource[overload1]$$$autoDetectionSource -->
+<h3 class="fn" id="autoDetectionSource"><a name="autoDetectionSource"></a><span class="type">QString</span> DebuggerItem::<span class="name">autoDetectionSource</span>() const</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#setAutoDetectionSource">setAutoDetectionSource</a>().</p>
+<!-- @@@autoDetectionSource -->
+<!-- $$$canClone[overload1]$$$canClone -->
+<h3 class="fn" id="canClone"><a name="canClone"></a><span class="type">bool</span> DebuggerItem::<span class="name">canClone</span>() const</h3>
+<!-- @@@canClone -->
+<!-- $$$command[overload1]$$$command -->
+<h3 class="fn" id="command"><a name="command"></a><span class="type"><a href="utils-filename.html">Utils::FileName</a></span> DebuggerItem::<span class="name">command</span>() const</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#setCommand">setCommand</a>().</p>
+<!-- @@@command -->
+<!-- $$$createId[overload1]$$$createId -->
+<h3 class="fn" id="createId"><a name="createId"></a><span class="type">void</span> DebuggerItem::<span class="name">createId</span>()</h3>
+<!-- @@@createId -->
+<!-- $$$decoration[overload1]$$$decoration -->
+<h3 class="fn" id="decoration"><a name="decoration"></a><span class="type">QIcon</span> DebuggerItem::<span class="name">decoration</span>() const</h3>
+<!-- @@@decoration -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><span class="type">QString</span> DebuggerItem::<span class="name">displayName</span>() const</h3>
+<!-- @@@displayName -->
+<!-- $$$engineType[overload1]$$$engineType -->
+<h3 class="fn" id="engineType"><a name="engineType"></a><span class="type"><a href="debugger.html#DebuggerEngineType-enum">DebuggerEngineType</a></span> DebuggerItem::<span class="name">engineType</span>() const</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#setEngineType">setEngineType</a>().</p>
+<!-- @@@engineType -->
+<!-- $$$engineTypeName[overload1]$$$engineTypeName -->
+<h3 class="fn" id="engineTypeName"><a name="engineTypeName"></a><span class="type">QString</span> DebuggerItem::<span class="name">engineTypeName</span>() const</h3>
+<!-- @@@engineTypeName -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" id="id"><a name="id"></a><span class="type">QVariant</span> DebuggerItem::<span class="name">id</span>() const</h3>
+<!-- @@@id -->
+<!-- $$$isAutoDetected[overload1]$$$isAutoDetected -->
+<h3 class="fn" id="isAutoDetected"><a name="isAutoDetected"></a><span class="type">bool</span> DebuggerItem::<span class="name">isAutoDetected</span>() const</h3>
+<!-- @@@isAutoDetected -->
+<!-- $$$isValid[overload1]$$$isValid -->
+<h3 class="fn" id="isValid"><a name="isValid"></a><span class="type">bool</span> DebuggerItem::<span class="name">isValid</span>() const</h3>
+<!-- @@@isValid -->
+<!-- $$$lastModified[overload1]$$$lastModified -->
+<h3 class="fn" id="lastModified"><a name="lastModified"></a><span class="type">QDateTime</span> DebuggerItem::<span class="name">lastModified</span>() const</h3>
+<!-- @@@lastModified -->
+<!-- $$$matchTarget[overload1]$$$matchTargetconstProjectExplorer::Abi& -->
+<h3 class="fn" id="matchTarget"><a name="matchTarget"></a><span class="type"><a href="debugger-debuggeritem.html#MatchLevel-enum">MatchLevel</a></span> DebuggerItem::<span class="name">matchTarget</span>(const <span class="type"><a href="projectexplorer-abi.html">ProjectExplorer::Abi</a></span> &amp;<i>targetAbi</i>) const</h3>
+<!-- @@@matchTarget -->
+<!-- $$$reinitializeFromFile[overload1]$$$reinitializeFromFile -->
+<h3 class="fn" id="reinitializeFromFile"><a name="reinitializeFromFile"></a><span class="type">void</span> DebuggerItem::<span class="name">reinitializeFromFile</span>()</h3>
+<!-- @@@reinitializeFromFile -->
+<!-- $$$setAbi[overload1]$$$setAbiconstProjectExplorer::Abi& -->
+<h3 class="fn" id="setAbi"><a name="setAbi"></a><span class="type">void</span> DebuggerItem::<span class="name">setAbi</span>(const <span class="type"><a href="projectexplorer-abi.html">ProjectExplorer::Abi</a></span> &amp;<i>abi</i>)</h3>
+<!-- @@@setAbi -->
+<!-- $$$setAbis[overload1]$$$setAbisconstQList<ProjectExplorer::Abi>& -->
+<h3 class="fn" id="setAbis"><a name="setAbis"></a><span class="type">void</span> DebuggerItem::<span class="name">setAbis</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-abi.html">ProjectExplorer::Abi</a></span>&gt; &amp;<i>abis</i>)</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#abis">abis</a>().</p>
+<!-- @@@setAbis -->
+<!-- $$$setAutoDetected[overload1]$$$setAutoDetectedbool -->
+<h3 class="fn" id="setAutoDetected"><a name="setAutoDetected"></a><span class="type">void</span> DebuggerItem::<span class="name">setAutoDetected</span>(<span class="type">bool</span> <i>isAutoDetected</i>)</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#isAutoDetected">isAutoDetected</a>().</p>
+<!-- @@@setAutoDetected -->
+<!-- $$$setAutoDetectionSource[overload1]$$$setAutoDetectionSourceconstQString& -->
+<h3 class="fn" id="setAutoDetectionSource"><a name="setAutoDetectionSource"></a><span class="type">void</span> DebuggerItem::<span class="name">setAutoDetectionSource</span>(const <span class="type">QString</span> &amp;<i>autoDetectionSource</i>)</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#autoDetectionSource">autoDetectionSource</a>().</p>
+<!-- @@@setAutoDetectionSource -->
+<!-- $$$setCommand[overload1]$$$setCommandconstUtils::FileName& -->
+<h3 class="fn" id="setCommand"><a name="setCommand"></a><span class="type">void</span> DebuggerItem::<span class="name">setCommand</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>command</i>)</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#command">command</a>().</p>
+<!-- @@@setCommand -->
+<!-- $$$setEngineType[overload1]$$$setEngineTypeconstDebuggerEngineType& -->
+<h3 class="fn" id="setEngineType"><a name="setEngineType"></a><span class="type">void</span> DebuggerItem::<span class="name">setEngineType</span>(const <span class="type"><a href="debugger.html#DebuggerEngineType-enum">DebuggerEngineType</a></span> &amp;<i>engineType</i>)</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#engineType">engineType</a>().</p>
+<!-- @@@setEngineType -->
+<!-- $$$setUnexpandedDisplayName[overload1]$$$setUnexpandedDisplayNameconstQString& -->
+<h3 class="fn" id="setUnexpandedDisplayName"><a name="setUnexpandedDisplayName"></a><span class="type">void</span> DebuggerItem::<span class="name">setUnexpandedDisplayName</span>(const <span class="type">QString</span> &amp;<i>unexpandedDisplayName</i>)</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#unexpandedDisplayName">unexpandedDisplayName</a>().</p>
+<!-- @@@setUnexpandedDisplayName -->
+<!-- $$$setVersion[overload1]$$$setVersionconstQString& -->
+<h3 class="fn" id="setVersion"><a name="setVersion"></a><span class="type">void</span> DebuggerItem::<span class="name">setVersion</span>(const <span class="type">QString</span> &amp;<i>version</i>)</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#version">version</a>().</p>
+<!-- @@@setVersion -->
+<!-- $$$setWorkingDirectory[overload1]$$$setWorkingDirectoryconstUtils::FileName& -->
+<h3 class="fn" id="setWorkingDirectory"><a name="setWorkingDirectory"></a><span class="type">void</span> DebuggerItem::<span class="name">setWorkingDirectory</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>workingPath</i>)</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#workingDirectory">workingDirectory</a>().</p>
+<!-- @@@setWorkingDirectory -->
+<!-- $$$toMap[overload1]$$$toMap -->
+<h3 class="fn" id="toMap"><a name="toMap"></a><span class="type">QVariantMap</span> DebuggerItem::<span class="name">toMap</span>() const</h3>
+<!-- @@@toMap -->
+<!-- $$$unexpandedDisplayName[overload1]$$$unexpandedDisplayName -->
+<h3 class="fn" id="unexpandedDisplayName"><a name="unexpandedDisplayName"></a><span class="type">QString</span> DebuggerItem::<span class="name">unexpandedDisplayName</span>() const</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#setUnexpandedDisplayName">setUnexpandedDisplayName</a>().</p>
+<!-- @@@unexpandedDisplayName -->
+<!-- $$$validityMessage[overload1]$$$validityMessage -->
+<h3 class="fn" id="validityMessage"><a name="validityMessage"></a><span class="type">QString</span> DebuggerItem::<span class="name">validityMessage</span>() const</h3>
+<!-- @@@validityMessage -->
+<!-- $$$version[overload1]$$$version -->
+<h3 class="fn" id="version"><a name="version"></a><span class="type">QString</span> DebuggerItem::<span class="name">version</span>() const</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#setVersion">setVersion</a>().</p>
+<!-- @@@version -->
+<!-- $$$workingDirectory[overload1]$$$workingDirectory -->
+<h3 class="fn" id="workingDirectory"><a name="workingDirectory"></a><span class="type"><a href="utils-filename.html">Utils::FileName</a></span> DebuggerItem::<span class="name">workingDirectory</span>() const</h3>
+<p><b>See also </b><a href="debugger-debuggeritem.html#setWorkingDirectory">setWorkingDirectory</a>().</p>
+<!-- @@@workingDirectory -->
+<!-- $$$operator!=[overload1]$$$operator!=constDebuggerItem& -->
+<h3 class="fn" id="operator-not-eq"><a name="operator-not-eq"></a><span class="type">bool</span> DebuggerItem::<span class="name">operator!=</span>(const <span class="type"><a href="debugger-debuggeritem.html#DebuggerItem">DebuggerItem</a></span> &amp;<i>other</i>) const</h3>
+<!-- @@@operator!= -->
+<!-- $$$operator==[overload1]$$$operator==constDebuggerItem& -->
+<h3 class="fn" id="operator-eq-eq"><a name="operator-eq-eq"></a><span class="type">bool</span> DebuggerItem::<span class="name">operator==</span>(const <span class="type"><a href="debugger-debuggeritem.html#DebuggerItem">DebuggerItem</a></span> &amp;<i>other</i>) const</h3>
+<!-- @@@operator== -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

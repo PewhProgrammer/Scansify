@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>ASTPropertyReference Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ASTPropertyReference</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ASTPropertyReference Class</h1>
+<span class="small-subtitle">(<a href="qmljs-astpropertyreference.html">QmlJS::ASTPropertyReference</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="qmljs-reference.html">QmlJS::Reference</a></td></tr></table></div><ul>
+<li><a href="qmljs-astpropertyreference-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-astpropertyreference.html#ASTPropertyReference">ASTPropertyReference</a></b>(AST::UiPublicMember *<i>ast</i>, const Document *<i>doc</i>, ValueOwner *<i>valueOwner</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-astpropertyreference.html#dtor.ASTPropertyReference">~ASTPropertyReference</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> AST::UiPublicMember *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-astpropertyreference.html#ast">ast</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-astpropertyreference.html#onChangedSlotName">onChangedSlotName</a></b>() const</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const ASTPropertyReference *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-astpropertyreference.html#asAstPropertyReference">asAstPropertyReference</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-astpropertyreference.html#getSourceLocation">getSourceLocation</a></b>(QString *<i>fileName</i>, int *<i>line</i>, int *<i>column</i>) const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">3 public functions inherited from <a href="qmljs-reference.html#public-functions">QmlJS::Reference</a></li>
+<li class="fn">29 public functions inherited from <a href="qmljs-value.html#public-functions">QmlJS::Value</a></li>
+</ul>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ASTPropertyReference[overload1]$$$ASTPropertyReferenceAST::UiPublicMember*constDocument*ValueOwner* -->
+<h3 class="fn" id="ASTPropertyReference"><a name="ASTPropertyReference"></a>ASTPropertyReference::<span class="name">ASTPropertyReference</span>(<span class="type">AST::UiPublicMember</span> *<i>ast</i>, const <span class="type"><a href="qmljs-document.html">Document</a></span> *<i>doc</i>, <span class="type"><a href="qmljs-valueowner.html">ValueOwner</a></span> *<i>valueOwner</i>)</h3>
+<p>Default constructs an instance of ASTPropertyReference.</p><!-- @@@ASTPropertyReference -->
+<!-- $$$~ASTPropertyReference[overload1]$$$~ASTPropertyReference -->
+<h3 class="fn" id="dtor.ASTPropertyReference"><a name="dtor.ASTPropertyReference"></a>ASTPropertyReference::<span class="name">~ASTPropertyReference</span>()</h3>
+<p>Destroys the instance of ASTPropertyReference.</p><!-- @@@~ASTPropertyReference -->
+<!-- $$$asAstPropertyReference[overload1]$$$asAstPropertyReference -->
+<h3 class="fn" id="asAstPropertyReference"><a name="asAstPropertyReference"></a><code>[override virtual] </code>const <span class="type"><a href="qmljs-astpropertyreference.html#ASTPropertyReference">ASTPropertyReference</a></span> *ASTPropertyReference::<span class="name">asAstPropertyReference</span>() const</h3>
+<!-- @@@asAstPropertyReference -->
+<!-- $$$ast[overload1]$$$ast -->
+<h3 class="fn" id="ast"><a name="ast"></a><span class="type">AST::UiPublicMember</span> *ASTPropertyReference::<span class="name">ast</span>() const</h3>
+<!-- @@@ast -->
+<!-- $$$getSourceLocation[overload1]$$$getSourceLocationQString*int*int* -->
+<h3 class="fn" id="getSourceLocation"><a name="getSourceLocation"></a><code>[override virtual] </code><span class="type">bool</span> ASTPropertyReference::<span class="name">getSourceLocation</span>(<span class="type">QString</span> *<i>fileName</i>, <span class="type">int</span> *<i>line</i>, <span class="type">int</span> *<i>column</i>) const</h3>
+<!-- @@@getSourceLocation -->
+<!-- $$$onChangedSlotName[overload1]$$$onChangedSlotName -->
+<h3 class="fn" id="onChangedSlotName"><a name="onChangedSlotName"></a><span class="type">QString</span> ASTPropertyReference::<span class="name">onChangedSlotName</span>() const</h3>
+<!-- @@@onChangedSlotName -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

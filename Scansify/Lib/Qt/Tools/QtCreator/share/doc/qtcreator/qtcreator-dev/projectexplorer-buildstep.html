@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- buildstep.cpp -->
+  <title>BuildStep Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >BuildStep</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">BuildStep Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-buildstep.html">ProjectExplorer::BuildStep</a>)<br/></span>
+<!-- $$$BuildStep-brief -->
+<p>The <a href="projectexplorer-buildstep.html">BuildStep</a> class provides build steps for projects. <a href="#details">More...</a></p>
+<!-- @@@BuildStep -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;BuildStep&gt;</span>
+</td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="projectexplorer-projectconfiguration.html">ProjectExplorer::ProjectConfiguration</a></td></tr><tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="projectexplorer-abstractprocessstep.html">ProjectExplorer::AbstractProcessStep</a></p>
+</td></tr></table></div><ul>
+<li><a href="projectexplorer-buildstep-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#OutputFormat-enum">OutputFormat</a></b> { Stdout, Stderr, NormalMessage, ErrorMessage }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#OutputNewlineSetting-enum">OutputNewlineSetting</a></b> { DoAppendNewline, DontAppendNewline }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> BuildConfiguration *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#buildConfiguration">buildConfiguration</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#cancel">cancel</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual BuildStepConfigWidget *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#createConfigWidget">createConfigWidget</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> DeployConfiguration *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#deployConfiguration">deployConfiguration</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#enabled">enabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#immutable">immutable</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#init">init</a></b>(QList&lt;const BuildStep *&gt; &amp;<i>earlierSteps</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Project *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#project">project</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ProjectConfiguration *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#projectConfiguration">projectConfiguration</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#run">run</a></b>(QFutureInterface&lt;bool&gt; &amp;<i>fi</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#runInGuiThread">runInGuiThread</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#setEnabled">setEnabled</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Target *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#target">target</a></b>() const</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#fromMap">fromMap</a></b>(const QVariantMap &amp;<i>map</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QVariantMap </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#toMap">toMap</a></b>() const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">11 public functions inherited from <a href="projectexplorer-projectconfiguration.html#public-functions">ProjectExplorer::ProjectConfiguration</a></li>
+</ul>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#addOutput">addOutput</a></b>(const QString &amp;<i>string</i>, ProjectExplorer::BuildStep::OutputFormat <i>format</i>, ProjectExplorer::BuildStep::OutputNewlineSetting <i>newlineSetting</i> = DoAppendNewline)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#addTask">addTask</a></b>(const ProjectExplorer::Task &amp;<i>task</i>, int <i>linkedOutputLines</i> = 0, int <i>skipLines</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#enabledChanged">enabledChanged</a></b>()</td></tr>
+</table></div>
+<ul>
+<li class="fn">2 signals inherited from <a href="projectexplorer-projectconfiguration.html#signals">ProjectExplorer::ProjectConfiguration</a></li>
+</ul>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#reportRunResult">reportRunResult</a></b>(QFutureInterface&lt;bool&gt; &amp;<i>fi</i>, bool <i>success</i>)</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#BuildStep">BuildStep</a></b>(BuildStepList *<i>bsl</i>, Core::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildstep.html#BuildStep-1">BuildStep</a></b>(BuildStepList *<i>bsl</i>, BuildStep *<i>bs</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$BuildStep-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="projectexplorer-buildstep.html">BuildStep</a> class provides build steps for projects.</p>
+<p>Build steps are the primary way plugin developers can customize how their projects (or projects from other plugins) are built.</p>
+<p>Projects are built by taking the list of build steps from the project and calling first <code>init()</code> and then <code>run()</code> on them.</p>
+<p>To change the way your project is built, reimplement this class and add your build step to the build step list of the project.</p>
+<p><b>Note: </b>The projects own the build step. Do not delete them yourself.</p><p><code>init()</code> is called in the GUI thread and can be used to query the project for any information you need.</p>
+<p><code>run()</code> is run via Utils::runAsync in a separate thread. If you need an event loop, you need to create it yourself.</p>
+</div>
+<!-- @@@BuildStep -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$OutputFormat$$$Stdout$$$Stderr$$$NormalMessage$$$ErrorMessage -->
+<h3 class="fn" id="OutputFormat-enum"><a name="OutputFormat-enum"></a>enum BuildStep::<span class="name">OutputFormat</span></h3>
+<!-- @@@OutputFormat -->
+<!-- $$$OutputNewlineSetting$$$DoAppendNewline$$$DontAppendNewline -->
+<h3 class="fn" id="OutputNewlineSetting-enum"><a name="OutputNewlineSetting-enum"></a>enum BuildStep::<span class="name">OutputNewlineSetting</span></h3>
+<!-- @@@OutputNewlineSetting -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$BuildStep[overload1]$$$BuildStepBuildStepList*Core::Id -->
+<h3 class="fn" id="BuildStep"><a name="BuildStep"></a><code>[protected] </code>BuildStep::<span class="name">BuildStep</span>(<span class="type"><a href="projectexplorer-buildsteplist.html">BuildStepList</a></span> *<i>bsl</i>, <span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>)</h3>
+<p>Default constructs an instance of BuildStep.</p><!-- @@@BuildStep -->
+<!-- $$$BuildStep$$$BuildStepBuildStepList*BuildStep* -->
+<h3 class="fn" id="BuildStep-1"><a name="BuildStep-1"></a><code>[protected] </code>BuildStep::<span class="name">BuildStep</span>(<span class="type"><a href="projectexplorer-buildsteplist.html">BuildStepList</a></span> *<i>bsl</i>, <span class="type"><a href="projectexplorer-buildstep.html#BuildStep">BuildStep</a></span> *<i>bs</i>)</h3>
+<p>Default constructs an instance of BuildStep.</p><!-- @@@BuildStep -->
+<!-- $$$addOutput[overload1]$$$addOutputconstQString&ProjectExplorer::BuildStep::OutputFormatProjectExplorer::BuildStep::OutputNewlineSetting -->
+<h3 class="fn" id="addOutput"><a name="addOutput"></a><code>[signal] </code><span class="type">void</span> BuildStep::<span class="name">addOutput</span>(const <span class="type">QString</span> &amp;<i>string</i>, <span class="type"><a href="projectexplorer-buildstep.html#OutputFormat-enum">ProjectExplorer::BuildStep::OutputFormat</a></span> <i>format</i>, <span class="type"><a href="projectexplorer-buildstep.html#OutputNewlineSetting-enum">ProjectExplorer::BuildStep::OutputNewlineSetting</a></span> <i>newlineSetting</i> = DoAppendNewline)</h3>
+<!-- @@@addOutput -->
+<!-- $$$addTask[overload1]$$$addTaskconstProjectExplorer::Task&intint -->
+<h3 class="fn" id="addTask"><a name="addTask"></a><code>[signal] </code><span class="type">void</span> BuildStep::<span class="name">addTask</span>(const <span class="type"><a href="projectexplorer-task.html">ProjectExplorer::Task</a></span> &amp;<i>task</i>, <span class="type">int</span> <i>linkedOutputLines</i> = 0, <span class="type">int</span> <i>skipLines</i> = 0)</h3>
+<!-- @@@addTask -->
+<!-- $$$buildConfiguration[overload1]$$$buildConfiguration -->
+<h3 class="fn" id="buildConfiguration"><a name="buildConfiguration"></a><span class="type"><a href="projectexplorer-buildconfiguration.html">BuildConfiguration</a></span> *BuildStep::<span class="name">buildConfiguration</span>() const</h3>
+<!-- @@@buildConfiguration -->
+<!-- $$$cancel[overload1]$$$cancel -->
+<h3 class="fn" id="cancel"><a name="cancel"></a><code>[virtual] </code><span class="type">void</span> BuildStep::<span class="name">cancel</span>()</h3>
+<p>This function needs to be reimplemented only for build steps that return <code>false</code> from <a href="projectexplorer-buildstep.html#runInGuiThread">runInGuiThread</a>().</p>
+<p><b>See also </b><a href="projectexplorer-buildstep.html#runInGuiThread">runInGuiThread</a>().</p>
+<!-- @@@cancel -->
+<!-- $$$createConfigWidget[overload1]$$$createConfigWidget -->
+<h3 class="fn" id="createConfigWidget"><a name="createConfigWidget"></a><code>[pure virtual] </code><span class="type"><a href="projectexplorer-buildstepconfigwidget.html">BuildStepConfigWidget</a></span> *BuildStep::<span class="name">createConfigWidget</span>()</h3>
+<p>Returns the Widget shown in the target settings dialog for this build step. Ownership is transferred to the caller.</p>
+<!-- @@@createConfigWidget -->
+<!-- $$$deployConfiguration[overload1]$$$deployConfiguration -->
+<h3 class="fn" id="deployConfiguration"><a name="deployConfiguration"></a><span class="type"><a href="projectexplorer-deployconfiguration.html">DeployConfiguration</a></span> *BuildStep::<span class="name">deployConfiguration</span>() const</h3>
+<!-- @@@deployConfiguration -->
+<!-- $$$enabled[overload1]$$$enabled -->
+<h3 class="fn" id="enabled"><a name="enabled"></a><span class="type">bool</span> BuildStep::<span class="name">enabled</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-buildstep.html#setEnabled">setEnabled</a>().</p>
+<!-- @@@enabled -->
+<!-- $$$enabledChanged[overload1]$$$enabledChanged -->
+<h3 class="fn" id="enabledChanged"><a name="enabledChanged"></a><code>[signal] </code><span class="type">void</span> BuildStep::<span class="name">enabledChanged</span>()</h3>
+<!-- @@@enabledChanged -->
+<!-- $$$fromMap[overload1]$$$fromMapconstQVariantMap& -->
+<h3 class="fn" id="fromMap"><a name="fromMap"></a><code>[override virtual] </code><span class="type">bool</span> BuildStep::<span class="name">fromMap</span>(const <span class="type">QVariantMap</span> &amp;<i>map</i>)</h3>
+<!-- @@@fromMap -->
+<!-- $$$immutable[overload1]$$$immutable -->
+<h3 class="fn" id="immutable"><a name="immutable"></a><code>[virtual] </code><span class="type">bool</span> BuildStep::<span class="name">immutable</span>() const</h3>
+<p>If this function returns <code>true</code>, the user cannot delete this build step for this target and the user is prevented from changing the order in which immutable steps are run. The default implementation returns <code>false</code>.</p>
+<!-- @@@immutable -->
+<!-- $$$init[overload1]$$$initQList<constBuildStep*>& -->
+<h3 class="fn" id="init"><a name="init"></a><code>[pure virtual] </code><span class="type">bool</span> BuildStep::<span class="name">init</span>(<span class="type">QList</span>&lt;const <span class="type"><a href="projectexplorer-buildstep.html#BuildStep">BuildStep</a></span> *&gt; &amp;<i>earlierSteps</i>)</h3>
+<!-- @@@init -->
+<!-- $$$project[overload1]$$$project -->
+<h3 class="fn" id="project"><a name="project"></a><span class="type"><a href="projectexplorer-project.html">Project</a></span> *BuildStep::<span class="name">project</span>() const</h3>
+<!-- @@@project -->
+<!-- $$$projectConfiguration[overload1]$$$projectConfiguration -->
+<h3 class="fn" id="projectConfiguration"><a name="projectConfiguration"></a><span class="type"><a href="projectexplorer-projectconfiguration.html#ProjectConfigurationx">ProjectConfiguration</a></span> *BuildStep::<span class="name">projectConfiguration</span>() const</h3>
+<!-- @@@projectConfiguration -->
+<!-- $$$reportRunResult[overload1]$$$reportRunResultQFutureInterface<bool>&bool -->
+<h3 class="fn" id="reportRunResult"><a name="reportRunResult"></a><code>[static] </code><span class="type">void</span> BuildStep::<span class="name">reportRunResult</span>(<span class="type">QFutureInterface</span>&lt;<span class="type">bool</span>&gt; &amp;<i>fi</i>, <span class="type">bool</span> <i>success</i>)</h3>
+<!-- @@@reportRunResult -->
+<!-- $$$run[overload1]$$$runQFutureInterface<bool>& -->
+<h3 class="fn" id="run"><a name="run"></a><code>[pure virtual] </code><span class="type">void</span> BuildStep::<span class="name">run</span>(<span class="type">QFutureInterface</span>&lt;<span class="type">bool</span>&gt; &amp;<i>fi</i>)</h3>
+<p>Reimplement this function. It is called when the target is built. By default, this function is NOT run in the GUI thread, but runs in its own thread. If you need an event loop, you need to create one. This function should block until the task is done</p>
+<p>The absolute minimal implementation is:</p>
+<pre class="cpp">
+
+  fi<span class="operator">.</span>reportResult(<span class="keyword">true</span>);
+
+</pre>
+<p>By returning <code>true</code> from <a href="projectexplorer-buildstep.html#runInGuiThread">runInGuiThread</a>(), this function is called in the GUI thread. Then the function should not block and instead the finished() signal should be emitted.</p>
+<p><b>See also </b><a href="projectexplorer-buildstep.html#runInGuiThread">runInGuiThread</a>().</p>
+<!-- @@@run -->
+<!-- $$$runInGuiThread[overload1]$$$runInGuiThread -->
+<h3 class="fn" id="runInGuiThread"><a name="runInGuiThread"></a><code>[virtual] </code><span class="type">bool</span> BuildStep::<span class="name">runInGuiThread</span>() const</h3>
+<!-- @@@runInGuiThread -->
+<!-- $$$setEnabled[overload1]$$$setEnabledbool -->
+<h3 class="fn" id="setEnabled"><a name="setEnabled"></a><span class="type">void</span> BuildStep::<span class="name">setEnabled</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-buildstep.html#enabled">enabled</a>().</p>
+<!-- @@@setEnabled -->
+<!-- $$$target[overload1]$$$target -->
+<h3 class="fn" id="target"><a name="target"></a><span class="type"><a href="projectexplorer-target.html">Target</a></span> *BuildStep::<span class="name">target</span>() const</h3>
+<!-- @@@target -->
+<!-- $$$toMap[overload1]$$$toMap -->
+<h3 class="fn" id="toMap"><a name="toMap"></a><code>[override virtual] </code><span class="type">QVariantMap</span> BuildStep::<span class="name">toMap</span>() const</h3>
+<!-- @@@toMap -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

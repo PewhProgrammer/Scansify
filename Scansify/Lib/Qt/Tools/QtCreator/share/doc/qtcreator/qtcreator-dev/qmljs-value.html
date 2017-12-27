@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- qmljsinterpreter.cpp -->
+  <title>Value Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Value</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Value Class</h1>
+<span class="small-subtitle">(<a href="qmljs-value.html">QmlJS::Value</a>)<br/></span>
+<!-- $$$Value-brief -->
+<p>The Value class is an abstract base class for the result of a JS expression. <a href="#details">More...</a></p>
+<!-- @@@Value -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;Value&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="qmljs-value-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#Value">Value</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#dtor.Value">~Value</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#accept">accept</a></b>(<i>ValueVisitor *</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const AnchorLineValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asAnchorLineValue">asAnchorLineValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const ASTFunctionValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asAstFunctionValue">asAstFunctionValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const ASTObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asAstObjectValue">asAstObjectValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const ASTPropertyReference *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asAstPropertyReference">asAstPropertyReference</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const ASTSignal *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asAstSignal">asAstSignal</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const ASTVariableReference *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asAstVariableReference">asAstVariableReference</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const BooleanValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asBooleanValue">asBooleanValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const ColorValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asColorValue">asColorValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const CppComponentValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asCppComponentValue">asCppComponentValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const Function *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asFunction">asFunction</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const FunctionValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asFunctionValue">asFunctionValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const IntValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asIntValue">asIntValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const JSImportScope *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asJSImportScope">asJSImportScope</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const MetaFunction *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asMetaFunction">asMetaFunction</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const NullValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asNullValue">asNullValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const NumberValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asNumberValue">asNumberValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asObjectValue">asObjectValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const QmlEnumValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asQmlEnumValue">asQmlEnumValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const QmlPrototypeReference *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asQmlPrototypeReference">asQmlPrototypeReference</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const Internal::QtObjectPrototypeReference *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asQtObjectPrototypeReference">asQtObjectPrototypeReference</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const RealValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asRealValue">asRealValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const Reference *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asReference">asReference</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const StringValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asStringValue">asStringValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const TypeScope *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asTypeScope">asTypeScope</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const UndefinedValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asUndefinedValue">asUndefinedValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const UnknownValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asUnknownValue">asUnknownValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual const UrlValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#asUrlValue">asUrlValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-value.html#getSourceLocation">getSourceLocation</a></b>(QString *<i>fileName</i>, int *<i>line</i>, int *<i>column</i>) const</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$Value-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The Value class is an abstract base class for the result of a JS expression.</p>
+<p>A Value represents a category of JavaScript values, such as number (<a href="qmljs-numbervalue.html">NumberValue</a>), string (<a href="qmljs-stringvalue.html">StringValue</a>) or functions with a specific signature (<a href="qmljs-functionvalue.html">FunctionValue</a>). It can also represent internal categories such as &quot;a QML component instantiation defined in a file&quot; (<a href="qmljs-astobjectvalue.html">ASTObjectValue</a>), &quot;a QML component defined in C++&quot; (<a href="qmljs-cppcomponentvalue.html">CppComponentValue</a>) or &quot;no specific information is available&quot; (<a href="qmljs-unknownvalue.html">UnknownValue</a>).</p>
+<p>The Value class itself provides <a href="qmljs-value.html#accept">accept</a>() for admitting <a href="qmljs-valuevisitor.html">ValueVisitor</a>s and a do-nothing <a href="qmljs-value.html#getSourceLocation">getSourceLocation</a>().</p>
+<p>Value instances should be cast to a derived type either through the asXXX() helper functions such as <a href="qmljs-value.html#asNumberValue">asNumberValue</a>() or via the <a href="qmljs.html#value_cast">value_cast</a>() template function.</p>
+<p>Values are the result of many operations in the <a href="qmljs.html">QmlJS</a> code model:</p>
+<ul>
+<li><a href="qmljs-evaluate.html">Evaluate</a></li>
+<li><a href="qmljs-context.html#lookupType">Context::lookupType</a>() and <a href="qmljs-context.html#lookupReference">Context::lookupReference</a>()</li>
+<li><a href="qmljs-scopechain.html#lookup">ScopeChain::lookup</a>()</li>
+<li><a href="qmljs-objectvalue.html#lookupMember">ObjectValue::lookupMember</a>()</li>
+</ul>
+</div>
+<p><b>See also </b><a href="qmljs-evaluate.html">Evaluate</a>, <a href="qmljs-valueowner.html">ValueOwner</a>, and <a href="qmljs-valuevisitor.html">ValueVisitor</a>.</p>
+<!-- @@@Value -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Value[overload1]$$$Value -->
+<h3 class="fn" id="Value"><a name="Value"></a>Value::<span class="name">Value</span>()</h3>
+<p>Default constructs an instance of Value.</p><!-- @@@Value -->
+<!-- $$$~Value[overload1]$$$~Value -->
+<h3 class="fn" id="dtor.Value"><a name="dtor.Value"></a><code>[virtual] </code>Value::<span class="name">~Value</span>()</h3>
+<p>Destroys the instance of Value. The destructor is virtual.</p><!-- @@@~Value -->
+<!-- $$$accept[overload1]$$$acceptValueVisitor* -->
+<h3 class="fn" id="accept"><a name="accept"></a><code>[pure virtual] </code><span class="type">void</span> Value::<span class="name">accept</span>(<i>ValueVisitor *</i>) const</h3>
+<!-- @@@accept -->
+<!-- $$$asAnchorLineValue[overload1]$$$asAnchorLineValue -->
+<h3 class="fn" id="asAnchorLineValue"><a name="asAnchorLineValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-anchorlinevalue.html">AnchorLineValue</a></span> *Value::<span class="name">asAnchorLineValue</span>() const</h3>
+<!-- @@@asAnchorLineValue -->
+<!-- $$$asAstFunctionValue[overload1]$$$asAstFunctionValue -->
+<h3 class="fn" id="asAstFunctionValue"><a name="asAstFunctionValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-astfunctionvalue.html">ASTFunctionValue</a></span> *Value::<span class="name">asAstFunctionValue</span>() const</h3>
+<!-- @@@asAstFunctionValue -->
+<!-- $$$asAstObjectValue[overload1]$$$asAstObjectValue -->
+<h3 class="fn" id="asAstObjectValue"><a name="asAstObjectValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-astobjectvalue.html">ASTObjectValue</a></span> *Value::<span class="name">asAstObjectValue</span>() const</h3>
+<!-- @@@asAstObjectValue -->
+<!-- $$$asAstPropertyReference[overload1]$$$asAstPropertyReference -->
+<h3 class="fn" id="asAstPropertyReference"><a name="asAstPropertyReference"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-astpropertyreference.html">ASTPropertyReference</a></span> *Value::<span class="name">asAstPropertyReference</span>() const</h3>
+<!-- @@@asAstPropertyReference -->
+<!-- $$$asAstSignal[overload1]$$$asAstSignal -->
+<h3 class="fn" id="asAstSignal"><a name="asAstSignal"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-astsignal.html">ASTSignal</a></span> *Value::<span class="name">asAstSignal</span>() const</h3>
+<!-- @@@asAstSignal -->
+<!-- $$$asAstVariableReference[overload1]$$$asAstVariableReference -->
+<h3 class="fn" id="asAstVariableReference"><a name="asAstVariableReference"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-astvariablereference.html">ASTVariableReference</a></span> *Value::<span class="name">asAstVariableReference</span>() const</h3>
+<!-- @@@asAstVariableReference -->
+<!-- $$$asBooleanValue[overload1]$$$asBooleanValue -->
+<h3 class="fn" id="asBooleanValue"><a name="asBooleanValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-booleanvalue.html">BooleanValue</a></span> *Value::<span class="name">asBooleanValue</span>() const</h3>
+<!-- @@@asBooleanValue -->
+<!-- $$$asColorValue[overload1]$$$asColorValue -->
+<h3 class="fn" id="asColorValue"><a name="asColorValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-colorvalue.html">ColorValue</a></span> *Value::<span class="name">asColorValue</span>() const</h3>
+<!-- @@@asColorValue -->
+<!-- $$$asCppComponentValue[overload1]$$$asCppComponentValue -->
+<h3 class="fn" id="asCppComponentValue"><a name="asCppComponentValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-cppcomponentvalue.html">CppComponentValue</a></span> *Value::<span class="name">asCppComponentValue</span>() const</h3>
+<!-- @@@asCppComponentValue -->
+<!-- $$$asFunction[overload1]$$$asFunction -->
+<h3 class="fn" id="asFunction"><a name="asFunction"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-function.html">Function</a></span> *Value::<span class="name">asFunction</span>() const</h3>
+<!-- @@@asFunction -->
+<!-- $$$asFunctionValue[overload1]$$$asFunctionValue -->
+<h3 class="fn" id="asFunctionValue"><a name="asFunctionValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-functionvalue.html">FunctionValue</a></span> *Value::<span class="name">asFunctionValue</span>() const</h3>
+<!-- @@@asFunctionValue -->
+<!-- $$$asIntValue[overload1]$$$asIntValue -->
+<h3 class="fn" id="asIntValue"><a name="asIntValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-intvalue.html">IntValue</a></span> *Value::<span class="name">asIntValue</span>() const</h3>
+<!-- @@@asIntValue -->
+<!-- $$$asJSImportScope[overload1]$$$asJSImportScope -->
+<h3 class="fn" id="asJSImportScope"><a name="asJSImportScope"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-jsimportscope.html">JSImportScope</a></span> *Value::<span class="name">asJSImportScope</span>() const</h3>
+<!-- @@@asJSImportScope -->
+<!-- $$$asMetaFunction[overload1]$$$asMetaFunction -->
+<h3 class="fn" id="asMetaFunction"><a name="asMetaFunction"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-metafunction.html">MetaFunction</a></span> *Value::<span class="name">asMetaFunction</span>() const</h3>
+<!-- @@@asMetaFunction -->
+<!-- $$$asNullValue[overload1]$$$asNullValue -->
+<h3 class="fn" id="asNullValue"><a name="asNullValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-nullvalue.html">NullValue</a></span> *Value::<span class="name">asNullValue</span>() const</h3>
+<!-- @@@asNullValue -->
+<!-- $$$asNumberValue[overload1]$$$asNumberValue -->
+<h3 class="fn" id="asNumberValue"><a name="asNumberValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-numbervalue.html">NumberValue</a></span> *Value::<span class="name">asNumberValue</span>() const</h3>
+<!-- @@@asNumberValue -->
+<!-- $$$asObjectValue[overload1]$$$asObjectValue -->
+<h3 class="fn" id="asObjectValue"><a name="asObjectValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *Value::<span class="name">asObjectValue</span>() const</h3>
+<!-- @@@asObjectValue -->
+<!-- $$$asQmlEnumValue[overload1]$$$asQmlEnumValue -->
+<h3 class="fn" id="asQmlEnumValue"><a name="asQmlEnumValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-qmlenumvalue.html">QmlEnumValue</a></span> *Value::<span class="name">asQmlEnumValue</span>() const</h3>
+<!-- @@@asQmlEnumValue -->
+<!-- $$$asQmlPrototypeReference[overload1]$$$asQmlPrototypeReference -->
+<h3 class="fn" id="asQmlPrototypeReference"><a name="asQmlPrototypeReference"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-qmlprototypereference.html">QmlPrototypeReference</a></span> *Value::<span class="name">asQmlPrototypeReference</span>() const</h3>
+<!-- @@@asQmlPrototypeReference -->
+<!-- $$$asQtObjectPrototypeReference[overload1]$$$asQtObjectPrototypeReference -->
+<h3 class="fn" id="asQtObjectPrototypeReference"><a name="asQtObjectPrototypeReference"></a><code>[virtual] </code>const <span class="type">Internal::QtObjectPrototypeReference</span> *Value::<span class="name">asQtObjectPrototypeReference</span>() const</h3>
+<!-- @@@asQtObjectPrototypeReference -->
+<!-- $$$asRealValue[overload1]$$$asRealValue -->
+<h3 class="fn" id="asRealValue"><a name="asRealValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-realvalue.html">RealValue</a></span> *Value::<span class="name">asRealValue</span>() const</h3>
+<!-- @@@asRealValue -->
+<!-- $$$asReference[overload1]$$$asReference -->
+<h3 class="fn" id="asReference"><a name="asReference"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-reference.html">Reference</a></span> *Value::<span class="name">asReference</span>() const</h3>
+<!-- @@@asReference -->
+<!-- $$$asStringValue[overload1]$$$asStringValue -->
+<h3 class="fn" id="asStringValue"><a name="asStringValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-stringvalue.html">StringValue</a></span> *Value::<span class="name">asStringValue</span>() const</h3>
+<!-- @@@asStringValue -->
+<!-- $$$asTypeScope[overload1]$$$asTypeScope -->
+<h3 class="fn" id="asTypeScope"><a name="asTypeScope"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-typescope.html">TypeScope</a></span> *Value::<span class="name">asTypeScope</span>() const</h3>
+<!-- @@@asTypeScope -->
+<!-- $$$asUndefinedValue[overload1]$$$asUndefinedValue -->
+<h3 class="fn" id="asUndefinedValue"><a name="asUndefinedValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-undefinedvalue.html">UndefinedValue</a></span> *Value::<span class="name">asUndefinedValue</span>() const</h3>
+<!-- @@@asUndefinedValue -->
+<!-- $$$asUnknownValue[overload1]$$$asUnknownValue -->
+<h3 class="fn" id="asUnknownValue"><a name="asUnknownValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-unknownvalue.html">UnknownValue</a></span> *Value::<span class="name">asUnknownValue</span>() const</h3>
+<!-- @@@asUnknownValue -->
+<!-- $$$asUrlValue[overload1]$$$asUrlValue -->
+<h3 class="fn" id="asUrlValue"><a name="asUrlValue"></a><code>[virtual] </code>const <span class="type"><a href="qmljs-urlvalue.html">UrlValue</a></span> *Value::<span class="name">asUrlValue</span>() const</h3>
+<!-- @@@asUrlValue -->
+<!-- $$$getSourceLocation[overload1]$$$getSourceLocationQString*int*int* -->
+<h3 class="fn" id="getSourceLocation"><a name="getSourceLocation"></a><code>[virtual] </code><span class="type">bool</span> Value::<span class="name">getSourceLocation</span>(<span class="type">QString</span> *<i>fileName</i>, <span class="type">int</span> *<i>line</i>, <span class="type">int</span> *<i>column</i>) const</h3>
+<!-- @@@getSourceLocation -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

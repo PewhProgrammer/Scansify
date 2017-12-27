@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- Overview.cpp -->
+  <title>Overview Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Overview</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Overview Class</h1>
+<span class="small-subtitle">(<a href="cplusplus-overview.html">CPlusPlus::Overview</a>)<br/></span>
+<!-- $$$Overview-brief -->
+<p>The Overview class converts a FullySpecifiedType and/or any qualified name to its string representation. <a href="#details">More...</a></p>
+<!-- @@@Overview -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;Overview&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="cplusplus-overview-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overview.html#StarBindFlag-enum">StarBindFlag</a></b> { BindToIdentifier, BindToTypeName, BindToLeftSpecifier, BindToRightSpecifier }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> flags </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overview.html#StarBindFlag-enum">StarBindFlags</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overview.html#Overview">Overview</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overview.html#prettyName">prettyName</a></b>(const Name *<i>name</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overview.html#prettyName-1">prettyName</a></b>(const QList&lt;const Name *&gt; &amp;<i>fullyQualifiedName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overview.html#prettyType">prettyType</a></b>(const FullySpecifiedType &amp;<i>type</i>, const Name *<i>name</i> = 0) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overview.html#prettyType-1">prettyType</a></b>(const FullySpecifiedType &amp;<i>type</i>, const QString &amp;<i>name</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overview.html#operator-28-29">operator()</a></b>(const Name *<i>name</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overview.html#operator-28-29-1">operator()</a></b>(const QList&lt;const Name *&gt; &amp;<i>fullyQualifiedName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overview.html#operator-28-29-2">operator()</a></b>(const FullySpecifiedType &amp;<i>type</i>, const Name *<i>name</i> = 0) const</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$Overview-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The Overview class converts a FullySpecifiedType and/or any qualified name to its string representation.</p>
+<p>The public data members (except the ones starting with <i>marked</i>) determine what exactly and how to print.</p>
+<p>You can get the start and end position of a function argument in the resulting string. Set <code>markedArgument</code> to the desired argument. After processing, <code>markedArgumentBegin</code> and <code>markedArgumentEnd</code> will contain the positions.</p>
+</div>
+<!-- @@@Overview -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$StarBindFlag$$$BindToIdentifier$$$BindToTypeName$$$BindToLeftSpecifier$$$BindToRightSpecifier -->
+<h3 class="flags" id="StarBindFlag-enum"><a name="StarBindFlag-enum"></a>enum Overview::<span class="name">StarBindFlag</span><br/>flags Overview::<span class="name">StarBindFlags</span></h3>
+<p>The StarBindFlag enum describes how the '*' and '&amp;' in pointers/references should be bound in the string representation.</p>
+<p>This also applies to rvalue references ('&amp;&amp;'), but not to pointers to functions or arrays, because it seems to be quite uncommon to use spaces in them. For example:</p>
+<pre class="cpp">
+
+  <span class="type">void</span> (<span class="operator">*</span>p)()
+  <span class="type">void</span> (<span class="operator">*</span>p)<span class="operator">[</span><span class="operator">]</span>
+
+</pre>
+<p>See the examples below. These assume that exactly one flag is set. That is, it may look different with flag combinations.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code>CPlusPlus::Overview::BindToIdentifier</code></td><td class="topAlign tblval"><code>0x1</code></td><td class="topAlign">e.g&#x2e; &quot;char *foo&quot;, but not &quot;char * foo&quot;</td></tr>
+<tr><td class="topAlign"><code>CPlusPlus::Overview::BindToTypeName</code></td><td class="topAlign tblval"><code>0x2</code></td><td class="topAlign">e.g&#x2e; &quot;char*&quot;, but not &quot;char *&quot;</td></tr>
+<tr><td class="topAlign"><code>CPlusPlus::Overview::BindToLeftSpecifier</code></td><td class="topAlign tblval"><code>0x4</code></td><td class="topAlign">e.g&#x2e; &quot;char * const* const&quot;, but not &quot;char * const * const&quot;</td></tr>
+<tr><td class="topAlign"><code>CPlusPlus::Overview::BindToRightSpecifier</code></td><td class="topAlign tblval"><code>0x8</code></td><td class="topAlign">e.g&#x2e; &quot;char *const&quot;, but not &quot;char * const&quot;</td></tr>
+</table></div>
+<p>The StarBindFlags type is a typedef for <a href="">QFlags</a>&lt;StarBindFlag&gt;. It stores an OR combination of StarBindFlag values.</p>
+<!-- @@@StarBindFlag -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Overview[overload1]$$$Overview -->
+<h3 class="fn" id="Overview"><a name="Overview"></a>Overview::<span class="name">Overview</span>()</h3>
+<p>Default constructs an instance of Overview.</p><!-- @@@Overview -->
+<!-- $$$prettyName[overload1]$$$prettyNameconstName* -->
+<h3 class="fn" id="prettyName"><a name="prettyName"></a><span class="type">QString</span> Overview::<span class="name">prettyName</span>(const <span class="type">Name</span> *<i>name</i>) const</h3>
+<!-- @@@prettyName -->
+<!-- $$$prettyName$$$prettyNameconstQList<constName*>& -->
+<h3 class="fn" id="prettyName-1"><a name="prettyName-1"></a><span class="type">QString</span> Overview::<span class="name">prettyName</span>(const <span class="type">QList</span>&lt;const <span class="type">Name</span> *&gt; &amp;<i>fullyQualifiedName</i>) const</h3>
+<!-- @@@prettyName -->
+<!-- $$$prettyType[overload1]$$$prettyTypeconstFullySpecifiedType&constName* -->
+<h3 class="fn" id="prettyType"><a name="prettyType"></a><span class="type">QString</span> Overview::<span class="name">prettyType</span>(const <span class="type">FullySpecifiedType</span> &amp;<i>type</i>, const <span class="type">Name</span> *<i>name</i> = 0) const</h3>
+<!-- @@@prettyType -->
+<!-- $$$prettyType$$$prettyTypeconstFullySpecifiedType&constQString& -->
+<h3 class="fn" id="prettyType-1"><a name="prettyType-1"></a><span class="type">QString</span> Overview::<span class="name">prettyType</span>(const <span class="type">FullySpecifiedType</span> &amp;<i>type</i>, const <span class="type">QString</span> &amp;<i>name</i>) const</h3>
+<!-- @@@prettyType -->
+<!-- $$$operator()[overload1]$$$operator()constName* -->
+<h3 class="fn" id="operator-28-29"><a name="operator-28-29"></a><span class="type">QString</span> Overview::<span class="name">operator()</span>(const <span class="type">Name</span> *<i>name</i>) const</h3>
+<!-- @@@operator() -->
+<!-- $$$operator()$$$operator()constQList<constName*>& -->
+<h3 class="fn" id="operator-28-29-1"><a name="operator-28-29-1"></a><span class="type">QString</span> Overview::<span class="name">operator()</span>(const <span class="type">QList</span>&lt;const <span class="type">Name</span> *&gt; &amp;<i>fullyQualifiedName</i>) const</h3>
+<!-- @@@operator() -->
+<!-- $$$operator()$$$operator()constFullySpecifiedType&constName* -->
+<h3 class="fn" id="operator-28-29-2"><a name="operator-28-29-2"></a><span class="type">QString</span> Overview::<span class="name">operator()</span>(const <span class="type">FullySpecifiedType</span> &amp;<i>type</i>, const <span class="type">Name</span> *<i>name</i> = 0) const</h3>
+<!-- @@@operator() -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- qmljsvalueowner.cpp -->
+  <title>ValueOwner Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ValueOwner</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ValueOwner Class</h1>
+<span class="small-subtitle">(<a href="qmljs-valueowner.html">QmlJS::ValueOwner</a>)<br/></span>
+<!-- $$$ValueOwner-brief -->
+<p>The <a href="qmljs-valueowner.html">ValueOwner</a> class manages the lifetime of <a href="qmljs-value.html">QmlJS::Value</a>s. <a href="#details">More...</a></p>
+<!-- @@@ValueOwner -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;ValueOwner&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="qmljs-valueowner-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#ValueOwner">ValueOwner</a></b>(const SharedValueOwner *<i>shared</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#dtor.ValueOwner">~ValueOwner</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const AnchorLineValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#anchorLineValue">anchorLineValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FunctionValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#arrayCtor">arrayCtor</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#arrayPrototype">arrayPrototype</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FunctionValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#booleanCtor">booleanCtor</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#booleanPrototype">booleanPrototype</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const BooleanValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#booleanValue">booleanValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ColorValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#colorValue">colorValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Value *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#convertToBoolean">convertToBoolean</a></b>(const Value *<i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Value *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#convertToNumber">convertToNumber</a></b>(const Value *<i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Value *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#convertToObject">convertToObject</a></b>(const Value *<i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Value *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#convertToString">convertToString</a></b>(const Value *<i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> CppQmlTypes &amp;</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#cppQmlTypes">cppQmlTypes</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const CppQmlTypes &amp;</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#cppQmlTypes-1">cppQmlTypes</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FunctionValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#dateCtor">dateCtor</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#datePrototype">datePrototype</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Value *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#defaultValueForBuiltinType">defaultValueForBuiltinType</a></b>(const QString &amp;<i>typeName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FunctionValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#functionCtor">functionCtor</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#functionPrototype">functionPrototype</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#globalObject">globalObject</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const IntValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#intValue">intValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#mathObject">mathObject</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#newObject">newObject</a></b>(const Value *<i>prototype</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#newObject-1">newObject</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const NullValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#nullValue">nullValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FunctionValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#numberCtor">numberCtor</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#numberPrototype">numberPrototype</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const NumberValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#numberValue">numberValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FunctionValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#objectCtor">objectCtor</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#objectPrototype">objectPrototype</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#qmlFontObject">qmlFontObject</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#qmlMatrix4x4Object">qmlMatrix4x4Object</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#qmlPointObject">qmlPointObject</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#qmlQuaternionObject">qmlQuaternionObject</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#qmlRectObject">qmlRectObject</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#qmlSizeObject">qmlSizeObject</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#qmlVector2DObject">qmlVector2DObject</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#qmlVector3DObject">qmlVector3DObject</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#qmlVector4DObject">qmlVector4DObject</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#qtObject">qtObject</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const RealValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#realValue">realValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FunctionValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#regexpCtor">regexpCtor</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#regexpPrototype">regexpPrototype</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#registerValue">registerValue</a></b>(Value *<i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FunctionValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#stringCtor">stringCtor</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const ObjectValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#stringPrototype">stringPrototype</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const StringValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#stringValue">stringValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#typeId">typeId</a></b>(const Value *<i>value</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const UndefinedValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#undefinedValue">undefinedValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const UnknownValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#unknownValue">unknownValue</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const UrlValue *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#urlValue">urlValue</a></b>() const</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> SharedValueOwner *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#sharedValueOwner">sharedValueOwner</a></b>(QString <i>kind</i> = QString())</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Function *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#addFunction">addFunction</a></b>(ObjectValue *<i>object</i>, const QString &amp;<i>name</i>, const Value *<i>result</i>, int <i>argumentCount</i> = 0, int <i>optionalCount</i> = 0, bool <i>variadic</i> = false)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Function *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-valueowner.html#addFunction-1">addFunction</a></b>(ObjectValue *<i>object</i>, const QString &amp;<i>name</i>, int <i>argumentCount</i> = 0, int <i>optionalCount</i> = 0, bool <i>variadic</i> = false)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$ValueOwner-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="qmljs-valueowner.html">ValueOwner</a> class manages the lifetime of <a href="qmljs-value.html">QmlJS::Value</a>s.</p>
+<p>Values are usually created on a <a href="qmljs-valueowner.html">ValueOwner</a>. When the <a href="qmljs-valueowner.html">ValueOwner</a> is destroyed it deletes all values it has registered.</p>
+<p>A <a href="qmljs-valueowner.html">ValueOwner</a> also provides access to various default values.</p>
+</div>
+<p><b>See also </b><a href="qmljs-value.html">QmlJS::Value</a>.</p>
+<!-- @@@ValueOwner -->
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ValueOwner[overload1]$$$ValueOwnerconstSharedValueOwner* -->
+<h3 class="fn" id="ValueOwner"><a name="ValueOwner"></a>ValueOwner::<span class="name">ValueOwner</span>(const <span class="type">SharedValueOwner</span> *<i>shared</i> = 0)</h3>
+<p>Default constructs an instance of ValueOwner.</p><!-- @@@ValueOwner -->
+<!-- $$$~ValueOwner[overload1]$$$~ValueOwner -->
+<h3 class="fn" id="dtor.ValueOwner"><a name="dtor.ValueOwner"></a><code>[virtual] </code>ValueOwner::<span class="name">~ValueOwner</span>()</h3>
+<p>Destroys the instance of ValueOwner. The destructor is virtual.</p><!-- @@@~ValueOwner -->
+<!-- $$$addFunction[overload1]$$$addFunctionObjectValue*constQString&constValue*intintbool -->
+<h3 class="fn" id="addFunction"><a name="addFunction"></a><code>[protected] </code><span class="type"><a href="qmljs-function.html">Function</a></span> *ValueOwner::<span class="name">addFunction</span>(<span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *<i>object</i>, const <span class="type">QString</span> &amp;<i>name</i>, const <span class="type"><a href="qmljs-value.html">Value</a></span> *<i>result</i>, <span class="type">int</span> <i>argumentCount</i> = 0, <span class="type">int</span> <i>optionalCount</i> = 0, <span class="type">bool</span> <i>variadic</i> = false)</h3>
+<!-- @@@addFunction -->
+<!-- $$$addFunction$$$addFunctionObjectValue*constQString&intintbool -->
+<h3 class="fn" id="addFunction-1"><a name="addFunction-1"></a><code>[protected] </code><span class="type"><a href="qmljs-function.html">Function</a></span> *ValueOwner::<span class="name">addFunction</span>(<span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *<i>object</i>, const <span class="type">QString</span> &amp;<i>name</i>, <span class="type">int</span> <i>argumentCount</i> = 0, <span class="type">int</span> <i>optionalCount</i> = 0, <span class="type">bool</span> <i>variadic</i> = false)</h3>
+<!-- @@@addFunction -->
+<!-- $$$anchorLineValue[overload1]$$$anchorLineValue -->
+<h3 class="fn" id="anchorLineValue"><a name="anchorLineValue"></a>const <span class="type"><a href="qmljs-anchorlinevalue.html">AnchorLineValue</a></span> *ValueOwner::<span class="name">anchorLineValue</span>() const</h3>
+<!-- @@@anchorLineValue -->
+<!-- $$$arrayCtor[overload1]$$$arrayCtor -->
+<h3 class="fn" id="arrayCtor"><a name="arrayCtor"></a>const <span class="type"><a href="qmljs-functionvalue.html">FunctionValue</a></span> *ValueOwner::<span class="name">arrayCtor</span>() const</h3>
+<!-- @@@arrayCtor -->
+<!-- $$$arrayPrototype[overload1]$$$arrayPrototype -->
+<h3 class="fn" id="arrayPrototype"><a name="arrayPrototype"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">arrayPrototype</span>() const</h3>
+<!-- @@@arrayPrototype -->
+<!-- $$$booleanCtor[overload1]$$$booleanCtor -->
+<h3 class="fn" id="booleanCtor"><a name="booleanCtor"></a>const <span class="type"><a href="qmljs-functionvalue.html">FunctionValue</a></span> *ValueOwner::<span class="name">booleanCtor</span>() const</h3>
+<!-- @@@booleanCtor -->
+<!-- $$$booleanPrototype[overload1]$$$booleanPrototype -->
+<h3 class="fn" id="booleanPrototype"><a name="booleanPrototype"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">booleanPrototype</span>() const</h3>
+<!-- @@@booleanPrototype -->
+<!-- $$$booleanValue[overload1]$$$booleanValue -->
+<h3 class="fn" id="booleanValue"><a name="booleanValue"></a>const <span class="type"><a href="qmljs-booleanvalue.html">BooleanValue</a></span> *ValueOwner::<span class="name">booleanValue</span>() const</h3>
+<!-- @@@booleanValue -->
+<!-- $$$colorValue[overload1]$$$colorValue -->
+<h3 class="fn" id="colorValue"><a name="colorValue"></a>const <span class="type"><a href="qmljs-colorvalue.html">ColorValue</a></span> *ValueOwner::<span class="name">colorValue</span>() const</h3>
+<!-- @@@colorValue -->
+<!-- $$$convertToBoolean[overload1]$$$convertToBooleanconstValue* -->
+<h3 class="fn" id="convertToBoolean"><a name="convertToBoolean"></a>const <span class="type"><a href="qmljs-value.html">Value</a></span> *ValueOwner::<span class="name">convertToBoolean</span>(const <span class="type"><a href="qmljs-value.html">Value</a></span> *<i>value</i>)</h3>
+<!-- @@@convertToBoolean -->
+<!-- $$$convertToNumber[overload1]$$$convertToNumberconstValue* -->
+<h3 class="fn" id="convertToNumber"><a name="convertToNumber"></a>const <span class="type"><a href="qmljs-value.html">Value</a></span> *ValueOwner::<span class="name">convertToNumber</span>(const <span class="type"><a href="qmljs-value.html">Value</a></span> *<i>value</i>)</h3>
+<!-- @@@convertToNumber -->
+<!-- $$$convertToObject[overload1]$$$convertToObjectconstValue* -->
+<h3 class="fn" id="convertToObject"><a name="convertToObject"></a>const <span class="type"><a href="qmljs-value.html">Value</a></span> *ValueOwner::<span class="name">convertToObject</span>(const <span class="type"><a href="qmljs-value.html">Value</a></span> *<i>value</i>)</h3>
+<!-- @@@convertToObject -->
+<!-- $$$convertToString[overload1]$$$convertToStringconstValue* -->
+<h3 class="fn" id="convertToString"><a name="convertToString"></a>const <span class="type"><a href="qmljs-value.html">Value</a></span> *ValueOwner::<span class="name">convertToString</span>(const <span class="type"><a href="qmljs-value.html">Value</a></span> *<i>value</i>)</h3>
+<!-- @@@convertToString -->
+<!-- $$$cppQmlTypes[overload1]$$$cppQmlTypes -->
+<h3 class="fn" id="cppQmlTypes"><a name="cppQmlTypes"></a><span class="type"><a href="qmljs-cppqmltypes.html">CppQmlTypes</a></span> &amp;ValueOwner::<span class="name">cppQmlTypes</span>()</h3>
+<!-- @@@cppQmlTypes -->
+<!-- $$$cppQmlTypes$$$cppQmlTypes -->
+<h3 class="fn" id="cppQmlTypes-1"><a name="cppQmlTypes-1"></a>const <span class="type"><a href="qmljs-cppqmltypes.html">CppQmlTypes</a></span> &amp;ValueOwner::<span class="name">cppQmlTypes</span>() const</h3>
+<!-- @@@cppQmlTypes -->
+<!-- $$$dateCtor[overload1]$$$dateCtor -->
+<h3 class="fn" id="dateCtor"><a name="dateCtor"></a>const <span class="type"><a href="qmljs-functionvalue.html">FunctionValue</a></span> *ValueOwner::<span class="name">dateCtor</span>() const</h3>
+<!-- @@@dateCtor -->
+<!-- $$$datePrototype[overload1]$$$datePrototype -->
+<h3 class="fn" id="datePrototype"><a name="datePrototype"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">datePrototype</span>() const</h3>
+<!-- @@@datePrototype -->
+<!-- $$$defaultValueForBuiltinType[overload1]$$$defaultValueForBuiltinTypeconstQString& -->
+<h3 class="fn" id="defaultValueForBuiltinType"><a name="defaultValueForBuiltinType"></a>const <span class="type"><a href="qmljs-value.html">Value</a></span> *ValueOwner::<span class="name">defaultValueForBuiltinType</span>(const <span class="type">QString</span> &amp;<i>typeName</i>) const</h3>
+<!-- @@@defaultValueForBuiltinType -->
+<!-- $$$functionCtor[overload1]$$$functionCtor -->
+<h3 class="fn" id="functionCtor"><a name="functionCtor"></a>const <span class="type"><a href="qmljs-functionvalue.html">FunctionValue</a></span> *ValueOwner::<span class="name">functionCtor</span>() const</h3>
+<!-- @@@functionCtor -->
+<!-- $$$functionPrototype[overload1]$$$functionPrototype -->
+<h3 class="fn" id="functionPrototype"><a name="functionPrototype"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">functionPrototype</span>() const</h3>
+<!-- @@@functionPrototype -->
+<!-- $$$globalObject[overload1]$$$globalObject -->
+<h3 class="fn" id="globalObject"><a name="globalObject"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">globalObject</span>() const</h3>
+<!-- @@@globalObject -->
+<!-- $$$intValue[overload1]$$$intValue -->
+<h3 class="fn" id="intValue"><a name="intValue"></a>const <span class="type"><a href="qmljs-intvalue.html">IntValue</a></span> *ValueOwner::<span class="name">intValue</span>() const</h3>
+<!-- @@@intValue -->
+<!-- $$$mathObject[overload1]$$$mathObject -->
+<h3 class="fn" id="mathObject"><a name="mathObject"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">mathObject</span>() const</h3>
+<!-- @@@mathObject -->
+<!-- $$$newObject[overload1]$$$newObjectconstValue* -->
+<h3 class="fn" id="newObject"><a name="newObject"></a><span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">newObject</span>(const <span class="type"><a href="qmljs-value.html">Value</a></span> *<i>prototype</i>)</h3>
+<!-- @@@newObject -->
+<!-- $$$newObject$$$newObject -->
+<h3 class="fn" id="newObject-1"><a name="newObject-1"></a><span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">newObject</span>()</h3>
+<!-- @@@newObject -->
+<!-- $$$nullValue[overload1]$$$nullValue -->
+<h3 class="fn" id="nullValue"><a name="nullValue"></a>const <span class="type"><a href="qmljs-nullvalue.html">NullValue</a></span> *ValueOwner::<span class="name">nullValue</span>() const</h3>
+<!-- @@@nullValue -->
+<!-- $$$numberCtor[overload1]$$$numberCtor -->
+<h3 class="fn" id="numberCtor"><a name="numberCtor"></a>const <span class="type"><a href="qmljs-functionvalue.html">FunctionValue</a></span> *ValueOwner::<span class="name">numberCtor</span>() const</h3>
+<!-- @@@numberCtor -->
+<!-- $$$numberPrototype[overload1]$$$numberPrototype -->
+<h3 class="fn" id="numberPrototype"><a name="numberPrototype"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">numberPrototype</span>() const</h3>
+<!-- @@@numberPrototype -->
+<!-- $$$numberValue[overload1]$$$numberValue -->
+<h3 class="fn" id="numberValue"><a name="numberValue"></a>const <span class="type"><a href="qmljs-numbervalue.html">NumberValue</a></span> *ValueOwner::<span class="name">numberValue</span>() const</h3>
+<!-- @@@numberValue -->
+<!-- $$$objectCtor[overload1]$$$objectCtor -->
+<h3 class="fn" id="objectCtor"><a name="objectCtor"></a>const <span class="type"><a href="qmljs-functionvalue.html">FunctionValue</a></span> *ValueOwner::<span class="name">objectCtor</span>() const</h3>
+<!-- @@@objectCtor -->
+<!-- $$$objectPrototype[overload1]$$$objectPrototype -->
+<h3 class="fn" id="objectPrototype"><a name="objectPrototype"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">objectPrototype</span>() const</h3>
+<!-- @@@objectPrototype -->
+<!-- $$$qmlFontObject[overload1]$$$qmlFontObject -->
+<h3 class="fn" id="qmlFontObject"><a name="qmlFontObject"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">qmlFontObject</span>()</h3>
+<!-- @@@qmlFontObject -->
+<!-- $$$qmlMatrix4x4Object[overload1]$$$qmlMatrix4x4Object -->
+<h3 class="fn" id="qmlMatrix4x4Object"><a name="qmlMatrix4x4Object"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">qmlMatrix4x4Object</span>()</h3>
+<!-- @@@qmlMatrix4x4Object -->
+<!-- $$$qmlPointObject[overload1]$$$qmlPointObject -->
+<h3 class="fn" id="qmlPointObject"><a name="qmlPointObject"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">qmlPointObject</span>()</h3>
+<!-- @@@qmlPointObject -->
+<!-- $$$qmlQuaternionObject[overload1]$$$qmlQuaternionObject -->
+<h3 class="fn" id="qmlQuaternionObject"><a name="qmlQuaternionObject"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">qmlQuaternionObject</span>()</h3>
+<!-- @@@qmlQuaternionObject -->
+<!-- $$$qmlRectObject[overload1]$$$qmlRectObject -->
+<h3 class="fn" id="qmlRectObject"><a name="qmlRectObject"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">qmlRectObject</span>()</h3>
+<!-- @@@qmlRectObject -->
+<!-- $$$qmlSizeObject[overload1]$$$qmlSizeObject -->
+<h3 class="fn" id="qmlSizeObject"><a name="qmlSizeObject"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">qmlSizeObject</span>()</h3>
+<!-- @@@qmlSizeObject -->
+<!-- $$$qmlVector2DObject[overload1]$$$qmlVector2DObject -->
+<h3 class="fn" id="qmlVector2DObject"><a name="qmlVector2DObject"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">qmlVector2DObject</span>()</h3>
+<!-- @@@qmlVector2DObject -->
+<!-- $$$qmlVector3DObject[overload1]$$$qmlVector3DObject -->
+<h3 class="fn" id="qmlVector3DObject"><a name="qmlVector3DObject"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">qmlVector3DObject</span>()</h3>
+<!-- @@@qmlVector3DObject -->
+<!-- $$$qmlVector4DObject[overload1]$$$qmlVector4DObject -->
+<h3 class="fn" id="qmlVector4DObject"><a name="qmlVector4DObject"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">qmlVector4DObject</span>()</h3>
+<!-- @@@qmlVector4DObject -->
+<!-- $$$qtObject[overload1]$$$qtObject -->
+<h3 class="fn" id="qtObject"><a name="qtObject"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">qtObject</span>() const</h3>
+<!-- @@@qtObject -->
+<!-- $$$realValue[overload1]$$$realValue -->
+<h3 class="fn" id="realValue"><a name="realValue"></a>const <span class="type"><a href="qmljs-realvalue.html">RealValue</a></span> *ValueOwner::<span class="name">realValue</span>() const</h3>
+<!-- @@@realValue -->
+<!-- $$$regexpCtor[overload1]$$$regexpCtor -->
+<h3 class="fn" id="regexpCtor"><a name="regexpCtor"></a>const <span class="type"><a href="qmljs-functionvalue.html">FunctionValue</a></span> *ValueOwner::<span class="name">regexpCtor</span>() const</h3>
+<!-- @@@regexpCtor -->
+<!-- $$$regexpPrototype[overload1]$$$regexpPrototype -->
+<h3 class="fn" id="regexpPrototype"><a name="regexpPrototype"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">regexpPrototype</span>() const</h3>
+<!-- @@@regexpPrototype -->
+<!-- $$$registerValue[overload1]$$$registerValueValue* -->
+<h3 class="fn" id="registerValue"><a name="registerValue"></a><span class="type">void</span> ValueOwner::<span class="name">registerValue</span>(<span class="type"><a href="qmljs-value.html">Value</a></span> *<i>value</i>)</h3>
+<!-- @@@registerValue -->
+<!-- $$$sharedValueOwner[overload1]$$$sharedValueOwnerQString -->
+<h3 class="fn" id="sharedValueOwner"><a name="sharedValueOwner"></a><code>[static] </code><span class="type">SharedValueOwner</span> *ValueOwner::<span class="name">sharedValueOwner</span>(<span class="type">QString</span> <i>kind</i> = QString())</h3>
+<!-- @@@sharedValueOwner -->
+<!-- $$$stringCtor[overload1]$$$stringCtor -->
+<h3 class="fn" id="stringCtor"><a name="stringCtor"></a>const <span class="type"><a href="qmljs-functionvalue.html">FunctionValue</a></span> *ValueOwner::<span class="name">stringCtor</span>() const</h3>
+<!-- @@@stringCtor -->
+<!-- $$$stringPrototype[overload1]$$$stringPrototype -->
+<h3 class="fn" id="stringPrototype"><a name="stringPrototype"></a>const <span class="type"><a href="qmljs-objectvalue.html">ObjectValue</a></span> *ValueOwner::<span class="name">stringPrototype</span>() const</h3>
+<!-- @@@stringPrototype -->
+<!-- $$$stringValue[overload1]$$$stringValue -->
+<h3 class="fn" id="stringValue"><a name="stringValue"></a>const <span class="type"><a href="qmljs-stringvalue.html">StringValue</a></span> *ValueOwner::<span class="name">stringValue</span>() const</h3>
+<!-- @@@stringValue -->
+<!-- $$$typeId[overload1]$$$typeIdconstValue* -->
+<h3 class="fn" id="typeId"><a name="typeId"></a><span class="type">QString</span> ValueOwner::<span class="name">typeId</span>(const <span class="type"><a href="qmljs-value.html">Value</a></span> *<i>value</i>)</h3>
+<!-- @@@typeId -->
+<!-- $$$undefinedValue[overload1]$$$undefinedValue -->
+<h3 class="fn" id="undefinedValue"><a name="undefinedValue"></a>const <span class="type"><a href="qmljs-undefinedvalue.html">UndefinedValue</a></span> *ValueOwner::<span class="name">undefinedValue</span>() const</h3>
+<!-- @@@undefinedValue -->
+<!-- $$$unknownValue[overload1]$$$unknownValue -->
+<h3 class="fn" id="unknownValue"><a name="unknownValue"></a>const <span class="type"><a href="qmljs-unknownvalue.html">UnknownValue</a></span> *ValueOwner::<span class="name">unknownValue</span>() const</h3>
+<!-- @@@unknownValue -->
+<!-- $$$urlValue[overload1]$$$urlValue -->
+<h3 class="fn" id="urlValue"><a name="urlValue"></a>const <span class="type"><a href="qmljs-urlvalue.html">UrlValue</a></span> *ValueOwner::<span class="name">urlValue</span>() const</h3>
+<!-- @@@urlValue -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

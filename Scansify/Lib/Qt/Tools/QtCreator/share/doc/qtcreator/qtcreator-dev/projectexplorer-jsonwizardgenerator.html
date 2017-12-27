@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>JsonWizardGenerator Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >JsonWizardGenerator</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">JsonWizardGenerator Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-jsonwizardgenerator.html">ProjectExplorer::JsonWizardGenerator</a>)<br/></span>
+<ul>
+<li><a href="projectexplorer-jsonwizardgenerator-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#OverwriteResult-enum">OverwriteResult</a></b> { OverwriteOk, OverwriteError, OverwriteCanceled }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#dtor.JsonWizardGenerator">~JsonWizardGenerator</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#allDone">allDone</a></b>(const JsonWizard *<i>wizard</i>, Core::GeneratedFile *<i>file</i>, QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#canKeepExistingFiles">canKeepExistingFiles</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::GeneratedFiles </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#fileList">fileList</a></b>(Utils::MacroExpander *<i>expander</i>, const QString &amp;<i>baseDir</i>, const QString &amp;<i>projectDir</i>, QString *<i>errorMessage</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#formatFile">formatFile</a></b>(const JsonWizard *<i>wizard</i>, Core::GeneratedFile *<i>file</i>, QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#polish">polish</a></b>(const JsonWizard *<i>wizard</i>, Core::GeneratedFile *<i>file</i>, QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#postWrite">postWrite</a></b>(const JsonWizard *<i>wizard</i>, Core::GeneratedFile *<i>file</i>, QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#writeFile">writeFile</a></b>(const JsonWizard *<i>wizard</i>, Core::GeneratedFile *<i>file</i>, QString *<i>errorMessage</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#allDone-1">allDone</a></b>(const JsonWizard *<i>wizard</i>, JsonWizard::GeneratorFiles *<i>files</i>, QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#formatFiles">formatFiles</a></b>(const JsonWizard *<i>wizard</i>, QList&lt;JsonWizard::GeneratorFile&gt; *<i>files</i>, QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#polish-1">polish</a></b>(const JsonWizard *<i>wizard</i>, JsonWizard::GeneratorFiles *<i>files</i>, QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#postWrite-1">postWrite</a></b>(const JsonWizard *<i>wizard</i>, JsonWizard::GeneratorFiles *<i>files</i>, QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> OverwriteResult </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#promptForOverwrite">promptForOverwrite</a></b>(JsonWizard::GeneratorFiles *<i>files</i>, QString *<i>errorMessage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-jsonwizardgenerator.html#writeFiles">writeFiles</a></b>(const JsonWizard *<i>wizard</i>, JsonWizard::GeneratorFiles *<i>files</i>, QString *<i>errorMessage</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$OverwriteResult$$$OverwriteOk$$$OverwriteError$$$OverwriteCanceled -->
+<h3 class="fn" id="OverwriteResult-enum"><a name="OverwriteResult-enum"></a>enum JsonWizardGenerator::<span class="name">OverwriteResult</span></h3>
+<!-- @@@OverwriteResult -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$~JsonWizardGenerator[overload1]$$$~JsonWizardGenerator -->
+<h3 class="fn" id="dtor.JsonWizardGenerator"><a name="dtor.JsonWizardGenerator"></a><code>[virtual] </code>JsonWizardGenerator::<span class="name">~JsonWizardGenerator</span>()</h3>
+<p>Destroys the instance of JsonWizardGenerator. The destructor is virtual.</p><!-- @@@~JsonWizardGenerator -->
+<!-- $$$allDone[overload1]$$$allDoneconstJsonWizard*Core::GeneratedFile*QString* -->
+<h3 class="fn" id="allDone"><a name="allDone"></a><code>[virtual] </code><span class="type">bool</span> JsonWizardGenerator::<span class="name">allDone</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html">JsonWizard</a></span> *<i>wizard</i>, <span class="type"><a href="core-generatedfile.html">Core::GeneratedFile</a></span> *<i>file</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@allDone -->
+<!-- $$$allDone$$$allDoneconstJsonWizard*JsonWizard::GeneratorFiles*QString* -->
+<h3 class="fn" id="allDone-1"><a name="allDone-1"></a><code>[static] </code><span class="type">bool</span> JsonWizardGenerator::<span class="name">allDone</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html">JsonWizard</a></span> *<i>wizard</i>, <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> *<i>files</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@allDone -->
+<!-- $$$canKeepExistingFiles[overload1]$$$canKeepExistingFiles -->
+<h3 class="fn" id="canKeepExistingFiles"><a name="canKeepExistingFiles"></a><code>[virtual] </code><span class="type">bool</span> JsonWizardGenerator::<span class="name">canKeepExistingFiles</span>() const</h3>
+<!-- @@@canKeepExistingFiles -->
+<!-- $$$fileList[overload1]$$$fileListUtils::MacroExpander*constQString&constQString&QString* -->
+<h3 class="fn" id="fileList"><a name="fileList"></a><code>[pure virtual] </code><span class="type"><a href="core.html#GeneratedFiles-typedef">Core::GeneratedFiles</a></span> JsonWizardGenerator::<span class="name">fileList</span>(<span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *<i>expander</i>, const <span class="type">QString</span> &amp;<i>baseDir</i>, const <span class="type">QString</span> &amp;<i>projectDir</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@fileList -->
+<!-- $$$formatFile[overload1]$$$formatFileconstJsonWizard*Core::GeneratedFile*QString* -->
+<h3 class="fn" id="formatFile"><a name="formatFile"></a><code>[virtual] </code><span class="type">bool</span> JsonWizardGenerator::<span class="name">formatFile</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html">JsonWizard</a></span> *<i>wizard</i>, <span class="type"><a href="core-generatedfile.html">Core::GeneratedFile</a></span> *<i>file</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@formatFile -->
+<!-- $$$formatFiles[overload1]$$$formatFilesconstJsonWizard*QList<JsonWizard::GeneratorFile>*QString* -->
+<h3 class="fn" id="formatFiles"><a name="formatFiles"></a><code>[static] </code><span class="type">bool</span> JsonWizardGenerator::<span class="name">formatFiles</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html">JsonWizard</a></span> *<i>wizard</i>, <span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-jsonwizard-generatorfile.html">JsonWizard::GeneratorFile</a></span>&gt; *<i>files</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@formatFiles -->
+<!-- $$$polish[overload1]$$$polishconstJsonWizard*Core::GeneratedFile*QString* -->
+<h3 class="fn" id="polish"><a name="polish"></a><code>[virtual] </code><span class="type">bool</span> JsonWizardGenerator::<span class="name">polish</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html">JsonWizard</a></span> *<i>wizard</i>, <span class="type"><a href="core-generatedfile.html">Core::GeneratedFile</a></span> *<i>file</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@polish -->
+<!-- $$$polish$$$polishconstJsonWizard*JsonWizard::GeneratorFiles*QString* -->
+<h3 class="fn" id="polish-1"><a name="polish-1"></a><code>[static] </code><span class="type">bool</span> JsonWizardGenerator::<span class="name">polish</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html">JsonWizard</a></span> *<i>wizard</i>, <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> *<i>files</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@polish -->
+<!-- $$$postWrite[overload1]$$$postWriteconstJsonWizard*Core::GeneratedFile*QString* -->
+<h3 class="fn" id="postWrite"><a name="postWrite"></a><code>[virtual] </code><span class="type">bool</span> JsonWizardGenerator::<span class="name">postWrite</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html">JsonWizard</a></span> *<i>wizard</i>, <span class="type"><a href="core-generatedfile.html">Core::GeneratedFile</a></span> *<i>file</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@postWrite -->
+<!-- $$$postWrite$$$postWriteconstJsonWizard*JsonWizard::GeneratorFiles*QString* -->
+<h3 class="fn" id="postWrite-1"><a name="postWrite-1"></a><code>[static] </code><span class="type">bool</span> JsonWizardGenerator::<span class="name">postWrite</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html">JsonWizard</a></span> *<i>wizard</i>, <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> *<i>files</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@postWrite -->
+<!-- $$$promptForOverwrite[overload1]$$$promptForOverwriteJsonWizard::GeneratorFiles*QString* -->
+<h3 class="fn" id="promptForOverwrite"><a name="promptForOverwrite"></a><code>[static] </code><span class="type"><a href="projectexplorer-jsonwizardgenerator.html#OverwriteResult-enum">OverwriteResult</a></span> JsonWizardGenerator::<span class="name">promptForOverwrite</span>(<span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> *<i>files</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@promptForOverwrite -->
+<!-- $$$writeFile[overload1]$$$writeFileconstJsonWizard*Core::GeneratedFile*QString* -->
+<h3 class="fn" id="writeFile"><a name="writeFile"></a><code>[virtual] </code><span class="type">bool</span> JsonWizardGenerator::<span class="name">writeFile</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html">JsonWizard</a></span> *<i>wizard</i>, <span class="type"><a href="core-generatedfile.html">Core::GeneratedFile</a></span> *<i>file</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@writeFile -->
+<!-- $$$writeFiles[overload1]$$$writeFilesconstJsonWizard*JsonWizard::GeneratorFiles*QString* -->
+<h3 class="fn" id="writeFiles"><a name="writeFiles"></a><code>[static] </code><span class="type">bool</span> JsonWizardGenerator::<span class="name">writeFiles</span>(const <span class="type"><a href="projectexplorer-jsonwizard.html">JsonWizard</a></span> *<i>wizard</i>, <span class="type"><a href="projectexplorer-jsonwizard.html#GeneratorFiles-typedef">JsonWizard::GeneratorFiles</a></span> *<i>files</i>, <span class="type">QString</span> *<i>errorMessage</i>)</h3>
+<!-- @@@writeFiles -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

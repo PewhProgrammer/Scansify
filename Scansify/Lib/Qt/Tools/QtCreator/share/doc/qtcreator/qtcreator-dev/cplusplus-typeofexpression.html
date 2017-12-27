@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>TypeOfExpression Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >TypeOfExpression</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">TypeOfExpression Class</h1>
+<span class="small-subtitle">(<a href="cplusplus-typeofexpression.html">CPlusPlus::TypeOfExpression</a>)<br/></span>
+<ul>
+<li><a href="cplusplus-typeofexpression-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#PreprocessMode-enum">PreprocessMode</a></b> { NoPreprocess, Preprocess }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#TypeOfExpression">TypeOfExpression</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ExpressionAST *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#ast">ast</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const LookupContext &amp;</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#context">context</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ExpressionAST *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#expressionAST">expressionAST</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#init">init</a></b>(Document::Ptr <i>thisDocument</i>, const Snapshot &amp;<i>snapshot</i>, QSharedPointer&lt;CreateBindings&gt; <i>bindings</i> = QSharedPointer&lt;CreateBindings&gt; (), const QSet&lt;const Declaration *&gt; &amp;<i>autoDeclarationsBeingResolved</i> = QSet&lt;const Declaration *&gt; ())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QByteArray </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#preprocess">preprocess</a></b>(const QByteArray &amp;<i>utf8code</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QByteArray </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#preprocessedExpression">preprocessedExpression</a></b>(const QByteArray &amp;<i>utf8code</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;LookupItem&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#reference">reference</a></b>(const QByteArray &amp;<i>utf8code</i>, Scope *<i>scope</i>, PreprocessMode <i>mode</i> = NoPreprocess)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;LookupItem&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#reference-1">reference</a></b>(ExpressionAST *<i>expression</i>, Document::Ptr <i>document</i>, Scope *<i>scope</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Scope *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#scope">scope</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#setExpandTemplates">setExpandTemplates</a></b>(bool <i>expandTemplates</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;LookupItem&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#operator-28-29">operator()</a></b>(const QByteArray &amp;<i>utf8code</i>, Scope *<i>scope</i>, PreprocessMode <i>mode</i> = NoPreprocess)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;LookupItem&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-typeofexpression.html#operator-28-29-1">operator()</a></b>(ExpressionAST *<i>expression</i>, Document::Ptr <i>document</i>, Scope *<i>scope</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$PreprocessMode$$$NoPreprocess$$$Preprocess -->
+<h3 class="fn" id="PreprocessMode-enum"><a name="PreprocessMode-enum"></a>enum TypeOfExpression::<span class="name">PreprocessMode</span></h3>
+<!-- @@@PreprocessMode -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$TypeOfExpression[overload1]$$$TypeOfExpression -->
+<h3 class="fn" id="TypeOfExpression"><a name="TypeOfExpression"></a>TypeOfExpression::<span class="name">TypeOfExpression</span>()</h3>
+<p>Default constructs an instance of TypeOfExpression.</p><!-- @@@TypeOfExpression -->
+<!-- $$$ast[overload1]$$$ast -->
+<h3 class="fn" id="ast"><a name="ast"></a><span class="type">ExpressionAST</span> *TypeOfExpression::<span class="name">ast</span>() const</h3>
+<!-- @@@ast -->
+<!-- $$$context[overload1]$$$context -->
+<h3 class="fn" id="context"><a name="context"></a>const <span class="type"><a href="cplusplus-lookupcontext.html">LookupContext</a></span> &amp;TypeOfExpression::<span class="name">context</span>() const</h3>
+<!-- @@@context -->
+<!-- $$$expressionAST[overload1]$$$expressionAST -->
+<h3 class="fn" id="expressionAST"><a name="expressionAST"></a><span class="type">ExpressionAST</span> *TypeOfExpression::<span class="name">expressionAST</span>() const</h3>
+<!-- @@@expressionAST -->
+<!-- $$$init[overload1]$$$initDocument::PtrconstSnapshot&QSharedPointer<CreateBindings>constQSet<constDeclaration*>& -->
+<h3 class="fn" id="init"><a name="init"></a><span class="type">void</span> TypeOfExpression::<span class="name">init</span>(<span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> <i>thisDocument</i>, const <span class="type"><a href="cplusplus-snapshot.html">Snapshot</a></span> &amp;<i>snapshot</i>, <span class="type">QSharedPointer</span>&lt;<span class="type"><a href="cplusplus-createbindings.html">CreateBindings</a></span>&gt; <i>bindings</i> = QSharedPointer&lt;CreateBindings&gt; (), const <span class="type">QSet</span>&lt;const <span class="type">Declaration</span> *&gt; &amp;<i>autoDeclarationsBeingResolved</i> = QSet&lt;const Declaration *&gt; ())</h3>
+<!-- @@@init -->
+<!-- $$$preprocess[overload1]$$$preprocessconstQByteArray& -->
+<h3 class="fn" id="preprocess"><a name="preprocess"></a><span class="type">QByteArray</span> TypeOfExpression::<span class="name">preprocess</span>(const <span class="type">QByteArray</span> &amp;<i>utf8code</i>) const</h3>
+<!-- @@@preprocess -->
+<!-- $$$preprocessedExpression[overload1]$$$preprocessedExpressionconstQByteArray& -->
+<h3 class="fn" id="preprocessedExpression"><a name="preprocessedExpression"></a><span class="type">QByteArray</span> TypeOfExpression::<span class="name">preprocessedExpression</span>(const <span class="type">QByteArray</span> &amp;<i>utf8code</i>) const</h3>
+<!-- @@@preprocessedExpression -->
+<!-- $$$reference[overload1]$$$referenceconstQByteArray&Scope*PreprocessMode -->
+<h3 class="fn" id="reference"><a name="reference"></a><span class="type">QList</span>&lt;<span class="type"><a href="cplusplus-lookupitem.html">LookupItem</a></span>&gt; TypeOfExpression::<span class="name">reference</span>(const <span class="type">QByteArray</span> &amp;<i>utf8code</i>, <span class="type">Scope</span> *<i>scope</i>, <span class="type"><a href="cplusplus-typeofexpression.html#PreprocessMode-enum">PreprocessMode</a></span> <i>mode</i> = NoPreprocess)</h3>
+<!-- @@@reference -->
+<!-- $$$reference$$$referenceExpressionAST*Document::PtrScope* -->
+<h3 class="fn" id="reference-1"><a name="reference-1"></a><span class="type">QList</span>&lt;<span class="type"><a href="cplusplus-lookupitem.html">LookupItem</a></span>&gt; TypeOfExpression::<span class="name">reference</span>(<span class="type">ExpressionAST</span> *<i>expression</i>, <span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> <i>document</i>, <span class="type">Scope</span> *<i>scope</i>)</h3>
+<!-- @@@reference -->
+<!-- $$$scope[overload1]$$$scope -->
+<h3 class="fn" id="scope"><a name="scope"></a><span class="type">Scope</span> *TypeOfExpression::<span class="name">scope</span>() const</h3>
+<!-- @@@scope -->
+<!-- $$$setExpandTemplates[overload1]$$$setExpandTemplatesbool -->
+<h3 class="fn" id="setExpandTemplates"><a name="setExpandTemplates"></a><span class="type">void</span> TypeOfExpression::<span class="name">setExpandTemplates</span>(<span class="type">bool</span> <i>expandTemplates</i>)</h3>
+<!-- @@@setExpandTemplates -->
+<!-- $$$operator()[overload1]$$$operator()constQByteArray&Scope*PreprocessMode -->
+<h3 class="fn" id="operator-28-29"><a name="operator-28-29"></a><span class="type">QList</span>&lt;<span class="type"><a href="cplusplus-lookupitem.html">LookupItem</a></span>&gt; TypeOfExpression::<span class="name">operator()</span>(const <span class="type">QByteArray</span> &amp;<i>utf8code</i>, <span class="type">Scope</span> *<i>scope</i>, <span class="type"><a href="cplusplus-typeofexpression.html#PreprocessMode-enum">PreprocessMode</a></span> <i>mode</i> = NoPreprocess)</h3>
+<!-- @@@operator() -->
+<!-- $$$operator()$$$operator()ExpressionAST*Document::PtrScope* -->
+<h3 class="fn" id="operator-28-29-1"><a name="operator-28-29-1"></a><span class="type">QList</span>&lt;<span class="type"><a href="cplusplus-lookupitem.html">LookupItem</a></span>&gt; TypeOfExpression::<span class="name">operator()</span>(<span class="type">ExpressionAST</span> *<i>expression</i>, <span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> <i>document</i>, <span class="type">Scope</span> *<i>scope</i>)</h3>
+<!-- @@@operator() -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

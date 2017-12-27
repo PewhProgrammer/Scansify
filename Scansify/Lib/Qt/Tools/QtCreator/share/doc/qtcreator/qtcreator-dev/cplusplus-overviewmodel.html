@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>OverviewModel Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >OverviewModel</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">OverviewModel Class</h1>
+<span class="small-subtitle">(<a href="cplusplus-overviewmodel.html">CPlusPlus::OverviewModel</a>)<br/></span>
+<ul>
+<li><a href="cplusplus-overviewmodel-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#Role-enum">Role</a></b> { FileNameRole, LineNumberRole }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#OverviewModel">OverviewModel</a></b>(QObject *<i>parent</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#dtor.OverviewModel">~OverviewModel</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#columnCount">columnCount</a></b>(const QModelIndex &amp;<i>parent</i> = QModelIndex()) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QVariant </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#data">data</a></b>(const QModelIndex &amp;<i>index</i>, int <i>role</i> = Qt::DisplayRole) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Document::Ptr </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#document">document</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Qt::ItemFlags </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#flags">flags</a></b>(const QModelIndex &amp;<i>index</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QModelIndex </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#index">index</a></b>(int <i>row</i>, int <i>column</i>, const QModelIndex &amp;<i>parent</i> = QModelIndex()) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QMimeData *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#mimeData">mimeData</a></b>(const QModelIndexList &amp;<i>indexes</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#mimeTypes">mimeTypes</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QModelIndex </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#parent">parent</a></b>(const QModelIndex &amp;<i>child</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#rebuild">rebuild</a></b>(Document::Ptr <i>doc</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#rowCount">rowCount</a></b>(const QModelIndex &amp;<i>parent</i> = QModelIndex()) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Qt::DropActions </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#supportedDragActions">supportedDragActions</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Symbol *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-overviewmodel.html#symbolFromIndex">symbolFromIndex</a></b>(const QModelIndex &amp;<i>index</i>) const</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$Role$$$FileNameRole$$$LineNumberRole -->
+<h3 class="fn" id="Role-enum"><a name="Role-enum"></a>enum OverviewModel::<span class="name">Role</span></h3>
+<!-- @@@Role -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$OverviewModel[overload1]$$$OverviewModelQObject* -->
+<h3 class="fn" id="OverviewModel"><a name="OverviewModel"></a>OverviewModel::<span class="name">OverviewModel</span>(<span class="type">QObject</span> *<i>parent</i> = 0)</h3>
+<p>Default constructs an instance of OverviewModel.</p><!-- @@@OverviewModel -->
+<!-- $$$~OverviewModel[overload1]$$$~OverviewModel -->
+<h3 class="fn" id="dtor.OverviewModel"><a name="dtor.OverviewModel"></a><code>[virtual] </code>OverviewModel::<span class="name">~OverviewModel</span>()</h3>
+<p>Destroys the instance of OverviewModel. The destructor is virtual.</p><!-- @@@~OverviewModel -->
+<!-- $$$columnCount[overload1]$$$columnCountconstQModelIndex& -->
+<h3 class="fn" id="columnCount"><a name="columnCount"></a><code>[virtual] </code><span class="type">int</span> OverviewModel::<span class="name">columnCount</span>(const <span class="type">QModelIndex</span> &amp;<i>parent</i> = QModelIndex()) const</h3>
+<!-- @@@columnCount -->
+<!-- $$$data[overload1]$$$dataconstQModelIndex&int -->
+<h3 class="fn" id="data"><a name="data"></a><code>[virtual] </code><span class="type">QVariant</span> OverviewModel::<span class="name">data</span>(const <span class="type">QModelIndex</span> &amp;<i>index</i>, <span class="type">int</span> <i>role</i> = Qt::DisplayRole) const</h3>
+<!-- @@@data -->
+<!-- $$$document[overload1]$$$document -->
+<h3 class="fn" id="document"><a name="document"></a><span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> OverviewModel::<span class="name">document</span>() const</h3>
+<!-- @@@document -->
+<!-- $$$flags[overload1]$$$flagsconstQModelIndex& -->
+<h3 class="fn" id="flags"><a name="flags"></a><span class="type">Qt::ItemFlags</span> OverviewModel::<span class="name">flags</span>(const <span class="type">QModelIndex</span> &amp;<i>index</i>) const</h3>
+<!-- @@@flags -->
+<!-- $$$index[overload1]$$$indexintintconstQModelIndex& -->
+<h3 class="fn" id="index"><a name="index"></a><code>[virtual] </code><span class="type">QModelIndex</span> OverviewModel::<span class="name">index</span>(<span class="type">int</span> <i>row</i>, <span class="type">int</span> <i>column</i>, const <span class="type">QModelIndex</span> &amp;<i>parent</i> = QModelIndex()) const</h3>
+<!-- @@@index -->
+<!-- $$$mimeData[overload1]$$$mimeDataconstQModelIndexList& -->
+<h3 class="fn" id="mimeData"><a name="mimeData"></a><span class="type">QMimeData</span> *OverviewModel::<span class="name">mimeData</span>(const <span class="type">QModelIndexList</span> &amp;<i>indexes</i>) const</h3>
+<!-- @@@mimeData -->
+<!-- $$$mimeTypes[overload1]$$$mimeTypes -->
+<h3 class="fn" id="mimeTypes"><a name="mimeTypes"></a><span class="type">QStringList</span> OverviewModel::<span class="name">mimeTypes</span>() const</h3>
+<!-- @@@mimeTypes -->
+<!-- $$$parent[overload1]$$$parentconstQModelIndex& -->
+<h3 class="fn" id="parent"><a name="parent"></a><code>[virtual] </code><span class="type">QModelIndex</span> OverviewModel::<span class="name">parent</span>(const <span class="type">QModelIndex</span> &amp;<i>child</i>) const</h3>
+<!-- @@@parent -->
+<!-- $$$rebuild[overload1]$$$rebuildDocument::Ptr -->
+<h3 class="fn" id="rebuild"><a name="rebuild"></a><span class="type">void</span> OverviewModel::<span class="name">rebuild</span>(<span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> <i>doc</i>)</h3>
+<!-- @@@rebuild -->
+<!-- $$$rowCount[overload1]$$$rowCountconstQModelIndex& -->
+<h3 class="fn" id="rowCount"><a name="rowCount"></a><code>[virtual] </code><span class="type">int</span> OverviewModel::<span class="name">rowCount</span>(const <span class="type">QModelIndex</span> &amp;<i>parent</i> = QModelIndex()) const</h3>
+<!-- @@@rowCount -->
+<!-- $$$supportedDragActions[overload1]$$$supportedDragActions -->
+<h3 class="fn" id="supportedDragActions"><a name="supportedDragActions"></a><span class="type">Qt::DropActions</span> OverviewModel::<span class="name">supportedDragActions</span>() const</h3>
+<!-- @@@supportedDragActions -->
+<!-- $$$symbolFromIndex[overload1]$$$symbolFromIndexconstQModelIndex& -->
+<h3 class="fn" id="symbolFromIndex"><a name="symbolFromIndex"></a><span class="type">Symbol</span> *OverviewModel::<span class="name">symbolFromIndex</span>(const <span class="type">QModelIndex</span> &amp;<i>index</i>) const</h3>
+<!-- @@@symbolFromIndex -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

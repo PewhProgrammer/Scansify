@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>ToolChainKitInformation Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ToolChainKitInformation</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ToolChainKitInformation Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-toolchainkitinformation.html">ProjectExplorer::ToolChainKitInformation</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="projectexplorer-kitinformation.html">ProjectExplorer::KitInformation</a></td></tr></table></div><ul>
+<li><a href="projectexplorer-toolchainkitinformation-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#ToolChainKitInformation">ToolChainKitInformation</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#addToMacroExpander">addToMacroExpander</a></b>(Kit *<i>kit</i>, Utils::MacroExpander *<i>expander</i>) const override</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#addToEnvironment">addToEnvironment</a></b>(const Kit *<i>k</i>, Utils::Environment &amp;<i>env</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QSet&lt;Core::Id&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#availableFeatures">availableFeatures</a></b>(const Kit *<i>k</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual KitConfigWidget *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#createConfigWidget">createConfigWidget</a></b>(Kit *<i>k</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual IOutputParser *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#createOutputParser">createOutputParser</a></b>(const Kit *<i>k</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QVariant </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#defaultValue">defaultValue</a></b>(const Kit *<i>k</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#displayNamePostfix">displayNamePostfix</a></b>(const Kit *<i>k</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#fix">fix</a></b>(Kit *<i>k</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#setup">setup</a></b>(Kit *<i>k</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ItemList </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#toUserOutput">toUserOutput</a></b>(const Kit *<i>k</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#upgrade">upgrade</a></b>(Kit *<i>k</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;Task&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#validate">validate</a></b>(const Kit *<i>k</i>) const override</td></tr>
+</table></div>
+<ul>
+<li class="fn">15 public functions inherited from <a href="projectexplorer-kitinformation.html#public-functions">ProjectExplorer::KitInformation</a></li>
+</ul>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#clearToolChain">clearToolChain</a></b>(Kit *<i>k</i>, Core::Id <i>language</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Id </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#id">id</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#msgNoToolChainInTarget">msgNoToolChainInTarget</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#setAllToolChainsToMatch">setAllToolChainsToMatch</a></b>(Kit *<i>k</i>, ToolChain *<i>tc</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#setToolChain">setToolChain</a></b>(Kit *<i>k</i>, ToolChain *<i>tc</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Abi </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#targetAbi">targetAbi</a></b>(const Kit *<i>k</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> ToolChain *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#toolChain">toolChain</a></b>(const Kit *<i>k</i>, Core::Id <i>language</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;ToolChain *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchainkitinformation.html#toolChains">toolChains</a></b>(const Kit *<i>k</i>)</td></tr>
+</table></div>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">3 protected functions inherited from <a href="projectexplorer-kitinformation.html#protected-functions">ProjectExplorer::KitInformation</a></li>
+</ul>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ToolChainKitInformation[overload1]$$$ToolChainKitInformation -->
+<h3 class="fn" id="ToolChainKitInformation"><a name="ToolChainKitInformation"></a>ToolChainKitInformation::<span class="name">ToolChainKitInformation</span>()</h3>
+<p>Default constructs an instance of ToolChainKitInformation.</p><!-- @@@ToolChainKitInformation -->
+<!-- $$$addToEnvironment[overload1]$$$addToEnvironmentconstKit*Utils::Environment& -->
+<h3 class="fn" id="addToEnvironment"><a name="addToEnvironment"></a><code>[override virtual] </code><span class="type">void</span> ToolChainKitInformation::<span class="name">addToEnvironment</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>, <span class="type"><a href="utils-environment.html">Utils::Environment</a></span> &amp;<i>env</i>) const</h3>
+<!-- @@@addToEnvironment -->
+<!-- $$$addToMacroExpander[overload1]$$$addToMacroExpanderKit*Utils::MacroExpander* -->
+<h3 class="fn" id="addToMacroExpander"><a name="addToMacroExpander"></a><span class="type">void</span> ToolChainKitInformation::<span class="name">addToMacroExpander</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>kit</i>, <span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *<i>expander</i>) const</h3>
+<!-- @@@addToMacroExpander -->
+<!-- $$$availableFeatures[overload1]$$$availableFeaturesconstKit* -->
+<h3 class="fn" id="availableFeatures"><a name="availableFeatures"></a><code>[override virtual] </code><span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Core::Id</a></span>&gt; ToolChainKitInformation::<span class="name">availableFeatures</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@availableFeatures -->
+<!-- $$$clearToolChain[overload1]$$$clearToolChainKit*Core::Id -->
+<h3 class="fn" id="clearToolChain"><a name="clearToolChain"></a><code>[static] </code><span class="type">void</span> ToolChainKitInformation::<span class="name">clearToolChain</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>, <span class="type"><a href="core-id.html">Core::Id</a></span> <i>language</i>)</h3>
+<!-- @@@clearToolChain -->
+<!-- $$$createConfigWidget[overload1]$$$createConfigWidgetKit* -->
+<h3 class="fn" id="createConfigWidget"><a name="createConfigWidget"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-kitconfigwidget.html">KitConfigWidget</a></span> *ToolChainKitInformation::<span class="name">createConfigWidget</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@createConfigWidget -->
+<!-- $$$createOutputParser[overload1]$$$createOutputParserconstKit* -->
+<h3 class="fn" id="createOutputParser"><a name="createOutputParser"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-ioutputparser.html">IOutputParser</a></span> *ToolChainKitInformation::<span class="name">createOutputParser</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@createOutputParser -->
+<!-- $$$defaultValue[overload1]$$$defaultValueconstKit* -->
+<h3 class="fn" id="defaultValue"><a name="defaultValue"></a><code>[override virtual] </code><span class="type">QVariant</span> ToolChainKitInformation::<span class="name">defaultValue</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@defaultValue -->
+<!-- $$$displayNamePostfix[overload1]$$$displayNamePostfixconstKit* -->
+<h3 class="fn" id="displayNamePostfix"><a name="displayNamePostfix"></a><code>[override virtual] </code><span class="type">QString</span> ToolChainKitInformation::<span class="name">displayNamePostfix</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@displayNamePostfix -->
+<!-- $$$fix[overload1]$$$fixKit* -->
+<h3 class="fn" id="fix"><a name="fix"></a><code>[override virtual] </code><span class="type">void</span> ToolChainKitInformation::<span class="name">fix</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>)</h3>
+<!-- @@@fix -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" id="id"><a name="id"></a><code>[static] </code><span class="type"><a href="core-id.html">Core::Id</a></span> ToolChainKitInformation::<span class="name">id</span>()</h3>
+<!-- @@@id -->
+<!-- $$$msgNoToolChainInTarget[overload1]$$$msgNoToolChainInTarget -->
+<h3 class="fn" id="msgNoToolChainInTarget"><a name="msgNoToolChainInTarget"></a><code>[static] </code><span class="type">QString</span> ToolChainKitInformation::<span class="name">msgNoToolChainInTarget</span>()</h3>
+<!-- @@@msgNoToolChainInTarget -->
+<!-- $$$setAllToolChainsToMatch[overload1]$$$setAllToolChainsToMatchKit*ToolChain* -->
+<h3 class="fn" id="setAllToolChainsToMatch"><a name="setAllToolChainsToMatch"></a><code>[static] </code><span class="type">void</span> ToolChainKitInformation::<span class="name">setAllToolChainsToMatch</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>, <span class="type"><a href="projectexplorer-toolchain.html">ToolChain</a></span> *<i>tc</i>)</h3>
+<!-- @@@setAllToolChainsToMatch -->
+<!-- $$$setToolChain[overload1]$$$setToolChainKit*ToolChain* -->
+<h3 class="fn" id="setToolChain"><a name="setToolChain"></a><code>[static] </code><span class="type">void</span> ToolChainKitInformation::<span class="name">setToolChain</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>, <span class="type"><a href="projectexplorer-toolchain.html">ToolChain</a></span> *<i>tc</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-toolchainkitinformation.html#toolChain">toolChain</a>().</p>
+<!-- @@@setToolChain -->
+<!-- $$$setup[overload1]$$$setupKit* -->
+<h3 class="fn" id="setup"><a name="setup"></a><code>[override virtual] </code><span class="type">void</span> ToolChainKitInformation::<span class="name">setup</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>)</h3>
+<!-- @@@setup -->
+<!-- $$$targetAbi[overload1]$$$targetAbiconstKit* -->
+<h3 class="fn" id="targetAbi"><a name="targetAbi"></a><code>[static] </code><span class="type"><a href="projectexplorer-abi.html">Abi</a></span> ToolChainKitInformation::<span class="name">targetAbi</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>)</h3>
+<!-- @@@targetAbi -->
+<!-- $$$toUserOutput[overload1]$$$toUserOutputconstKit* -->
+<h3 class="fn" id="toUserOutput"><a name="toUserOutput"></a><code>[override virtual] </code><span class="type"><a href="projectexplorer-kitinformation.html#ItemList-typedef">ItemList</a></span> ToolChainKitInformation::<span class="name">toUserOutput</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@toUserOutput -->
+<!-- $$$toolChain[overload1]$$$toolChainconstKit*Core::Id -->
+<h3 class="fn" id="toolChain"><a name="toolChain"></a><code>[static] </code><span class="type"><a href="projectexplorer-toolchain.html">ToolChain</a></span> *ToolChainKitInformation::<span class="name">toolChain</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>, <span class="type"><a href="core-id.html">Core::Id</a></span> <i>language</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-toolchainkitinformation.html#setToolChain">setToolChain</a>().</p>
+<!-- @@@toolChain -->
+<!-- $$$toolChains[overload1]$$$toolChainsconstKit* -->
+<h3 class="fn" id="toolChains"><a name="toolChains"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-toolchain.html">ToolChain</a></span> *&gt; ToolChainKitInformation::<span class="name">toolChains</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>)</h3>
+<!-- @@@toolChains -->
+<!-- $$$upgrade[overload1]$$$upgradeKit* -->
+<h3 class="fn" id="upgrade"><a name="upgrade"></a><code>[override virtual] </code><span class="type">void</span> ToolChainKitInformation::<span class="name">upgrade</span>(<span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>)</h3>
+<!-- @@@upgrade -->
+<!-- $$$validate[overload1]$$$validateconstKit* -->
+<h3 class="fn" id="validate"><a name="validate"></a><code>[override virtual] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-task.html">Task</a></span>&gt; ToolChainKitInformation::<span class="name">validate</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<!-- @@@validate -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

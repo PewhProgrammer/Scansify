@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>NavigationWidget Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >NavigationWidget</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">NavigationWidget Class</h1>
+<span class="small-subtitle">(<a href="core-navigationwidget.html">Core::NavigationWidget</a>)<br/></span>
+<ul>
+<li><a href="core-navigationwidget-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#FactoryModelRoles-enum">FactoryModelRoles</a></b> { FactoryObjectRole, FactoryIdRole, FactoryPriorityRole }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#NavigationWidget">NavigationWidget</a></b>(QAction *<i>toggleSideBarAction</i>, Side <i>side</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#dtor.NavigationWidget">~NavigationWidget</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#activateSubWidget">activateSubWidget</a></b>(Id <i>factoryId</i>, int <i>preferredPosition</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#closeSubWidgets">closeSubWidgets</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QHash&lt;Id, Command *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#commandMap">commandMap</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QAbstractItemModel *</td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#factoryModel">factoryModel</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#isShown">isShown</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#placeHolderChanged">placeHolderChanged</a></b>(NavigationWidgetPlaceHolder *<i>holder</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#restoreSettings">restoreSettings</a></b>(QSettings *<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#saveSettings">saveSettings</a></b>(QSettings *<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#setFactories">setFactories</a></b>(const QList&lt;INavigationWidgetFactory *&gt; &amp;<i>factories</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#setShown">setShown</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#settingsGroup">settingsGroup</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#storedWidth">storedWidth</a></b>()</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#activateSubWidget-1">activateSubWidget</a></b>(Id <i>factoryId</i>, Side <i>fallbackSide</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> NavigationWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#instance">instance</a></b>(Side <i>side</i>)</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-navigationwidget.html#resizeEvent">resizeEvent</a></b>(<i>QResizeEvent *</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$FactoryModelRoles$$$FactoryObjectRole$$$FactoryIdRole$$$FactoryPriorityRole -->
+<h3 class="fn" id="FactoryModelRoles-enum"><a name="FactoryModelRoles-enum"></a>enum NavigationWidget::<span class="name">FactoryModelRoles</span></h3>
+<!-- @@@FactoryModelRoles -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$NavigationWidget[overload1]$$$NavigationWidgetQAction*Side -->
+<h3 class="fn" id="NavigationWidget"><a name="NavigationWidget"></a>NavigationWidget::<span class="name">NavigationWidget</span>(<span class="type">QAction</span> *<i>toggleSideBarAction</i>, <span class="type"><a href="core.html#Side-enum">Side</a></span> <i>side</i>)</h3>
+<p>Default constructs an instance of NavigationWidget.</p><!-- @@@NavigationWidget -->
+<!-- $$$~NavigationWidget[overload1]$$$~NavigationWidget -->
+<h3 class="fn" id="dtor.NavigationWidget"><a name="dtor.NavigationWidget"></a><code>[virtual] </code>NavigationWidget::<span class="name">~NavigationWidget</span>()</h3>
+<p>Destroys the instance of NavigationWidget. The destructor is virtual.</p><!-- @@@~NavigationWidget -->
+<!-- $$$activateSubWidget[overload1]$$$activateSubWidgetIdint -->
+<h3 class="fn" id="activateSubWidget"><a name="activateSubWidget"></a><span class="type">QWidget</span> *NavigationWidget::<span class="name">activateSubWidget</span>(<span class="type"><a href="core-id.html">Id</a></span> <i>factoryId</i>, <span class="type">int</span> <i>preferredPosition</i>)</h3>
+<!-- @@@activateSubWidget -->
+<!-- $$$activateSubWidget$$$activateSubWidgetIdSide -->
+<h3 class="fn" id="activateSubWidget-1"><a name="activateSubWidget-1"></a><code>[static] </code><span class="type">QWidget</span> *NavigationWidget::<span class="name">activateSubWidget</span>(<span class="type"><a href="core-id.html">Id</a></span> <i>factoryId</i>, <span class="type"><a href="core.html#Side-enum">Side</a></span> <i>fallbackSide</i>)</h3>
+<!-- @@@activateSubWidget -->
+<!-- $$$closeSubWidgets[overload1]$$$closeSubWidgets -->
+<h3 class="fn" id="closeSubWidgets"><a name="closeSubWidgets"></a><span class="type">void</span> NavigationWidget::<span class="name">closeSubWidgets</span>()</h3>
+<!-- @@@closeSubWidgets -->
+<!-- $$$commandMap[overload1]$$$commandMap -->
+<h3 class="fn" id="commandMap"><a name="commandMap"></a><span class="type">QHash</span>&lt;<span class="type"><a href="core-id.html">Id</a></span>, <span class="type"><a href="core-command.html">Command</a></span> *&gt; NavigationWidget::<span class="name">commandMap</span>() const</h3>
+<!-- @@@commandMap -->
+<!-- $$$factoryModel[overload1]$$$factoryModel -->
+<h3 class="fn" id="factoryModel"><a name="factoryModel"></a><span class="type">QAbstractItemModel</span> *NavigationWidget::<span class="name">factoryModel</span>() const</h3>
+<!-- @@@factoryModel -->
+<!-- $$$instance[overload1]$$$instanceSide -->
+<h3 class="fn" id="instance"><a name="instance"></a><code>[static] </code><span class="type"><a href="core-navigationwidget.html#NavigationWidget">NavigationWidget</a></span> *NavigationWidget::<span class="name">instance</span>(<span class="type"><a href="core.html#Side-enum">Side</a></span> <i>side</i>)</h3>
+<!-- @@@instance -->
+<!-- $$$isShown[overload1]$$$isShown -->
+<h3 class="fn" id="isShown"><a name="isShown"></a><span class="type">bool</span> NavigationWidget::<span class="name">isShown</span>() const</h3>
+<!-- @@@isShown -->
+<!-- $$$placeHolderChanged[overload1]$$$placeHolderChangedNavigationWidgetPlaceHolder* -->
+<h3 class="fn" id="placeHolderChanged"><a name="placeHolderChanged"></a><span class="type">void</span> NavigationWidget::<span class="name">placeHolderChanged</span>(<span class="type"><a href="core-navigationwidgetplaceholder.html">NavigationWidgetPlaceHolder</a></span> *<i>holder</i>)</h3>
+<!-- @@@placeHolderChanged -->
+<!-- $$$resizeEvent[overload1]$$$resizeEventQResizeEvent* -->
+<h3 class="fn" id="resizeEvent"><a name="resizeEvent"></a><code>[protected] </code><span class="type">void</span> NavigationWidget::<span class="name">resizeEvent</span>(<i>QResizeEvent *</i>)</h3>
+<!-- @@@resizeEvent -->
+<!-- $$$restoreSettings[overload1]$$$restoreSettingsQSettings* -->
+<h3 class="fn" id="restoreSettings"><a name="restoreSettings"></a><span class="type">void</span> NavigationWidget::<span class="name">restoreSettings</span>(<span class="type">QSettings</span> *<i>settings</i>)</h3>
+<!-- @@@restoreSettings -->
+<!-- $$$saveSettings[overload1]$$$saveSettingsQSettings* -->
+<h3 class="fn" id="saveSettings"><a name="saveSettings"></a><span class="type">void</span> NavigationWidget::<span class="name">saveSettings</span>(<span class="type">QSettings</span> *<i>settings</i>)</h3>
+<!-- @@@saveSettings -->
+<!-- $$$setFactories[overload1]$$$setFactoriesconstQList<INavigationWidgetFactory*>& -->
+<h3 class="fn" id="setFactories"><a name="setFactories"></a><span class="type">void</span> NavigationWidget::<span class="name">setFactories</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="core-inavigationwidgetfactory.html">INavigationWidgetFactory</a></span> *&gt; &amp;<i>factories</i>)</h3>
+<!-- @@@setFactories -->
+<!-- $$$setShown[overload1]$$$setShownbool -->
+<h3 class="fn" id="setShown"><a name="setShown"></a><span class="type">void</span> NavigationWidget::<span class="name">setShown</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="core-navigationwidget.html#isShown">isShown</a>().</p>
+<!-- @@@setShown -->
+<!-- $$$settingsGroup[overload1]$$$settingsGroup -->
+<h3 class="fn" id="settingsGroup"><a name="settingsGroup"></a><span class="type">QString</span> NavigationWidget::<span class="name">settingsGroup</span>() const</h3>
+<!-- @@@settingsGroup -->
+<!-- $$$storedWidth[overload1]$$$storedWidth -->
+<h3 class="fn" id="storedWidth"><a name="storedWidth"></a><span class="type">int</span> NavigationWidget::<span class="name">storedWidth</span>()</h3>
+<!-- @@@storedWidth -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

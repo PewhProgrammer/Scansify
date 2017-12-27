@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>SearchEngine Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >SearchEngine</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">SearchEngine Class</h1>
+<span class="small-subtitle">(<a href="texteditor-searchengine.html">TextEditor::SearchEngine</a>)<br/></span>
+<ul>
+<li><a href="texteditor-searchengine-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#SearchEngine">SearchEngine</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#dtor.SearchEngine">~SearchEngine</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QFuture&lt;Utils::FileSearchResultList&gt; </td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#executeSearch">executeSearch</a></b>(const FileFindParameters &amp;<i>parameters</i>, BaseFileFind *<i>baseFileFind</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#isEnabled">isEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Core::IEditor *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#openEditor">openEditor</a></b>(const Core::SearchResultItem &amp;<i>item</i>, const FileFindParameters &amp;<i>parameters</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QVariant </td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#parameters">parameters</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#readSettings">readSettings</a></b>(QSettings *<i>settings</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#setEnabled">setEnabled</a></b>(bool <i>enabled</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#title">title</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#toolTip">toolTip</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QWidget *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#widget">widget</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#writeSettings">writeSettings</a></b>(QSettings *<i>settings</i>) const = 0</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-searchengine.html#enabledChanged">enabledChanged</a></b>(bool <i>enabled</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$SearchEngine[overload1]$$$SearchEngine -->
+<h3 class="fn" id="SearchEngine"><a name="SearchEngine"></a>SearchEngine::<span class="name">SearchEngine</span>()</h3>
+<p>Default constructs an instance of SearchEngine.</p><!-- @@@SearchEngine -->
+<!-- $$$~SearchEngine[overload1]$$$~SearchEngine -->
+<h3 class="fn" id="dtor.SearchEngine"><a name="dtor.SearchEngine"></a>SearchEngine::<span class="name">~SearchEngine</span>()</h3>
+<p>Destroys the instance of SearchEngine.</p><!-- @@@~SearchEngine -->
+<!-- $$$enabledChanged[overload1]$$$enabledChangedbool -->
+<h3 class="fn" id="enabledChanged"><a name="enabledChanged"></a><code>[signal] </code><span class="type">void</span> SearchEngine::<span class="name">enabledChanged</span>(<span class="type">bool</span> <i>enabled</i>)</h3>
+<!-- @@@enabledChanged -->
+<!-- $$$executeSearch[overload1]$$$executeSearchconstFileFindParameters&BaseFileFind* -->
+<h3 class="fn" id="executeSearch"><a name="executeSearch"></a><code>[pure virtual] </code><span class="type">QFuture</span>&lt;<span class="type"><a href="utils.html#FileSearchResultList-typedef">Utils::FileSearchResultList</a></span>&gt; SearchEngine::<span class="name">executeSearch</span>(const <span class="type"><a href="texteditor-filefindparameters.html">FileFindParameters</a></span> &amp;<i>parameters</i>, <span class="type"><a href="texteditor-basefilefind.html">BaseFileFind</a></span> *<i>baseFileFind</i>)</h3>
+<!-- @@@executeSearch -->
+<!-- $$$isEnabled[overload1]$$$isEnabled -->
+<h3 class="fn" id="isEnabled"><a name="isEnabled"></a><span class="type">bool</span> SearchEngine::<span class="name">isEnabled</span>() const</h3>
+<!-- @@@isEnabled -->
+<!-- $$$openEditor[overload1]$$$openEditorconstCore::SearchResultItem&constFileFindParameters& -->
+<h3 class="fn" id="openEditor"><a name="openEditor"></a><code>[pure virtual] </code><span class="type"><a href="core-ieditor.html">Core::IEditor</a></span> *SearchEngine::<span class="name">openEditor</span>(const <span class="type"><a href="core-searchresultitem.html">Core::SearchResultItem</a></span> &amp;<i>item</i>, const <span class="type"><a href="texteditor-filefindparameters.html">FileFindParameters</a></span> &amp;<i>parameters</i>)</h3>
+<!-- @@@openEditor -->
+<!-- $$$parameters[overload1]$$$parameters -->
+<h3 class="fn" id="parameters"><a name="parameters"></a><code>[pure virtual] </code><span class="type">QVariant</span> SearchEngine::<span class="name">parameters</span>() const</h3>
+<!-- @@@parameters -->
+<!-- $$$readSettings[overload1]$$$readSettingsQSettings* -->
+<h3 class="fn" id="readSettings"><a name="readSettings"></a><code>[pure virtual] </code><span class="type">void</span> SearchEngine::<span class="name">readSettings</span>(<span class="type">QSettings</span> *<i>settings</i>)</h3>
+<!-- @@@readSettings -->
+<!-- $$$setEnabled[overload1]$$$setEnabledbool -->
+<h3 class="fn" id="setEnabled"><a name="setEnabled"></a><span class="type">void</span> SearchEngine::<span class="name">setEnabled</span>(<span class="type">bool</span> <i>enabled</i>)</h3>
+<p><b>See also </b><a href="texteditor-searchengine.html#isEnabled">isEnabled</a>().</p>
+<!-- @@@setEnabled -->
+<!-- $$$title[overload1]$$$title -->
+<h3 class="fn" id="title"><a name="title"></a><code>[pure virtual] </code><span class="type">QString</span> SearchEngine::<span class="name">title</span>() const</h3>
+<!-- @@@title -->
+<!-- $$$toolTip[overload1]$$$toolTip -->
+<h3 class="fn" id="toolTip"><a name="toolTip"></a><code>[pure virtual] </code><span class="type">QString</span> SearchEngine::<span class="name">toolTip</span>() const</h3>
+<!-- @@@toolTip -->
+<!-- $$$widget[overload1]$$$widget -->
+<h3 class="fn" id="widget"><a name="widget"></a><code>[pure virtual] </code><span class="type">QWidget</span> *SearchEngine::<span class="name">widget</span>() const</h3>
+<!-- @@@widget -->
+<!-- $$$writeSettings[overload1]$$$writeSettingsQSettings* -->
+<h3 class="fn" id="writeSettings"><a name="writeSettings"></a><code>[pure virtual] </code><span class="type">void</span> SearchEngine::<span class="name">writeSettings</span>(<span class="type">QSettings</span> *<i>settings</i>) const</h3>
+<!-- @@@writeSettings -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

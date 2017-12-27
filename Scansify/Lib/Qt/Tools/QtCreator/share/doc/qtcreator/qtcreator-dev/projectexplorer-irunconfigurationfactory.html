@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- runconfiguration.cpp -->
+  <title>IRunConfigurationFactory Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >IRunConfigurationFactory</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">IRunConfigurationFactory Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-irunconfigurationfactory.html">ProjectExplorer::IRunConfigurationFactory</a>)<br/></span>
+<!-- $$$IRunConfigurationFactory-brief -->
+<p>The <a href="projectexplorer-irunconfigurationfactory.html">IRunConfigurationFactory</a> class restores run configurations from settings. <a href="#details">More...</a></p>
+<!-- @@@IRunConfigurationFactory -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;IRunConfigurationFactory&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="projectexplorer-irunconfigurationfactory-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#CreationMode-enum">CreationMode</a></b> { UserCreate, AutoCreate }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#IRunConfigurationFactory">IRunConfigurationFactory</a></b>(QObject *<i>parent</i> = nullptr)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;Core::Id&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#availableCreationIds">availableCreationIds</a></b>(Target *<i>parent</i>, CreationMode <i>mode</i> = UserCreate) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#canClone">canClone</a></b>(Target *<i>parent</i>, RunConfiguration *<i>product</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#canCreate">canCreate</a></b>(Target *<i>parent</i>, Core::Id <i>id</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#canRestore">canRestore</a></b>(Target *<i>parent</i>, const QVariantMap &amp;<i>map</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual RunConfiguration *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#clone">clone</a></b>(Target *<i>parent</i>, RunConfiguration *<i>product</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> RunConfiguration *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#create">create</a></b>(Target *<i>parent</i>, Core::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#displayNameForId">displayNameForId</a></b>(Core::Id <i>id</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> RunConfiguration *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#restore">restore</a></b>(Target *<i>parent</i>, const QVariantMap &amp;<i>map</i>)</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#availableCreationIdsChanged">availableCreationIdsChanged</a></b>()</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> IRunConfigurationFactory *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#find">find</a></b>(Target *<i>parent</i>, const QVariantMap &amp;<i>map</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> IRunConfigurationFactory *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#find-1">find</a></b>(Target *<i>parent</i>, RunConfiguration *<i>rc</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;IRunConfigurationFactory *&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-irunconfigurationfactory.html#find-2">find</a></b>(Target *<i>parent</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$IRunConfigurationFactory-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="projectexplorer-irunconfigurationfactory.html">IRunConfigurationFactory</a> class restores run configurations from settings.</p>
+<p>The run configuration factory is used for restoring run configurations from settings and for creating new run configurations in the <b>Run Settings</b> dialog. To restore run configurations, use the <code>bool canRestore(Target *parent, const QString &amp;id)</code> and <code>RunConfiguration* create(Target *parent, const QString &amp;id)</code> functions.</p>
+<p>To generate a list of creatable run configurations, use the <code>QStringList availableCreationIds(Target *parent)</code> and <code>QString displayNameForType(const QString&amp;)</code> functions. To create a run configuration, use <code>create()</code>.</p>
+</div>
+<!-- @@@IRunConfigurationFactory -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$CreationMode$$$UserCreate$$$AutoCreate -->
+<h3 class="fn" id="CreationMode-enum"><a name="CreationMode-enum"></a>enum IRunConfigurationFactory::<span class="name">CreationMode</span></h3>
+<!-- @@@CreationMode -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$IRunConfigurationFactory[overload1]$$$IRunConfigurationFactoryQObject* -->
+<h3 class="fn" id="IRunConfigurationFactory"><a name="IRunConfigurationFactory"></a>IRunConfigurationFactory::<span class="name">IRunConfigurationFactory</span>(<span class="type">QObject</span> *<i>parent</i> = nullptr)</h3>
+<p>Default constructs an instance of IRunConfigurationFactory.</p><!-- @@@IRunConfigurationFactory -->
+<!-- $$$availableCreationIds[overload1]$$$availableCreationIdsTarget*CreationMode -->
+<h3 class="fn" id="availableCreationIds"><a name="availableCreationIds"></a><code>[pure virtual] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-id.html">Core::Id</a></span>&gt; IRunConfigurationFactory::<span class="name">availableCreationIds</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>parent</i>, <span class="type"><a href="projectexplorer-irunconfigurationfactory.html#CreationMode-enum">CreationMode</a></span> <i>mode</i> = UserCreate) const</h3>
+<!-- @@@availableCreationIds -->
+<!-- $$$availableCreationIdsChanged[overload1]$$$availableCreationIdsChanged -->
+<h3 class="fn" id="availableCreationIdsChanged"><a name="availableCreationIdsChanged"></a><code>[signal] </code><span class="type">void</span> IRunConfigurationFactory::<span class="name">availableCreationIdsChanged</span>()</h3>
+<!-- @@@availableCreationIdsChanged -->
+<!-- $$$canClone[overload1]$$$canCloneTarget*RunConfiguration* -->
+<h3 class="fn" id="canClone"><a name="canClone"></a><code>[pure virtual] </code><span class="type">bool</span> IRunConfigurationFactory::<span class="name">canClone</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>parent</i>, <span class="type"><a href="projectexplorer-runconfiguration.html">RunConfiguration</a></span> *<i>product</i>) const</h3>
+<!-- @@@canClone -->
+<!-- $$$canCreate[overload1]$$$canCreateTarget*Core::Id -->
+<h3 class="fn" id="canCreate"><a name="canCreate"></a><code>[pure virtual] </code><span class="type">bool</span> IRunConfigurationFactory::<span class="name">canCreate</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>parent</i>, <span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>) const</h3>
+<!-- @@@canCreate -->
+<!-- $$$canRestore[overload1]$$$canRestoreTarget*constQVariantMap& -->
+<h3 class="fn" id="canRestore"><a name="canRestore"></a><code>[pure virtual] </code><span class="type">bool</span> IRunConfigurationFactory::<span class="name">canRestore</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>parent</i>, const <span class="type">QVariantMap</span> &amp;<i>map</i>) const</h3>
+<!-- @@@canRestore -->
+<!-- $$$clone[overload1]$$$cloneTarget*RunConfiguration* -->
+<h3 class="fn" id="clone"><a name="clone"></a><code>[pure virtual] </code><span class="type"><a href="projectexplorer-runconfiguration.html">RunConfiguration</a></span> *IRunConfigurationFactory::<span class="name">clone</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>parent</i>, <span class="type"><a href="projectexplorer-runconfiguration.html">RunConfiguration</a></span> *<i>product</i>)</h3>
+<!-- @@@clone -->
+<!-- $$$create[overload1]$$$createTarget*Core::Id -->
+<h3 class="fn" id="create"><a name="create"></a><span class="type"><a href="projectexplorer-runconfiguration.html">RunConfiguration</a></span> *IRunConfigurationFactory::<span class="name">create</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>parent</i>, <span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>)</h3>
+<!-- @@@create -->
+<!-- $$$displayNameForId[overload1]$$$displayNameForIdCore::Id -->
+<h3 class="fn" id="displayNameForId"><a name="displayNameForId"></a><code>[pure virtual] </code><span class="type">QString</span> IRunConfigurationFactory::<span class="name">displayNameForId</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>) const</h3>
+<p>Translates the types to names to display to the user.</p>
+<!-- @@@displayNameForId -->
+<!-- $$$find[overload1]$$$findTarget*constQVariantMap& -->
+<h3 class="fn" id="find"><a name="find"></a><code>[static] </code><span class="type"><a href="projectexplorer-irunconfigurationfactory.html#IRunConfigurationFactory">IRunConfigurationFactory</a></span> *IRunConfigurationFactory::<span class="name">find</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>parent</i>, const <span class="type">QVariantMap</span> &amp;<i>map</i>)</h3>
+<!-- @@@find -->
+<!-- $$$find$$$findTarget*RunConfiguration* -->
+<h3 class="fn" id="find-1"><a name="find-1"></a><code>[static] </code><span class="type"><a href="projectexplorer-irunconfigurationfactory.html#IRunConfigurationFactory">IRunConfigurationFactory</a></span> *IRunConfigurationFactory::<span class="name">find</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>parent</i>, <span class="type"><a href="projectexplorer-runconfiguration.html">RunConfiguration</a></span> *<i>rc</i>)</h3>
+<!-- @@@find -->
+<!-- $$$find$$$findTarget* -->
+<h3 class="fn" id="find-2"><a name="find-2"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-irunconfigurationfactory.html#IRunConfigurationFactory">IRunConfigurationFactory</a></span> *&gt; IRunConfigurationFactory::<span class="name">find</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>parent</i>)</h3>
+<!-- @@@find -->
+<!-- $$$restore[overload1]$$$restoreTarget*constQVariantMap& -->
+<h3 class="fn" id="restore"><a name="restore"></a><span class="type"><a href="projectexplorer-runconfiguration.html">RunConfiguration</a></span> *IRunConfigurationFactory::<span class="name">restore</span>(<span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>parent</i>, const <span class="type">QVariantMap</span> &amp;<i>map</i>)</h3>
+<!-- @@@restore -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

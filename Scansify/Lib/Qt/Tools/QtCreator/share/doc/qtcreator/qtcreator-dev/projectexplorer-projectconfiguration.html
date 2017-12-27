@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>ProjectConfiguration Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ProjectConfiguration</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ProjectConfiguration Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-projectconfiguration.html">ProjectExplorer::ProjectConfiguration</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="projectexplorer-buildstep.html">ProjectExplorer::BuildStep</a> and <a href="projectexplorer-runconfiguration.html">ProjectExplorer::RunConfiguration</a></p>
+</td></tr></table></div><ul>
+<li><a href="projectexplorer-projectconfiguration-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#dtor.ProjectConfiguration">~ProjectConfiguration</a></b>() = default</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#displayName">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#fromMap">fromMap</a></b>(const QVariantMap &amp;<i>map</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Id </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#id">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::MacroExpander *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#macroExpander">macroExpander</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Utils::MacroExpander *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#macroExpander-1">macroExpander</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#setDefaultDisplayName">setDefaultDisplayName</a></b>(const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#setDisplayName">setDisplayName</a></b>(const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#setToolTip">setToolTip</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QVariantMap </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#toMap">toMap</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#toolTip">toolTip</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#usesDefaultDisplayName">usesDefaultDisplayName</a></b>() const</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#displayNameChanged">displayNameChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#toolTipChanged">toolTipChanged</a></b>()</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#ProjectConfiguration">ProjectConfiguration</a></b>(QObject *<i>parent</i>, Core::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-projectconfiguration.html#ProjectConfiguration-1">ProjectConfiguration</a></b>(QObject *<i>parent</i>, const ProjectConfiguration *<i>source</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ProjectConfiguration[overload1]$$$ProjectConfigurationQObject*Core::Id -->
+<h3 class="fn" id="ProjectConfiguration"><a name="ProjectConfiguration"></a><code>[protected] </code>ProjectConfiguration::<span class="name">ProjectConfiguration</span>(<span class="type">QObject</span> *<i>parent</i>, <span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>)</h3>
+<p>Default constructs an instance of ProjectConfiguration.</p><!-- @@@ProjectConfiguration -->
+<!-- $$$ProjectConfiguration$$$ProjectConfigurationQObject*constProjectConfiguration* -->
+<h3 class="fn" id="ProjectConfiguration-1"><a name="ProjectConfiguration-1"></a><code>[protected] </code>ProjectConfiguration::<span class="name">ProjectConfiguration</span>(<span class="type">QObject</span> *<i>parent</i>, const <span class="type"><a href="projectexplorer-projectconfiguration.html#ProjectConfiguration">ProjectConfiguration</a></span> *<i>source</i>)</h3>
+<p>Default constructs an instance of ProjectConfiguration.</p><!-- @@@ProjectConfiguration -->
+<!-- $$$~ProjectConfiguration[overload1]$$$~ProjectConfiguration -->
+<h3 class="fn" id="dtor.ProjectConfiguration"><a name="dtor.ProjectConfiguration"></a><code>[default] </code>ProjectConfiguration::<span class="name">~ProjectConfiguration</span>()</h3>
+<p>Destroys the instance of ProjectConfiguration.</p><!-- @@@~ProjectConfiguration -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><span class="type">QString</span> ProjectConfiguration::<span class="name">displayName</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-projectconfiguration.html#setDisplayName">setDisplayName</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$displayNameChanged[overload1]$$$displayNameChanged -->
+<h3 class="fn" id="displayNameChanged"><a name="displayNameChanged"></a><code>[signal] </code><span class="type">void</span> ProjectConfiguration::<span class="name">displayNameChanged</span>()</h3>
+<!-- @@@displayNameChanged -->
+<!-- $$$fromMap[overload1]$$$fromMapconstQVariantMap& -->
+<h3 class="fn" id="fromMap"><a name="fromMap"></a><code>[virtual] </code><span class="type">bool</span> ProjectConfiguration::<span class="name">fromMap</span>(const <span class="type">QVariantMap</span> &amp;<i>map</i>)</h3>
+<!-- @@@fromMap -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" id="id"><a name="id"></a><span class="type"><a href="core-id.html">Core::Id</a></span> ProjectConfiguration::<span class="name">id</span>() const</h3>
+<!-- @@@id -->
+<!-- $$$macroExpander[overload1]$$$macroExpander -->
+<h3 class="fn" id="macroExpander"><a name="macroExpander"></a><span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *ProjectConfiguration::<span class="name">macroExpander</span>()</h3>
+<!-- @@@macroExpander -->
+<!-- $$$macroExpander$$$macroExpander -->
+<h3 class="fn" id="macroExpander-1"><a name="macroExpander-1"></a>const <span class="type"><a href="utils-macroexpander.html">Utils::MacroExpander</a></span> *ProjectConfiguration::<span class="name">macroExpander</span>() const</h3>
+<!-- @@@macroExpander -->
+<!-- $$$setDefaultDisplayName[overload1]$$$setDefaultDisplayNameconstQString& -->
+<h3 class="fn" id="setDefaultDisplayName"><a name="setDefaultDisplayName"></a><span class="type">void</span> ProjectConfiguration::<span class="name">setDefaultDisplayName</span>(const <span class="type">QString</span> &amp;<i>name</i>)</h3>
+<!-- @@@setDefaultDisplayName -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" id="setDisplayName"><a name="setDisplayName"></a><span class="type">void</span> ProjectConfiguration::<span class="name">setDisplayName</span>(const <span class="type">QString</span> &amp;<i>name</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-projectconfiguration.html#displayName">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setToolTip[overload1]$$$setToolTipconstQString& -->
+<h3 class="fn" id="setToolTip"><a name="setToolTip"></a><span class="type">void</span> ProjectConfiguration::<span class="name">setToolTip</span>(const <span class="type">QString</span> &amp;<i>text</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-projectconfiguration.html#toolTip">toolTip</a>().</p>
+<!-- @@@setToolTip -->
+<!-- $$$toMap[overload1]$$$toMap -->
+<h3 class="fn" id="toMap"><a name="toMap"></a><code>[virtual] </code><span class="type">QVariantMap</span> ProjectConfiguration::<span class="name">toMap</span>() const</h3>
+<!-- @@@toMap -->
+<!-- $$$toolTip[overload1]$$$toolTip -->
+<h3 class="fn" id="toolTip"><a name="toolTip"></a><span class="type">QString</span> ProjectConfiguration::<span class="name">toolTip</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-projectconfiguration.html#setToolTip">setToolTip</a>().</p>
+<!-- @@@toolTip -->
+<!-- $$$toolTipChanged[overload1]$$$toolTipChanged -->
+<h3 class="fn" id="toolTipChanged"><a name="toolTipChanged"></a><code>[signal] </code><span class="type">void</span> ProjectConfiguration::<span class="name">toolTipChanged</span>()</h3>
+<!-- @@@toolTipChanged -->
+<!-- $$$usesDefaultDisplayName[overload1]$$$usesDefaultDisplayName -->
+<h3 class="fn" id="usesDefaultDisplayName"><a name="usesDefaultDisplayName"></a><span class="type">bool</span> ProjectConfiguration::<span class="name">usesDefaultDisplayName</span>() const</h3>
+<!-- @@@usesDefaultDisplayName -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

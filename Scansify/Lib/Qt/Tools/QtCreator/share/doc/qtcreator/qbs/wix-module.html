@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- wix-module.qdoc -->
+  <title>Module wix | Qbs Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="index.html">Qbs Manual</a></td><td ><a href="list-of-modules.html">List of Modules</a></td><td >Module wix</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qbs 1.9.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<p class="naviNextPrevious headerNavi">
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#general-properties">General Properties</a></li>
+<li class="level1"><a href="#relevant-file-tags">Relevant File Tags</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Module wix</h1>
+<span class="subtitle"></span>
+<!-- $$$wix-module.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>The <code>wix</code> module contains properties and rules for building MSI and EXE setup packages with the <a href="http://wixtoolset.org">Windows Installer XML Toolset</a>.</p>
+<p>This module is available on all platforms.</p>
+<a name="general-properties"></a>
+<h2 id="general-properties">General Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Since</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >debugInformation</td><td ><code>bool</code></td><td >1.2</td><td ><code>qbs.debugInformation</code></td><td >Generate debug information. See <code>qbs.debugInformation</code>.</td></tr>
+<tr valign="top" class="even"><td >defines</td><td ><code>stringList</code></td><td >1.2</td><td ><code>undefined</code></td><td >List of preprocessor macros that get passed to the compiler. To set macro values use the following syntax: <code>wix.defines: [&quot;USE_COLORS=1&quot;, 'COLOR_STR=&quot;blanched almond&quot;']</code></td></tr>
+<tr valign="top" class="odd"><td >enableQbsDefines</td><td ><code>bool</code></td><td >1.2</td><td ><code>true</code></td><td >Whether to define preprocessor macros corresponding to values from the project and product objects. When building a 64-bit package, the preprocessor variable <code>Win64</code> will also be defined.</td></tr>
+<tr valign="top" class="even"><td >visualStudioCompatibility</td><td ><code>bool</code></td><td >1.2</td><td ><code>true</code></td><td >Passes most of the same preprocessor macros to the compiler as Visual Studio does. This allows easier authoring WiX files that are compatible with both Qbs and MSBuild.</td></tr>
+<tr valign="top" class="odd"><td >includePaths</td><td ><code>pathList</code></td><td >1.2</td><td ><code>undefined</code></td><td >List of include paths. Relative paths are considered to be relative to the .qbs product file they are used in.</td></tr>
+<tr valign="top" class="even"><td >treatWarningsAsErrors</td><td ><code>bool</code></td><td >1.2</td><td ><code>false</code></td><td >Warnings will be handled as errors and cause the build to fail.</td></tr>
+<tr valign="top" class="odd"><td >warningLevel</td><td ><code>string</code></td><td >1.2</td><td ><code>&quot;normal&quot;</code></td><td >Severity of warnings to emit. The higher the level, the more warnings will be shown. Possible values include: <code>&quot;none&quot;</code>, <code>&quot;normal&quot;</code>, <code>&quot;pedantic&quot;</code></td></tr>
+<tr valign="top" class="even"><td >verboseOutput</td><td ><code>bool</code></td><td >1.2</td><td ><code>false</code></td><td >Whether to display verbose output from the compiler and linker.</td></tr>
+<tr valign="top" class="odd"><td >compilerFlags</td><td ><code>stringList</code></td><td >1.2</td><td ><code>undefined</code></td><td >Additional flags for the Candle compiler.</td></tr>
+<tr valign="top" class="even"><td >linkerFlags</td><td ><code>stringList</code></td><td >1.2</td><td ><code>undefined</code></td><td >Additional flags for the Light linker.</td></tr>
+<tr valign="top" class="odd"><td >cultures</td><td ><code>stringList</code></td><td >1.2</td><td ><code>undefined</code></td><td >List of localizations to include in the MSI. Use <code>undefined</code> to include all localizations.</td></tr>
+<tr valign="top" class="even"><td >extensions</td><td ><code>stringList</code></td><td >1.2</td><td ><code>[&quot;WixBalExtension&quot;]</code> if the product type is an EXE setup application, otherwise <code>undefined</code>.</td><td >List of extension assemblies to link into the output. Possible values include: <code>&quot;WixBalExtension&quot;</code>, <code>&quot;WixComPlusExtension&quot;</code>, <code>&quot;WixDependencyExtension&quot;</code>, <code>&quot;WixDifxAppExtension&quot;</code>, <code>&quot;WixDirectXExtension&quot;</code>, <code>&quot;WixFirewallExtension&quot;</code>, <code>&quot;WixGamingExtension&quot;</code>, <code>&quot;WixIisExtension&quot;</code>, <code>&quot;WixMsmqExtension&quot;</code>, <code>&quot;WixNetFxExtension&quot;</code>, <code>&quot;WixPSExtension&quot;</code>, <code>&quot;WixSqlExtension&quot;</code>, <code>&quot;WixTagExtension&quot;</code>, <code>&quot;WixUIExtension&quot;</code>, <code>&quot;WixUtilExtension&quot;</code>, <code>&quot;WixVSExtension&quot;</code>, custom assemblies</td></tr>
+<tr valign="top" class="odd"><td >version</td><td ><code>string</code></td><td >1.2</td><td ><code>undefined</code></td><td >The WiX version. Consists of four numbers separated by dots, for instance &quot;3.7&#x2e;1224.0&quot;.</td></tr>
+<tr valign="top" class="even"><td >versionMajor</td><td ><code>int</code></td><td >1.2</td><td ><code>versionParts[0]</code></td><td >The WiX major version.</td></tr>
+<tr valign="top" class="odd"><td >versionMinor</td><td ><code>int</code></td><td >1.2</td><td ><code>versionParts[1]</code></td><td >The WiX minor version.</td></tr>
+<tr valign="top" class="even"><td >versionParts</td><td ><code>list</code></td><td >1.2</td><td ><code>empty</code></td><td >The WiX version as a list. For instance, WiX version 3.7&#x2e;1224.0 would correspond to a value of <code>[3, 7, 1224, 0]</code>.</td></tr>
+<tr valign="top" class="odd"><td >versionPatch</td><td ><code>int</code></td><td >1.2</td><td ><code>versionParts[2]</code></td><td >The WiX patch level.</td></tr>
+<tr valign="top" class="even"><td >versionBuild</td><td ><code>int</code></td><td >1.2</td><td ><code>versionParts[3]</code></td><td >The fourth WiX version number component.</td></tr>
+<tr valign="top" class="odd"><td >toolchainInstallPath</td><td ><code>path</code></td><td >1.2</td><td >determined automatically</td><td >WiX installation directory. Determined by searching the registry for the latest version. This should not normally need to be changed.</td></tr>
+<tr valign="top" class="even"><td >toolchainInstallRoot</td><td ><code>path</code></td><td >1.2</td><td >determined automatically</td><td >WiX binaries directory. Determined by searching the registry for the latest version. This should not normally need to be changed.</td></tr>
+<tr valign="top" class="odd"><td >compilerName</td><td ><code>string</code></td><td >1.2</td><td ><code>&quot;candle.exe&quot;</code></td><td >Name of the compiler binary. This should not normally need to be changed.</td></tr>
+<tr valign="top" class="even"><td >compilerPath</td><td ><code>string</code></td><td >1.2</td><td ><code>compilerName</code></td><td >Directory where the compiler binary is located. This should not normally need to be changed.</td></tr>
+<tr valign="top" class="odd"><td >linkerName</td><td ><code>string</code></td><td >1.2</td><td ><code>&quot;light.exe&quot;</code></td><td >Name of the linker binary. This should not normally need to be changed.</td></tr>
+<tr valign="top" class="even"><td >linkerPath</td><td ><code>string</code></td><td >1.2</td><td ><code>linkerName</code></td><td >Directory where the linker binary is located. This should not normally need to be changed.</td></tr>
+</table></div>
+<a name="relevant-file-tags"></a>
+<h2 id="relevant-file-tags">Relevant File Tags</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Tag</th><th >Auto-tagged File Names</th><th >Since</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td ><code>&quot;msi&quot;</code></td><td >-</td><td >1.2</td><td >The rule that creates the Microsoft Installer setup file attaches this tag to its output artifact.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;wixpdb&quot;</code></td><td >-</td><td >1.2</td><td >The rule that creates the Microsoft Installer setup file or WiX setup executable attaches this tag to the associated debug symbol file.</td></tr>
+<tr valign="top" class="odd"><td ><code>&quot;wixsetup&quot;</code></td><td >-</td><td >1.2</td><td >The rule that creates the WiX setup executable attaches this tag to its output artifact.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;wxi&quot;</code></td><td ><code>*.wxi</code></td><td >1.2</td><td >This tag is attached to WiX include files.</td></tr>
+<tr valign="top" class="odd"><td ><code>&quot;wxl&quot;</code></td><td ><code>*.wxl</code></td><td >1.2</td><td >This tag is attached to WiX localization files.</td></tr>
+<tr valign="top" class="even"><td ><code>&quot;wxs&quot;</code></td><td ><code>*.wxs</code></td><td >1.2</td><td >This tag is attached to WiX source files. Each source file will be compiled into one WiX object file.</td></tr>
+</table></div>
+</div>
+<!-- @@@wix-module.html -->
+<p class="naviNextPrevious footerNavi">
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

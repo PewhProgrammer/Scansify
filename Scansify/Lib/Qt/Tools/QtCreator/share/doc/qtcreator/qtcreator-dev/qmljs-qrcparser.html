@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>QrcParser Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >QrcParser</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">QrcParser Class</h1>
+<span class="small-subtitle">(<a href="qmljs-qrcparser.html">QmlJS::QrcParser</a>)<br/></span>
+<ul>
+<li><a href="qmljs-qrcparser-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#ConstPtr-typedef">ConstPtr</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#Ptr-typedef">Ptr</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#dtor.QrcParser">~QrcParser</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#collectFilesAtPath">collectFilesAtPath</a></b>(const QString &amp;<i>path</i>, QStringList *<i>res</i>, const QLocale *<i>locale</i> = 0) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#collectFilesInPath">collectFilesInPath</a></b>(const QString &amp;<i>path</i>, QMap&lt;QString, QStringList&gt; *<i>res</i>, bool <i>addDirs</i> = false, const QLocale *<i>locale</i> = 0) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#collectResourceFilesForSourceFile">collectResourceFilesForSourceFile</a></b>(const QString &amp;<i>sourceFile</i>, QStringList *<i>results</i>, const QLocale *<i>locale</i> = 0) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#errorMessages">errorMessages</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#firstFileAtPath">firstFileAtPath</a></b>(const QString &amp;<i>path</i>, const QLocale &amp;<i>locale</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#hasDirAtPath">hasDirAtPath</a></b>(const QString &amp;<i>path</i>, const QLocale *<i>locale</i> = 0) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#isValid">isValid</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#languages">languages</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#parseFile">parseFile</a></b>(const QString &amp;<i>path</i>, const QString &amp;<i>contents</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#normalizedQrcDirectoryPath">normalizedQrcDirectoryPath</a></b>(const QString &amp;<i>path</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#normalizedQrcFilePath">normalizedQrcFilePath</a></b>(const QString &amp;<i>path</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Ptr </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#parseQrcFile">parseQrcFile</a></b>(const QString &amp;<i>path</i>, const QString &amp;<i>contents</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrcparser.html#qrcDirectoryPathForQrcFilePath">qrcDirectoryPathForQrcFilePath</a></b>(const QString &amp;<i>file</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$ConstPtr -->
+<h3 class="fn" id="ConstPtr-typedef"><a name="ConstPtr-typedef"></a>typedef QrcParser::<span class="name">ConstPtr</span></h3>
+<!-- @@@ConstPtr -->
+<!-- $$$Ptr -->
+<h3 class="fn" id="Ptr-typedef"><a name="Ptr-typedef"></a>typedef QrcParser::<span class="name">Ptr</span></h3>
+<!-- @@@Ptr -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$~QrcParser[overload1]$$$~QrcParser -->
+<h3 class="fn" id="dtor.QrcParser"><a name="dtor.QrcParser"></a>QrcParser::<span class="name">~QrcParser</span>()</h3>
+<p>Destroys the instance of QrcParser.</p><!-- @@@~QrcParser -->
+<!-- $$$collectFilesAtPath[overload1]$$$collectFilesAtPathconstQString&QStringList*constQLocale* -->
+<h3 class="fn" id="collectFilesAtPath"><a name="collectFilesAtPath"></a><span class="type">void</span> QrcParser::<span class="name">collectFilesAtPath</span>(const <span class="type">QString</span> &amp;<i>path</i>, <span class="type">QStringList</span> *<i>res</i>, const <span class="type">QLocale</span> *<i>locale</i> = 0) const</h3>
+<!-- @@@collectFilesAtPath -->
+<!-- $$$collectFilesInPath[overload1]$$$collectFilesInPathconstQString&QMap<QString,QStringList>*boolconstQLocale* -->
+<h3 class="fn" id="collectFilesInPath"><a name="collectFilesInPath"></a><span class="type">void</span> QrcParser::<span class="name">collectFilesInPath</span>(const <span class="type">QString</span> &amp;<i>path</i>, <span class="type">QMap</span>&lt;<span class="type">QString</span>, <span class="type">QStringList</span>&gt; *<i>res</i>, <span class="type">bool</span> <i>addDirs</i> = false, const <span class="type">QLocale</span> *<i>locale</i> = 0) const</h3>
+<!-- @@@collectFilesInPath -->
+<!-- $$$collectResourceFilesForSourceFile[overload1]$$$collectResourceFilesForSourceFileconstQString&QStringList*constQLocale* -->
+<h3 class="fn" id="collectResourceFilesForSourceFile"><a name="collectResourceFilesForSourceFile"></a><span class="type">void</span> QrcParser::<span class="name">collectResourceFilesForSourceFile</span>(const <span class="type">QString</span> &amp;<i>sourceFile</i>, <span class="type">QStringList</span> *<i>results</i>, const <span class="type">QLocale</span> *<i>locale</i> = 0) const</h3>
+<!-- @@@collectResourceFilesForSourceFile -->
+<!-- $$$errorMessages[overload1]$$$errorMessages -->
+<h3 class="fn" id="errorMessages"><a name="errorMessages"></a><span class="type">QStringList</span> QrcParser::<span class="name">errorMessages</span>() const</h3>
+<!-- @@@errorMessages -->
+<!-- $$$firstFileAtPath[overload1]$$$firstFileAtPathconstQString&constQLocale& -->
+<h3 class="fn" id="firstFileAtPath"><a name="firstFileAtPath"></a><span class="type">QString</span> QrcParser::<span class="name">firstFileAtPath</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QLocale</span> &amp;<i>locale</i>) const</h3>
+<!-- @@@firstFileAtPath -->
+<!-- $$$hasDirAtPath[overload1]$$$hasDirAtPathconstQString&constQLocale* -->
+<h3 class="fn" id="hasDirAtPath"><a name="hasDirAtPath"></a><span class="type">bool</span> QrcParser::<span class="name">hasDirAtPath</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QLocale</span> *<i>locale</i> = 0) const</h3>
+<!-- @@@hasDirAtPath -->
+<!-- $$$isValid[overload1]$$$isValid -->
+<h3 class="fn" id="isValid"><a name="isValid"></a><span class="type">bool</span> QrcParser::<span class="name">isValid</span>() const</h3>
+<!-- @@@isValid -->
+<!-- $$$languages[overload1]$$$languages -->
+<h3 class="fn" id="languages"><a name="languages"></a><span class="type">QStringList</span> QrcParser::<span class="name">languages</span>() const</h3>
+<!-- @@@languages -->
+<!-- $$$normalizedQrcDirectoryPath[overload1]$$$normalizedQrcDirectoryPathconstQString& -->
+<h3 class="fn" id="normalizedQrcDirectoryPath"><a name="normalizedQrcDirectoryPath"></a><code>[static] </code><span class="type">QString</span> QrcParser::<span class="name">normalizedQrcDirectoryPath</span>(const <span class="type">QString</span> &amp;<i>path</i>)</h3>
+<!-- @@@normalizedQrcDirectoryPath -->
+<!-- $$$normalizedQrcFilePath[overload1]$$$normalizedQrcFilePathconstQString& -->
+<h3 class="fn" id="normalizedQrcFilePath"><a name="normalizedQrcFilePath"></a><code>[static] </code><span class="type">QString</span> QrcParser::<span class="name">normalizedQrcFilePath</span>(const <span class="type">QString</span> &amp;<i>path</i>)</h3>
+<!-- @@@normalizedQrcFilePath -->
+<!-- $$$parseFile[overload1]$$$parseFileconstQString&constQString& -->
+<h3 class="fn" id="parseFile"><a name="parseFile"></a><span class="type">bool</span> QrcParser::<span class="name">parseFile</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QString</span> &amp;<i>contents</i>)</h3>
+<!-- @@@parseFile -->
+<!-- $$$parseQrcFile[overload1]$$$parseQrcFileconstQString&constQString& -->
+<h3 class="fn" id="parseQrcFile"><a name="parseQrcFile"></a><code>[static] </code><span class="type"><a href="qmljs-qrcparser.html#Ptr-typedef">Ptr</a></span> QrcParser::<span class="name">parseQrcFile</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QString</span> &amp;<i>contents</i>)</h3>
+<!-- @@@parseQrcFile -->
+<!-- $$$qrcDirectoryPathForQrcFilePath[overload1]$$$qrcDirectoryPathForQrcFilePathconstQString& -->
+<h3 class="fn" id="qrcDirectoryPathForQrcFilePath"><a name="qrcDirectoryPathForQrcFilePath"></a><code>[static] </code><span class="type">QString</span> QrcParser::<span class="name">qrcDirectoryPathForQrcFilePath</span>(const <span class="type">QString</span> &amp;<i>file</i>)</h3>
+<!-- @@@qrcDirectoryPathForQrcFilePath -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

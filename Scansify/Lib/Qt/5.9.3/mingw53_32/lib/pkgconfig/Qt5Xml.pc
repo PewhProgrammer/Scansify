@@ -1,0 +1,13 @@
+prefix=E:\\Utility\\Qt\\5.9.3\\mingw53_32
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+
+Name: Qt5 Xml
+Description: Qt Xml module
+Version: 5.9.3
+Libs: -L${libdir} -lQt5Xmld 
+Cflags: -I${includedir}/QtXml -I${includedir}
+Requires: Qt5Core
+

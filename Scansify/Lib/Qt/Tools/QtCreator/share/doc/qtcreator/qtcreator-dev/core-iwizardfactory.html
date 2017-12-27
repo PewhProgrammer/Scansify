@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- iwizardfactory.cpp -->
+  <title>IWizardFactory Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >IWizardFactory</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">IWizardFactory Class</h1>
+<span class="small-subtitle">(<a href="core-iwizardfactory.html">Core::IWizardFactory</a>)<br/></span>
+<!-- $$$IWizardFactory-brief -->
+<p>The class <a href="core-iwizardfactory.html">IWizardFactory</a> is the base class for all wizard factories (for example shown in <b>File | New</b>). <a href="#details">More...</a></p>
+<!-- @@@IWizardFactory -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;IWizardFactory&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="core-iwizardfactory-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#FactoryCreator-typedef">FactoryCreator</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#WizardFlag-enum">WizardFlag</a></b> { PlatformIndependent, ForceCapitalLetterForFileName }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> flags </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#WizardFlag-enum">WizardFlags</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#WizardKind-enum">WizardKind</a></b> { FileWizard, ClassWizard, ProjectWizard }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#addRequiredFeature">addRequiredFeature</a></b>(const Id &amp;<i>feature</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#category">category</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#description">description</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#descriptionImage">descriptionImage</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#displayCategory">displayCategory</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#displayName">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> WizardFlags </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#flags">flags</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QIcon </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#icon">icon</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#iconText">iconText</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Id </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#id">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#isAvailable">isAvailable</a></b>(Id <i>platformId</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> WizardKind </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#kind">kind</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QSet&lt;Id&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#requiredFeatures">requiredFeatures</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#runPath">runPath</a></b>(const QString &amp;<i>defaultPath</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::Wizard *</td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#runWizard">runWizard</a></b>(const QString &amp;<i>path</i>, QWidget *<i>parent</i>, Id <i>platform</i>, const QVariantMap &amp;<i>variables</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#setCategory">setCategory</a></b>(const QString &amp;<i>category</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#setDescription">setDescription</a></b>(const QString &amp;<i>description</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#setDescriptionImage">setDescriptionImage</a></b>(const QString &amp;<i>descriptionImage</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#setDisplayCategory">setDisplayCategory</a></b>(const QString &amp;<i>displayCategory</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#setDisplayName">setDisplayName</a></b>(const QString &amp;<i>displayName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#setFlags">setFlags</a></b>(WizardFlags <i>flags</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#setIcon">setIcon</a></b>(const QIcon &amp;<i>icon</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#setIconText">setIconText</a></b>(const QString &amp;<i>iconText</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#setId">setId</a></b>(const Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#setRequiredFeatures">setRequiredFeatures</a></b>(const QSet&lt;Id&gt; &amp;<i>featureSet</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#setSupportedProjectTypes">setSupportedProjectTypes</a></b>(const QSet&lt;Id&gt; &amp;<i>projectTypes</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QSet&lt;Id&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#supportedPlatforms">supportedPlatforms</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QSet&lt;Id&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#supportedProjectTypes">supportedProjectTypes</a></b>() const</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QSet&lt;Id&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#allAvailablePlatforms">allAvailablePlatforms</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;IWizardFactory *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#allWizardFactories">allWizardFactories</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#currentWizard">currentWizard</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#displayNameForPlatform">displayNameForPlatform</a></b>(Id <i>i</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#isWizardRunning">isWizardRunning</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#registerFactoryCreator">registerFactoryCreator</a></b>(const FactoryCreator &amp;<i>creator</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#registerFeatureProvider">registerFeatureProvider</a></b>(IFeatureProvider *<i>provider</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#requestNewItemDialog">requestNewItemDialog</a></b>(const QString &amp;<i>title</i>, const QList&lt;IWizardFactory *&gt; &amp;<i>factories</i>, const QString &amp;<i>defaultLocation</i>, const QVariantMap &amp;<i>extraVariables</i>)</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QSet&lt;Id&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#availableFeatures">availableFeatures</a></b>(Id <i>platformId</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QSet&lt;Id&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#pluginFeatures">pluginFeatures</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Utils::Wizard *</td><td class="memItemRight bottomAlign"><b><a href="core-iwizardfactory.html#runWizardImpl">runWizardImpl</a></b>(const QString &amp;<i>path</i>, QWidget *<i>parent</i>, Id <i>platform</i>, const QVariantMap &amp;<i>variables</i>) = 0</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$IWizardFactory-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The class <a href="core-iwizardfactory.html">IWizardFactory</a> is the base class for all wizard factories (for example shown in <b>File | New</b>).</p>
+<p>The wizard interface is a very thin abstraction for the <b>New..&#x2e;</b> wizards. Basically it defines what to show to the user in the wizard selection dialogs, and a hook that is called if the user selects the wizard.</p>
+<p>Wizards can then perform any operations they like, including showing dialogs and creating files. Often it is not necessary to create your own wizard from scratch, instead use one of the predefined wizards and adapt it to your needs.</p>
+<p>To make your wizard known to the system, add your <a href="core-iwizardfactory.html">IWizardFactory</a> instance to the plugin manager's object pool in your plugin's initialize function:</p>
+<pre class="cpp">
+
+  bool MyPlugin<span class="operator">::</span>initialize(<span class="keyword">const</span> <span class="type">QStringList</span> <span class="operator">&amp;</span>arguments<span class="operator">,</span> <span class="type">QString</span> <span class="operator">*</span>errorString)
+  {
+      <span class="comment">// ... do setup</span>
+      addAutoReleasedObject(<span class="keyword">new</span> MyWizardFactory);
+      <span class="comment">// ... do more setup</span>
+  }
+
+</pre>
+</div>
+<p><b>See also </b><a href="core-basefilewizard.html">Core::BaseFileWizard</a> and Core::StandardFileWizard.</p>
+<!-- @@@IWizardFactory -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$FactoryCreator -->
+<h3 class="fn" id="FactoryCreator-typedef"><a name="FactoryCreator-typedef"></a>typedef IWizardFactory::<span class="name">FactoryCreator</span></h3>
+<!-- @@@FactoryCreator -->
+<!-- $$$WizardFlag$$$PlatformIndependent$$$ForceCapitalLetterForFileName -->
+<h3 class="flags" id="WizardFlag-enum"><a name="WizardFlag-enum"></a>enum IWizardFactory::<span class="name">WizardFlag</span><br/>flags IWizardFactory::<span class="name">WizardFlags</span></h3>
+<p>The WizardFlags type is a typedef for <a href="">QFlags</a>&lt;WizardFlag&gt;. It stores an OR combination of WizardFlag values.</p>
+<!-- @@@WizardFlag -->
+<!-- $$$WizardKind$$$FileWizard$$$ProjectWizard -->
+<h3 class="fn" id="WizardKind-enum"><a name="WizardKind-enum"></a>enum IWizardFactory::<span class="name">WizardKind</span></h3>
+<p>Used to specify what kind of objects the wizard creates. This information is used to show e.g&#x2e; only wizards that create projects when selecting a <b>New Project</b> menu item.</p>
+<div class="table"><table class="valuelist"><tr valign="top" class="odd"><th class="tblConst">Constant</th><th class="tblval">Value</th><th class="tbldscr">Description</th></tr>
+<tr><td class="topAlign"><code>Core::IWizardFactory::FileWizard</code></td><td class="topAlign tblval"><code>0x01</code></td><td class="topAlign">The wizard creates one or more files.</td></tr>
+<tr><td class="topAlign"><code>Core::IWizardFactory::ClassWizard</code></td><td class="topAlign tblval">?</td><td class="topAlign">The wizard creates a new class (e.g&#x2e; source+header files).</td></tr>
+<tr><td class="topAlign"><code>Core::IWizardFactory::ProjectWizard</code></td><td class="topAlign tblval"><code>0x02</code></td><td class="topAlign">The wizard creates a new project.</td></tr>
+</table></div>
+<!-- @@@WizardKind -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$addRequiredFeature[overload1]$$$addRequiredFeatureconstId& -->
+<h3 class="fn" id="addRequiredFeature"><a name="addRequiredFeature"></a><span class="type">void</span> IWizardFactory::<span class="name">addRequiredFeature</span>(const <span class="type"><a href="core-id.html">Id</a></span> &amp;<i>feature</i>)</h3>
+<!-- @@@addRequiredFeature -->
+<!-- $$$allAvailablePlatforms[overload1]$$$allAvailablePlatforms -->
+<h3 class="fn" id="allAvailablePlatforms"><a name="allAvailablePlatforms"></a><code>[static] </code><span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Id</a></span>&gt; IWizardFactory::<span class="name">allAvailablePlatforms</span>()</h3>
+<!-- @@@allAvailablePlatforms -->
+<!-- $$$allWizardFactories[overload1]$$$allWizardFactories -->
+<h3 class="fn" id="allWizardFactories"><a name="allWizardFactories"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-iwizardfactory.html">IWizardFactory</a></span> *&gt; IWizardFactory::<span class="name">allWizardFactories</span>()</h3>
+<!-- @@@allWizardFactories -->
+<!-- $$$availableFeatures[overload1]$$$availableFeaturesId -->
+<h3 class="fn" id="availableFeatures"><a name="availableFeatures"></a><code>[protected] </code><span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Id</a></span>&gt; IWizardFactory::<span class="name">availableFeatures</span>(<span class="type"><a href="core-id.html">Id</a></span> <i>platformId</i>) const</h3>
+<!-- @@@availableFeatures -->
+<!-- $$$category[overload1]$$$category -->
+<h3 class="fn" id="category"><a name="category"></a><span class="type">QString</span> IWizardFactory::<span class="name">category</span>() const</h3>
+<p>Returns a category ID to add the wizard to.</p>
+<p><b>See also </b><a href="core-iwizardfactory.html#setCategory">setCategory</a>().</p>
+<!-- @@@category -->
+<!-- $$$currentWizard[overload1]$$$currentWizard -->
+<h3 class="fn" id="currentWizard"><a name="currentWizard"></a><code>[static] </code><span class="type">QWidget</span> *IWizardFactory::<span class="name">currentWizard</span>()</h3>
+<!-- @@@currentWizard -->
+<!-- $$$description[overload1]$$$description -->
+<h3 class="fn" id="description"><a name="description"></a><span class="type">QString</span> IWizardFactory::<span class="name">description</span>() const</h3>
+<p>Returns a translated description to show when this wizard is selected in the dialog.</p>
+<p><b>See also </b><a href="core-iwizardfactory.html#setDescription">setDescription</a>().</p>
+<!-- @@@description -->
+<!-- $$$descriptionImage[overload1]$$$descriptionImage -->
+<h3 class="fn" id="descriptionImage"><a name="descriptionImage"></a><span class="type">QString</span> IWizardFactory::<span class="name">descriptionImage</span>() const</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#setDescriptionImage">setDescriptionImage</a>().</p>
+<!-- @@@descriptionImage -->
+<!-- $$$displayCategory[overload1]$$$displayCategory -->
+<h3 class="fn" id="displayCategory"><a name="displayCategory"></a><span class="type">QString</span> IWizardFactory::<span class="name">displayCategory</span>() const</h3>
+<p>Returns the translated string of the category, how it should appear in the dialog.</p>
+<p><b>See also </b><a href="core-iwizardfactory.html#setDisplayCategory">setDisplayCategory</a>().</p>
+<!-- @@@displayCategory -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><span class="type">QString</span> IWizardFactory::<span class="name">displayName</span>() const</h3>
+<p>Returns the translated name of the wizard, how it should appear in the dialog.</p>
+<p><b>See also </b><a href="core-iwizardfactory.html#setDisplayName">setDisplayName</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$displayNameForPlatform[overload1]$$$displayNameForPlatformId -->
+<h3 class="fn" id="displayNameForPlatform"><a name="displayNameForPlatform"></a><code>[static] </code><span class="type">QString</span> IWizardFactory::<span class="name">displayNameForPlatform</span>(<span class="type"><a href="core-id.html">Id</a></span> <i>i</i>)</h3>
+<!-- @@@displayNameForPlatform -->
+<!-- $$$flags[overload1]$$$flags -->
+<h3 class="fn" id="flags"><a name="flags"></a><span class="type"><a href="core-iwizardfactory.html#WizardFlag-enum">WizardFlags</a></span> IWizardFactory::<span class="name">flags</span>() const</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#setFlags">setFlags</a>().</p>
+<!-- @@@flags -->
+<!-- $$$icon[overload1]$$$icon -->
+<h3 class="fn" id="icon"><a name="icon"></a><span class="type">QIcon</span> IWizardFactory::<span class="name">icon</span>() const</h3>
+<p>Returns an icon to show in the wizard selection dialog.</p>
+<p><b>See also </b><a href="core-iwizardfactory.html#setIcon">setIcon</a>().</p>
+<!-- @@@icon -->
+<!-- $$$iconText[overload1]$$$iconText -->
+<h3 class="fn" id="iconText"><a name="iconText"></a><span class="type">QString</span> IWizardFactory::<span class="name">iconText</span>() const</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#setIconText">setIconText</a>().</p>
+<!-- @@@iconText -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" id="id"><a name="id"></a><span class="type"><a href="core-id.html">Id</a></span> IWizardFactory::<span class="name">id</span>() const</h3>
+<p>Returns an arbitrary id that is used for sorting within the category.</p>
+<p><b>See also </b><a href="core-iwizardfactory.html#setId">setId</a>().</p>
+<!-- @@@id -->
+<!-- $$$isAvailable[overload1]$$$isAvailableId -->
+<h3 class="fn" id="isAvailable"><a name="isAvailable"></a><code>[virtual] </code><span class="type">bool</span> IWizardFactory::<span class="name">isAvailable</span>(<span class="type"><a href="core-id.html">Id</a></span> <i>platformId</i>) const</h3>
+<!-- @@@isAvailable -->
+<!-- $$$isWizardRunning[overload1]$$$isWizardRunning -->
+<h3 class="fn" id="isWizardRunning"><a name="isWizardRunning"></a><code>[static] </code><span class="type">bool</span> IWizardFactory::<span class="name">isWizardRunning</span>()</h3>
+<!-- @@@isWizardRunning -->
+<!-- $$$kind[overload1]$$$kind -->
+<h3 class="fn" id="kind"><a name="kind"></a><span class="type"><a href="core-iwizardfactory.html#WizardKind-enum">WizardKind</a></span> IWizardFactory::<span class="name">kind</span>() const</h3>
+<p>Returns what kind of objects are created by the wizard.</p>
+<p><b>See also </b>Kind.</p>
+<!-- @@@kind -->
+<!-- $$$pluginFeatures[overload1]$$$pluginFeatures -->
+<h3 class="fn" id="pluginFeatures"><a name="pluginFeatures"></a><code>[protected] </code><span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Id</a></span>&gt; IWizardFactory::<span class="name">pluginFeatures</span>() const</h3>
+<!-- @@@pluginFeatures -->
+<!-- $$$registerFactoryCreator[overload1]$$$registerFactoryCreatorconstFactoryCreator& -->
+<h3 class="fn" id="registerFactoryCreator"><a name="registerFactoryCreator"></a><code>[static] </code><span class="type">void</span> IWizardFactory::<span class="name">registerFactoryCreator</span>(const <span class="type"><a href="core-iwizardfactory.html#FactoryCreator-typedef">FactoryCreator</a></span> &amp;<i>creator</i>)</h3>
+<!-- @@@registerFactoryCreator -->
+<!-- $$$registerFeatureProvider[overload1]$$$registerFeatureProviderIFeatureProvider* -->
+<h3 class="fn" id="registerFeatureProvider"><a name="registerFeatureProvider"></a><code>[static] </code><span class="type">void</span> IWizardFactory::<span class="name">registerFeatureProvider</span>(<span class="type"><a href="core-ifeatureprovider.html">IFeatureProvider</a></span> *<i>provider</i>)</h3>
+<!-- @@@registerFeatureProvider -->
+<!-- $$$requestNewItemDialog[overload1]$$$requestNewItemDialogconstQString&constQList<IWizardFactory*>&constQString&constQVariantMap& -->
+<h3 class="fn" id="requestNewItemDialog"><a name="requestNewItemDialog"></a><code>[static] </code><span class="type">void</span> IWizardFactory::<span class="name">requestNewItemDialog</span>(const <span class="type">QString</span> &amp;<i>title</i>, const <span class="type">QList</span>&lt;<span class="type"><a href="core-iwizardfactory.html">IWizardFactory</a></span> *&gt; &amp;<i>factories</i>, const <span class="type">QString</span> &amp;<i>defaultLocation</i>, const <span class="type">QVariantMap</span> &amp;<i>extraVariables</i>)</h3>
+<!-- @@@requestNewItemDialog -->
+<!-- $$$requiredFeatures[overload1]$$$requiredFeatures -->
+<h3 class="fn" id="requiredFeatures"><a name="requiredFeatures"></a><span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Id</a></span>&gt; IWizardFactory::<span class="name">requiredFeatures</span>() const</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#setRequiredFeatures">setRequiredFeatures</a>().</p>
+<!-- @@@requiredFeatures -->
+<!-- $$$runPath[overload1]$$$runPathconstQString& -->
+<h3 class="fn" id="runPath"><a name="runPath"></a><span class="type">QString</span> IWizardFactory::<span class="name">runPath</span>(const <span class="type">QString</span> &amp;<i>defaultPath</i>)</h3>
+<!-- @@@runPath -->
+<!-- $$$runWizard[overload1]$$$runWizardconstQString&QWidget*IdconstQVariantMap& -->
+<h3 class="fn" id="runWizard"><a name="runWizard"></a><span class="type"><a href="utils-wizard.html">Utils::Wizard</a></span> *IWizardFactory::<span class="name">runWizard</span>(const <span class="type">QString</span> &amp;<i>path</i>, <span class="type">QWidget</span> *<i>parent</i>, <span class="type"><a href="core-id.html">Id</a></span> <i>platform</i>, const <span class="type">QVariantMap</span> &amp;<i>variables</i>)</h3>
+<!-- @@@runWizard -->
+<!-- $$$runWizardImpl[overload1]$$$runWizardImplconstQString&QWidget*IdconstQVariantMap& -->
+<h3 class="fn" id="runWizardImpl"><a name="runWizardImpl"></a><code>[pure virtual protected] </code><span class="type"><a href="utils-wizard.html">Utils::Wizard</a></span> *IWizardFactory::<span class="name">runWizardImpl</span>(const <span class="type">QString</span> &amp;<i>path</i>, <span class="type">QWidget</span> *<i>parent</i>, <span class="type"><a href="core-id.html">Id</a></span> <i>platform</i>, const <span class="type">QVariantMap</span> &amp;<i>variables</i>)</h3>
+<!-- @@@runWizardImpl -->
+<!-- $$$setCategory[overload1]$$$setCategoryconstQString& -->
+<h3 class="fn" id="setCategory"><a name="setCategory"></a><span class="type">void</span> IWizardFactory::<span class="name">setCategory</span>(const <span class="type">QString</span> &amp;<i>category</i>)</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#category">category</a>().</p>
+<!-- @@@setCategory -->
+<!-- $$$setDescription[overload1]$$$setDescriptionconstQString& -->
+<h3 class="fn" id="setDescription"><a name="setDescription"></a><span class="type">void</span> IWizardFactory::<span class="name">setDescription</span>(const <span class="type">QString</span> &amp;<i>description</i>)</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#description">description</a>().</p>
+<!-- @@@setDescription -->
+<!-- $$$setDescriptionImage[overload1]$$$setDescriptionImageconstQString& -->
+<h3 class="fn" id="setDescriptionImage"><a name="setDescriptionImage"></a><span class="type">void</span> IWizardFactory::<span class="name">setDescriptionImage</span>(const <span class="type">QString</span> &amp;<i>descriptionImage</i>)</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#descriptionImage">descriptionImage</a>().</p>
+<!-- @@@setDescriptionImage -->
+<!-- $$$setDisplayCategory[overload1]$$$setDisplayCategoryconstQString& -->
+<h3 class="fn" id="setDisplayCategory"><a name="setDisplayCategory"></a><span class="type">void</span> IWizardFactory::<span class="name">setDisplayCategory</span>(const <span class="type">QString</span> &amp;<i>displayCategory</i>)</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#displayCategory">displayCategory</a>().</p>
+<!-- @@@setDisplayCategory -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" id="setDisplayName"><a name="setDisplayName"></a><span class="type">void</span> IWizardFactory::<span class="name">setDisplayName</span>(const <span class="type">QString</span> &amp;<i>displayName</i>)</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#displayName">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setFlags[overload1]$$$setFlagsWizardFlags -->
+<h3 class="fn" id="setFlags"><a name="setFlags"></a><span class="type">void</span> IWizardFactory::<span class="name">setFlags</span>(<span class="type"><a href="core-iwizardfactory.html#WizardFlag-enum">WizardFlags</a></span> <i>flags</i>)</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#flags">flags</a>().</p>
+<!-- @@@setFlags -->
+<!-- $$$setIcon[overload1]$$$setIconconstQIcon& -->
+<h3 class="fn" id="setIcon"><a name="setIcon"></a><span class="type">void</span> IWizardFactory::<span class="name">setIcon</span>(const <span class="type">QIcon</span> &amp;<i>icon</i>)</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#icon">icon</a>().</p>
+<!-- @@@setIcon -->
+<!-- $$$setIconText[overload1]$$$setIconTextconstQString& -->
+<h3 class="fn" id="setIconText"><a name="setIconText"></a><span class="type">void</span> IWizardFactory::<span class="name">setIconText</span>(const <span class="type">QString</span> &amp;<i>iconText</i>)</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#iconText">iconText</a>().</p>
+<!-- @@@setIconText -->
+<!-- $$$setId[overload1]$$$setIdconstId -->
+<h3 class="fn" id="setId"><a name="setId"></a><span class="type">void</span> IWizardFactory::<span class="name">setId</span>(const <span class="type"><a href="core-id.html">Id</a></span> <i>id</i>)</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#id">id</a>().</p>
+<!-- @@@setId -->
+<!-- $$$setRequiredFeatures[overload1]$$$setRequiredFeaturesconstQSet<Id>& -->
+<h3 class="fn" id="setRequiredFeatures"><a name="setRequiredFeatures"></a><span class="type">void</span> IWizardFactory::<span class="name">setRequiredFeatures</span>(const <span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Id</a></span>&gt; &amp;<i>featureSet</i>)</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#requiredFeatures">requiredFeatures</a>().</p>
+<!-- @@@setRequiredFeatures -->
+<!-- $$$setSupportedProjectTypes[overload1]$$$setSupportedProjectTypesconstQSet<Id>& -->
+<h3 class="fn" id="setSupportedProjectTypes"><a name="setSupportedProjectTypes"></a><span class="type">void</span> IWizardFactory::<span class="name">setSupportedProjectTypes</span>(const <span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Id</a></span>&gt; &amp;<i>projectTypes</i>)</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#supportedProjectTypes">supportedProjectTypes</a>().</p>
+<!-- @@@setSupportedProjectTypes -->
+<!-- $$$supportedPlatforms[overload1]$$$supportedPlatforms -->
+<h3 class="fn" id="supportedPlatforms"><a name="supportedPlatforms"></a><span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Id</a></span>&gt; IWizardFactory::<span class="name">supportedPlatforms</span>() const</h3>
+<!-- @@@supportedPlatforms -->
+<!-- $$$supportedProjectTypes[overload1]$$$supportedProjectTypes -->
+<h3 class="fn" id="supportedProjectTypes"><a name="supportedProjectTypes"></a><span class="type">QSet</span>&lt;<span class="type"><a href="core-id.html">Id</a></span>&gt; IWizardFactory::<span class="name">supportedProjectTypes</span>() const</h3>
+<p><b>See also </b><a href="core-iwizardfactory.html#setSupportedProjectTypes">setSupportedProjectTypes</a>().</p>
+<!-- @@@supportedProjectTypes -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

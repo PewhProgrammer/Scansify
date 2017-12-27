@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Environment Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Environment</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Environment Class</h1>
+<span class="small-subtitle">(<a href="cplusplus-environment.html">CPlusPlus::Environment</a>)<br/></span>
+<ul>
+<li><a href="cplusplus-environment-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#iterator-typedef">iterator</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#Environment">Environment</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#dtor.Environment">~Environment</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#addMacros">addMacros</a></b>(const QList&lt;Macro&gt; &amp;<i>macros</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Macro *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#bind">bind</a></b>(const Macro &amp;<i>macro</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#dump">dump</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> iterator </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#firstMacro">firstMacro</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> iterator </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#lastMacro">lastMacro</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Macro *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#macroAt">macroAt</a></b>(unsigned <i>index</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> unsigned </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#macroCount">macroCount</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Macro *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#remove">remove</a></b>(const ByteArrayRef &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#reset">reset</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Macro *</td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#resolve">resolve</a></b>(const ByteArrayRef &amp;<i>name</i>) const</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-environment.html#isBuiltinMacro">isBuiltinMacro</a></b>(const ByteArrayRef &amp;<i>name</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$iterator -->
+<h3 class="fn" id="iterator-typedef"><a name="iterator-typedef"></a>typedef Environment::<span class="name">iterator</span></h3>
+<!-- @@@iterator -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Environment[overload1]$$$Environment -->
+<h3 class="fn" id="Environment"><a name="Environment"></a>Environment::<span class="name">Environment</span>()</h3>
+<p>Default constructs an instance of Environment.</p><!-- @@@Environment -->
+<!-- $$$~Environment[overload1]$$$~Environment -->
+<h3 class="fn" id="dtor.Environment"><a name="dtor.Environment"></a>Environment::<span class="name">~Environment</span>()</h3>
+<p>Destroys the instance of Environment.</p><!-- @@@~Environment -->
+<!-- $$$addMacros[overload1]$$$addMacrosconstQList<Macro>& -->
+<h3 class="fn" id="addMacros"><a name="addMacros"></a><span class="type">void</span> Environment::<span class="name">addMacros</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="cplusplus-macro.html">Macro</a></span>&gt; &amp;<i>macros</i>)</h3>
+<!-- @@@addMacros -->
+<!-- $$$bind[overload1]$$$bindconstMacro& -->
+<h3 class="fn" id="bind"><a name="bind"></a><span class="type"><a href="cplusplus-macro.html">Macro</a></span> *Environment::<span class="name">bind</span>(const <span class="type"><a href="cplusplus-macro.html">Macro</a></span> &amp;<i>macro</i>)</h3>
+<!-- @@@bind -->
+<!-- $$$dump[overload1]$$$dump -->
+<h3 class="fn" id="dump"><a name="dump"></a><span class="type">void</span> Environment::<span class="name">dump</span>() const</h3>
+<!-- @@@dump -->
+<!-- $$$firstMacro[overload1]$$$firstMacro -->
+<h3 class="fn" id="firstMacro"><a name="firstMacro"></a><span class="type"><a href="cplusplus-environment.html#iterator-typedef">iterator</a></span> Environment::<span class="name">firstMacro</span>() const</h3>
+<!-- @@@firstMacro -->
+<!-- $$$isBuiltinMacro[overload1]$$$isBuiltinMacroconstByteArrayRef& -->
+<h3 class="fn" id="isBuiltinMacro"><a name="isBuiltinMacro"></a><code>[static] </code><span class="type">bool</span> Environment::<span class="name">isBuiltinMacro</span>(const <span class="type"><a href="cplusplus-bytearrayref.html">ByteArrayRef</a></span> &amp;<i>name</i>)</h3>
+<!-- @@@isBuiltinMacro -->
+<!-- $$$lastMacro[overload1]$$$lastMacro -->
+<h3 class="fn" id="lastMacro"><a name="lastMacro"></a><span class="type"><a href="cplusplus-environment.html#iterator-typedef">iterator</a></span> Environment::<span class="name">lastMacro</span>() const</h3>
+<!-- @@@lastMacro -->
+<!-- $$$macroAt[overload1]$$$macroAtunsigned -->
+<h3 class="fn" id="macroAt"><a name="macroAt"></a><span class="type"><a href="cplusplus-macro.html">Macro</a></span> *Environment::<span class="name">macroAt</span>(<span class="type">unsigned</span> <i>index</i>) const</h3>
+<!-- @@@macroAt -->
+<!-- $$$macroCount[overload1]$$$macroCount -->
+<h3 class="fn" id="macroCount"><a name="macroCount"></a><span class="type">unsigned</span> Environment::<span class="name">macroCount</span>() const</h3>
+<!-- @@@macroCount -->
+<!-- $$$remove[overload1]$$$removeconstByteArrayRef& -->
+<h3 class="fn" id="remove"><a name="remove"></a><span class="type"><a href="cplusplus-macro.html">Macro</a></span> *Environment::<span class="name">remove</span>(const <span class="type"><a href="cplusplus-bytearrayref.html">ByteArrayRef</a></span> &amp;<i>name</i>)</h3>
+<!-- @@@remove -->
+<!-- $$$reset[overload1]$$$reset -->
+<h3 class="fn" id="reset"><a name="reset"></a><span class="type">void</span> Environment::<span class="name">reset</span>()</h3>
+<!-- @@@reset -->
+<!-- $$$resolve[overload1]$$$resolveconstByteArrayRef& -->
+<h3 class="fn" id="resolve"><a name="resolve"></a><span class="type"><a href="cplusplus-macro.html">Macro</a></span> *Environment::<span class="name">resolve</span>(const <span class="type"><a href="cplusplus-bytearrayref.html">ByteArrayRef</a></span> &amp;<i>name</i>) const</h3>
+<!-- @@@resolve -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

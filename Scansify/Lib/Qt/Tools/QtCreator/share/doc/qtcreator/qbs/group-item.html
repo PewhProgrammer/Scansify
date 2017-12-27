@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- group.qdoc -->
+  <title>Group Item | Qbs Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="index.html">Qbs Manual</a></td><td >Group Item</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qbs 1.9.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="filetagger-item.html" />
+  <link rel="next" href="module-item.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="filetagger-item.html">FileTagger Item</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="module-item.html">Module Item</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#group-properties">Group Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Group Item</h1>
+<span class="subtitle"></span>
+<!-- $$$group-item.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>This item is attached to a product and used to group files that have something in common. For example:</p>
+<pre class="cpp">
+
+  Application {
+      Group {
+          name: <span class="string">&quot;common files&quot;</span>
+          files: <span class="operator">[</span><span class="string">&quot;myclass.h&quot;</span><span class="operator">,</span> <span class="string">&quot;myclass_common_impl.cpp&quot;</span><span class="operator">]</span>
+      }
+      Group {
+          name: <span class="string">&quot;Windows files&quot;</span>
+          condition: qbs<span class="operator">.</span>targetOS<span class="operator">.</span>contains(<span class="string">&quot;windows&quot;</span>)
+          files: <span class="string">&quot;myclass_win_impl.cpp&quot;</span>
+      }
+      Group {
+          name: <span class="string">&quot;Unix files&quot;</span>
+          condition: qbs<span class="operator">.</span>targetOS<span class="operator">.</span>contains(<span class="string">&quot;unix&quot;</span>)
+          files: <span class="string">&quot;unixhelper.cpp&quot;</span>
+          Group {
+              name: <span class="string">&quot;Linux files&quot;</span>
+              condition: qbs<span class="operator">.</span>targetOS<span class="operator">.</span>contains(<span class="string">&quot;linux&quot;</span>)
+              files: <span class="string">&quot;myclass_linux_impl.cpp&quot;</span>
+          }
+          Group {
+              name: <span class="string">&quot;FreeBSD files&quot;</span>
+              condition: qbs<span class="operator">.</span>targetOS<span class="operator">.</span>contains(<span class="string">&quot;freebsd&quot;</span>)
+              files: <span class="string">&quot;myclass_freebsd_impl.cpp&quot;</span>
+          }
+      }
+      Group {
+          name: <span class="string">&quot;Files to install&quot;</span>
+          qbs<span class="operator">.</span>install: <span class="keyword">true</span>
+          qbs<span class="operator">.</span>installDir: <span class="string">&quot;share&quot;</span>
+          files: <span class="string">&quot;runtime_resource.txt&quot;</span>
+      }
+  }
+
+</pre>
+<p>When specifying files, you can use the wildcards &quot;*&quot;, &quot;?&quot; and &quot;[]&quot;, which have their usual meaning. By default, matching files are only picked up directly from the parent directory, but you can tell Qbs to consider the whole directory tree. It is also possible to exclude certain files from the list. The pattern ** used in a pathname expansion context will match all files and zero or more directories and subdirectories. For example:</p>
+<pre class="cpp">
+
+          Group {
+              name: &quot;Word processing documents&quot;
+              files: [&quot;*.doc&quot;, &quot;*.rtf&quot;]
+              prefix: &quot;**/&quot;
+              qbs.install: true
+              qbs.installDir: &quot;share&quot;
+              excludeFiles: &quot;do_not_install_this_file.*&quot;
+          }
+
+</pre>
+<p>A group can also be used to attach properties to build artifacts such as executables or libraries. In the following example, an application is installed to &quot;&lt;install root&gt;/bin&quot;.</p>
+<pre class="cpp">
+
+  Application {
+      Group {
+          fileTagsFilter: <span class="string">&quot;application&quot;</span>
+          qbs<span class="operator">.</span>install: <span class="keyword">true</span>
+          qbs<span class="operator">.</span>installDir: <span class="string">&quot;bin&quot;</span>
+      }
+  }
+
+</pre>
+<p>Groups may also appear in modules, which causes the respective sources to be added to the products depending on said module. Groups can be nested. In this case, child groups inherit the module properties and the file tags of their parent group. The condition of a child group gets logically ANDed with the one of its parent group.</p>
+<a name="group-properties"></a>
+<h2 id="group-properties">Group Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >name</td><td >string</td><td >&quot;Group x&quot;, where x is a unique number among all the groups in the product</td><td >The name of the group. Not used internally; mainly useful for IDEs.</td></tr>
+<tr valign="top" class="even"><td >files</td><td >list</td><td >empty list</td><td >The files in the group. Mutually exclusive with fileTagsFilter. Relative paths are resolved using the parent directory of the file that contains the <code>Group</code> item. However, if the <code>prefix</code> property is set to an absolute path, then that one becomes the base directory.</td></tr>
+<tr valign="top" class="odd"><td >prefix</td><td >string</td><td >empty string</td><td >A string to prepend to all files. Slashes are allowed and have directory semantics.</td></tr>
+<tr valign="top" class="even"><td >fileTagsFilter</td><td >list</td><td >empty list</td><td >Artifact file tags to match. Any properties set in this group will be applied to the product's artifacts whose file tags intersect with the ones listed here. Mutually exclusive with files.</td></tr>
+<tr valign="top" class="odd"><td >condition</td><td >bool</td><td >true</td><td >Determines whether the files in the group are actually considered part of the project.</td></tr>
+<tr valign="top" class="even"><td >fileTags</td><td >list</td><td >empty list</td><td >Tags to attach to the group's files. These can then be matched by a rule. Note that file taggers are never applied to a file that has this property set.</td></tr>
+<tr valign="top" class="odd"><td >overrideTags</td><td >bool</td><td >true</td><td >Determines how tags on files that are listed both at the top level of a product (or the parent group, if there is one) and a group are handled. If this property is true, then the file tags set via the group replace the ones set via the product or parent group. If it is false, the &quot;group tags&quot; are added to the &quot;parent tags&quot;.</td></tr>
+<tr valign="top" class="even"><td >excludeFiles</td><td >list</td><td >empty list</td><td >For use with wildcards; the files in this list are &quot;subtracted&quot; from the files list.</td></tr>
+</table></div>
+</div>
+<!-- @@@group-item.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="filetagger-item.html">FileTagger Item</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="module-item.html">Module Item</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

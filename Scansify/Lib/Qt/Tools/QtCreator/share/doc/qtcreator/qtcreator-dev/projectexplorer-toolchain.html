@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- toolchain.cpp -->
+  <title>ToolChain Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >ToolChain</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">ToolChain Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-toolchain.html">ProjectExplorer::ToolChain</a>)<br/></span>
+<!-- $$$ToolChain-brief -->
+<p>The <a href="projectexplorer-toolchain.html">ToolChain</a> class represents a tool chain. <a href="#details">More...</a></p>
+<!-- @@@ToolChain -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;ToolChain&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="projectexplorer-toolchain-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#CompilerFlag-enum">CompilerFlag</a></b> { NoFlags, StandardCxx11, StandardC99, StandardC11, ..., StandardCxx98 }</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> flags </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#CompilerFlag-enum">CompilerFlags</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#Detection-enum">Detection</a></b> { ManualDetection, AutoDetection, AutoDetectionFromSettings }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#dtor.ToolChain">~ToolChain</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#addToEnvironment">addToEnvironment</a></b>(Utils::Environment &amp;<i>env</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#canClone">canClone</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ToolChain *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#clone">clone</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Utils::FileName </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#compilerCommand">compilerCommand</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual CompilerFlags </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#compilerFlags">compilerFlags</a></b>(const QStringList &amp;<i>cxxflags</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual ToolChainConfigWidget *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#configurationWidget">configurationWidget</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual PredefinedMacrosRunner </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#createPredefinedMacrosRunner">createPredefinedMacrosRunner</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual SystemHeaderPathsRunner </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#createSystemHeaderPathsRunner">createSystemHeaderPathsRunner</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Detection </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#detection">detection</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#displayName">displayName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QByteArray </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#id">id</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#isAutoDetected">isAutoDetected</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#isValid">isValid</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Id </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#language">language</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#makeCommand">makeCommand</a></b>(const Utils::Environment &amp;<i>env</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#originalTargetTriple">originalTargetTriple</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual IOutputParser *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#outputParser">outputParser</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QByteArray </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#predefinedMacros">predefinedMacros</a></b>(const QStringList &amp;<i>cxxflags</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#setDisplayName">setDisplayName</a></b>(const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#setLanguage">setLanguage</a></b>(Core::Id <i>language</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Utils::FileName </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#suggestedDebugger">suggestedDebugger</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Utils::FileNameList </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#suggestedMkspecList">suggestedMkspecList</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;Abi&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#supportedAbis">supportedAbis</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;HeaderPath&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#systemHeaderPaths">systemHeaderPaths</a></b>(const QStringList &amp;<i>cxxflags</i>, const Utils::FileName &amp;<i>sysRoot</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual Abi </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#targetAbi">targetAbi</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QVariantMap </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#toMap">toMap</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#typeDisplayName">typeDisplayName</a></b>() const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Id </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#typeId">typeId</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;Task&gt; </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#validateKit">validateKit</a></b>(const Kit *<i>k</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual WarningFlags </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#warningFlags">warningFlags</a></b>(const QStringList &amp;<i>cflags</i>) const = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#operator-eq-eq">operator==</a></b>(<i>const ToolChain &amp;</i>) const</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#ToolChain">ToolChain</a></b>(Core::Id <i>typeId</i>, Detection <i>d</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#ToolChain-1">ToolChain</a></b>(<i>const ToolChain &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#fromMap">fromMap</a></b>(const QVariantMap &amp;<i>data</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-toolchain.html#toolChainUpdated">toolChainUpdated</a></b>()</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$ToolChain-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The <a href="projectexplorer-toolchain.html">ToolChain</a> class represents a tool chain.</p>
+</div>
+<p><b>See also </b><a href="projectexplorer-toolchainmanager.html">ProjectExplorer::ToolChainManager</a>.</p>
+<!-- @@@ToolChain -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$CompilerFlag$$$NoFlags$$$StandardCxx11$$$StandardC99$$$StandardC11$$$GnuExtensions$$$MicrosoftExtensions$$$BorlandExtensions$$$OpenMP$$$ObjectiveC$$$StandardCxx14$$$StandardCxx17$$$StandardCxx98 -->
+<h3 class="flags" id="CompilerFlag-enum"><a name="CompilerFlag-enum"></a>enum ToolChain::<span class="name">CompilerFlag</span><br/>flags ToolChain::<span class="name">CompilerFlags</span></h3>
+<p>The CompilerFlags type is a typedef for <a href="">QFlags</a>&lt;CompilerFlag&gt;. It stores an OR combination of CompilerFlag values.</p>
+<!-- @@@CompilerFlag -->
+<!-- $$$Detection$$$ManualDetection$$$AutoDetection$$$AutoDetectionFromSettings -->
+<h3 class="fn" id="Detection-enum"><a name="Detection-enum"></a>enum ToolChain::<span class="name">Detection</span></h3>
+<!-- @@@Detection -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$ToolChain[overload1]$$$ToolChainCore::IdDetection -->
+<h3 class="fn" id="ToolChain"><a name="ToolChain"></a><code>[protected] </code>ToolChain::<span class="name">ToolChain</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>typeId</i>, <span class="type"><a href="projectexplorer-toolchain.html#Detection-enum">Detection</a></span> <i>d</i>)</h3>
+<p>Default constructs an instance of ToolChain.</p><!-- @@@ToolChain -->
+<!-- $$$ToolChain$$$ToolChainconstToolChain& -->
+<h3 class="fn" id="ToolChain-1"><a name="ToolChain-1"></a><code>[protected] </code>ToolChain::<span class="name">ToolChain</span>(<i>const ToolChain &amp;</i>)</h3>
+<p>Copy constructor.</p><!-- @@@ToolChain -->
+<!-- $$$~ToolChain[overload1]$$$~ToolChain -->
+<h3 class="fn" id="dtor.ToolChain"><a name="dtor.ToolChain"></a><code>[virtual] </code>ToolChain::<span class="name">~ToolChain</span>()</h3>
+<p>Destroys the instance of ToolChain. The destructor is virtual.</p><!-- @@@~ToolChain -->
+<!-- $$$addToEnvironment[overload1]$$$addToEnvironmentUtils::Environment& -->
+<h3 class="fn" id="addToEnvironment"><a name="addToEnvironment"></a><code>[pure virtual] </code><span class="type">void</span> ToolChain::<span class="name">addToEnvironment</span>(<span class="type"><a href="utils-environment.html">Utils::Environment</a></span> &amp;<i>env</i>) const</h3>
+<!-- @@@addToEnvironment -->
+<!-- $$$canClone[overload1]$$$canClone -->
+<h3 class="fn" id="canClone"><a name="canClone"></a><code>[virtual] </code><span class="type">bool</span> ToolChain::<span class="name">canClone</span>() const</h3>
+<!-- @@@canClone -->
+<!-- $$$clone[overload1]$$$clone -->
+<h3 class="fn" id="clone"><a name="clone"></a><code>[pure virtual] </code><span class="type"><a href="projectexplorer-toolchain.html#ToolChain">ToolChain</a></span> *ToolChain::<span class="name">clone</span>() const</h3>
+<!-- @@@clone -->
+<!-- $$$compilerCommand[overload1]$$$compilerCommand -->
+<h3 class="fn" id="compilerCommand"><a name="compilerCommand"></a><code>[pure virtual] </code><span class="type"><a href="utils-filename.html">Utils::FileName</a></span> ToolChain::<span class="name">compilerCommand</span>() const</h3>
+<!-- @@@compilerCommand -->
+<!-- $$$compilerFlags[overload1]$$$compilerFlagsconstQStringList& -->
+<h3 class="fn" id="compilerFlags"><a name="compilerFlags"></a><code>[pure virtual] </code><span class="type"><a href="projectexplorer-toolchain.html#CompilerFlag-enum">CompilerFlags</a></span> ToolChain::<span class="name">compilerFlags</span>(const <span class="type">QStringList</span> &amp;<i>cxxflags</i>) const</h3>
+<!-- @@@compilerFlags -->
+<!-- $$$configurationWidget[overload1]$$$configurationWidget -->
+<h3 class="fn" id="configurationWidget"><a name="configurationWidget"></a><code>[pure virtual] </code><span class="type"><a href="projectexplorer-toolchainconfigwidget.html">ToolChainConfigWidget</a></span> *ToolChain::<span class="name">configurationWidget</span>()</h3>
+<!-- @@@configurationWidget -->
+<!-- $$$createPredefinedMacrosRunner[overload1]$$$createPredefinedMacrosRunner -->
+<h3 class="fn" id="createPredefinedMacrosRunner"><a name="createPredefinedMacrosRunner"></a><code>[pure virtual] </code><span class="type">PredefinedMacrosRunner</span> ToolChain::<span class="name">createPredefinedMacrosRunner</span>() const</h3>
+<!-- @@@createPredefinedMacrosRunner -->
+<!-- $$$createSystemHeaderPathsRunner[overload1]$$$createSystemHeaderPathsRunner -->
+<h3 class="fn" id="createSystemHeaderPathsRunner"><a name="createSystemHeaderPathsRunner"></a><code>[pure virtual] </code><span class="type">SystemHeaderPathsRunner</span> ToolChain::<span class="name">createSystemHeaderPathsRunner</span>() const</h3>
+<!-- @@@createSystemHeaderPathsRunner -->
+<!-- $$$detection[overload1]$$$detection -->
+<h3 class="fn" id="detection"><a name="detection"></a><span class="type"><a href="projectexplorer-toolchain.html#Detection-enum">Detection</a></span> ToolChain::<span class="name">detection</span>() const</h3>
+<!-- @@@detection -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><span class="type">QString</span> ToolChain::<span class="name">displayName</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-toolchain.html#setDisplayName">setDisplayName</a>().</p>
+<!-- @@@displayName -->
+<!-- $$$fromMap[overload1]$$$fromMapconstQVariantMap& -->
+<h3 class="fn" id="fromMap"><a name="fromMap"></a><code>[virtual protected] </code><span class="type">bool</span> ToolChain::<span class="name">fromMap</span>(const <span class="type">QVariantMap</span> &amp;<i>data</i>)</h3>
+<p>Used by the tool chain manager to load user-generated tool chains.</p>
+<p>Make sure to call this function when deriving.</p>
+<!-- @@@fromMap -->
+<!-- $$$id[overload1]$$$id -->
+<h3 class="fn" id="id"><a name="id"></a><span class="type">QByteArray</span> ToolChain::<span class="name">id</span>() const</h3>
+<!-- @@@id -->
+<!-- $$$isAutoDetected[overload1]$$$isAutoDetected -->
+<h3 class="fn" id="isAutoDetected"><a name="isAutoDetected"></a><span class="type">bool</span> ToolChain::<span class="name">isAutoDetected</span>() const</h3>
+<!-- @@@isAutoDetected -->
+<!-- $$$isValid[overload1]$$$isValid -->
+<h3 class="fn" id="isValid"><a name="isValid"></a><code>[pure virtual] </code><span class="type">bool</span> ToolChain::<span class="name">isValid</span>() const</h3>
+<!-- @@@isValid -->
+<!-- $$$language[overload1]$$$language -->
+<h3 class="fn" id="language"><a name="language"></a><span class="type"><a href="core-id.html">Core::Id</a></span> ToolChain::<span class="name">language</span>() const</h3>
+<p><b>See also </b><a href="projectexplorer-toolchain.html#setLanguage">setLanguage</a>().</p>
+<!-- @@@language -->
+<!-- $$$makeCommand[overload1]$$$makeCommandconstUtils::Environment& -->
+<h3 class="fn" id="makeCommand"><a name="makeCommand"></a><code>[pure virtual] </code><span class="type">QString</span> ToolChain::<span class="name">makeCommand</span>(const <span class="type"><a href="utils-environment.html">Utils::Environment</a></span> &amp;<i>env</i>) const</h3>
+<!-- @@@makeCommand -->
+<!-- $$$originalTargetTriple[overload1]$$$originalTargetTriple -->
+<h3 class="fn" id="originalTargetTriple"><a name="originalTargetTriple"></a><code>[virtual] </code><span class="type">QString</span> ToolChain::<span class="name">originalTargetTriple</span>() const</h3>
+<!-- @@@originalTargetTriple -->
+<!-- $$$outputParser[overload1]$$$outputParser -->
+<h3 class="fn" id="outputParser"><a name="outputParser"></a><code>[pure virtual] </code><span class="type"><a href="projectexplorer-ioutputparser.html">IOutputParser</a></span> *ToolChain::<span class="name">outputParser</span>() const</h3>
+<!-- @@@outputParser -->
+<!-- $$$predefinedMacros[overload1]$$$predefinedMacrosconstQStringList& -->
+<h3 class="fn" id="predefinedMacros"><a name="predefinedMacros"></a><code>[pure virtual] </code><span class="type">QByteArray</span> ToolChain::<span class="name">predefinedMacros</span>(const <span class="type">QStringList</span> &amp;<i>cxxflags</i>) const</h3>
+<!-- @@@predefinedMacros -->
+<!-- $$$setDisplayName[overload1]$$$setDisplayNameconstQString& -->
+<h3 class="fn" id="setDisplayName"><a name="setDisplayName"></a><span class="type">void</span> ToolChain::<span class="name">setDisplayName</span>(const <span class="type">QString</span> &amp;<i>name</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-toolchain.html#displayName">displayName</a>().</p>
+<!-- @@@setDisplayName -->
+<!-- $$$setLanguage[overload1]$$$setLanguageCore::Id -->
+<h3 class="fn" id="setLanguage"><a name="setLanguage"></a><span class="type">void</span> ToolChain::<span class="name">setLanguage</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>language</i>)</h3>
+<p><b>See also </b><a href="projectexplorer-toolchain.html#language">language</a>().</p>
+<!-- @@@setLanguage -->
+<!-- $$$suggestedDebugger[overload1]$$$suggestedDebugger -->
+<h3 class="fn" id="suggestedDebugger"><a name="suggestedDebugger"></a><code>[virtual] </code><span class="type"><a href="utils-filename.html">Utils::FileName</a></span> ToolChain::<span class="name">suggestedDebugger</span>() const</h3>
+<!-- @@@suggestedDebugger -->
+<!-- $$$suggestedMkspecList[overload1]$$$suggestedMkspecList -->
+<h3 class="fn" id="suggestedMkspecList"><a name="suggestedMkspecList"></a><code>[virtual] </code><span class="type">Utils::FileNameList</span> ToolChain::<span class="name">suggestedMkspecList</span>() const</h3>
+<!-- @@@suggestedMkspecList -->
+<!-- $$$supportedAbis[overload1]$$$supportedAbis -->
+<h3 class="fn" id="supportedAbis"><a name="supportedAbis"></a><code>[virtual] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-abi.html">Abi</a></span>&gt; ToolChain::<span class="name">supportedAbis</span>() const</h3>
+<!-- @@@supportedAbis -->
+<!-- $$$systemHeaderPaths[overload1]$$$systemHeaderPathsconstQStringList&constUtils::FileName& -->
+<h3 class="fn" id="systemHeaderPaths"><a name="systemHeaderPaths"></a><code>[pure virtual] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-headerpath.html">HeaderPath</a></span>&gt; ToolChain::<span class="name">systemHeaderPaths</span>(const <span class="type">QStringList</span> &amp;<i>cxxflags</i>, const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>sysRoot</i>) const</h3>
+<!-- @@@systemHeaderPaths -->
+<!-- $$$targetAbi[overload1]$$$targetAbi -->
+<h3 class="fn" id="targetAbi"><a name="targetAbi"></a><code>[pure virtual] </code><span class="type"><a href="projectexplorer-abi.html">Abi</a></span> ToolChain::<span class="name">targetAbi</span>() const</h3>
+<!-- @@@targetAbi -->
+<!-- $$$toMap[overload1]$$$toMap -->
+<h3 class="fn" id="toMap"><a name="toMap"></a><code>[virtual] </code><span class="type">QVariantMap</span> ToolChain::<span class="name">toMap</span>() const</h3>
+<p>Used by the tool chain manager to save user-generated tool chains.</p>
+<p>Make sure to call this function when deriving.</p>
+<!-- @@@toMap -->
+<!-- $$$toolChainUpdated[overload1]$$$toolChainUpdated -->
+<h3 class="fn" id="toolChainUpdated"><a name="toolChainUpdated"></a><code>[protected] </code><span class="type">void</span> ToolChain::<span class="name">toolChainUpdated</span>()</h3>
+<!-- @@@toolChainUpdated -->
+<!-- $$$typeDisplayName[overload1]$$$typeDisplayName -->
+<h3 class="fn" id="typeDisplayName"><a name="typeDisplayName"></a><code>[pure virtual] </code><span class="type">QString</span> ToolChain::<span class="name">typeDisplayName</span>() const</h3>
+<!-- @@@typeDisplayName -->
+<!-- $$$typeId[overload1]$$$typeId -->
+<h3 class="fn" id="typeId"><a name="typeId"></a><span class="type"><a href="core-id.html">Core::Id</a></span> ToolChain::<span class="name">typeId</span>() const</h3>
+<!-- @@@typeId -->
+<!-- $$$validateKit[overload1]$$$validateKitconstKit* -->
+<h3 class="fn" id="validateKit"><a name="validateKit"></a><code>[virtual] </code><span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-task.html">Task</a></span>&gt; ToolChain::<span class="name">validateKit</span>(const <span class="type"><a href="projectexplorer-kit.html">Kit</a></span> *<i>k</i>) const</h3>
+<p>Used by the tool chain kit information to validate the kit.</p>
+<!-- @@@validateKit -->
+<!-- $$$warningFlags[overload1]$$$warningFlagsconstQStringList& -->
+<h3 class="fn" id="warningFlags"><a name="warningFlags"></a><code>[pure virtual] </code><span class="type"><a href="projectexplorer.html#WarningFlags-enum">WarningFlags</a></span> ToolChain::<span class="name">warningFlags</span>(const <span class="type">QStringList</span> &amp;<i>cflags</i>) const</h3>
+<!-- @@@warningFlags -->
+<!-- $$$operator==[overload1]$$$operator==constToolChain& -->
+<h3 class="fn" id="operator-eq-eq"><a name="operator-eq-eq"></a><code>[virtual] </code><span class="type">bool</span> ToolChain::<span class="name">operator==</span>(<i>const ToolChain &amp;</i>) const</h3>
+<!-- @@@operator== -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>QrcCache Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >QrcCache</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">QrcCache Class</h1>
+<span class="small-subtitle">(<a href="qmljs-qrccache.html">QmlJS::QrcCache</a>)<br/></span>
+<ul>
+<li><a href="qmljs-qrccache-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrccache.html#QrcCache">QrcCache</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrccache.html#dtor.QrcCache">~QrcCache</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QrcParser::ConstPtr </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrccache.html#addPath">addPath</a></b>(const QString &amp;<i>path</i>, const QString &amp;<i>contents</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrccache.html#clear">clear</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QrcParser::ConstPtr </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrccache.html#parsedPath">parsedPath</a></b>(const QString &amp;<i>path</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrccache.html#removePath">removePath</a></b>(const QString &amp;<i>path</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QrcParser::ConstPtr </td><td class="memItemRight bottomAlign"><b><a href="qmljs-qrccache.html#updatePath">updatePath</a></b>(const QString &amp;<i>path</i>, const QString &amp;<i>contents</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$QrcCache[overload1]$$$QrcCache -->
+<h3 class="fn" id="QrcCache"><a name="QrcCache"></a>QrcCache::<span class="name">QrcCache</span>()</h3>
+<p>Default constructs an instance of QrcCache.</p><!-- @@@QrcCache -->
+<!-- $$$~QrcCache[overload1]$$$~QrcCache -->
+<h3 class="fn" id="dtor.QrcCache"><a name="dtor.QrcCache"></a>QrcCache::<span class="name">~QrcCache</span>()</h3>
+<p>Destroys the instance of QrcCache.</p><!-- @@@~QrcCache -->
+<!-- $$$addPath[overload1]$$$addPathconstQString&constQString& -->
+<h3 class="fn" id="addPath"><a name="addPath"></a><span class="type"><a href="qmljs-qrcparser.html#ConstPtr-typedef">QrcParser::ConstPtr</a></span> QrcCache::<span class="name">addPath</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QString</span> &amp;<i>contents</i>)</h3>
+<!-- @@@addPath -->
+<!-- $$$clear[overload1]$$$clear -->
+<h3 class="fn" id="clear"><a name="clear"></a><span class="type">void</span> QrcCache::<span class="name">clear</span>()</h3>
+<!-- @@@clear -->
+<!-- $$$parsedPath[overload1]$$$parsedPathconstQString& -->
+<h3 class="fn" id="parsedPath"><a name="parsedPath"></a><span class="type"><a href="qmljs-qrcparser.html#ConstPtr-typedef">QrcParser::ConstPtr</a></span> QrcCache::<span class="name">parsedPath</span>(const <span class="type">QString</span> &amp;<i>path</i>)</h3>
+<!-- @@@parsedPath -->
+<!-- $$$removePath[overload1]$$$removePathconstQString& -->
+<h3 class="fn" id="removePath"><a name="removePath"></a><span class="type">void</span> QrcCache::<span class="name">removePath</span>(const <span class="type">QString</span> &amp;<i>path</i>)</h3>
+<!-- @@@removePath -->
+<!-- $$$updatePath[overload1]$$$updatePathconstQString&constQString& -->
+<h3 class="fn" id="updatePath"><a name="updatePath"></a><span class="type"><a href="qmljs-qrcparser.html#ConstPtr-typedef">QrcParser::ConstPtr</a></span> QrcCache::<span class="name">updatePath</span>(const <span class="type">QString</span> &amp;<i>path</i>, const <span class="type">QString</span> &amp;<i>contents</i>)</h3>
+<!-- @@@updatePath -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

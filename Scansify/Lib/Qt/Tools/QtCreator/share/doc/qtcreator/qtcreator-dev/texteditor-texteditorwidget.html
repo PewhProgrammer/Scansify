@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>TextEditorWidget Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >TextEditorWidget</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#properties">Properties</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#static-protected-members">Static Protected Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">TextEditorWidget Class</h1>
+<span class="small-subtitle">(<a href="texteditor-texteditorwidget.html">TextEditor::TextEditorWidget</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherited By:</td><td class="memItemRight bottomAlign"> <p><a href="texteditor-snippeteditorwidget.html">TextEditor::SnippetEditorWidget</a> and <a href="vcsbase-vcsbaseeditorwidget.html">VcsBase::VcsBaseEditorWidget</a></p>
+</td></tr></table></div><ul>
+<li><a href="texteditor-texteditorwidget-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> class </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget-link.html">Link</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#Side-enum">Side</a></b> { Left, Right }</td></tr>
+</table></div>
+<a name="properties"></a>
+<h2 id="properties">Properties</h2>
+<ul>
+<li class="fn"><b><a href="texteditor-texteditorwidget.html#verticalBlockSelectionFirstColumn-prop">verticalBlockSelectionFirstColumn</a></b> : const int</li>
+<li class="fn"><b><a href="texteditor-texteditorwidget.html#verticalBlockSelectionLastColumn-prop">verticalBlockSelectionLastColumn</a></b> : const int</li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#TextEditorWidget">TextEditorWidget</a></b>(QWidget *<i>parent</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#dtor.TextEditorWidget">~TextEditorWidget</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#abortAssist">abortAssist</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#aboutToOpen">aboutToOpen</a></b>(const QString &amp;<i>fileName</i>, const QString &amp;<i>realFileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#alwaysOpenLinksInNextSplit">alwaysOpenLinksInNextSplit</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#appendStandardContextMenuActions">appendStandardContextMenuActions</a></b>(QMenu *<i>menu</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> AutoCompleter *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#autoCompleter">autoCompleter</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const BehaviorSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#behaviorSettings">behaviorSettings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QTextCursor </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#blockSelection">blockSelection</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#camelCaseNavigationEnabled">camelCaseNavigationEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QChar </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#characterAt">characterAt</a></b>(int <i>pos</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#circularPaste">circularPaste</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#cleanWhitespace">cleanWhitespace</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#codeFoldingSupported">codeFoldingSupported</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#codeFoldingVisible">codeFoldingVisible</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#columnCount">columnCount</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#configureGenericHighlighter">configureGenericHighlighter</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#constrainTooltips">constrainTooltips</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#contextHelpId">contextHelpId</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#convertPosition">convertPosition</a></b>(int <i>pos</i>, int *<i>line</i>, int *<i>column</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#copy">copy</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#copyLine">copyLine</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#copyLineDown">copyLineDown</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#copyLineUp">copyLineUp</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual TextEditor::AssistInterface *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#createAssistInterface">createAssistInterface</a></b>(AssistKind <i>assistKind</i>, AssistReason <i>assistReason</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QRect </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#cursorRect">cursorRect</a></b>(int <i>pos</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#cut">cut</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#cutLine">cutLine</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#deleteEndOfLine">deleteEndOfLine</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#deleteEndOfWord">deleteEndOfWord</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#deleteEndOfWordCamelCase">deleteEndOfWordCamelCase</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#deleteLine">deleteLine</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#deleteStartOfLine">deleteStartOfLine</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#deleteStartOfWord">deleteStartOfWord</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#deleteStartOfWordCamelCase">deleteStartOfWordCamelCase</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const DisplaySettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#displaySettings">displaySettings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#duplicateSelection">duplicateSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#duplicateSelectionAndComment">duplicateSelectionAndComment</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#encourageApply">encourageApply</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#ensureBlockIsUnfolded">ensureBlockIsUnfolded</a></b>(QTextBlock <i>block</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#ensureCursorVisible">ensureCursorVisible</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QWidget *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#extraArea">extraArea</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#extraAreaContextMenuEvent">extraAreaContextMenuEvent</a></b>(<i>QContextMenuEvent *</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#extraAreaLeaveEvent">extraAreaLeaveEvent</a></b>(<i>QEvent *</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#extraAreaMouseEvent">extraAreaMouseEvent</a></b>(<i>QMouseEvent *</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#extraAreaPaintEvent">extraAreaPaintEvent</a></b>(<i>QPaintEvent *</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#extraAreaWidth">extraAreaWidth</a></b>(int *<i>markWidthPtr</i> = 0) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#extraSelectionTooltip">extraSelectionTooltip</a></b>(int <i>pos</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;QTextEdit::ExtraSelection&gt; </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#extraSelections">extraSelections</a></b>(Core::Id <i>kind</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#fold">fold</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#format">format</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoBlockEnd">gotoBlockEnd</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoBlockEndWithSelection">gotoBlockEndWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoBlockStart">gotoBlockStart</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoBlockStartWithSelection">gotoBlockStartWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoLine">gotoLine</a></b>(int <i>line</i>, int <i>column</i> = 0, bool <i>centerLine</i> = true, bool <i>animate</i> = false)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoLineEnd">gotoLineEnd</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoLineEndWithSelection">gotoLineEndWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoLineStart">gotoLineStart</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoLineStartWithSelection">gotoLineStartWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoNextCharacter">gotoNextCharacter</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoNextCharacterWithSelection">gotoNextCharacterWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoNextLine">gotoNextLine</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoNextLineWithSelection">gotoNextLineWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoNextWord">gotoNextWord</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoNextWordCamelCase">gotoNextWordCamelCase</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoNextWordCamelCaseWithSelection">gotoNextWordCamelCaseWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoNextWordWithSelection">gotoNextWordWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoPreviousCharacter">gotoPreviousCharacter</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoPreviousCharacterWithSelection">gotoPreviousCharacterWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoPreviousLine">gotoPreviousLine</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoPreviousLineWithSelection">gotoPreviousLineWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoPreviousWord">gotoPreviousWord</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoPreviousWordCamelCase">gotoPreviousWordCamelCase</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoPreviousWordCamelCaseWithSelection">gotoPreviousWordCamelCaseWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#gotoPreviousWordWithSelection">gotoPreviousWordWithSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#hasBlockSelection">hasBlockSelection</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#highlightCurrentLine">highlightCurrentLine</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#inSnippetMode">inSnippetMode</a></b>(bool *<i>active</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#indent">indent</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#insertCodeSnippet">insertCodeSnippet</a></b>(const QTextCursor &amp;<i>cursor</i>, const QString &amp;<i>snippet</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QAction *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#insertExtraToolBarWidget">insertExtraToolBarWidget</a></b>(Side <i>side</i>, QWidget *<i>widget</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#insertLineAbove">insertLineAbove</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#insertLineBelow">insertLineBelow</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#insertPlainText">insertPlainText</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#invokeAssist">invokeAssist</a></b>(AssistKind <i>assistKind</i>, IAssistProvider *<i>provider</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#isMissingSyntaxDefinition">isMissingSyntaxDefinition</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#isParenthesesMatchingEnabled">isParenthesesMatchingEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#joinLines">joinLines</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#keepAutoCompletionHighlight">keepAutoCompletionHighlight</a></b>(bool <i>keepHighlight</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Core::Id </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#languageSettingsId">languageSettingsId</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#lineNumbersVisible">lineNumbersVisible</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#lineSeparatorsAllowed">lineSeparatorsAllowed</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#lowercaseSelection">lowercaseSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const MarginSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#marginSettings">marginSettings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#marksVisible">marksVisible</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#mouseHidingEnabled">mouseHidingEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#mouseNavigationEnabled">mouseNavigationEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#moveLineDown">moveLineDown</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#moveLineUp">moveLineUp</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#openFinishedSuccessfully">openFinishedSuccessfully</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#openLinkUnderCursor">openLinkUnderCursor</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#openLinkUnderCursorInNextSplit">openLinkUnderCursorInNextSplit</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#paste">paste</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#position">position</a></b>(TextPositionOperation <i>posOp</i> = CurrentPosition, int <i>at</i> = -1) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#print">print</a></b>(<i>QPrinter *</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#redo">redo</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> RefactorMarkers </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#refactorMarkers">refactorMarkers</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#remove">remove</a></b>(int <i>length</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#replace">replace</a></b>(int <i>length</i>, const QString &amp;<i>string</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#requestMarkEnabled">requestMarkEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#restoreState">restoreState</a></b>(const QByteArray &amp;<i>state</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#revisionsVisible">revisionsVisible</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#rewrapParagraph">rewrapParagraph</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#rowCount">rowCount</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QByteArray </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#saveState">saveState</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#scrollWheelZoomingEnabled">scrollWheelZoomingEnabled</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#selectAll">selectAll</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#selectBlockDown">selectBlockDown</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#selectBlockUp">selectBlockUp</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#selectEncoding">selectEncoding</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#selectWordUnderCursor">selectWordUnderCursor</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#selectedText">selectedText</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setAlwaysOpenLinksInNextSplit">setAlwaysOpenLinksInNextSplit</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setAutoCompleteSkipPosition">setAutoCompleteSkipPosition</a></b>(const QTextCursor &amp;<i>cursor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setAutoCompleter">setAutoCompleter</a></b>(AutoCompleter *<i>autoCompleter</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setBehaviorSettings">setBehaviorSettings</a></b>(<i>const TextEditor::BehaviorSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setBlockSelection">setBlockSelection</a></b>(bool <i>on</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setBlockSelection-1">setBlockSelection</a></b>(int <i>positionBlock</i>, int <i>positionColumn</i>, int <i>anchhorBlock</i>, int <i>anchorColumn</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setBlockSelection-2">setBlockSelection</a></b>(const QTextCursor &amp;<i>cursor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setCamelCaseNavigationEnabled">setCamelCaseNavigationEnabled</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setCodeFoldingSupported">setCodeFoldingSupported</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setCodeStyle">setCodeStyle</a></b>(ICodeStylePreferences *<i>settings</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setCompletionSettings">setCompletionSettings</a></b>(<i>const TextEditor::CompletionSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setConstrainTooltips">setConstrainTooltips</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setContextHelpId">setContextHelpId</a></b>(const QString &amp;<i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setCursorPosition">setCursorPosition</a></b>(int <i>pos</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setDisplaySettings">setDisplaySettings</a></b>(<i>const TextEditor::DisplaySettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setExtraEncodingSettings">setExtraEncodingSettings</a></b>(<i>const TextEditor::ExtraEncodingSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setExtraSelections">setExtraSelections</a></b>(Core::Id <i>kind</i>, const QList&lt;QTextEdit::ExtraSelection&gt; &amp;<i>selections</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setHighlightCurrentLine">setHighlightCurrentLine</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setIfdefedOutBlocks">setIfdefedOutBlocks</a></b>(const QList&lt;BlockRange&gt; &amp;<i>blocks</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setLanguageSettingsId">setLanguageSettingsId</a></b>(Core::Id <i>settingsId</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setLineNumbersVisible">setLineNumbersVisible</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setLineSeparatorsAllowed">setLineSeparatorsAllowed</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setMarginSettings">setMarginSettings</a></b>(<i>const TextEditor::MarginSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setMarksVisible">setMarksVisible</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setMouseHidingEnabled">setMouseHidingEnabled</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setMouseNavigationEnabled">setMouseNavigationEnabled</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setParenthesesMatchingEnabled">setParenthesesMatchingEnabled</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setReadOnly">setReadOnly</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setRefactorMarkers">setRefactorMarkers</a></b>(const RefactorMarkers &amp;<i>markers</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setRequestMarkEnabled">setRequestMarkEnabled</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setRevisionsVisible">setRevisionsVisible</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setScrollWheelZoomingEnabled">setScrollWheelZoomingEnabled</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setStorageSettings">setStorageSettings</a></b>(<i>const TextEditor::StorageSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setTextDocument">setTextDocument</a></b>(const QSharedPointer&lt;TextDocument&gt; &amp;<i>doc</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setTypingSettings">setTypingSettings</a></b>(<i>const TextEditor::TypingSettings &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setVisibleWrapColumn">setVisibleWrapColumn</a></b>(int <i>column</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setupFallBackEditor">setupFallBackEditor</a></b>(Core::Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#setupGenericHighlighter">setupGenericHighlighter</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#showContextMenu">showContextMenu</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#switchUtf8bom">switchUtf8bom</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#textAt">textAt</a></b>(int <i>from</i>, int <i>to</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TextDocument *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#textDocument">textDocument</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QSharedPointer&lt;TextDocument&gt; </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#textDocumentPtr">textDocumentPtr</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QToolBar *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#toolBar">toolBar</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QPoint </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#toolTipPosition">toolTipPosition</a></b>(const QTextCursor &amp;<i>c</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QRegion </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#translatedLineRegion">translatedLineRegion</a></b>(int <i>lineStart</i>, int <i>lineEnd</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#unCommentSelection">unCommentSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#undo">undo</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#unfold">unfold</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#unfoldAll">unfoldAll</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#unindent">unindent</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#updateFoldingHighlight">updateFoldingHighlight</a></b>(const QPoint &amp;<i>pos</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#updateTextCodecLabel">updateTextCodecLabel</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#uppercaseSelection">uppercaseSelection</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#verticalBlockSelectionFirstColumn-prop">verticalBlockSelectionFirstColumn</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#verticalBlockSelectionLastColumn-prop">verticalBlockSelectionLastColumn</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#viewLineDown">viewLineDown</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#viewLineUp">viewLineUp</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#viewPageDown">viewPageDown</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#viewPageUp">viewPageUp</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#visibleWrapColumn">visibleWrapColumn</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#zoomF">zoomF</a></b>(float <i>delta</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#zoomReset">zoomReset</a></b>()</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#activateEditor">activateEditor</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#assistFinished">assistFinished</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#markContextMenuRequested">markContextMenuRequested</a></b>(TextEditor::TextEditorWidget *<i>widget</i>, int <i>line</i>, QMenu *<i>menu</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#markRequested">markRequested</a></b>(TextEditor::TextEditorWidget *<i>widget</i>, int <i>line</i>, TextEditor::TextMarkRequestKind <i>kind</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#readOnlyChanged">readOnlyChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#requestBlockUpdate">requestBlockUpdate</a></b>(<i>const QTextBlock &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#tooltipOverrideRequested">tooltipOverrideRequested</a></b>(TextEditor::TextEditorWidget *<i>widget</i>, const QPoint &amp;<i>globalPos</i>, int <i>position</i>, bool *<i>handled</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#tooltipRequested">tooltipRequested</a></b>(const QPoint &amp;<i>globalPos</i>, int <i>position</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> TextEditorWidget *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#currentTextEditorWidget">currentTextEditorWidget</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QMimeData *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#duplicateMimeData">duplicateMimeData</a></b>(const QMimeData *<i>source</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#msgTextTooLarge">msgTextTooLarge</a></b>(quint64 <i>size</i>)</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#addHoverHandler">addHoverHandler</a></b>(BaseHoverHandler *<i>handler</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#applyFontSettings">applyFontSettings</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QTextBlock </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#blockForVisibleRow">blockForVisibleRow</a></b>(int <i>row</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#canInsertFromMimeData">canInsertFromMimeData</a></b>(const QMimeData *<i>source</i>) const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#changeEvent">changeEvent</a></b>(QEvent *<i>e</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QMimeData *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#createMimeDataFromSelection">createMimeDataFromSelection</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#doSetTextCursor">doSetTextCursor</a></b>(const QTextCursor &amp;<i>cursor</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#doSetTextCursor-1">doSetTextCursor</a></b>(const QTextCursor &amp;<i>cursor</i>, bool <i>keepBlockSelection</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#dragEnterEvent">dragEnterEvent</a></b>(QDragEnterEvent *<i>e</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#drawCollapsedBlockPopup">drawCollapsedBlockPopup</a></b>(QPainter &amp;<i>painter</i>, const QTextBlock &amp;<i>block</i>, QPointF <i>offset</i>, const QRect &amp;<i>clip</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#event">event</a></b>(QEvent *<i>e</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#finalizeInitialization">finalizeInitialization</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#finalizeInitializationAfterDuplication">finalizeInitializationAfterDuplication</a></b>(<i>TextEditorWidget *</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#focusInEvent">focusInEvent</a></b>(QFocusEvent *<i>e</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#focusOutEvent">focusOutEvent</a></b>(QFocusEvent *<i>e</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#inFindScope">inFindScope</a></b>(const QTextCursor &amp;<i>cursor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#inFindScope-1">inFindScope</a></b>(int <i>selectionStart</i>, int <i>selectionEnd</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#inputMethodEvent">inputMethodEvent</a></b>(QInputMethodEvent *<i>e</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#insertFromMimeData">insertFromMimeData</a></b>(const QMimeData *<i>source</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#keyPressEvent">keyPressEvent</a></b>(QKeyEvent *<i>e</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#keyReleaseEvent">keyReleaseEvent</a></b>(<i>QKeyEvent *</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#leaveEvent">leaveEvent</a></b>(<i>QEvent *</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#lineNumber">lineNumber</a></b>(int <i>blockNumber</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#lineNumberDigits">lineNumberDigits</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#mouseDoubleClickEvent">mouseDoubleClickEvent</a></b>(<i>QMouseEvent *</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#mouseMoveEvent">mouseMoveEvent</a></b>(<i>QMouseEvent *</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#mousePressEvent">mousePressEvent</a></b>(<i>QMouseEvent *</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#mouseReleaseEvent">mouseReleaseEvent</a></b>(<i>QMouseEvent *</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#onRefactorMarkerClicked">onRefactorMarkerClicked</a></b>(<i>const RefactorMarker &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#paintBlock">paintBlock</a></b>(QPainter *<i>painter</i>, const QTextBlock &amp;<i>block</i>, const QPointF &amp;<i>offset</i>, const QVector&lt;QTextLayout::FormatRange&gt; &amp;<i>selections</i>, const QRect &amp;<i>clipRect</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#paintEvent">paintEvent</a></b>(<i>QPaintEvent *</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#plainTextFromSelection">plainTextFromSelection</a></b>(const QTextCursor &amp;<i>cursor</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QColor </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#replacementPenColor">replacementPenColor</a></b>(int <i>blockNumber</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#replacementVisible">replacementVisible</a></b>(int <i>blockNumber</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#resizeEvent">resizeEvent</a></b>(<i>QResizeEvent *</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#selectionVisible">selectionVisible</a></b>(int <i>blockNumber</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#showDefaultContextMenu">showDefaultContextMenu</a></b>(QContextMenuEvent *<i>e</i>, Core::Id <i>menuContextId</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#showEvent">showEvent</a></b>(<i>QShowEvent *</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#slotCodeStyleSettingsChanged">slotCodeStyleSettingsChanged</a></b>(<i>const QVariant &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#slotCursorPositionChanged">slotCursorPositionChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#timerEvent">timerEvent</a></b>(<i>QTimerEvent *</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#triggerPendingUpdates">triggerPendingUpdates</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#viewportEvent">viewportEvent</a></b>(QEvent *<i>event</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#visibleFoldedBlockNumber">visibleFoldedBlockNumber</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#wheelEvent">wheelEvent</a></b>(QWheelEvent *<i>e</i>) override</td></tr>
+</table></div>
+<a name="static-protected-members"></a>
+<h2 id="static-protected-members">Static Protected Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#convertToPlainText">convertToPlainText</a></b>(const QString &amp;<i>txt</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QTextCursor </td><td class="memItemRight bottomAlign"><b><a href="texteditor-texteditorwidget.html#flippedCursor">flippedCursor</a></b>(const QTextCursor &amp;<i>cursor</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$Side$$$Left$$$Right -->
+<h3 class="fn" id="Side-enum"><a name="Side-enum"></a>enum TextEditorWidget::<span class="name">Side</span></h3>
+<!-- @@@Side -->
+</div>
+<div class="prop">
+<h2>Property Documentation</h2>
+<!-- $$$verticalBlockSelectionFirstColumn-prop$$$verticalBlockSelectionFirstColumn -->
+<h3 class="fn" id="verticalBlockSelectionFirstColumn-prop"><a name="verticalBlockSelectionFirstColumn-prop"></a><span class="name">verticalBlockSelectionFirstColumn</span> : const <span class="type">int</span></h3>
+<p><b>Access functions:</b></p>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft topAlign rightAlign"> int </td><td class="memItemRight bottomAlign"><span class="name"><b>verticalBlockSelectionFirstColumn</b></span>() const</td></tr>
+</table></div>
+<!-- @@@verticalBlockSelectionFirstColumn -->
+<!-- $$$verticalBlockSelectionLastColumn-prop$$$verticalBlockSelectionLastColumn -->
+<h3 class="fn" id="verticalBlockSelectionLastColumn-prop"><a name="verticalBlockSelectionLastColumn-prop"></a><span class="name">verticalBlockSelectionLastColumn</span> : const <span class="type">int</span></h3>
+<p><b>Access functions:</b></p>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft topAlign rightAlign"> int </td><td class="memItemRight bottomAlign"><span class="name"><b>verticalBlockSelectionLastColumn</b></span>() const</td></tr>
+</table></div>
+<!-- @@@verticalBlockSelectionLastColumn -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$TextEditorWidget[overload1]$$$TextEditorWidgetQWidget* -->
+<h3 class="fn" id="TextEditorWidget"><a name="TextEditorWidget"></a>TextEditorWidget::<span class="name">TextEditorWidget</span>(<span class="type">QWidget</span> *<i>parent</i> = 0)</h3>
+<p>Default constructs an instance of TextEditorWidget.</p><!-- @@@TextEditorWidget -->
+<!-- $$$~TextEditorWidget[overload1]$$$~TextEditorWidget -->
+<h3 class="fn" id="dtor.TextEditorWidget"><a name="dtor.TextEditorWidget"></a>TextEditorWidget::<span class="name">~TextEditorWidget</span>()</h3>
+<p>Destroys the instance of TextEditorWidget.</p><!-- @@@~TextEditorWidget -->
+<!-- $$$abortAssist[overload1]$$$abortAssist -->
+<h3 class="fn" id="abortAssist"><a name="abortAssist"></a><span class="type">void</span> TextEditorWidget::<span class="name">abortAssist</span>()</h3>
+<!-- @@@abortAssist -->
+<!-- $$$aboutToOpen[overload1]$$$aboutToOpenconstQString&constQString& -->
+<h3 class="fn" id="aboutToOpen"><a name="aboutToOpen"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">aboutToOpen</span>(const <span class="type">QString</span> &amp;<i>fileName</i>, const <span class="type">QString</span> &amp;<i>realFileName</i>)</h3>
+<!-- @@@aboutToOpen -->
+<!-- $$$activateEditor[overload1]$$$activateEditor -->
+<h3 class="fn" id="activateEditor"><a name="activateEditor"></a><code>[signal] </code><span class="type">void</span> TextEditorWidget::<span class="name">activateEditor</span>()</h3>
+<!-- @@@activateEditor -->
+<!-- $$$addHoverHandler[overload1]$$$addHoverHandlerBaseHoverHandler* -->
+<h3 class="fn" id="addHoverHandler"><a name="addHoverHandler"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">addHoverHandler</span>(<span class="type"><a href="texteditor-basehoverhandler.html">BaseHoverHandler</a></span> *<i>handler</i>)</h3>
+<!-- @@@addHoverHandler -->
+<!-- $$$alwaysOpenLinksInNextSplit[overload1]$$$alwaysOpenLinksInNextSplit -->
+<h3 class="fn" id="alwaysOpenLinksInNextSplit"><a name="alwaysOpenLinksInNextSplit"></a><span class="type">bool</span> TextEditorWidget::<span class="name">alwaysOpenLinksInNextSplit</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setAlwaysOpenLinksInNextSplit">setAlwaysOpenLinksInNextSplit</a>().</p>
+<!-- @@@alwaysOpenLinksInNextSplit -->
+<!-- $$$appendStandardContextMenuActions[overload1]$$$appendStandardContextMenuActionsQMenu* -->
+<h3 class="fn" id="appendStandardContextMenuActions"><a name="appendStandardContextMenuActions"></a><span class="type">void</span> TextEditorWidget::<span class="name">appendStandardContextMenuActions</span>(<span class="type">QMenu</span> *<i>menu</i>)</h3>
+<!-- @@@appendStandardContextMenuActions -->
+<!-- $$$applyFontSettings[overload1]$$$applyFontSettings -->
+<h3 class="fn" id="applyFontSettings"><a name="applyFontSettings"></a><code>[virtual protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">applyFontSettings</span>()</h3>
+<!-- @@@applyFontSettings -->
+<!-- $$$assistFinished[overload1]$$$assistFinished -->
+<h3 class="fn" id="assistFinished"><a name="assistFinished"></a><code>[signal] </code><span class="type">void</span> TextEditorWidget::<span class="name">assistFinished</span>()</h3>
+<!-- @@@assistFinished -->
+<!-- $$$autoCompleter[overload1]$$$autoCompleter -->
+<h3 class="fn" id="autoCompleter"><a name="autoCompleter"></a><span class="type"><a href="texteditor-autocompleter.html">AutoCompleter</a></span> *TextEditorWidget::<span class="name">autoCompleter</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setAutoCompleter">setAutoCompleter</a>().</p>
+<!-- @@@autoCompleter -->
+<!-- $$$behaviorSettings[overload1]$$$behaviorSettings -->
+<h3 class="fn" id="behaviorSettings"><a name="behaviorSettings"></a>const <span class="type"><a href="texteditor-behaviorsettings.html">BehaviorSettings</a></span> &amp;TextEditorWidget::<span class="name">behaviorSettings</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setBehaviorSettings">setBehaviorSettings</a>().</p>
+<!-- @@@behaviorSettings -->
+<!-- $$$blockForVisibleRow[overload1]$$$blockForVisibleRowint -->
+<h3 class="fn" id="blockForVisibleRow"><a name="blockForVisibleRow"></a><code>[protected] </code><span class="type">QTextBlock</span> TextEditorWidget::<span class="name">blockForVisibleRow</span>(<span class="type">int</span> <i>row</i>) const</h3>
+<!-- @@@blockForVisibleRow -->
+<!-- $$$blockSelection[overload1]$$$blockSelection -->
+<h3 class="fn" id="blockSelection"><a name="blockSelection"></a><span class="type">QTextCursor</span> TextEditorWidget::<span class="name">blockSelection</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setBlockSelection">setBlockSelection</a>().</p>
+<!-- @@@blockSelection -->
+<!-- $$$camelCaseNavigationEnabled[overload1]$$$camelCaseNavigationEnabled -->
+<h3 class="fn" id="camelCaseNavigationEnabled"><a name="camelCaseNavigationEnabled"></a><span class="type">bool</span> TextEditorWidget::<span class="name">camelCaseNavigationEnabled</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setCamelCaseNavigationEnabled">setCamelCaseNavigationEnabled</a>().</p>
+<!-- @@@camelCaseNavigationEnabled -->
+<!-- $$$canInsertFromMimeData[overload1]$$$canInsertFromMimeDataconstQMimeData* -->
+<h3 class="fn" id="canInsertFromMimeData"><a name="canInsertFromMimeData"></a><code>[protected] </code><span class="type">bool</span> TextEditorWidget::<span class="name">canInsertFromMimeData</span>(const <span class="type">QMimeData</span> *<i>source</i>) const</h3>
+<!-- @@@canInsertFromMimeData -->
+<!-- $$$changeEvent[overload1]$$$changeEventQEvent* -->
+<h3 class="fn" id="changeEvent"><a name="changeEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">changeEvent</span>(<span class="type">QEvent</span> *<i>e</i>)</h3>
+<!-- @@@changeEvent -->
+<!-- $$$characterAt[overload1]$$$characterAtint -->
+<h3 class="fn" id="characterAt"><a name="characterAt"></a><span class="type">QChar</span> TextEditorWidget::<span class="name">characterAt</span>(<span class="type">int</span> <i>pos</i>) const</h3>
+<!-- @@@characterAt -->
+<!-- $$$circularPaste[overload1]$$$circularPaste -->
+<h3 class="fn" id="circularPaste"><a name="circularPaste"></a><span class="type">void</span> TextEditorWidget::<span class="name">circularPaste</span>()</h3>
+<!-- @@@circularPaste -->
+<!-- $$$cleanWhitespace[overload1]$$$cleanWhitespace -->
+<h3 class="fn" id="cleanWhitespace"><a name="cleanWhitespace"></a><span class="type">void</span> TextEditorWidget::<span class="name">cleanWhitespace</span>()</h3>
+<!-- @@@cleanWhitespace -->
+<!-- $$$codeFoldingSupported[overload1]$$$codeFoldingSupported -->
+<h3 class="fn" id="codeFoldingSupported"><a name="codeFoldingSupported"></a><span class="type">bool</span> TextEditorWidget::<span class="name">codeFoldingSupported</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setCodeFoldingSupported">setCodeFoldingSupported</a>().</p>
+<!-- @@@codeFoldingSupported -->
+<!-- $$$codeFoldingVisible[overload1]$$$codeFoldingVisible -->
+<h3 class="fn" id="codeFoldingVisible"><a name="codeFoldingVisible"></a><span class="type">bool</span> TextEditorWidget::<span class="name">codeFoldingVisible</span>() const</h3>
+<!-- @@@codeFoldingVisible -->
+<!-- $$$columnCount[overload1]$$$columnCount -->
+<h3 class="fn" id="columnCount"><a name="columnCount"></a><span class="type">int</span> TextEditorWidget::<span class="name">columnCount</span>() const</h3>
+<!-- @@@columnCount -->
+<!-- $$$configureGenericHighlighter[overload1]$$$configureGenericHighlighter -->
+<h3 class="fn" id="configureGenericHighlighter"><a name="configureGenericHighlighter"></a><span class="type">void</span> TextEditorWidget::<span class="name">configureGenericHighlighter</span>()</h3>
+<!-- @@@configureGenericHighlighter -->
+<!-- $$$constrainTooltips[overload1]$$$constrainTooltips -->
+<h3 class="fn" id="constrainTooltips"><a name="constrainTooltips"></a><span class="type">bool</span> TextEditorWidget::<span class="name">constrainTooltips</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setConstrainTooltips">setConstrainTooltips</a>().</p>
+<!-- @@@constrainTooltips -->
+<!-- $$$contextHelpId[overload1]$$$contextHelpId -->
+<h3 class="fn" id="contextHelpId"><a name="contextHelpId"></a><span class="type">QString</span> TextEditorWidget::<span class="name">contextHelpId</span>()</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setContextHelpId">setContextHelpId</a>().</p>
+<!-- @@@contextHelpId -->
+<!-- $$$convertPosition[overload1]$$$convertPositionintint*int* -->
+<h3 class="fn" id="convertPosition"><a name="convertPosition"></a><span class="type">void</span> TextEditorWidget::<span class="name">convertPosition</span>(<span class="type">int</span> <i>pos</i>, <span class="type">int</span> *<i>line</i>, <span class="type">int</span> *<i>column</i>) const</h3>
+<!-- @@@convertPosition -->
+<!-- $$$convertToPlainText[overload1]$$$convertToPlainTextconstQString& -->
+<h3 class="fn" id="convertToPlainText"><a name="convertToPlainText"></a><code>[static protected] </code><span class="type">QString</span> TextEditorWidget::<span class="name">convertToPlainText</span>(const <span class="type">QString</span> &amp;<i>txt</i>)</h3>
+<!-- @@@convertToPlainText -->
+<!-- $$$copy[overload1]$$$copy -->
+<h3 class="fn" id="copy"><a name="copy"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">copy</span>()</h3>
+<!-- @@@copy -->
+<!-- $$$copyLine[overload1]$$$copyLine -->
+<h3 class="fn" id="copyLine"><a name="copyLine"></a><span class="type">void</span> TextEditorWidget::<span class="name">copyLine</span>()</h3>
+<!-- @@@copyLine -->
+<!-- $$$copyLineDown[overload1]$$$copyLineDown -->
+<h3 class="fn" id="copyLineDown"><a name="copyLineDown"></a><span class="type">void</span> TextEditorWidget::<span class="name">copyLineDown</span>()</h3>
+<!-- @@@copyLineDown -->
+<!-- $$$copyLineUp[overload1]$$$copyLineUp -->
+<h3 class="fn" id="copyLineUp"><a name="copyLineUp"></a><span class="type">void</span> TextEditorWidget::<span class="name">copyLineUp</span>()</h3>
+<!-- @@@copyLineUp -->
+<!-- $$$createAssistInterface[overload1]$$$createAssistInterfaceAssistKindAssistReason -->
+<h3 class="fn" id="createAssistInterface"><a name="createAssistInterface"></a><code>[virtual] </code><span class="type"><a href="texteditor-assistinterface.html">TextEditor::AssistInterface</a></span> *TextEditorWidget::<span class="name">createAssistInterface</span>(<span class="type"><a href="texteditor.html#AssistKind-enum">AssistKind</a></span> <i>assistKind</i>, <span class="type"><a href="texteditor.html#AssistReason-enum">AssistReason</a></span> <i>assistReason</i>) const</h3>
+<!-- @@@createAssistInterface -->
+<!-- $$$createMimeDataFromSelection[overload1]$$$createMimeDataFromSelection -->
+<h3 class="fn" id="createMimeDataFromSelection"><a name="createMimeDataFromSelection"></a><code>[protected] </code><span class="type">QMimeData</span> *TextEditorWidget::<span class="name">createMimeDataFromSelection</span>() const</h3>
+<!-- @@@createMimeDataFromSelection -->
+<!-- $$$currentTextEditorWidget[overload1]$$$currentTextEditorWidget -->
+<h3 class="fn" id="currentTextEditorWidget"><a name="currentTextEditorWidget"></a><code>[static] </code><span class="type"><a href="texteditor-texteditorwidget.html#TextEditorWidget">TextEditorWidget</a></span> *TextEditorWidget::<span class="name">currentTextEditorWidget</span>()</h3>
+<!-- @@@currentTextEditorWidget -->
+<!-- $$$cursorRect[overload1]$$$cursorRectint -->
+<h3 class="fn" id="cursorRect"><a name="cursorRect"></a><span class="type">QRect</span> TextEditorWidget::<span class="name">cursorRect</span>(<span class="type">int</span> <i>pos</i>) const</h3>
+<!-- @@@cursorRect -->
+<!-- $$$cut[overload1]$$$cut -->
+<h3 class="fn" id="cut"><a name="cut"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">cut</span>()</h3>
+<!-- @@@cut -->
+<!-- $$$cutLine[overload1]$$$cutLine -->
+<h3 class="fn" id="cutLine"><a name="cutLine"></a><span class="type">void</span> TextEditorWidget::<span class="name">cutLine</span>()</h3>
+<!-- @@@cutLine -->
+<!-- $$$deleteEndOfLine[overload1]$$$deleteEndOfLine -->
+<h3 class="fn" id="deleteEndOfLine"><a name="deleteEndOfLine"></a><span class="type">void</span> TextEditorWidget::<span class="name">deleteEndOfLine</span>()</h3>
+<!-- @@@deleteEndOfLine -->
+<!-- $$$deleteEndOfWord[overload1]$$$deleteEndOfWord -->
+<h3 class="fn" id="deleteEndOfWord"><a name="deleteEndOfWord"></a><span class="type">void</span> TextEditorWidget::<span class="name">deleteEndOfWord</span>()</h3>
+<!-- @@@deleteEndOfWord -->
+<!-- $$$deleteEndOfWordCamelCase[overload1]$$$deleteEndOfWordCamelCase -->
+<h3 class="fn" id="deleteEndOfWordCamelCase"><a name="deleteEndOfWordCamelCase"></a><span class="type">void</span> TextEditorWidget::<span class="name">deleteEndOfWordCamelCase</span>()</h3>
+<!-- @@@deleteEndOfWordCamelCase -->
+<!-- $$$deleteLine[overload1]$$$deleteLine -->
+<h3 class="fn" id="deleteLine"><a name="deleteLine"></a><span class="type">void</span> TextEditorWidget::<span class="name">deleteLine</span>()</h3>
+<!-- @@@deleteLine -->
+<!-- $$$deleteStartOfLine[overload1]$$$deleteStartOfLine -->
+<h3 class="fn" id="deleteStartOfLine"><a name="deleteStartOfLine"></a><span class="type">void</span> TextEditorWidget::<span class="name">deleteStartOfLine</span>()</h3>
+<!-- @@@deleteStartOfLine -->
+<!-- $$$deleteStartOfWord[overload1]$$$deleteStartOfWord -->
+<h3 class="fn" id="deleteStartOfWord"><a name="deleteStartOfWord"></a><span class="type">void</span> TextEditorWidget::<span class="name">deleteStartOfWord</span>()</h3>
+<!-- @@@deleteStartOfWord -->
+<!-- $$$deleteStartOfWordCamelCase[overload1]$$$deleteStartOfWordCamelCase -->
+<h3 class="fn" id="deleteStartOfWordCamelCase"><a name="deleteStartOfWordCamelCase"></a><span class="type">void</span> TextEditorWidget::<span class="name">deleteStartOfWordCamelCase</span>()</h3>
+<!-- @@@deleteStartOfWordCamelCase -->
+<!-- $$$displaySettings[overload1]$$$displaySettings -->
+<h3 class="fn" id="displaySettings"><a name="displaySettings"></a>const <span class="type"><a href="texteditor-displaysettings.html">DisplaySettings</a></span> &amp;TextEditorWidget::<span class="name">displaySettings</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setDisplaySettings">setDisplaySettings</a>().</p>
+<!-- @@@displaySettings -->
+<!-- $$$doSetTextCursor[overload1]$$$doSetTextCursorconstQTextCursor& -->
+<h3 class="fn" id="doSetTextCursor"><a name="doSetTextCursor"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">doSetTextCursor</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>)</h3>
+<!-- @@@doSetTextCursor -->
+<!-- $$$doSetTextCursor$$$doSetTextCursorconstQTextCursor&bool -->
+<h3 class="fn" id="doSetTextCursor-1"><a name="doSetTextCursor-1"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">doSetTextCursor</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>, <span class="type">bool</span> <i>keepBlockSelection</i>)</h3>
+<!-- @@@doSetTextCursor -->
+<!-- $$$dragEnterEvent[overload1]$$$dragEnterEventQDragEnterEvent* -->
+<h3 class="fn" id="dragEnterEvent"><a name="dragEnterEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">dragEnterEvent</span>(<span class="type">QDragEnterEvent</span> *<i>e</i>)</h3>
+<!-- @@@dragEnterEvent -->
+<!-- $$$drawCollapsedBlockPopup[overload1]$$$drawCollapsedBlockPopupQPainter&constQTextBlock&QPointFconstQRect& -->
+<h3 class="fn" id="drawCollapsedBlockPopup"><a name="drawCollapsedBlockPopup"></a><code>[virtual protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">drawCollapsedBlockPopup</span>(<span class="type">QPainter</span> &amp;<i>painter</i>, const <span class="type">QTextBlock</span> &amp;<i>block</i>, <span class="type">QPointF</span> <i>offset</i>, const <span class="type">QRect</span> &amp;<i>clip</i>)</h3>
+<!-- @@@drawCollapsedBlockPopup -->
+<!-- $$$duplicateMimeData[overload1]$$$duplicateMimeDataconstQMimeData* -->
+<h3 class="fn" id="duplicateMimeData"><a name="duplicateMimeData"></a><code>[static] </code><span class="type">QMimeData</span> *TextEditorWidget::<span class="name">duplicateMimeData</span>(const <span class="type">QMimeData</span> *<i>source</i>)</h3>
+<!-- @@@duplicateMimeData -->
+<!-- $$$duplicateSelection[overload1]$$$duplicateSelection -->
+<h3 class="fn" id="duplicateSelection"><a name="duplicateSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">duplicateSelection</span>()</h3>
+<!-- @@@duplicateSelection -->
+<!-- $$$duplicateSelectionAndComment[overload1]$$$duplicateSelectionAndComment -->
+<h3 class="fn" id="duplicateSelectionAndComment"><a name="duplicateSelectionAndComment"></a><span class="type">void</span> TextEditorWidget::<span class="name">duplicateSelectionAndComment</span>()</h3>
+<!-- @@@duplicateSelectionAndComment -->
+<!-- $$$encourageApply[overload1]$$$encourageApply -->
+<h3 class="fn" id="encourageApply"><a name="encourageApply"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">encourageApply</span>()</h3>
+<!-- @@@encourageApply -->
+<!-- $$$ensureBlockIsUnfolded[overload1]$$$ensureBlockIsUnfoldedQTextBlock -->
+<h3 class="fn" id="ensureBlockIsUnfolded"><a name="ensureBlockIsUnfolded"></a><span class="type">void</span> TextEditorWidget::<span class="name">ensureBlockIsUnfolded</span>(<span class="type">QTextBlock</span> <i>block</i>)</h3>
+<!-- @@@ensureBlockIsUnfolded -->
+<!-- $$$ensureCursorVisible[overload1]$$$ensureCursorVisible -->
+<h3 class="fn" id="ensureCursorVisible"><a name="ensureCursorVisible"></a><span class="type">void</span> TextEditorWidget::<span class="name">ensureCursorVisible</span>()</h3>
+<!-- @@@ensureCursorVisible -->
+<!-- $$$event[overload1]$$$eventQEvent* -->
+<h3 class="fn" id="event"><a name="event"></a><code>[protected] </code><span class="type">bool</span> TextEditorWidget::<span class="name">event</span>(<span class="type">QEvent</span> *<i>e</i>)</h3>
+<!-- @@@event -->
+<!-- $$$extraArea[overload1]$$$extraArea -->
+<h3 class="fn" id="extraArea"><a name="extraArea"></a><span class="type">QWidget</span> *TextEditorWidget::<span class="name">extraArea</span>() const</h3>
+<!-- @@@extraArea -->
+<!-- $$$extraAreaContextMenuEvent[overload1]$$$extraAreaContextMenuEventQContextMenuEvent* -->
+<h3 class="fn" id="extraAreaContextMenuEvent"><a name="extraAreaContextMenuEvent"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">extraAreaContextMenuEvent</span>(<i>QContextMenuEvent *</i>)</h3>
+<!-- @@@extraAreaContextMenuEvent -->
+<!-- $$$extraAreaLeaveEvent[overload1]$$$extraAreaLeaveEventQEvent* -->
+<h3 class="fn" id="extraAreaLeaveEvent"><a name="extraAreaLeaveEvent"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">extraAreaLeaveEvent</span>(<i>QEvent *</i>)</h3>
+<!-- @@@extraAreaLeaveEvent -->
+<!-- $$$extraAreaMouseEvent[overload1]$$$extraAreaMouseEventQMouseEvent* -->
+<h3 class="fn" id="extraAreaMouseEvent"><a name="extraAreaMouseEvent"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">extraAreaMouseEvent</span>(<i>QMouseEvent *</i>)</h3>
+<!-- @@@extraAreaMouseEvent -->
+<!-- $$$extraAreaPaintEvent[overload1]$$$extraAreaPaintEventQPaintEvent* -->
+<h3 class="fn" id="extraAreaPaintEvent"><a name="extraAreaPaintEvent"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">extraAreaPaintEvent</span>(<i>QPaintEvent *</i>)</h3>
+<!-- @@@extraAreaPaintEvent -->
+<!-- $$$extraAreaWidth[overload1]$$$extraAreaWidthint* -->
+<h3 class="fn" id="extraAreaWidth"><a name="extraAreaWidth"></a><code>[virtual] </code><span class="type">int</span> TextEditorWidget::<span class="name">extraAreaWidth</span>(<span class="type">int</span> *<i>markWidthPtr</i> = 0) const</h3>
+<!-- @@@extraAreaWidth -->
+<!-- $$$extraSelectionTooltip[overload1]$$$extraSelectionTooltipint -->
+<h3 class="fn" id="extraSelectionTooltip"><a name="extraSelectionTooltip"></a><span class="type">QString</span> TextEditorWidget::<span class="name">extraSelectionTooltip</span>(<span class="type">int</span> <i>pos</i>) const</h3>
+<!-- @@@extraSelectionTooltip -->
+<!-- $$$extraSelections[overload1]$$$extraSelectionsCore::Id -->
+<h3 class="fn" id="extraSelections"><a name="extraSelections"></a><span class="type">QList</span>&lt;<span class="type">QTextEdit::ExtraSelection</span>&gt; TextEditorWidget::<span class="name">extraSelections</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>kind</i>) const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setExtraSelections">setExtraSelections</a>().</p>
+<!-- @@@extraSelections -->
+<!-- $$$finalizeInitialization[overload1]$$$finalizeInitialization -->
+<h3 class="fn" id="finalizeInitialization"><a name="finalizeInitialization"></a><code>[virtual protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">finalizeInitialization</span>()</h3>
+<!-- @@@finalizeInitialization -->
+<!-- $$$finalizeInitializationAfterDuplication[overload1]$$$finalizeInitializationAfterDuplicationTextEditorWidget* -->
+<h3 class="fn" id="finalizeInitializationAfterDuplication"><a name="finalizeInitializationAfterDuplication"></a><code>[virtual protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">finalizeInitializationAfterDuplication</span>(<i>TextEditorWidget *</i>)</h3>
+<!-- @@@finalizeInitializationAfterDuplication -->
+<!-- $$$flippedCursor[overload1]$$$flippedCursorconstQTextCursor& -->
+<h3 class="fn" id="flippedCursor"><a name="flippedCursor"></a><code>[static protected] </code><span class="type">QTextCursor</span> TextEditorWidget::<span class="name">flippedCursor</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>)</h3>
+<!-- @@@flippedCursor -->
+<!-- $$$focusInEvent[overload1]$$$focusInEventQFocusEvent* -->
+<h3 class="fn" id="focusInEvent"><a name="focusInEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">focusInEvent</span>(<span class="type">QFocusEvent</span> *<i>e</i>)</h3>
+<!-- @@@focusInEvent -->
+<!-- $$$focusOutEvent[overload1]$$$focusOutEventQFocusEvent* -->
+<h3 class="fn" id="focusOutEvent"><a name="focusOutEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">focusOutEvent</span>(<span class="type">QFocusEvent</span> *<i>e</i>)</h3>
+<!-- @@@focusOutEvent -->
+<!-- $$$fold[overload1]$$$fold -->
+<h3 class="fn" id="fold"><a name="fold"></a><span class="type">void</span> TextEditorWidget::<span class="name">fold</span>()</h3>
+<!-- @@@fold -->
+<!-- $$$format[overload1]$$$format -->
+<h3 class="fn" id="format"><a name="format"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">format</span>()</h3>
+<!-- @@@format -->
+<!-- $$$gotoBlockEnd[overload1]$$$gotoBlockEnd -->
+<h3 class="fn" id="gotoBlockEnd"><a name="gotoBlockEnd"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoBlockEnd</span>()</h3>
+<!-- @@@gotoBlockEnd -->
+<!-- $$$gotoBlockEndWithSelection[overload1]$$$gotoBlockEndWithSelection -->
+<h3 class="fn" id="gotoBlockEndWithSelection"><a name="gotoBlockEndWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoBlockEndWithSelection</span>()</h3>
+<!-- @@@gotoBlockEndWithSelection -->
+<!-- $$$gotoBlockStart[overload1]$$$gotoBlockStart -->
+<h3 class="fn" id="gotoBlockStart"><a name="gotoBlockStart"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoBlockStart</span>()</h3>
+<!-- @@@gotoBlockStart -->
+<!-- $$$gotoBlockStartWithSelection[overload1]$$$gotoBlockStartWithSelection -->
+<h3 class="fn" id="gotoBlockStartWithSelection"><a name="gotoBlockStartWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoBlockStartWithSelection</span>()</h3>
+<!-- @@@gotoBlockStartWithSelection -->
+<!-- $$$gotoLine[overload1]$$$gotoLineintintboolbool -->
+<h3 class="fn" id="gotoLine"><a name="gotoLine"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoLine</span>(<span class="type">int</span> <i>line</i>, <span class="type">int</span> <i>column</i> = 0, <span class="type">bool</span> <i>centerLine</i> = true, <span class="type">bool</span> <i>animate</i> = false)</h3>
+<!-- @@@gotoLine -->
+<!-- $$$gotoLineEnd[overload1]$$$gotoLineEnd -->
+<h3 class="fn" id="gotoLineEnd"><a name="gotoLineEnd"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoLineEnd</span>()</h3>
+<!-- @@@gotoLineEnd -->
+<!-- $$$gotoLineEndWithSelection[overload1]$$$gotoLineEndWithSelection -->
+<h3 class="fn" id="gotoLineEndWithSelection"><a name="gotoLineEndWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoLineEndWithSelection</span>()</h3>
+<!-- @@@gotoLineEndWithSelection -->
+<!-- $$$gotoLineStart[overload1]$$$gotoLineStart -->
+<h3 class="fn" id="gotoLineStart"><a name="gotoLineStart"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoLineStart</span>()</h3>
+<!-- @@@gotoLineStart -->
+<!-- $$$gotoLineStartWithSelection[overload1]$$$gotoLineStartWithSelection -->
+<h3 class="fn" id="gotoLineStartWithSelection"><a name="gotoLineStartWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoLineStartWithSelection</span>()</h3>
+<!-- @@@gotoLineStartWithSelection -->
+<!-- $$$gotoNextCharacter[overload1]$$$gotoNextCharacter -->
+<h3 class="fn" id="gotoNextCharacter"><a name="gotoNextCharacter"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoNextCharacter</span>()</h3>
+<!-- @@@gotoNextCharacter -->
+<!-- $$$gotoNextCharacterWithSelection[overload1]$$$gotoNextCharacterWithSelection -->
+<h3 class="fn" id="gotoNextCharacterWithSelection"><a name="gotoNextCharacterWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoNextCharacterWithSelection</span>()</h3>
+<!-- @@@gotoNextCharacterWithSelection -->
+<!-- $$$gotoNextLine[overload1]$$$gotoNextLine -->
+<h3 class="fn" id="gotoNextLine"><a name="gotoNextLine"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoNextLine</span>()</h3>
+<!-- @@@gotoNextLine -->
+<!-- $$$gotoNextLineWithSelection[overload1]$$$gotoNextLineWithSelection -->
+<h3 class="fn" id="gotoNextLineWithSelection"><a name="gotoNextLineWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoNextLineWithSelection</span>()</h3>
+<!-- @@@gotoNextLineWithSelection -->
+<!-- $$$gotoNextWord[overload1]$$$gotoNextWord -->
+<h3 class="fn" id="gotoNextWord"><a name="gotoNextWord"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoNextWord</span>()</h3>
+<!-- @@@gotoNextWord -->
+<!-- $$$gotoNextWordCamelCase[overload1]$$$gotoNextWordCamelCase -->
+<h3 class="fn" id="gotoNextWordCamelCase"><a name="gotoNextWordCamelCase"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoNextWordCamelCase</span>()</h3>
+<!-- @@@gotoNextWordCamelCase -->
+<!-- $$$gotoNextWordCamelCaseWithSelection[overload1]$$$gotoNextWordCamelCaseWithSelection -->
+<h3 class="fn" id="gotoNextWordCamelCaseWithSelection"><a name="gotoNextWordCamelCaseWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoNextWordCamelCaseWithSelection</span>()</h3>
+<!-- @@@gotoNextWordCamelCaseWithSelection -->
+<!-- $$$gotoNextWordWithSelection[overload1]$$$gotoNextWordWithSelection -->
+<h3 class="fn" id="gotoNextWordWithSelection"><a name="gotoNextWordWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoNextWordWithSelection</span>()</h3>
+<!-- @@@gotoNextWordWithSelection -->
+<!-- $$$gotoPreviousCharacter[overload1]$$$gotoPreviousCharacter -->
+<h3 class="fn" id="gotoPreviousCharacter"><a name="gotoPreviousCharacter"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoPreviousCharacter</span>()</h3>
+<!-- @@@gotoPreviousCharacter -->
+<!-- $$$gotoPreviousCharacterWithSelection[overload1]$$$gotoPreviousCharacterWithSelection -->
+<h3 class="fn" id="gotoPreviousCharacterWithSelection"><a name="gotoPreviousCharacterWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoPreviousCharacterWithSelection</span>()</h3>
+<!-- @@@gotoPreviousCharacterWithSelection -->
+<!-- $$$gotoPreviousLine[overload1]$$$gotoPreviousLine -->
+<h3 class="fn" id="gotoPreviousLine"><a name="gotoPreviousLine"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoPreviousLine</span>()</h3>
+<!-- @@@gotoPreviousLine -->
+<!-- $$$gotoPreviousLineWithSelection[overload1]$$$gotoPreviousLineWithSelection -->
+<h3 class="fn" id="gotoPreviousLineWithSelection"><a name="gotoPreviousLineWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoPreviousLineWithSelection</span>()</h3>
+<!-- @@@gotoPreviousLineWithSelection -->
+<!-- $$$gotoPreviousWord[overload1]$$$gotoPreviousWord -->
+<h3 class="fn" id="gotoPreviousWord"><a name="gotoPreviousWord"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoPreviousWord</span>()</h3>
+<!-- @@@gotoPreviousWord -->
+<!-- $$$gotoPreviousWordCamelCase[overload1]$$$gotoPreviousWordCamelCase -->
+<h3 class="fn" id="gotoPreviousWordCamelCase"><a name="gotoPreviousWordCamelCase"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoPreviousWordCamelCase</span>()</h3>
+<!-- @@@gotoPreviousWordCamelCase -->
+<!-- $$$gotoPreviousWordCamelCaseWithSelection[overload1]$$$gotoPreviousWordCamelCaseWithSelection -->
+<h3 class="fn" id="gotoPreviousWordCamelCaseWithSelection"><a name="gotoPreviousWordCamelCaseWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoPreviousWordCamelCaseWithSelection</span>()</h3>
+<!-- @@@gotoPreviousWordCamelCaseWithSelection -->
+<!-- $$$gotoPreviousWordWithSelection[overload1]$$$gotoPreviousWordWithSelection -->
+<h3 class="fn" id="gotoPreviousWordWithSelection"><a name="gotoPreviousWordWithSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">gotoPreviousWordWithSelection</span>()</h3>
+<!-- @@@gotoPreviousWordWithSelection -->
+<!-- $$$hasBlockSelection[overload1]$$$hasBlockSelection -->
+<h3 class="fn" id="hasBlockSelection"><a name="hasBlockSelection"></a><span class="type">bool</span> TextEditorWidget::<span class="name">hasBlockSelection</span>() const</h3>
+<!-- @@@hasBlockSelection -->
+<!-- $$$highlightCurrentLine[overload1]$$$highlightCurrentLine -->
+<h3 class="fn" id="highlightCurrentLine"><a name="highlightCurrentLine"></a><span class="type">bool</span> TextEditorWidget::<span class="name">highlightCurrentLine</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setHighlightCurrentLine">setHighlightCurrentLine</a>().</p>
+<!-- @@@highlightCurrentLine -->
+<!-- $$$inFindScope[overload1]$$$inFindScopeconstQTextCursor& -->
+<h3 class="fn" id="inFindScope"><a name="inFindScope"></a><code>[protected] </code><span class="type">bool</span> TextEditorWidget::<span class="name">inFindScope</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>)</h3>
+<!-- @@@inFindScope -->
+<!-- $$$inFindScope$$$inFindScopeintint -->
+<h3 class="fn" id="inFindScope-1"><a name="inFindScope-1"></a><code>[protected] </code><span class="type">bool</span> TextEditorWidget::<span class="name">inFindScope</span>(<span class="type">int</span> <i>selectionStart</i>, <span class="type">int</span> <i>selectionEnd</i>)</h3>
+<!-- @@@inFindScope -->
+<!-- $$$inSnippetMode[overload1]$$$inSnippetModebool* -->
+<h3 class="fn" id="inSnippetMode"><a name="inSnippetMode"></a><span class="type">void</span> TextEditorWidget::<span class="name">inSnippetMode</span>(<span class="type">bool</span> *<i>active</i>)</h3>
+<!-- @@@inSnippetMode -->
+<!-- $$$indent[overload1]$$$indent -->
+<h3 class="fn" id="indent"><a name="indent"></a><span class="type">void</span> TextEditorWidget::<span class="name">indent</span>()</h3>
+<!-- @@@indent -->
+<!-- $$$inputMethodEvent[overload1]$$$inputMethodEventQInputMethodEvent* -->
+<h3 class="fn" id="inputMethodEvent"><a name="inputMethodEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">inputMethodEvent</span>(<span class="type">QInputMethodEvent</span> *<i>e</i>)</h3>
+<!-- @@@inputMethodEvent -->
+<!-- $$$insertCodeSnippet[overload1]$$$insertCodeSnippetconstQTextCursor&constQString& -->
+<h3 class="fn" id="insertCodeSnippet"><a name="insertCodeSnippet"></a><span class="type">void</span> TextEditorWidget::<span class="name">insertCodeSnippet</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>, const <span class="type">QString</span> &amp;<i>snippet</i>)</h3>
+<!-- @@@insertCodeSnippet -->
+<!-- $$$insertExtraToolBarWidget[overload1]$$$insertExtraToolBarWidgetSideQWidget* -->
+<h3 class="fn" id="insertExtraToolBarWidget"><a name="insertExtraToolBarWidget"></a><span class="type">QAction</span> *TextEditorWidget::<span class="name">insertExtraToolBarWidget</span>(<span class="type"><a href="texteditor-texteditorwidget.html#Side-enum">Side</a></span> <i>side</i>, <span class="type">QWidget</span> *<i>widget</i>)</h3>
+<!-- @@@insertExtraToolBarWidget -->
+<!-- $$$insertFromMimeData[overload1]$$$insertFromMimeDataconstQMimeData* -->
+<h3 class="fn" id="insertFromMimeData"><a name="insertFromMimeData"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">insertFromMimeData</span>(const <span class="type">QMimeData</span> *<i>source</i>)</h3>
+<!-- @@@insertFromMimeData -->
+<!-- $$$insertLineAbove[overload1]$$$insertLineAbove -->
+<h3 class="fn" id="insertLineAbove"><a name="insertLineAbove"></a><span class="type">void</span> TextEditorWidget::<span class="name">insertLineAbove</span>()</h3>
+<!-- @@@insertLineAbove -->
+<!-- $$$insertLineBelow[overload1]$$$insertLineBelow -->
+<h3 class="fn" id="insertLineBelow"><a name="insertLineBelow"></a><span class="type">void</span> TextEditorWidget::<span class="name">insertLineBelow</span>()</h3>
+<!-- @@@insertLineBelow -->
+<!-- $$$insertPlainText[overload1]$$$insertPlainTextconstQString& -->
+<h3 class="fn" id="insertPlainText"><a name="insertPlainText"></a><span class="type">void</span> TextEditorWidget::<span class="name">insertPlainText</span>(const <span class="type">QString</span> &amp;<i>text</i>)</h3>
+<!-- @@@insertPlainText -->
+<!-- $$$invokeAssist[overload1]$$$invokeAssistAssistKindIAssistProvider* -->
+<h3 class="fn" id="invokeAssist"><a name="invokeAssist"></a><span class="type">void</span> TextEditorWidget::<span class="name">invokeAssist</span>(<span class="type"><a href="texteditor.html#AssistKind-enum">AssistKind</a></span> <i>assistKind</i>, <span class="type"><a href="texteditor-iassistprovider.html">IAssistProvider</a></span> *<i>provider</i> = 0)</h3>
+<!-- @@@invokeAssist -->
+<!-- $$$isMissingSyntaxDefinition[overload1]$$$isMissingSyntaxDefinition -->
+<h3 class="fn" id="isMissingSyntaxDefinition"><a name="isMissingSyntaxDefinition"></a><span class="type">bool</span> TextEditorWidget::<span class="name">isMissingSyntaxDefinition</span>() const</h3>
+<!-- @@@isMissingSyntaxDefinition -->
+<!-- $$$isParenthesesMatchingEnabled[overload1]$$$isParenthesesMatchingEnabled -->
+<h3 class="fn" id="isParenthesesMatchingEnabled"><a name="isParenthesesMatchingEnabled"></a><span class="type">bool</span> TextEditorWidget::<span class="name">isParenthesesMatchingEnabled</span>() const</h3>
+<!-- @@@isParenthesesMatchingEnabled -->
+<!-- $$$joinLines[overload1]$$$joinLines -->
+<h3 class="fn" id="joinLines"><a name="joinLines"></a><span class="type">void</span> TextEditorWidget::<span class="name">joinLines</span>()</h3>
+<!-- @@@joinLines -->
+<!-- $$$keepAutoCompletionHighlight[overload1]$$$keepAutoCompletionHighlightbool -->
+<h3 class="fn" id="keepAutoCompletionHighlight"><a name="keepAutoCompletionHighlight"></a><span class="type">void</span> TextEditorWidget::<span class="name">keepAutoCompletionHighlight</span>(<span class="type">bool</span> <i>keepHighlight</i>)</h3>
+<!-- @@@keepAutoCompletionHighlight -->
+<!-- $$$keyPressEvent[overload1]$$$keyPressEventQKeyEvent* -->
+<h3 class="fn" id="keyPressEvent"><a name="keyPressEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">keyPressEvent</span>(<span class="type">QKeyEvent</span> *<i>e</i>)</h3>
+<!-- @@@keyPressEvent -->
+<!-- $$$keyReleaseEvent[overload1]$$$keyReleaseEventQKeyEvent* -->
+<h3 class="fn" id="keyReleaseEvent"><a name="keyReleaseEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">keyReleaseEvent</span>(<i>QKeyEvent *</i>)</h3>
+<!-- @@@keyReleaseEvent -->
+<!-- $$$languageSettingsId[overload1]$$$languageSettingsId -->
+<h3 class="fn" id="languageSettingsId"><a name="languageSettingsId"></a><span class="type"><a href="core-id.html">Core::Id</a></span> TextEditorWidget::<span class="name">languageSettingsId</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setLanguageSettingsId">setLanguageSettingsId</a>().</p>
+<!-- @@@languageSettingsId -->
+<!-- $$$leaveEvent[overload1]$$$leaveEventQEvent* -->
+<h3 class="fn" id="leaveEvent"><a name="leaveEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">leaveEvent</span>(<i>QEvent *</i>)</h3>
+<!-- @@@leaveEvent -->
+<!-- $$$lineNumber[overload1]$$$lineNumberint -->
+<h3 class="fn" id="lineNumber"><a name="lineNumber"></a><code>[virtual protected] </code><span class="type">QString</span> TextEditorWidget::<span class="name">lineNumber</span>(<span class="type">int</span> <i>blockNumber</i>) const</h3>
+<!-- @@@lineNumber -->
+<!-- $$$lineNumberDigits[overload1]$$$lineNumberDigits -->
+<h3 class="fn" id="lineNumberDigits"><a name="lineNumberDigits"></a><code>[virtual protected] </code><span class="type">int</span> TextEditorWidget::<span class="name">lineNumberDigits</span>() const</h3>
+<!-- @@@lineNumberDigits -->
+<!-- $$$lineNumbersVisible[overload1]$$$lineNumbersVisible -->
+<h3 class="fn" id="lineNumbersVisible"><a name="lineNumbersVisible"></a><span class="type">bool</span> TextEditorWidget::<span class="name">lineNumbersVisible</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setLineNumbersVisible">setLineNumbersVisible</a>().</p>
+<!-- @@@lineNumbersVisible -->
+<!-- $$$lineSeparatorsAllowed[overload1]$$$lineSeparatorsAllowed -->
+<h3 class="fn" id="lineSeparatorsAllowed"><a name="lineSeparatorsAllowed"></a><span class="type">bool</span> TextEditorWidget::<span class="name">lineSeparatorsAllowed</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setLineSeparatorsAllowed">setLineSeparatorsAllowed</a>().</p>
+<!-- @@@lineSeparatorsAllowed -->
+<!-- $$$lowercaseSelection[overload1]$$$lowercaseSelection -->
+<h3 class="fn" id="lowercaseSelection"><a name="lowercaseSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">lowercaseSelection</span>()</h3>
+<!-- @@@lowercaseSelection -->
+<!-- $$$marginSettings[overload1]$$$marginSettings -->
+<h3 class="fn" id="marginSettings"><a name="marginSettings"></a>const <span class="type"><a href="texteditor-marginsettings.html">MarginSettings</a></span> &amp;TextEditorWidget::<span class="name">marginSettings</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setMarginSettings">setMarginSettings</a>().</p>
+<!-- @@@marginSettings -->
+<!-- $$$markContextMenuRequested[overload1]$$$markContextMenuRequestedTextEditor::TextEditorWidget*intQMenu* -->
+<h3 class="fn" id="markContextMenuRequested"><a name="markContextMenuRequested"></a><code>[signal] </code><span class="type">void</span> TextEditorWidget::<span class="name">markContextMenuRequested</span>(<span class="type"><a href="texteditor-texteditorwidget.html">TextEditor::TextEditorWidget</a></span> *<i>widget</i>, <span class="type">int</span> <i>line</i>, <span class="type">QMenu</span> *<i>menu</i>)</h3>
+<!-- @@@markContextMenuRequested -->
+<!-- $$$markRequested[overload1]$$$markRequestedTextEditor::TextEditorWidget*intTextEditor::TextMarkRequestKind -->
+<h3 class="fn" id="markRequested"><a name="markRequested"></a><code>[signal] </code><span class="type">void</span> TextEditorWidget::<span class="name">markRequested</span>(<span class="type"><a href="texteditor-texteditorwidget.html">TextEditor::TextEditorWidget</a></span> *<i>widget</i>, <span class="type">int</span> <i>line</i>, <span class="type"><a href="texteditor.html#TextMarkRequestKind-enum">TextEditor::TextMarkRequestKind</a></span> <i>kind</i>)</h3>
+<!-- @@@markRequested -->
+<!-- $$$marksVisible[overload1]$$$marksVisible -->
+<h3 class="fn" id="marksVisible"><a name="marksVisible"></a><span class="type">bool</span> TextEditorWidget::<span class="name">marksVisible</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setMarksVisible">setMarksVisible</a>().</p>
+<!-- @@@marksVisible -->
+<!-- $$$mouseDoubleClickEvent[overload1]$$$mouseDoubleClickEventQMouseEvent* -->
+<h3 class="fn" id="mouseDoubleClickEvent"><a name="mouseDoubleClickEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">mouseDoubleClickEvent</span>(<i>QMouseEvent *</i>)</h3>
+<!-- @@@mouseDoubleClickEvent -->
+<!-- $$$mouseHidingEnabled[overload1]$$$mouseHidingEnabled -->
+<h3 class="fn" id="mouseHidingEnabled"><a name="mouseHidingEnabled"></a><span class="type">bool</span> TextEditorWidget::<span class="name">mouseHidingEnabled</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setMouseHidingEnabled">setMouseHidingEnabled</a>().</p>
+<!-- @@@mouseHidingEnabled -->
+<!-- $$$mouseMoveEvent[overload1]$$$mouseMoveEventQMouseEvent* -->
+<h3 class="fn" id="mouseMoveEvent"><a name="mouseMoveEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">mouseMoveEvent</span>(<i>QMouseEvent *</i>)</h3>
+<!-- @@@mouseMoveEvent -->
+<!-- $$$mouseNavigationEnabled[overload1]$$$mouseNavigationEnabled -->
+<h3 class="fn" id="mouseNavigationEnabled"><a name="mouseNavigationEnabled"></a><span class="type">bool</span> TextEditorWidget::<span class="name">mouseNavigationEnabled</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setMouseNavigationEnabled">setMouseNavigationEnabled</a>().</p>
+<!-- @@@mouseNavigationEnabled -->
+<!-- $$$mousePressEvent[overload1]$$$mousePressEventQMouseEvent* -->
+<h3 class="fn" id="mousePressEvent"><a name="mousePressEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">mousePressEvent</span>(<i>QMouseEvent *</i>)</h3>
+<!-- @@@mousePressEvent -->
+<!-- $$$mouseReleaseEvent[overload1]$$$mouseReleaseEventQMouseEvent* -->
+<h3 class="fn" id="mouseReleaseEvent"><a name="mouseReleaseEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">mouseReleaseEvent</span>(<i>QMouseEvent *</i>)</h3>
+<!-- @@@mouseReleaseEvent -->
+<!-- $$$moveLineDown[overload1]$$$moveLineDown -->
+<h3 class="fn" id="moveLineDown"><a name="moveLineDown"></a><span class="type">void</span> TextEditorWidget::<span class="name">moveLineDown</span>()</h3>
+<!-- @@@moveLineDown -->
+<!-- $$$moveLineUp[overload1]$$$moveLineUp -->
+<h3 class="fn" id="moveLineUp"><a name="moveLineUp"></a><span class="type">void</span> TextEditorWidget::<span class="name">moveLineUp</span>()</h3>
+<!-- @@@moveLineUp -->
+<!-- $$$msgTextTooLarge[overload1]$$$msgTextTooLargequint64 -->
+<h3 class="fn" id="msgTextTooLarge"><a name="msgTextTooLarge"></a><code>[static] </code><span class="type">QString</span> TextEditorWidget::<span class="name">msgTextTooLarge</span>(<span class="type">quint64</span> <i>size</i>)</h3>
+<!-- @@@msgTextTooLarge -->
+<!-- $$$onRefactorMarkerClicked[overload1]$$$onRefactorMarkerClickedconstRefactorMarker& -->
+<h3 class="fn" id="onRefactorMarkerClicked"><a name="onRefactorMarkerClicked"></a><code>[virtual protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">onRefactorMarkerClicked</span>(<i>const RefactorMarker &amp;</i>)</h3>
+<!-- @@@onRefactorMarkerClicked -->
+<!-- $$$openFinishedSuccessfully[overload1]$$$openFinishedSuccessfully -->
+<h3 class="fn" id="openFinishedSuccessfully"><a name="openFinishedSuccessfully"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">openFinishedSuccessfully</span>()</h3>
+<!-- @@@openFinishedSuccessfully -->
+<!-- $$$openLinkUnderCursor[overload1]$$$openLinkUnderCursor -->
+<h3 class="fn" id="openLinkUnderCursor"><a name="openLinkUnderCursor"></a><span class="type">void</span> TextEditorWidget::<span class="name">openLinkUnderCursor</span>()</h3>
+<!-- @@@openLinkUnderCursor -->
+<!-- $$$openLinkUnderCursorInNextSplit[overload1]$$$openLinkUnderCursorInNextSplit -->
+<h3 class="fn" id="openLinkUnderCursorInNextSplit"><a name="openLinkUnderCursorInNextSplit"></a><span class="type">void</span> TextEditorWidget::<span class="name">openLinkUnderCursorInNextSplit</span>()</h3>
+<!-- @@@openLinkUnderCursorInNextSplit -->
+<!-- $$$paintBlock[overload1]$$$paintBlockQPainter*constQTextBlock&constQPointF&constQVector<QTextLayout::FormatRange>&constQRect& -->
+<h3 class="fn" id="paintBlock"><a name="paintBlock"></a><code>[virtual protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">paintBlock</span>(<span class="type">QPainter</span> *<i>painter</i>, const <span class="type">QTextBlock</span> &amp;<i>block</i>, const <span class="type">QPointF</span> &amp;<i>offset</i>, const <span class="type">QVector</span>&lt;<span class="type">QTextLayout::FormatRange</span>&gt; &amp;<i>selections</i>, const <span class="type">QRect</span> &amp;<i>clipRect</i>) const</h3>
+<!-- @@@paintBlock -->
+<!-- $$$paintEvent[overload1]$$$paintEventQPaintEvent* -->
+<h3 class="fn" id="paintEvent"><a name="paintEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">paintEvent</span>(<i>QPaintEvent *</i>)</h3>
+<!-- @@@paintEvent -->
+<!-- $$$paste[overload1]$$$paste -->
+<h3 class="fn" id="paste"><a name="paste"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">paste</span>()</h3>
+<!-- @@@paste -->
+<!-- $$$plainTextFromSelection[overload1]$$$plainTextFromSelectionconstQTextCursor& -->
+<h3 class="fn" id="plainTextFromSelection"><a name="plainTextFromSelection"></a><code>[virtual protected] </code><span class="type">QString</span> TextEditorWidget::<span class="name">plainTextFromSelection</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>) const</h3>
+<!-- @@@plainTextFromSelection -->
+<!-- $$$position[overload1]$$$positionTextPositionOperationint -->
+<h3 class="fn" id="position"><a name="position"></a><span class="type">int</span> TextEditorWidget::<span class="name">position</span>(<span class="type"><a href="texteditor.html#TextPositionOperation-enum">TextPositionOperation</a></span> <i>posOp</i> = CurrentPosition, <span class="type">int</span> <i>at</i> = -1) const</h3>
+<!-- @@@position -->
+<!-- $$$print[overload1]$$$printQPrinter* -->
+<h3 class="fn" id="print"><a name="print"></a><span class="type">void</span> TextEditorWidget::<span class="name">print</span>(<i>QPrinter *</i>)</h3>
+<!-- @@@print -->
+<!-- $$$readOnlyChanged[overload1]$$$readOnlyChanged -->
+<h3 class="fn" id="readOnlyChanged"><a name="readOnlyChanged"></a><code>[signal] </code><span class="type">void</span> TextEditorWidget::<span class="name">readOnlyChanged</span>()</h3>
+<!-- @@@readOnlyChanged -->
+<!-- $$$redo[overload1]$$$redo -->
+<h3 class="fn" id="redo"><a name="redo"></a><span class="type">void</span> TextEditorWidget::<span class="name">redo</span>()</h3>
+<!-- @@@redo -->
+<!-- $$$refactorMarkers[overload1]$$$refactorMarkers -->
+<h3 class="fn" id="refactorMarkers"><a name="refactorMarkers"></a><span class="type"><a href="texteditor.html#RefactorMarkers-typedef">RefactorMarkers</a></span> TextEditorWidget::<span class="name">refactorMarkers</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setRefactorMarkers">setRefactorMarkers</a>().</p>
+<!-- @@@refactorMarkers -->
+<!-- $$$remove[overload1]$$$removeint -->
+<h3 class="fn" id="remove"><a name="remove"></a><span class="type">void</span> TextEditorWidget::<span class="name">remove</span>(<span class="type">int</span> <i>length</i>)</h3>
+<!-- @@@remove -->
+<!-- $$$replace[overload1]$$$replaceintconstQString& -->
+<h3 class="fn" id="replace"><a name="replace"></a><span class="type">void</span> TextEditorWidget::<span class="name">replace</span>(<span class="type">int</span> <i>length</i>, const <span class="type">QString</span> &amp;<i>string</i>)</h3>
+<!-- @@@replace -->
+<!-- $$$replacementPenColor[overload1]$$$replacementPenColorint -->
+<h3 class="fn" id="replacementPenColor"><a name="replacementPenColor"></a><code>[virtual protected] </code><span class="type">QColor</span> TextEditorWidget::<span class="name">replacementPenColor</span>(<span class="type">int</span> <i>blockNumber</i>) const</h3>
+<!-- @@@replacementPenColor -->
+<!-- $$$replacementVisible[overload1]$$$replacementVisibleint -->
+<h3 class="fn" id="replacementVisible"><a name="replacementVisible"></a><code>[virtual protected] </code><span class="type">bool</span> TextEditorWidget::<span class="name">replacementVisible</span>(<span class="type">int</span> <i>blockNumber</i>) const</h3>
+<!-- @@@replacementVisible -->
+<!-- $$$requestBlockUpdate[overload1]$$$requestBlockUpdateconstQTextBlock& -->
+<h3 class="fn" id="requestBlockUpdate"><a name="requestBlockUpdate"></a><code>[signal] </code><span class="type">void</span> TextEditorWidget::<span class="name">requestBlockUpdate</span>(<i>const QTextBlock &amp;</i>)</h3>
+<!-- @@@requestBlockUpdate -->
+<!-- $$$requestMarkEnabled[overload1]$$$requestMarkEnabled -->
+<h3 class="fn" id="requestMarkEnabled"><a name="requestMarkEnabled"></a><span class="type">bool</span> TextEditorWidget::<span class="name">requestMarkEnabled</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setRequestMarkEnabled">setRequestMarkEnabled</a>().</p>
+<!-- @@@requestMarkEnabled -->
+<!-- $$$resizeEvent[overload1]$$$resizeEventQResizeEvent* -->
+<h3 class="fn" id="resizeEvent"><a name="resizeEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">resizeEvent</span>(<i>QResizeEvent *</i>)</h3>
+<!-- @@@resizeEvent -->
+<!-- $$$restoreState[overload1]$$$restoreStateconstQByteArray& -->
+<h3 class="fn" id="restoreState"><a name="restoreState"></a><span class="type">bool</span> TextEditorWidget::<span class="name">restoreState</span>(const <span class="type">QByteArray</span> &amp;<i>state</i>)</h3>
+<!-- @@@restoreState -->
+<!-- $$$revisionsVisible[overload1]$$$revisionsVisible -->
+<h3 class="fn" id="revisionsVisible"><a name="revisionsVisible"></a><span class="type">bool</span> TextEditorWidget::<span class="name">revisionsVisible</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setRevisionsVisible">setRevisionsVisible</a>().</p>
+<!-- @@@revisionsVisible -->
+<!-- $$$rewrapParagraph[overload1]$$$rewrapParagraph -->
+<h3 class="fn" id="rewrapParagraph"><a name="rewrapParagraph"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">rewrapParagraph</span>()</h3>
+<!-- @@@rewrapParagraph -->
+<!-- $$$rowCount[overload1]$$$rowCount -->
+<h3 class="fn" id="rowCount"><a name="rowCount"></a><span class="type">int</span> TextEditorWidget::<span class="name">rowCount</span>() const</h3>
+<!-- @@@rowCount -->
+<!-- $$$saveState[overload1]$$$saveState -->
+<h3 class="fn" id="saveState"><a name="saveState"></a><span class="type">QByteArray</span> TextEditorWidget::<span class="name">saveState</span>() const</h3>
+<!-- @@@saveState -->
+<!-- $$$scrollWheelZoomingEnabled[overload1]$$$scrollWheelZoomingEnabled -->
+<h3 class="fn" id="scrollWheelZoomingEnabled"><a name="scrollWheelZoomingEnabled"></a><span class="type">bool</span> TextEditorWidget::<span class="name">scrollWheelZoomingEnabled</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setScrollWheelZoomingEnabled">setScrollWheelZoomingEnabled</a>().</p>
+<!-- @@@scrollWheelZoomingEnabled -->
+<!-- $$$selectAll[overload1]$$$selectAll -->
+<h3 class="fn" id="selectAll"><a name="selectAll"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">selectAll</span>()</h3>
+<!-- @@@selectAll -->
+<!-- $$$selectBlockDown[overload1]$$$selectBlockDown -->
+<h3 class="fn" id="selectBlockDown"><a name="selectBlockDown"></a><code>[virtual] </code><span class="type">bool</span> TextEditorWidget::<span class="name">selectBlockDown</span>()</h3>
+<!-- @@@selectBlockDown -->
+<!-- $$$selectBlockUp[overload1]$$$selectBlockUp -->
+<h3 class="fn" id="selectBlockUp"><a name="selectBlockUp"></a><code>[virtual] </code><span class="type">bool</span> TextEditorWidget::<span class="name">selectBlockUp</span>()</h3>
+<!-- @@@selectBlockUp -->
+<!-- $$$selectEncoding[overload1]$$$selectEncoding -->
+<h3 class="fn" id="selectEncoding"><a name="selectEncoding"></a><span class="type">void</span> TextEditorWidget::<span class="name">selectEncoding</span>()</h3>
+<!-- @@@selectEncoding -->
+<!-- $$$selectWordUnderCursor[overload1]$$$selectWordUnderCursor -->
+<h3 class="fn" id="selectWordUnderCursor"><a name="selectWordUnderCursor"></a><span class="type">void</span> TextEditorWidget::<span class="name">selectWordUnderCursor</span>()</h3>
+<!-- @@@selectWordUnderCursor -->
+<!-- $$$selectedText[overload1]$$$selectedText -->
+<h3 class="fn" id="selectedText"><a name="selectedText"></a><span class="type">QString</span> TextEditorWidget::<span class="name">selectedText</span>() const</h3>
+<!-- @@@selectedText -->
+<!-- $$$selectionVisible[overload1]$$$selectionVisibleint -->
+<h3 class="fn" id="selectionVisible"><a name="selectionVisible"></a><code>[virtual protected] </code><span class="type">bool</span> TextEditorWidget::<span class="name">selectionVisible</span>(<span class="type">int</span> <i>blockNumber</i>) const</h3>
+<!-- @@@selectionVisible -->
+<!-- $$$setAlwaysOpenLinksInNextSplit[overload1]$$$setAlwaysOpenLinksInNextSplitbool -->
+<h3 class="fn" id="setAlwaysOpenLinksInNextSplit"><a name="setAlwaysOpenLinksInNextSplit"></a><span class="type">void</span> TextEditorWidget::<span class="name">setAlwaysOpenLinksInNextSplit</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#alwaysOpenLinksInNextSplit">alwaysOpenLinksInNextSplit</a>().</p>
+<!-- @@@setAlwaysOpenLinksInNextSplit -->
+<!-- $$$setAutoCompleteSkipPosition[overload1]$$$setAutoCompleteSkipPositionconstQTextCursor& -->
+<h3 class="fn" id="setAutoCompleteSkipPosition"><a name="setAutoCompleteSkipPosition"></a><span class="type">void</span> TextEditorWidget::<span class="name">setAutoCompleteSkipPosition</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>)</h3>
+<!-- @@@setAutoCompleteSkipPosition -->
+<!-- $$$setAutoCompleter[overload1]$$$setAutoCompleterAutoCompleter* -->
+<h3 class="fn" id="setAutoCompleter"><a name="setAutoCompleter"></a><span class="type">void</span> TextEditorWidget::<span class="name">setAutoCompleter</span>(<span class="type"><a href="texteditor-autocompleter.html">AutoCompleter</a></span> *<i>autoCompleter</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#autoCompleter">autoCompleter</a>().</p>
+<!-- @@@setAutoCompleter -->
+<!-- $$$setBehaviorSettings[overload1]$$$setBehaviorSettingsconstTextEditor::BehaviorSettings& -->
+<h3 class="fn" id="setBehaviorSettings"><a name="setBehaviorSettings"></a><span class="type">void</span> TextEditorWidget::<span class="name">setBehaviorSettings</span>(<i>const TextEditor::BehaviorSettings &amp;</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#behaviorSettings">behaviorSettings</a>().</p>
+<!-- @@@setBehaviorSettings -->
+<!-- $$$setBlockSelection[overload1]$$$setBlockSelectionbool -->
+<h3 class="fn" id="setBlockSelection"><a name="setBlockSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">setBlockSelection</span>(<span class="type">bool</span> <i>on</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#blockSelection">blockSelection</a>().</p>
+<!-- @@@setBlockSelection -->
+<!-- $$$setBlockSelection$$$setBlockSelectionintintintint -->
+<h3 class="fn" id="setBlockSelection-1"><a name="setBlockSelection-1"></a><span class="type">void</span> TextEditorWidget::<span class="name">setBlockSelection</span>(<span class="type">int</span> <i>positionBlock</i>, <span class="type">int</span> <i>positionColumn</i>, <span class="type">int</span> <i>anchhorBlock</i>, <span class="type">int</span> <i>anchorColumn</i>)</h3>
+<!-- @@@setBlockSelection -->
+<!-- $$$setBlockSelection$$$setBlockSelectionconstQTextCursor& -->
+<h3 class="fn" id="setBlockSelection-2"><a name="setBlockSelection-2"></a><span class="type">void</span> TextEditorWidget::<span class="name">setBlockSelection</span>(const <span class="type">QTextCursor</span> &amp;<i>cursor</i>)</h3>
+<!-- @@@setBlockSelection -->
+<!-- $$$setCamelCaseNavigationEnabled[overload1]$$$setCamelCaseNavigationEnabledbool -->
+<h3 class="fn" id="setCamelCaseNavigationEnabled"><a name="setCamelCaseNavigationEnabled"></a><span class="type">void</span> TextEditorWidget::<span class="name">setCamelCaseNavigationEnabled</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#camelCaseNavigationEnabled">camelCaseNavigationEnabled</a>().</p>
+<!-- @@@setCamelCaseNavigationEnabled -->
+<!-- $$$setCodeFoldingSupported[overload1]$$$setCodeFoldingSupportedbool -->
+<h3 class="fn" id="setCodeFoldingSupported"><a name="setCodeFoldingSupported"></a><span class="type">void</span> TextEditorWidget::<span class="name">setCodeFoldingSupported</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#codeFoldingSupported">codeFoldingSupported</a>().</p>
+<!-- @@@setCodeFoldingSupported -->
+<!-- $$$setCodeStyle[overload1]$$$setCodeStyleICodeStylePreferences* -->
+<h3 class="fn" id="setCodeStyle"><a name="setCodeStyle"></a><span class="type">void</span> TextEditorWidget::<span class="name">setCodeStyle</span>(<span class="type"><a href="texteditor-icodestylepreferences.html">ICodeStylePreferences</a></span> *<i>settings</i>)</h3>
+<!-- @@@setCodeStyle -->
+<!-- $$$setCompletionSettings[overload1]$$$setCompletionSettingsconstTextEditor::CompletionSettings& -->
+<h3 class="fn" id="setCompletionSettings"><a name="setCompletionSettings"></a><span class="type">void</span> TextEditorWidget::<span class="name">setCompletionSettings</span>(<i>const TextEditor::CompletionSettings &amp;</i>)</h3>
+<!-- @@@setCompletionSettings -->
+<!-- $$$setConstrainTooltips[overload1]$$$setConstrainTooltipsbool -->
+<h3 class="fn" id="setConstrainTooltips"><a name="setConstrainTooltips"></a><span class="type">void</span> TextEditorWidget::<span class="name">setConstrainTooltips</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#constrainTooltips">constrainTooltips</a>().</p>
+<!-- @@@setConstrainTooltips -->
+<!-- $$$setContextHelpId[overload1]$$$setContextHelpIdconstQString& -->
+<h3 class="fn" id="setContextHelpId"><a name="setContextHelpId"></a><span class="type">void</span> TextEditorWidget::<span class="name">setContextHelpId</span>(const <span class="type">QString</span> &amp;<i>id</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#contextHelpId">contextHelpId</a>().</p>
+<!-- @@@setContextHelpId -->
+<!-- $$$setCursorPosition[overload1]$$$setCursorPositionint -->
+<h3 class="fn" id="setCursorPosition"><a name="setCursorPosition"></a><span class="type">void</span> TextEditorWidget::<span class="name">setCursorPosition</span>(<span class="type">int</span> <i>pos</i>)</h3>
+<!-- @@@setCursorPosition -->
+<!-- $$$setDisplaySettings[overload1]$$$setDisplaySettingsconstTextEditor::DisplaySettings& -->
+<h3 class="fn" id="setDisplaySettings"><a name="setDisplaySettings"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">setDisplaySettings</span>(<i>const TextEditor::DisplaySettings &amp;</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#displaySettings">displaySettings</a>().</p>
+<!-- @@@setDisplaySettings -->
+<!-- $$$setExtraEncodingSettings[overload1]$$$setExtraEncodingSettingsconstTextEditor::ExtraEncodingSettings& -->
+<h3 class="fn" id="setExtraEncodingSettings"><a name="setExtraEncodingSettings"></a><span class="type">void</span> TextEditorWidget::<span class="name">setExtraEncodingSettings</span>(<i>const TextEditor::ExtraEncodingSettings &amp;</i>)</h3>
+<!-- @@@setExtraEncodingSettings -->
+<!-- $$$setExtraSelections[overload1]$$$setExtraSelectionsCore::IdconstQList<QTextEdit::ExtraSelection>& -->
+<h3 class="fn" id="setExtraSelections"><a name="setExtraSelections"></a><span class="type">void</span> TextEditorWidget::<span class="name">setExtraSelections</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>kind</i>, const <span class="type">QList</span>&lt;<span class="type">QTextEdit::ExtraSelection</span>&gt; &amp;<i>selections</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#extraSelections">extraSelections</a>().</p>
+<!-- @@@setExtraSelections -->
+<!-- $$$setHighlightCurrentLine[overload1]$$$setHighlightCurrentLinebool -->
+<h3 class="fn" id="setHighlightCurrentLine"><a name="setHighlightCurrentLine"></a><span class="type">void</span> TextEditorWidget::<span class="name">setHighlightCurrentLine</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#highlightCurrentLine">highlightCurrentLine</a>().</p>
+<!-- @@@setHighlightCurrentLine -->
+<!-- $$$setIfdefedOutBlocks[overload1]$$$setIfdefedOutBlocksconstQList<BlockRange>& -->
+<h3 class="fn" id="setIfdefedOutBlocks"><a name="setIfdefedOutBlocks"></a><span class="type">void</span> TextEditorWidget::<span class="name">setIfdefedOutBlocks</span>(const <span class="type">QList</span>&lt;<span class="type"><a href="texteditor-blockrange.html">BlockRange</a></span>&gt; &amp;<i>blocks</i>)</h3>
+<!-- @@@setIfdefedOutBlocks -->
+<!-- $$$setLanguageSettingsId[overload1]$$$setLanguageSettingsIdCore::Id -->
+<h3 class="fn" id="setLanguageSettingsId"><a name="setLanguageSettingsId"></a><span class="type">void</span> TextEditorWidget::<span class="name">setLanguageSettingsId</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>settingsId</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#languageSettingsId">languageSettingsId</a>().</p>
+<!-- @@@setLanguageSettingsId -->
+<!-- $$$setLineNumbersVisible[overload1]$$$setLineNumbersVisiblebool -->
+<h3 class="fn" id="setLineNumbersVisible"><a name="setLineNumbersVisible"></a><span class="type">void</span> TextEditorWidget::<span class="name">setLineNumbersVisible</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#lineNumbersVisible">lineNumbersVisible</a>().</p>
+<!-- @@@setLineNumbersVisible -->
+<!-- $$$setLineSeparatorsAllowed[overload1]$$$setLineSeparatorsAllowedbool -->
+<h3 class="fn" id="setLineSeparatorsAllowed"><a name="setLineSeparatorsAllowed"></a><span class="type">void</span> TextEditorWidget::<span class="name">setLineSeparatorsAllowed</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#lineSeparatorsAllowed">lineSeparatorsAllowed</a>().</p>
+<!-- @@@setLineSeparatorsAllowed -->
+<!-- $$$setMarginSettings[overload1]$$$setMarginSettingsconstTextEditor::MarginSettings& -->
+<h3 class="fn" id="setMarginSettings"><a name="setMarginSettings"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">setMarginSettings</span>(<i>const TextEditor::MarginSettings &amp;</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#marginSettings">marginSettings</a>().</p>
+<!-- @@@setMarginSettings -->
+<!-- $$$setMarksVisible[overload1]$$$setMarksVisiblebool -->
+<h3 class="fn" id="setMarksVisible"><a name="setMarksVisible"></a><span class="type">void</span> TextEditorWidget::<span class="name">setMarksVisible</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#marksVisible">marksVisible</a>().</p>
+<!-- @@@setMarksVisible -->
+<!-- $$$setMouseHidingEnabled[overload1]$$$setMouseHidingEnabledbool -->
+<h3 class="fn" id="setMouseHidingEnabled"><a name="setMouseHidingEnabled"></a><span class="type">void</span> TextEditorWidget::<span class="name">setMouseHidingEnabled</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#mouseHidingEnabled">mouseHidingEnabled</a>().</p>
+<!-- @@@setMouseHidingEnabled -->
+<!-- $$$setMouseNavigationEnabled[overload1]$$$setMouseNavigationEnabledbool -->
+<h3 class="fn" id="setMouseNavigationEnabled"><a name="setMouseNavigationEnabled"></a><span class="type">void</span> TextEditorWidget::<span class="name">setMouseNavigationEnabled</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#mouseNavigationEnabled">mouseNavigationEnabled</a>().</p>
+<!-- @@@setMouseNavigationEnabled -->
+<!-- $$$setParenthesesMatchingEnabled[overload1]$$$setParenthesesMatchingEnabledbool -->
+<h3 class="fn" id="setParenthesesMatchingEnabled"><a name="setParenthesesMatchingEnabled"></a><span class="type">void</span> TextEditorWidget::<span class="name">setParenthesesMatchingEnabled</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#isParenthesesMatchingEnabled">isParenthesesMatchingEnabled</a>().</p>
+<!-- @@@setParenthesesMatchingEnabled -->
+<!-- $$$setReadOnly[overload1]$$$setReadOnlybool -->
+<h3 class="fn" id="setReadOnly"><a name="setReadOnly"></a><span class="type">void</span> TextEditorWidget::<span class="name">setReadOnly</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<!-- @@@setReadOnly -->
+<!-- $$$setRefactorMarkers[overload1]$$$setRefactorMarkersconstRefactorMarkers& -->
+<h3 class="fn" id="setRefactorMarkers"><a name="setRefactorMarkers"></a><span class="type">void</span> TextEditorWidget::<span class="name">setRefactorMarkers</span>(const <span class="type"><a href="texteditor.html#RefactorMarkers-typedef">RefactorMarkers</a></span> &amp;<i>markers</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#refactorMarkers">refactorMarkers</a>().</p>
+<!-- @@@setRefactorMarkers -->
+<!-- $$$setRequestMarkEnabled[overload1]$$$setRequestMarkEnabledbool -->
+<h3 class="fn" id="setRequestMarkEnabled"><a name="setRequestMarkEnabled"></a><span class="type">void</span> TextEditorWidget::<span class="name">setRequestMarkEnabled</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#requestMarkEnabled">requestMarkEnabled</a>().</p>
+<!-- @@@setRequestMarkEnabled -->
+<!-- $$$setRevisionsVisible[overload1]$$$setRevisionsVisiblebool -->
+<h3 class="fn" id="setRevisionsVisible"><a name="setRevisionsVisible"></a><span class="type">void</span> TextEditorWidget::<span class="name">setRevisionsVisible</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#revisionsVisible">revisionsVisible</a>().</p>
+<!-- @@@setRevisionsVisible -->
+<!-- $$$setScrollWheelZoomingEnabled[overload1]$$$setScrollWheelZoomingEnabledbool -->
+<h3 class="fn" id="setScrollWheelZoomingEnabled"><a name="setScrollWheelZoomingEnabled"></a><span class="type">void</span> TextEditorWidget::<span class="name">setScrollWheelZoomingEnabled</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#scrollWheelZoomingEnabled">scrollWheelZoomingEnabled</a>().</p>
+<!-- @@@setScrollWheelZoomingEnabled -->
+<!-- $$$setStorageSettings[overload1]$$$setStorageSettingsconstTextEditor::StorageSettings& -->
+<h3 class="fn" id="setStorageSettings"><a name="setStorageSettings"></a><span class="type">void</span> TextEditorWidget::<span class="name">setStorageSettings</span>(<i>const TextEditor::StorageSettings &amp;</i>)</h3>
+<!-- @@@setStorageSettings -->
+<!-- $$$setTextDocument[overload1]$$$setTextDocumentconstQSharedPointer<TextDocument>& -->
+<h3 class="fn" id="setTextDocument"><a name="setTextDocument"></a><span class="type">void</span> TextEditorWidget::<span class="name">setTextDocument</span>(const <span class="type">QSharedPointer</span>&lt;<span class="type"><a href="texteditor-textdocument.html">TextDocument</a></span>&gt; &amp;<i>doc</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#textDocument">textDocument</a>().</p>
+<!-- @@@setTextDocument -->
+<!-- $$$setTypingSettings[overload1]$$$setTypingSettingsconstTextEditor::TypingSettings& -->
+<h3 class="fn" id="setTypingSettings"><a name="setTypingSettings"></a><span class="type">void</span> TextEditorWidget::<span class="name">setTypingSettings</span>(<i>const TextEditor::TypingSettings &amp;</i>)</h3>
+<!-- @@@setTypingSettings -->
+<!-- $$$setVisibleWrapColumn[overload1]$$$setVisibleWrapColumnint -->
+<h3 class="fn" id="setVisibleWrapColumn"><a name="setVisibleWrapColumn"></a><span class="type">void</span> TextEditorWidget::<span class="name">setVisibleWrapColumn</span>(<span class="type">int</span> <i>column</i>)</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#visibleWrapColumn">visibleWrapColumn</a>().</p>
+<!-- @@@setVisibleWrapColumn -->
+<!-- $$$setupFallBackEditor[overload1]$$$setupFallBackEditorCore::Id -->
+<h3 class="fn" id="setupFallBackEditor"><a name="setupFallBackEditor"></a><span class="type">void</span> TextEditorWidget::<span class="name">setupFallBackEditor</span>(<span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>)</h3>
+<!-- @@@setupFallBackEditor -->
+<!-- $$$setupGenericHighlighter[overload1]$$$setupGenericHighlighter -->
+<h3 class="fn" id="setupGenericHighlighter"><a name="setupGenericHighlighter"></a><span class="type">void</span> TextEditorWidget::<span class="name">setupGenericHighlighter</span>()</h3>
+<!-- @@@setupGenericHighlighter -->
+<!-- $$$showContextMenu[overload1]$$$showContextMenu -->
+<h3 class="fn" id="showContextMenu"><a name="showContextMenu"></a><span class="type">void</span> TextEditorWidget::<span class="name">showContextMenu</span>()</h3>
+<!-- @@@showContextMenu -->
+<!-- $$$showDefaultContextMenu[overload1]$$$showDefaultContextMenuQContextMenuEvent*Core::Id -->
+<h3 class="fn" id="showDefaultContextMenu"><a name="showDefaultContextMenu"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">showDefaultContextMenu</span>(<span class="type">QContextMenuEvent</span> *<i>e</i>, <span class="type"><a href="core-id.html">Core::Id</a></span> <i>menuContextId</i>)</h3>
+<!-- @@@showDefaultContextMenu -->
+<!-- $$$showEvent[overload1]$$$showEventQShowEvent* -->
+<h3 class="fn" id="showEvent"><a name="showEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">showEvent</span>(<i>QShowEvent *</i>)</h3>
+<!-- @@@showEvent -->
+<!-- $$$slotCodeStyleSettingsChanged[overload1]$$$slotCodeStyleSettingsChangedconstQVariant& -->
+<h3 class="fn" id="slotCodeStyleSettingsChanged"><a name="slotCodeStyleSettingsChanged"></a><code>[virtual protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">slotCodeStyleSettingsChanged</span>(<i>const QVariant &amp;</i>)</h3>
+<!-- @@@slotCodeStyleSettingsChanged -->
+<!-- $$$slotCursorPositionChanged[overload1]$$$slotCursorPositionChanged -->
+<h3 class="fn" id="slotCursorPositionChanged"><a name="slotCursorPositionChanged"></a><code>[virtual protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">slotCursorPositionChanged</span>()</h3>
+<!-- @@@slotCursorPositionChanged -->
+<!-- $$$switchUtf8bom[overload1]$$$switchUtf8bom -->
+<h3 class="fn" id="switchUtf8bom"><a name="switchUtf8bom"></a><span class="type">void</span> TextEditorWidget::<span class="name">switchUtf8bom</span>()</h3>
+<!-- @@@switchUtf8bom -->
+<!-- $$$textAt[overload1]$$$textAtintint -->
+<h3 class="fn" id="textAt"><a name="textAt"></a><span class="type">QString</span> TextEditorWidget::<span class="name">textAt</span>(<span class="type">int</span> <i>from</i>, <span class="type">int</span> <i>to</i>) const</h3>
+<!-- @@@textAt -->
+<!-- $$$textDocument[overload1]$$$textDocument -->
+<h3 class="fn" id="textDocument"><a name="textDocument"></a><span class="type"><a href="texteditor-textdocument.html">TextDocument</a></span> *TextEditorWidget::<span class="name">textDocument</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setTextDocument">setTextDocument</a>().</p>
+<!-- @@@textDocument -->
+<!-- $$$textDocumentPtr[overload1]$$$textDocumentPtr -->
+<h3 class="fn" id="textDocumentPtr"><a name="textDocumentPtr"></a><span class="type">QSharedPointer</span>&lt;<span class="type"><a href="texteditor-textdocument.html">TextDocument</a></span>&gt; TextEditorWidget::<span class="name">textDocumentPtr</span>() const</h3>
+<!-- @@@textDocumentPtr -->
+<!-- $$$timerEvent[overload1]$$$timerEventQTimerEvent* -->
+<h3 class="fn" id="timerEvent"><a name="timerEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">timerEvent</span>(<i>QTimerEvent *</i>)</h3>
+<!-- @@@timerEvent -->
+<!-- $$$toolBar[overload1]$$$toolBar -->
+<h3 class="fn" id="toolBar"><a name="toolBar"></a><span class="type">QToolBar</span> *TextEditorWidget::<span class="name">toolBar</span>()</h3>
+<!-- @@@toolBar -->
+<!-- $$$toolTipPosition[overload1]$$$toolTipPositionconstQTextCursor& -->
+<h3 class="fn" id="toolTipPosition"><a name="toolTipPosition"></a><span class="type">QPoint</span> TextEditorWidget::<span class="name">toolTipPosition</span>(const <span class="type">QTextCursor</span> &amp;<i>c</i>) const</h3>
+<!-- @@@toolTipPosition -->
+<!-- $$$tooltipOverrideRequested[overload1]$$$tooltipOverrideRequestedTextEditor::TextEditorWidget*constQPoint&intbool* -->
+<h3 class="fn" id="tooltipOverrideRequested"><a name="tooltipOverrideRequested"></a><code>[signal] </code><span class="type">void</span> TextEditorWidget::<span class="name">tooltipOverrideRequested</span>(<span class="type"><a href="texteditor-texteditorwidget.html">TextEditor::TextEditorWidget</a></span> *<i>widget</i>, const <span class="type">QPoint</span> &amp;<i>globalPos</i>, <span class="type">int</span> <i>position</i>, <span class="type">bool</span> *<i>handled</i>)</h3>
+<!-- @@@tooltipOverrideRequested -->
+<!-- $$$tooltipRequested[overload1]$$$tooltipRequestedconstQPoint&int -->
+<h3 class="fn" id="tooltipRequested"><a name="tooltipRequested"></a><code>[signal] </code><span class="type">void</span> TextEditorWidget::<span class="name">tooltipRequested</span>(const <span class="type">QPoint</span> &amp;<i>globalPos</i>, <span class="type">int</span> <i>position</i>)</h3>
+<!-- @@@tooltipRequested -->
+<!-- $$$translatedLineRegion[overload1]$$$translatedLineRegionintint -->
+<h3 class="fn" id="translatedLineRegion"><a name="translatedLineRegion"></a><span class="type">QRegion</span> TextEditorWidget::<span class="name">translatedLineRegion</span>(<span class="type">int</span> <i>lineStart</i>, <span class="type">int</span> <i>lineEnd</i>) const</h3>
+<!-- @@@translatedLineRegion -->
+<!-- $$$triggerPendingUpdates[overload1]$$$triggerPendingUpdates -->
+<h3 class="fn" id="triggerPendingUpdates"><a name="triggerPendingUpdates"></a><code>[virtual protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">triggerPendingUpdates</span>()</h3>
+<!-- @@@triggerPendingUpdates -->
+<!-- $$$unCommentSelection[overload1]$$$unCommentSelection -->
+<h3 class="fn" id="unCommentSelection"><a name="unCommentSelection"></a><code>[virtual] </code><span class="type">void</span> TextEditorWidget::<span class="name">unCommentSelection</span>()</h3>
+<!-- @@@unCommentSelection -->
+<!-- $$$undo[overload1]$$$undo -->
+<h3 class="fn" id="undo"><a name="undo"></a><span class="type">void</span> TextEditorWidget::<span class="name">undo</span>()</h3>
+<!-- @@@undo -->
+<!-- $$$unfold[overload1]$$$unfold -->
+<h3 class="fn" id="unfold"><a name="unfold"></a><span class="type">void</span> TextEditorWidget::<span class="name">unfold</span>()</h3>
+<!-- @@@unfold -->
+<!-- $$$unfoldAll[overload1]$$$unfoldAll -->
+<h3 class="fn" id="unfoldAll"><a name="unfoldAll"></a><span class="type">void</span> TextEditorWidget::<span class="name">unfoldAll</span>()</h3>
+<!-- @@@unfoldAll -->
+<!-- $$$unindent[overload1]$$$unindent -->
+<h3 class="fn" id="unindent"><a name="unindent"></a><span class="type">void</span> TextEditorWidget::<span class="name">unindent</span>()</h3>
+<!-- @@@unindent -->
+<!-- $$$updateFoldingHighlight[overload1]$$$updateFoldingHighlightconstQPoint& -->
+<h3 class="fn" id="updateFoldingHighlight"><a name="updateFoldingHighlight"></a><span class="type">void</span> TextEditorWidget::<span class="name">updateFoldingHighlight</span>(const <span class="type">QPoint</span> &amp;<i>pos</i>)</h3>
+<!-- @@@updateFoldingHighlight -->
+<!-- $$$updateTextCodecLabel[overload1]$$$updateTextCodecLabel -->
+<h3 class="fn" id="updateTextCodecLabel"><a name="updateTextCodecLabel"></a><span class="type">void</span> TextEditorWidget::<span class="name">updateTextCodecLabel</span>()</h3>
+<!-- @@@updateTextCodecLabel -->
+<!-- $$$uppercaseSelection[overload1]$$$uppercaseSelection -->
+<h3 class="fn" id="uppercaseSelection"><a name="uppercaseSelection"></a><span class="type">void</span> TextEditorWidget::<span class="name">uppercaseSelection</span>()</h3>
+<!-- @@@uppercaseSelection -->
+<!-- $$$viewLineDown[overload1]$$$viewLineDown -->
+<h3 class="fn" id="viewLineDown"><a name="viewLineDown"></a><span class="type">void</span> TextEditorWidget::<span class="name">viewLineDown</span>()</h3>
+<!-- @@@viewLineDown -->
+<!-- $$$viewLineUp[overload1]$$$viewLineUp -->
+<h3 class="fn" id="viewLineUp"><a name="viewLineUp"></a><span class="type">void</span> TextEditorWidget::<span class="name">viewLineUp</span>()</h3>
+<!-- @@@viewLineUp -->
+<!-- $$$viewPageDown[overload1]$$$viewPageDown -->
+<h3 class="fn" id="viewPageDown"><a name="viewPageDown"></a><span class="type">void</span> TextEditorWidget::<span class="name">viewPageDown</span>()</h3>
+<!-- @@@viewPageDown -->
+<!-- $$$viewPageUp[overload1]$$$viewPageUp -->
+<h3 class="fn" id="viewPageUp"><a name="viewPageUp"></a><span class="type">void</span> TextEditorWidget::<span class="name">viewPageUp</span>()</h3>
+<!-- @@@viewPageUp -->
+<!-- $$$viewportEvent[overload1]$$$viewportEventQEvent* -->
+<h3 class="fn" id="viewportEvent"><a name="viewportEvent"></a><code>[protected] </code><span class="type">bool</span> TextEditorWidget::<span class="name">viewportEvent</span>(<span class="type">QEvent</span> *<i>event</i>)</h3>
+<!-- @@@viewportEvent -->
+<!-- $$$visibleFoldedBlockNumber[overload1]$$$visibleFoldedBlockNumber -->
+<h3 class="fn" id="visibleFoldedBlockNumber"><a name="visibleFoldedBlockNumber"></a><code>[protected] </code><span class="type">int</span> TextEditorWidget::<span class="name">visibleFoldedBlockNumber</span>() const</h3>
+<!-- @@@visibleFoldedBlockNumber -->
+<!-- $$$visibleWrapColumn[overload1]$$$visibleWrapColumn -->
+<h3 class="fn" id="visibleWrapColumn"><a name="visibleWrapColumn"></a><span class="type">int</span> TextEditorWidget::<span class="name">visibleWrapColumn</span>() const</h3>
+<p><b>See also </b><a href="texteditor-texteditorwidget.html#setVisibleWrapColumn">setVisibleWrapColumn</a>().</p>
+<!-- @@@visibleWrapColumn -->
+<!-- $$$wheelEvent[overload1]$$$wheelEventQWheelEvent* -->
+<h3 class="fn" id="wheelEvent"><a name="wheelEvent"></a><code>[protected] </code><span class="type">void</span> TextEditorWidget::<span class="name">wheelEvent</span>(<span class="type">QWheelEvent</span> *<i>e</i>)</h3>
+<!-- @@@wheelEvent -->
+<!-- $$$zoomF[overload1]$$$zoomFfloat -->
+<h3 class="fn" id="zoomF"><a name="zoomF"></a><span class="type">void</span> TextEditorWidget::<span class="name">zoomF</span>(<span class="type">float</span> <i>delta</i>)</h3>
+<!-- @@@zoomF -->
+<!-- $$$zoomReset[overload1]$$$zoomReset -->
+<h3 class="fn" id="zoomReset"><a name="zoomReset"></a><span class="type">void</span> TextEditorWidget::<span class="name">zoomReset</span>()</h3>
+<!-- @@@zoomReset -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

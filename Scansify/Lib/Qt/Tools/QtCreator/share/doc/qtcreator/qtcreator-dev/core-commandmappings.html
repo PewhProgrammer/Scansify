@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>CommandMappings Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >CommandMappings</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">CommandMappings Class</h1>
+<span class="small-subtitle">(<a href="core-commandmappings.html">Core::CommandMappings</a>)<br/></span>
+<ul>
+<li><a href="core-commandmappings-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#CommandMappings">CommandMappings</a></b>(QWidget *<i>parent</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#dtor.CommandMappings">~CommandMappings</a></b>()</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#currentCommandChanged">currentCommandChanged</a></b>(QTreeWidgetItem *<i>current</i>)</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> QTreeWidget *</td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#commandList">commandList</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#defaultAction">defaultAction</a></b>() = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#exportAction">exportAction</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#filterChanged">filterChanged</a></b>(const QString &amp;<i>f</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#filterColumn">filterColumn</a></b>(const QString &amp;<i>filterString</i>, QTreeWidgetItem *<i>item</i>, int <i>column</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#filterText">filterText</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#importAction">importAction</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#setFilterText">setFilterText</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#setImportExportEnabled">setImportExportEnabled</a></b>(bool <i>enabled</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#setModified">setModified</a></b>(QTreeWidgetItem *<i>item</i>, bool <i>modified</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#setPageTitle">setPageTitle</a></b>(const QString &amp;<i>s</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-commandmappings.html#setTargetHeader">setTargetHeader</a></b>(const QString &amp;<i>s</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$CommandMappings[overload1]$$$CommandMappingsQWidget* -->
+<h3 class="fn" id="CommandMappings"><a name="CommandMappings"></a>CommandMappings::<span class="name">CommandMappings</span>(<span class="type">QWidget</span> *<i>parent</i> = 0)</h3>
+<p>Default constructs an instance of CommandMappings.</p><!-- @@@CommandMappings -->
+<!-- $$$~CommandMappings[overload1]$$$~CommandMappings -->
+<h3 class="fn" id="dtor.CommandMappings"><a name="dtor.CommandMappings"></a>CommandMappings::<span class="name">~CommandMappings</span>()</h3>
+<p>Destroys the instance of CommandMappings.</p><!-- @@@~CommandMappings -->
+<!-- $$$commandList[overload1]$$$commandList -->
+<h3 class="fn" id="commandList"><a name="commandList"></a><code>[protected] </code><span class="type">QTreeWidget</span> *CommandMappings::<span class="name">commandList</span>() const</h3>
+<!-- @@@commandList -->
+<!-- $$$currentCommandChanged[overload1]$$$currentCommandChangedQTreeWidgetItem* -->
+<h3 class="fn" id="currentCommandChanged"><a name="currentCommandChanged"></a><code>[signal] </code><span class="type">void</span> CommandMappings::<span class="name">currentCommandChanged</span>(<span class="type">QTreeWidgetItem</span> *<i>current</i>)</h3>
+<!-- @@@currentCommandChanged -->
+<!-- $$$defaultAction[overload1]$$$defaultAction -->
+<h3 class="fn" id="defaultAction"><a name="defaultAction"></a><code>[pure virtual protected] </code><span class="type">void</span> CommandMappings::<span class="name">defaultAction</span>()</h3>
+<!-- @@@defaultAction -->
+<!-- $$$exportAction[overload1]$$$exportAction -->
+<h3 class="fn" id="exportAction"><a name="exportAction"></a><code>[virtual protected] </code><span class="type">void</span> CommandMappings::<span class="name">exportAction</span>()</h3>
+<!-- @@@exportAction -->
+<!-- $$$filterChanged[overload1]$$$filterChangedconstQString& -->
+<h3 class="fn" id="filterChanged"><a name="filterChanged"></a><code>[protected] </code><span class="type">void</span> CommandMappings::<span class="name">filterChanged</span>(const <span class="type">QString</span> &amp;<i>f</i>)</h3>
+<!-- @@@filterChanged -->
+<!-- $$$filterColumn[overload1]$$$filterColumnconstQString&QTreeWidgetItem*int -->
+<h3 class="fn" id="filterColumn"><a name="filterColumn"></a><code>[virtual protected] </code><span class="type">bool</span> CommandMappings::<span class="name">filterColumn</span>(const <span class="type">QString</span> &amp;<i>filterString</i>, <span class="type">QTreeWidgetItem</span> *<i>item</i>, <span class="type">int</span> <i>column</i>) const</h3>
+<!-- @@@filterColumn -->
+<!-- $$$filterText[overload1]$$$filterText -->
+<h3 class="fn" id="filterText"><a name="filterText"></a><code>[protected] </code><span class="type">QString</span> CommandMappings::<span class="name">filterText</span>() const</h3>
+<p><b>See also </b><a href="core-commandmappings.html#setFilterText">setFilterText</a>().</p>
+<!-- @@@filterText -->
+<!-- $$$importAction[overload1]$$$importAction -->
+<h3 class="fn" id="importAction"><a name="importAction"></a><code>[virtual protected] </code><span class="type">void</span> CommandMappings::<span class="name">importAction</span>()</h3>
+<!-- @@@importAction -->
+<!-- $$$setFilterText[overload1]$$$setFilterTextconstQString& -->
+<h3 class="fn" id="setFilterText"><a name="setFilterText"></a><code>[protected] </code><span class="type">void</span> CommandMappings::<span class="name">setFilterText</span>(const <span class="type">QString</span> &amp;<i>text</i>)</h3>
+<p><b>See also </b><a href="core-commandmappings.html#filterText">filterText</a>().</p>
+<!-- @@@setFilterText -->
+<!-- $$$setImportExportEnabled[overload1]$$$setImportExportEnabledbool -->
+<h3 class="fn" id="setImportExportEnabled"><a name="setImportExportEnabled"></a><code>[protected] </code><span class="type">void</span> CommandMappings::<span class="name">setImportExportEnabled</span>(<span class="type">bool</span> <i>enabled</i>)</h3>
+<!-- @@@setImportExportEnabled -->
+<!-- $$$setModified[overload1]$$$setModifiedQTreeWidgetItem*bool -->
+<h3 class="fn" id="setModified"><a name="setModified"></a><code>[protected] </code><span class="type">void</span> CommandMappings::<span class="name">setModified</span>(<span class="type">QTreeWidgetItem</span> *<i>item</i>, <span class="type">bool</span> <i>modified</i>)</h3>
+<!-- @@@setModified -->
+<!-- $$$setPageTitle[overload1]$$$setPageTitleconstQString& -->
+<h3 class="fn" id="setPageTitle"><a name="setPageTitle"></a><code>[protected] </code><span class="type">void</span> CommandMappings::<span class="name">setPageTitle</span>(const <span class="type">QString</span> &amp;<i>s</i>)</h3>
+<!-- @@@setPageTitle -->
+<!-- $$$setTargetHeader[overload1]$$$setTargetHeaderconstQString& -->
+<h3 class="fn" id="setTargetHeader"><a name="setTargetHeader"></a><code>[protected] </code><span class="type">void</span> CommandMappings::<span class="name">setTargetHeader</span>(const <span class="type">QString</span> &amp;<i>s</i>)</h3>
+<!-- @@@setTargetHeader -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>IContextPane Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >IContextPane</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">IContextPane Class</h1>
+<span class="small-subtitle">(<a href="qmljs-icontextpane.html">QmlJS::IContextPane</a>)<br/></span>
+<ul>
+<li><a href="qmljs-icontextpane-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-icontextpane.html#IContextPane">IContextPane</a></b>(QObject *<i>parent</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual </td><td class="memItemRight bottomAlign"><b><a href="qmljs-icontextpane.html#dtor.IContextPane">~IContextPane</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-icontextpane.html#apply">apply</a></b>(TextEditor::TextEditorWidget *<i>editorWidget</i>, Document::Ptr <i>document</i>, const ScopeChain *<i>scopeChain</i>, AST::Node *<i>node</i>, bool <i>update</i>, bool <i>force</i> = false) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-icontextpane.html#isAvailable">isAvailable</a></b>(TextEditor::TextEditorWidget *<i>editorWidget</i>, Document::Ptr <i>document</i>, AST::Node *<i>node</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-icontextpane.html#setEnabled">setEnabled</a></b>(<i>bool</i>) = 0</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QWidget *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-icontextpane.html#widget">widget</a></b>() = 0</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-icontextpane.html#closed">closed</a></b>()</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$IContextPane[overload1]$$$IContextPaneQObject* -->
+<h3 class="fn" id="IContextPane"><a name="IContextPane"></a>IContextPane::<span class="name">IContextPane</span>(<span class="type">QObject</span> *<i>parent</i> = 0)</h3>
+<p>Default constructs an instance of IContextPane.</p><!-- @@@IContextPane -->
+<!-- $$$~IContextPane[overload1]$$$~IContextPane -->
+<h3 class="fn" id="dtor.IContextPane"><a name="dtor.IContextPane"></a><code>[virtual] </code>IContextPane::<span class="name">~IContextPane</span>()</h3>
+<p>Destroys the instance of IContextPane. The destructor is virtual.</p><!-- @@@~IContextPane -->
+<!-- $$$apply[overload1]$$$applyTextEditor::TextEditorWidget*Document::PtrconstScopeChain*AST::Node*boolbool -->
+<h3 class="fn" id="apply"><a name="apply"></a><code>[pure virtual] </code><span class="type">void</span> IContextPane::<span class="name">apply</span>(<span class="type"><a href="texteditor-texteditorwidget.html">TextEditor::TextEditorWidget</a></span> *<i>editorWidget</i>, <span class="type"><a href="qmljs-document.html#Ptr-typedef">Document::Ptr</a></span> <i>document</i>, const <span class="type"><a href="qmljs-scopechain.html">ScopeChain</a></span> *<i>scopeChain</i>, <span class="type">AST::Node</span> *<i>node</i>, <span class="type">bool</span> <i>update</i>, <span class="type">bool</span> <i>force</i> = false)</h3>
+<!-- @@@apply -->
+<!-- $$$closed[overload1]$$$closed -->
+<h3 class="fn" id="closed"><a name="closed"></a><code>[signal] </code><span class="type">void</span> IContextPane::<span class="name">closed</span>()</h3>
+<!-- @@@closed -->
+<!-- $$$isAvailable[overload1]$$$isAvailableTextEditor::TextEditorWidget*Document::PtrAST::Node* -->
+<h3 class="fn" id="isAvailable"><a name="isAvailable"></a><code>[pure virtual] </code><span class="type">bool</span> IContextPane::<span class="name">isAvailable</span>(<span class="type"><a href="texteditor-texteditorwidget.html">TextEditor::TextEditorWidget</a></span> *<i>editorWidget</i>, <span class="type"><a href="qmljs-document.html#Ptr-typedef">Document::Ptr</a></span> <i>document</i>, <span class="type">AST::Node</span> *<i>node</i>)</h3>
+<!-- @@@isAvailable -->
+<!-- $$$setEnabled[overload1]$$$setEnabledbool -->
+<h3 class="fn" id="setEnabled"><a name="setEnabled"></a><code>[pure virtual] </code><span class="type">void</span> IContextPane::<span class="name">setEnabled</span>(<i>bool</i>)</h3>
+<!-- @@@setEnabled -->
+<!-- $$$widget[overload1]$$$widget -->
+<h3 class="fn" id="widget"><a name="widget"></a><code>[pure virtual] </code><span class="type">QWidget</span> *IContextPane::<span class="name">widget</span>()</h3>
+<!-- @@@widget -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

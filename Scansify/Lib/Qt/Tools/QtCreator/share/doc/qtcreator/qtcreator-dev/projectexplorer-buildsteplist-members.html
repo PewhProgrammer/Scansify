@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>List of All Members for BuildStepList | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >BuildStepList</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar"><div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">List of All Members for BuildStepList</h1>
+<p>This is the complete list of members for <a href="projectexplorer-buildsteplist.html">ProjectExplorer::BuildStepList</a>, including inherited members.</p>
+<div class="table"><table class="propsummary">
+<tr><td class="topAlign"><ul>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#BuildStepList">BuildStepList</a></b></span>(QObject *, Core::Id )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#BuildStepList-1">BuildStepList</a></b></span>(QObject *, BuildStepList *)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#dtor.BuildStepList">~BuildStepList</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#aboutToRemoveStep">aboutToRemoveStep</a></b></span>(int )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#allOfType">allOfType</a></b></span>() : QList&lt;BS *&gt;</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#appendStep">appendStep</a></b></span>(BuildStep *)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#at">at</a></b></span>(int ) : BuildStep *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#cloneSteps">cloneSteps</a></b></span>(BuildStepList *)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#contains">contains</a></b></span>(Core::Id ) const : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#count">count</a></b></span>() const : int</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#displayName">displayName</a></b></span>() const : QString</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#displayNameChanged">displayNameChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#firstOfType">firstOfType</a></b></span>() : BS *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#fromMap">fromMap</a></b></span>(const QVariantMap &amp;) : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#fromMap">fromMap</a></b></span>(const QVariantMap &amp;) : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#id">id</a></b></span>() const : Core::Id</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#insertStep">insertStep</a></b></span>(int , BuildStep *)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#isEmpty">isEmpty</a></b></span>() const : bool</li>
+</ul></td><td class="topAlign"><ul>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#macroExpander">macroExpander</a></b></span>() : Utils::MacroExpander *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#macroExpander-1">macroExpander</a></b></span>() const : const Utils::MacroExpander *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#moveStepUp">moveStepUp</a></b></span>(int )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#removeStep">removeStep</a></b></span>(int ) : bool</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#setDefaultDisplayName">setDefaultDisplayName</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#setDisplayName">setDisplayName</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#setToolTip">setToolTip</a></b></span>(const QString &amp;)</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#stepInserted">stepInserted</a></b></span>(int )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#stepMoved">stepMoved</a></b></span>(int , int )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#stepRemoved">stepRemoved</a></b></span>(int )</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#steps">steps</a></b></span>() const : QList&lt;BuildStep *&gt;</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#steps-1">steps</a></b></span>(const std::function&lt;bool( const BuildStep * ) &gt; &amp;) const : QList&lt;BuildStep *&gt;</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#target">target</a></b></span>() const : Target *</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#toMap">toMap</a></b></span>() const : QVariantMap</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-buildsteplist.html#toMap">toMap</a></b></span>() const : QVariantMap</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#toolTip">toolTip</a></b></span>() const : QString</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#toolTipChanged">toolTipChanged</a></b></span>()</li>
+<li class="fn"><span class="name"><b><a href="projectexplorer-projectconfiguration.html#usesDefaultDisplayName">usesDefaultDisplayName</a></b></span>() const : bool</li>
+</ul>
+</td></tr>
+</table></div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>FontSettingsPage Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >FontSettingsPage</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">FontSettingsPage Class</h1>
+<span class="small-subtitle">(<a href="texteditor-fontsettingspage.html">TextEditor::FontSettingsPage</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="texteditor-texteditoroptionspage.html">TextEditor::TextEditorOptionsPage</a></td></tr></table></div><ul>
+<li><a href="texteditor-fontsettingspage-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettingspage.html#FontSettingsPage">FontSettingsPage</a></b>(const FormatDescriptions &amp;<i>fd</i>, Core::Id <i>id</i>, QObject *<i>parent</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettingspage.html#dtor.FontSettingsPage">~FontSettingsPage</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const FontSettings &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettingspage.html#fontSettings">fontSettings</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettingspage.html#saveSettings">saveSettings</a></b>()</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettingspage.html#apply">apply</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettingspage.html#finish">finish</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QWidget *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettingspage.html#widget">widget</a></b>()</td></tr>
+</table></div>
+<ul>
+<li class="fn">9 public functions inherited from <a href="core-ioptionspage.html#public-functions">Core::IOptionsPage</a></li>
+</ul>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-fontsettingspage.html#changed">changed</a></b>(<i>const TextEditor::FontSettings &amp;</i>)</td></tr>
+</table></div>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">5 protected functions inherited from <a href="core-ioptionspage.html#protected-functions">Core::IOptionsPage</a></li>
+</ul>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$FontSettingsPage[overload1]$$$FontSettingsPageconstFormatDescriptions&Core::IdQObject* -->
+<h3 class="fn" id="FontSettingsPage"><a name="FontSettingsPage"></a>FontSettingsPage::<span class="name">FontSettingsPage</span>(const <span class="type"><a href="texteditor.html#FormatDescriptions-typedef">FormatDescriptions</a></span> &amp;<i>fd</i>, <span class="type"><a href="core-id.html">Core::Id</a></span> <i>id</i>, <span class="type">QObject</span> *<i>parent</i> = 0)</h3>
+<p>Default constructs an instance of FontSettingsPage.</p><!-- @@@FontSettingsPage -->
+<!-- $$$~FontSettingsPage[overload1]$$$~FontSettingsPage -->
+<h3 class="fn" id="dtor.FontSettingsPage"><a name="dtor.FontSettingsPage"></a>FontSettingsPage::<span class="name">~FontSettingsPage</span>()</h3>
+<p>Destroys the instance of FontSettingsPage.</p><!-- @@@~FontSettingsPage -->
+<!-- $$$apply[overload1]$$$apply -->
+<h3 class="fn" id="apply"><a name="apply"></a><code>[virtual] </code><span class="type">void</span> FontSettingsPage::<span class="name">apply</span>()</h3>
+<!-- @@@apply -->
+<!-- $$$changed[overload1]$$$changedconstTextEditor::FontSettings& -->
+<h3 class="fn" id="changed"><a name="changed"></a><code>[signal] </code><span class="type">void</span> FontSettingsPage::<span class="name">changed</span>(<i>const TextEditor::FontSettings &amp;</i>)</h3>
+<!-- @@@changed -->
+<!-- $$$finish[overload1]$$$finish -->
+<h3 class="fn" id="finish"><a name="finish"></a><code>[virtual] </code><span class="type">void</span> FontSettingsPage::<span class="name">finish</span>()</h3>
+<!-- @@@finish -->
+<!-- $$$fontSettings[overload1]$$$fontSettings -->
+<h3 class="fn" id="fontSettings"><a name="fontSettings"></a>const <span class="type"><a href="texteditor-fontsettings.html">FontSettings</a></span> &amp;FontSettingsPage::<span class="name">fontSettings</span>() const</h3>
+<!-- @@@fontSettings -->
+<!-- $$$saveSettings[overload1]$$$saveSettings -->
+<h3 class="fn" id="saveSettings"><a name="saveSettings"></a><span class="type">void</span> FontSettingsPage::<span class="name">saveSettings</span>()</h3>
+<!-- @@@saveSettings -->
+<!-- $$$widget[overload1]$$$widget -->
+<h3 class="fn" id="widget"><a name="widget"></a><code>[virtual] </code><span class="type">QWidget</span> *FontSettingsPage::<span class="name">widget</span>()</h3>
+<!-- @@@widget -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

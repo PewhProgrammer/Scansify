@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- project.qdoc -->
+  <title>Project Item | Qbs Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="index.html">Qbs Manual</a></td><td >Project Item</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qbs 1.9.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="prev" href="product-item.html" />
+  <link rel="next" href="properties-item.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="prevPage" href="product-item.html">Product Item</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="properties-item.html">Properties Item</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#project-properties">Project Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Project Item</h1>
+<span class="subtitle"></span>
+<!-- $$$project-item.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>A <code>Project</code> item represents a collection of of products. In a non-trivial project, these products are typically defined in their own files and referenced in the main project file:</p>
+<pre class="cpp">
+
+  Project {
+      references: <span class="operator">[</span>
+          <span class="string">&quot;product1/product1.qbs&quot;</span><span class="operator">,</span>
+          <span class="string">&quot;product2/product2.qbs&quot;</span>
+      <span class="operator">]</span>
+  }
+
+</pre>
+<p>Any property <code>prop</code> attached to this item is available in sub-items as <code>project.prop</code>.</p>
+<p>While the root of the item hierarchy is always a <code>Project</code>, this kind of item can also appear further down the hierarchy. Such sub-projects are ususally introduced to group products. See the <a href="subproject-item.html">SubProject Item</a> for details.</p>
+<p><b>Note: </b>If your project consists of only one product, the <code>Project</code> item can be omitted.</p><a name="project-properties"></a>
+<h2 id="project-properties">Project Properties</h2>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >buildDirectory</td><td >path</td><td >n/a</td><td >The build directory of the top-level project. This property is read-only.</td></tr>
+<tr valign="top" class="even"><td >name</td><td >string</td><td >basename of the file the project is defined in</td><td >The project name. Only relevant for e.g&#x2e; displaying a project tree in an IDE.</td></tr>
+<tr valign="top" class="odd"><td >profile</td><td >string</td><td >n/a</td><td >The top-level profile for building the project. This property is read-only and is set by Qbs when the project is being set up.</td></tr>
+<tr valign="top" class="even"><td >condition</td><td >bool</td><td >true</td><td >Whether the project is enabled. If false, no products or sub-projects will be collected.</td></tr>
+<tr valign="top" class="odd"><td >qbsSearchPaths</td><td >stringList</td><td >empty</td><td >These paths are searched for imports and modules in addition to the ones listed in <code>preferences.qbsSearchPaths</code>. The value set here is merged with the value inherited from the parent project, if there is one. The result is inherited by all products in the project.</td></tr>
+<tr valign="top" class="even"><td >references</td><td >path list</td><td >empty</td><td >A list of files from which to import products. This is equivalent to defining the respective <code>Product</code> items directly under this <code>Project</code> item.</td></tr>
+<tr valign="top" class="odd"><td >sourceDirectory</td><td >path</td><td >n/a</td><td >The directory where the file containing the top-level <code>Project</code> item is located. This property is read-only.</td></tr>
+<tr valign="top" class="even"><td >minimumQbsVersion</td><td >string</td><td >&quot;1.3&#x2e;0&quot;</td><td >The minimum version of qbs that is needed to build this project.</td></tr>
+</table></div>
+</div>
+<!-- @@@project-item.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="prevPage" href="product-item.html">Product Item</a>
+<span class="naviSeparator">  &#9702;  </span>
+<a class="nextPage" href="properties-item.html">Properties Item</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

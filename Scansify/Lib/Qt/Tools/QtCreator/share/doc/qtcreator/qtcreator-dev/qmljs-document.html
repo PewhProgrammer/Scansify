@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- qmljsdocument.cpp -->
+  <title>Document Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Document</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#protected-functions">Protected Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Document Class</h1>
+<span class="small-subtitle">(<a href="qmljs-document.html">QmlJS::Document</a>)<br/></span>
+<!-- $$$Document-brief -->
+<p>The Document class creates a QML or JavaScript document. <a href="#details">More...</a></p>
+<!-- @@@Document -->
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Header:</td><td class="memItemRight bottomAlign">   <span class="preprocessor">#include &lt;Document&gt;</span>
+</td></tr></table></div><ul>
+<li><a href="qmljs-document-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#MutablePtr-typedef">MutablePtr</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#Ptr-typedef">Ptr</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#dtor.Document">~Document</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> AST::Node *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#ast">ast</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Bind *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#bind">bind</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#componentName">componentName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;DiagnosticMessage&gt; </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#diagnosticMessages">diagnosticMessages</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#editorRevision">editorRevision</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const QmlJS::Engine *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#engine">engine</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> AST::ExpressionNode *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#expression">expression</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#fileName">fileName</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QByteArray </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#fingerprint">fingerprint</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#importId">importId</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#isParsedCorrectly">isParsedCorrectly</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#isQmlDocument">isQmlDocument</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> AST::Program *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#jsProgram">jsProgram</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Dialect </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#language">language</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#parse">parse</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#parseExpression">parseExpression</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#parseJavaScript">parseJavaScript</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#parseQml">parseQml</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#path">path</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Document::Ptr </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#ptr">ptr</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> AST::UiProgram *</td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#qmlProgram">qmlProgram</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#setEditorRevision">setEditorRevision</a></b>(int <i>revision</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#setLanguage">setLanguage</a></b>(Dialect <i>l</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#setSource">setSource</a></b>(const QString &amp;<i>source</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#source">source</a></b>() const</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> MutablePtr </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#create">create</a></b>(const QString &amp;<i>fileName</i>, Dialect <i>language</i>)</td></tr>
+</table></div>
+<a name="protected-functions"></a>
+<h2 id="protected-functions">Protected Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="qmljs-document.html#Document">Document</a></b>(const QString &amp;<i>fileName</i>, Dialect <i>language</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<!-- $$$Document-description -->
+<div class="descr">
+<h2 id="details">Detailed Description</h2>
+<p>The Document class creates a QML or JavaScript document.</p>
+<p>Documents are usually created by the <a href="qmljs-modelmanagerinterface.html">ModelManagerInterface</a> and stored in a Snapshot. They allow access to data such as the file path, source code, abstract syntax tree and the Bind instance for the document.</p>
+<p>To make sure unused and outdated documents are removed correctly, Document instances are usually accessed through a shared pointer, see <a href="qmljs-document.html#Ptr-typedef">Document::Ptr</a>.</p>
+<p>Documents in a Snapshot are immutable: They, or anything reachable through them, must not be changed. This allows Documents to be shared freely among threads without extra synchronization.</p>
+</div>
+<p><b>See also </b><a href="qmljs-snapshot.html">Snapshot</a>.</p>
+<!-- @@@Document -->
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$MutablePtr -->
+<h3 class="fn" id="MutablePtr-typedef"><a name="MutablePtr-typedef"></a>typedef Document::<span class="name">MutablePtr</span></h3>
+<!-- @@@MutablePtr -->
+<!-- $$$Ptr -->
+<h3 class="fn" id="Ptr-typedef"><a name="Ptr-typedef"></a>typedef Document::<span class="name">Ptr</span></h3>
+<!-- @@@Ptr -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Document[overload1]$$$DocumentconstQString&Dialect -->
+<h3 class="fn" id="Document"><a name="Document"></a><code>[protected] </code>Document::<span class="name">Document</span>(const <span class="type">QString</span> &amp;<i>fileName</i>, <span class="type"><a href="qmljs-dialect.html">Dialect</a></span> <i>language</i>)</h3>
+<p>Default constructs an instance of Document.</p><!-- @@@Document -->
+<!-- $$$~Document[overload1]$$$~Document -->
+<h3 class="fn" id="dtor.Document"><a name="dtor.Document"></a>Document::<span class="name">~Document</span>()</h3>
+<p>Destroys the instance of Document.</p><!-- @@@~Document -->
+<!-- $$$ast[overload1]$$$ast -->
+<h3 class="fn" id="ast"><a name="ast"></a><span class="type">AST::Node</span> *Document::<span class="name">ast</span>() const</h3>
+<!-- @@@ast -->
+<!-- $$$bind[overload1]$$$bind -->
+<h3 class="fn" id="bind"><a name="bind"></a><span class="type"><a href="qmljs-bind.html">Bind</a></span> *Document::<span class="name">bind</span>() const</h3>
+<!-- @@@bind -->
+<!-- $$$componentName[overload1]$$$componentName -->
+<h3 class="fn" id="componentName"><a name="componentName"></a><span class="type">QString</span> Document::<span class="name">componentName</span>() const</h3>
+<!-- @@@componentName -->
+<!-- $$$create[overload1]$$$createconstQString&Dialect -->
+<h3 class="fn" id="create"><a name="create"></a><code>[static] </code><span class="type"><a href="qmljs-document.html#MutablePtr-typedef">MutablePtr</a></span> Document::<span class="name">create</span>(const <span class="type">QString</span> &amp;<i>fileName</i>, <span class="type"><a href="qmljs-dialect.html">Dialect</a></span> <i>language</i>)</h3>
+<!-- @@@create -->
+<!-- $$$diagnosticMessages[overload1]$$$diagnosticMessages -->
+<h3 class="fn" id="diagnosticMessages"><a name="diagnosticMessages"></a><span class="type">QList</span>&lt;<span class="type">DiagnosticMessage</span>&gt; Document::<span class="name">diagnosticMessages</span>() const</h3>
+<!-- @@@diagnosticMessages -->
+<!-- $$$editorRevision[overload1]$$$editorRevision -->
+<h3 class="fn" id="editorRevision"><a name="editorRevision"></a><span class="type">int</span> Document::<span class="name">editorRevision</span>() const</h3>
+<p><b>See also </b><a href="qmljs-document.html#setEditorRevision">setEditorRevision</a>().</p>
+<!-- @@@editorRevision -->
+<!-- $$$engine[overload1]$$$engine -->
+<h3 class="fn" id="engine"><a name="engine"></a>const <span class="type">QmlJS::Engine</span> *Document::<span class="name">engine</span>() const</h3>
+<!-- @@@engine -->
+<!-- $$$expression[overload1]$$$expression -->
+<h3 class="fn" id="expression"><a name="expression"></a><span class="type">AST::ExpressionNode</span> *Document::<span class="name">expression</span>() const</h3>
+<!-- @@@expression -->
+<!-- $$$fileName[overload1]$$$fileName -->
+<h3 class="fn" id="fileName"><a name="fileName"></a><span class="type">QString</span> Document::<span class="name">fileName</span>() const</h3>
+<!-- @@@fileName -->
+<!-- $$$fingerprint[overload1]$$$fingerprint -->
+<h3 class="fn" id="fingerprint"><a name="fingerprint"></a><span class="type">QByteArray</span> Document::<span class="name">fingerprint</span>() const</h3>
+<!-- @@@fingerprint -->
+<!-- $$$importId[overload1]$$$importId -->
+<h3 class="fn" id="importId"><a name="importId"></a><span class="type">QString</span> Document::<span class="name">importId</span>() const</h3>
+<!-- @@@importId -->
+<!-- $$$isParsedCorrectly[overload1]$$$isParsedCorrectly -->
+<h3 class="fn" id="isParsedCorrectly"><a name="isParsedCorrectly"></a><span class="type">bool</span> Document::<span class="name">isParsedCorrectly</span>() const</h3>
+<!-- @@@isParsedCorrectly -->
+<!-- $$$isQmlDocument[overload1]$$$isQmlDocument -->
+<h3 class="fn" id="isQmlDocument"><a name="isQmlDocument"></a><span class="type">bool</span> Document::<span class="name">isQmlDocument</span>() const</h3>
+<!-- @@@isQmlDocument -->
+<!-- $$$jsProgram[overload1]$$$jsProgram -->
+<h3 class="fn" id="jsProgram"><a name="jsProgram"></a><span class="type">AST::Program</span> *Document::<span class="name">jsProgram</span>() const</h3>
+<!-- @@@jsProgram -->
+<!-- $$$language[overload1]$$$language -->
+<h3 class="fn" id="language"><a name="language"></a><span class="type"><a href="qmljs-dialect.html">Dialect</a></span> Document::<span class="name">language</span>() const</h3>
+<p><b>See also </b><a href="qmljs-document.html#setLanguage">setLanguage</a>().</p>
+<!-- @@@language -->
+<!-- $$$parse[overload1]$$$parse -->
+<h3 class="fn" id="parse"><a name="parse"></a><span class="type">bool</span> Document::<span class="name">parse</span>()</h3>
+<!-- @@@parse -->
+<!-- $$$parseExpression[overload1]$$$parseExpression -->
+<h3 class="fn" id="parseExpression"><a name="parseExpression"></a><span class="type">bool</span> Document::<span class="name">parseExpression</span>()</h3>
+<!-- @@@parseExpression -->
+<!-- $$$parseJavaScript[overload1]$$$parseJavaScript -->
+<h3 class="fn" id="parseJavaScript"><a name="parseJavaScript"></a><span class="type">bool</span> Document::<span class="name">parseJavaScript</span>()</h3>
+<!-- @@@parseJavaScript -->
+<!-- $$$parseQml[overload1]$$$parseQml -->
+<h3 class="fn" id="parseQml"><a name="parseQml"></a><span class="type">bool</span> Document::<span class="name">parseQml</span>()</h3>
+<!-- @@@parseQml -->
+<!-- $$$path[overload1]$$$path -->
+<h3 class="fn" id="path"><a name="path"></a><span class="type">QString</span> Document::<span class="name">path</span>() const</h3>
+<!-- @@@path -->
+<!-- $$$ptr[overload1]$$$ptr -->
+<h3 class="fn" id="ptr"><a name="ptr"></a><span class="type"><a href="qmljs-document.html#Ptr-typedef">Document::Ptr</a></span> Document::<span class="name">ptr</span>() const</h3>
+<!-- @@@ptr -->
+<!-- $$$qmlProgram[overload1]$$$qmlProgram -->
+<h3 class="fn" id="qmlProgram"><a name="qmlProgram"></a><span class="type">AST::UiProgram</span> *Document::<span class="name">qmlProgram</span>() const</h3>
+<!-- @@@qmlProgram -->
+<!-- $$$setEditorRevision[overload1]$$$setEditorRevisionint -->
+<h3 class="fn" id="setEditorRevision"><a name="setEditorRevision"></a><span class="type">void</span> Document::<span class="name">setEditorRevision</span>(<span class="type">int</span> <i>revision</i>)</h3>
+<p><b>See also </b><a href="qmljs-document.html#editorRevision">editorRevision</a>().</p>
+<!-- @@@setEditorRevision -->
+<!-- $$$setLanguage[overload1]$$$setLanguageDialect -->
+<h3 class="fn" id="setLanguage"><a name="setLanguage"></a><span class="type">void</span> Document::<span class="name">setLanguage</span>(<span class="type"><a href="qmljs-dialect.html">Dialect</a></span> <i>l</i>)</h3>
+<p><b>See also </b><a href="qmljs-document.html#language">language</a>().</p>
+<!-- @@@setLanguage -->
+<!-- $$$setSource[overload1]$$$setSourceconstQString& -->
+<h3 class="fn" id="setSource"><a name="setSource"></a><span class="type">void</span> Document::<span class="name">setSource</span>(const <span class="type">QString</span> &amp;<i>source</i>)</h3>
+<p><b>See also </b><a href="qmljs-document.html#source">source</a>().</p>
+<!-- @@@setSource -->
+<!-- $$$source[overload1]$$$source -->
+<h3 class="fn" id="source"><a name="source"></a><span class="type">QString</span> Document::<span class="name">source</span>() const</h3>
+<p><b>See also </b><a href="qmljs-document.html#setSource">setSource</a>().</p>
+<!-- @@@source -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- androidapk.qdoc -->
+  <title>AndroidApk Item | Qbs Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="index.html">Qbs Manual</a></td><td >AndroidApk Item</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Qbs 1.9.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+  <link rel="next" href="applediskimage-item.html" />
+<p class="naviNextPrevious headerNavi">
+<a class="nextPage" href="applediskimage-item.html">AppleDiskImage Item</a>
+</p><p/>
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#androidapk-properties">AndroidApk Properties</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">AndroidApk Item</h1>
+<span class="subtitle"></span>
+<!-- $$$androidapk-item.html-description -->
+<div class="descr"> <a name="details"></a>
+<p>An <code>AndroidApk</code> item is a <code>Product</code> of type <i>android.apk</i>. It has a dependency on the <a href="android-sdk-module.html">Android.sdk module</a>. The final build result is an Android application package (APK) file. Here is what the project file could look like for the BasicMediaDecoder example that comes with the Android SDK:</p>
+<pre class="cpp">
+
+  import qbs
+
+  AndroidApk {
+      name: <span class="string">&quot;Basic Media Decoder&quot;</span>
+      packageName: <span class="string">&quot;com.example.android.basicmediadecoder&quot;</span>
+
+      property string sourcesPrefix: <span class="string">&quot;Application/src/main/&quot;</span>
+
+      resourcesDir: sourcesPrefix <span class="operator">+</span> <span class="string">&quot;/res&quot;</span>
+      sourcesDir: sourcesPrefix <span class="operator">+</span> <span class="string">&quot;/java&quot;</span>
+      manifestFile: sourcesPrefix <span class="operator">+</span> <span class="string">&quot;/AndroidManifest.xml&quot;</span>
+  }
+
+</pre>
+<a name="androidapk-properties"></a>
+<h2 id="androidapk-properties">AndroidApk Properties</h2>
+<p>The following properties are available in addition to the ones inherited from <code>Product</code>.</p>
+<div class="table"><table class="generic">
+ <thead><tr class="qt-style"><th >Property</th><th >Type</th><th >Default</th><th >Description</th></tr></thead>
+<tr valign="top" class="odd"><td >assetsDir</td><td >path</td><td ><code>&quot;assets&quot;</code></td><td >The base directory for Android assets.<p><b>Note: </b>Android requires that the file name of this directory is always &quot;assets&quot;.</p></td></tr>
+<tr valign="top" class="even"><td >automaticSources</td><td >bool</td><td ><code>true</code></td><td >If this is enabled, Java sources as well as Android resources, assets and the manifest file will be automatically included in the product via wildcards. Set this property to <code>false</code> if you want to specify these files manually.</td></tr>
+<tr valign="top" class="odd"><td >manifestFile</td><td >path</td><td ><code>&quot;AndroidManifest.xml&quot;</code></td><td >The file path to the Android manifest file.<p><b>Note: </b>Android requires that the file name is always &quot;AndroidManifest.xml&quot;.</p></td></tr>
+<tr valign="top" class="even"><td >packageName</td><td >string</td><td ><code>name</code></td><td >The package name as given in the manifest file.</td></tr>
+<tr valign="top" class="odd"><td >resourcesDir</td><td >path</td><td ><code>&quot;res&quot;</code></td><td >The base directory for Android resources.<p><b>Note: </b>Android requires that the file name of this directory is always &quot;res&quot;.</p></td></tr>
+<tr valign="top" class="even"><td >sourcesDir</td><td >path</td><td ><code>&quot;src&quot;</code></td><td >The base directory for Java sources. This property is only relevant if <code>automaticSources</code> is enabled.</td></tr>
+</table></div>
+</div>
+<!-- @@@androidapk-item.html -->
+<p class="naviNextPrevious footerNavi">
+<a class="nextPage" href="applediskimage-item.html">AppleDiskImage Item</a>
+</p>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

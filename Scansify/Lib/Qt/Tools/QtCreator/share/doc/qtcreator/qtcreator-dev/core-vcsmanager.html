@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>VcsManager Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >VcsManager</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">VcsManager Class</h1>
+<span class="small-subtitle">(<a href="core-vcsmanager.html">Core::VcsManager</a>)<br/></span>
+<ul>
+<li><a href="core-vcsmanager-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-slots"></a>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#clearVersionControlCache">clearVersionControlCache</a></b>()</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#configurationChanged">configurationChanged</a></b>(const IVersionControl *<i>vcs</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#repositoryChanged">repositoryChanged</a></b>(const QString &amp;<i>repository</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#emitRepositoryChanged">emitRepositoryChanged</a></b>(const QString &amp;<i>repository</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#extensionsInitialized">extensionsInitialized</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#findTopLevelForDirectory">findTopLevelForDirectory</a></b>(const QString &amp;<i>directory</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> IVersionControl *</td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#findVersionControlForDirectory">findVersionControlForDirectory</a></b>(const QString &amp;<i>directory</i>, QString *<i>topLevelDirectory</i> = 0)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> VcsManager *</td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#instance">instance</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#msgAddToVcsFailedTitle">msgAddToVcsFailedTitle</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#msgAddToVcsTitle">msgAddToVcsTitle</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#msgPromptToAddToVcs">msgPromptToAddToVcs</a></b>(const QStringList &amp;<i>files</i>, const IVersionControl *<i>vc</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#msgToAddToVcsFailed">msgToAddToVcsFailed</a></b>(const QStringList &amp;<i>files</i>, const IVersionControl *<i>vc</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#promptToAdd">promptToAdd</a></b>(const QString &amp;<i>directory</i>, const QStringList &amp;<i>fileNames</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#promptToDelete">promptToDelete</a></b>(const QString &amp;<i>fileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#promptToDelete-1">promptToDelete</a></b>(IVersionControl *<i>versionControl</i>, const QString &amp;<i>fileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QStringList </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#repositories">repositories</a></b>(<i>const IVersionControl *</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#resetVersionControlForDirectory">resetVersionControlForDirectory</a></b>(const QString &amp;<i>inputDirectory</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> IVersionControl *</td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#versionControl">versionControl</a></b>(Id <i>id</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;IVersionControl *&gt; </td><td class="memItemRight bottomAlign"><b><a href="core-vcsmanager.html#versionControls">versionControls</a></b>()</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$clearVersionControlCache[overload1]$$$clearVersionControlCache -->
+<h3 class="fn" id="clearVersionControlCache"><a name="clearVersionControlCache"></a><code>[static slot] </code><span class="type">void</span> VcsManager::<span class="name">clearVersionControlCache</span>()</h3>
+<!-- @@@clearVersionControlCache -->
+<!-- $$$configurationChanged[overload1]$$$configurationChangedconstIVersionControl* -->
+<h3 class="fn" id="configurationChanged"><a name="configurationChanged"></a><code>[signal] </code><span class="type">void</span> VcsManager::<span class="name">configurationChanged</span>(const <span class="type"><a href="core-iversioncontrol.html">IVersionControl</a></span> *<i>vcs</i>)</h3>
+<!-- @@@configurationChanged -->
+<!-- $$$emitRepositoryChanged[overload1]$$$emitRepositoryChangedconstQString& -->
+<h3 class="fn" id="emitRepositoryChanged"><a name="emitRepositoryChanged"></a><code>[static] </code><span class="type">void</span> VcsManager::<span class="name">emitRepositoryChanged</span>(const <span class="type">QString</span> &amp;<i>repository</i>)</h3>
+<!-- @@@emitRepositoryChanged -->
+<!-- $$$extensionsInitialized[overload1]$$$extensionsInitialized -->
+<h3 class="fn" id="extensionsInitialized"><a name="extensionsInitialized"></a><code>[static] </code><span class="type">void</span> VcsManager::<span class="name">extensionsInitialized</span>()</h3>
+<!-- @@@extensionsInitialized -->
+<!-- $$$findTopLevelForDirectory[overload1]$$$findTopLevelForDirectoryconstQString& -->
+<h3 class="fn" id="findTopLevelForDirectory"><a name="findTopLevelForDirectory"></a><code>[static] </code><span class="type">QString</span> VcsManager::<span class="name">findTopLevelForDirectory</span>(const <span class="type">QString</span> &amp;<i>directory</i>)</h3>
+<!-- @@@findTopLevelForDirectory -->
+<!-- $$$findVersionControlForDirectory[overload1]$$$findVersionControlForDirectoryconstQString&QString* -->
+<h3 class="fn" id="findVersionControlForDirectory"><a name="findVersionControlForDirectory"></a><code>[static] </code><span class="type"><a href="core-iversioncontrol.html">IVersionControl</a></span> *VcsManager::<span class="name">findVersionControlForDirectory</span>(const <span class="type">QString</span> &amp;<i>directory</i>, <span class="type">QString</span> *<i>topLevelDirectory</i> = 0)</h3>
+<!-- @@@findVersionControlForDirectory -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" id="instance"><a name="instance"></a><code>[static] </code><span class="type">VcsManager</span> *VcsManager::<span class="name">instance</span>()</h3>
+<!-- @@@instance -->
+<!-- $$$msgAddToVcsFailedTitle[overload1]$$$msgAddToVcsFailedTitle -->
+<h3 class="fn" id="msgAddToVcsFailedTitle"><a name="msgAddToVcsFailedTitle"></a><code>[static] </code><span class="type">QString</span> VcsManager::<span class="name">msgAddToVcsFailedTitle</span>()</h3>
+<!-- @@@msgAddToVcsFailedTitle -->
+<!-- $$$msgAddToVcsTitle[overload1]$$$msgAddToVcsTitle -->
+<h3 class="fn" id="msgAddToVcsTitle"><a name="msgAddToVcsTitle"></a><code>[static] </code><span class="type">QString</span> VcsManager::<span class="name">msgAddToVcsTitle</span>()</h3>
+<!-- @@@msgAddToVcsTitle -->
+<!-- $$$msgPromptToAddToVcs[overload1]$$$msgPromptToAddToVcsconstQStringList&constIVersionControl* -->
+<h3 class="fn" id="msgPromptToAddToVcs"><a name="msgPromptToAddToVcs"></a><code>[static] </code><span class="type">QString</span> VcsManager::<span class="name">msgPromptToAddToVcs</span>(const <span class="type">QStringList</span> &amp;<i>files</i>, const <span class="type"><a href="core-iversioncontrol.html">IVersionControl</a></span> *<i>vc</i>)</h3>
+<!-- @@@msgPromptToAddToVcs -->
+<!-- $$$msgToAddToVcsFailed[overload1]$$$msgToAddToVcsFailedconstQStringList&constIVersionControl* -->
+<h3 class="fn" id="msgToAddToVcsFailed"><a name="msgToAddToVcsFailed"></a><code>[static] </code><span class="type">QString</span> VcsManager::<span class="name">msgToAddToVcsFailed</span>(const <span class="type">QStringList</span> &amp;<i>files</i>, const <span class="type"><a href="core-iversioncontrol.html">IVersionControl</a></span> *<i>vc</i>)</h3>
+<!-- @@@msgToAddToVcsFailed -->
+<!-- $$$promptToAdd[overload1]$$$promptToAddconstQString&constQStringList& -->
+<h3 class="fn" id="promptToAdd"><a name="promptToAdd"></a><code>[static] </code><span class="type">void</span> VcsManager::<span class="name">promptToAdd</span>(const <span class="type">QString</span> &amp;<i>directory</i>, const <span class="type">QStringList</span> &amp;<i>fileNames</i>)</h3>
+<!-- @@@promptToAdd -->
+<!-- $$$promptToDelete[overload1]$$$promptToDeleteconstQString& -->
+<h3 class="fn" id="promptToDelete"><a name="promptToDelete"></a><code>[static] </code><span class="type">bool</span> VcsManager::<span class="name">promptToDelete</span>(const <span class="type">QString</span> &amp;<i>fileName</i>)</h3>
+<!-- @@@promptToDelete -->
+<!-- $$$promptToDelete$$$promptToDeleteIVersionControl*constQString& -->
+<h3 class="fn" id="promptToDelete-1"><a name="promptToDelete-1"></a><code>[static] </code><span class="type">bool</span> VcsManager::<span class="name">promptToDelete</span>(<span class="type"><a href="core-iversioncontrol.html">IVersionControl</a></span> *<i>versionControl</i>, const <span class="type">QString</span> &amp;<i>fileName</i>)</h3>
+<!-- @@@promptToDelete -->
+<!-- $$$repositories[overload1]$$$repositoriesconstIVersionControl* -->
+<h3 class="fn" id="repositories"><a name="repositories"></a><code>[static] </code><span class="type">QStringList</span> VcsManager::<span class="name">repositories</span>(<i>const IVersionControl *</i>)</h3>
+<!-- @@@repositories -->
+<!-- $$$repositoryChanged[overload1]$$$repositoryChangedconstQString& -->
+<h3 class="fn" id="repositoryChanged"><a name="repositoryChanged"></a><code>[signal] </code><span class="type">void</span> VcsManager::<span class="name">repositoryChanged</span>(const <span class="type">QString</span> &amp;<i>repository</i>)</h3>
+<!-- @@@repositoryChanged -->
+<!-- $$$resetVersionControlForDirectory[overload1]$$$resetVersionControlForDirectoryconstQString& -->
+<h3 class="fn" id="resetVersionControlForDirectory"><a name="resetVersionControlForDirectory"></a><code>[static] </code><span class="type">void</span> VcsManager::<span class="name">resetVersionControlForDirectory</span>(const <span class="type">QString</span> &amp;<i>inputDirectory</i>)</h3>
+<!-- @@@resetVersionControlForDirectory -->
+<!-- $$$versionControl[overload1]$$$versionControlId -->
+<h3 class="fn" id="versionControl"><a name="versionControl"></a><code>[static] </code><span class="type"><a href="core-iversioncontrol.html">IVersionControl</a></span> *VcsManager::<span class="name">versionControl</span>(<span class="type"><a href="core-id.html">Id</a></span> <i>id</i>)</h3>
+<!-- @@@versionControl -->
+<!-- $$$versionControls[overload1]$$$versionControls -->
+<h3 class="fn" id="versionControls"><a name="versionControls"></a><code>[static] </code><span class="type">QList</span>&lt;<span class="type"><a href="core-iversioncontrol.html">IVersionControl</a></span> *&gt; VcsManager::<span class="name">versionControls</span>()</h3>
+<!-- @@@versionControls -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

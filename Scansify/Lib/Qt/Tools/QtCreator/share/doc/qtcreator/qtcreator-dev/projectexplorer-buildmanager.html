@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>BuildManager Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >BuildManager</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#signals">Signals</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">BuildManager Class</h1>
+<span class="small-subtitle">(<a href="projectexplorer-buildmanager.html">ProjectExplorer::BuildManager</a>)<br/></span>
+<ul>
+<li><a href="projectexplorer-buildmanager-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#BuildManager">BuildManager</a></b>(QObject *<i>parent</i>, QAction *<i>cancelBuildAction</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#dtor.BuildManager">~BuildManager</a></b>() override</td></tr>
+</table></div>
+<a name="public-slots"></a>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#aboutToRemoveProject">aboutToRemoveProject</a></b>(ProjectExplorer::Project *<i>p</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#cancel">cancel</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#showTaskWindow">showTaskWindow</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#toggleOutputWindow">toggleOutputWindow</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#toggleTaskWindow">toggleTaskWindow</a></b>()</td></tr>
+</table></div>
+<a name="signals"></a>
+<h2 id="signals">Signals</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#buildQueueFinished">buildQueueFinished</a></b>(bool <i>success</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#buildStateChanged">buildStateChanged</a></b>(ProjectExplorer::Project *<i>pro</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#taskAdded">taskAdded</a></b>(const ProjectExplorer::Task &amp;<i>task</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#tasksChanged">tasksChanged</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#tasksCleared">tasksCleared</a></b>()</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#appendStep">appendStep</a></b>(BuildStep *<i>step</i>, const QString &amp;<i>name</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#buildList">buildList</a></b>(BuildStepList *<i>bsl</i>, const QString &amp;<i>stepListName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#buildLists">buildLists</a></b>(QList&lt;BuildStepList *&gt; <i>bsls</i>, const QStringList &amp;<i>stepListNames</i>, const QStringList &amp;<i>preambelMessage</i> = QStringList())</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#extensionsInitialized">extensionsInitialized</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#getErrorTaskCount">getErrorTaskCount</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> BuildManager *</td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#instance">instance</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#isBuilding">isBuilding</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#isBuilding-1">isBuilding</a></b>(const Project *<i>p</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#isBuilding-2">isBuilding</a></b>(const Target *<i>t</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#isBuilding-3">isBuilding</a></b>(const ProjectConfiguration *<i>p</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#isBuilding-4">isBuilding</a></b>(BuildStep *<i>step</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="projectexplorer-buildmanager.html#tasksAvailable">tasksAvailable</a></b>()</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$BuildManager[overload1]$$$BuildManagerQObject*QAction* -->
+<h3 class="fn" id="BuildManager"><a name="BuildManager"></a>BuildManager::<span class="name">BuildManager</span>(<span class="type">QObject</span> *<i>parent</i>, <span class="type">QAction</span> *<i>cancelBuildAction</i>)</h3>
+<p>Default constructs an instance of BuildManager.</p><!-- @@@BuildManager -->
+<!-- $$$~BuildManager[overload1]$$$~BuildManager -->
+<h3 class="fn" id="dtor.BuildManager"><a name="dtor.BuildManager"></a>BuildManager::<span class="name">~BuildManager</span>()</h3>
+<p>Destroys the instance of BuildManager.</p><!-- @@@~BuildManager -->
+<!-- $$$aboutToRemoveProject[overload1]$$$aboutToRemoveProjectProjectExplorer::Project* -->
+<h3 class="fn" id="aboutToRemoveProject"><a name="aboutToRemoveProject"></a><code>[static slot] </code><span class="type">void</span> BuildManager::<span class="name">aboutToRemoveProject</span>(<span class="type"><a href="projectexplorer-project.html">ProjectExplorer::Project</a></span> *<i>p</i>)</h3>
+<!-- @@@aboutToRemoveProject -->
+<!-- $$$appendStep[overload1]$$$appendStepBuildStep*constQString& -->
+<h3 class="fn" id="appendStep"><a name="appendStep"></a><code>[static] </code><span class="type">void</span> BuildManager::<span class="name">appendStep</span>(<span class="type"><a href="projectexplorer-buildstep.html">BuildStep</a></span> *<i>step</i>, const <span class="type">QString</span> &amp;<i>name</i>)</h3>
+<!-- @@@appendStep -->
+<!-- $$$buildList[overload1]$$$buildListBuildStepList*constQString& -->
+<h3 class="fn" id="buildList"><a name="buildList"></a><code>[static] </code><span class="type">bool</span> BuildManager::<span class="name">buildList</span>(<span class="type"><a href="projectexplorer-buildsteplist.html">BuildStepList</a></span> *<i>bsl</i>, const <span class="type">QString</span> &amp;<i>stepListName</i>)</h3>
+<!-- @@@buildList -->
+<!-- $$$buildLists[overload1]$$$buildListsQList<BuildStepList*>constQStringList&constQStringList& -->
+<h3 class="fn" id="buildLists"><a name="buildLists"></a><code>[static] </code><span class="type">bool</span> BuildManager::<span class="name">buildLists</span>(<span class="type">QList</span>&lt;<span class="type"><a href="projectexplorer-buildsteplist.html">BuildStepList</a></span> *&gt; <i>bsls</i>, const <span class="type">QStringList</span> &amp;<i>stepListNames</i>, const <span class="type">QStringList</span> &amp;<i>preambelMessage</i> = QStringList())</h3>
+<!-- @@@buildLists -->
+<!-- $$$buildQueueFinished[overload1]$$$buildQueueFinishedbool -->
+<h3 class="fn" id="buildQueueFinished"><a name="buildQueueFinished"></a><code>[signal] </code><span class="type">void</span> BuildManager::<span class="name">buildQueueFinished</span>(<span class="type">bool</span> <i>success</i>)</h3>
+<!-- @@@buildQueueFinished -->
+<!-- $$$buildStateChanged[overload1]$$$buildStateChangedProjectExplorer::Project* -->
+<h3 class="fn" id="buildStateChanged"><a name="buildStateChanged"></a><code>[signal] </code><span class="type">void</span> BuildManager::<span class="name">buildStateChanged</span>(<span class="type"><a href="projectexplorer-project.html">ProjectExplorer::Project</a></span> *<i>pro</i>)</h3>
+<!-- @@@buildStateChanged -->
+<!-- $$$cancel[overload1]$$$cancel -->
+<h3 class="fn" id="cancel"><a name="cancel"></a><code>[static slot] </code><span class="type">void</span> BuildManager::<span class="name">cancel</span>()</h3>
+<!-- @@@cancel -->
+<!-- $$$extensionsInitialized[overload1]$$$extensionsInitialized -->
+<h3 class="fn" id="extensionsInitialized"><a name="extensionsInitialized"></a><code>[static] </code><span class="type">void</span> BuildManager::<span class="name">extensionsInitialized</span>()</h3>
+<!-- @@@extensionsInitialized -->
+<!-- $$$getErrorTaskCount[overload1]$$$getErrorTaskCount -->
+<h3 class="fn" id="getErrorTaskCount"><a name="getErrorTaskCount"></a><code>[static] </code><span class="type">int</span> BuildManager::<span class="name">getErrorTaskCount</span>()</h3>
+<!-- @@@getErrorTaskCount -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" id="instance"><a name="instance"></a><code>[static] </code><span class="type"><a href="projectexplorer-buildmanager.html#BuildManager">BuildManager</a></span> *BuildManager::<span class="name">instance</span>()</h3>
+<!-- @@@instance -->
+<!-- $$$isBuilding[overload1]$$$isBuilding -->
+<h3 class="fn" id="isBuilding"><a name="isBuilding"></a><code>[static] </code><span class="type">bool</span> BuildManager::<span class="name">isBuilding</span>()</h3>
+<!-- @@@isBuilding -->
+<!-- $$$isBuilding$$$isBuildingconstProject* -->
+<h3 class="fn" id="isBuilding-1"><a name="isBuilding-1"></a><code>[static] </code><span class="type">bool</span> BuildManager::<span class="name">isBuilding</span>(const <span class="type"><a href="projectexplorer-project.html">Project</a></span> *<i>p</i>)</h3>
+<!-- @@@isBuilding -->
+<!-- $$$isBuilding$$$isBuildingconstTarget* -->
+<h3 class="fn" id="isBuilding-2"><a name="isBuilding-2"></a><code>[static] </code><span class="type">bool</span> BuildManager::<span class="name">isBuilding</span>(const <span class="type"><a href="projectexplorer-target.html">Target</a></span> *<i>t</i>)</h3>
+<!-- @@@isBuilding -->
+<!-- $$$isBuilding$$$isBuildingconstProjectConfiguration* -->
+<h3 class="fn" id="isBuilding-3"><a name="isBuilding-3"></a><code>[static] </code><span class="type">bool</span> BuildManager::<span class="name">isBuilding</span>(const <span class="type"><a href="projectexplorer-projectconfiguration.html">ProjectConfiguration</a></span> *<i>p</i>)</h3>
+<!-- @@@isBuilding -->
+<!-- $$$isBuilding$$$isBuildingBuildStep* -->
+<h3 class="fn" id="isBuilding-4"><a name="isBuilding-4"></a><code>[static] </code><span class="type">bool</span> BuildManager::<span class="name">isBuilding</span>(<span class="type"><a href="projectexplorer-buildstep.html">BuildStep</a></span> *<i>step</i>)</h3>
+<!-- @@@isBuilding -->
+<!-- $$$showTaskWindow[overload1]$$$showTaskWindow -->
+<h3 class="fn" id="showTaskWindow"><a name="showTaskWindow"></a><code>[static slot] </code><span class="type">void</span> BuildManager::<span class="name">showTaskWindow</span>()</h3>
+<!-- @@@showTaskWindow -->
+<!-- $$$taskAdded[overload1]$$$taskAddedconstProjectExplorer::Task& -->
+<h3 class="fn" id="taskAdded"><a name="taskAdded"></a><code>[signal] </code><span class="type">void</span> BuildManager::<span class="name">taskAdded</span>(const <span class="type"><a href="projectexplorer-task.html">ProjectExplorer::Task</a></span> &amp;<i>task</i>)</h3>
+<!-- @@@taskAdded -->
+<!-- $$$tasksAvailable[overload1]$$$tasksAvailable -->
+<h3 class="fn" id="tasksAvailable"><a name="tasksAvailable"></a><code>[static] </code><span class="type">bool</span> BuildManager::<span class="name">tasksAvailable</span>()</h3>
+<!-- @@@tasksAvailable -->
+<!-- $$$tasksChanged[overload1]$$$tasksChanged -->
+<h3 class="fn" id="tasksChanged"><a name="tasksChanged"></a><code>[signal] </code><span class="type">void</span> BuildManager::<span class="name">tasksChanged</span>()</h3>
+<!-- @@@tasksChanged -->
+<!-- $$$tasksCleared[overload1]$$$tasksCleared -->
+<h3 class="fn" id="tasksCleared"><a name="tasksCleared"></a><code>[signal] </code><span class="type">void</span> BuildManager::<span class="name">tasksCleared</span>()</h3>
+<!-- @@@tasksCleared -->
+<!-- $$$toggleOutputWindow[overload1]$$$toggleOutputWindow -->
+<h3 class="fn" id="toggleOutputWindow"><a name="toggleOutputWindow"></a><code>[static slot] </code><span class="type">void</span> BuildManager::<span class="name">toggleOutputWindow</span>()</h3>
+<!-- @@@toggleOutputWindow -->
+<!-- $$$toggleTaskWindow[overload1]$$$toggleTaskWindow -->
+<h3 class="fn" id="toggleTaskWindow"><a name="toggleTaskWindow"></a><code>[static slot] </code><span class="type">void</span> BuildManager::<span class="name">toggleTaskWindow</span>()</h3>
+<!-- @@@toggleTaskWindow -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

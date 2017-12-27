@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Snapshot Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >Snapshot</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">Snapshot Class</h1>
+<span class="small-subtitle">(<a href="cplusplus-snapshot.html">CPlusPlus::Snapshot</a>)<br/></span>
+<ul>
+<li><a href="cplusplus-snapshot-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#IncludeLocation-typedef">IncludeLocation</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#const_iterator-typedef">const_iterator</a></b></td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> typedef </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#iterator-typedef">iterator</a></b></td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#Snapshot">Snapshot</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#dtor.Snapshot">~Snapshot</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QSet&lt;QString&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#allIncludesForDocument">allIncludesForDocument</a></b>(const QString &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const_iterator </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#begin">begin</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#contains">contains</a></b>(const Utils::FileName &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#contains-1">contains</a></b>(const QString &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Document::Ptr </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#document">document</a></b>(const Utils::FileName &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Document::Ptr </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#document-1">document</a></b>(const QString &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Document::Ptr </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#documentFromSource">documentFromSource</a></b>(const QByteArray &amp;<i>preprocessedDocument</i>, const QString &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const_iterator </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#end">end</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FileNameList </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#filesDependingOn">filesDependingOn</a></b>(const Utils::FileName &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Utils::FileNameList </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#filesDependingOn-1">filesDependingOn</a></b>(const QString &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const_iterator </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#find">find</a></b>(const Utils::FileName &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const_iterator </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#find-1">find</a></b>(const QString &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QList&lt;IncludeLocation&gt; </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#includeLocationsOfDocument">includeLocationsOfDocument</a></b>(const QString &amp;<i>fileName</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#insert">insert</a></b>(Document::Ptr <i>doc</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#isEmpty">isEmpty</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Document::Ptr </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#preprocessedDocument">preprocessedDocument</a></b>(const QByteArray &amp;<i>source</i>, const Utils::FileName &amp;<i>fileName</i>, int <i>withDefinedMacrosFromDocumentUntilLine</i> = -1) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Document::Ptr </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#preprocessedDocument-1">preprocessedDocument</a></b>(const QByteArray &amp;<i>source</i>, const QString &amp;<i>fileName</i>, int <i>withDefinedMacrosFromDocumentUntilLine</i> = -1) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#remove">remove</a></b>(const Utils::FileName &amp;<i>fileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#remove-1">remove</a></b>(const QString &amp;<i>fileName</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> Snapshot </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#simplified">simplified</a></b>(Document::Ptr <i>doc</i>) const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#size">size</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#updateDependencyTable">updateDependencyTable</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="cplusplus-snapshot.html#operator-eq-eq">operator==</a></b>(const Snapshot &amp;<i>other</i>) const</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$IncludeLocation -->
+<h3 class="fn" id="IncludeLocation-typedef"><a name="IncludeLocation-typedef"></a>typedef Snapshot::<span class="name">IncludeLocation</span></h3>
+<!-- @@@IncludeLocation -->
+<!-- $$$const_iterator -->
+<h3 class="fn" id="const_iterator-typedef"><a name="const_iterator-typedef"></a>typedef Snapshot::<span class="name">const_iterator</span></h3>
+<!-- @@@const_iterator -->
+<!-- $$$iterator -->
+<h3 class="fn" id="iterator-typedef"><a name="iterator-typedef"></a>typedef Snapshot::<span class="name">iterator</span></h3>
+<!-- @@@iterator -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$Snapshot[overload1]$$$Snapshot -->
+<h3 class="fn" id="Snapshot"><a name="Snapshot"></a>Snapshot::<span class="name">Snapshot</span>()</h3>
+<p>Default constructs an instance of Snapshot.</p><!-- @@@Snapshot -->
+<!-- $$$~Snapshot[overload1]$$$~Snapshot -->
+<h3 class="fn" id="dtor.Snapshot"><a name="dtor.Snapshot"></a>Snapshot::<span class="name">~Snapshot</span>()</h3>
+<p>Destroys the instance of Snapshot.</p><!-- @@@~Snapshot -->
+<!-- $$$allIncludesForDocument[overload1]$$$allIncludesForDocumentconstQString& -->
+<h3 class="fn" id="allIncludesForDocument"><a name="allIncludesForDocument"></a><span class="type">QSet</span>&lt;<span class="type">QString</span>&gt; Snapshot::<span class="name">allIncludesForDocument</span>(const <span class="type">QString</span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@allIncludesForDocument -->
+<!-- $$$begin[overload1]$$$begin -->
+<h3 class="fn" id="begin"><a name="begin"></a><span class="type"><a href="cplusplus-snapshot.html#const_iterator-typedef">const_iterator</a></span> Snapshot::<span class="name">begin</span>() const</h3>
+<!-- @@@begin -->
+<!-- $$$contains[overload1]$$$containsconstUtils::FileName& -->
+<h3 class="fn" id="contains"><a name="contains"></a><span class="type">bool</span> Snapshot::<span class="name">contains</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@contains -->
+<!-- $$$contains$$$containsconstQString& -->
+<h3 class="fn" id="contains-1"><a name="contains-1"></a><span class="type">bool</span> Snapshot::<span class="name">contains</span>(const <span class="type">QString</span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@contains -->
+<!-- $$$document[overload1]$$$documentconstUtils::FileName& -->
+<h3 class="fn" id="document"><a name="document"></a><span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> Snapshot::<span class="name">document</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@document -->
+<!-- $$$document$$$documentconstQString& -->
+<h3 class="fn" id="document-1"><a name="document-1"></a><span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> Snapshot::<span class="name">document</span>(const <span class="type">QString</span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@document -->
+<!-- $$$documentFromSource[overload1]$$$documentFromSourceconstQByteArray&constQString& -->
+<h3 class="fn" id="documentFromSource"><a name="documentFromSource"></a><span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> Snapshot::<span class="name">documentFromSource</span>(const <span class="type">QByteArray</span> &amp;<i>preprocessedDocument</i>, const <span class="type">QString</span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@documentFromSource -->
+<!-- $$$end[overload1]$$$end -->
+<h3 class="fn" id="end"><a name="end"></a><span class="type"><a href="cplusplus-snapshot.html#const_iterator-typedef">const_iterator</a></span> Snapshot::<span class="name">end</span>() const</h3>
+<!-- @@@end -->
+<!-- $$$filesDependingOn[overload1]$$$filesDependingOnconstUtils::FileName& -->
+<h3 class="fn" id="filesDependingOn"><a name="filesDependingOn"></a><span class="type">Utils::FileNameList</span> Snapshot::<span class="name">filesDependingOn</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@filesDependingOn -->
+<!-- $$$filesDependingOn$$$filesDependingOnconstQString& -->
+<h3 class="fn" id="filesDependingOn-1"><a name="filesDependingOn-1"></a><span class="type">Utils::FileNameList</span> Snapshot::<span class="name">filesDependingOn</span>(const <span class="type">QString</span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@filesDependingOn -->
+<!-- $$$find[overload1]$$$findconstUtils::FileName& -->
+<h3 class="fn" id="find"><a name="find"></a><span class="type"><a href="cplusplus-snapshot.html#const_iterator-typedef">const_iterator</a></span> Snapshot::<span class="name">find</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@find -->
+<!-- $$$find$$$findconstQString& -->
+<h3 class="fn" id="find-1"><a name="find-1"></a><span class="type"><a href="cplusplus-snapshot.html#const_iterator-typedef">const_iterator</a></span> Snapshot::<span class="name">find</span>(const <span class="type">QString</span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@find -->
+<!-- $$$includeLocationsOfDocument[overload1]$$$includeLocationsOfDocumentconstQString& -->
+<h3 class="fn" id="includeLocationsOfDocument"><a name="includeLocationsOfDocument"></a><span class="type">QList</span>&lt;<span class="type"><a href="cplusplus-snapshot.html#IncludeLocation-typedef">IncludeLocation</a></span>&gt; Snapshot::<span class="name">includeLocationsOfDocument</span>(const <span class="type">QString</span> &amp;<i>fileName</i>) const</h3>
+<!-- @@@includeLocationsOfDocument -->
+<!-- $$$insert[overload1]$$$insertDocument::Ptr -->
+<h3 class="fn" id="insert"><a name="insert"></a><span class="type">void</span> Snapshot::<span class="name">insert</span>(<span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> <i>doc</i>)</h3>
+<!-- @@@insert -->
+<!-- $$$isEmpty[overload1]$$$isEmpty -->
+<h3 class="fn" id="isEmpty"><a name="isEmpty"></a><span class="type">bool</span> Snapshot::<span class="name">isEmpty</span>() const</h3>
+<!-- @@@isEmpty -->
+<!-- $$$preprocessedDocument[overload1]$$$preprocessedDocumentconstQByteArray&constUtils::FileName&int -->
+<h3 class="fn" id="preprocessedDocument"><a name="preprocessedDocument"></a><span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> Snapshot::<span class="name">preprocessedDocument</span>(const <span class="type">QByteArray</span> &amp;<i>source</i>, const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>fileName</i>, <span class="type">int</span> <i>withDefinedMacrosFromDocumentUntilLine</i> = -1) const</h3>
+<!-- @@@preprocessedDocument -->
+<!-- $$$preprocessedDocument$$$preprocessedDocumentconstQByteArray&constQString&int -->
+<h3 class="fn" id="preprocessedDocument-1"><a name="preprocessedDocument-1"></a><span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> Snapshot::<span class="name">preprocessedDocument</span>(const <span class="type">QByteArray</span> &amp;<i>source</i>, const <span class="type">QString</span> &amp;<i>fileName</i>, <span class="type">int</span> <i>withDefinedMacrosFromDocumentUntilLine</i> = -1) const</h3>
+<!-- @@@preprocessedDocument -->
+<!-- $$$remove[overload1]$$$removeconstUtils::FileName& -->
+<h3 class="fn" id="remove"><a name="remove"></a><span class="type">void</span> Snapshot::<span class="name">remove</span>(const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>fileName</i>)</h3>
+<!-- @@@remove -->
+<!-- $$$remove$$$removeconstQString& -->
+<h3 class="fn" id="remove-1"><a name="remove-1"></a><span class="type">void</span> Snapshot::<span class="name">remove</span>(const <span class="type">QString</span> &amp;<i>fileName</i>)</h3>
+<!-- @@@remove -->
+<!-- $$$simplified[overload1]$$$simplifiedDocument::Ptr -->
+<h3 class="fn" id="simplified"><a name="simplified"></a><span class="type"><a href="cplusplus-snapshot.html#Snapshot">Snapshot</a></span> Snapshot::<span class="name">simplified</span>(<span class="type"><a href="cplusplus-document.html#Ptr-typedef">Document::Ptr</a></span> <i>doc</i>) const</h3>
+<!-- @@@simplified -->
+<!-- $$$size[overload1]$$$size -->
+<h3 class="fn" id="size"><a name="size"></a><span class="type">int</span> Snapshot::<span class="name">size</span>() const</h3>
+<!-- @@@size -->
+<!-- $$$updateDependencyTable[overload1]$$$updateDependencyTable -->
+<h3 class="fn" id="updateDependencyTable"><a name="updateDependencyTable"></a><span class="type">void</span> Snapshot::<span class="name">updateDependencyTable</span>() const</h3>
+<!-- @@@updateDependencyTable -->
+<!-- $$$operator==[overload1]$$$operator==constSnapshot& -->
+<h3 class="fn" id="operator-eq-eq"><a name="operator-eq-eq"></a><span class="type">bool</span> Snapshot::<span class="name">operator==</span>(const <span class="type"><a href="cplusplus-snapshot.html#Snapshot">Snapshot</a></span> &amp;<i>other</i>) const</h3>
+<!-- @@@operator== -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

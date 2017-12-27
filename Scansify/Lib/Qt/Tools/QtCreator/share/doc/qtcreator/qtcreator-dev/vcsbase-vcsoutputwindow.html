@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>VcsOutputWindow Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >VcsOutputWindow</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#properties">Properties</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#reimplemented-public-functions">Reimplemented Public Functions</a></li>
+<li class="level1"><a href="#public-slots">Public Slots</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">VcsOutputWindow Class</h1>
+<span class="small-subtitle">(<a href="vcsbase-vcsoutputwindow.html">VcsBase::VcsOutputWindow</a>)<br/></span>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> Inherits:</td><td class="memItemRight bottomAlign"> <a href="core-ioutputpane.html">Core::IOutputPane</a></td></tr></table></div><ul>
+<li><a href="vcsbase-vcsoutputwindow-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#MessageStyle-enum">MessageStyle</a></b> { None, Error, Warning, Command, Message }</td></tr>
+</table></div>
+<a name="properties"></a>
+<h2 id="properties">Properties</h2>
+<ul>
+<li class="fn"><b><a href="vcsbase-vcsoutputwindow.html#repository-prop">repository</a></b> : QString</li>
+</ul>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#dtor.VcsOutputWindow">~VcsOutputWindow</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#repository-prop">repository</a></b>() const</td></tr>
+</table></div>
+<a name="reimplemented-public-functions"></a>
+<h2 id="reimplemented-public-functions">Reimplemented Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#canFocus">canFocus</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#canNavigate">canNavigate</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#canNext">canNext</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#canPrevious">canPrevious</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#clearContents">clearContents</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QString </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#displayName">displayName</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#goToNext">goToNext</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#goToPrev">goToPrev</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual bool </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#hasFocus">hasFocus</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QWidget *</td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#outputWidget">outputWidget</a></b>(QWidget *<i>parent</i>) override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual int </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#priorityInStatusBar">priorityInStatusBar</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#setFocus">setFocus</a></b>() override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual QList&lt;QWidget *&gt; </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#toolBarWidgets">toolBarWidgets</a></b>() const override</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> virtual void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#visibilityChanged">visibilityChanged</a></b>(bool <i>visible</i>) override</td></tr>
+</table></div>
+<ul>
+<li class="fn">14 public functions inherited from <a href="core-ioutputpane.html#public-functions">Core::IOutputPane</a></li>
+</ul>
+<a name="public-slots"></a>
+<h2 id="public-slots">Public Slots</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#appendCommand">appendCommand</a></b>(const QString &amp;<i>workingDirectory</i>, const Utils::FileName &amp;<i>binary</i>, const QStringList &amp;<i>args</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#appendError">appendError</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#appendMessage">appendMessage</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#appendShellCommandLine">appendShellCommandLine</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#appendSilently">appendSilently</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#appendWarning">appendWarning</a></b>(const QString &amp;<i>text</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#clearRepository">clearRepository</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#setData">setData</a></b>(const QByteArray &amp;<i>data</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#repository-prop">setRepository</a></b>(<i>const QString &amp;</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#setText">setText</a></b>(const QString &amp;<i>text</i>)</td></tr>
+</table></div>
+<ul>
+<li class="fn">6 public slots inherited from <a href="core-ioutputpane.html#public-slots">Core::IOutputPane</a></li>
+</ul>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> VcsOutputWindow *</td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#instance">instance</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> QString </td><td class="memItemRight bottomAlign"><b><a href="vcsbase-vcsoutputwindow.html#msgExecutionLogEntry">msgExecutionLogEntry</a></b>(const QString &amp;<i>workingDir</i>, const Utils::FileName &amp;<i>executable</i>, const QStringList &amp;<i>arguments</i>)</td></tr>
+</table></div>
+<h3>Additional Inherited Members</h3>
+<ul>
+<li class="fn">6 signals inherited from <a href="core-ioutputpane.html#signals">Core::IOutputPane</a></li>
+</ul>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$MessageStyle$$$None$$$Error$$$Warning$$$Command$$$Message -->
+<h3 class="fn" id="MessageStyle-enum"><a name="MessageStyle-enum"></a>enum VcsOutputWindow::<span class="name">MessageStyle</span></h3>
+<!-- @@@MessageStyle -->
+</div>
+<div class="prop">
+<h2>Property Documentation</h2>
+<!-- $$$repository-prop$$$repository$$$setRepositoryconstQString& -->
+<h3 class="fn" id="repository-prop"><a name="repository-prop"></a><span class="name">repository</span> : <span class="type">QString</span></h3>
+<p><b>Access functions:</b></p>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft topAlign rightAlign"> QString </td><td class="memItemRight bottomAlign"><span class="name"><b>repository</b></span>() const</td></tr>
+<tr><td class="memItemLeft topAlign rightAlign"> void </td><td class="memItemRight bottomAlign"><span class="name"><b>setRepository</b></span>(<i>const QString &amp;</i>)</td></tr>
+</table></div>
+<!-- @@@repository -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$~VcsOutputWindow[overload1]$$$~VcsOutputWindow -->
+<h3 class="fn" id="dtor.VcsOutputWindow"><a name="dtor.VcsOutputWindow"></a>VcsOutputWindow::<span class="name">~VcsOutputWindow</span>()</h3>
+<p>Destroys the instance of VcsOutputWindow.</p><!-- @@@~VcsOutputWindow -->
+<!-- $$$appendCommand[overload1]$$$appendCommandconstQString&constUtils::FileName&constQStringList& -->
+<h3 class="fn" id="appendCommand"><a name="appendCommand"></a><code>[static slot] </code><span class="type">void</span> VcsOutputWindow::<span class="name">appendCommand</span>(const <span class="type">QString</span> &amp;<i>workingDirectory</i>, const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>binary</i>, const <span class="type">QStringList</span> &amp;<i>args</i>)</h3>
+<!-- @@@appendCommand -->
+<!-- $$$appendError[overload1]$$$appendErrorconstQString& -->
+<h3 class="fn" id="appendError"><a name="appendError"></a><code>[static slot] </code><span class="type">void</span> VcsOutputWindow::<span class="name">appendError</span>(const <span class="type">QString</span> &amp;<i>text</i>)</h3>
+<!-- @@@appendError -->
+<!-- $$$appendMessage[overload1]$$$appendMessageconstQString& -->
+<h3 class="fn" id="appendMessage"><a name="appendMessage"></a><code>[static slot] </code><span class="type">void</span> VcsOutputWindow::<span class="name">appendMessage</span>(const <span class="type">QString</span> &amp;<i>text</i>)</h3>
+<!-- @@@appendMessage -->
+<!-- $$$appendShellCommandLine[overload1]$$$appendShellCommandLineconstQString& -->
+<h3 class="fn" id="appendShellCommandLine"><a name="appendShellCommandLine"></a><code>[static slot] </code><span class="type">void</span> VcsOutputWindow::<span class="name">appendShellCommandLine</span>(const <span class="type">QString</span> &amp;<i>text</i>)</h3>
+<!-- @@@appendShellCommandLine -->
+<!-- $$$appendSilently[overload1]$$$appendSilentlyconstQString& -->
+<h3 class="fn" id="appendSilently"><a name="appendSilently"></a><code>[static slot] </code><span class="type">void</span> VcsOutputWindow::<span class="name">appendSilently</span>(const <span class="type">QString</span> &amp;<i>text</i>)</h3>
+<!-- @@@appendSilently -->
+<!-- $$$appendWarning[overload1]$$$appendWarningconstQString& -->
+<h3 class="fn" id="appendWarning"><a name="appendWarning"></a><code>[static slot] </code><span class="type">void</span> VcsOutputWindow::<span class="name">appendWarning</span>(const <span class="type">QString</span> &amp;<i>text</i>)</h3>
+<!-- @@@appendWarning -->
+<!-- $$$canFocus[overload1]$$$canFocus -->
+<h3 class="fn" id="canFocus"><a name="canFocus"></a><code>[override virtual] </code><span class="type">bool</span> VcsOutputWindow::<span class="name">canFocus</span>() const</h3>
+<!-- @@@canFocus -->
+<!-- $$$canNavigate[overload1]$$$canNavigate -->
+<h3 class="fn" id="canNavigate"><a name="canNavigate"></a><code>[override virtual] </code><span class="type">bool</span> VcsOutputWindow::<span class="name">canNavigate</span>() const</h3>
+<!-- @@@canNavigate -->
+<!-- $$$canNext[overload1]$$$canNext -->
+<h3 class="fn" id="canNext"><a name="canNext"></a><code>[override virtual] </code><span class="type">bool</span> VcsOutputWindow::<span class="name">canNext</span>() const</h3>
+<!-- @@@canNext -->
+<!-- $$$canPrevious[overload1]$$$canPrevious -->
+<h3 class="fn" id="canPrevious"><a name="canPrevious"></a><code>[override virtual] </code><span class="type">bool</span> VcsOutputWindow::<span class="name">canPrevious</span>() const</h3>
+<!-- @@@canPrevious -->
+<!-- $$$clearContents[overload1]$$$clearContents -->
+<h3 class="fn" id="clearContents"><a name="clearContents"></a><code>[override virtual] </code><span class="type">void</span> VcsOutputWindow::<span class="name">clearContents</span>()</h3>
+<!-- @@@clearContents -->
+<!-- $$$clearRepository[overload1]$$$clearRepository -->
+<h3 class="fn" id="clearRepository"><a name="clearRepository"></a><code>[static slot] </code><span class="type">void</span> VcsOutputWindow::<span class="name">clearRepository</span>()</h3>
+<!-- @@@clearRepository -->
+<!-- $$$displayName[overload1]$$$displayName -->
+<h3 class="fn" id="displayName"><a name="displayName"></a><code>[override virtual] </code><span class="type">QString</span> VcsOutputWindow::<span class="name">displayName</span>() const</h3>
+<!-- @@@displayName -->
+<!-- $$$goToNext[overload1]$$$goToNext -->
+<h3 class="fn" id="goToNext"><a name="goToNext"></a><code>[override virtual] </code><span class="type">void</span> VcsOutputWindow::<span class="name">goToNext</span>()</h3>
+<!-- @@@goToNext -->
+<!-- $$$goToPrev[overload1]$$$goToPrev -->
+<h3 class="fn" id="goToPrev"><a name="goToPrev"></a><code>[override virtual] </code><span class="type">void</span> VcsOutputWindow::<span class="name">goToPrev</span>()</h3>
+<!-- @@@goToPrev -->
+<!-- $$$hasFocus[overload1]$$$hasFocus -->
+<h3 class="fn" id="hasFocus"><a name="hasFocus"></a><code>[override virtual] </code><span class="type">bool</span> VcsOutputWindow::<span class="name">hasFocus</span>() const</h3>
+<!-- @@@hasFocus -->
+<!-- $$$instance[overload1]$$$instance -->
+<h3 class="fn" id="instance"><a name="instance"></a><code>[static] </code><span class="type">VcsOutputWindow</span> *VcsOutputWindow::<span class="name">instance</span>()</h3>
+<!-- @@@instance -->
+<!-- $$$msgExecutionLogEntry[overload1]$$$msgExecutionLogEntryconstQString&constUtils::FileName&constQStringList& -->
+<h3 class="fn" id="msgExecutionLogEntry"><a name="msgExecutionLogEntry"></a><code>[static] </code><span class="type">QString</span> VcsOutputWindow::<span class="name">msgExecutionLogEntry</span>(const <span class="type">QString</span> &amp;<i>workingDir</i>, const <span class="type"><a href="utils-filename.html">Utils::FileName</a></span> &amp;<i>executable</i>, const <span class="type">QStringList</span> &amp;<i>arguments</i>)</h3>
+<!-- @@@msgExecutionLogEntry -->
+<!-- $$$outputWidget[overload1]$$$outputWidgetQWidget* -->
+<h3 class="fn" id="outputWidget"><a name="outputWidget"></a><code>[override virtual] </code><span class="type">QWidget</span> *VcsOutputWindow::<span class="name">outputWidget</span>(<span class="type">QWidget</span> *<i>parent</i>)</h3>
+<!-- @@@outputWidget -->
+<!-- $$$priorityInStatusBar[overload1]$$$priorityInStatusBar -->
+<h3 class="fn" id="priorityInStatusBar"><a name="priorityInStatusBar"></a><code>[override virtual] </code><span class="type">int</span> VcsOutputWindow::<span class="name">priorityInStatusBar</span>() const</h3>
+<!-- @@@priorityInStatusBar -->
+<!-- $$$setData[overload1]$$$setDataconstQByteArray& -->
+<h3 class="fn" id="setData"><a name="setData"></a><code>[static slot] </code><span class="type">void</span> VcsOutputWindow::<span class="name">setData</span>(const <span class="type">QByteArray</span> &amp;<i>data</i>)</h3>
+<!-- @@@setData -->
+<!-- $$$setFocus[overload1]$$$setFocus -->
+<h3 class="fn" id="setFocus"><a name="setFocus"></a><code>[override virtual] </code><span class="type">void</span> VcsOutputWindow::<span class="name">setFocus</span>()</h3>
+<p><b>See also </b><a href="vcsbase-vcsoutputwindow.html#hasFocus">hasFocus</a>().</p>
+<!-- @@@setFocus -->
+<!-- $$$setText[overload1]$$$setTextconstQString& -->
+<h3 class="fn" id="setText"><a name="setText"></a><code>[static slot] </code><span class="type">void</span> VcsOutputWindow::<span class="name">setText</span>(const <span class="type">QString</span> &amp;<i>text</i>)</h3>
+<!-- @@@setText -->
+<!-- $$$toolBarWidgets[overload1]$$$toolBarWidgets -->
+<h3 class="fn" id="toolBarWidgets"><a name="toolBarWidgets"></a><code>[override virtual] </code><span class="type">QList</span>&lt;<span class="type">QWidget</span> *&gt; VcsOutputWindow::<span class="name">toolBarWidgets</span>() const</h3>
+<!-- @@@toolBarWidgets -->
+<!-- $$$visibilityChanged[overload1]$$$visibilityChangedbool -->
+<h3 class="fn" id="visibilityChanged"><a name="visibilityChanged"></a><code>[override virtual] </code><span class="type">void</span> VcsOutputWindow::<span class="name">visibilityChanged</span>(<span class="type">bool</span> <i>visible</i>)</h3>
+<!-- @@@visibilityChanged -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>

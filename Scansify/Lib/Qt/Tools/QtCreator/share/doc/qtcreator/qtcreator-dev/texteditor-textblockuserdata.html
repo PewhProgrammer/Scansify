@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>TextBlockUserData Class | Extending Qt Creator Manual</title>
+  <link rel="stylesheet" type="text/css" href="style/offline-simple.css" />
+  <script type="text/javascript">
+    document.getElementsByTagName("link").item(0).setAttribute("href", "style/offline.css");
+    // loading style sheet breaks anchors that were jumped to before
+    // so force jumping to anchor again
+    setTimeout(function() {
+        var anchor = location.hash;
+        // need to jump to different anchor first (e.g. none)
+        location.hash = "#";
+        setTimeout(function() {
+            location.hash = anchor;
+        }, 0);
+    }, 0);
+  </script>
+</head>
+<body>
+<div class="header" id="qtdocheader">
+  <div class="main">
+    <div class="main-rounded">
+      <div class="navigationbar">
+        <table><tr>
+<td ><a href="extending-index.html">Extending Qt Creator Manual</a></td><td >TextBlockUserData</td></tr></table><table class="buildversion"><tr>
+<td id="buildversion" width="100%" align="right">Extending Qt Creator Manual 4.4.1</td>
+        </tr></table>
+      </div>
+    </div>
+<div class="content">
+<div class="line">
+<div class="content mainContent">
+<div class="sidebar">
+<div class="toc">
+<h3><a name="toc">Contents</a></h3>
+<ul>
+<li class="level1"><a href="#public-types">Public Types</a></li>
+<li class="level1"><a href="#public-functions">Public Functions</a></li>
+<li class="level1"><a href="#static-public-members">Static Public Members</a></li>
+<li class="level1"><a href="#details">Detailed Description</a></li>
+</ul>
+</div>
+<div class="sidebar-content" id="sidebar-content"></div></div>
+<h1 class="title">TextBlockUserData Class</h1>
+<span class="small-subtitle">(<a href="texteditor-textblockuserdata.html">TextEditor::TextBlockUserData</a>)<br/></span>
+<ul>
+<li><a href="texteditor-textblockuserdata-members.html">List of all members, including inherited members</a></li>
+</ul>
+<a name="public-types"></a>
+<h2 id="public-types">Public Types</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> enum </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#MatchType-enum">MatchType</a></b> { NoMatch, Match, Mismatch }</td></tr>
+</table></div>
+<a name="public-functions"></a>
+<h2 id="public-functions">Public Functions</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#TextBlockUserData">TextBlockUserData</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#dtor.TextBlockUserData">~TextBlockUserData</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#addMark">addMark</a></b>(TextMark *<i>mark</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#braceDepthDelta">braceDepthDelta</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#clearIfdefedOut">clearIfdefedOut</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#clearParentheses">clearParentheses</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> CodeFormatterData *</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#codeFormatterData">codeFormatterData</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TextMarks </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#documentClosing">documentClosing</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#folded">folded</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#foldingEndIncluded">foldingEndIncluded</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#foldingIndent">foldingIndent</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#foldingStartIncluded">foldingStartIncluded</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#hasParentheses">hasParentheses</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#ifdefedOut">ifdefedOut</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> int </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#lexerState">lexerState</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> TextMarks </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#marks">marks</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> const Parentheses &amp;</td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#parentheses">parentheses</a></b>() const</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#removeMark">removeMark</a></b>(TextMark *<i>mark</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#setCodeFormatterData">setCodeFormatterData</a></b>(CodeFormatterData *<i>data</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#setFolded">setFolded</a></b>(bool <i>b</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#setFoldingEndIncluded">setFoldingEndIncluded</a></b>(bool <i>included</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#setFoldingIndent">setFoldingIndent</a></b>(int <i>indent</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#setFoldingStartIncluded">setFoldingStartIncluded</a></b>(bool <i>included</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#setIfdefedOut">setIfdefedOut</a></b>()</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#setLexerState">setLexerState</a></b>(int <i>state</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> void </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#setParentheses">setParentheses</a></b>(const Parentheses &amp;<i>parentheses</i>)</td></tr>
+</table></div>
+<a name="static-public-members"></a>
+<h2 id="static-public-members">Static Public Members</h2>
+<div class="table"><table class="alignedsummary">
+<tr><td class="memItemLeft rightAlign topAlign"> MatchType </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#checkClosedParenthesis">checkClosedParenthesis</a></b>(QTextCursor *<i>cursor</i>, QChar <i>c</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> MatchType </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#checkOpenParenthesis">checkOpenParenthesis</a></b>(QTextCursor *<i>cursor</i>, QChar <i>c</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#findNextBlockClosingParenthesis">findNextBlockClosingParenthesis</a></b>(QTextCursor *<i>cursor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#findNextClosingParenthesis">findNextClosingParenthesis</a></b>(QTextCursor *<i>cursor</i>, bool <i>select</i> = false)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#findPreviousBlockOpenParenthesis">findPreviousBlockOpenParenthesis</a></b>(QTextCursor *<i>cursor</i>, bool <i>checkStartPosition</i> = false)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> bool </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#findPreviousOpenParenthesis">findPreviousOpenParenthesis</a></b>(QTextCursor *<i>cursor</i>, bool <i>select</i> = false, bool <i>onlyInCurrentBlock</i> = false)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> MatchType </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#matchCursorBackward">matchCursorBackward</a></b>(QTextCursor *<i>cursor</i>)</td></tr>
+<tr><td class="memItemLeft rightAlign topAlign"> MatchType </td><td class="memItemRight bottomAlign"><b><a href="texteditor-textblockuserdata.html#matchCursorForward">matchCursorForward</a></b>(QTextCursor *<i>cursor</i>)</td></tr>
+</table></div>
+<a name="details"></a>
+<div class="types">
+<h2>Member Type Documentation</h2>
+<!-- $$$MatchType$$$NoMatch$$$Match$$$Mismatch -->
+<h3 class="fn" id="MatchType-enum"><a name="MatchType-enum"></a>enum TextBlockUserData::<span class="name">MatchType</span></h3>
+<!-- @@@MatchType -->
+</div>
+<div class="func">
+<h2>Member Function Documentation</h2>
+<!-- $$$TextBlockUserData[overload1]$$$TextBlockUserData -->
+<h3 class="fn" id="TextBlockUserData"><a name="TextBlockUserData"></a>TextBlockUserData::<span class="name">TextBlockUserData</span>()</h3>
+<p>Default constructs an instance of TextBlockUserData.</p><!-- @@@TextBlockUserData -->
+<!-- $$$~TextBlockUserData[overload1]$$$~TextBlockUserData -->
+<h3 class="fn" id="dtor.TextBlockUserData"><a name="dtor.TextBlockUserData"></a>TextBlockUserData::<span class="name">~TextBlockUserData</span>()</h3>
+<p>Destroys the instance of TextBlockUserData.</p><!-- @@@~TextBlockUserData -->
+<!-- $$$addMark[overload1]$$$addMarkTextMark* -->
+<h3 class="fn" id="addMark"><a name="addMark"></a><span class="type">void</span> TextBlockUserData::<span class="name">addMark</span>(<span class="type"><a href="texteditor-textmark.html">TextMark</a></span> *<i>mark</i>)</h3>
+<!-- @@@addMark -->
+<!-- $$$braceDepthDelta[overload1]$$$braceDepthDelta -->
+<h3 class="fn" id="braceDepthDelta"><a name="braceDepthDelta"></a><span class="type">int</span> TextBlockUserData::<span class="name">braceDepthDelta</span>() const</h3>
+<!-- @@@braceDepthDelta -->
+<!-- $$$checkClosedParenthesis[overload1]$$$checkClosedParenthesisQTextCursor*QChar -->
+<h3 class="fn" id="checkClosedParenthesis"><a name="checkClosedParenthesis"></a><code>[static] </code><span class="type"><a href="texteditor-textblockuserdata.html#MatchType-enum">MatchType</a></span> TextBlockUserData::<span class="name">checkClosedParenthesis</span>(<span class="type">QTextCursor</span> *<i>cursor</i>, <span class="type">QChar</span> <i>c</i>)</h3>
+<!-- @@@checkClosedParenthesis -->
+<!-- $$$checkOpenParenthesis[overload1]$$$checkOpenParenthesisQTextCursor*QChar -->
+<h3 class="fn" id="checkOpenParenthesis"><a name="checkOpenParenthesis"></a><code>[static] </code><span class="type"><a href="texteditor-textblockuserdata.html#MatchType-enum">MatchType</a></span> TextBlockUserData::<span class="name">checkOpenParenthesis</span>(<span class="type">QTextCursor</span> *<i>cursor</i>, <span class="type">QChar</span> <i>c</i>)</h3>
+<!-- @@@checkOpenParenthesis -->
+<!-- $$$clearIfdefedOut[overload1]$$$clearIfdefedOut -->
+<h3 class="fn" id="clearIfdefedOut"><a name="clearIfdefedOut"></a><span class="type">bool</span> TextBlockUserData::<span class="name">clearIfdefedOut</span>()</h3>
+<!-- @@@clearIfdefedOut -->
+<!-- $$$clearParentheses[overload1]$$$clearParentheses -->
+<h3 class="fn" id="clearParentheses"><a name="clearParentheses"></a><span class="type">void</span> TextBlockUserData::<span class="name">clearParentheses</span>()</h3>
+<!-- @@@clearParentheses -->
+<!-- $$$codeFormatterData[overload1]$$$codeFormatterData -->
+<h3 class="fn" id="codeFormatterData"><a name="codeFormatterData"></a><span class="type"><a href="texteditor-codeformatterdata.html">CodeFormatterData</a></span> *TextBlockUserData::<span class="name">codeFormatterData</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#setCodeFormatterData">setCodeFormatterData</a>().</p>
+<!-- @@@codeFormatterData -->
+<!-- $$$documentClosing[overload1]$$$documentClosing -->
+<h3 class="fn" id="documentClosing"><a name="documentClosing"></a><span class="type"><a href="texteditor.html#TextMarks-typedef">TextMarks</a></span> TextBlockUserData::<span class="name">documentClosing</span>()</h3>
+<!-- @@@documentClosing -->
+<!-- $$$findNextBlockClosingParenthesis[overload1]$$$findNextBlockClosingParenthesisQTextCursor* -->
+<h3 class="fn" id="findNextBlockClosingParenthesis"><a name="findNextBlockClosingParenthesis"></a><code>[static] </code><span class="type">bool</span> TextBlockUserData::<span class="name">findNextBlockClosingParenthesis</span>(<span class="type">QTextCursor</span> *<i>cursor</i>)</h3>
+<!-- @@@findNextBlockClosingParenthesis -->
+<!-- $$$findNextClosingParenthesis[overload1]$$$findNextClosingParenthesisQTextCursor*bool -->
+<h3 class="fn" id="findNextClosingParenthesis"><a name="findNextClosingParenthesis"></a><code>[static] </code><span class="type">bool</span> TextBlockUserData::<span class="name">findNextClosingParenthesis</span>(<span class="type">QTextCursor</span> *<i>cursor</i>, <span class="type">bool</span> <i>select</i> = false)</h3>
+<!-- @@@findNextClosingParenthesis -->
+<!-- $$$findPreviousBlockOpenParenthesis[overload1]$$$findPreviousBlockOpenParenthesisQTextCursor*bool -->
+<h3 class="fn" id="findPreviousBlockOpenParenthesis"><a name="findPreviousBlockOpenParenthesis"></a><code>[static] </code><span class="type">bool</span> TextBlockUserData::<span class="name">findPreviousBlockOpenParenthesis</span>(<span class="type">QTextCursor</span> *<i>cursor</i>, <span class="type">bool</span> <i>checkStartPosition</i> = false)</h3>
+<!-- @@@findPreviousBlockOpenParenthesis -->
+<!-- $$$findPreviousOpenParenthesis[overload1]$$$findPreviousOpenParenthesisQTextCursor*boolbool -->
+<h3 class="fn" id="findPreviousOpenParenthesis"><a name="findPreviousOpenParenthesis"></a><code>[static] </code><span class="type">bool</span> TextBlockUserData::<span class="name">findPreviousOpenParenthesis</span>(<span class="type">QTextCursor</span> *<i>cursor</i>, <span class="type">bool</span> <i>select</i> = false, <span class="type">bool</span> <i>onlyInCurrentBlock</i> = false)</h3>
+<!-- @@@findPreviousOpenParenthesis -->
+<!-- $$$folded[overload1]$$$folded -->
+<h3 class="fn" id="folded"><a name="folded"></a><span class="type">bool</span> TextBlockUserData::<span class="name">folded</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#setFolded">setFolded</a>().</p>
+<!-- @@@folded -->
+<!-- $$$foldingEndIncluded[overload1]$$$foldingEndIncluded -->
+<h3 class="fn" id="foldingEndIncluded"><a name="foldingEndIncluded"></a><span class="type">bool</span> TextBlockUserData::<span class="name">foldingEndIncluded</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#setFoldingEndIncluded">setFoldingEndIncluded</a>().</p>
+<!-- @@@foldingEndIncluded -->
+<!-- $$$foldingIndent[overload1]$$$foldingIndent -->
+<h3 class="fn" id="foldingIndent"><a name="foldingIndent"></a><span class="type">int</span> TextBlockUserData::<span class="name">foldingIndent</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#setFoldingIndent">setFoldingIndent</a>().</p>
+<!-- @@@foldingIndent -->
+<!-- $$$foldingStartIncluded[overload1]$$$foldingStartIncluded -->
+<h3 class="fn" id="foldingStartIncluded"><a name="foldingStartIncluded"></a><span class="type">bool</span> TextBlockUserData::<span class="name">foldingStartIncluded</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#setFoldingStartIncluded">setFoldingStartIncluded</a>().</p>
+<!-- @@@foldingStartIncluded -->
+<!-- $$$hasParentheses[overload1]$$$hasParentheses -->
+<h3 class="fn" id="hasParentheses"><a name="hasParentheses"></a><span class="type">bool</span> TextBlockUserData::<span class="name">hasParentheses</span>() const</h3>
+<!-- @@@hasParentheses -->
+<!-- $$$ifdefedOut[overload1]$$$ifdefedOut -->
+<h3 class="fn" id="ifdefedOut"><a name="ifdefedOut"></a><span class="type">bool</span> TextBlockUserData::<span class="name">ifdefedOut</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#setIfdefedOut">setIfdefedOut</a>().</p>
+<!-- @@@ifdefedOut -->
+<!-- $$$lexerState[overload1]$$$lexerState -->
+<h3 class="fn" id="lexerState"><a name="lexerState"></a><span class="type">int</span> TextBlockUserData::<span class="name">lexerState</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#setLexerState">setLexerState</a>().</p>
+<!-- @@@lexerState -->
+<!-- $$$marks[overload1]$$$marks -->
+<h3 class="fn" id="marks"><a name="marks"></a><span class="type"><a href="texteditor.html#TextMarks-typedef">TextMarks</a></span> TextBlockUserData::<span class="name">marks</span>() const</h3>
+<!-- @@@marks -->
+<!-- $$$matchCursorBackward[overload1]$$$matchCursorBackwardQTextCursor* -->
+<h3 class="fn" id="matchCursorBackward"><a name="matchCursorBackward"></a><code>[static] </code><span class="type"><a href="texteditor-textblockuserdata.html#MatchType-enum">MatchType</a></span> TextBlockUserData::<span class="name">matchCursorBackward</span>(<span class="type">QTextCursor</span> *<i>cursor</i>)</h3>
+<!-- @@@matchCursorBackward -->
+<!-- $$$matchCursorForward[overload1]$$$matchCursorForwardQTextCursor* -->
+<h3 class="fn" id="matchCursorForward"><a name="matchCursorForward"></a><code>[static] </code><span class="type"><a href="texteditor-textblockuserdata.html#MatchType-enum">MatchType</a></span> TextBlockUserData::<span class="name">matchCursorForward</span>(<span class="type">QTextCursor</span> *<i>cursor</i>)</h3>
+<!-- @@@matchCursorForward -->
+<!-- $$$parentheses[overload1]$$$parentheses -->
+<h3 class="fn" id="parentheses"><a name="parentheses"></a>const <span class="type"><a href="texteditor.html#Parentheses-typedef">Parentheses</a></span> &amp;TextBlockUserData::<span class="name">parentheses</span>() const</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#setParentheses">setParentheses</a>().</p>
+<!-- @@@parentheses -->
+<!-- $$$removeMark[overload1]$$$removeMarkTextMark* -->
+<h3 class="fn" id="removeMark"><a name="removeMark"></a><span class="type">bool</span> TextBlockUserData::<span class="name">removeMark</span>(<span class="type"><a href="texteditor-textmark.html">TextMark</a></span> *<i>mark</i>)</h3>
+<!-- @@@removeMark -->
+<!-- $$$setCodeFormatterData[overload1]$$$setCodeFormatterDataCodeFormatterData* -->
+<h3 class="fn" id="setCodeFormatterData"><a name="setCodeFormatterData"></a><span class="type">void</span> TextBlockUserData::<span class="name">setCodeFormatterData</span>(<span class="type"><a href="texteditor-codeformatterdata.html">CodeFormatterData</a></span> *<i>data</i>)</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#codeFormatterData">codeFormatterData</a>().</p>
+<!-- @@@setCodeFormatterData -->
+<!-- $$$setFolded[overload1]$$$setFoldedbool -->
+<h3 class="fn" id="setFolded"><a name="setFolded"></a><span class="type">void</span> TextBlockUserData::<span class="name">setFolded</span>(<span class="type">bool</span> <i>b</i>)</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#folded">folded</a>().</p>
+<!-- @@@setFolded -->
+<!-- $$$setFoldingEndIncluded[overload1]$$$setFoldingEndIncludedbool -->
+<h3 class="fn" id="setFoldingEndIncluded"><a name="setFoldingEndIncluded"></a><span class="type">void</span> TextBlockUserData::<span class="name">setFoldingEndIncluded</span>(<span class="type">bool</span> <i>included</i>)</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#foldingEndIncluded">foldingEndIncluded</a>().</p>
+<!-- @@@setFoldingEndIncluded -->
+<!-- $$$setFoldingIndent[overload1]$$$setFoldingIndentint -->
+<h3 class="fn" id="setFoldingIndent"><a name="setFoldingIndent"></a><span class="type">void</span> TextBlockUserData::<span class="name">setFoldingIndent</span>(<span class="type">int</span> <i>indent</i>)</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#foldingIndent">foldingIndent</a>().</p>
+<!-- @@@setFoldingIndent -->
+<!-- $$$setFoldingStartIncluded[overload1]$$$setFoldingStartIncludedbool -->
+<h3 class="fn" id="setFoldingStartIncluded"><a name="setFoldingStartIncluded"></a><span class="type">void</span> TextBlockUserData::<span class="name">setFoldingStartIncluded</span>(<span class="type">bool</span> <i>included</i>)</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#foldingStartIncluded">foldingStartIncluded</a>().</p>
+<!-- @@@setFoldingStartIncluded -->
+<!-- $$$setIfdefedOut[overload1]$$$setIfdefedOut -->
+<h3 class="fn" id="setIfdefedOut"><a name="setIfdefedOut"></a><span class="type">bool</span> TextBlockUserData::<span class="name">setIfdefedOut</span>()</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#ifdefedOut">ifdefedOut</a>().</p>
+<!-- @@@setIfdefedOut -->
+<!-- $$$setLexerState[overload1]$$$setLexerStateint -->
+<h3 class="fn" id="setLexerState"><a name="setLexerState"></a><span class="type">void</span> TextBlockUserData::<span class="name">setLexerState</span>(<span class="type">int</span> <i>state</i>)</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#lexerState">lexerState</a>().</p>
+<!-- @@@setLexerState -->
+<!-- $$$setParentheses[overload1]$$$setParenthesesconstParentheses& -->
+<h3 class="fn" id="setParentheses"><a name="setParentheses"></a><span class="type">void</span> TextBlockUserData::<span class="name">setParentheses</span>(const <span class="type"><a href="texteditor.html#Parentheses-typedef">Parentheses</a></span> &amp;<i>parentheses</i>)</h3>
+<p><b>See also </b><a href="texteditor-textblockuserdata.html#parentheses">parentheses</a>().</p>
+<!-- @@@setParentheses -->
+</div>
+        </div>
+       </div>
+   </div>
+   </div>
+</div>
+<div class="footer">
+   <p>
+   <acronym title="Copyright">&copy;</acronym> 2017 The Qt Company Ltd.
+   Documentation contributions included herein are the copyrights of
+   their respective owners.<br>    The documentation provided herein is licensed under the terms of the    <a href="http://www.gnu.org/licenses/fdl.html">GNU Free Documentation    License version 1.3</a> as published by the Free Software Foundation.<br>    Qt and respective logos are trademarks of The Qt Company Ltd.     in Finland and/or other countries worldwide. All other trademarks are property
+   of their respective owners. </p>
+</div>
+</body>
+</html>
