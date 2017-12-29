@@ -32,8 +32,12 @@ All notable changes to this project will be documented in this file.
 
 * [Setting up PCL with VS](https://stackoverflow.com/questions/16514762/setting-up-point-cloud-library-with-visual-studio)
 * [Setting up Kinect SDK 2 with VS] - Link inlude and libs
+* [DLL] - .dll files have to present on application folder
 
-Without CMake. Make sure GPath Variable is loaded. Restart VS if necessary
+
+Without CMake. Make sure GlobalPath Variable is loaded for references inc/lib. Restart VS if necessary.
+
+Configuration for Debug/Release separated.
 
 ## LICENSE
 

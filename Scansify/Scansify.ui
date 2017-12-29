@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1027</width>
+    <width>1025</width>
     <height>826</height>
    </rect>
   </property>
@@ -23,33 +23,22 @@
    <string>Scansify</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QOpenGLWidget" name="openGLWidget">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>50</y>
-      <width>681</width>
-      <height>441</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QOpenGLWidget" name="openGLWidget_2">
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>540</y>
-      <width>300</width>
-      <height>200</height>
-     </rect>
-    </property>
-   </widget>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1027</width>
+     <width>1025</width>
      <height>21</height>
     </rect>
    </property>

@@ -12,16 +12,12 @@ Scansify::Scansify(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	ui.openGLWidget->setAutoFillBackground(false);
-	ui.openGLWidget->setBackgroundRole(QPalette::ColorRole::Window);
-
 	AllocConsole();
 	freopen("CONOUT$", "w", stdout);
 	freopen("CONOUT$", "w", stderr);
 
 	
 	Init();
-
 }
 
 Scansify::~Scansify()
