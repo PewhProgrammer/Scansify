@@ -1,10 +1,9 @@
 #include "Scansify.h"
 #include "Kinect.h"
 #include "ICP.h"
-#include "FrameSource.h";
-
-#include "iostream";
-#include "Qpalette.h";
+#include "FrameSource.h"
+#include "iostream"
+#include "Qpalette.h"
 
 
 Scansify::Scansify(QWidget *parent)

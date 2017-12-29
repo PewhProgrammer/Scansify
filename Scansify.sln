@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{C388298F-6C4
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ScansifyTests", "ScansifyTests\ScansifyTests.vcxproj", "{E4FC4B3C-FFFC-408D-BBAE-258EE4A0B350}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hellogl2", "..\..\Utility\Qt\Examples\Qt-5.9.3\opengl\hellogl2\hellogl2.vcxproj", "{A83DD2C0-49D3-35C7-B40E-EF5BF532D5DD}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,12 +31,6 @@ Global
 		{E4FC4B3C-FFFC-408D-BBAE-258EE4A0B350}.Release|x64.Build.0 = Release|x64
 		{E4FC4B3C-FFFC-408D-BBAE-258EE4A0B350}.Release|x86.ActiveCfg = Release|Win32
 		{E4FC4B3C-FFFC-408D-BBAE-258EE4A0B350}.Release|x86.Build.0 = Release|Win32
-		{A83DD2C0-49D3-35C7-B40E-EF5BF532D5DD}.Debug|x64.ActiveCfg = Debug|x64
-		{A83DD2C0-49D3-35C7-B40E-EF5BF532D5DD}.Debug|x64.Build.0 = Debug|x64
-		{A83DD2C0-49D3-35C7-B40E-EF5BF532D5DD}.Debug|x86.ActiveCfg = Debug|x64
-		{A83DD2C0-49D3-35C7-B40E-EF5BF532D5DD}.Release|x64.ActiveCfg = Release|x64
-		{A83DD2C0-49D3-35C7-B40E-EF5BF532D5DD}.Release|x64.Build.0 = Release|x64
-		{A83DD2C0-49D3-35C7-B40E-EF5BF532D5DD}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

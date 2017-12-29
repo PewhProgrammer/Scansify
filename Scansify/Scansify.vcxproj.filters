@@ -46,6 +46,9 @@
     <Filter Include="Source Files\Renderer">
       <UniqueIdentifier>{7415cd7c-d74b-4ed1-ab78-24428d4f0a95}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Renderer\Primitives">
+      <UniqueIdentifier>{f79781dd-7b6f-4e54-bb31-addd3d4881a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,9 +56,6 @@
     </ClCompile>
     <ClCompile Include="Scansify.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_Scansify.cpp">
-      <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_Scansify.cpp">
       <Filter>Generated Files</Filter>
@@ -84,17 +84,23 @@
     <ClCompile Include="GeneratedFiles\Release\moc_window.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Utility\Qt\Examples\Qt-5.9.3\opengl\hellogl2\glwidget.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_Scansify.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
       <Filter>Source Files\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Utility\Qt\Examples\Qt-5.9.3\opengl\hellogl2\logo.cpp">
+    <ClCompile Include="window.cpp">
       <Filter>Source Files\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Utility\Qt\Examples\Qt-5.9.3\opengl\hellogl2\mainwindow.cpp">
+    <ClCompile Include="glwidget.cpp">
       <Filter>Source Files\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Utility\Qt\Examples\Qt-5.9.3\opengl\hellogl2\window.cpp">
-      <Filter>Source Files\Renderer</Filter>
+    <ClCompile Include="logo.cpp">
+      <Filter>Source Files\Renderer\Primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexHelper.cpp">
+      <Filter>Source Files\Renderer\Primitives</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +134,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="logo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

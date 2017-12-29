@@ -5,9 +5,9 @@
 #include <string>
 #include <iostream>
 
-#include <QtGui/QGuiApplication>;
-#include <QtGui/QMatrix4x4>;
-#include <QtGui/QScreen>;
+#include <QtGui\QGuiApplication>
+#include <QtGui\QMatrix4x4>
+#include <QtGui\QScreen>
 #include <QtCore\qmath.h>
 
 #include <QApplication>
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	//Scansify w;
 	//w.show();
 
-	QCoreApplication::setApplicationName("Qt Hello GL 2 Example");
+	QCoreApplication::setApplicationName("Scansify");
 	QCoreApplication::setOrganizationName("QtProject");
 	QCoreApplication::setApplicationVersion(QT_VERSION_STR);
 	QCommandLineParser parser;
@@ -70,8 +70,6 @@ int main(int argc, char *argv[])
 		mainWindow.showMaximized();
 	
 
-	/*std::thread t1(&Scansify::run, std::ref(w));
-	t1.detach();*/
 
 	// gui runs forever and closes application with its exit code
 	return app.exec();

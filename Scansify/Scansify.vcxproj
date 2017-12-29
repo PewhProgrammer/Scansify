@@ -47,7 +47,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(KINECTSDK20_DIR)Lib\x64\;$(ProjectDir)Lib\PCL\dependencies\Boost\lib;$(ProjectDir)Lib\PCL\dependencies\Eigen\eigen3\lib;$(ProjectDir)Lib\PCL\dependencies\FLANN\lib;$(ProjectDir)Lib\PCL\dependencies\VTK\lib;$(ProjectDir)Lib\PCL\lib;$(ProjectDir)Lib\Glut\lib;%(AdditionalLibraryDirectories);$(KINECTSDK20_DIR)Lib\x64\;$ProjectDir)Lib\PCL\dependencies\Boost\lib;$ProjectDir)Lib\PCL\dependencies\Eigen\eigen3\lib;$ProjectDir)Lib\PCL\dependencies\FLANN\lib;$ProjectDir)Lib\PCL\dependencies\VTK\lib;$ProjectDir)Lib\PCL\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(KINECTSDK20_DIR)Lib\x64\;$(ProjectDir)Lib\PCL\dependencies\Boost\lib;$(ProjectDir)Lib\PCL\dependencies\Eigen\eigen3\lib;$(ProjectDir)Lib\PCL\dependencies\FLANN\lib;$(ProjectDir)Lib\PCL\dependencies\VTK\lib;$(ProjectDir)Lib\PCL\lib;$(ProjectDir)Lib\Glut\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5OpenGLd.lib;opengl32.lib;glu32.lib;Qt5Widgetsd.lib;Kinect20.lib;pcl_common_debug.lib;pcl_io_debug.lib;pcl_visualization_debug.lib;pcl_registration_debug.lib;pcl_kdtree_debug.lib;pcl_search_debug.lib;$(QTDIR)\lib\qtmaind.lib;$(QTDIR)\lib\Qt5Widgetsd.lib;$(QTDIR)\lib\Qt5Guid.lib;$(QTDIR)\lib\Qt5Cored.lib;%(AdditionalDependencies);pcl_common_release.lib;pcl_io_release.lib;pcl_visualization_release.lib;pcl_registration_release.lib;pcl_kdtree_release.lib;pcl_search_release.lib;kinect20.lib;Kinect20.lib</AdditionalDependencies>
     </Link>
@@ -69,10 +69,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Utility\Qt\Examples\Qt-5.9.3\opengl\hellogl2\glwidget.cpp" />
-    <ClCompile Include="..\..\..\Utility\Qt\Examples\Qt-5.9.3\opengl\hellogl2\logo.cpp" />
-    <ClCompile Include="..\..\..\Utility\Qt\Examples\Qt-5.9.3\opengl\hellogl2\mainwindow.cpp" />
-    <ClCompile Include="..\..\..\Utility\Qt\Examples\Qt-5.9.3\opengl\hellogl2\window.cpp" />
     <ClCompile Include="FrameSource.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_glwidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -101,9 +97,14 @@
     <ClCompile Include="GeneratedFiles\Release\moc_window.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="glwidget.cpp" />
     <ClCompile Include="ICP.cpp" />
+    <ClCompile Include="logo.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="Scansify.cpp" />
+    <ClCompile Include="VertexHelper.cpp" />
+    <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Scansify.h">
@@ -132,6 +133,7 @@
   <ItemGroup>
     <ClInclude Include="FrameSource.h" />
     <ClInclude Include="GeneratedFiles\ui_Scansify.h" />
+    <ClInclude Include="VertexHelper.h" />
     <CustomBuild Include="window.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing window.h...</Message>

@@ -6,7 +6,6 @@
 
 class Scansify : public QMainWindow
 {
-	Q_OBJECT
 
 public:
 	Scansify(QWidget *parent = Q_NULLPTR);

@@ -46,6 +46,8 @@ bool FrameSource::initKinect() {
 	SafeRelease(depthFrameSource);
 
 	_depthBuffer = new uint16[512 * 424];
+
+	return true;
 }
 
 void FrameSource::Tick(float deltaTime) {
@@ -75,7 +77,7 @@ void FrameSource::Tick(float deltaTime) {
 
 	SafeRelease(depthFrame);
 
-	// print depth data to screen
+	// print depth data to log
 	for (int i = 0; i < DEPTHHEIGHT * DEPTHWIDTH; i++) {
 		uint16 d = _depthBuffer[i];
 		CameraSpacePoint p = csp[i];

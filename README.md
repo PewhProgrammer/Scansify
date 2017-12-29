@@ -24,7 +24,8 @@ All notable changes to this project will be documented in this file.
 
 * [Kinect] - Hardware
 * [Visual Studio 2017] - IDE
-* [Qt 5.9.3] - GUI application
+* [Qt 5.9.3] - GUI application used for menu
+* [Modern OpenGL] - framework for rendering 3D application
 * [PCL 1.8.1] - framework for computer vision/imaging processing
 * [Unit Test] - framework for testing c++ apps
 
@@ -33,7 +34,6 @@ All notable changes to this project will be documented in this file.
 * [Setting up PCL with VS](https://stackoverflow.com/questions/16514762/setting-up-point-cloud-library-with-visual-studio)
 * [Setting up Kinect SDK 2 with VS] - Link inlude and libs
 * [DLL] - .dll files have to present on application folder
-
 
 Without CMake. Make sure GlobalPath Variable is loaded for references inc/lib. Restart VS if necessary.
 
