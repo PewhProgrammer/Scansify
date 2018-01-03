@@ -16,16 +16,16 @@ All notable changes to this project will be documented in this file.
 | Week   |      Progress      |  Notes |
 |----------|-------------|------:|
 | 24.dec | - pcl,Qt and kinect sdk. c++|  |
-| 31.dec |    |    |
+| 31.dec | - qvtk gui running  |  Lots of dependencies issues resolved  |
 | 1.jan | |  |
 
 
 ## Built With
 
-* [Kinect] - Hardware
+* [Kinect 2] - Hardware
 * [Visual Studio 2017] - IDE
 * [Qt 5.9.3] - GUI application used for menu
-* [Modern OpenGL] - framework for rendering 3D application
+* [VTK 7.1] - framework for rendering 3D application
 * [PCL 1.8.1] - framework for computer vision/imaging processing
 * [Unit Test] - framework for testing c++ apps
 
@@ -34,6 +34,8 @@ All notable changes to this project will be documented in this file.
 * [Setting up PCL with VS](https://stackoverflow.com/questions/16514762/setting-up-point-cloud-library-with-visual-studio)
 * [Setting up Kinect SDK 2 with VS] - Link inlude and libs
 * [DLL] - .dll files have to present on application folder
+* [QVTK] - using cmake: build vtk with qt option -> build pcl with qvtk (http://unanancyowen.com/en/pcl-with-qt/)
+* [PCL dependencies] - Recommended to use the All-In-One Installer (except for vtk, which should be built from source)
 
 Without CMake. Make sure GlobalPath Variable is loaded for references inc/lib. Restart VS if necessary.
 

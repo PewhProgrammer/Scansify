@@ -1,4 +1,0 @@
-QMAKE_PRL_BUILD_DIR = C:/work/build/qt-creator_build/src/shared/qbs/src/plugins/scanner/qt
-QMAKE_PRO_INPUT = qt.pro
-QMAKE_PRL_TARGET = qbs_qt_scanner.lib
-QMAKE_PRL_CONFIG = lex yacc debug exceptions depend_includepath testcase_targets import_plugins import_qpa_plugin windows file_copies qmake_use qt warn_on link_prl incremental flat precompile_header autogen_precompile_source debug_and_release debug_and_release_target embed_manifest_dll embed_manifest_exe shared no_plugin_manifest win32 msvc copy_dir_files qbs_no_dev_install qbs_enable_project_file_updates debug DebugBuild Debug build_pass c++11 win32-msvc2015 debug DebugBuild Debug build_pass depend_includepath depend_includepath c++11 create_prl debug DebugBuild Debug build_pass have_target dll no_plist exclusive_builds debug_info no_autoqmake thread moc resources
