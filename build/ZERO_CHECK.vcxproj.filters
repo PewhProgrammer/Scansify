@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="E:\GitRepos\Scansify\build\CMakeFiles\4dbdd652a6d9e8471ef6cd9dc4f20fa7\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{2C05444B-AA49-3B67-BEFA-23E32002E20B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
