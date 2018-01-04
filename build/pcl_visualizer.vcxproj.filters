@@ -4,14 +4,14 @@
     <ClCompile Include="E:\GitRepos\Scansify\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\KinectStream.cpp">
+      <Filter>Source Files\Kinect</Filter>
+    </ClCompile>
     <ClCompile Include="E:\GitRepos\Scansify\pclviewer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="E:\GitRepos\Scansify\build\pcl_visualizer_autogen\mocs_compilation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\KinectStream.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -19,7 +19,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\KinectStream.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Kinect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -32,6 +32,12 @@
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{627D8308-7806-3964-BC18-89340652704B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Kinect">
+      <UniqueIdentifier>{d2aeb061-e495-41d7-b644-d1ec20b6c65d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderer">
+      <UniqueIdentifier>{2e5900cf-11e2-401a-b84c-dbfd4a3cf61b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
