@@ -1,3 +1,0 @@
-E:/GitRepos/Scansify/build/CMakeFiles/pcl_visualizer.dir
-E:/GitRepos/Scansify/build/CMakeFiles/ALL_BUILD.dir
-E:/GitRepos/Scansify/build/CMakeFiles/ZERO_CHECK.dir
