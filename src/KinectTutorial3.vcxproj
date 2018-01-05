@@ -117,7 +117,7 @@
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
       <AdditionalDependencies>glew32.lib;pcl_common_debug.lib;pcl_io_debug.lib;pcl_features_debug.lib;pcl_kdtree_debug.lib;pcl_surface_debug.lib;pcl_search_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)Lib\SDL\lib\x64;$(ProjectDir)Lib\FreeGlut\lib\x64;$(ProjectDir)Lib\Glut\lib;$(ProjectDir)Lib\glew-2.1.0\lib\Release\x64;$(PCL_ROOT)\lib;$(PCL_ROOT)\3rdParty\VTK\lib;$(PCL_ROOT)\3rdParty\Boost\lib;$(PCL_ROOT)\3rdParty\Eigen\eigen3;$(PCL_ROOT)\3rdParty\FLANN\lib;$(ProjectDir)Lib\Kinect\v2.0_1409\Lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Lib\SDL\lib\x64;$(ProjectDir)Lib\FreeGlut\lib\x64;$(ProjectDir)Lib\glew-2.1.0\lib\Release\x64;$(PCL_ROOT)\lib;$(PCL_ROOT)\3rdParty\VTK\lib;$(PCL_ROOT)\3rdParty\Boost\lib;$(PCL_ROOT)\3rdParty\Eigen\eigen3;$(PCL_ROOT)\3rdParty\FLANN\lib;$(ProjectDir)Lib\Kinect\v2.0_1409\Lib\x64;$(ProjectDir)Lib\Glut\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
