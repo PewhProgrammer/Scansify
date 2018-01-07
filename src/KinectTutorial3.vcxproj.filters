@@ -16,16 +16,28 @@
     <Filter Include="Source Files\PCL">
       <UniqueIdentifier>{fbd93789-3aa9-4788-833e-8a3d44cd8696}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Renderer">
+      <UniqueIdentifier>{3b5fd1e5-d6d2-4d1e-a3e3-7ecb3cdaeb83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Kinect">
+      <UniqueIdentifier>{01bb5b9d-f431-46c6-834c-762084c19278}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="glut.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MeshTriangulation.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\PCL</Filter>
+    </ClCompile>
+    <ClCompile Include="glut.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="PCLRenderer.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="KinectWrapper.cpp">
+      <Filter>Source Files\Kinect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MeshTriangulation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PCLRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KinectWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

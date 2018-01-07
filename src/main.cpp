@@ -1,3 +1,5 @@
+
+
 #include "main.h"
 #include "glut.h"
 
@@ -7,7 +9,11 @@
 #include <Windows.h>
 #include <Ole2.h>
 
+#include "MeshTriangulation.h"
+#include "PCLRenderer.h"
 #include <Kinect.h>
+
+#include "iostream"
 
 // We'll be using buffer objects to store the kinect point cloud
 GLuint vboId;
@@ -22,6 +28,8 @@ CameraSpacePoint depth2xyz[width*height];			 // Maps depth pixels to 3d coordina
 IKinectSensor* sensor;             // Kinect sensor
 IMultiSourceFrameReader* reader;   // Kinect data source
 ICoordinateMapper* mapper;         // Converts between depth, color, and 3d coordinates
+
+PCLRenderer rend;
 
 bool initKinect() {
     if (FAILED(GetDefaultKinectSensor(&sensor))) {
@@ -133,9 +141,53 @@ void rotateCamera() {
 	angle += 0.002;
 }
 
-void drawKinectData() {
-	getKinectData();
-	//rotateCamera();
+void bufferAxis() {
+	GLubyte* dest;
+	glBindBuffer(GL_ARRAY_BUFFER, vboId);
+	dest = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+	float* fdest = (float*)dest;
+	*fdest++ = 0;
+	*fdest++ = 0;
+	*fdest++ = 1.5f;
+	glUnmapBuffer(GL_ARRAY_BUFFER);
+
+	glBindBuffer(GL_ARRAY_BUFFER, cboId);
+	dest = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+	fdest = (float*)dest;
+	*fdest++ = 140;
+	*fdest++ = 0;
+	*fdest++ = 255;
+	glUnmapBuffer(GL_ARRAY_BUFFER);
+
+}
+
+void drawPCLData() {
+	PCLRenderer::PCLOutput* out = new PCLRenderer::PCLOutput ;
+	GLubyte* ptr;
+	glBindBuffer(GL_ARRAY_BUFFER, vboId);
+	ptr = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+	rend.drawPCLData(ptr, out);
+	glUnmapBuffer(GL_ARRAY_BUFFER);
+
+
+	//draw everything white
+	glBindBuffer(GL_ARRAY_BUFFER, cboId);
+	ptr = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+	float* fdest = (float*)ptr;
+	for (int i = 0; i < out->size; i++) {
+		*fdest++ = 255;
+		*fdest++ = 0;
+		*fdest++ = 123;
+	}
+	glUnmapBuffer(GL_ARRAY_BUFFER);
+
+}
+
+void drawData() {
+	//getKinectData();
+	//bufferAxis();
+	rotateCamera();
+	drawPCLData();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -152,9 +204,26 @@ void drawKinectData() {
 
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_COLOR_ARRAY);
+
+	GLenum err;
+	while ((err = glGetError()) != GL_NO_ERROR)
+	{
+		printf(""+err);
+	}
+	
 }
 
+
+
 int main(int argc, char* argv[]) {
+
+	AllocConsole();
+	freopen("CONOUT$", "w", stdout);
+	freopen("CONOUT$", "w", stderr);
+
+	printf("Log Console.");
+	std::cout.put('\n');
+
     if (!init(argc, argv)) return 1;
     if (!initKinect()) return 1;
 
