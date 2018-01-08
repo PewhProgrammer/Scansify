@@ -153,18 +153,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bbox.cpp" />
+    <ClCompile Include="core\float4.cpp" />
+    <ClCompile Include="core\point.cpp" />
+    <ClCompile Include="core\scalar.cpp" />
+    <ClCompile Include="core\vector.cpp" />
     <ClCompile Include="glut.cpp" />
     <ClCompile Include="KinectWrapper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshTriangulation.cpp" />
     <ClCompile Include="PCLRenderer.cpp" />
+    <ClCompile Include="ray.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bbox.h" />
+    <ClInclude Include="core\assert.h" />
+    <ClInclude Include="core\float4.h" />
+    <ClInclude Include="core\macros.h" />
+    <ClInclude Include="core\point.h" />
+    <ClInclude Include="core\scalar.h" />
+    <ClInclude Include="core\vector.h" />
     <ClInclude Include="glut.h" />
     <ClInclude Include="KinectWrapper.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MeshTriangulation.h" />
     <ClInclude Include="PCLRenderer.h" />
+    <ClInclude Include="ray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

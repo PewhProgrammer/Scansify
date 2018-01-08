@@ -22,6 +22,12 @@
     <Filter Include="Source Files\Kinect">
       <UniqueIdentifier>{01bb5b9d-f431-46c6-834c-762084c19278}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Raytracing">
+      <UniqueIdentifier>{ba8caffe-5a1a-41d3-accd-70e751901e61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Raytracing\Core">
+      <UniqueIdentifier>{1dd2bff1-614e-46f4-b308-6ee8749658d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,6 +45,24 @@
     <ClCompile Include="KinectWrapper.cpp">
       <Filter>Source Files\Kinect</Filter>
     </ClCompile>
+    <ClCompile Include="core\point.cpp">
+      <Filter>Source Files\Raytracing\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\float4.cpp">
+      <Filter>Source Files\Raytracing\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\scalar.cpp">
+      <Filter>Source Files\Raytracing\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\vector.cpp">
+      <Filter>Source Files\Raytracing\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ray.cpp">
+      <Filter>Source Files\Raytracing</Filter>
+    </ClCompile>
+    <ClCompile Include="bbox.cpp">
+      <Filter>Source Files\Raytracing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glut.h">
@@ -54,6 +78,30 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KinectWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\float4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\scalar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\point.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\assert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bbox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

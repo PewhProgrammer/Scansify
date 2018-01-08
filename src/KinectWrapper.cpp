@@ -101,7 +101,6 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 	unsigned short* buf;
 	depthframe->AccessUnderlyingBuffer(&sz, &buf);
 	
-	
 
 	// Write vertex coordinates
 	mapper->MapDepthFrameToCameraSpace(width*height, buf, width*height, depth2xyz);

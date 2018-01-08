@@ -132,6 +132,8 @@ int main(int argc, char* argv[]) {
 	freopen("CONOUT$", "w", stdout);
 	freopen("CONOUT$", "w", stderr);
 
+	
+
 	printf("Log Console.");
 	std::cout.put('\n');
 

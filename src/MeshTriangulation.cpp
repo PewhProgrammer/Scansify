@@ -2,7 +2,6 @@
 
 #include "MeshTriangulation.h"
 #include <pcl/point_types.h>
-#include <pcl\io\pcd_io.h>
 #include <pcl/kdtree/kdtree_flann.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/surface/gp3.h>
@@ -27,6 +26,9 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, std::string pat
 	//* the data should be available in cloud
 
 	reconstruct(triangles, cloud);
+	pcl::PointXYZ a(0, 0, 0);
+	pcl::PointXYZ b(0, 0, 0);
+	a.getArray3fMap() += b.getArray3fMap();
 }
 
 
