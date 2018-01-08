@@ -23,91 +23,10 @@ GLuint cboId;
 PCLRenderer rend;
 KinectWrapper kinectWrapper;
 
-/*
-bool initKinect() {
-    if (FAILED(GetDefaultKinectSensor(&sensor))) {
-		return false;
-	}
-	if (sensor) {
-		sensor->get_CoordinateMapper(&mapper);
-
-		sensor->Open();
-		sensor->OpenMultiSourceFrameReader(
-			FrameSourceTypes::FrameSourceTypes_Depth | FrameSourceTypes::FrameSourceTypes_Color,
-			&reader);
-		return reader;
-	} else {
-		return false;
-	}
-}
-
-
-void getDepthData(IMultiSourceFrame* frame, GLubyte* dest) {
-	IDepthFrame* depthframe;
-	IDepthFrameReference* frameref = NULL;
-	frame->get_DepthFrameReference(&frameref);
-	frameref->AcquireFrame(&depthframe);
-	if (frameref) frameref->Release();
-
-	if (!depthframe) return;
-
-	// Get data from frame
-	unsigned int sz;
-	unsigned short* buf;
-	depthframe->AccessUnderlyingBuffer(&sz, &buf);
-
-	// Write vertex coordinates
-	mapper->MapDepthFrameToCameraSpace(width*height, buf, width*height, depth2xyz);
-	float* fdest = (float*)dest;
-	for (int i = 0; i < sz; i++) {
-		*fdest++ = depth2xyz[i].X;
-		*fdest++ = depth2xyz[i].Y;
-		*fdest++ = depth2xyz[i].Z;
-	}
-
-	// Fill in depth2rgb map
-	mapper->MapDepthFrameToColorSpace(width*height, buf, width*height, depth2rgb);
-	if (depthframe) depthframe->Release();
-}
-
-void getRgbData(IMultiSourceFrame* frame, GLubyte* dest) {
-	IColorFrame* colorframe;
-	IColorFrameReference* frameref = NULL;
-	frame->get_ColorFrameReference(&frameref);
-	frameref->AcquireFrame(&colorframe);
-	if (frameref) frameref->Release();
-
-	if (!colorframe) return;
-
-	// Get data from frame
-	colorframe->CopyConvertedFrameDataToArray(colorwidth*colorheight*4, rgbimage, ColorImageFormat_Rgba);
-
-	// Write color array for vertices
-	float* fdest = (float*)dest;
-	for (int i = 0; i < width*height; i++) {
-		ColorSpacePoint p = depth2rgb[i];
-		// Check if color pixel coordinates are in bounds
-		if (p.X < 0 || p.Y < 0 || p.X > colorwidth || p.Y > colorheight) {
-			*fdest++ = 0;
-			*fdest++ = 0;
-			*fdest++ = 0;
-		}
-		else {
-			int idx = (int)p.X + colorwidth*(int)p.Y;
-			*fdest++ = rgbimage[4*idx + 0]/255.;
-			*fdest++ = rgbimage[4*idx + 1]/255.;
-			*fdest++ = rgbimage[4*idx + 2]/255.;
-		}
-		// Don't copy alpha channel
-	}
-
-	if (colorframe) colorframe->Release();
-}
-*/
 
 void getKinectData() {
 	IMultiSourceFrame* frame = NULL;
-	if (SUCCEEDED(kinectWrapper.aquireLatestFrame(frame))) {
+	if (SUCCEEDED(kinectWrapper.aquireLatestFrame(&frame))) {
 		GLubyte* ptr;
 		glBindBuffer(GL_ARRAY_BUFFER, vboId);
 		ptr = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
@@ -179,10 +98,10 @@ void drawPCLData() {
 }
 
 void drawData() {
-	//getKinectData();
+	getKinectData();
 	//bufferAxis();
-	rotateCamera();
-	drawPCLData();
+	//rotateCamera();
+	//drawPCLData();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -208,12 +127,6 @@ void drawData() {
 	
 }
 
-void init() {
-	if (!kinectWrapper.initKinect()) 
-		return;
-}
-
-
 
 int main(int argc, char* argv[]) {
 
@@ -227,7 +140,6 @@ int main(int argc, char* argv[]) {
     if (!init(argc, argv)) return 1;
     //if (!initKinect()) return 1;
 	if (!kinectWrapper.initKinect()) return 1;
-	init();
 
     // OpenGL setup
     glClearColor(0,0,0,0);

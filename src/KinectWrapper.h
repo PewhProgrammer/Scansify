@@ -12,6 +12,6 @@ public:
 	bool initKinect();
 	void getRGBData(IMultiSourceFrame* frame, GLubyte* dest);
 	void getDepthData(IMultiSourceFrame* frame, GLubyte* dest);
-	HRESULT aquireLatestFrame(IMultiSourceFrame* frame);
+	HRESULT aquireLatestFrame(IMultiSourceFrame** frame);
 };
 

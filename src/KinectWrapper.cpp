@@ -42,38 +42,10 @@ bool KinectWrapper::initKinect()
 	else {
 		return false;
 	}
+	return true;
 }
 
 void KinectWrapper::getRGBData(IMultiSourceFrame* frame, GLubyte* dest)
-{
-	IDepthFrame* depthframe;
-	IDepthFrameReference* frameref = NULL;
-	frame->get_DepthFrameReference(&frameref);
-	frameref->AcquireFrame(&depthframe);
-	if (frameref) frameref->Release();
-
-	if (!depthframe) return;
-
-	// Get data from frame
-	unsigned int sz;
-	unsigned short* buf;
-	depthframe->AccessUnderlyingBuffer(&sz, &buf);
-
-	// Write vertex coordinates
-	mapper->MapDepthFrameToCameraSpace(width*height, buf, width*height, depth2xyz);
-	float* fdest = (float*)dest;
-	for (int i = 0; i < sz; i++) {
-		*fdest++ = depth2xyz[i].X;
-		*fdest++ = depth2xyz[i].Y;
-		*fdest++ = depth2xyz[i].Z;
-	}
-
-	// Fill in depth2rgb map
-	mapper->MapDepthFrameToColorSpace(width*height, buf, width*height, depth2rgb);
-	if (depthframe) depthframe->Release();
-}
-
-void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 {
 	IColorFrame* colorframe;
 	IColorFrameReference* frameref = NULL;
@@ -108,7 +80,38 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 	if (colorframe) colorframe->Release();
 }
 
-HRESULT KinectWrapper::aquireLatestFrame(IMultiSourceFrame* frame)
+void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 {
-	return reader->AcquireLatestFrame(&frame);
+	IDepthFrame* depthframe;
+	IDepthFrameReference* frameref = NULL;
+	frame->get_DepthFrameReference(&frameref);
+	frameref->AcquireFrame(&depthframe);
+	if (frameref) frameref->Release();
+
+	if (!depthframe) return;
+
+	// Get data from frame
+	unsigned int sz;
+	unsigned short* buf;
+	depthframe->AccessUnderlyingBuffer(&sz, &buf);
+
+	// Write vertex coordinates
+	mapper->MapDepthFrameToCameraSpace(width*height, buf, width*height, depth2xyz);
+	float* fdest = (float*)dest;
+	for (int i = 0; i < sz; i++) {
+		*fdest++ = depth2xyz[i].X;
+		*fdest++ = depth2xyz[i].Y;
+		*fdest++ = depth2xyz[i].Z;
+	}
+
+	// Fill in depth2rgb map
+	mapper->MapDepthFrameToColorSpace(width*height, buf, width*height, depth2rgb);
+	if (depthframe) depthframe->Release();
+}
+
+HRESULT KinectWrapper::aquireLatestFrame(IMultiSourceFrame** frame)
+{
+	
+	HRESULT k = reader->AcquireLatestFrame(frame);
+	return k;
 }
