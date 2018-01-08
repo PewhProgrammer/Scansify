@@ -16,8 +16,8 @@ All notable changes to this project will be documented in this file.
 | Week   |      Progress      |  Notes |
 |----------|-------------|------:|
 | 24.dec | - pcl,Qt and kinect sdk. c++|  |
-| 31.dec | - qvtk gui running  |  Lots of dependencies issues resolved  |
-| 1.jan | |  |
+| 31.dec | - qvtk gui running  | - Lots of dependencies issues resolved  |
+| 1.jan | - modern openGL <br> - surface reconstruction <br> - basic raytracing | - change from qvtk to native openGL  |
 
 
 ## Built With
@@ -27,6 +27,7 @@ All notable changes to this project will be documented in this file.
 * [Qt 5.9.3] - GUI application used for menu
 * [VTK 7.1] - framework for rendering 3D application
 * [PCL 1.8.1] - framework for computer vision/imaging processing
+* [OpenGL 3] - 
 * [Unit Test] - framework for testing c++ apps
 
 ## Installation
