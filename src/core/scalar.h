@@ -1,6 +1,12 @@
 #ifndef CG1RAYTRACER_SCALAR_HEADER
 #define CG1RAYTRACER_SCALAR_HEADER
 
+#ifndef NOMINMAX
+# define NOMINMAX
+#endif
+#undef max
+#undef min
+
 #include <float.h>
 #include <algorithm>
 #include <cmath>

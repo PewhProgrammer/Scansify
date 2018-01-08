@@ -47,6 +47,7 @@ namespace rt {
 		//if not then t0 > t1 and we throw failure
 		return f2(t_0, t_1);
 	}
+
 	bool BBox::isUnbound()
 	{
 		return
@@ -56,5 +57,16 @@ namespace rt {
 			(max.x == FLT_MAX ) |
 			(max.y == FLT_MAX) |
 			(max.z == FLT_MAX);
+	}
+
+	bool BBox::isEmpty()
+	{
+		return
+			(min.x == FLT_MAX) |
+			(min.y == FLT_MAX) |
+			(min.z == FLT_MAX) |
+			(max.x == FLT_MIN) |
+			(max.y == FLT_MIN) |
+			(max.z == FLT_MIN);
 	}
 }

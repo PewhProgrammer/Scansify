@@ -7,6 +7,7 @@
 #include "glut.h"
 #include "Kinect.h"
 #include <pcl\io\pcd_io.h>
+#include "bbox.h"
 
 class KinectWrapper
 {
@@ -21,7 +22,8 @@ public:
 	// should be able to process any pointcloud data
 	void convertDepthDataToPCL(pcl::PointCloud<pcl::PointXYZ>::Ptr* cloud);
 	// compute bbox around arms for filtering
-	void computeBBox(IMultiSourceFrame* frame);
+	void computeRightArmBox(IMultiSourceFrame* frame, rt::BBox* box);
+	void computeLeftArmBox(IMultiSourceFrame* frame, rt::BBox* box);
 
 	HRESULT aquireLatestFrame(IMultiSourceFrame** frame);
 private:

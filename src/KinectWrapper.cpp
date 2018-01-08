@@ -1,5 +1,6 @@
 #include "KinectWrapper.h"
 #include <iostream>
+#include "core\point.h"
 
 #define width 424
 #define height 512
@@ -40,7 +41,7 @@ bool KinectWrapper::initKinect()
 
 		sensor->Open();
 		sensor->OpenMultiSourceFrameReader(
-			FrameSourceTypes::FrameSourceTypes_Depth | FrameSourceTypes::FrameSourceTypes_Color,
+			FrameSourceTypes::FrameSourceTypes_Depth | FrameSourceTypes::FrameSourceTypes_Color| FrameSourceTypes::FrameSourceTypes_Body ,
 			&reader);
 		return reader;
 	}
@@ -100,16 +101,31 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 	unsigned int sz;
 	unsigned short* buf;
 	depthframe->AccessUnderlyingBuffer(&sz, &buf);
+
+
+	
+	// create box around arms
+	rt::BBox rightArmBox = rt::BBox::empty();
+	rt::BBox leftArmBox = rt::BBox::empty();
+	computeRightArmBox(frame, &rightArmBox);
+	computeLeftArmBox(frame, &leftArmBox);
+
 	
 
 	// Write vertex coordinates
 	mapper->MapDepthFrameToCameraSpace(width*height, buf, width*height, depth2xyz);
 	float* fdest = (float*)dest;
-	for (int i = 0; i < sz; i++) {
-		*fdest++ = depth2xyz[i].X;
-		*fdest++ = depth2xyz[i].Y;
-		*fdest++ = depth2xyz[i].Z;
-		//std::cout << i << ": " << *(buf+i) << "\n";
+	for (int i = 0; i < sz ; i++) {
+		float x = depth2xyz[i].X;
+		float y = depth2xyz[i].Y;
+		float z = depth2xyz[i].Z;
+
+		if ( leftArmBox.max.z + 0.01f > z) {
+			*fdest++ = depth2xyz[i].X;
+			*fdest++ = depth2xyz[i].Y;
+			*fdest++ = depth2xyz[i].Z;
+			//std::cout << i << ": " << *(buf+i) << "\n";
+		}
 	}
 
 	// Fill in depth2rgb map
@@ -122,8 +138,78 @@ void KinectWrapper::convertDepthDataToPCL(pcl::PointCloud<pcl::PointXYZ>::Ptr* c
 
 }
 
-void KinectWrapper::computeBBox(IMultiSourceFrame * frame)
+void KinectWrapper::computeRightArmBox(IMultiSourceFrame * frame, rt::BBox* box)
 {
+	IBodyFrame* bodyframe;
+	IBodyFrameReference* frameref = NULL;
+	frame->get_BodyFrameReference(&frameref);
+	frameref->AcquireFrame(&bodyframe);
+	if (frameref) frameref->Release();
+
+	if (!bodyframe) return;
+
+	// ------ NEW CODE ------
+	IBody *body[BODY_COUNT] = { 0 };
+	HRESULT hr = bodyframe->GetAndRefreshBodyData(_countof(body), body);
+	for (int i = 0; i < BODY_COUNT; i++) {
+		body[i]->get_IsTracked(&tracked);
+		if (tracked) {
+			body[i]->GetJoints(JointType_Count, joints);
+
+			CameraSpacePoint handTip = joints[JointType_HandTipRight].Position;
+			CameraSpacePoint handThumb = joints[JointType_ThumbRight].Position;
+			CameraSpacePoint hand = joints[JointType_HandRight].Position;
+			CameraSpacePoint handWrist = joints[JointType_WristRight].Position;
+
+			box->extend(rt::Point(handTip.X, handTip.Y, handTip.Z));
+			box->extend(rt::Point(handThumb.X, handThumb.Y, handThumb.Z));
+			box->extend(rt::Point(hand.X, hand.Y, hand.Z));
+			box->extend(rt::Point(handWrist.X, handWrist.Y, handWrist.Z));
+			
+			break;
+		}
+	}
+	// ------ END NEW CODE ------
+
+	if (bodyframe) bodyframe->Release();
+}
+
+void KinectWrapper::computeLeftArmBox(IMultiSourceFrame * frame, rt::BBox* box)
+{
+	IBodyFrame* bodyframe;
+	IBodyFrameReference* frameref = NULL;
+	frame->get_BodyFrameReference(&frameref);
+	frameref->AcquireFrame(&bodyframe);
+	if (frameref) frameref->Release();
+
+	if (!bodyframe) return;
+
+	// ------ NEW CODE ------
+	IBody *body[BODY_COUNT] = { 0 };
+	HRESULT hr = bodyframe->GetAndRefreshBodyData(_countof(body), body);
+	for (int i = 0; i < BODY_COUNT; i++) {
+		body[i]->get_IsTracked(&tracked);
+		if (tracked) {
+			body[i]->GetJoints(JointType_Count, joints);
+
+			CameraSpacePoint handTip = joints[JointType_HandTipLeft].Position;
+			CameraSpacePoint handThumb = joints[JointType_ThumbLeft].Position;
+			CameraSpacePoint hand = joints[JointType_HandLeft].Position;
+			CameraSpacePoint handWrist = joints[JointType_WristLeft].Position;
+			CameraSpacePoint handElbow = joints[JointType_ElbowLeft].Position;
+
+			box->extend(rt::Point(handTip.X, handTip.Y, handTip.Z));
+			box->extend(rt::Point(handThumb.X, handThumb.Y, handThumb.Z));
+			box->extend(rt::Point(hand.X, hand.Y, hand.Z));
+			box->extend(rt::Point(handWrist.X, handWrist.Y, handWrist.Z));
+			box->extend(rt::Point(handElbow.X, handElbow.Y, handElbow.Z));
+
+			break;
+		}
+	}
+	// ------ END NEW CODE ------
+
+	if (bodyframe) bodyframe->Release();
 }
 
 HRESULT KinectWrapper::aquireLatestFrame(IMultiSourceFrame** frame)
