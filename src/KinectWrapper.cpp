@@ -1,4 +1,5 @@
 #include "KinectWrapper.h"
+#include <iostream>
 
 #define width 424
 #define height 512
@@ -10,10 +11,14 @@ unsigned char rgbimage[colorwidth*colorheight * 4];    // Stores RGB color image
 ColorSpacePoint depth2rgb[width*height];             // Maps depth pixels to rgb pixels
 CameraSpacePoint depth2xyz[width*height];			 // Maps depth pixels to 3d coordinates
 
-													 // Kinect Variables
+// Kinect Variables
 IKinectSensor* sensor;             // Kinect sensor
 IMultiSourceFrameReader* reader;   // Kinect data source
 ICoordinateMapper* mapper;         // Converts between depth, color, and 3d coordinates
+
+// Body tracking variables
+BOOLEAN tracked;                            // Whether we see a body
+Joint joints[JointType_Count];              // List of joints in the tracked body
 
 
 KinectWrapper::KinectWrapper()
@@ -54,6 +59,7 @@ void KinectWrapper::getRGBData(IMultiSourceFrame* frame, GLubyte* dest)
 	if (frameref) frameref->Release();
 
 	if (!colorframe) return;
+	
 
 	// Get data from frame
 	colorframe->CopyConvertedFrameDataToArray(colorwidth*colorheight * 4, rgbimage, ColorImageFormat_Rgba);
@@ -94,6 +100,8 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 	unsigned int sz;
 	unsigned short* buf;
 	depthframe->AccessUnderlyingBuffer(&sz, &buf);
+	
+	
 
 	// Write vertex coordinates
 	mapper->MapDepthFrameToCameraSpace(width*height, buf, width*height, depth2xyz);
@@ -102,6 +110,7 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 		*fdest++ = depth2xyz[i].X;
 		*fdest++ = depth2xyz[i].Y;
 		*fdest++ = depth2xyz[i].Z;
+		//std::cout << i << ": " << *(buf+i) << "\n";
 	}
 
 	// Fill in depth2rgb map
@@ -109,9 +118,19 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 	if (depthframe) depthframe->Release();
 }
 
+void KinectWrapper::convertDepthDataToPCL(pcl::PointCloud<pcl::PointXYZ>::Ptr* cloud)
+{
+
+}
+
+void KinectWrapper::computeBBox(IMultiSourceFrame * frame)
+{
+}
+
 HRESULT KinectWrapper::aquireLatestFrame(IMultiSourceFrame** frame)
 {
-	
 	HRESULT k = reader->AcquireLatestFrame(frame);
 	return k;
 }
+
+
