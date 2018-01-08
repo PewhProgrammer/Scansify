@@ -1,5 +1,9 @@
 #include "KinectWrapper.h"
-#include <Kinect.h>
+
+#define width 424
+#define height 512
+#define colorwidth 1920
+#define colorheight 1080
 
 // Intermediate Buffers
 unsigned char rgbimage[colorwidth*colorheight * 4];    // Stores RGB color image
@@ -102,4 +106,9 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 	}
 
 	if (colorframe) colorframe->Release();
+}
+
+HRESULT KinectWrapper::aquireLatestFrame(IMultiSourceFrame* frame)
+{
+	return reader->AcquireLatestFrame(&frame);
 }

@@ -20,19 +20,10 @@
 GLuint vboId;
 GLuint cboId;
 
-// Intermediate Buffers
-unsigned char rgbimage[colorwidth*colorheight*4];    // Stores RGB color image
-ColorSpacePoint depth2rgb[width*height];             // Maps depth pixels to rgb pixels
-CameraSpacePoint depth2xyz[width*height];			 // Maps depth pixels to 3d coordinates
-
-// Kinect Variables
-IKinectSensor* sensor;             // Kinect sensor
-IMultiSourceFrameReader* reader;   // Kinect data source
-ICoordinateMapper* mapper;         // Converts between depth, color, and 3d coordinates
-
 PCLRenderer rend;
 KinectWrapper kinectWrapper;
 
+/*
 bool initKinect() {
     if (FAILED(GetDefaultKinectSensor(&sensor))) {
 		return false;
@@ -49,6 +40,7 @@ bool initKinect() {
 		return false;
 	}
 }
+
 
 void getDepthData(IMultiSourceFrame* frame, GLubyte* dest) {
 	IDepthFrame* depthframe;
@@ -111,21 +103,22 @@ void getRgbData(IMultiSourceFrame* frame, GLubyte* dest) {
 
 	if (colorframe) colorframe->Release();
 }
+*/
 
 void getKinectData() {
 	IMultiSourceFrame* frame = NULL;
-	if (SUCCEEDED(reader->AcquireLatestFrame(&frame))) {
+	if (SUCCEEDED(kinectWrapper.aquireLatestFrame(frame))) {
 		GLubyte* ptr;
 		glBindBuffer(GL_ARRAY_BUFFER, vboId);
 		ptr = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 		if (ptr) {
-			getDepthData(frame, ptr);
+			kinectWrapper.getDepthData(frame,ptr);
 		}
 		glUnmapBuffer(GL_ARRAY_BUFFER);
 		glBindBuffer(GL_ARRAY_BUFFER, cboId);
 		ptr = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 		if (ptr) {
-			getRgbData(frame, ptr);
+			kinectWrapper.getRGBData(frame, ptr);
 		}
 		glUnmapBuffer(GL_ARRAY_BUFFER);
 	}
