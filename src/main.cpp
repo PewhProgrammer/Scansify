@@ -11,6 +11,7 @@
 
 #include "MeshTriangulation.h"
 #include "PCLRenderer.h"
+#include "KinectWrapper.h"
 #include <Kinect.h>
 
 #include "iostream"
@@ -30,6 +31,7 @@ IMultiSourceFrameReader* reader;   // Kinect data source
 ICoordinateMapper* mapper;         // Converts between depth, color, and 3d coordinates
 
 PCLRenderer rend;
+KinectWrapper kinectWrapper;
 
 bool initKinect() {
     if (FAILED(GetDefaultKinectSensor(&sensor))) {
@@ -213,6 +215,11 @@ void drawData() {
 	
 }
 
+void init() {
+	if (!kinectWrapper.initKinect()) 
+		return;
+}
+
 
 
 int main(int argc, char* argv[]) {
@@ -225,7 +232,9 @@ int main(int argc, char* argv[]) {
 	std::cout.put('\n');
 
     if (!init(argc, argv)) return 1;
-    if (!initKinect()) return 1;
+    //if (!initKinect()) return 1;
+	if (!kinectWrapper.initKinect()) return 1;
+	init();
 
     // OpenGL setup
     glClearColor(0,0,0,0);
