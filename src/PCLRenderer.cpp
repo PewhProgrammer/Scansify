@@ -42,7 +42,7 @@ void PCLRenderer::drawPCLData(GLubyte * dest, PCLOutput* out)
 		pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
 		meshT.reconstruct(mesh, cloud);
 
-		pcl::io::savePolygonFileSTL("test.stl", *mesh, false);
+		pcl::io::savePolygonFileSTL("subject.stl", *mesh, false);
 		run = false;
 	}
 	

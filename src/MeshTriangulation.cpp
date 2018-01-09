@@ -26,9 +26,6 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, std::string pat
 	//* the data should be available in cloud
 
 	reconstruct(triangles, cloud);
-	pcl::PointXYZ a(0, 0, 0);
-	pcl::PointXYZ b(0, 0, 0);
-	a.getArray3fMap() += b.getArray3fMap();
 }
 
 

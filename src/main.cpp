@@ -130,14 +130,16 @@ void drawData() {
 
 void scanData()
 {
-	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud;
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 	kinectWrapper.convertDepthDataToPCL(cloud);
 
 	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
 	meshT.reconstruct(mesh, cloud);
 
-	pcl::io::savePolygonFileSTL("models/subject.stl", *mesh, false);
+	pcl::io::savePolygonFileSTL("../models/subject.stl", *mesh, false);
+	
 }
+
 
 #include <thread>
 #include <QtWidgets\qapplication.h>

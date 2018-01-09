@@ -11,6 +11,7 @@
 unsigned char rgbimage[colorwidth*colorheight * 4];    // Stores RGB color image
 ColorSpacePoint depth2rgb[width*height];             // Maps depth pixels to rgb pixels
 CameraSpacePoint depth2xyz[width*height];			 // Maps depth pixels to 3d coordinates
+CameraSpacePoint depthfiltered[width*height];			 // stores filtered pixels
 
 // Kinect Variables
 IKinectSensor* sensor;             // Kinect sensor
@@ -121,11 +122,14 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 		float y = depth2xyz[i].Y;
 		float z = depth2xyz[i].Z;
 
-		if ( leftArmBox.max.z + 0.01f > z) {
-			*fdest++ = depth2xyz[i].X;
-			*fdest++ = depth2xyz[i].Y;
-			*fdest++ = depth2xyz[i].Z;
+		if ( 1 > y && y > 0  &&
+			2 > z && z > 1) {
+			*fdest++ = x;
+			*fdest++ = y;
+			*fdest++ = z;
+			depthfiltered[pointcloudSize] = depth2xyz[i];
 			pointcloudSize++;
+
 			//std::cout << i << ": " << *(buf+i) << "\n";
 		}
 	}
@@ -137,8 +141,9 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 
 void KinectWrapper::convertDepthDataToPCL(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 {
+	// wont do anything if pcS < 0
 	for (int i = 0; i < pointcloudSize; i++) {
-		pcl::PointXYZ p(depth2xyz[i].X, depth2xyz[i].Y, depth2xyz[i].Z);
+		pcl::PointXYZ p(depthfiltered[i].X, depthfiltered[i].Y, depthfiltered[i].Z);
 		cloud->push_back(p);
 	}
 }
