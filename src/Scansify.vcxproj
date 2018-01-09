@@ -110,14 +110,14 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Users\mmci-lab\Desktop\Thinh\Scansify\src\Lib\glew\include;$(ProjectDir)Lib\SDL\include;$(ProjectDir)Lib\FreeGlut\include\gl;$(ProjectDir)Lib\PCL\include\pcl-1.8;$(ProjectDir)Lib\PCL\dependencies\Eigen\eigen3;$(ProjectDir)Lib\PCL\dependencies\FLANN\include;$(ProjectDir)Lib\PCL\dependencies\VTK\include\vtk-8.0;$(ProjectDir)Lib\PCL\dependencies\Boost\include\boost-1_64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mmci-lab\Desktop\Thinh\Scansify\src\Lib\glew\include;$(ProjectDir)Lib\SDL\include;$(ProjectDir)Lib\FreeGlut\include\gl;$(ProjectDir)Lib\PCL\include\pcl-1.8;$(ProjectDir)Lib\PCL\dependencies\Eigen\eigen3;$(ProjectDir)Lib\PCL\dependencies\FLANN\include;$(ProjectDir)Lib\PCL\dependencies\VTK\include\vtk-8.0;$(ProjectDir)Lib\PCL\dependencies\Boost\include\boost-1_64;$(ProjectDir)Lib\Qt\include;$(ProjectDir)Lib\Qt\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
-      <AdditionalDependencies>pcl_search_debug.lib;pcl_surface_debug.lib;pcl_kdtree_debug.lib;pcl_io_debug.lib;pcl_common_debug.lib;pcl_features_debug.lib;vtkCommonCore-8.0-gd.lib;vtksys-8.0-gd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)Lib\SDL\lib\x64;$(ProjectDir)Lib\glew\lib\Release\x64;$(ProjectDir)Lib\FreeGlut\lib\x64;$(ProjectDir)Lib\Glut\lib;$(ProjectDir)Lib\PCL\lib;$(ProjectDir)Lib\PCL\dependencies\FLANN\lib;$(ProjectDir)Lib\PCL\dependencies\Boost\lib;$(ProjectDir)Lib\PCL\dependencies\VTK\lib;C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\Lib\x64;$(ProjectDir)Lib\PCL\dependencies\Eigen\eigen3;$(ProjectDir)Lib\glew-2.1.0\lib\Release\x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>pcl_search_debug.lib;pcl_surface_debug.lib;pcl_kdtree_debug.lib;pcl_io_debug.lib;pcl_common_debug.lib;pcl_features_debug.lib;vtkCommonCore-8.0-gd.lib;vtksys-8.0-gd.lib;Qt5Multimediad.lib;Qt5Widgetsd.lib;Qt5Guid.lib;Qt5Networkd.lib;Qt5Cored.lib;qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)Lib\SDL\lib\x64;$(ProjectDir)Lib\glew\lib\Release\x64;$(ProjectDir)Lib\FreeGlut\lib\x64;$(ProjectDir)Lib\Glut\lib;$(ProjectDir)Lib\PCL\lib;$(ProjectDir)Lib\PCL\dependencies\FLANN\lib;$(ProjectDir)Lib\PCL\dependencies\Boost\lib;$(ProjectDir)Lib\PCL\dependencies\VTK\lib;C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\Lib\x64;$(ProjectDir)Lib\PCL\dependencies\Eigen\eigen3;$(ProjectDir)Lib\glew-2.1.0\lib\Release\x64;$(ProjectDir)Lib\Qt\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -154,6 +154,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bbox.cpp" />
+    <ClCompile Include="ConfigUI\ConfigUI.cpp" />
+    <ClCompile Include="ConfigUI\GeneratedFiles\Debug\moc_ConfigUI.cpp" />
+    <ClCompile Include="ConfigUI\GeneratedFiles\qrc_ConfigUI.cpp" />
     <ClCompile Include="core\float4.cpp" />
     <ClCompile Include="core\point.cpp" />
     <ClCompile Include="core\scalar.cpp" />
@@ -167,6 +170,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bbox.h" />
+    <ClInclude Include="ConfigUI\ConfigUI.h" />
+    <ClInclude Include="ConfigUI\GeneratedFiles\ui_ConfigUI.h" />
     <ClInclude Include="core\assert.h" />
     <ClInclude Include="core\float4.h" />
     <ClInclude Include="core\macros.h" />
@@ -179,6 +184,10 @@
     <ClInclude Include="MeshTriangulation.h" />
     <ClInclude Include="PCLRenderer.h" />
     <ClInclude Include="ray.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ConfigUI\ConfigUI.qrc" />
+    <None Include="ConfigUI\ConfigUI.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

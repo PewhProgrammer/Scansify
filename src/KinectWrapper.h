@@ -20,7 +20,7 @@ public:
 	void getDepthData(IMultiSourceFrame* frame, GLubyte* dest);
 
 	// should be able to process any pointcloud data
-	void convertDepthDataToPCL(pcl::PointCloud<pcl::PointXYZ>::Ptr* cloud);
+	void convertDepthDataToPCL(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
 	// compute bbox around arms for filtering
 	void computeRightArmBox(IMultiSourceFrame* frame, rt::BBox* box);
 	void computeLeftArmBox(IMultiSourceFrame* frame, rt::BBox* box);

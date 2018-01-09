@@ -14,12 +14,15 @@
 
 #include "iostream"
 
+#include <pcl\io\vtk_lib_io.h>
+
 // We'll be using buffer objects to store the kinect point cloud
 GLuint vboId;
 GLuint cboId;
 
 PCLRenderer rend;
 KinectWrapper kinectWrapper;
+MeshTriangulation meshT;
 
 
 void getKinectData() {
@@ -125,6 +128,31 @@ void drawData() {
 	
 }
 
+void scanData()
+{
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud;
+	kinectWrapper.convertDepthDataToPCL(cloud);
+
+	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
+	meshT.reconstruct(mesh, cloud);
+
+	pcl::io::savePolygonFileSTL("models/subject.stl", *mesh, false);
+}
+
+#include <thread>
+#include <QtWidgets\qapplication.h>
+#include "ConfigUI\ConfigUI.h"
+
+void initQT(int argc, char* argv[]) {
+	QApplication app(argc, argv);
+
+	ConfigUI window;
+	window.show();
+
+	app.exec();
+	return;
+}
+
 
 int main(int argc, char* argv[]) {
 
@@ -132,10 +160,11 @@ int main(int argc, char* argv[]) {
 	freopen("CONOUT$", "w", stdout);
 	freopen("CONOUT$", "w", stderr);
 
-	
-
 	printf("Log Console.");
 	std::cout.put('\n');
+
+	std::thread t1(initQT, argc, argv);
+	t1.detach();
 
     if (!init(argc, argv)) return 1;
     //if (!initKinect()) return 1;

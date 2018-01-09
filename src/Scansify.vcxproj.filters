@@ -28,6 +28,15 @@
     <Filter Include="Source Files\Raytracing\Core">
       <UniqueIdentifier>{1dd2bff1-614e-46f4-b308-6ee8749658d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{4f485b2b-8d36-40b1-b786-fccf19b3e215}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GUI">
+      <UniqueIdentifier>{cb3c5c94-e8b5-41c3-8e25-bd8364331865}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{d7bbf09f-99dc-4b1d-a76d-8031b8f5b657}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -62,6 +71,15 @@
     </ClCompile>
     <ClCompile Include="bbox.cpp">
       <Filter>Source Files\Raytracing</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigUI\ConfigUI.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigUI\GeneratedFiles\qrc_ConfigUI.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigUI\GeneratedFiles\Debug\moc_ConfigUI.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -104,5 +122,19 @@
     <ClInclude Include="bbox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ConfigUI\ConfigUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigUI\GeneratedFiles\ui_ConfigUI.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ConfigUI\ConfigUI.ui">
+      <Filter>Form Files</Filter>
+    </None>
+    <None Include="ConfigUI\ConfigUI.qrc">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

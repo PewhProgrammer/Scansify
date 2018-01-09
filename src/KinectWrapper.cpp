@@ -21,6 +21,9 @@ ICoordinateMapper* mapper;         // Converts between depth, color, and 3d coor
 BOOLEAN tracked;                            // Whether we see a body
 Joint joints[JointType_Count];              // List of joints in the tracked body
 
+// custom var
+unsigned int pointcloudSize = 0; 
+
 
 KinectWrapper::KinectWrapper()
 {
@@ -89,6 +92,7 @@ void KinectWrapper::getRGBData(IMultiSourceFrame* frame, GLubyte* dest)
 
 void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 {
+	
 	IDepthFrame* depthframe;
 	IDepthFrameReference* frameref = NULL;
 	frame->get_DepthFrameReference(&frameref);
@@ -101,8 +105,6 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 	unsigned int sz;
 	unsigned short* buf;
 	depthframe->AccessUnderlyingBuffer(&sz, &buf);
-
-
 	
 	// create box around arms
 	rt::BBox rightArmBox = rt::BBox::empty();
@@ -110,11 +112,10 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 	computeRightArmBox(frame, &rightArmBox);
 	computeLeftArmBox(frame, &leftArmBox);
 
-	
-
 	// Write vertex coordinates
 	mapper->MapDepthFrameToCameraSpace(width*height, buf, width*height, depth2xyz);
 	float* fdest = (float*)dest;
+	pointcloudSize = 0;
 	for (int i = 0; i < sz ; i++) {
 		float x = depth2xyz[i].X;
 		float y = depth2xyz[i].Y;
@@ -124,6 +125,7 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 			*fdest++ = depth2xyz[i].X;
 			*fdest++ = depth2xyz[i].Y;
 			*fdest++ = depth2xyz[i].Z;
+			pointcloudSize++;
 			//std::cout << i << ": " << *(buf+i) << "\n";
 		}
 	}
@@ -133,9 +135,12 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 	if (depthframe) depthframe->Release();
 }
 
-void KinectWrapper::convertDepthDataToPCL(pcl::PointCloud<pcl::PointXYZ>::Ptr* cloud)
+void KinectWrapper::convertDepthDataToPCL(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 {
-
+	for (int i = 0; i < pointcloudSize; i++) {
+		pcl::PointXYZ p(depth2xyz[i].X, depth2xyz[i].Y, depth2xyz[i].Z);
+		cloud->push_back(p);
+	}
 }
 
 void KinectWrapper::computeRightArmBox(IMultiSourceFrame * frame, rt::BBox* box)
