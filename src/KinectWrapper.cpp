@@ -1,6 +1,7 @@
 #include "KinectWrapper.h"
 #include <iostream>
 #include "core\point.h"
+#include "OneEuroFilter.h"
 
 #define width 424
 #define height 512
@@ -22,8 +23,12 @@ ICoordinateMapper* mapper;         // Converts between depth, color, and 3d coor
 BOOLEAN tracked;                            // Whether we see a body
 Joint joints[JointType_Count];              // List of joints in the tracked body
 
+// Filtering Objects
+
+
 // custom var
 unsigned int pointcloudSize = 0; 
+bool trackedJoints = false;
 
 rt::BBox rightArmBox = rt::BBox::empty();
 rt::BBox leftArmBox = rt::BBox::empty();
@@ -251,6 +256,10 @@ HRESULT KinectWrapper::aquireLatestFrame(IMultiSourceFrame** frame)
 {
 	HRESULT k = reader->AcquireLatestFrame(frame);
 	return k;
+}
+
+void KinectWrapper::changeFilterValues(float mincutoff, float beta)
+{
 }
 
 

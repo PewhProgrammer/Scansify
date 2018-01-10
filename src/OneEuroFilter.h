@@ -102,7 +102,7 @@ class OneEuroFilter {
 	void setBeta(double b) {
 		beta_ = b;
 	}
-
+		
 	void setDerivateCutoff(double dc) {
 		if (dc <= 0) throw std::range_error("dcutoff should be >0");
 		dcutoff = dc;

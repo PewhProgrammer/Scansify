@@ -9,13 +9,13 @@ ConfigUI::ConfigUI(QWidget *parent)
 
 	connect(ui.pushButton, &QPushButton::clicked, [this] {
 		scanData();
-		std::cout << "Scan successfully completed" << std::endl;
+		std::cout << "Triangulation successfully completed" << std::endl;
 	});
 	connect(ui.pushButton_2, &QPushButton::clicked, [this] {
 		std::cout << "reset" << std::endl;
 	});
 	connect(ui.pushButton_4, &QPushButton::clicked, [this] {
-		std::cout << "mesh triangulation" << std::endl;
+		std::cout << "Scan completed" << std::endl;
 	});
 
 	connect(ui.horizontalSlider, &QSlider::valueChanged, [this] {

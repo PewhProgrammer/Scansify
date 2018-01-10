@@ -28,6 +28,9 @@ public:
 	bool checkBBox(float x, float y, float z, rt::BBox* box);
 
 	HRESULT aquireLatestFrame(IMultiSourceFrame** frame);
+
+	// change Filter values
+	void changeFilterValues(float mincutoff, float beta);
 private:
 
 	// get left/right arm boundaries
