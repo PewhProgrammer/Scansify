@@ -18,6 +18,7 @@ All notable changes to this project will be documented in this file.
 | 24.dec | - pcl,Qt and kinect sdk. c++|  |
 | 31.dec | - qvtk gui running  | - Lots of dependencies issues resolved  |
 | 1.jan | - modern openGL <br> - surface reconstruction <br> - basic raytracing | - change from qvtk to native openGL  |
+| 7.jan | - filtering/masking noises <br> - integrated config Qt GUI <br> - one euro filter for joints smoothing | - at this point, lots of gui functionality |
 
 
 ## Built With
