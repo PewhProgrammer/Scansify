@@ -25,6 +25,9 @@ Joint joints[JointType_Count];              // List of joints in the tracked bod
 // custom var
 unsigned int pointcloudSize = 0; 
 
+rt::BBox rightArmBox = rt::BBox::empty();
+rt::BBox leftArmBox = rt::BBox::empty();
+
 
 KinectWrapper::KinectWrapper()
 {
@@ -72,19 +75,29 @@ void KinectWrapper::getRGBData(IMultiSourceFrame* frame, GLubyte* dest)
 	// Write color array for vertices
 	float* fdest = (float*)dest;
 	for (int i = 0; i < width*height; i++) {
+		
 		ColorSpacePoint p = depth2rgb[i];
 		// Check if color pixel coordinates are in bounds
-		if (p.X < 0 || p.Y < 0 || p.X > colorwidth || p.Y > colorheight) {
+		if ((p.X < 0 || p.Y < 0 || p.X > colorwidth || p.Y > colorheight) ||
+			!checkBBox(depth2xyz[i].X, depth2xyz[i].Y, depth2xyz[i].Z, &leftArmBox) &&
+			!checkBBox(depth2xyz[i].X, depth2xyz[i].Y, depth2xyz[i].Z, &rightArmBox) ) {
 			*fdest++ = 0;
 			*fdest++ = 0;
 			*fdest++ = 0;
 		}
 		else {
 			int idx = (int)p.X + colorwidth * (int)p.Y;
+			/*
 			*fdest++ = rgbimage[4 * idx + 0] / 255.;
 			*fdest++ = rgbimage[4 * idx + 1] / 255.;
 			*fdest++ = rgbimage[4 * idx + 2] / 255.;
+			*/
+			//float k = rgbimage[4 * idx + 0] / 255.;
+			*fdest++ = 0.84f;
+			*fdest++ = 0.13f;
+			*fdest++ = 0.61f;
 		}
+	
 		// Don't copy alpha channel
 	}
 
@@ -108,8 +121,8 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 	depthframe->AccessUnderlyingBuffer(&sz, &buf);
 	
 	// create box around arms
-	rt::BBox rightArmBox = rt::BBox::empty();
-	rt::BBox leftArmBox = rt::BBox::empty();
+	rightArmBox = rt::BBox::empty();
+	leftArmBox = rt::BBox::empty();
 	computeRightArmBox(frame, &rightArmBox);
 	computeLeftArmBox(frame, &leftArmBox);
 
@@ -122,11 +135,12 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 		float y = depth2xyz[i].Y;
 		float z = depth2xyz[i].Z;
 
-		if ( 1 > y && y > 0  &&
-			2 > z && z > 1) {
-			*fdest++ = x;
-			*fdest++ = y;
-			*fdest++ = z;
+		*fdest++ = x;
+		*fdest++ = y;
+		*fdest++ = z;
+
+		if (checkBBox(x, y, z, &leftArmBox) ||
+			checkBBox(x, y, z, &rightArmBox)) {
 			depthfiltered[pointcloudSize] = depth2xyz[i];
 			pointcloudSize++;
 
@@ -138,6 +152,8 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 	mapper->MapDepthFrameToColorSpace(width*height, buf, width*height, depth2rgb);
 	if (depthframe) depthframe->Release();
 }
+
+
 
 void KinectWrapper::convertDepthDataToPCL(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 {
@@ -220,6 +236,15 @@ void KinectWrapper::computeLeftArmBox(IMultiSourceFrame * frame, rt::BBox* box)
 	// ------ END NEW CODE ------
 
 	if (bodyframe) bodyframe->Release();
+}
+
+bool KinectWrapper::checkBBox(float x, float y, float z, rt::BBox * box)
+{
+	return 
+		(z > box->min.z - 0.06f) && (z < box->max.z + 0.06f ) &&
+		(y > box->min.y - 0.045f) && (y < box->max.y + 0.045f)  &&
+		(x > box->min.x - 0.045f) && (x < box->max.x + 0.045f)
+		;
 }
 
 HRESULT KinectWrapper::aquireLatestFrame(IMultiSourceFrame** frame)

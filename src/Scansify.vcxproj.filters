@@ -81,6 +81,9 @@
     <ClCompile Include="ConfigUI\GeneratedFiles\Debug\moc_ConfigUI.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="OneEuroFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glut.h">
@@ -127,6 +130,9 @@
     </ClInclude>
     <ClInclude Include="ConfigUI\GeneratedFiles\ui_ConfigUI.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OneEuroFilter.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

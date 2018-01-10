@@ -165,6 +165,7 @@
     <ClCompile Include="KinectWrapper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshTriangulation.cpp" />
+    <ClCompile Include="OneEuroFilter.cpp" />
     <ClCompile Include="PCLRenderer.cpp" />
     <ClCompile Include="ray.cpp" />
   </ItemGroup>
@@ -182,6 +183,7 @@
     <ClInclude Include="KinectWrapper.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MeshTriangulation.h" />
+    <ClInclude Include="OneEuroFilter.h" />
     <ClInclude Include="PCLRenderer.h" />
     <ClInclude Include="ray.h" />
   </ItemGroup>

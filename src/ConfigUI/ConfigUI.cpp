@@ -9,7 +9,7 @@ ConfigUI::ConfigUI(QWidget *parent)
 
 	connect(ui.pushButton, &QPushButton::clicked, [this] {
 		scanData();
-		std::cout << "scan" << std::endl;
+		std::cout << "Scan successfully completed" << std::endl;
 	});
 	connect(ui.pushButton_2, &QPushButton::clicked, [this] {
 		std::cout << "reset" << std::endl;

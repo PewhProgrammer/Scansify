@@ -21,9 +21,11 @@ public:
 
 	// should be able to process any pointcloud data
 	void convertDepthDataToPCL(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
+
 	// compute bbox around arms for filtering
 	void computeRightArmBox(IMultiSourceFrame* frame, rt::BBox* box);
 	void computeLeftArmBox(IMultiSourceFrame* frame, rt::BBox* box);
+	bool checkBBox(float x, float y, float z, rt::BBox* box);
 
 	HRESULT aquireLatestFrame(IMultiSourceFrame** frame);
 private:
