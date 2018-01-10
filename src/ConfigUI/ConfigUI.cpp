@@ -17,4 +17,11 @@ ConfigUI::ConfigUI(QWidget *parent)
 	connect(ui.pushButton_4, &QPushButton::clicked, [this] {
 		std::cout << "mesh triangulation" << std::endl;
 	});
+
+	connect(ui.horizontalSlider, &QSlider::valueChanged, [this] {
+		std::cout << ui.horizontalSlider->value() << std::endl;
+	});
+	connect(ui.horizontalSlider_2, &QSlider::valueChanged, [this] {
+		std::cout << ui.horizontalSlider_2->value() << std::endl;
+	});
 }
