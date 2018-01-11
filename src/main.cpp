@@ -1,10 +1,12 @@
+#undef max
+#undef min
+
 #include "main.h"
 #include "glut.h"
 
 #include <cmath>
 #include <cstdio>
 
-#include <Windows.h>
 #include <Ole2.h>
 
 #include "MeshTriangulation.h"
@@ -14,7 +16,6 @@
 
 #include "iostream"
 
-#include <pcl\io\vtk_lib_io.h>
 
 // We'll be using buffer objects to store the kinect point cloud
 GLuint vboId;
@@ -128,16 +129,22 @@ void drawData() {
 	
 }
 
-void scanData()
+pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
 {
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 	kinectWrapper.convertDepthDataToPCL(cloud);
+
+	std::cout << "Scan completed: " << cloud->size() << " vertices " << std::endl;
+	return cloud;	
+}
+
+void triangulateMesh() {
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = scanData();
 
 	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
 	meshT.reconstruct(mesh, cloud);
 
 	pcl::io::savePolygonFileSTL("../models/subject.stl", *mesh, false);
-	
 }
 
 

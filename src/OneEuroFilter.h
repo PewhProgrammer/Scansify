@@ -4,19 +4,9 @@
 #include <stdexcept>
 #include <cmath>
 #include <ctime>
+#include "core\point.h"
+#include "Kinect.h"
 
-// -----------------------------------------------------------------
-// Utilities
-
-void
-randSeed(void) {
-	srand(time(0));
-}
-
-double
-unifRand(void) {
-	return rand() / double(RAND_MAX);
-}
 
 typedef double TimeStamp; // in seconds
 const double PI = 3.14f;
@@ -83,6 +73,9 @@ class OneEuroFilter {
 	LowPassFilter *dx;
 	TimeStamp lasttime;
 
+	OneEuroFilter* yValue;
+	OneEuroFilter* zValue;
+
 	double alpha(double cutoff) {
 		double te = 1.0 / freq;
 		double tau = 1.0 / (2 * PI*cutoff);
@@ -110,7 +103,7 @@ class OneEuroFilter {
 
 public:
 
-	OneEuroFilter(double freq,
+	OneEuroFilter(double freq, bool createAdditionalFilters = true,
 		double mincutoff = 1.0, double beta_ = 0.0, double dcutoff = 1.0) {
 		setFrequency(freq);
 		setMinCutoff(mincutoff);
@@ -119,6 +112,19 @@ public:
 		x = new LowPassFilter(alpha(mincutoff));
 		dx = new LowPassFilter(alpha(dcutoff));
 		lasttime = UndefinedTime;
+
+		if (createAdditionalFilters) {
+			yValue = new OneEuroFilter(freq, false);
+			zValue = new OneEuroFilter(freq, false);
+		}
+	}
+
+	rt::Point filter(CameraSpacePoint p, TimeStamp timestamp = UndefinedTime) {
+		double x = filter(p.X, timestamp);
+		double y = yValue->filter(p.Y, timestamp);
+		double z = zValue->filter(p.Z, timestamp);
+
+		return rt::Point(x, y, z);
 	}
 
 	double filter(double value, TimeStamp timestamp = UndefinedTime) {

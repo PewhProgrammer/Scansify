@@ -24,7 +24,7 @@ BOOLEAN tracked;                            // Whether we see a body
 Joint joints[JointType_Count];              // List of joints in the tracked body
 
 // Filtering Objects
-
+std::vector<OneEuroFilter> m_filters;
 
 // custom var
 unsigned int pointcloudSize = 0; 
@@ -33,9 +33,28 @@ bool trackedJoints = false;
 rt::BBox rightArmBox = rt::BBox::empty();
 rt::BBox leftArmBox = rt::BBox::empty();
 
+enum Features {
+
+	tipRight,
+	thumbRight,
+	handRight,
+	wristRight,
+
+	tipLeft,
+	thumbLeft,
+	handLeft,
+	wristLeft,
+	ElbowLeft
+};
+
 
 KinectWrapper::KinectWrapper()
 {
+	m_filters.reserve(Features::ElbowLeft);
+	for (int i = 0; i < Features::ElbowLeft; i++) {
+		OneEuroFilter e(30); // Hz in params
+		m_filters.push_back(e);
+	}
 }
 
 
@@ -192,10 +211,13 @@ void KinectWrapper::computeRightArmBox(IMultiSourceFrame * frame, rt::BBox* box)
 			CameraSpacePoint hand = joints[JointType_HandRight].Position;
 			CameraSpacePoint handWrist = joints[JointType_WristRight].Position;
 
-			box->extend(rt::Point(handTip.X, handTip.Y, handTip.Z));
-			box->extend(rt::Point(handThumb.X, handThumb.Y, handThumb.Z));
-			box->extend(rt::Point(hand.X, hand.Y, hand.Z));
-			box->extend(rt::Point(handWrist.X, handWrist.Y, handWrist.Z));
+			box->extend(m_filters[Features::tipRight].filter(handTip));
+			box->extend(m_filters[Features::thumbRight].filter(handThumb));
+			box->extend(m_filters[Features::handRight].filter(hand));
+			box->extend(m_filters[Features::wristRight].filter(handWrist));
+
+			//rt::Point p = m_filters[Features::tipRight].filter(handTip);
+			//std::cout << "(" << p.x << ", " << p.z << " ," << p.z << ")" << std::endl;
 			
 			break;
 		}
