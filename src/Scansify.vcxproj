@@ -116,7 +116,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
-      <AdditionalDependencies>pcl_search_debug.lib;pcl_surface_debug.lib;pcl_kdtree_debug.lib;pcl_io_debug.lib;pcl_common_debug.lib;pcl_features_debug.lib;vtkCommonCore-8.0-gd.lib;vtksys-8.0-gd.lib;Qt5Multimediad.lib;Qt5Widgetsd.lib;Qt5Guid.lib;Qt5Networkd.lib;Qt5Cored.lib;qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>pcl_search_debug.lib;pcl_surface_debug.lib;pcl_kdtree_debug.lib;pcl_io_debug.lib;pcl_common_debug.lib;pcl_features_debug.lib;pcl_filters_debug.lib;vtkCommonCore-8.0-gd.lib;vtksys-8.0-gd.lib;Qt5Multimediad.lib;Qt5Widgetsd.lib;Qt5Guid.lib;Qt5Networkd.lib;Qt5Cored.lib;qtmaind.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)Lib\SDL\lib\x64;$(ProjectDir)Lib\glew\lib\Release\x64;$(ProjectDir)Lib\FreeGlut\lib\x64;$(ProjectDir)Lib\Glut\lib;$(ProjectDir)Lib\PCL\lib;$(ProjectDir)Lib\PCL\dependencies\FLANN\lib;$(ProjectDir)Lib\PCL\dependencies\Boost\lib;$(ProjectDir)Lib\PCL\dependencies\VTK\lib;C:\Program Files\Microsoft SDKs\Kinect\v2.0_1409\Lib\x64;$(ProjectDir)Lib\PCL\dependencies\Eigen\eigen3;$(ProjectDir)Lib\glew-2.1.0\lib\Release\x64;$(ProjectDir)Lib\Qt\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
