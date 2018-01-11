@@ -134,7 +134,11 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 	kinectWrapper.convertDepthDataToPCL(cloud);
 
+	size_t k = cloud->size();
+	if(k > 0)
 	std::cout << "Scan completed: " << cloud->size() << " vertices " << std::endl;
+	else 
+		std::cout << "Scan was insuccessful!" << std::endl;
 	return cloud;	
 }
 
@@ -143,6 +147,7 @@ void triangulateMesh() {
 
 	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
 	meshT.reconstruct(mesh, cloud);
+	if (cloud->size() == 0) return;
 
 	pcl::io::savePolygonFileSTL("../models/subject.stl", *mesh, false);
 }

@@ -168,6 +168,9 @@
     <ClCompile Include="OneEuroFilter.cpp" />
     <ClCompile Include="PCLRenderer.cpp" />
     <ClCompile Include="ray.cpp" />
+    <ClCompile Include="rt\bvh.cpp" />
+    <ClCompile Include="rt\Intersection.cpp" />
+    <ClCompile Include="rt\Node.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bbox.h" />
@@ -186,6 +189,9 @@
     <ClInclude Include="OneEuroFilter.h" />
     <ClInclude Include="PCLRenderer.h" />
     <ClInclude Include="ray.h" />
+    <ClInclude Include="rt\bvh.h" />
+    <ClInclude Include="rt\intersection.h" />
+    <ClInclude Include="rt\Node.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ConfigUI\ConfigUI.qrc" />

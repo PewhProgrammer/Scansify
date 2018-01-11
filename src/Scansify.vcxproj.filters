@@ -37,6 +37,9 @@
     <Filter Include="Generated Files">
       <UniqueIdentifier>{d7bbf09f-99dc-4b1d-a76d-8031b8f5b657}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Raytracing\Groups">
+      <UniqueIdentifier>{097b30f7-8249-4da7-a4dd-40fa28a05076}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -83,6 +86,15 @@
     </ClCompile>
     <ClCompile Include="OneEuroFilter.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\Node.cpp">
+      <Filter>Source Files\Raytracing\Groups</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\bvh.cpp">
+      <Filter>Source Files\Raytracing\Groups</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\Intersection.cpp">
+      <Filter>Source Files\Raytracing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +144,15 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="OneEuroFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\bvh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\Node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\intersection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
