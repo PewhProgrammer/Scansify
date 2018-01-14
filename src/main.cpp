@@ -8,14 +8,17 @@
 #include <cstdio>
 
 #include <Ole2.h>
+#include "iostream"
+
+#include <Kinect.h>
+#include "KinectWrapper.h"
 
 #include "MeshTriangulation.h"
 #include "PCLRenderer.h"
-#include "KinectWrapper.h"
-#include <Kinect.h>
 
-#include "iostream"
-
+#include "rt\bvh.h"
+#include "rt\intersection.h"
+#include "ray.h"
 
 // We'll be using buffer objects to store the kinect point cloud
 GLuint vboId;
@@ -24,6 +27,71 @@ GLuint cboId;
 PCLRenderer rend;
 KinectWrapper kinectWrapper;
 MeshTriangulation meshT;
+
+rt::Point cameraPos(0,0,0.5f);
+rt::Vector cameraUp(0, 1.f, 0);
+rt::Vector cameraFocal(0, 0,-1.f);
+
+rt::BVH *scene = new rt::BVH(); 
+bool buildScene = true;
+
+// looks like [512, 424]
+void mousePicking(float screenX, float screenY) {
+	std::cout << "mouse click on: (" << screenX << ", " << screenY << ") " << std::endl;
+
+	// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
+
+
+
+	float x = ((screenX - 0) / (512.f - 0)) * (0.5f + 0.5f) - 0.5f;
+	float y = ((screenY - 0) / (424.f - 0)) * (0.5f + 0.5f) - 0.5f;
+	float z = 1;
+
+
+
+	std::cout << "shooting ray: Pos(" << x << ", " << y << ", " << z << ")    Dir(" << cameraFocal.x << ", " << cameraFocal.y << ", " << cameraFocal.z << ")" << std::endl;
+
+
+	const rt::Point o(x,y,z);
+
+	rt::Ray ray(o,
+		cameraFocal.normalize());
+	
+
+	rt::Intersection hit = scene->intersect(ray);
+	if (hit)
+		std::cout << "Hit!";
+
+
+}
+
+pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
+{
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+	kinectWrapper.convertDepthDataToPCL(cloud);
+
+	size_t k = cloud->size();
+	if (k > 0) std::cout << "Scan completed: " << k << " vertices " << std::endl;
+	else std::cout << "Scan was insuccessful!" << std::endl;
+	return cloud;
+}
+
+void triangulateMesh() {
+	//pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = scanData();
+
+	// Load input file into a PointCloud<T> with an appropriate type
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+	pcl::PCLPointCloud2 cloud_blob;
+	pcl::io::loadPCDFile("Resources/bun0.pcd", cloud_blob);
+	pcl::fromPCLPointCloud2(cloud_blob, *cloud);
+	//* the data should be available in cloud
+
+	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
+	meshT.reconstruct(mesh, cloud);
+	if (cloud->size() == 0) return;
+
+	pcl::io::savePolygonFileSTL("../models/subject.stl", *mesh, false);
+}
 
 
 void getKinectData() {
@@ -46,6 +114,37 @@ void getKinectData() {
 	if (frame) frame->Release();
 }
 
+void drawPCLData() {
+	PCLRenderer::PCLOutput* out = new PCLRenderer::PCLOutput;
+	GLubyte* ptr;
+	glBindBuffer(GL_ARRAY_BUFFER, vboId);
+	ptr = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+	rend.drawPCLData(ptr, out);
+	glUnmapBuffer(GL_ARRAY_BUFFER);
+
+	//draw everything white
+	glBindBuffer(GL_ARRAY_BUFFER, cboId);
+	ptr = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+	float* fdest = (float*)ptr;
+	for (int i = 0; i < out->size; i++) {
+		*fdest++ = 255;
+		*fdest++ = 0;
+		*fdest++ = 123;
+
+		if (buildScene) {
+			//build bvh
+			pcl::PointXYZ p = (*out->points)[i];
+			scene->add(rt::Point(p.x, p.y, p.z));
+		}
+	}
+	if (buildScene) {
+		buildScene = false;
+		scene->rebuildIndex();
+	}
+	glUnmapBuffer(GL_ARRAY_BUFFER);
+
+}
+
 void rotateCamera() {
 	static double angle = 0.;
 	static double radius = 3.;
@@ -62,9 +161,9 @@ void bufferAxis() {
 	glBindBuffer(GL_ARRAY_BUFFER, vboId);
 	dest = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 	float* fdest = (float*)dest;
+	*fdest++ = 0.5f;
 	*fdest++ = 0;
 	*fdest++ = 0;
-	*fdest++ = 1.5f;
 	glUnmapBuffer(GL_ARRAY_BUFFER);
 
 	glBindBuffer(GL_ARRAY_BUFFER, cboId);
@@ -77,33 +176,12 @@ void bufferAxis() {
 
 }
 
-void drawPCLData() {
-	PCLRenderer::PCLOutput* out = new PCLRenderer::PCLOutput ;
-	GLubyte* ptr;
-	glBindBuffer(GL_ARRAY_BUFFER, vboId);
-	ptr = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
-	rend.drawPCLData(ptr, out);
-	glUnmapBuffer(GL_ARRAY_BUFFER);
-
-
-	//draw everything white
-	glBindBuffer(GL_ARRAY_BUFFER, cboId);
-	ptr = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
-	float* fdest = (float*)ptr;
-	for (int i = 0; i < out->size; i++) {
-		*fdest++ = 255;
-		*fdest++ = 0;
-		*fdest++ = 123;
-	}
-	glUnmapBuffer(GL_ARRAY_BUFFER);
-
-}
-
 void drawData() {
-	getKinectData();
-	//bufferAxis();
+
 	//rotateCamera();
-	//drawPCLData();
+	//getKinectData();
+	drawPCLData();
+	bufferAxis();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -127,29 +205,6 @@ void drawData() {
 		printf(""+err);
 	}
 	
-}
-
-pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
-{
-	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-	kinectWrapper.convertDepthDataToPCL(cloud);
-
-	size_t k = cloud->size();
-	if(k > 0)
-	std::cout << "Scan completed: " << cloud->size() << " vertices " << std::endl;
-	else 
-		std::cout << "Scan was insuccessful!" << std::endl;
-	return cloud;	
-}
-
-void triangulateMesh() {
-	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = scanData();
-
-	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
-	meshT.reconstruct(mesh, cloud);
-	if (cloud->size() == 0) return;
-
-	pcl::io::savePolygonFileSTL("../models/subject.stl", *mesh, false);
 }
 
 
@@ -204,7 +259,7 @@ int main(int argc, char* argv[]) {
 	gluPerspective(45, width /(GLdouble) height, 0.1, 1000);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-	gluLookAt(0,0,0,0,0,1,0,1,0);
+	gluLookAt(0.00001f,0.0000001f,-1,0,0, 0.5f,0,1,0);
 
     // Main loop
     execute();

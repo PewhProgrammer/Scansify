@@ -20,5 +20,7 @@ const int colorwidth = 1920;
 const int colorheight = 1080;
 
 void drawData();
-pcl::PointCloud<pcl::PointXYZ>::Ptr scanData();
 void triangulateMesh();
+void mousePicking(float screenX, float screenY);
+
+pcl::PointCloud<pcl::PointXYZ>::Ptr scanData();

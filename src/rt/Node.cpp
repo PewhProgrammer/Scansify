@@ -30,7 +30,8 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 		return mainBox; */
 		f2 result = this->boundingBox.intersect(r);
 		if (result.first > result.second) return Intersection::failure();
-		return Intersection();
+
+		return Intersection(result.first,r,rt::Point(0,0,0));
 	}
 
 	f2 LBoundHit = left->boundingBox.intersect(r);

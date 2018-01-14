@@ -18,6 +18,7 @@
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
@@ -54,6 +55,20 @@ public:
 	QSlider *horizontalSlider_2;
 	QDoubleSpinBox *doubleSpinBox;
 	QDoubleSpinBox *doubleSpinBox_2;
+	QWidget *tab_3;
+	QLineEdit *cameraPosXEdit;
+	QLineEdit *cameraPosYEdit;
+	QLineEdit *cameraPosZEdit;
+	QLabel *label_8;
+	QLabel *label_7;
+	QLineEdit *cameraEyeYEdit;
+	QLineEdit *cameraEyeZEdit;
+	QLineEdit *cameraEyeXEdit;
+	QLabel *label_9;
+	QLineEdit *cameraUpYEdit;
+	QLineEdit *cameraUpZEdit;
+	QLineEdit *cameraUpXEdit;
+	QLabel *label_10;
 	QMenuBar *menuBar;
 	QMenu *menuFile;
 	QMenu *menuAbout;
@@ -167,6 +182,55 @@ public:
 		doubleSpinBox_2->setMaximum(2);
 		doubleSpinBox_2->setSingleStep(0.01);
 		tabWidget->addTab(tab_2, QString());
+		tab_3 = new QWidget();
+		tab_3->setObjectName(QStringLiteral("tab_3"));
+		cameraPosXEdit = new QLineEdit(tab_3);
+		cameraPosXEdit->setObjectName(QStringLiteral("cameraPosXEdit"));
+		cameraPosXEdit->setGeometry(QRect(40, 90, 41, 20));
+		cameraPosYEdit = new QLineEdit(tab_3);
+		cameraPosYEdit->setObjectName(QStringLiteral("cameraPosYEdit"));
+		cameraPosYEdit->setGeometry(QRect(40, 120, 41, 20));
+		cameraPosZEdit = new QLineEdit(tab_3);
+		cameraPosZEdit->setObjectName(QStringLiteral("cameraPosZEdit"));
+		cameraPosZEdit->setGeometry(QRect(40, 150, 41, 20));
+		label_8 = new QLabel(tab_3);
+		label_8->setObjectName(QStringLiteral("label_8"));
+		label_8->setGeometry(QRect(140, 10, 91, 16));
+		label_8->setFont(font2);
+		label_7 = new QLabel(tab_3);
+		label_7->setObjectName(QStringLiteral("label_7"));
+		label_7->setGeometry(QRect(30, 60, 71, 16));
+		QFont font4;
+		font4.setFamily(QStringLiteral("Arial"));
+		font4.setPointSize(13);
+		label_7->setFont(font4);
+		cameraEyeYEdit = new QLineEdit(tab_3);
+		cameraEyeYEdit->setObjectName(QStringLiteral("cameraEyeYEdit"));
+		cameraEyeYEdit->setGeometry(QRect(160, 120, 41, 20));
+		cameraEyeZEdit = new QLineEdit(tab_3);
+		cameraEyeZEdit->setObjectName(QStringLiteral("cameraEyeZEdit"));
+		cameraEyeZEdit->setGeometry(QRect(160, 150, 41, 20));
+		cameraEyeXEdit = new QLineEdit(tab_3);
+		cameraEyeXEdit->setObjectName(QStringLiteral("cameraEyeXEdit"));
+		cameraEyeXEdit->setGeometry(QRect(160, 90, 41, 20));
+		label_9 = new QLabel(tab_3);
+		label_9->setObjectName(QStringLiteral("label_9"));
+		label_9->setGeometry(QRect(160, 50, 71, 31));
+		label_9->setFont(font4);
+		cameraUpYEdit = new QLineEdit(tab_3);
+		cameraUpYEdit->setObjectName(QStringLiteral("cameraUpYEdit"));
+		cameraUpYEdit->setGeometry(QRect(270, 120, 41, 20));
+		cameraUpZEdit = new QLineEdit(tab_3);
+		cameraUpZEdit->setObjectName(QStringLiteral("cameraUpZEdit"));
+		cameraUpZEdit->setGeometry(QRect(270, 150, 41, 20));
+		cameraUpXEdit = new QLineEdit(tab_3);
+		cameraUpXEdit->setObjectName(QStringLiteral("cameraUpXEdit"));
+		cameraUpXEdit->setGeometry(QRect(270, 90, 41, 20));
+		label_10 = new QLabel(tab_3);
+		label_10->setObjectName(QStringLiteral("label_10"));
+		label_10->setGeometry(QRect(280, 50, 31, 31));
+		label_10->setFont(font4);
+		tabWidget->addTab(tab_3, QString());
 		ConfigUIClass->setCentralWidget(centralWidget);
 		menuBar = new QMenuBar(ConfigUIClass);
 		menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -212,6 +276,11 @@ public:
 		label_5->setText(QApplication::translate("ConfigUIClass", "Status", Q_NULLPTR));
 		checkBox->setText(QApplication::translate("ConfigUIClass", "Tracked Joints", Q_NULLPTR));
 		tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("ConfigUIClass", "Kinect", Q_NULLPTR));
+		label_8->setText(QApplication::translate("ConfigUIClass", "Transform", Q_NULLPTR));
+		label_7->setText(QApplication::translate("ConfigUIClass", "Position", Q_NULLPTR));
+		label_9->setText(QApplication::translate("ConfigUIClass", "Eye", Q_NULLPTR));
+		label_10->setText(QApplication::translate("ConfigUIClass", "Up", Q_NULLPTR));
+		tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("ConfigUIClass", "Camera", Q_NULLPTR));
 		menuFile->setTitle(QApplication::translate("ConfigUIClass", "File", Q_NULLPTR));
 		menuAbout->setTitle(QApplication::translate("ConfigUIClass", "About", Q_NULLPTR));
 	} // retranslateUi

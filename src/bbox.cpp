@@ -33,7 +33,10 @@ namespace rt {
 		float t_0 = -FLT_MAX; // needs to be overwritten later 
 		float t_1 = FLT_MAX;
 		for (int i = 0; i < 3; i++) {
-			invRayDir = 1.f / ray.d[i]; // more efficient
+			if (ray.d[i] != 0)
+				invRayDir = 1.f / ray.d[i]; // more efficient
+			else
+				continue;
 			near = (min[i] - ray.o[i]) * invRayDir;
 			far = (max[i] - ray.o[i]) * invRayDir;
 			if (near > far) std::swap(near, far); // assign near and far

@@ -28,6 +28,7 @@ void PCLRenderer::drawPCLData(GLubyte * dest, PCLOutput* out)
 
 	size_t cloudSize = cloud->size();
 	out->size = (int)cloudSize;
+	out->points = cloud;
 
 	float* fdest = (float*)dest;
 	for (int i = 0; i < cloudSize; i++) {

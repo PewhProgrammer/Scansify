@@ -14,7 +14,7 @@ class PCLRenderer
 public:
 	struct PCLOutput {
 		int size;
-
+		pcl::PointCloud<pcl::PointXYZ>::Ptr points;
 	};
 
 	PCLRenderer();
