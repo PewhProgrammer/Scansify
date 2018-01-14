@@ -15,6 +15,8 @@
 
 #include "MeshTriangulation.h"
 #include "PCLRenderer.h"
+#include "iostream"
+#include <pcl/filters/voxel_grid.h>
 
 #include "rt\bvh.h"
 #include "rt\intersection.h"
@@ -205,6 +207,46 @@ void drawData() {
 		printf(""+err);
 	}
 	
+}
+
+pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
+{
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+	kinectWrapper.convertDepthDataToPCL(cloud);
+
+
+
+	size_t k = cloud->size();
+	if (k > 0) {
+		std::cout << "Scan completed." << std::endl;
+		std::cerr << "PointCloud before filtering: " << cloud->width * cloud->height
+			<< " data points (" << pcl::getFieldsList(*cloud) << ").";
+	}
+	else
+		std::cout << "Scan was insuccessful!" << std::endl;
+
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>);
+
+	// Create the filtering object
+	pcl::VoxelGrid<pcl::PointXYZ> sor;
+	sor.setInputCloud(cloud);
+	sor.setLeafSize(0.01f, 0.01f, 0.01f);
+	sor.filter(*cloud_filtered);
+
+	std::cerr << "PointCloud after filtering: " << cloud_filtered->width * cloud_filtered->height
+		<< " data points (" << pcl::getFieldsList(*cloud_filtered) << ")." << std::endl;
+
+	return cloud_filtered;	
+}
+
+void triangulateMesh() {
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = scanData();
+
+	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
+	meshT.reconstruct(mesh, cloud);
+	if (cloud->size() == 0) return;
+
+	pcl::io::savePolygonFileSTL("../models/subject.stl", *mesh, false);
 }
 
 
