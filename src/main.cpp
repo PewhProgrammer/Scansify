@@ -316,17 +316,25 @@ void drawData() {
 #include <QtWidgets\qapplication.h>
 #include "ConfigUI\ConfigUI.h"
 
+#include "DarkStyle.h"
+
 void initQT(int argc, char* argv[]) {
-	QApplication::setStyle("Fusion");
+	//QApplication::setStyle("Fusion");
 	QApplication app(argc, argv);
 
+	app.setStyle(new DarkStyle());
+
+	//FramelessWindow framelessWindow;
+
+
 	ConfigUI window;
+
+	//framelessWindow.setContent(window);
 	window.show();
 
 	app.exec();
 	return;
 }
-
 
 
 

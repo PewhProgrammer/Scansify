@@ -1,6 +1,7 @@
 #undef max
 
 #include "MeshTriangulation.h"
+
 #include <pcl/common/common.h>
 #include <pcl/point_types.h>
 #include <pcl/kdtree/kdtree_flann.h>
@@ -66,18 +67,13 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 		new
 		PointCloud<Normal>());
 	ne.compute(*cloud_normals);
-	for
-		(
-			size_t
-			i = 0; i < cloud_normals->size(); ++i)
+	for(size_t i = 0; i < cloud_normals->size(); ++i)
 	{
 		cloud_normals->points[i].normal_x *= -1;
 		cloud_normals->points[i].normal_y *= -1;
 		cloud_normals->points[i].normal_z *= -1;
 	}
-	PointCloud<PointNormal>::Ptr cloud_smoothed_normals(
-		new
-		PointCloud<PointNormal>());
+	PointCloud<PointNormal>::Ptr cloud_smoothed_normals(new PointCloud<PointNormal>());
 	concatenateFields(*cloud_smoothed, *cloud_normals, *cloud_smoothed_normals);
 
 	Poisson<PointNormal> poisson;

@@ -105,6 +105,9 @@
     <ClCompile Include="ChangeCameraCommand.cpp">
       <Filter>Source Files\GUI\Commands</Filter>
     </ClCompile>
+    <ClCompile Include="Lib\Qt_darkstyle\DarkStyle.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glut.h">
@@ -181,10 +184,8 @@
     <None Include="ConfigUI\ConfigUI.qrc">
       <Filter>Resource Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Scansify.rc">
+    <None Include="qrc1.bin">
       <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    </None>
   </ItemGroup>
 </Project>

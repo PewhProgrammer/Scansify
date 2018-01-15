@@ -73,37 +73,6 @@ ConfigUI::ConfigUI(QWidget *parent)
 				ui.cameraUpXEdit->text().toDouble(), ui.cameraUpYEdit->text().toDouble(), ui.cameraUpZEdit->text().toDouble());
 		});
 	}
-
-
-	connect(ui.cameraPosXEdit, &QLineEdit::textChanged, [this] {
-
-	});
-	connect(ui.cameraPosYEdit, &QLineEdit::textChanged, [this] {
-
-	});
-	connect(ui.cameraPosZEdit, &QLineEdit::textChanged, [this] {
-
-	});
-
-	connect(ui.cameraEyeXEdit, &QLineEdit::textChanged, [this] {
-
-	});
-	connect(ui.cameraEyeYEdit, &QLineEdit::textChanged, [this] {
-
-	});
-	connect(ui.cameraEyeZEdit, &QLineEdit::textChanged, [this] {
-
-	});
-
-	connect(ui.cameraUpXEdit, &QLineEdit::textChanged, [this] {
-
-	});
-	connect(ui.cameraUpYEdit, &QLineEdit::textChanged, [this] {
-
-	});
-	connect(ui.cameraUpZEdit, &QLineEdit::textChanged, [this] {
-
-	});
 	
 }
 
