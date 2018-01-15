@@ -11,7 +11,6 @@
 #include <thread>
 
 #include <Ole2.h>
-#include "iostream"
 
 #include <Kinect.h>
 #include "KinectWrapper.h"
@@ -23,6 +22,10 @@
 #include "rt\bvh.h"
 #include "rt\intersection.h"
 #include "ray.h"
+
+#include "ChangeCameraCommand.h"
+#include "ICommand.h"
+#include "iostream"
 
 // We'll be using buffer objects to store the kinect point cloud
 GLuint vboId;
@@ -39,6 +42,9 @@ rt::Vector cameraFocal(0, 0,-1.f);
 rt::BVH *scene = new rt::BVH(); 
 bool buildScene = true;
 bool processing = true;
+
+// Command Queue
+std::queue<ICommand *> commands;
 
 /*
 The different color codes are
@@ -72,7 +78,7 @@ void processingConsoleOutput(int color, std::string text)
 		else SetConsoleTextAttribute(handle, 0);
 		cout << text << '\r';
 
-		SetConsoleTextAttribute(handle, 8);
+		SetConsoleTextAttribute(handle, 7);
 		i++;
 
 		boost::this_thread::sleep(boost::posix_time::seconds(1.75f));
@@ -81,20 +87,23 @@ void processingConsoleOutput(int color, std::string text)
 
 // looks like [512, 424]
 void mousePicking(float screenX, float screenY) {
-	std::cout << "mouse click on: (" << screenX << ", " << screenY << ") " << std::endl;
+	//std::cout << "mouse click on: (" << screenX << ", " << screenY << ") " << std::endl;
 
 	// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
-	float x = ((screenX - 0) / (512.f - 0)) * (- 0.5f - 0.5f) + 0.5f;
+	float outputLow = 0.5f + cameraPos.x;
+	float outputHigh = -0.5f + cameraPos.x;
+ 	float x = ((screenX - 0) / (512.f - 0)) * (outputHigh - outputLow) + outputLow;
 	float y = ((screenY - 0) / (424.f - 0)) * (- 0.41f - 0.41f) + 0.41f;
 	float z = 1;
 
-	std::cout << "shooting ray: Pos(" << x << ", " << y << ", " << z << ")    Dir(" << cameraFocal.x << ", " << cameraFocal.y << ", " << cameraFocal.z << ")" << std::endl;
-	const rt::Point o(x,y,z);
+	const rt::Point o(x ,y  , z );
 	rt::Ray ray(o,
 		cameraFocal.normalize());
 	
+	std::cout << "shooting ray: Pos(" << ray.o.x << ", " << ray.o.y << ", " << ray.o.z << ")    Dir(" << ray.d.x << ", " << ray.d.y << ", " << ray.d.z << ")" ;
 	rt::Intersection hit = scene->intersect(ray);
-	if (hit)	 std::cout << "Hit!";
+	if (hit)	 std::cout << "        ===>       Hit!" ;
+	std::cout << std::endl;
 }
 
 pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
@@ -251,7 +260,29 @@ void bufferAxis() {
 
 }
 
+void changeCameraProperties(float eyex, float eyey, float eyez, float posx, float posy, float posz, float upx, float upy, float upz) {
+	cameraFocal.x = eyex;	cameraFocal.y = eyey;	cameraFocal.z = eyez;
+	cameraPos.x = posx;		cameraPos.y = posy;		cameraPos.z = posz;
+	cameraUp.x = upx;		cameraUp.y = upy;		cameraUp.z = upz;
+
+	commands.push(new ChangeCameraCommand(eyex, eyey, eyez, posx, posy, posz, upx,upy, upz));
+	/*
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	gluLookAt(eyex, eyey, eyez, posx, posy, posz, upx, upy, upz);
+	*/
+}
+
+
 void drawData() {
+
+	while (!commands.empty()) {
+		ICommand* c = commands.front();
+		if (c->verify()) {
+			c->execute();
+		}
+		commands.pop();
+	}
 
 	//rotateCamera();
 	//getKinectData();
@@ -282,13 +313,11 @@ void drawData() {
 	
 }
 
-
-
-
 #include <QtWidgets\qapplication.h>
 #include "ConfigUI\ConfigUI.h"
 
 void initQT(int argc, char* argv[]) {
+	QApplication::setStyle("Fusion");
 	QApplication app(argc, argv);
 
 	ConfigUI window;

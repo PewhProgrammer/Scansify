@@ -40,6 +40,9 @@
     <Filter Include="Source Files\Raytracing\Groups">
       <UniqueIdentifier>{097b30f7-8249-4da7-a4dd-40fa28a05076}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GUI\Commands">
+      <UniqueIdentifier>{2dfb5800-6e93-491e-a331-f5160cc4147a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,6 +98,12 @@
     </ClCompile>
     <ClCompile Include="rt\Intersection.cpp">
       <Filter>Source Files\Raytracing</Filter>
+    </ClCompile>
+    <ClCompile Include="ICommand.cpp">
+      <Filter>Source Files\GUI\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeCameraCommand.cpp">
+      <Filter>Source Files\GUI\Commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +164,15 @@
     <ClInclude Include="rt\intersection.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ICommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeCameraCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ConfigUI\ConfigUI.ui">
@@ -163,5 +181,10 @@
     <None Include="ConfigUI\ConfigUI.qrc">
       <Filter>Resource Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Scansify.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

@@ -54,9 +54,26 @@ ConfigUI::ConfigUI(QWidget *parent)
 		std::cout << ui.horizontalSlider_2->value() << std::endl;
 	});
 
-	QLineEdit *cameraPosXEdit;
-	QLineEdit *cameraPosYEdit;
-	QLineEdit *cameraPosZEdit;
+	QList<QLineEdit *> edits;
+	edits.push_back(ui.cameraPosXEdit);
+	edits.push_back(ui.cameraPosYEdit);
+	edits.push_back(ui.cameraPosZEdit);
+	edits.push_back(ui.cameraEyeXEdit);
+	edits.push_back(ui.cameraEyeXEdit);
+	edits.push_back(ui.cameraEyeXEdit);
+	edits.push_back(ui.cameraUpXEdit);
+	edits.push_back(ui.cameraUpXEdit);
+	edits.push_back(ui.cameraUpXEdit);
+
+	for (int i = 0; i < edits.size(); i++) {
+		connect(edits[i], &QLineEdit::textChanged, [this] {
+			changeCameraProperties(
+				ui.cameraEyeXEdit->text().toDouble(), ui.cameraEyeYEdit->text().toDouble(), ui.cameraEyeZEdit->text().toDouble(),
+				ui.cameraPosXEdit->text().toDouble(), ui.cameraPosYEdit->text().toDouble(), ui.cameraPosZEdit->text().toDouble(),
+				ui.cameraUpXEdit->text().toDouble(), ui.cameraUpYEdit->text().toDouble(), ui.cameraUpZEdit->text().toDouble());
+		});
+	}
+
 
 	connect(ui.cameraPosXEdit, &QLineEdit::textChanged, [this] {
 

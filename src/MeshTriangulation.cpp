@@ -39,7 +39,7 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, std::string pat
 
 void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 {
-/*
+
 	MovingLeastSquares<PointXYZ, PointXYZ> mls;
 	mls.setInputCloud(cloud);
 	mls.setSearchRadius(0.01);
@@ -86,9 +86,9 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 	PolygonMesh mesh;
 	poisson.reconstruct(mesh);
 
-	*/
+	
 
-
+	/*
 
 	// Normal estimation*
 	pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> n;
@@ -142,5 +142,5 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 
 	// Finish
 	return;
-	
+	*/
 }

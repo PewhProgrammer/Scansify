@@ -154,6 +154,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bbox.cpp" />
+    <ClCompile Include="ChangeCameraCommand.cpp" />
     <ClCompile Include="ConfigUI\ConfigUI.cpp" />
     <ClCompile Include="ConfigUI\GeneratedFiles\Debug\moc_ConfigUI.cpp" />
     <ClCompile Include="ConfigUI\GeneratedFiles\qrc_ConfigUI.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="core\scalar.cpp" />
     <ClCompile Include="core\vector.cpp" />
     <ClCompile Include="glut.cpp" />
+    <ClCompile Include="ICommand.cpp" />
     <ClCompile Include="KinectWrapper.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshTriangulation.cpp" />
@@ -174,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bbox.h" />
+    <ClInclude Include="ChangeCameraCommand.h" />
     <ClInclude Include="ConfigUI\ConfigUI.h" />
     <ClInclude Include="ConfigUI\GeneratedFiles\ui_ConfigUI.h" />
     <ClInclude Include="core\assert.h" />
@@ -183,12 +186,14 @@
     <ClInclude Include="core\scalar.h" />
     <ClInclude Include="core\vector.h" />
     <ClInclude Include="glut.h" />
+    <ClInclude Include="ICommand.h" />
     <ClInclude Include="KinectWrapper.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="MeshTriangulation.h" />
     <ClInclude Include="OneEuroFilter.h" />
     <ClInclude Include="PCLRenderer.h" />
     <ClInclude Include="ray.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="rt\bvh.h" />
     <ClInclude Include="rt\intersection.h" />
     <ClInclude Include="rt\Node.h" />
@@ -196,6 +201,9 @@
   <ItemGroup>
     <None Include="ConfigUI\ConfigUI.qrc" />
     <None Include="ConfigUI\ConfigUI.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Scansify.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
