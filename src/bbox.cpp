@@ -35,8 +35,11 @@ namespace rt {
 		for (int i = 0; i < 3; i++) {
 			if (ray.d[i] != 0)
 				invRayDir = 1.f / ray.d[i]; // more efficient
-			else
+			else{
+				if (ray.o[i] < min[i] || ray.o[i] > max[i]) 
+					return f2(FLT_MAX, -FLT_MAX);
 				continue;
+			}
 			near = (min[i] - ray.o[i]) * invRayDir;
 			far = (max[i] - ray.o[i]) * invRayDir;
 			if (near > far) std::swap(near, far); // assign near and far

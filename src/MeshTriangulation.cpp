@@ -1,11 +1,19 @@
 #undef max
 
 #include "MeshTriangulation.h"
+#include <pcl/common/common.h>
 #include <pcl/point_types.h>
 #include <pcl/kdtree/kdtree_flann.h>
 #include <pcl/features/normal_3d.h>
+#include <pcl/features/normal_3d_omp.h>
 #include <pcl/surface/gp3.h>
+#include <pcl/surface/mls.h>
+#include <pcl/surface/poisson.h>
+#include <pcl/io/vtk_io.h>
 
+
+
+using namespace pcl;
 
 MeshTriangulation::MeshTriangulation()
 {
@@ -31,6 +39,57 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, std::string pat
 
 void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 {
+/*
+	MovingLeastSquares<PointXYZ, PointXYZ> mls;
+	mls.setInputCloud(cloud);
+	mls.setSearchRadius(0.01);
+	mls.setPolynomialFit(
+		true
+	);
+	mls.setPolynomialOrder(2);
+	mls.setUpsamplingMethod(MovingLeastSquares<PointXYZ, PointXYZ>::SAMPLE_LOCAL_PLANE);
+	mls.setUpsamplingRadius(0.005);
+	mls.setUpsamplingStepSize(0.003);
+	PointCloud<PointXYZ>::Ptr cloud_smoothed(
+		new
+		PointCloud<PointXYZ>());
+	mls.process(*cloud_smoothed);
+	
+	NormalEstimationOMP<PointXYZ, Normal> ne;
+	ne.setNumberOfThreads(8);
+	ne.setInputCloud(cloud_smoothed);
+	ne.setRadiusSearch(0.01);
+	Eigen::Vector4f centroid;
+	compute3DCentroid(*cloud_smoothed, centroid);
+	ne.setViewPoint(centroid[0], centroid[1], centroid[2]);
+	PointCloud<Normal>::Ptr cloud_normals(
+		new
+		PointCloud<Normal>());
+	ne.compute(*cloud_normals);
+	for
+		(
+			size_t
+			i = 0; i < cloud_normals->size(); ++i)
+	{
+		cloud_normals->points[i].normal_x *= -1;
+		cloud_normals->points[i].normal_y *= -1;
+		cloud_normals->points[i].normal_z *= -1;
+	}
+	PointCloud<PointNormal>::Ptr cloud_smoothed_normals(
+		new
+		PointCloud<PointNormal>());
+	concatenateFields(*cloud_smoothed, *cloud_normals, *cloud_smoothed_normals);
+
+	Poisson<PointNormal> poisson;
+	poisson.setDepth(9);
+	poisson.setInputCloud(cloud_smoothed_normals);
+	PolygonMesh mesh;
+	poisson.reconstruct(mesh);
+
+	*/
+
+
+
 	// Normal estimation*
 	pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> n;
 	pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
@@ -45,6 +104,7 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 	// Concatenate the XYZ and normal fields*
 	pcl::PointCloud<pcl::PointNormal>::Ptr cloud_with_normals(new pcl::PointCloud<pcl::PointNormal>);
 	pcl::concatenateFields(*cloud, *normals, *cloud_with_normals);
+
 	//* cloud_with_normals = cloud + normals
 
 	// Create search tree*
@@ -68,12 +128,19 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 	// Get result
 	gp3.setInputCloud(cloud_with_normals);
 	gp3.setSearchMethod(tree2);
-	gp3.reconstruct(*triangles);
+	//gp3.reconstruct(*triangles);
 
 	// Additional vertex information
 	std::vector<int> parts = gp3.getPartIDs();
 	std::vector<int> states = gp3.getPointStates();
 
+	Poisson<PointNormal> poisson;
+	poisson.setDepth(9);
+	poisson.setInputCloud(cloud_with_normals);
+	PolygonMesh mesh;
+	poisson.reconstruct(mesh);
+
 	// Finish
 	return;
+	
 }

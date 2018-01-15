@@ -3,14 +3,23 @@
 #include <iostream>
 #include <string>
 #include <windows.h>
+#include <qapplication.h>
+#include <qdesktopwidget.h>
 
 ConfigUI::ConfigUI(QWidget *parent)
 	: QMainWindow(parent)
+
+	
 {
 	ui.setupUi(this);
 
+	QRect rec = QApplication::desktop()->screenGeometry();
+	float height = rec.height();
+	float width = rec.width();
+
+	move(width - 366, height / 2 - 300);
+
 	connect(ui.pushButton, &QPushButton::clicked, [this] {
-		std::cout << "Triangulating to a mesh..." << std::endl;
 		triangulateMesh();
 /*
 		TCHAR buff[MAX_PATH];
@@ -43,6 +52,40 @@ ConfigUI::ConfigUI(QWidget *parent)
 	});
 	connect(ui.horizontalSlider_2, &QSlider::valueChanged, [this] {
 		std::cout << ui.horizontalSlider_2->value() << std::endl;
+	});
+
+	QLineEdit *cameraPosXEdit;
+	QLineEdit *cameraPosYEdit;
+	QLineEdit *cameraPosZEdit;
+
+	connect(ui.cameraPosXEdit, &QLineEdit::textChanged, [this] {
+
+	});
+	connect(ui.cameraPosYEdit, &QLineEdit::textChanged, [this] {
+
+	});
+	connect(ui.cameraPosZEdit, &QLineEdit::textChanged, [this] {
+
+	});
+
+	connect(ui.cameraEyeXEdit, &QLineEdit::textChanged, [this] {
+
+	});
+	connect(ui.cameraEyeYEdit, &QLineEdit::textChanged, [this] {
+
+	});
+	connect(ui.cameraEyeZEdit, &QLineEdit::textChanged, [this] {
+
+	});
+
+	connect(ui.cameraUpXEdit, &QLineEdit::textChanged, [this] {
+
+	});
+	connect(ui.cameraUpYEdit, &QLineEdit::textChanged, [this] {
+
+	});
+	connect(ui.cameraUpZEdit, &QLineEdit::textChanged, [this] {
+
 	});
 	
 }

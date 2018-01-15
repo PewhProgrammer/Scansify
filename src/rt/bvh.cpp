@@ -55,13 +55,13 @@ void BVH::buildTree(Node* node) {
 	float sizeOrigin = node->objects.size();
 	node->objects.clear();
 
-	if (node->left->objects.size() > 10 && node->left->objects.size() != sizeOrigin ) {
+	if (node->left->objects.size() > 5 && node->left->objects.size() != sizeOrigin ) {
 		buildTree(node->left);
 	}
 	else {
 		node->left->Leaf = true;
 	}
-	if (node->right->objects.size() > 10 && node->right->objects.size() != sizeOrigin) {
+	if (node->right->objects.size() > 5 && node->right->objects.size() != sizeOrigin) {
 		buildTree(node->right);
 	}
 	else {

@@ -7,6 +7,9 @@
 #include <cmath>
 #include <cstdio>
 
+#include <boost\thread\thread.hpp>
+#include <thread>
+
 #include <Ole2.h>
 #include "iostream"
 
@@ -15,7 +18,6 @@
 
 #include "MeshTriangulation.h"
 #include "PCLRenderer.h"
-#include "iostream"
 #include <pcl/filters/voxel_grid.h>
 
 #include "rt\bvh.h"
@@ -36,35 +38,63 @@ rt::Vector cameraFocal(0, 0,-1.f);
 
 rt::BVH *scene = new rt::BVH(); 
 bool buildScene = true;
+bool processing = true;
+
+/*
+The different color codes are
+
+0   BLACK
+1   BLUE
+2   GREEN
+3   CYAN
+4   RED
+5   MAGENTA
+6   BROWN
+7   LIGHTGRAY
+8   DARKGRAY
+9   LIGHTBLUE
+10  LIGHTGREEN
+11  LIGHTCYAN
+12  LIGHTRED
+13  LIGHTMAGENTA
+14  YELLOW
+15  WHITE
+*/
+
+void processingConsoleOutput(int color, std::string text)
+{
+	//system("CLS");
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	int i = 0;
+	processing = true;
+	while (processing) {
+		if(i % 2 == 0) SetConsoleTextAttribute(handle, color);
+		else SetConsoleTextAttribute(handle, 0);
+		cout << text << '\r';
+
+		SetConsoleTextAttribute(handle, 8);
+		i++;
+
+		boost::this_thread::sleep(boost::posix_time::seconds(1.75f));
+	}
+}
 
 // looks like [512, 424]
 void mousePicking(float screenX, float screenY) {
 	std::cout << "mouse click on: (" << screenX << ", " << screenY << ") " << std::endl;
 
 	// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
-
-
-
-	float x = ((screenX - 0) / (512.f - 0)) * (0.5f + 0.5f) - 0.5f;
-	float y = ((screenY - 0) / (424.f - 0)) * (0.5f + 0.5f) - 0.5f;
+	float x = ((screenX - 0) / (512.f - 0)) * (- 0.5f - 0.5f) + 0.5f;
+	float y = ((screenY - 0) / (424.f - 0)) * (- 0.41f - 0.41f) + 0.41f;
 	float z = 1;
 
-
-
 	std::cout << "shooting ray: Pos(" << x << ", " << y << ", " << z << ")    Dir(" << cameraFocal.x << ", " << cameraFocal.y << ", " << cameraFocal.z << ")" << std::endl;
-
-
 	const rt::Point o(x,y,z);
-
 	rt::Ray ray(o,
 		cameraFocal.normalize());
 	
-
 	rt::Intersection hit = scene->intersect(ray);
-	if (hit)
-		std::cout << "Hit!";
-
-
+	if (hit)	 std::cout << "Hit!";
 }
 
 pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
@@ -72,13 +102,36 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 	kinectWrapper.convertDepthDataToPCL(cloud);
 
+
+
 	size_t k = cloud->size();
-	if (k > 0) std::cout << "Scan completed: " << k << " vertices " << std::endl;
-	else std::cout << "Scan was insuccessful!" << std::endl;
-	return cloud;
+	if (k > 0) {
+		std::cout << "Scan completed." << std::endl;
+		std::cerr << "PointCloud before filtering: " << cloud->width * cloud->height
+			<< " data points (" << pcl::getFieldsList(*cloud) << ").";
+	}
+	else
+		std::cout << "Scan was insuccessful!" << std::endl;
+
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>);
+
+	// Create the filtering object
+	pcl::VoxelGrid<pcl::PointXYZ> sor;
+	sor.setInputCloud(cloud);
+	sor.setLeafSize(0.01f, 0.01f, 0.01f);
+	sor.filter(*cloud_filtered);
+
+	std::cerr << "PointCloud after filtering: " << cloud_filtered->width * cloud_filtered->height
+		<< " data points (" << pcl::getFieldsList(*cloud_filtered) << ")." << std::endl;
+
+	return cloud_filtered;
 }
 
 void triangulateMesh() {
+
+	std::thread t1(processingConsoleOutput, 14, "Triangulating to mesh ...");
+	t1.detach();
+
 	//pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = scanData();
 
 	// Load input file into a PointCloud<T> with an appropriate type
@@ -88,11 +141,31 @@ void triangulateMesh() {
 	pcl::fromPCLPointCloud2(cloud_blob, *cloud);
 	//* the data should be available in cloud
 
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>);
+
+	// Create the filtering object
+	pcl::VoxelGrid<pcl::PointXYZ> sor;
+	sor.setInputCloud(cloud);
+	sor.setLeafSize(0.015f, 0.015f, 0.015f);
+	sor.filter(*cloud_filtered);
+
+
 	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
 	meshT.reconstruct(mesh, cloud);
-	if (cloud->size() == 0) return;
+	
+	if (cloud_filtered->size() == 0) return;
 
-	pcl::io::savePolygonFileSTL("../models/subject.stl", *mesh, false);
+	processing = false;
+
+	std::cerr << "PointCloud before filtering: " << cloud->width * cloud->height
+	<< " data points (" << pcl::getFieldsList(*cloud) << ")." << std::endl;
+
+	std::cerr << "PointCloud after filtering: " << cloud_filtered->width * cloud_filtered->height
+		<< " data points (" << pcl::getFieldsList(*cloud_filtered) << ")." << std::endl;
+
+
+
+	pcl::io::savePolygonFileSTL("../models/subject_mls.stl", *mesh, false);
 }
 
 
@@ -163,8 +236,8 @@ void bufferAxis() {
 	glBindBuffer(GL_ARRAY_BUFFER, vboId);
 	dest = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 	float* fdest = (float*)dest;
-	*fdest++ = 0.5f;
 	*fdest++ = 0;
+	*fdest++ = 0.41f;
 	*fdest++ = 0;
 	glUnmapBuffer(GL_ARRAY_BUFFER);
 
@@ -209,48 +282,9 @@ void drawData() {
 	
 }
 
-pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
-{
-	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
-	kinectWrapper.convertDepthDataToPCL(cloud);
 
 
 
-	size_t k = cloud->size();
-	if (k > 0) {
-		std::cout << "Scan completed." << std::endl;
-		std::cerr << "PointCloud before filtering: " << cloud->width * cloud->height
-			<< " data points (" << pcl::getFieldsList(*cloud) << ").";
-	}
-	else
-		std::cout << "Scan was insuccessful!" << std::endl;
-
-	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>);
-
-	// Create the filtering object
-	pcl::VoxelGrid<pcl::PointXYZ> sor;
-	sor.setInputCloud(cloud);
-	sor.setLeafSize(0.01f, 0.01f, 0.01f);
-	sor.filter(*cloud_filtered);
-
-	std::cerr << "PointCloud after filtering: " << cloud_filtered->width * cloud_filtered->height
-		<< " data points (" << pcl::getFieldsList(*cloud_filtered) << ")." << std::endl;
-
-	return cloud_filtered;	
-}
-
-void triangulateMesh() {
-	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = scanData();
-
-	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
-	meshT.reconstruct(mesh, cloud);
-	if (cloud->size() == 0) return;
-
-	pcl::io::savePolygonFileSTL("../models/subject.stl", *mesh, false);
-}
-
-
-#include <thread>
 #include <QtWidgets\qapplication.h>
 #include "ConfigUI\ConfigUI.h"
 
@@ -265,11 +299,23 @@ void initQT(int argc, char* argv[]) {
 }
 
 
+
+
 int main(int argc, char* argv[]) {
+
+	//HWND consoleWindow = GetConsoleWindow();
+	//SetWindowPos(consoleWindow, 0, 1000, 1500, 50, 50, SWP_NOSIZE | SWP_NOZORDER);
+
 
 	AllocConsole();
 	freopen("CONOUT$", "w", stdout);
 	freopen("CONOUT$", "w", stderr);
+
+	HWND console = GetConsoleWindow();
+	RECT r;
+	GetWindowRect(console, &r); //stores the console's current dimensions
+
+	MoveWindow(console, 0, r.bottom - 35, 880, 150, TRUE); // 800 width, 100 height
 
 	printf("Log Console.");
 	std::cout.put('\n');

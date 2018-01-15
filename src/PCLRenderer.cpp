@@ -37,16 +37,6 @@ void PCLRenderer::drawPCLData(GLubyte * dest, PCLOutput* out)
 		*fdest++ = p.y;
 		*fdest++ = p.z;
 	}
-
-	if (run) {
-		MeshTriangulation meshT;
-		pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
-		meshT.reconstruct(mesh, cloud);
-
-		pcl::io::savePolygonFileSTL("subject.stl", *mesh, false);
-		run = false;
-	}
-	
 }
 
 void PCLRenderer::getPCLData(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)

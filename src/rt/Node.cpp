@@ -31,6 +31,7 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 		f2 result = this->boundingBox.intersect(r);
 		if (result.first > result.second) return Intersection::failure();
 
+		
 		return Intersection(result.first,r,rt::Point(0,0,0));
 	}
 
