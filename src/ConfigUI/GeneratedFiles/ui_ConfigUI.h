@@ -16,6 +16,8 @@
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -23,6 +25,7 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
@@ -35,6 +38,7 @@ class Ui_ConfigUIClass
 public:
 	QAction * actionExit;
 	QWidget *centralWidget;
+	QHBoxLayout *horizontalLayout;
 	QTabWidget *tabWidget;
 	QWidget *tab;
 	QPushButton *pushButton;
@@ -45,15 +49,19 @@ public:
 	QPushButton *pushButton_3;
 	QLabel *label_6;
 	QWidget *tab_2;
+	QGridLayout *gridLayout_2;
+	QLabel *label_5;
+	QScrollArea *scrollArea;
+	QWidget *scrollAreaWidgetContents_2;
+	QGridLayout *gridLayout;
 	QLabel *label_2;
 	QLabel *label_3;
-	QLabel *label_4;
 	QSlider *horizontalSlider;
-	QLabel *label_5;
-	QCheckBox *checkBox;
-	QSlider *horizontalSlider_2;
 	QDoubleSpinBox *doubleSpinBox;
+	QLabel *label_4;
+	QSlider *horizontalSlider_2;
 	QDoubleSpinBox *doubleSpinBox_2;
+	QCheckBox *checkBox;
 	QWidget *tab_3;
 	QLineEdit *cameraPosXEdit;
 	QLineEdit *cameraPosYEdit;
@@ -77,14 +85,17 @@ public:
 	{
 		if (ConfigUIClass->objectName().isEmpty())
 			ConfigUIClass->setObjectName(QStringLiteral("ConfigUIClass"));
-		ConfigUIClass->resize(360, 527);
+		ConfigUIClass->resize(425, 539);
 		actionExit = new QAction(ConfigUIClass);
 		actionExit->setObjectName(QStringLiteral("actionExit"));
 		centralWidget = new QWidget(ConfigUIClass);
 		centralWidget->setObjectName(QStringLiteral("centralWidget"));
+		horizontalLayout = new QHBoxLayout(centralWidget);
+		horizontalLayout->setSpacing(6);
+		horizontalLayout->setContentsMargins(11, 11, 11, 11);
+		horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
 		tabWidget = new QTabWidget(centralWidget);
 		tabWidget->setObjectName(QStringLiteral("tabWidget"));
-		tabWidget->setGeometry(QRect(0, 0, 421, 591));
 		QFont font;
 		font.setPointSize(10);
 		tabWidget->setFont(font);
@@ -123,72 +134,112 @@ public:
 		tabWidget->addTab(tab, QString());
 		tab_2 = new QWidget();
 		tab_2->setObjectName(QStringLiteral("tab_2"));
-		label_2 = new QLabel(tab_2);
-		label_2->setObjectName(QStringLiteral("label_2"));
-		label_2->setGeometry(QRect(110, 150, 141, 16));
+		gridLayout_2 = new QGridLayout(tab_2);
+		gridLayout_2->setSpacing(6);
+		gridLayout_2->setContentsMargins(11, 11, 11, 11);
+		gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+		label_5 = new QLabel(tab_2);
+		label_5->setObjectName(QStringLiteral("label_5"));
 		QFont font2;
 		font2.setFamily(QStringLiteral("Arial"));
 		font2.setPointSize(14);
+		label_5->setFont(font2);
+
+		gridLayout_2->addWidget(label_5, 0, 1, 1, 1);
+
+		scrollArea = new QScrollArea(tab_2);
+		scrollArea->setObjectName(QStringLiteral("scrollArea"));
+		scrollArea->setWidgetResizable(true);
+		scrollAreaWidgetContents_2 = new QWidget();
+		scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
+		scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 381, 377));
+		gridLayout = new QGridLayout(scrollAreaWidgetContents_2);
+		gridLayout->setSpacing(6);
+		gridLayout->setContentsMargins(11, 11, 11, 11);
+		gridLayout->setObjectName(QStringLiteral("gridLayout"));
+		label_2 = new QLabel(scrollAreaWidgetContents_2);
+		label_2->setObjectName(QStringLiteral("label_2"));
 		label_2->setFont(font2);
-		label_3 = new QLabel(tab_2);
+
+		gridLayout->addWidget(label_2, 0, 1, 1, 1);
+
+		label_3 = new QLabel(scrollAreaWidgetContents_2);
 		label_3->setObjectName(QStringLiteral("label_3"));
-		label_3->setGeometry(QRect(20, 190, 71, 16));
 		QFont font3;
 		font3.setFamily(QStringLiteral("Arial"));
 		font3.setPointSize(12);
 		label_3->setFont(font3);
-		label_4 = new QLabel(tab_2);
-		label_4->setObjectName(QStringLiteral("label_4"));
-		label_4->setGeometry(QRect(20, 220, 61, 16));
-		label_4->setFont(font3);
-		horizontalSlider = new QSlider(tab_2);
+
+		gridLayout->addWidget(label_3, 1, 0, 1, 1);
+
+		horizontalSlider = new QSlider(scrollAreaWidgetContents_2);
 		horizontalSlider->setObjectName(QStringLiteral("horizontalSlider"));
-		horizontalSlider->setGeometry(QRect(130, 190, 141, 22));
 		horizontalSlider->setMaximum(200);
 		horizontalSlider->setSingleStep(1);
 		horizontalSlider->setPageStep(10);
 		horizontalSlider->setValue(100);
 		horizontalSlider->setSliderPosition(100);
 		horizontalSlider->setOrientation(Qt::Horizontal);
-		label_5 = new QLabel(tab_2);
-		label_5->setObjectName(QStringLiteral("label_5"));
-		label_5->setGeometry(QRect(140, 10, 61, 16));
-		label_5->setFont(font2);
-		checkBox = new QCheckBox(tab_2);
-		checkBox->setObjectName(QStringLiteral("checkBox"));
-		checkBox->setGeometry(QRect(30, 40, 121, 21));
-		checkBox->setCheckable(false);
-		checkBox->setChecked(false);
-		horizontalSlider_2 = new QSlider(tab_2);
+
+		gridLayout->addWidget(horizontalSlider, 1, 1, 1, 1);
+
+		doubleSpinBox = new QDoubleSpinBox(scrollAreaWidgetContents_2);
+		doubleSpinBox->setObjectName(QStringLiteral("doubleSpinBox"));
+		doubleSpinBox->setMinimum(0.01);
+		doubleSpinBox->setMaximum(2);
+		doubleSpinBox->setSingleStep(0.01);
+		doubleSpinBox->setValue(1);
+
+		gridLayout->addWidget(doubleSpinBox, 1, 2, 1, 1);
+
+		label_4 = new QLabel(scrollAreaWidgetContents_2);
+		label_4->setObjectName(QStringLiteral("label_4"));
+		label_4->setFont(font3);
+
+		gridLayout->addWidget(label_4, 2, 0, 1, 1);
+
+		horizontalSlider_2 = new QSlider(scrollAreaWidgetContents_2);
 		horizontalSlider_2->setObjectName(QStringLiteral("horizontalSlider_2"));
-		horizontalSlider_2->setGeometry(QRect(130, 220, 141, 22));
 		horizontalSlider_2->setMaximum(200);
 		horizontalSlider_2->setSingleStep(1);
 		horizontalSlider_2->setPageStep(10);
 		horizontalSlider_2->setValue(0);
 		horizontalSlider_2->setSliderPosition(0);
 		horizontalSlider_2->setOrientation(Qt::Horizontal);
-		doubleSpinBox = new QDoubleSpinBox(tab_2);
-		doubleSpinBox->setObjectName(QStringLiteral("doubleSpinBox"));
-		doubleSpinBox->setGeometry(QRect(290, 190, 51, 21));
-		doubleSpinBox->setMaximum(2);
-		doubleSpinBox->setSingleStep(0.01);
-		doubleSpinBox->setValue(1);
-		doubleSpinBox_2 = new QDoubleSpinBox(tab_2);
+
+		gridLayout->addWidget(horizontalSlider_2, 2, 1, 1, 1);
+
+		doubleSpinBox_2 = new QDoubleSpinBox(scrollAreaWidgetContents_2);
 		doubleSpinBox_2->setObjectName(QStringLiteral("doubleSpinBox_2"));
-		doubleSpinBox_2->setGeometry(QRect(290, 220, 51, 21));
 		doubleSpinBox_2->setMaximum(2);
 		doubleSpinBox_2->setSingleStep(0.01);
+
+		gridLayout->addWidget(doubleSpinBox_2, 2, 2, 1, 1);
+
+		scrollArea->setWidget(scrollAreaWidgetContents_2);
+
+		gridLayout_2->addWidget(scrollArea, 2, 0, 1, 2);
+
+		checkBox = new QCheckBox(tab_2);
+		checkBox->setObjectName(QStringLiteral("checkBox"));
+		checkBox->setCheckable(false);
+		checkBox->setChecked(false);
+
+		gridLayout_2->addWidget(checkBox, 1, 0, 1, 1);
+
 		tabWidget->addTab(tab_2, QString());
+		scrollArea->raise();
+		label_5->raise();
+		checkBox->raise();
 		tab_3 = new QWidget();
 		tab_3->setObjectName(QStringLiteral("tab_3"));
-		cameraPosXEdit = new QLineEdit("0",tab_3);
+		cameraPosXEdit = new QLineEdit(tab_3);
 		cameraPosXEdit->setObjectName(QStringLiteral("cameraPosXEdit"));
 		cameraPosXEdit->setGeometry(QRect(40, 90, 41, 20));
-		cameraPosYEdit = new QLineEdit("0",tab_3);
+		cameraPosYEdit = new QLineEdit(tab_3);
 		cameraPosYEdit->setObjectName(QStringLiteral("cameraPosYEdit"));
 		cameraPosYEdit->setGeometry(QRect(40, 120, 41, 20));
-		cameraPosZEdit = new QLineEdit("0.5",tab_3);
+		cameraPosZEdit = new QLineEdit(tab_3);
 		cameraPosZEdit->setObjectName(QStringLiteral("cameraPosZEdit"));
 		cameraPosZEdit->setGeometry(QRect(40, 150, 41, 20));
 		label_8 = new QLabel(tab_3);
@@ -202,26 +253,26 @@ public:
 		font4.setFamily(QStringLiteral("Arial"));
 		font4.setPointSize(13);
 		label_7->setFont(font4);
-		cameraEyeYEdit = new QLineEdit("0",tab_3);
+		cameraEyeYEdit = new QLineEdit(tab_3);
 		cameraEyeYEdit->setObjectName(QStringLiteral("cameraEyeYEdit"));
 		cameraEyeYEdit->setGeometry(QRect(160, 120, 41, 20));
-		cameraEyeZEdit = new QLineEdit("-1",tab_3);
+		cameraEyeZEdit = new QLineEdit(tab_3);
 		cameraEyeZEdit->setObjectName(QStringLiteral("cameraEyeZEdit"));
 		cameraEyeZEdit->setGeometry(QRect(160, 150, 41, 20));
-		cameraEyeXEdit = new QLineEdit("0",tab_3);
+		cameraEyeXEdit = new QLineEdit(tab_3);
 		cameraEyeXEdit->setObjectName(QStringLiteral("cameraEyeXEdit"));
 		cameraEyeXEdit->setGeometry(QRect(160, 90, 41, 20));
 		label_9 = new QLabel(tab_3);
 		label_9->setObjectName(QStringLiteral("label_9"));
 		label_9->setGeometry(QRect(160, 50, 71, 31));
 		label_9->setFont(font4);
-		cameraUpYEdit = new QLineEdit("1",tab_3);
+		cameraUpYEdit = new QLineEdit(tab_3);
 		cameraUpYEdit->setObjectName(QStringLiteral("cameraUpYEdit"));
 		cameraUpYEdit->setGeometry(QRect(270, 120, 41, 20));
-		cameraUpZEdit = new QLineEdit("0",tab_3);
+		cameraUpZEdit = new QLineEdit(tab_3);
 		cameraUpZEdit->setObjectName(QStringLiteral("cameraUpZEdit"));
 		cameraUpZEdit->setGeometry(QRect(270, 150, 41, 20));
-		cameraUpXEdit = new QLineEdit("0",tab_3);
+		cameraUpXEdit = new QLineEdit(tab_3);
 		cameraUpXEdit->setObjectName(QStringLiteral("cameraUpXEdit"));
 		cameraUpXEdit->setGeometry(QRect(270, 90, 41, 20));
 		label_10 = new QLabel(tab_3);
@@ -229,10 +280,13 @@ public:
 		label_10->setGeometry(QRect(280, 50, 31, 31));
 		label_10->setFont(font4);
 		tabWidget->addTab(tab_3, QString());
+
+		horizontalLayout->addWidget(tabWidget);
+
 		ConfigUIClass->setCentralWidget(centralWidget);
 		menuBar = new QMenuBar(ConfigUIClass);
 		menuBar->setObjectName(QStringLiteral("menuBar"));
-		menuBar->setGeometry(QRect(0, 0, 360, 21));
+		menuBar->setGeometry(QRect(0, 0, 425, 21));
 		menuFile = new QMenu(menuBar);
 		menuFile->setObjectName(QStringLiteral("menuFile"));
 		menuAbout = new QMenu(menuBar);
@@ -248,7 +302,7 @@ public:
 
 		retranslateUi(ConfigUIClass);
 
-		tabWidget->setCurrentIndex(0);
+		tabWidget->setCurrentIndex(1);
 
 
 		QMetaObject::connectSlotsByName(ConfigUIClass);
@@ -265,10 +319,10 @@ public:
 		pushButton_3->setText(QApplication::translate("ConfigUIClass", "Annonate", Q_NULLPTR));
 		label_6->setText(QApplication::translate("ConfigUIClass", "Drawing", Q_NULLPTR));
 		tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("ConfigUIClass", "Action", Q_NULLPTR));
+		label_5->setText(QApplication::translate("ConfigUIClass", "Status", Q_NULLPTR));
 		label_2->setText(QApplication::translate("ConfigUIClass", "One Euro Filter", Q_NULLPTR));
 		label_3->setText(QApplication::translate("ConfigUIClass", "Min. cutoff", Q_NULLPTR));
 		label_4->setText(QApplication::translate("ConfigUIClass", "Beta", Q_NULLPTR));
-		label_5->setText(QApplication::translate("ConfigUIClass", "Status", Q_NULLPTR));
 		checkBox->setText(QApplication::translate("ConfigUIClass", "Tracked Joints", Q_NULLPTR));
 		tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("ConfigUIClass", "Kinect", Q_NULLPTR));
 		label_8->setText(QApplication::translate("ConfigUIClass", "Transform", Q_NULLPTR));
