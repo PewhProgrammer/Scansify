@@ -17,7 +17,7 @@ ConfigUI::ConfigUI(QWidget *parent)
 	float height = rec.height();
 	float width = rec.width();
 
-	move(width - 366, height / 2 - 300);
+	move(width - 380, height / 2 - 300);
 
 	connect(ui.pushButton, &QPushButton::clicked, [this] {
 		triangulateMesh();
@@ -36,8 +36,6 @@ ConfigUI::ConfigUI(QWidget *parent)
 			printf("String Found");
 		}
 */
-
-		std::cout << "Triangulation successfully completed. Stored in \"Scansify/models/subject.stl\""  << std::endl;
 
 	});
 	connect(ui.pushButton_2, &QPushButton::clicked, [this] {

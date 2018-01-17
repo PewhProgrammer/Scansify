@@ -108,6 +108,9 @@
     <ClCompile Include="Lib\Qt_darkstyle\DarkStyle.cpp">
       <Filter>Source Files\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="rt\cameras\perspective.cpp">
+      <Filter>Source Files\Raytracing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glut.h">
@@ -174,6 +177,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ChangeCameraCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\cameras\perspective.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

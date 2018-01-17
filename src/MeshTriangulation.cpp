@@ -41,21 +41,22 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, std::string pat
 void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
 {
 
+
+	/*
 	MovingLeastSquares<PointXYZ, PointXYZ> mls;
 	mls.setInputCloud(cloud);
 	mls.setSearchRadius(0.01);
-	mls.setPolynomialFit(
-		true
-	);
+	mls.setPolynomialFit(true);
 	mls.setPolynomialOrder(2);
 	mls.setUpsamplingMethod(MovingLeastSquares<PointXYZ, PointXYZ>::SAMPLE_LOCAL_PLANE);
 	mls.setUpsamplingRadius(0.005);
 	mls.setUpsamplingStepSize(0.003);
-	PointCloud<PointXYZ>::Ptr cloud_smoothed(
-		new
-		PointCloud<PointXYZ>());
+	PointCloud<PointXYZ>::Ptr cloud_smoothed(new PointCloud<PointXYZ>());
 	mls.process(*cloud_smoothed);
+	*/
+
 	
+	/*
 	NormalEstimationOMP<PointXYZ, Normal> ne;
 	ne.setNumberOfThreads(8);
 	ne.setInputCloud(cloud_smoothed);
@@ -76,15 +77,15 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 	PointCloud<PointNormal>::Ptr cloud_smoothed_normals(new PointCloud<PointNormal>());
 	concatenateFields(*cloud_smoothed, *cloud_normals, *cloud_smoothed_normals);
 
+	
 	Poisson<PointNormal> poisson;
 	poisson.setDepth(9);
 	poisson.setInputCloud(cloud_smoothed_normals);
 	PolygonMesh mesh;
 	poisson.reconstruct(mesh);
-
+	*/
 	
 
-	/*
 
 	// Normal estimation*
 	pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> n;
@@ -131,12 +132,13 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 	std::vector<int> states = gp3.getPointStates();
 
 	Poisson<PointNormal> poisson;
-	poisson.setDepth(9);
+	poisson.setDepth(4);
+
 	poisson.setInputCloud(cloud_with_normals);
-	PolygonMesh mesh;
-	poisson.reconstruct(mesh);
+	
+	poisson.reconstruct(*triangles);
 
 	// Finish
 	return;
-	*/
+
 }

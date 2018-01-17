@@ -22,6 +22,7 @@
 #include "rt\bvh.h"
 #include "rt\intersection.h"
 #include "ray.h"
+#include "rt\cameras\perspective.h"
 
 #include "ChangeCameraCommand.h"
 #include "ICommand.h"
@@ -38,10 +39,12 @@ MeshTriangulation meshT;
 rt::Point cameraPos(0,0,0.5f);
 rt::Vector cameraUp(0, 1.f, 0);
 rt::Vector cameraFocal(0, 0,-1.f);
+rt::PerspectiveCamera* cam;
 
 rt::BVH *scene = new rt::BVH(); 
 bool buildScene = true;
 bool processing = true;
+std::string modelPath = "/models/subject_poisson.stl";
 
 // Command Queue
 std::queue<ICommand *> commands;
@@ -94,11 +97,12 @@ void mousePicking(float screenX, float screenY) {
 	float outputHigh = -0.5f + cameraPos.x;
  	float x = ((screenX - 0) / (512.f - 0)) * (outputHigh - outputLow) + outputLow;
 	float y = ((screenY - 0) / (424.f - 0)) * (- 0.41f - 0.41f) + 0.41f;
-	float z = 1;
+	float z = cameraPos.z;
 
-	const rt::Point o(x ,y  , z );
-	rt::Ray ray(o,
-		cameraFocal.normalize());
+	const rt::Point o(x ,y, z );
+	rt::Ray ray = cam->getPrimaryRay(x, y);
+
+	
 	
 	std::cout << "shooting ray: Pos(" << ray.o.x << ", " << ray.o.y << ", " << ray.o.z << ")    Dir(" << ray.d.x << ", " << ray.d.y << ", " << ray.d.z << ")" ;
 	rt::Intersection hit = scene->intersect(ray);
@@ -174,7 +178,9 @@ void triangulateMesh() {
 
 
 
-	pcl::io::savePolygonFileSTL("../models/subject_mls.stl", *mesh, false);
+	pcl::io::savePolygonFileSTL(".." + modelPath, *mesh, false);
+
+	std::cout << "Triangulation successfully completed. Stored in \"Scansify"+ modelPath + "\"" << std::endl;
 }
 
 
@@ -224,6 +230,9 @@ void drawPCLData() {
 	if (buildScene) {
 		buildScene = false;
 		scene->rebuildIndex();
+		rt::Point max = scene->getBounds().max;
+		rt::Point min = scene->getBounds().min;
+		std::cout << "build bvh out of (max,min) " << max[0] << ", " << max[1] << ", " << max[2] << " | " << min[0] << ", " << min[1] << ", " << min[0] << std::endl;
 	}
 	glUnmapBuffer(GL_ARRAY_BUFFER);
 
@@ -237,7 +246,7 @@ void rotateCamera() {
 	glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 	gluLookAt(x,0,z,0,0,radius/2,0,1,0);
-	angle += 0.002;
+	angle += 0.02;
 }
 
 void bufferAxis() {
@@ -308,7 +317,7 @@ void drawData() {
 	GLenum err;
 	while ((err = glGetError()) != GL_NO_ERROR)
 	{
-		printf(""+err);
+		printf("openGL error: "+err);
 	}
 	
 }
@@ -348,11 +357,14 @@ int main(int argc, char* argv[]) {
 	freopen("CONOUT$", "w", stdout);
 	freopen("CONOUT$", "w", stderr);
 
-	HWND console = GetConsoleWindow();
-	RECT r;
-	GetWindowRect(console, &r); //stores the console's current dimensions
+	RECT desktop, r;
+	const HWND hDesktop = GetDesktopWindow();
+	const HWND console = GetConsoleWindow();
 
-	MoveWindow(console, 0, r.bottom - 35, 880, 150, TRUE); // 800 width, 100 height
+	GetWindowRect(console, &r); //stores the console's current dimensions
+	GetWindowRect(hDesktop, &desktop);
+
+	MoveWindow(console, 0, desktop.bottom - 150, 880, 150, TRUE); // 800 width, 100 height
 
 	printf("Log Console.");
 	std::cout.put('\n');
@@ -377,14 +389,24 @@ int main(int argc, char* argv[]) {
 	glBindBuffer(GL_ARRAY_BUFFER, cboId);
 	glBufferData(GL_ARRAY_BUFFER, dataSize, 0, GL_DYNAMIC_DRAW);
 
+	float openAngle = 45;
+	GLdouble ratio = width / (GLdouble)height;
+
     // Camera setup
     glViewport(0, 0, width, height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-	gluPerspective(45, width /(GLdouble) height, 0.1, 1000);
+	gluPerspective(openAngle, ratio, 0.1, 1000);
+	//glOrtho(-1.0, 1.0, -1.5f, 1.5f, -0.5f, 3.5f);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-	gluLookAt(0.00001f,0.0000001f,-1,0,0, 0.5f,0,1,0);
+	gluLookAt(
+		cameraFocal.x, cameraFocal.y,cameraFocal.z,
+		cameraPos.x, cameraPos.y, cameraPos.z,
+		cameraUp.x, cameraUp.y, cameraUp.z);
+
+	// Init cam
+	cam = new rt::PerspectiveCamera(cameraPos, cameraFocal, cameraUp,openAngle,openAngle*ratio);
 
     // Main loop
     execute();
