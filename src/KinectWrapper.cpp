@@ -47,11 +47,11 @@ enum Features {
 	ElbowLeft
 };
 
-
+	
 KinectWrapper::KinectWrapper()
 {
-	m_filters.reserve(Features::ElbowLeft);
-	for (int i = 0; i < Features::ElbowLeft; i++) {
+	m_filters.reserve(Features::ElbowLeft + 1);
+	for (int i = 0; i <= Features::ElbowLeft; i++) {
 		OneEuroFilter e(30); // Hz in params
 		m_filters.push_back(e);
 	}
@@ -102,9 +102,9 @@ void KinectWrapper::getRGBData(IMultiSourceFrame* frame, GLubyte* dest)
 		
 		ColorSpacePoint p = depth2rgb[i];
 		// Check if color pixel coordinates are in bounds
-		if ((p.X < 0 || p.Y < 0 || p.X > colorwidth || p.Y > colorheight) ||
-			!checkBBox(depth2xyz[i].X, depth2xyz[i].Y, depth2xyz[i].Z, &leftArmBox) &&
-			!checkBBox(depth2xyz[i].X, depth2xyz[i].Y, depth2xyz[i].Z, &rightArmBox) ) {
+		if ((p.X < 0 || p.Y < 0 || p.X > colorwidth || p.Y > colorheight)
+			|| !checkBBox(depth2xyz[i].X, depth2xyz[i].Y, depth2xyz[i].Z, &leftArmBox)
+			  /*&& !checkBBox(depth2xyz[i].X, depth2xyz[i].Y, depth2xyz[i].Z, &rightArmBox) */) {
 			*fdest++ = 0;
 			*fdest++ = 0;
 			*fdest++ = 0;
@@ -116,10 +116,11 @@ void KinectWrapper::getRGBData(IMultiSourceFrame* frame, GLubyte* dest)
 			*fdest++ = rgbimage[4 * idx + 1] / 255.;
 			*fdest++ = rgbimage[4 * idx + 2] / 255.;
 			*/
-			//float k = rgbimage[4 * idx + 0] / 255.;
+			
 			*fdest++ = 0.84f;
 			*fdest++ = 0.13f;
 			*fdest++ = 0.61f;
+			
 		}
 	
 		// Don't copy alpha channel
@@ -163,8 +164,8 @@ void KinectWrapper::getDepthData(IMultiSourceFrame* frame, GLubyte* dest)
 		*fdest++ = y;
 		*fdest++ = z;
 
-		if (checkBBox(x, y, z, &leftArmBox) ||
-			checkBBox(x, y, z, &rightArmBox)) {
+		if (checkBBox(x, y, z, &leftArmBox) /* ||
+			checkBBox(x, y, z, &rightArmBox) */) {
 			depthfiltered[pointcloudSize] = depth2xyz[i];
 			pointcloudSize++;
 
@@ -251,11 +252,23 @@ void KinectWrapper::computeLeftArmBox(IMultiSourceFrame * frame, rt::BBox* box)
 			CameraSpacePoint handWrist = joints[JointType_WristLeft].Position;
 			CameraSpacePoint handElbow = joints[JointType_ElbowLeft].Position;
 
+			/*
 			box->extend(rt::Point(handTip.X, handTip.Y, handTip.Z));
 			box->extend(rt::Point(handThumb.X, handThumb.Y, handThumb.Z));
 			box->extend(rt::Point(hand.X, hand.Y, hand.Z));
 			box->extend(rt::Point(handWrist.X, handWrist.Y, handWrist.Z));
 			box->extend(rt::Point(handElbow.X, handElbow.Y, handElbow.Z));
+			*/
+
+			rt::Point p_filtered = m_filters[Features::tipLeft].filter(handTip); 
+
+			box->extend(m_filters[Features::tipLeft].filter(handTip));
+			box->extend(m_filters[Features::thumbLeft].filter(handThumb));
+			box->extend(m_filters[Features::handLeft].filter(hand));
+			box->extend(m_filters[Features::wristLeft].filter(handWrist));
+			box->extend(m_filters[Features::ElbowLeft].filter(handElbow));
+
+			//printf("Before: (%6.3f,%6.3f,%6.3f)		After: (%6.3f,%6.3f,%6.3f)  \n", handTip.X, handTip.Y, handTip.Z , p_filtered.x, p_filtered.y, p_filtered.z);
 
 			break;
 		}
@@ -282,6 +295,9 @@ HRESULT KinectWrapper::aquireLatestFrame(IMultiSourceFrame** frame)
 
 void KinectWrapper::changeFilterValues(float mincutoff, float beta)
 {
+	for (int i = 0; i < m_filters.size(); i++) {
+		m_filters[i].changeFilterValues(mincutoff, beta);
+	}
 }
 
 

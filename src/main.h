@@ -24,5 +24,6 @@ void drawData();
 void triangulateMesh();
 void mousePicking(float screenX, float screenY);
 void changeCameraProperties(float eyex, float eyey, float eyez, float posx, float posy, float posz, float upx, float upy, float upz);
+void changeFilterValues(double mincutoff, double beta);
 
 pcl::PointCloud<pcl::PointXYZ>::Ptr scanData();

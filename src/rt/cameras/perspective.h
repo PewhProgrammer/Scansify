@@ -12,12 +12,12 @@ namespace rt {
 class PerspectiveCamera {
 
 private:
-	Point center;
-	Vector forward;
 	Vector spanX, spanY; 
 
 
 public:
+	Point center;
+	Vector forward;
 	PerspectiveCamera(
 		const Point& center,
 		const Vector& forward,

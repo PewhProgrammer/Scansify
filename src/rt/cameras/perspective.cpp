@@ -14,8 +14,12 @@ namespace rt {
 		this->center = center;  
 		this->forward = forward.normalize();
 
+		float k = tan(horizonalOpeningAngle * 0.5f);
+
+		// tan operates in RAD unit
 		spanX = cross(this->forward, up).normalize() * tan(horizonalOpeningAngle * 0.5f);
 		spanY = cross(this->forward, spanX).normalize() * tan(verticalOpeningAngle * 0.5f);
+		spanY.y = abs(spanY.y);
 
 	}
 	Ray PerspectiveCamera::getPrimaryRay(float x, float y) const

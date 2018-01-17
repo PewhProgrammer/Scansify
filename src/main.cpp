@@ -42,9 +42,11 @@ rt::Vector cameraFocal(0, 0,-1.f);
 rt::PerspectiveCamera* cam;
 
 rt::BVH *scene = new rt::BVH(); 
+
 bool buildScene = true;
 bool processing = true;
-std::string modelPath = "/models/subject_poisson.stl";
+float fovy = 0;
+GLdouble ratio = 0;
 
 // Command Queue
 std::queue<ICommand *> commands;
@@ -93,10 +95,10 @@ void mousePicking(float screenX, float screenY) {
 	//std::cout << "mouse click on: (" << screenX << ", " << screenY << ") " << std::endl;
 
 	// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
-	float outputLow = 0.5f + cameraPos.x;
-	float outputHigh = -0.5f + cameraPos.x;
+	float outputLow = 1;
+	float outputHigh = -1;
  	float x = ((screenX - 0) / (512.f - 0)) * (outputHigh - outputLow) + outputLow;
-	float y = ((screenY - 0) / (424.f - 0)) * (- 0.41f - 0.41f) + 0.41f;
+	float y = ((screenY - 0) / (424.f - 0)) * (outputHigh - outputLow) + outputLow;
 	float z = cameraPos.z;
 
 	const rt::Point o(x ,y, z );
@@ -112,16 +114,19 @@ void mousePicking(float screenX, float screenY) {
 
 pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
 {
+	std::thread t1(processingConsoleOutput, 14, "Scanning the object ...");
+	t1.detach();
+
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 	kinectWrapper.convertDepthDataToPCL(cloud);
-
+	processing = false;
 
 
 	size_t k = cloud->size();
 	if (k > 0) {
-		std::cout << "Scan completed." << std::endl;
+		std::cout << "Scan completed.                               " << std::endl;
 		std::cerr << "PointCloud before filtering: " << cloud->width * cloud->height
-			<< " data points (" << pcl::getFieldsList(*cloud) << ").";
+			<< " data points (" << pcl::getFieldsList(*cloud) << ")." << std::endl;
 	}
 	else
 		std::cout << "Scan was insuccessful!" << std::endl;
@@ -136,23 +141,26 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
 
 	std::cerr << "PointCloud after filtering: " << cloud_filtered->width * cloud_filtered->height
 		<< " data points (" << pcl::getFieldsList(*cloud_filtered) << ")." << std::endl;
-
+	
 	return cloud_filtered;
 }
 
 void triangulateMesh() {
 
+
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = scanData();
+
 	std::thread t1(processingConsoleOutput, 14, "Triangulating to mesh ...");
 	t1.detach();
 
-	//pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = scanData();
-
+	/*
 	// Load input file into a PointCloud<T> with an appropriate type
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 	pcl::PCLPointCloud2 cloud_blob;
 	pcl::io::loadPCDFile("Resources/bun0.pcd", cloud_blob);
 	pcl::fromPCLPointCloud2(cloud_blob, *cloud);
 	//* the data should be available in cloud
+	
 
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>);
 
@@ -161,25 +169,18 @@ void triangulateMesh() {
 	sor.setInputCloud(cloud);
 	sor.setLeafSize(0.015f, 0.015f, 0.015f);
 	sor.filter(*cloud_filtered);
+	*/
 
 
 	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
 	meshT.reconstruct(mesh, cloud);
 	
-	if (cloud_filtered->size() == 0) return;
-
+	if (cloud->size() == 0) return;
 	processing = false;
 
-	std::cerr << "PointCloud before filtering: " << cloud->width * cloud->height
-	<< " data points (" << pcl::getFieldsList(*cloud) << ")." << std::endl;
 
-	std::cerr << "PointCloud after filtering: " << cloud_filtered->width * cloud_filtered->height
-		<< " data points (" << pcl::getFieldsList(*cloud_filtered) << ")." << std::endl;
-
-
-
+	std::string modelPath = "/models/subject_poisson.stl";
 	pcl::io::savePolygonFileSTL(".." + modelPath, *mesh, false);
-
 	std::cout << "Triangulation successfully completed. Stored in \"Scansify"+ modelPath + "\"" << std::endl;
 }
 
@@ -254,7 +255,7 @@ void bufferAxis() {
 	glBindBuffer(GL_ARRAY_BUFFER, vboId);
 	dest = (GLubyte*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 	float* fdest = (float*)dest;
-	*fdest++ = 0;
+	*fdest++ = 0.5f;
 	*fdest++ = 0.41f;
 	*fdest++ = 0;
 	glUnmapBuffer(GL_ARRAY_BUFFER);
@@ -269,10 +270,18 @@ void bufferAxis() {
 
 }
 
+void changeFilterValues(double mincutoff, double beta) {
+	kinectWrapper.changeFilterValues(mincutoff, beta);
+}
+
 void changeCameraProperties(float eyex, float eyey, float eyez, float posx, float posy, float posz, float upx, float upy, float upz) {
 	cameraFocal.x = eyex;	cameraFocal.y = eyey;	cameraFocal.z = eyez;
 	cameraPos.x = posx;		cameraPos.y = posy;		cameraPos.z = posz;
 	cameraUp.x = upx;		cameraUp.y = upy;		cameraUp.z = upz;
+
+
+	// Init cam - dummy values for openingAngle
+	cam = new rt::PerspectiveCamera(cameraPos, cameraFocal, cameraUp, fovy * 2, fovy * 2 * ratio);
 
 	commands.push(new ChangeCameraCommand(eyex, eyey, eyez, posx, posy, posz, upx,upy, upz));
 	/*
@@ -294,9 +303,9 @@ void drawData() {
 	}
 
 	//rotateCamera();
-	//getKinectData();
-	drawPCLData();
-	bufferAxis();
+	getKinectData();
+	//drawPCLData();
+	//bufferAxis();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -364,7 +373,7 @@ int main(int argc, char* argv[]) {
 	GetWindowRect(console, &r); //stores the console's current dimensions
 	GetWindowRect(hDesktop, &desktop);
 
-	MoveWindow(console, 0, desktop.bottom - 150, 880, 150, TRUE); // 800 width, 100 height
+	MoveWindow(console, desktop.right * 0.3, desktop.bottom - 200, 880, 150, TRUE); // 800 width, 100 height
 
 	printf("Log Console.");
 	std::cout.put('\n');
@@ -390,7 +399,7 @@ int main(int argc, char* argv[]) {
 	glBufferData(GL_ARRAY_BUFFER, dataSize, 0, GL_DYNAMIC_DRAW);
 
 	float openAngle = 45;
-	GLdouble ratio = width / (GLdouble)height;
+	ratio = width / (GLdouble)height;
 
     // Camera setup
     glViewport(0, 0, width, height);
@@ -400,13 +409,20 @@ int main(int argc, char* argv[]) {
 	//glOrtho(-1.0, 1.0, -1.5f, 1.5f, -0.5f, 3.5f);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-	gluLookAt(
+	/*gluLookAt(
 		cameraFocal.x, cameraFocal.y,cameraFocal.z,
 		cameraPos.x, cameraPos.y, cameraPos.z,
-		cameraUp.x, cameraUp.y, cameraUp.z);
+		cameraUp.x, cameraUp.y, cameraUp.z
+	);*/
+	gluLookAt(
+		0, 0, 0,
+		0, 0, 1,
+		0, 1, 0
+	);
 
 	// Init cam
-	cam = new rt::PerspectiveCamera(cameraPos, cameraFocal, cameraUp,openAngle,openAngle*ratio);
+	fovy = 0.785398163397 * 2; // in rad
+	cam = new rt::PerspectiveCamera(cameraPos, cameraFocal, cameraUp,fovy , fovy  * ratio);
 
     // Main loop
     execute();

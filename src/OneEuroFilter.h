@@ -73,8 +73,8 @@ class OneEuroFilter {
 	LowPassFilter *dx;
 	TimeStamp lasttime;
 
-	OneEuroFilter* yValue;
-	OneEuroFilter* zValue;
+	OneEuroFilter* yValue = nullptr;
+	OneEuroFilter* zValue = nullptr;
 
 	double alpha(double cutoff) {
 		double te = 1.0 / freq;
@@ -117,6 +117,13 @@ public:
 			yValue = new OneEuroFilter(freq, false);
 			zValue = new OneEuroFilter(freq, false);
 		}
+	}
+
+	void changeFilterValues(double mincutoff, double beta) {
+		this->mincutoff = mincutoff;
+		beta_ = beta;
+		if(yValue != nullptr) yValue->changeFilterValues(mincutoff,beta);
+		if (zValue != nullptr) zValue->changeFilterValues(mincutoff, beta);
 	}
 
 	rt::Point filter(CameraSpacePoint p, TimeStamp timestamp = UndefinedTime) {

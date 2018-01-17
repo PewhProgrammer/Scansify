@@ -46,10 +46,18 @@ ConfigUI::ConfigUI(QWidget *parent)
 	});
 
 	connect(ui.horizontalSlider, &QSlider::valueChanged, [this] {
-		std::cout << ui.horizontalSlider->value() << std::endl;
+		float minc = ui.horizontalSlider->value() / 100.f;
+		float beta = ui.horizontalSlider_2->value() / 100.f;
+		ui.doubleSpinBox->setValue(minc);
+		changeFilterValues(minc, beta);
+		std::cout << minc << std::endl;
 	});
 	connect(ui.horizontalSlider_2, &QSlider::valueChanged, [this] {
-		std::cout << ui.horizontalSlider_2->value() << std::endl;
+		float minc = ui.horizontalSlider->value() / 100.f;
+		float beta = ui.horizontalSlider_2->value() / 100.f;
+		ui.doubleSpinBox_2->setValue(beta);
+		changeFilterValues(minc, beta);
+		std::cout << beta << std::endl;
 	});
 
 	QList<QLineEdit *> edits;
