@@ -60,23 +60,23 @@ ConfigUI::ConfigUI(QWidget *parent)
 		std::cout << beta << std::endl;
 	});
 
-	QList<QLineEdit *> edits;
-	edits.push_back(ui.cameraPosXEdit);
-	edits.push_back(ui.cameraPosYEdit);
-	edits.push_back(ui.cameraPosZEdit);
-	edits.push_back(ui.cameraEyeXEdit);
-	edits.push_back(ui.cameraEyeXEdit);
-	edits.push_back(ui.cameraEyeXEdit);
-	edits.push_back(ui.cameraUpXEdit);
-	edits.push_back(ui.cameraUpXEdit);
-	edits.push_back(ui.cameraUpXEdit);
+	QList<QDoubleSpinBox *> edits;
+	edits.push_back(ui.SpinBoxPosX);
+	edits.push_back(ui.SpinBoxPosY);
+	edits.push_back(ui.SpinBoxPosZ);
+	edits.push_back(ui.SpinBoxEyeX);
+	edits.push_back(ui.SpinBoxEyeY);
+	edits.push_back(ui.SpinBoxEyeZ);
+	edits.push_back(ui.SpinBoxUpX);
+	edits.push_back(ui.SpinBoxUpY);
+	edits.push_back(ui.SpinBoxUpZ);
 
 	for (int i = 0; i < edits.size(); i++) {
-		connect(edits[i], &QLineEdit::textChanged, [this] {
+		connect(edits[i], &QDoubleSpinBox::editingFinished, [this] {
 			changeCameraProperties(
-				ui.cameraEyeXEdit->text().toDouble(), ui.cameraEyeYEdit->text().toDouble(), ui.cameraEyeZEdit->text().toDouble(),
-				ui.cameraPosXEdit->text().toDouble(), ui.cameraPosYEdit->text().toDouble(), ui.cameraPosZEdit->text().toDouble(),
-				ui.cameraUpXEdit->text().toDouble(), ui.cameraUpYEdit->text().toDouble(), ui.cameraUpZEdit->text().toDouble());
+				ui.SpinBoxEyeX->value(), ui.SpinBoxEyeY->value(), ui.SpinBoxEyeZ->value(),
+				ui.SpinBoxPosX->value(), ui.SpinBoxPosY->value(), ui.SpinBoxPosZ->value(),
+				ui.SpinBoxUpX->value() , ui.SpinBoxUpY->value(), ui.SpinBoxUpZ->value());
 		});
 	}
 	

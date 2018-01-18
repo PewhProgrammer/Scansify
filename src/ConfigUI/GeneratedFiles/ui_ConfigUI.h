@@ -93,7 +93,7 @@ public:
 	{
 		if (ConfigUIClass->objectName().isEmpty())
 			ConfigUIClass->setObjectName(QStringLiteral("ConfigUIClass"));
-		ConfigUIClass->resize(355, 512);
+		ConfigUIClass->resize(319, 598);
 		actionExit = new QAction(ConfigUIClass);
 		actionExit->setObjectName(QStringLiteral("actionExit"));
 		actionHelp = new QAction(ConfigUIClass);
@@ -124,7 +124,7 @@ public:
 		scrollArea_2->setWidgetResizable(true);
 		scrollAreaWidgetContents = new QWidget();
 		scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-		scrollAreaWidgetContents->setGeometry(QRect(0, 0, 329, 422));
+		scrollAreaWidgetContents->setGeometry(QRect(0, 0, 293, 508));
 		gridLayout_8 = new QGridLayout(scrollAreaWidgetContents);
 		gridLayout_8->setSpacing(6);
 		gridLayout_8->setContentsMargins(11, 11, 11, 11);
@@ -176,7 +176,7 @@ public:
 		scrollArea->setWidgetResizable(true);
 		scrollAreaWidgetContents_2 = new QWidget();
 		scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-		scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 329, 384));
+		scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 310, 453));
 		gridLayout_7 = new QGridLayout(scrollAreaWidgetContents_2);
 		gridLayout_7->setSpacing(6);
 		gridLayout_7->setContentsMargins(11, 11, 11, 11);
@@ -268,6 +268,9 @@ public:
 		gridLayout_4->setContentsMargins(10, 10, 10, 10);
 		SpinBoxPosY = new QDoubleSpinBox(groupBox_2);
 		SpinBoxPosY->setObjectName(QStringLiteral("SpinBoxPosY"));
+		SpinBoxPosY->setMinimum(-30);
+		SpinBoxPosY->setMaximum(30);
+		SpinBoxPosY->setSingleStep(0.01);
 
 		gridLayout_4->addWidget(SpinBoxPosY, 2, 1, 1, 1);
 
@@ -294,41 +297,66 @@ public:
 
 		SpinBoxPosX = new QDoubleSpinBox(groupBox_2);
 		SpinBoxPosX->setObjectName(QStringLiteral("SpinBoxPosX"));
+		SpinBoxPosX->setMinimum(-30);
+		SpinBoxPosX->setMaximum(30);
+		SpinBoxPosX->setSingleStep(0.01);
 
 		gridLayout_4->addWidget(SpinBoxPosX, 1, 1, 1, 1);
 
 		SpinBoxPosZ = new QDoubleSpinBox(groupBox_2);
 		SpinBoxPosZ->setObjectName(QStringLiteral("SpinBoxPosZ"));
+		SpinBoxPosZ->setMinimum(-30);
+		SpinBoxPosZ->setMaximum(30);
+		SpinBoxPosZ->setSingleStep(0.01);
 
 		gridLayout_4->addWidget(SpinBoxPosZ, 3, 1, 1, 1);
 
 		SpinBoxEyeX = new QDoubleSpinBox(groupBox_2);
 		SpinBoxEyeX->setObjectName(QStringLiteral("SpinBoxEyeX"));
+		SpinBoxEyeX->setMinimum(-30);
+		SpinBoxEyeX->setMaximum(30);
+		SpinBoxEyeX->setSingleStep(0.01);
+		SpinBoxEyeX->setValue(0);
 
 		gridLayout_4->addWidget(SpinBoxEyeX, 1, 2, 1, 1);
 
 		SpinBoxEyeY = new QDoubleSpinBox(groupBox_2);
 		SpinBoxEyeY->setObjectName(QStringLiteral("SpinBoxEyeY"));
+		SpinBoxEyeY->setMinimum(-30);
+		SpinBoxEyeY->setMaximum(30);
+		SpinBoxEyeY->setSingleStep(0.01);
 
 		gridLayout_4->addWidget(SpinBoxEyeY, 2, 2, 1, 1);
 
 		SpinBoxEyeZ = new QDoubleSpinBox(groupBox_2);
 		SpinBoxEyeZ->setObjectName(QStringLiteral("SpinBoxEyeZ"));
+		SpinBoxEyeZ->setMinimum(-30);
+		SpinBoxEyeZ->setMaximum(30);
+		SpinBoxEyeZ->setSingleStep(0.01);
 
 		gridLayout_4->addWidget(SpinBoxEyeZ, 3, 2, 1, 1);
 
 		SpinBoxUpX = new QDoubleSpinBox(groupBox_2);
 		SpinBoxUpX->setObjectName(QStringLiteral("SpinBoxUpX"));
+		SpinBoxUpX->setMinimum(-30);
+		SpinBoxUpX->setMaximum(30);
+		SpinBoxUpX->setSingleStep(0.01);
 
 		gridLayout_4->addWidget(SpinBoxUpX, 1, 3, 1, 1);
 
 		SpinBoxUpY = new QDoubleSpinBox(groupBox_2);
 		SpinBoxUpY->setObjectName(QStringLiteral("SpinBoxUpY"));
+		SpinBoxUpY->setMinimum(-30);
+		SpinBoxUpY->setMaximum(30);
+		SpinBoxUpY->setSingleStep(0.01);
 
 		gridLayout_4->addWidget(SpinBoxUpY, 2, 3, 1, 1);
 
 		SpinBoxUpZ = new QDoubleSpinBox(groupBox_2);
 		SpinBoxUpZ->setObjectName(QStringLiteral("SpinBoxUpZ"));
+		SpinBoxUpZ->setMinimum(-30);
+		SpinBoxUpZ->setMaximum(30);
+		SpinBoxUpZ->setSingleStep(0.01);
 
 		gridLayout_4->addWidget(SpinBoxUpZ, 3, 3, 1, 1);
 
@@ -368,7 +396,7 @@ public:
 		ConfigUIClass->setCentralWidget(centralWidget);
 		menuBar = new QMenuBar(ConfigUIClass);
 		menuBar->setObjectName(QStringLiteral("menuBar"));
-		menuBar->setGeometry(QRect(0, 0, 355, 21));
+		menuBar->setGeometry(QRect(0, 0, 319, 21));
 		menuFile = new QMenu(menuBar);
 		menuFile->setObjectName(QStringLiteral("menuFile"));
 		menuAbout = new QMenu(menuBar);
@@ -410,6 +438,7 @@ public:
 		label_11->setText(QApplication::translate("ConfigUIClass", "Up", Q_NULLPTR));
 		label_12->setText(QApplication::translate("ConfigUIClass", "Eye", Q_NULLPTR));
 		label_13->setText(QApplication::translate("ConfigUIClass", "Position", Q_NULLPTR));
+		SpinBoxPosX->setSuffix(QString());
 		label_5->setText(QApplication::translate("ConfigUIClass", "Status", Q_NULLPTR));
 		checkBoxTracked->setText(QApplication::translate("ConfigUIClass", "Tracked Joints", Q_NULLPTR));
 		tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("ConfigUIClass", "Kinect", Q_NULLPTR));
