@@ -36,7 +36,7 @@ PCLRenderer rend;
 KinectWrapper kinectWrapper;
 MeshTriangulation meshT;
 
-rt::Point cameraPos(0,0,0.5f);
+rt::Point cameraPos(0,0,0.06f);
 rt::Vector cameraUp(0, 1.f, 0);
 rt::Vector cameraFocal(0, 0,-1.f);
 rt::PerspectiveCamera* cam;
@@ -303,9 +303,9 @@ void drawData() {
 	}
 
 	//rotateCamera();
-	getKinectData();
-	//drawPCLData();
-	//bufferAxis();
+	//getKinectData();
+	drawPCLData();
+	bufferAxis();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -341,12 +341,8 @@ void initQT(int argc, char* argv[]) {
 	QApplication app(argc, argv);
 
 	app.setStyle(new DarkStyle());
-
 	//FramelessWindow framelessWindow;
-
-
 	ConfigUI window;
-
 	//framelessWindow.setContent(window);
 	window.show();
 
@@ -381,16 +377,16 @@ int main(int argc, char* argv[]) {
 	std::thread t1(initQT, argc, argv);
 	t1.detach();
 
-    if (!init(argc, argv)) return 1;
-    //if (!initKinect()) return 1;
+	if (!init(argc, argv)) return 1;
+	//if (!initKinect()) return 1;
 	if (!kinectWrapper.initKinect()) return 1;
 
-    // OpenGL setup
-    glClearColor(0,0,0,0);
-    glClearDepth(1.0f);
+	// OpenGL setup
+	glClearColor(0, 0, 0, 0);
+	glClearDepth(1.0f);
 
 	// Set up array buffers
-	const int dataSize = width*height * 3 * 4;
+	const int dataSize = width * height * 3 * 4;
 	glGenBuffers(1, &vboId);
 	glBindBuffer(GL_ARRAY_BUFFER, vboId);
 	glBufferData(GL_ARRAY_BUFFER, dataSize, 0, GL_DYNAMIC_DRAW);
@@ -401,24 +397,26 @@ int main(int argc, char* argv[]) {
 	float openAngle = 45;
 	ratio = width / (GLdouble)height;
 
-    // Camera setup
-    glViewport(0, 0, width, height);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
+	// Camera setup
+	glViewport(0, 0, width, height);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
 	gluPerspective(openAngle, ratio, 0.1, 1000);
 	//glOrtho(-1.0, 1.0, -1.5f, 1.5f, -0.5f, 3.5f);
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-	/*gluLookAt(
-		cameraFocal.x, cameraFocal.y,cameraFocal.z,
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+	gluLookAt(
+		cameraFocal.x, cameraFocal.y, cameraFocal.z,
 		cameraPos.x, cameraPos.y, cameraPos.z,
 		cameraUp.x, cameraUp.y, cameraUp.z
-	);*/
+	);
+	/*
 	gluLookAt(
 		0, 0, 0,
 		0, 0, 1,
 		0, 1, 0
 	);
+	*/
 
 	// Init cam
 	fovy = 0.785398163397 * 2; // in rad
