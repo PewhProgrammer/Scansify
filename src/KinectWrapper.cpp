@@ -252,14 +252,15 @@ void KinectWrapper::computeLeftArmBox(IMultiSourceFrame * frame, rt::BBox* box)
 			CameraSpacePoint handWrist = joints[JointType_WristLeft].Position;
 			CameraSpacePoint handElbow = joints[JointType_ElbowLeft].Position;
 
-			/*
+			
 			box->extend(rt::Point(handTip.X, handTip.Y, handTip.Z));
 			box->extend(rt::Point(handThumb.X, handThumb.Y, handThumb.Z));
 			box->extend(rt::Point(hand.X, hand.Y, hand.Z));
 			box->extend(rt::Point(handWrist.X, handWrist.Y, handWrist.Z));
 			box->extend(rt::Point(handElbow.X, handElbow.Y, handElbow.Z));
-			*/
+			
 
+			/*
 			rt::Point p_filtered = m_filters[Features::tipLeft].filter(handTip); 
 
 			box->extend(m_filters[Features::tipLeft].filter(handTip));
@@ -267,6 +268,7 @@ void KinectWrapper::computeLeftArmBox(IMultiSourceFrame * frame, rt::BBox* box)
 			box->extend(m_filters[Features::handLeft].filter(hand));
 			box->extend(m_filters[Features::wristLeft].filter(handWrist));
 			box->extend(m_filters[Features::ElbowLeft].filter(handElbow));
+			*/
 
 			//printf("Before: (%6.3f,%6.3f,%6.3f)		After: (%6.3f,%6.3f,%6.3f)  \n", handTip.X, handTip.Y, handTip.Z , p_filtered.x, p_filtered.y, p_filtered.z);
 

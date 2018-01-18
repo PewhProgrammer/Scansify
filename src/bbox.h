@@ -27,6 +27,8 @@ public:
     void extend(const Point& point);
     void extend(const BBox& bbox);
 
+	bool contains(rt::Point p);
+
     Vector diagonal() const { return max - min; }
 
     std::pair<float,float> intersect(const Ray& ray) const;

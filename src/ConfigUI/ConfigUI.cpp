@@ -71,7 +71,11 @@ ConfigUI::ConfigUI(QWidget *parent)
 	edits.push_back(ui.SpinBoxUpY);
 	edits.push_back(ui.SpinBoxUpZ);
 
+	float* cam = getCameraProperties();
+
+
 	for (int i = 0; i < edits.size(); i++) {
+		edits[i]->setValue(cam[i]);
 		connect(edits[i], &QDoubleSpinBox::editingFinished, [this] {
 			changeCameraProperties(
 				ui.SpinBoxEyeX->value(), ui.SpinBoxEyeY->value(), ui.SpinBoxEyeZ->value(),

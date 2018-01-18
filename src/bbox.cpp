@@ -23,6 +23,11 @@ namespace rt {
 		min = rt::min(bbox.min, min);
 
 	}
+	bool BBox::contains(rt::Point p)
+	{
+		return p.x <= max.x && p.y <= max.y && p.z <= max.z &&
+			p.x > min.x && p.y > min.y && p.z > min.z;
+	}
 	std::pair<float, float> BBox::intersect(const rt::Ray & ray) const
 	{
 	

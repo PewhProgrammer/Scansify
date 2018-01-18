@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <iostream>
 
 #ifndef NOMINMAX
 # define NOMINMAX
@@ -24,6 +25,7 @@ void drawData();
 void triangulateMesh();
 void mousePicking(float screenX, float screenY);
 void changeCameraProperties(float eyex, float eyey, float eyez, float posx, float posy, float posz, float upx, float upy, float upz);
+float* getCameraProperties();
 void changeFilterValues(double mincutoff, double beta);
 
 pcl::PointCloud<pcl::PointXYZ>::Ptr scanData();

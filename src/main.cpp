@@ -36,7 +36,7 @@ PCLRenderer rend;
 KinectWrapper kinectWrapper;
 MeshTriangulation meshT;
 
-rt::Point cameraPos(0,0,0.06f);
+rt::Point cameraPos(0,0,0.5f);
 rt::Vector cameraUp(0, 1.f, 0);
 rt::Vector cameraFocal(0, 0,-1.f);
 rt::PerspectiveCamera* cam;
@@ -169,15 +169,36 @@ void triangulateMesh() {
 	sor.setInputCloud(cloud);
 	sor.setLeafSize(0.015f, 0.015f, 0.015f);
 	sor.filter(*cloud_filtered);
+	
+	
+	rt::BBox scanBox;
+	for (int i = 0; i < cloud_filtered->size(); i++) {
+		pcl::PointXYZ p = (*cloud_filtered)[i];
+		scanBox.extend(rt::Point(
+			p.x,p.y,p.z));
+	}
 	*/
-
 
 	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
 	meshT.reconstruct(mesh, cloud);
 	
+	
 	if (cloud->size() == 0) return;
 	processing = false;
+	//scanBox = rt::BBox::full();
 
+	// clean up poisson surfaces
+	/*
+	for (std::vector<pcl::Vertices>::iterator it = mesh->polygons.begin(); it != mesh->polygons.end();) {
+		pcl::Vertices p = *it;
+
+		if (!scanBox.contains(rt::Point(p.vertices[0], p.vertices[1], p.vertices[2]))) {
+			it = mesh->polygons.erase(it);
+		}
+		else ++it;
+
+	}
+	*/
 
 	std::string modelPath = "/models/subject_poisson.stl";
 	pcl::io::savePolygonFileSTL(".." + modelPath, *mesh, false);
@@ -291,6 +312,22 @@ void changeCameraProperties(float eyex, float eyey, float eyez, float posx, floa
 	*/
 }
 
+float* getCameraProperties() {
+	float *p = (float*)malloc(sizeof(float) * 9);
+
+	*p++ = cameraPos[0];
+	*p++ = cameraPos[1];
+	*p++ = cameraPos[2];
+	*p++ = cameraFocal[0];
+	*p++ = cameraFocal[1];
+	*p++ = cameraFocal[2];
+	*p++ = cameraUp[0];
+	*p++ = cameraUp[1];
+	*p++ = cameraUp[2];
+
+	return p - 9;
+}
+
 
 void drawData() {
 
@@ -303,9 +340,9 @@ void drawData() {
 	}
 
 	//rotateCamera();
-	//getKinectData();
-	drawPCLData();
-	bufferAxis();
+	getKinectData();
+	//drawPCLData();
+	//bufferAxis();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -405,18 +442,19 @@ int main(int argc, char* argv[]) {
 	//glOrtho(-1.0, 1.0, -1.5f, 1.5f, -0.5f, 3.5f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+	/*
 	gluLookAt(
 		cameraFocal.x, cameraFocal.y, cameraFocal.z,
 		cameraPos.x, cameraPos.y, cameraPos.z,
 		cameraUp.x, cameraUp.y, cameraUp.z
 	);
-	/*
+	*/
 	gluLookAt(
 		0, 0, 0,
 		0, 0, 1,
 		0, 1, 0
 	);
-	*/
+	
 
 	// Init cam
 	fovy = 0.785398163397 * 2; // in rad
