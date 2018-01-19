@@ -125,7 +125,7 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 	// Get result
 	gp3.setInputCloud(cloud_with_normals);
 	gp3.setSearchMethod(tree2);
-	//gp3.reconstruct(*triangles);
+	gp3.reconstruct(*triangles);
 
 	// Additional vertex information
 	std::vector<int> parts = gp3.getPartIDs();
@@ -136,7 +136,7 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 	poisson.setScale(1);
 	poisson.setInputCloud(cloud_with_normals);
 	
-	poisson.reconstruct(*triangles);
+	//poisson.reconstruct(*triangles);
 
 	// Finish
 	return;

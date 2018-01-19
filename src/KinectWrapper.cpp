@@ -52,7 +52,7 @@ KinectWrapper::KinectWrapper()
 {
 	m_filters.reserve(Features::ElbowLeft + 1);
 	for (int i = 0; i <= Features::ElbowLeft; i++) {
-		OneEuroFilter e(30); // Hz in params
+		OneEuroFilter e(20); // Hz in params
 		m_filters.push_back(e);
 	}
 }
@@ -259,15 +259,18 @@ void KinectWrapper::computeLeftArmBox(IMultiSourceFrame * frame, rt::BBox* box)
 			box->extend(rt::Point(handWrist.X, handWrist.Y, handWrist.Z));
 			box->extend(rt::Point(handElbow.X, handElbow.Y, handElbow.Z));
 			
-
 			/*
-			rt::Point p_filtered = m_filters[Features::tipLeft].filter(handTip); 
+			rt::Point handtip_filtered = m_filters[Features::tipLeft].filter(handTip); 
+			rt::Point handthumb_filtered = m_filters[Features::thumbLeft].filter(handThumb);
+			rt::Point hand_filtered = m_filters[Features::handLeft].filter(hand);
+			rt::Point handWrist_filtered = m_filters[Features::wristLeft].filter(handWrist);
+			rt::Point handElbow_filtered = m_filters[Features::ElbowLeft].filter(handElbow);
 
-			box->extend(m_filters[Features::tipLeft].filter(handTip));
-			box->extend(m_filters[Features::thumbLeft].filter(handThumb));
-			box->extend(m_filters[Features::handLeft].filter(hand));
-			box->extend(m_filters[Features::wristLeft].filter(handWrist));
-			box->extend(m_filters[Features::ElbowLeft].filter(handElbow));
+			box->extend(handtip_filtered);
+			box->extend(handthumb_filtered);
+			box->extend(hand_filtered);
+			box->extend(handWrist_filtered);
+			box->extend(handElbow_filtered);
 			*/
 
 			//printf("Before: (%6.3f,%6.3f,%6.3f)		After: (%6.3f,%6.3f,%6.3f)  \n", handTip.X, handTip.Y, handTip.Z , p_filtered.x, p_filtered.y, p_filtered.z);
@@ -283,10 +286,16 @@ void KinectWrapper::computeLeftArmBox(IMultiSourceFrame * frame, rt::BBox* box)
 bool KinectWrapper::checkBBox(float x, float y, float z, rt::BBox * box)
 {
 	return 
-		(z > box->min.z - 0.06f) && (z < box->max.z + 0.06f ) &&
-		(y > box->min.y - 0.045f) && (y < box->max.y + 0.045f)  &&
-		(x > box->min.x - 0.045f) && (x < box->max.x + 0.045f)
+		(z > box->min.z - 0.8f) && (z < box->max.z + 0.08f ) &&
+		(y > box->min.y - 0.073f) && (y < box->max.y + 0.07f)  &&
+		(x > box->min.x - 0.065f) && (x < box->max.x + 0.035f)
 		;
+	/* for finger only
+	return (z > box->min.z - 0.8f) && (z < box->max.z + 0.08f) &&
+		(y > box->min.y - 0.033f) && (y < box->max.y + 0.07f) &&
+		(x > box->min.x - 0.025f) && (x < box->max.x + 0.015f)
+		;
+	*/
 }
 
 HRESULT KinectWrapper::aquireLatestFrame(IMultiSourceFrame** frame)

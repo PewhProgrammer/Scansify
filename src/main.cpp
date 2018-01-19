@@ -78,6 +78,7 @@ void processingConsoleOutput(int color, std::string text)
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	int i = 0;
 	processing = true;
+	return;
 	while (processing) {
 		if(i % 2 == 0) SetConsoleTextAttribute(handle, color);
 		else SetConsoleTextAttribute(handle, 0);
@@ -121,6 +122,7 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
 	kinectWrapper.convertDepthDataToPCL(cloud);
 	processing = false;
 
+	return cloud;
 
 	size_t k = cloud->size();
 	if (k > 0) {
@@ -144,6 +146,9 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr scanData()
 	
 	return cloud_filtered;
 }
+
+float averageheight = 0;
+float count = 0;
 
 void triangulateMesh() {
 
@@ -169,18 +174,20 @@ void triangulateMesh() {
 	sor.setInputCloud(cloud);
 	sor.setLeafSize(0.015f, 0.015f, 0.015f);
 	sor.filter(*cloud_filtered);
+	*/
 	
-	
-	rt::BBox scanBox;
-	for (int i = 0; i < cloud_filtered->size(); i++) {
-		pcl::PointXYZ p = (*cloud_filtered)[i];
+	rt::BBox scanBox = rt::BBox::empty();
+	for (int i = 0; i < cloud->size(); i++) {
+		pcl::PointXYZ p = (*cloud)[i];
 		scanBox.extend(rt::Point(
 			p.x,p.y,p.z));
 	}
-	*/
+
+	float height = (scanBox.max.y - scanBox.min.y) * 100;
+	float width = (scanBox.max.x - scanBox.min.x) * 100;
 
 	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
-	meshT.reconstruct(mesh, cloud);
+	//meshT.reconstruct(mesh, cloud);
 	
 	
 	if (cloud->size() == 0) return;
@@ -200,9 +207,20 @@ void triangulateMesh() {
 	}
 	*/
 
-	std::string modelPath = "/models/subject_poisson.stl";
-	pcl::io::savePolygonFileSTL(".." + modelPath, *mesh, false);
-	std::cout << "Triangulation successfully completed. Stored in \"Scansify"+ modelPath + "\"" << std::endl;
+	//std::string modelPath = "/models/subject_poisson.stl";
+	//pcl::io::savePolygonFileSTL(".." + modelPath, *mesh, false);
+	//std::cout << "Triangulation successfully completed. Stored in \"Scansify"+ modelPath + "\"" << std::endl;
+
+	if (height > 4) {
+		averageheight += height;
+		count++;
+	}
+
+	printf("Scanbox dimensions: height(%6.3f cm) | width(%6.3f cm) \n", height, width);
+
+	if (count == 20) {
+		printf("Width averages: %6.2f cm", averageheight / count);
+	}
 }
 
 
