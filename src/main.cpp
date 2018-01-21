@@ -78,7 +78,6 @@ void processingConsoleOutput(int color, std::string text)
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	int i = 0;
 	processing = true;
-	return;
 	while (processing) {
 		if(i % 2 == 0) SetConsoleTextAttribute(handle, color);
 		else SetConsoleTextAttribute(handle, 0);
@@ -152,13 +151,13 @@ float count = 0;
 
 void triangulateMesh() {
 
-
-	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = scanData();
+	
+	//pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = scanData();
 
 	std::thread t1(processingConsoleOutput, 14, "Triangulating to mesh ...");
 	t1.detach();
 
-	/*
+	
 	// Load input file into a PointCloud<T> with an appropriate type
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 	pcl::PCLPointCloud2 cloud_blob;
@@ -167,6 +166,7 @@ void triangulateMesh() {
 	//* the data should be available in cloud
 	
 
+	/*
 	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_filtered(new pcl::PointCloud<pcl::PointXYZ>);
 
 	// Create the filtering object
@@ -175,6 +175,7 @@ void triangulateMesh() {
 	sor.setLeafSize(0.015f, 0.015f, 0.015f);
 	sor.filter(*cloud_filtered);
 	*/
+	
 	
 	rt::BBox scanBox = rt::BBox::empty();
 	for (int i = 0; i < cloud->size(); i++) {
@@ -187,7 +188,7 @@ void triangulateMesh() {
 	float width = (scanBox.max.x - scanBox.min.x) * 100;
 
 	pcl::PolygonMesh* mesh = new pcl::PolygonMesh();
-	//meshT.reconstruct(mesh, cloud);
+	meshT.reconstruct(mesh, cloud);
 	
 	
 	if (cloud->size() == 0) return;
@@ -207,20 +208,10 @@ void triangulateMesh() {
 	}
 	*/
 
-	//std::string modelPath = "/models/subject_poisson.stl";
-	//pcl::io::savePolygonFileSTL(".." + modelPath, *mesh, false);
-	//std::cout << "Triangulation successfully completed. Stored in \"Scansify"+ modelPath + "\"" << std::endl;
+	std::string modelPath = "/models/poisson/bunny_test1.stl";
+	pcl::io::savePolygonFileSTL(".." + modelPath, *mesh, false);
+	std::cout << "Triangulation successfully completed. Stored in \"Scansify"+ modelPath + "\"" << std::endl;
 
-	if (height > 4) {
-		averageheight += height;
-		count++;
-	}
-
-	printf("Scanbox dimensions: height(%6.3f cm) | width(%6.3f cm) \n", height, width);
-
-	if (count == 20) {
-		printf("Width averages: %6.2f cm", averageheight / count);
-	}
 }
 
 
@@ -358,9 +349,9 @@ void drawData() {
 	}
 
 	//rotateCamera();
-	getKinectData();
-	//drawPCLData();
-	//bufferAxis();
+	//getKinectData();
+	drawPCLData();
+	bufferAxis();
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnableClientState(GL_VERTEX_ARRAY);
@@ -460,19 +451,19 @@ int main(int argc, char* argv[]) {
 	//glOrtho(-1.0, 1.0, -1.5f, 1.5f, -0.5f, 3.5f);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	/*
+	
 	gluLookAt(
 		cameraFocal.x, cameraFocal.y, cameraFocal.z,
 		cameraPos.x, cameraPos.y, cameraPos.z,
 		cameraUp.x, cameraUp.y, cameraUp.z
 	);
-	*/
+	/*
 	gluLookAt(
 		0, 0, 0,
 		0, 0, 1,
 		0, 1, 0
 	);
-	
+	*/
 
 	// Init cam
 	fovy = 0.785398163397 * 2; // in rad

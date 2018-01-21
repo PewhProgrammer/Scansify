@@ -55,20 +55,30 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 	mls.process(*cloud_smoothed);
 	*/
 
+	MovingLeastSquares<PointXYZ, PointXYZ> mls;
+	mls.setInputCloud(cloud);
+	mls.setSearchRadius(4);
+	mls.setPolynomialFit(true);
+	mls.setPolynomialOrder(1);
+	mls.setUpsamplingMethod(MovingLeastSquares<PointXYZ, PointXYZ>::SAMPLE_LOCAL_PLANE);
+	mls.setUpsamplingRadius(1);
+	mls.setUpsamplingStepSize(0.3);
+
+	PointCloud<PointXYZ>::Ptr cloud_smoothed(new PointCloud<PointXYZ>());
+	mls.process(*cloud_smoothed);
+
 	
-	/*
 	NormalEstimationOMP<PointXYZ, Normal> ne;
 	ne.setNumberOfThreads(8);
 	ne.setInputCloud(cloud_smoothed);
-	ne.setRadiusSearch(0.01);
+	ne.setRadiusSearch(0.8);
 	Eigen::Vector4f centroid;
 	compute3DCentroid(*cloud_smoothed, centroid);
 	ne.setViewPoint(centroid[0], centroid[1], centroid[2]);
-	PointCloud<Normal>::Ptr cloud_normals(
-		new
-		PointCloud<Normal>());
+
+	PointCloud<Normal>::Ptr cloud_normals(new PointCloud<Normal>());
 	ne.compute(*cloud_normals);
-	for(size_t i = 0; i < cloud_normals->size(); ++i)
+	for (size_t i = 0; i < cloud_normals->size(); ++i)
 	{
 		cloud_normals->points[i].normal_x *= -1;
 		cloud_normals->points[i].normal_y *= -1;
@@ -77,16 +87,16 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 	PointCloud<PointNormal>::Ptr cloud_smoothed_normals(new PointCloud<PointNormal>());
 	concatenateFields(*cloud_smoothed, *cloud_normals, *cloud_smoothed_normals);
 
-	
-	Poisson<PointNormal> poisson;
+	Poisson<pcl::PointNormal> poisson;
 	poisson.setDepth(9);
 	poisson.setInputCloud(cloud_smoothed_normals);
-	PolygonMesh mesh;
-	poisson.reconstruct(mesh);
-	*/
+	PolygonMesh mesh_poisson;
+	poisson.reconstruct(mesh_poisson);
+
 	
+	return;
 
-
+	/*
 	// Normal estimation*
 	pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> n;
 	pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
@@ -125,7 +135,7 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 	// Get result
 	gp3.setInputCloud(cloud_with_normals);
 	gp3.setSearchMethod(tree2);
-	gp3.reconstruct(*triangles);
+	//gp3.reconstruct(*triangles);
 
 	// Additional vertex information
 	std::vector<int> parts = gp3.getPartIDs();
@@ -136,9 +146,10 @@ void MeshTriangulation::reconstruct(pcl::PolygonMesh* triangles, pcl::PointCloud
 	poisson.setScale(1);
 	poisson.setInputCloud(cloud_with_normals);
 	
-	//poisson.reconstruct(*triangles);
+	poisson.reconstruct(*triangles);
 
 	// Finish
 	return;
+	*/
 
 }

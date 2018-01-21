@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="ImageRenderer.cpp" />
+    <ClCompile Include="KinectFusionExplorer.cpp" />
+    <ClCompile Include="KinectFusionHelper.cpp">
+      <Filter>KinectFusion</Filter>
+    </ClCompile>
+    <ClCompile Include="KinectFusionProcessor.cpp">
+      <Filter>KinectFusion</Filter>
+    </ClCompile>
+    <ClCompile Include="KinectFusionProcessorFrame.cpp">
+      <Filter>KinectFusion</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>KinectFusion</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImageRenderer.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="KinectFusionExplorer.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="KinectFusionHelper.h">
+      <Filter>KinectFusion</Filter>
+    </ClInclude>
+    <ClInclude Include="KinectFusionParams.h">
+      <Filter>KinectFusion</Filter>
+    </ClInclude>
+    <ClInclude Include="KinectFusionProcessor.h">
+      <Filter>KinectFusion</Filter>
+    </ClInclude>
+    <ClInclude Include="KinectFusionProcessorFrame.h">
+      <Filter>KinectFusion</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>KinectFusion</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="KinectFusionExplorer-D2D.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="KinectFusion">
+      <UniqueIdentifier>{06c0db34-3fe2-4251-bf8b-14cf84c8294a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
