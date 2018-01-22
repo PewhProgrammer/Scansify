@@ -173,22 +173,22 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageRenderer.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="KinectFusionExplorer.h" />
-    <ClInclude Include="KinectFusionHelper.h" />
-    <ClInclude Include="KinectFusionParams.h" />
-    <ClInclude Include="KinectFusionProcessor.h" />
-    <ClInclude Include="KinectFusionProcessorFrame.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Timer.h" />
+    <ClInclude Include="KinectFusion\KinectFusionHelper.h" />
+    <ClInclude Include="KinectFusion\KinectFusionParams.h" />
+    <ClInclude Include="KinectFusion\KinectFusionProcessor.h" />
+    <ClInclude Include="KinectFusion\KinectFusionProcessorFrame.h" />
+    <ClInclude Include="KinectFusion\resource.h" />
+    <ClInclude Include="KinectFusion\stdafx.h" />
+    <ClInclude Include="KinectFusion\Timer.h" />
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageRenderer.cpp" />
-    <ClCompile Include="KinectFusionExplorer.cpp" />
-    <ClCompile Include="KinectFusionHelper.cpp" />
-    <ClCompile Include="KinectFusionProcessor.cpp" />
-    <ClCompile Include="KinectFusionProcessorFrame.cpp" />
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="KinectFusion\KinectFusionHelper.cpp" />
+    <ClCompile Include="KinectFusion\KinectFusionProcessor.cpp" />
+    <ClCompile Include="KinectFusion\KinectFusionProcessorFrame.cpp" />
+    <ClCompile Include="KinectFusion\timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KinectFusionExplorer-D2D.rc" />

@@ -4,7 +4,7 @@
 // </copyright>
 //------------------------------------------------------------------------------
 
-#include "stdafx.h"
+#include "KinectFusion/stdafx.h"
 #include "ImageRenderer.h"
 
 /// <summary>
@@ -151,7 +151,16 @@ HRESULT ImageRenderer::Draw(BYTE* pImage, unsigned long cbImage)
 
     // Draw the bitmap stretched to the size of the window
     m_pRenderTarget->DrawBitmap(m_pBitmap);
-            
+
+	ID2D1SolidColorBrush *pBrush;
+	float radius = 5.5f;
+	float x = m_sourceWidth * 0.5f;
+	D2D1_ELLIPSE e = D2D1::Ellipse(D2D1::Point2F(x, x), radius, radius);
+	//m_pRenderTarget->Clear(D2D1::ColorF(D2D1::ColorF::SkyBlue));
+	const D2D1_COLOR_F color = D2D1::ColorF(D2D1::ColorF::SkyBlue);
+	hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
+	m_pRenderTarget->FillEllipse(e, pBrush);
+
     hr = m_pRenderTarget->EndDraw();
 
     // Device lost, need to recreate the render target

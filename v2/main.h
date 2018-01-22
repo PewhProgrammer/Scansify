@@ -7,13 +7,13 @@
 #pragma once
 
 #include "ImageRenderer.h"
-#include "KinectFusionParams.h"
-#include "KinectFusionProcessor.h"
+#include "KinectFusion\KinectFusionParams.h"
+#include "KinectFusion\KinectFusionProcessor.h"
 
 /// <summary>
 /// KinectFusionExplorer sample.
 /// </summary>
-class CKinectFusionExplorer
+class Scansify
 {
     static const ULONGLONG          cStatusTimeoutInMilliseconds = 5000;
 
@@ -21,12 +21,12 @@ public:
     /// <summary>
     /// Constructor
     /// </summary>
-    CKinectFusionExplorer();
+    Scansify();
 
     /// <summary>
     /// Destructor
     /// </summary>
-    ~CKinectFusionExplorer();
+    ~Scansify();
 
     /// <summary>
     /// Handles window messages, passes most to the class instance to handle

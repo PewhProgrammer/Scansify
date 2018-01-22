@@ -2,40 +2,44 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="ImageRenderer.cpp" />
-    <ClCompile Include="KinectFusionExplorer.cpp" />
-    <ClCompile Include="KinectFusionHelper.cpp">
+    <ClCompile Include="KinectFusion\KinectFusionHelper.cpp">
       <Filter>KinectFusion</Filter>
     </ClCompile>
-    <ClCompile Include="KinectFusionProcessor.cpp">
+    <ClCompile Include="KinectFusion\KinectFusionProcessor.cpp">
       <Filter>KinectFusion</Filter>
     </ClCompile>
-    <ClCompile Include="KinectFusionProcessorFrame.cpp">
+    <ClCompile Include="KinectFusion\KinectFusionProcessorFrame.cpp">
       <Filter>KinectFusion</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
+    <ClCompile Include="KinectFusion\timer.cpp">
       <Filter>KinectFusion</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageRenderer.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="KinectFusionExplorer.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="KinectFusionHelper.h">
+    <ClInclude Include="KinectFusion\KinectFusionHelper.h">
       <Filter>KinectFusion</Filter>
     </ClInclude>
-    <ClInclude Include="KinectFusionParams.h">
+    <ClInclude Include="KinectFusion\KinectFusionParams.h">
       <Filter>KinectFusion</Filter>
     </ClInclude>
-    <ClInclude Include="KinectFusionProcessor.h">
+    <ClInclude Include="KinectFusion\KinectFusionProcessor.h">
       <Filter>KinectFusion</Filter>
     </ClInclude>
-    <ClInclude Include="KinectFusionProcessorFrame.h">
+    <ClInclude Include="KinectFusion\KinectFusionProcessorFrame.h">
       <Filter>KinectFusion</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
+    <ClInclude Include="KinectFusion\Timer.h">
       <Filter>KinectFusion</Filter>
     </ClInclude>
+    <ClInclude Include="KinectFusion\stdafx.h">
+      <Filter>KinectFusion</Filter>
+    </ClInclude>
+    <ClInclude Include="KinectFusion\resource.h">
+      <Filter>KinectFusion</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KinectFusionExplorer-D2D.rc" />

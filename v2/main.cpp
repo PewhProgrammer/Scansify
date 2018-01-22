@@ -5,13 +5,13 @@
 //------------------------------------------------------------------------------
 
 // System includes
-#include "stdafx.h"
+#include "KinectFusion/stdafx.h"
 
 // Project includes
-#include "resource.h"
-#include "KinectFusionExplorer.h"
-#include "KinectFusionProcessorFrame.h"
-#include "KinectFusionHelper.h"
+#include "KinectFusion/resource.h"
+#include "main.h"
+#include "KinectFusion/KinectFusionProcessorFrame.h"
+#include "KinectFusion/KinectFusionHelper.h"
 
 #define MIN_DEPTH_DISTANCE_MM 500   // Must be greater than 0
 #define MAX_DEPTH_DISTANCE_MM 8000
@@ -31,14 +31,14 @@
 /// <returns>status</returns>
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ LPWSTR, _In_ int nCmdShow)
 {
-    CKinectFusionExplorer application;
+    Scansify application;
     application.Run(hInstance, nCmdShow);
 }
 
 /// <summary>
 /// Constructor
 /// </summary>
-CKinectFusionExplorer::CKinectFusionExplorer() :
+Scansify::Scansify() :
 m_hWnd(nullptr),
     m_pD2DFactory(nullptr), 
     m_pDrawReconstruction(nullptr),
@@ -55,7 +55,7 @@ m_hWnd(nullptr),
 /// <summary>
 /// Destructor
 /// </summary>
-CKinectFusionExplorer::~CKinectFusionExplorer()
+Scansify::~Scansify()
 {
     // clean up Direct2D renderer
     SAFE_DELETE(m_pDrawReconstruction);
@@ -75,7 +75,7 @@ CKinectFusionExplorer::~CKinectFusionExplorer()
 /// </summary>
 /// <param name="hInstance">handle to the application instance</param>
 /// <param name="nCmdShow">whether to display minimized, maximized, or normally</param>
-int CKinectFusionExplorer::Run(HINSTANCE hInstance, int nCmdShow)
+int Scansify::Run(HINSTANCE hInstance, int nCmdShow)
 {
     MSG       msg = {0};
     WNDCLASS  wc  = {0};
@@ -99,7 +99,7 @@ int CKinectFusionExplorer::Run(HINSTANCE hInstance, int nCmdShow)
         hInstance,
         MAKEINTRESOURCE(IDD_APP),
         nullptr,
-        (DLGPROC)CKinectFusionExplorer::MessageRouter, 
+        (DLGPROC)Scansify::MessageRouter, 
         reinterpret_cast<LPARAM>(this));
 
     // Show window
@@ -132,22 +132,22 @@ int CKinectFusionExplorer::Run(HINSTANCE hInstance, int nCmdShow)
 /// <param name="wParam">message data</param>
 /// <param name="lParam">additional message data</param>
 /// <returns>result of message processing</returns>
-LRESULT CALLBACK CKinectFusionExplorer::MessageRouter(
+LRESULT CALLBACK Scansify::MessageRouter(
     HWND hWnd,
     UINT uMsg,
     WPARAM wParam,
     LPARAM lParam)
 {
-    CKinectFusionExplorer* pThis = nullptr;
+    Scansify* pThis = nullptr;
 
     if (WM_INITDIALOG == uMsg)
     {
-        pThis = reinterpret_cast<CKinectFusionExplorer*>(lParam);
+        pThis = reinterpret_cast<Scansify*>(lParam);
         SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pThis));
     }
     else
     {
-        pThis = reinterpret_cast<CKinectFusionExplorer*>(::GetWindowLongPtr(hWnd, GWLP_USERDATA));
+        pThis = reinterpret_cast<Scansify*>(::GetWindowLongPtr(hWnd, GWLP_USERDATA));
     }
 
     if (pThis)
@@ -166,7 +166,7 @@ LRESULT CALLBACK CKinectFusionExplorer::MessageRouter(
 /// <param name="wParam">message data</param>
 /// <param name="lParam">additional message data</param>
 /// <returns>result of message processing</returns>
-LRESULT CALLBACK CKinectFusionExplorer::DlgProc(
+LRESULT CALLBACK Scansify::DlgProc(
     HWND hWnd,
     UINT message,
     WPARAM wParam,
@@ -276,7 +276,7 @@ LRESULT CALLBACK CKinectFusionExplorer::DlgProc(
 /// Handle a completed frame from the Kinect Fusion processor.
 /// </summary>
 /// <returns>S_OK on success, otherwise failure code</returns>
-void CKinectFusionExplorer::HandleCompletedFrame()
+void Scansify::HandleCompletedFrame()
 {
     KinectFusionProcessorFrame const* pFrame = nullptr;
 
@@ -346,7 +346,7 @@ void CKinectFusionExplorer::HandleCompletedFrame()
 /// </summary>
 /// <param name="mesh">The mesh to save.</param>
 /// <returns>indicates success or failure</returns>
-HRESULT CKinectFusionExplorer::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes saveMeshType)
+HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes saveMeshType)
 {
     HRESULT hr = S_OK;
 
@@ -492,7 +492,7 @@ HRESULT CKinectFusionExplorer::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFu
 /// <summary>
 /// Initialize the UI
 /// </summary>
-void CKinectFusionExplorer::InitializeUIControls()
+void Scansify::InitializeUIControls()
 {
     // Create NuiSensorChooser UI control
     RECT rc;
@@ -687,7 +687,7 @@ void CKinectFusionExplorer::InitializeUIControls()
 /// </summary>
 /// <param name="wParam">message data</param>
 /// <param name="lParam">additional message data</param>
-void CKinectFusionExplorer::ProcessUI(WPARAM wParam, LPARAM)
+void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 {
     // If it was for the display surface normals toggle this variable
     if (IDC_CHECK_CAPTURE_COLOR == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
@@ -870,7 +870,7 @@ void CKinectFusionExplorer::ProcessUI(WPARAM wParam, LPARAM)
 /// <summary>
 /// Update the internal variable values from the UI Horizontal sliders.
 /// </summary>
-void CKinectFusionExplorer::UpdateHSliders()
+void Scansify::UpdateHSliders()
 {
     int mmMinPos = (int)SendDlgItemMessage(m_hWnd, IDC_SLIDER_DEPTH_MIN, TBM_GETPOS, 0,0);
 
@@ -907,7 +907,7 @@ void CKinectFusionExplorer::UpdateHSliders()
 /// Set the status bar message
 /// </summary>
 /// <param name="szMessage">message to display</param>
-void CKinectFusionExplorer::SetStatusMessage(const WCHAR * szMessage)
+void Scansify::SetStatusMessage(const WCHAR * szMessage)
 {
     size_t length = 0;
     if (FAILED(StringCchLength(
@@ -939,7 +939,7 @@ void CKinectFusionExplorer::SetStatusMessage(const WCHAR * szMessage)
 /// Set the frames-per-second message
 /// </summary>
 /// <param name="fFramesPerSecond">current frame rate</param>
-void CKinectFusionExplorer::SetFramesPerSecond(float fFramesPerSecond)
+void Scansify::SetFramesPerSecond(float fFramesPerSecond)
 {
     if (fFramesPerSecond != m_fFramesPerSecond)
     {
