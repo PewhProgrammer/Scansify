@@ -40,7 +40,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ LPWSTR,
 /// </summary>
 CKinectFusionExplorer::CKinectFusionExplorer() :
 m_hWnd(nullptr),
-    m_pD2DFactory(nullptr),
+    m_pD2DFactory(nullptr), 
     m_pDrawReconstruction(nullptr),
     m_pDrawTrackingResiduals(nullptr),
     m_pDrawDepth(nullptr),
