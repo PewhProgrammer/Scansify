@@ -6,9 +6,10 @@
 
 // System includes
 #include "KinectFusion/stdafx.h"
+//#include <afxdialogex.h>
 
 // Project includes
-#include "KinectFusion/resource.h"
+#include "resource.h"
 #include "main.h"
 #include "KinectFusion/KinectFusionProcessorFrame.h"
 #include "KinectFusion/KinectFusionHelper.h"
@@ -67,7 +68,7 @@ Scansify::~Scansify()
     SAFE_DELETE(m_pDrawDepth);
 
     // clean up Direct2D
-    SafeRelease(m_pD2DFactory);
+    SafeRelease(m_pD2DFactory); 
 }
 
 /// <summary>
@@ -191,7 +192,7 @@ LRESULT CALLBACK Scansify::DlgProc(
             // We'll use this to draw the data we receive from the Kinect to the screen
             m_pDrawDepth = new ImageRenderer();
             HRESULT hr = m_pDrawDepth->Initialize(
-                GetDlgItem(m_hWnd, IDC_DEPTH_VIEW),
+                GetDlgItem(m_hWnd, IDC_DEPTH_VIEW), // retrieves child window to parent
                 m_pD2DFactory,
                 width,
                 height,
@@ -199,7 +200,7 @@ LRESULT CALLBACK Scansify::DlgProc(
 
             if (FAILED(hr))
             {
-                SetStatusMessage(L"Failed to initialize the Direct2D draw device.");
+                SetStatusMessage(L"Failed to initialize the Direct2D draw device for Depth.");
                 m_bInitializeError = true;
             }
 
@@ -213,7 +214,7 @@ LRESULT CALLBACK Scansify::DlgProc(
 
             if (FAILED(hr))
             {
-                SetStatusMessage(L"Failed to initialize the Direct2D draw device.");
+                SetStatusMessage(L"Failed to initialize the Direct2D draw device for Reconstruction.");
                 m_bInitializeError = true;
             }
 
@@ -227,7 +228,7 @@ LRESULT CALLBACK Scansify::DlgProc(
 
             if (FAILED(hr))
             {
-                SetStatusMessage(L"Failed to initialize the Direct2D draw device.");
+                SetStatusMessage(L"Failed to initialize the Direct2D draw device for Tracking Residual.");
                 m_bInitializeError = true;
             }
 
@@ -502,6 +503,7 @@ void Scansify::InitializeUIControls()
     ptCenterTop.x = (rc.right - rc.left)/2;
     ptCenterTop.y = 0;
 
+	
     // Set slider ranges
     SendDlgItemMessage(
         m_hWnd,
@@ -680,6 +682,8 @@ void Scansify::InitializeUIControls()
     {
         CheckDlgButton(m_hWnd, IDC_CHECK_CAMERA_POSE_FINDER, BST_CHECKED);
     }
+	
+
 }
 
 /// <summary>

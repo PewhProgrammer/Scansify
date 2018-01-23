@@ -159,7 +159,9 @@ HRESULT ImageRenderer::Draw(BYTE* pImage, unsigned long cbImage)
 	//m_pRenderTarget->Clear(D2D1::ColorF(D2D1::ColorF::SkyBlue));
 	const D2D1_COLOR_F color = D2D1::ColorF(D2D1::ColorF::SkyBlue);
 	hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
-	m_pRenderTarget->FillEllipse(e, pBrush);
+	m_pRenderTarget->FillEllipse(e, pBrush); // could also be DrawEllipse to draw outlier
+
+	// m_pRenderTarget->DrawLine(D2D1::Point2F(100,100),D2D1::Point2F(100,100), pBrush);
 
     hr = m_pRenderTarget->EndDraw();
 

@@ -36,10 +36,8 @@
     <ClInclude Include="KinectFusion\stdafx.h">
       <Filter>KinectFusion</Filter>
     </ClInclude>
-    <ClInclude Include="KinectFusion\resource.h">
-      <Filter>KinectFusion</Filter>
-    </ClInclude>
     <ClInclude Include="main.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KinectFusionExplorer-D2D.rc" />

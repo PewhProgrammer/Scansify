@@ -37,6 +37,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -177,10 +178,10 @@
     <ClInclude Include="KinectFusion\KinectFusionParams.h" />
     <ClInclude Include="KinectFusion\KinectFusionProcessor.h" />
     <ClInclude Include="KinectFusion\KinectFusionProcessorFrame.h" />
-    <ClInclude Include="KinectFusion\resource.h" />
     <ClInclude Include="KinectFusion\stdafx.h" />
     <ClInclude Include="KinectFusion\Timer.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageRenderer.cpp" />
