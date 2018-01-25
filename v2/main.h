@@ -98,6 +98,11 @@ private:
 	/// </summary>
 	void                        CheckMenu(WPARAM id, bool check);
 
+	/// <summary>
+	/// Save Mesh with given format
+	/// </summary>
+	void                        SaveMesh(bool reconstruction);
+
     /// <summary>
     /// Update the internal variable values from the UI Horizontal sliders.
     /// </summary>

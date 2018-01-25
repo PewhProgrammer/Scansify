@@ -63,14 +63,10 @@
 #define IDC_BUTTON1                     1074
 #define IDC_TAB5                        1076
 #define IDC_MFCMENUBUTTON1              1077
-#define IDC_CHECK_DISPLAY_FINGERS       1078
-#define IDC_CHECK_DISPLAY_ARMS          1079
-#define IDC_CHECK_DISPLAY_RAY           1080
-#define IDC_CHECK_DISPLAY_HANDS         1081
-#define IDC_STATUS_SHAPE_OUTLIER        1082
-#define IDC_STATUS_DISPLAY_FEATURES     1083
 #define IDC_CHECK_MESH_UNWRAP           1084
 #define IDC_BUTTON_SHAPE_ORTHOGONAL_VIEW 1085
+#define IDC_COMBO2                      1088
+#define IDC_COMBO_VOXELS                1088
 #define ID_Menu                         32771
 #define ID_VIEW_MIRRORDEPTH             32772
 #define ID_VIEW_CAPTURECOLOR            32773
@@ -104,6 +100,12 @@
 #define ID_MENU_DISPLAYFEATURES_HANDS   32801
 #define ID_MENU_DISPLAYFEATURES_ARMS    32802
 #define ID_MENU_DISPLAYFEATURES_RAY     32803
+#define ID_MENU_EXPORT_RECONSTRUCTION_STL 32804
+#define ID_MENU_EXPORT_RECONSTRUCTION_OBJ 32805
+#define ID_MENU_EXPORT_RECONSTRUCTION_PLY 32806
+#define ID_MENU_EXPORT_ANNOTATION_STL   32807
+#define ID_MENU_EXPORT_ANNOTATION_OBJ   32808
+#define ID_MENU_EXPORT_ANNOTATION_PLY   32809
 #define IDC_STATUS                      -1
 
 // Next default values for new objects
@@ -112,8 +114,8 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        138
-#define _APS_NEXT_COMMAND_VALUE         32804
-#define _APS_NEXT_CONTROL_VALUE         1086
+#define _APS_NEXT_COMMAND_VALUE         32810
+#define _APS_NEXT_CONTROL_VALUE         1089
 #define _APS_NEXT_SYMED_VALUE           111
 #endif
 #endif

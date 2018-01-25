@@ -15,6 +15,8 @@
 #include "KinectFusion/KinectFusionProcessorFrame.h"
 #include "KinectFusion/KinectFusionHelper.h"
 
+#include <iostream>
+
 #define MIN_DEPTH_DISTANCE_MM 500   // Must be greater than 0
 #define MAX_DEPTH_DISTANCE_MM 8000
 #define MIN_INTEGRATION_WEIGHT 1    // Must be greater than 0
@@ -576,26 +578,42 @@ void Scansify::InitializeUIControls()
     swprintf_s(str, ARRAYSIZE(str), L"%u", m_params.m_cMaxIntegrationWeight);
     SetDlgItemText(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT, str);
 
+	
+	HWND comboVoxel = GetDlgItem(m_hWnd, IDC_COMBO_VOXELS);
+	ComboBox_AddString(comboVoxel, L"768");
+	ComboBox_AddString(comboVoxel, L"640");
+	ComboBox_AddString(comboVoxel, L"512");
+	ComboBox_AddString(comboVoxel, L"384");
+	ComboBox_AddString(comboVoxel, L"256");
+	ComboBox_AddString(comboVoxel, L"128");
+	
+
     // Set the radio buttons for Volume Parameters
     switch((int)m_params.m_reconstructionParams.voxelsPerMeter)
     {
     case 768:
         CheckDlgButton(m_hWnd, IDC_VPM_768, BST_CHECKED);
+		ComboBox_SetText(comboVoxel, L"768");
         break;
     case 640:
         CheckDlgButton(m_hWnd, IDC_VPM_640, BST_CHECKED);
+		ComboBox_SetText(comboVoxel, L"640");
         break;
     case 512:
         CheckDlgButton(m_hWnd, IDC_VPM_512, BST_CHECKED);
+		ComboBox_SetText(comboVoxel, L"512");
         break;
     case 384:
         CheckDlgButton(m_hWnd, IDC_VPM_384, BST_CHECKED);
+		ComboBox_SetText(comboVoxel, L"384");
         break;
     case 256:
         CheckDlgButton(m_hWnd, IDC_VPM_256, BST_CHECKED);
+		ComboBox_SetText(comboVoxel, L"256");
         break;
     case 128:
         CheckDlgButton(m_hWnd, IDC_VPM_128, BST_CHECKED);
+		ComboBox_SetText(comboVoxel, L"128");
         break;
     default:
         m_params.m_reconstructionParams.voxelsPerMeter = 256.0f;	// set to medium default
@@ -698,6 +716,11 @@ void Scansify::InitializeUIControls()
 
 }
 
+/// <summary>
+/// Checks the Menu on given input
+/// </summary>
+/// <param name="wParam">message data</param>
+/// <param name="check">if option should be checked or not</param>
 void Scansify::CheckMenu(WPARAM id, bool check) {
 	
 	HMENU menu = GetMenu(m_hWnd);
@@ -705,6 +728,62 @@ void Scansify::CheckMenu(WPARAM id, bool check) {
 	if (check)	CheckMenuItem(menu, LOWORD(id), MF_CHECKED);
 	else 		CheckMenuItem(menu, LOWORD(id), MF_UNCHECKED);
 }
+
+void Scansify::SaveMesh(bool reconstruction) {
+	if (reconstruction) {
+		// process saving mesh with reconstructed part
+
+		SetStatusMessage(L"Creating and saving mesh of reconstruction, please wait...");
+		m_bSavingMesh = true;
+
+		// Pause integration while we're saving
+		bool wasPaused = m_params.m_bPauseIntegration;
+		m_params.m_bPauseIntegration = true;
+		m_processor.SetParams(m_params);
+
+		INuiFusionColorMesh *mesh = nullptr;
+		HRESULT hr = m_processor.CalculateMesh(&mesh);
+
+		if (SUCCEEDED(hr))
+		{
+			// Save mesh
+			hr = SaveMeshFile(mesh, m_saveMeshFormat);
+
+			if (SUCCEEDED(hr))
+			{
+				SetStatusMessage(L"Saved Kinect Fusion mesh.");
+			}
+			else if (HRESULT_FROM_WIN32(ERROR_CANCELLED) == hr)
+			{
+				SetStatusMessage(L"Mesh save canceled.");
+			}
+			else
+			{
+				SetStatusMessage(L"Error saving Kinect Fusion mesh!");
+			}
+
+			// Release the mesh
+			SafeRelease(mesh);
+		}
+		else
+		{
+			SetStatusMessage(L"Failed to create mesh of reconstruction.");
+		}
+
+		// Restore pause state of integration
+		m_params.m_bPauseIntegration = wasPaused;
+		m_processor.SetParams(m_params);
+		m_bSavingMesh = false;
+
+
+		return;
+	}
+
+	// process save meshing with annotated drawing part
+
+}
+
+
 
 /// <summary>
 /// Process the UI inputs
@@ -778,54 +857,8 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
         CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
         m_processor.ResetReconstruction();
     }
-    // If it was the mesh button clicked, mesh the volume and save
-    if (IDC_BUTTON_MESH_RECONSTRUCTION == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        SetStatusMessage(L"Creating and saving mesh of reconstruction, please wait...");
-        m_bSavingMesh = true;
 
-        // Pause integration while we're saving
-        bool wasPaused = m_params.m_bPauseIntegration;
-        m_params.m_bPauseIntegration = true;
-        m_processor.SetParams(m_params);
-
-        INuiFusionColorMesh *mesh = nullptr;
-        HRESULT hr = m_processor.CalculateMesh(&mesh);
-
-        if (SUCCEEDED(hr))
-        {
-            // Save mesh
-            hr = SaveMeshFile(mesh, m_saveMeshFormat);
-
-            if (SUCCEEDED(hr))
-            {
-                SetStatusMessage(L"Saved Kinect Fusion mesh.");
-            }
-            else if (HRESULT_FROM_WIN32(ERROR_CANCELLED) == hr)
-            {
-                SetStatusMessage(L"Mesh save canceled.");
-            }
-            else
-            {
-                SetStatusMessage(L"Error saving Kinect Fusion mesh!");
-            }
-
-            // Release the mesh
-            SafeRelease(mesh);
-        }
-        else
-        {
-            SetStatusMessage(L"Failed to create mesh of reconstruction.");
-        }
-
-        // Restore pause state of integration
-        m_params.m_bPauseIntegration = wasPaused;
-        m_processor.SetParams(m_params);
-        m_bSavingMesh = false;
-
-
-    }
-
+	// If clicked on reconstruction view, compute screen coordinate
 	if (IDC_RECONSTRUCTION_VIEW == LOWORD(wParam) && STN_CLICKED == HIWORD(wParam)) {
 		float k = 2;
 
@@ -851,6 +884,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		}
 	}
 
+	// If started drawing process
 	if (IDC_BUTTON_MESH_DRAWING == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
 	{
 		SetStatusMessage(L"Saving mesh into memory. Please wait...");
@@ -876,36 +910,52 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		}
 	}
 
-	
+	if (ID_MENU_EXPORT_RECONSTRUCTION_STL == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
+		m_saveMeshFormat = Stl;
+		SaveMesh(true);
+	}
+	if (ID_MENU_EXPORT_RECONSTRUCTION_OBJ == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
+		m_saveMeshFormat = Obj;
+		SaveMesh(true);
+	}
+	if (ID_MENU_EXPORT_RECONSTRUCTION_PLY == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
+		m_saveMeshFormat = Ply;
+		SaveMesh(true);
+	}
+
+	if (ID_MENU_EXPORT_ANNOTATION_STL == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
+		m_saveMeshFormat = Stl;
+		SaveMesh(false);
+	}
+	if (ID_MENU_EXPORT_ANNOTATION_OBJ == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
+		m_saveMeshFormat = Obj;
+		SaveMesh(false);
+	}
+	if (ID_MENU_EXPORT_ANNOTATION_PLY == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
+		m_saveMeshFormat = Ply;
+		SaveMesh(false);
+	}
+
+
+	if (IDC_COMBO_VOXELS == LOWORD(wParam) && CBN_SELCHANGE == HIWORD(wParam)) {
+		LPWSTR k = new WCHAR();
+		GetDlgItemText(m_hWnd, IDC_COMBO_VOXELS, k, 9);
+
+		if (wcscmp(k, L"768"))		m_params.m_reconstructionParams.voxelsPerMeter = 768.0f;
+		else if(wcscmp(k, L"640"))	m_params.m_reconstructionParams.voxelsPerMeter = 640.0f;
+		else if (wcscmp(k, L"512"))	m_params.m_reconstructionParams.voxelsPerMeter = 512.0f;
+		else if (wcscmp(k, L"384"))	m_params.m_reconstructionParams.voxelsPerMeter = 384.0f;
+		else if (wcscmp(k, L"256"))	m_params.m_reconstructionParams.voxelsPerMeter = 256.0f;
+		else if (wcscmp(k, L"128"))	m_params.m_reconstructionParams.voxelsPerMeter = 128.0f;
+	}
+
+
     if (IDC_CHECK_PAUSE_INTEGRATION == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
         // Toggle the pause state of the reconstruction
         m_params.m_bPauseIntegration = !m_params.m_bPauseIntegration;
     }
-    if (IDC_VPM_768 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelsPerMeter = 768.0f;
-    }
-    if (IDC_VPM_640 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelsPerMeter = 640.0f;
-    }
-    if (IDC_VPM_512 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelsPerMeter = 512.0f;
-    }
-    if (IDC_VPM_384 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelsPerMeter = 384.0f;
-    }
-    if (IDC_VPM_256 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelsPerMeter = 256.0f;
-    }
-    if (IDC_VPM_128 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelsPerMeter = 128.0f;
-    }
+
     if (IDC_VOXELS_X_640 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
         m_params.m_reconstructionParams.voxelCountX = 640;
@@ -965,18 +1015,6 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
     if (IDC_VOXELS_Z_128 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
         m_params.m_reconstructionParams.voxelCountZ = 128;
-    }
-    if (IDC_MESH_FORMAT_STL_RADIO == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_saveMeshFormat = Stl;
-    }
-    if (IDC_MESH_FORMAT_OBJ_RADIO == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_saveMeshFormat = Obj;
-    }
-    if (IDC_MESH_FORMAT_PLY_RADIO == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_saveMeshFormat = Ply;
     }
 
     m_processor.SetParams(m_params);
