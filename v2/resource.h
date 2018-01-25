@@ -4,6 +4,7 @@
 //
 #define IDI_APP                         107
 #define IDD_APP                         110
+#define IDR_MENU1                       137
 #define IDC_SENSORCHOOSER               1002
 #define IDC_RECONSTRUCTION_VIEW         1003
 #define IDC_DEPTH_VIEW                  1004
@@ -69,8 +70,40 @@
 #define IDC_STATUS_SHAPE_OUTLIER        1082
 #define IDC_STATUS_DISPLAY_FEATURES     1083
 #define IDC_CHECK_MESH_UNWRAP           1084
-#define IDC_BUTTON2                     1085
 #define IDC_BUTTON_SHAPE_ORTHOGONAL_VIEW 1085
+#define ID_Menu                         32771
+#define ID_VIEW_MIRRORDEPTH             32772
+#define ID_VIEW_CAPTURECOLOR            32773
+#define ID_TOOLS_UNWRAPMESH             32774
+#define ID_VIEW_DISPLAYFEATURES         32775
+#define ID_DISPLAYFEATURES_FINGERS      32776
+#define ID_DISPLAYFEATURES_HANDS        32777
+#define ID_DISPLAYFEATURES_ARMS         32778
+#define ID_DISPLAYFEATURES_RAY          32779
+#define ID_FILE_EXPORT                  32780
+#define ID_EXPORT_ANNOTATION            32781
+#define ID_EXPORT_RECONSTRUCTEDMESH     32782
+#define ID_ANNOTATION_                  32783
+#define ID_ANNOTATION_32784             32784
+#define ID_ANNOTATION_32785             32785
+#define ID_RECONSTRUCTEDMESH_           32786
+#define ID_RECONSTRUCTEDMESH_32787      32787
+#define ID_RECONSTRUCTEDMESH_32788      32788
+#define ID_FILE_QUIT                    32789
+#define ID_MENU_VIEW_MIRRORDEPTH        32790
+#define ID_EXPORTRECONSTRUCTEDMESH_     32791
+#define ID_EXPORTRECONSTRUCTEDMESH_32792 32792
+#define ID_EXPORTRECONSTRUCTEDMESH_32793 32793
+#define ID_EXPORTANNOTATEDMESH_         32794
+#define ID_EXPORTANNOTATEDMESH_32795    32795
+#define ID_EXPORTANNOTATEDMESH_32796    32796
+#define ID_FILE_QUIT32797               32797
+#define ID_MENU_VIEW_CAPTURECOLOR       32798
+#define ID_MENU_TOOLS_POSE_FINDER       32799
+#define ID_MENU_DISPLAYFEATURES_FINGERS 32800
+#define ID_MENU_DISPLAYFEATURES_HANDS   32801
+#define ID_MENU_DISPLAYFEATURES_ARMS    32802
+#define ID_MENU_DISPLAYFEATURES_RAY     32803
 #define IDC_STATUS                      -1
 
 // Next default values for new objects
@@ -78,8 +111,8 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        137
-#define _APS_NEXT_COMMAND_VALUE         32771
+#define _APS_NEXT_RESOURCE_VALUE        138
+#define _APS_NEXT_COMMAND_VALUE         32804
 #define _APS_NEXT_CONTROL_VALUE         1086
 #define _APS_NEXT_SYMED_VALUE           111
 #endif

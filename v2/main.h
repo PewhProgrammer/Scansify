@@ -6,6 +6,7 @@
 
 #pragma once
 
+
 #include "ImageRenderer.h"
 #include "KinectFusion\KinectFusionParams.h"
 #include "KinectFusion\KinectFusionProcessor.h"
@@ -91,6 +92,11 @@ private:
     /// Handle new UI interaction
     /// </summary>
     void                        ProcessUI(WPARAM wParam, LPARAM lParam);
+
+	/// <summary>
+	/// Checks Menu for click events
+	/// </summary>
+	void                        CheckMenu(WPARAM id, bool check);
 
     /// <summary>
     /// Update the internal variable values from the UI Horizontal sliders.

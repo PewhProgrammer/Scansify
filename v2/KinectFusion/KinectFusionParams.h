@@ -37,6 +37,10 @@ struct KinectFusionParams
         m_cMaxIntegrationWeight(NUI_FUSION_DEFAULT_INTEGRATION_WEIGHT),
         m_bDisplaySurfaceNormals(false),
         m_bCaptureColor(false),
+		m_bDisplayFingerTracking(false),
+		m_bDisplayArmTracking(false),
+		m_bDisplayHandTracking(false),
+		m_bDisplayRayTracking(false),
         m_cColorIntegrationInterval(3),
         m_bTranslateResetPoseByMinDepthThreshold(true),
         m_saveMeshType(Stl),
@@ -164,6 +168,10 @@ struct KinectFusionParams
     int							m_cColorIntegrationInterval;
     KinectFusionMeshTypes       m_saveMeshType;
     unsigned int                m_cDeltaFromReferenceFrameCalculationInterval;
+	bool						m_bDisplayFingerTracking;
+	bool						m_bDisplayArmTracking;
+	bool						m_bDisplayHandTracking;
+	bool						m_bDisplayRayTracking;
 
     /// <summary>
     /// Here we set a high limit on the maximum residual alignment energy where we consider the tracking

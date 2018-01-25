@@ -8,6 +8,7 @@
 #include "KinectFusion/stdafx.h"
 //#include <afxdialogex.h>
 
+
 // Project includes
 #include "resource.h"
 #include "main.h"
@@ -32,6 +33,10 @@
 /// <returns>status</returns>
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE, _In_ LPWSTR, _In_ int nCmdShow)
 {
+	AllocConsole();
+	freopen("CONOUT$", "w", stdout);
+	freopen("CONOUT$", "w", stderr);
+
     Scansify application;
     application.Run(hInstance, nCmdShow);
 }
@@ -103,6 +108,12 @@ int Scansify::Run(HINSTANCE hInstance, int nCmdShow)
         (DLGPROC)Scansify::MessageRouter, 
         reinterpret_cast<LPARAM>(this));
 
+	HMENU menu = LoadMenu(hInstance, MAKEINTRESOURCE(IDR_MENU1));
+	SetMenu(m_hWnd, menu);
+	
+
+	//ID_MENU_VIEW_MIRRORDEPTH
+
     // Show window
     ShowWindow(hWndApp, nCmdShow);
 
@@ -145,6 +156,7 @@ LRESULT CALLBACK Scansify::MessageRouter(
     {
         pThis = reinterpret_cast<Scansify*>(lParam);
         SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pThis));
+
     }
     else
     {
@@ -686,6 +698,14 @@ void Scansify::InitializeUIControls()
 
 }
 
+void Scansify::CheckMenu(WPARAM id, bool check) {
+	
+	HMENU menu = GetMenu(m_hWnd);
+
+	if (check)	CheckMenuItem(menu, LOWORD(id), MF_CHECKED);
+	else 		CheckMenuItem(menu, LOWORD(id), MF_UNCHECKED);
+}
+
 /// <summary>
 /// Process the UI inputs
 /// </summary>
@@ -694,25 +714,63 @@ void Scansify::InitializeUIControls()
 void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 {
     // If it was for the display surface normals toggle this variable
-    if (IDC_CHECK_CAPTURE_COLOR == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
+    if (ID_MENU_VIEW_CAPTURECOLOR == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
         // Toggle capture color
         m_params.m_bCaptureColor = !m_params.m_bCaptureColor;
+
+		CheckMenu(wParam, m_params.m_bCaptureColor);
     }
     // If it was for the display surface normals toggle this variable
-    if (IDC_CHECK_MIRROR_DEPTH == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        // Toggle depth mirroring
-        m_params.m_bMirrorDepthFrame = !m_params.m_bMirrorDepthFrame;
+	if (ID_MENU_VIEW_MIRRORDEPTH == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
 
-        // Un-check pause
-        CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
-        m_processor.ResetReconstruction();
-    }
-    if (IDC_CHECK_CAMERA_POSE_FINDER == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
+		// Toggle depth mirroring
+		m_params.m_bMirrorDepthFrame = !m_params.m_bMirrorDepthFrame;
+
+		// Un-check pause
+		CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
+		m_processor.ResetReconstruction();
+
+		CheckMenu(wParam, m_params.m_bMirrorDepthFrame);
+	}
+    if (ID_MENU_TOOLS_POSE_FINDER == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
         m_params.m_bAutoFindCameraPoseWhenLost = !m_params.m_bAutoFindCameraPoseWhenLost;
+
+		CheckMenu(wParam, m_params.m_bAutoFindCameraPoseWhenLost);
     }
+	if (ID_MENU_DISPLAYFEATURES_FINGERS == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
+	{
+		// display finger tracking on depth frame
+		SetStatusMessage(L"Toggle finger tracking display");
+		m_params.m_bDisplayFingerTracking = !m_params.m_bDisplayFingerTracking;
+
+		CheckMenu(wParam, m_params.m_bDisplayFingerTracking);
+	}
+	if (ID_MENU_DISPLAYFEATURES_HANDS == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
+	{
+		// display arms tracking on depth frame
+		SetStatusMessage(L"Toggle arms tracking display");
+		m_params.m_bDisplayArmTracking = !m_params.m_bDisplayArmTracking;
+
+		CheckMenu(wParam, m_params.m_bDisplayArmTracking);
+	}
+	if (ID_MENU_DISPLAYFEATURES_ARMS == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
+	{
+		// display hands tracking on depth frame
+		SetStatusMessage(L"Toggle hand tracking display");
+		m_params.m_bDisplayHandTracking = !m_params.m_bDisplayHandTracking;
+
+		CheckMenu(wParam, m_params.m_bDisplayHandTracking);
+	}
+	if (ID_MENU_DISPLAYFEATURES_RAY == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
+	{
+		// display finger pointing vector tracking on depth frame
+		SetStatusMessage(L"Toggle finger pencil display");
+		m_params.m_bDisplayRayTracking = !m_params.m_bDisplayRayTracking;
+
+		CheckMenu(wParam, m_params.m_bDisplayRayTracking);
+	}
     // If it was the reset button clicked, clear the volume
     if (IDC_BUTTON_RESET_RECONSTRUCTION == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
@@ -763,9 +821,62 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
         // Restore pause state of integration
         m_params.m_bPauseIntegration = wasPaused;
         m_processor.SetParams(m_params);
-
         m_bSavingMesh = false;
+
+
     }
+
+	if (IDC_RECONSTRUCTION_VIEW == LOWORD(wParam) && STN_CLICKED == HIWORD(wParam)) {
+		float k = 2;
+
+		POINT point;
+		GetCursorPos(&point);
+		RECT rect;
+		HWND reconstructionWindow = GetDlgItem(m_hWnd, IDC_RECONSTRUCTION_VIEW);
+		GetWindowRect(reconstructionWindow, &rect);
+		double width = rect.right - rect.left;
+		double height = rect.bottom - rect.top;
+
+		// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
+		// translate to screen coordinate [-1;1]
+
+
+		if (ScreenToClient(reconstructionWindow, &point))
+		{
+			double x = ((double)(point.x - 0.f) / (width - 0.f)) * (1.f + 1.f) - 1.f;
+			double y = ((double)(point.y - 0.f) / (height - 0.f)) * (1.f + 1.f) - 1.f;
+
+			//p.x and p.y are now relative to hwnd's client area
+			printf("Clicked on: (%6.3f,%6.3f) \n", x,y);
+		}
+	}
+
+	if (IDC_BUTTON_MESH_DRAWING == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
+	{
+		SetStatusMessage(L"Saving mesh into memory. Please wait...");
+
+		// Pause integration while we're saving
+		bool wasPaused = m_params.m_bPauseIntegration;
+		m_params.m_bPauseIntegration = true;
+		m_processor.SetParams(m_params);
+
+		INuiFusionColorMesh *mesh = nullptr;
+		HRESULT hr = m_processor.CalculateMesh(&mesh);
+
+		if (SUCCEEDED(hr))
+		{
+			
+
+			// Release the mesh
+			SafeRelease(mesh);
+		}
+		else
+		{
+			SetStatusMessage(L"Failed to create mesh of reconstruction.");
+		}
+	}
+
+	
     if (IDC_CHECK_PAUSE_INTEGRATION == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
         // Toggle the pause state of the reconstruction

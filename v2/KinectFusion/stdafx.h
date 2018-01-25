@@ -12,6 +12,7 @@
 
 // Windows Header Files
 #include <windows.h>
+//#include <afxwin.h>
 
 #include <Shlobj.h>
 
