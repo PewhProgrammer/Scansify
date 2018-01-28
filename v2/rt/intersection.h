@@ -1,9 +1,9 @@
 #ifndef CG1RAYTRACER_INTERSECTION_HEADER
 #define CG1RAYTRACER_INTERSECTION_HEADER
 
-#include "../ray.h"
-#include "../core/vector.h"
-#include "../core/scalar.h"
+#include "ray.h"
+#include "core/vector.h"
+#include "core/scalar.h"
 
 namespace rt {
 

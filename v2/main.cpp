@@ -6,6 +6,7 @@
 
 // System includes
 #include "KinectFusion/stdafx.h"
+#include <iostream>
 //#include <afxdialogex.h>
 
 
@@ -15,7 +16,10 @@
 #include "KinectFusion/KinectFusionProcessorFrame.h"
 #include "KinectFusion/KinectFusionHelper.h"
 
-#include <iostream>
+// RayTracing Includes
+#include "rt\bvh.h"
+
+
 
 #define MIN_DEPTH_DISTANCE_MM 500   // Must be greater than 0
 #define MAX_DEPTH_DISTANCE_MM 8000
@@ -65,6 +69,9 @@ m_hWnd(nullptr),
 /// </summary>
 Scansify::~Scansify()
 {
+	// Release the mesh
+	SafeRelease(m_params.m_pMesh);
+
     // clean up Direct2D renderer
     SAFE_DELETE(m_pDrawReconstruction);
 
@@ -586,107 +593,122 @@ void Scansify::InitializeUIControls()
 	ComboBox_AddString(comboVoxel, L"384");
 	ComboBox_AddString(comboVoxel, L"256");
 	ComboBox_AddString(comboVoxel, L"128");
-	
 
-    // Set the radio buttons for Volume Parameters
-    switch((int)m_params.m_reconstructionParams.voxelsPerMeter)
-    {
-    case 768:
-        CheckDlgButton(m_hWnd, IDC_VPM_768, BST_CHECKED);
+	// Set the control box for Volume Parameters
+	switch ((int)m_params.m_reconstructionParams.voxelsPerMeter)
+	{
+	case 768:
 		ComboBox_SetText(comboVoxel, L"768");
-        break;
-    case 640:
-        CheckDlgButton(m_hWnd, IDC_VPM_640, BST_CHECKED);
+		break;
+	case 640:
 		ComboBox_SetText(comboVoxel, L"640");
-        break;
-    case 512:
-        CheckDlgButton(m_hWnd, IDC_VPM_512, BST_CHECKED);
+		break;
+	case 512:
 		ComboBox_SetText(comboVoxel, L"512");
-        break;
-    case 384:
-        CheckDlgButton(m_hWnd, IDC_VPM_384, BST_CHECKED);
+		break;
+	case 384:
 		ComboBox_SetText(comboVoxel, L"384");
-        break;
-    case 256:
-        CheckDlgButton(m_hWnd, IDC_VPM_256, BST_CHECKED);
+		break;
+	case 256:
 		ComboBox_SetText(comboVoxel, L"256");
-        break;
-    case 128:
-        CheckDlgButton(m_hWnd, IDC_VPM_128, BST_CHECKED);
+		break;
+	case 128:
 		ComboBox_SetText(comboVoxel, L"128");
-        break;
-    default:
-        m_params.m_reconstructionParams.voxelsPerMeter = 256.0f;	// set to medium default
-        CheckDlgButton(m_hWnd, IDC_VPM_256, BST_CHECKED);
-        break;
-    }
+		break;
+	default:
+		m_params.m_reconstructionParams.voxelsPerMeter = 256.0f;	// set to medium default
+		ComboBox_SetText(comboVoxel, L"256");
+		break;
+	}
 
-    switch((int)m_params.m_reconstructionParams.voxelCountX)
-    {
-    case 640:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_X_640, BST_CHECKED);
-        break;
-    case 512:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_X_512, BST_CHECKED);
-        break;
-    case 384:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_X_384, BST_CHECKED);
-        break;
-    case 256:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_X_256, BST_CHECKED);
-        break;
-    case 128:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_X_128, BST_CHECKED);
-        break;
-    default:
-        m_params.m_reconstructionParams.voxelCountX = 384;	// set to medium default
-        CheckDlgButton(m_hWnd, IDC_VOXELS_X_384, BST_CHECKED);
-        break;
-    }
+	comboVoxel = GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X);
+	ComboBox_AddString(comboVoxel, L"640");
+	ComboBox_AddString(comboVoxel, L"512");
+	ComboBox_AddString(comboVoxel, L"384");
+	ComboBox_AddString(comboVoxel, L"256");
+	ComboBox_AddString(comboVoxel, L"128");
 
-    switch((int)m_params.m_reconstructionParams.voxelCountY)
-    {
-    case 640:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Y_640, BST_CHECKED);
-        break;
-    case 512:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Y_512, BST_CHECKED);
-        break;
-    case 384:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Y_384, BST_CHECKED);
-        break;
-    case 256:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Y_256, BST_CHECKED);
-        break;
-    case 128:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Y_128, BST_CHECKED);
-        break;
-    default:
-        m_params.m_reconstructionParams.voxelCountX = 384;	// set to medium default
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Y_384, BST_CHECKED);
-        break;
-    }
+	switch ((int)m_params.m_reconstructionParams.voxelCountX)
+	{
+	case 640:
+		ComboBox_SetText(comboVoxel, L"640");
+		break;
+	case 512:
+		ComboBox_SetText(comboVoxel, L"512");
+		break;
+	case 384:
+		ComboBox_SetText(comboVoxel, L"384");
+		break;
+	case 256:
+		ComboBox_SetText(comboVoxel, L"256");
+		break;
+	case 128:
+		ComboBox_SetText(comboVoxel, L"128");
+		break;
+	default:
+		m_params.m_reconstructionParams.voxelCountX = 384;	// set to medium default
+		ComboBox_SetText(comboVoxel, L"384");
+		break;
+	}
+
+	comboVoxel = GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y);
+	ComboBox_AddString(comboVoxel, L"640");
+	ComboBox_AddString(comboVoxel, L"512");
+	ComboBox_AddString(comboVoxel, L"384");
+	ComboBox_AddString(comboVoxel, L"256");
+	ComboBox_AddString(comboVoxel, L"128");
+
+	switch ((int)m_params.m_reconstructionParams.voxelCountY)
+	{
+	case 640:
+		ComboBox_SetText(comboVoxel, L"640");
+		break;
+	case 512:
+		ComboBox_SetText(comboVoxel, L"512");
+		break;
+	case 384:
+		ComboBox_SetText(comboVoxel, L"384");
+		break;
+	case 256:
+		ComboBox_SetText(comboVoxel, L"256");
+		break;
+	case 128:
+		ComboBox_SetText(comboVoxel, L"128");
+		break;
+	default:
+		m_params.m_reconstructionParams.voxelCountX = 384;	// set to medium default
+		ComboBox_SetText(comboVoxel, L"384");
+		break;
+	}
+
+	comboVoxel = GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z);
+	ComboBox_AddString(comboVoxel, L"640");
+	ComboBox_AddString(comboVoxel, L"512");
+	ComboBox_AddString(comboVoxel, L"384");
+	ComboBox_AddString(comboVoxel, L"256");
+	ComboBox_AddString(comboVoxel, L"128");
+	
 
     switch((int)m_params.m_reconstructionParams.voxelCountZ)
     {
-    case 640:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Z_640, BST_CHECKED);
-        break;
-    case 512:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Z_512, BST_CHECKED);
-        break;
-    case 384:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Z_384, BST_CHECKED);
-        break;
-    case 256:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Z_256, BST_CHECKED);
-        break;
-    case 128:
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Z_128, BST_CHECKED);
-        break;
+	case 640:
+		ComboBox_SetText(comboVoxel, L"640");
+		break;
+	case 512:
+		ComboBox_SetText(comboVoxel, L"512");
+		break;
+	case 384:
+		ComboBox_SetText(comboVoxel, L"384");
+		break;
+	case 256:
+		ComboBox_SetText(comboVoxel, L"256");
+		break;
+	case 128:
+		ComboBox_SetText(comboVoxel, L"128");
+		break;
     default:
         m_params.m_reconstructionParams.voxelCountX = 384;	// set to medium default
-        CheckDlgButton(m_hWnd, IDC_VOXELS_Z_384, BST_CHECKED);
+		ComboBox_SetText(comboVoxel, L"384");
         break;
     }
 
@@ -743,6 +765,7 @@ void Scansify::SaveMesh(bool reconstruction) {
 
 		INuiFusionColorMesh *mesh = nullptr;
 		HRESULT hr = m_processor.CalculateMesh(&mesh);
+		
 
 		if (SUCCEEDED(hr))
 		{
@@ -884,7 +907,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		}
 	}
 
-	// If started drawing process
+	// If starting annotation process
 	if (IDC_BUTTON_MESH_DRAWING == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
 	{
 		SetStatusMessage(L"Saving mesh into memory. Please wait...");
@@ -894,15 +917,16 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		m_params.m_bPauseIntegration = true;
 		m_processor.SetParams(m_params);
 
-		INuiFusionColorMesh *mesh = nullptr;
-		HRESULT hr = m_processor.CalculateMesh(&mesh);
+		// Release the mesh from previous reconstruction
+		SafeRelease(m_params.m_pMesh);
+
+		// Release the mesh in KinectFusionProcessor
+		HRESULT hr = m_processor.CalculateMesh(&m_params.m_pMesh);
 
 		if (SUCCEEDED(hr))
 		{
+			m_params.m_bInitializeAnnotationMode = true;
 			
-
-			// Release the mesh
-			SafeRelease(mesh);
 		}
 		else
 		{
@@ -938,15 +962,21 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 
 	if (IDC_COMBO_VOXELS == LOWORD(wParam) && CBN_SELCHANGE == HIWORD(wParam)) {
-		LPWSTR k = new WCHAR();
-		GetDlgItemText(m_hWnd, IDC_COMBO_VOXELS, k, 9);
+		LPCTSTR k = new WCHAR(); TCHAR buffer[60];
 
-		if (wcscmp(k, L"768"))		m_params.m_reconstructionParams.voxelsPerMeter = 768.0f;
-		else if(wcscmp(k, L"640"))	m_params.m_reconstructionParams.voxelsPerMeter = 640.0f;
-		else if (wcscmp(k, L"512"))	m_params.m_reconstructionParams.voxelsPerMeter = 512.0f;
-		else if (wcscmp(k, L"384"))	m_params.m_reconstructionParams.voxelsPerMeter = 384.0f;
-		else if (wcscmp(k, L"256"))	m_params.m_reconstructionParams.voxelsPerMeter = 256.0f;
-		else if (wcscmp(k, L"128"))	m_params.m_reconstructionParams.voxelsPerMeter = 128.0f;
+		auto sel = SendMessage(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), CB_GETCURSEL, (WPARAM)0, (LPARAM)0);
+		wsprintf(buffer, TEXT("&#37;d"), sel);
+		ComboBox_GetLBText(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), sel, k);
+
+		if (!wcscmp(k, L"768"))			m_params.m_reconstructionParams.voxelsPerMeter = 768.0f;
+		else if (!wcscmp(k, L"640"))		m_params.m_reconstructionParams.voxelsPerMeter = 640.0f;
+		else if (!wcscmp(k, L"512"))	m_params.m_reconstructionParams.voxelsPerMeter = 512.0f;
+		else if (!wcscmp(k, L"384"))	m_params.m_reconstructionParams.voxelsPerMeter = 384.0f;
+		else if (!wcscmp(k, L"256"))	m_params.m_reconstructionParams.voxelsPerMeter = 256.0f;
+		else if (!wcscmp(k, L"128"))	m_params.m_reconstructionParams.voxelsPerMeter = 128.0f;
+		else SetStatusMessage(L"Failed to set voxels per meter");
+
+		delete k;
 	}
 
 
@@ -956,66 +986,57 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
         m_params.m_bPauseIntegration = !m_params.m_bPauseIntegration;
     }
 
-    if (IDC_VOXELS_X_640 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountX = 640;
-    }
-    if (IDC_VOXELS_X_512 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountX = 512;
-    }
-    if (IDC_VOXELS_X_384 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountX = 384;
-    }
-    if (IDC_VOXELS_X_256 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountX = 256;
-    }
-    if (IDC_VOXELS_X_128 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountX = 128;
-    }
-    if (IDC_VOXELS_Y_640 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountY = 640;
-    }
-    if (IDC_VOXELS_Y_512 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountY = 512;
-    }
-    if (IDC_VOXELS_Y_384 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountY = 384;
-    }
-    if (IDC_VOXELS_Y_256 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountY = 256;
-    }
-    if (IDC_VOXELS_Y_128 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountY = 128;
-    }
-    if (IDC_VOXELS_Z_640 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountZ = 640;
-    }
-    if (IDC_VOXELS_Z_512 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountZ = 512;
-    }
-    if (IDC_VOXELS_Z_384 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountZ = 384;
-    }
-    if (IDC_VOXELS_Z_256 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountZ = 256;
-    }
-    if (IDC_VOXELS_Z_128 == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
-    {
-        m_params.m_reconstructionParams.voxelCountZ = 128;
-    }
+	if (IDC_COMBO_ROOM_X == LOWORD(wParam) && CBN_SELCHANGE == HIWORD(wParam)) {
+		LPCTSTR k = new WCHAR(); TCHAR buffer[60];
+
+		auto sel = SendMessage(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), CB_GETCURSEL, (WPARAM)0, (LPARAM)0);
+		wsprintf(buffer, TEXT("&#37;d"), sel);
+		ComboBox_GetLBText(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), sel, k);
+		
+		if (!wcscmp(k, L"640"))			m_params.m_reconstructionParams.voxelCountX = 640;
+		else if (!wcscmp(k, L"512"))	m_params.m_reconstructionParams.voxelCountX = 512;
+		else if (!wcscmp(k, L"384"))	m_params.m_reconstructionParams.voxelCountX = 384;
+		else if (!wcscmp(k, L"256"))	m_params.m_reconstructionParams.voxelCountX = 256;
+		else if (!wcscmp(k, L"128"))	m_params.m_reconstructionParams.voxelCountX = 128;
+		else SetStatusMessage(L"Failed to set x-axis resolution");
+
+		delete k;
+	}
+
+	if (IDC_COMBO_ROOM_Y == LOWORD(wParam) && CBN_SELCHANGE == HIWORD(wParam)) {
+		LPCTSTR k = new WCHAR(); TCHAR buffer[60];
+
+		auto sel = SendMessage(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), CB_GETCURSEL, (WPARAM)0, (LPARAM)0);
+		wsprintf(buffer, TEXT("&#37;d"), sel);
+		ComboBox_GetLBText(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), sel, k);
+
+		if (!wcscmp(k, L"640"))			m_params.m_reconstructionParams.voxelCountY = 640;
+		else if (!wcscmp(k, L"512"))	m_params.m_reconstructionParams.voxelCountY = 512;
+		else if (!wcscmp(k, L"384"))	m_params.m_reconstructionParams.voxelCountY = 384;
+		else if (!wcscmp(k, L"256"))	m_params.m_reconstructionParams.voxelCountY = 256;
+		else if (!wcscmp(k, L"128"))	m_params.m_reconstructionParams.voxelCountY = 128;
+		else SetStatusMessage(L"Failed to set y-axis resolution");
+
+		delete k;
+
+	}
+
+	if (IDC_COMBO_ROOM_Z == LOWORD(wParam) && CBN_SELCHANGE == HIWORD(wParam)) {
+		LPCTSTR k = new WCHAR(); TCHAR buffer[60];
+
+		auto sel = SendMessage(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), CB_GETCURSEL, (WPARAM)0, (LPARAM)0);
+		wsprintf(buffer, TEXT("&#37;d"), sel);
+		ComboBox_GetLBText(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), sel, k);
+
+		if (!wcscmp(k, L"640"))			m_params.m_reconstructionParams.voxelCountZ = 640;
+		else if (!wcscmp(k, L"512"))	m_params.m_reconstructionParams.voxelCountZ = 512;
+		else if (!wcscmp(k, L"384"))	m_params.m_reconstructionParams.voxelCountZ = 384;
+		else if (!wcscmp(k, L"256"))	m_params.m_reconstructionParams.voxelCountZ = 256;
+		else if (!wcscmp(k, L"128"))	m_params.m_reconstructionParams.voxelCountZ = 128;
+		else SetStatusMessage(L"Failed to set z-axis resolution");
+
+		delete k;
+	}
 
     m_processor.SetParams(m_params);
 }

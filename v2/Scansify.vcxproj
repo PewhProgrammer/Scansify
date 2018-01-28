@@ -116,7 +116,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
@@ -184,6 +184,14 @@
     <ClInclude Include="KinectFusion\Timer.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="rt\bbox.h" />
+    <ClInclude Include="rt\bvh.h" />
+    <ClInclude Include="rt\core\float4.h" />
+    <ClInclude Include="rt\core\point.h" />
+    <ClInclude Include="rt\core\vector.h" />
+    <ClInclude Include="rt\intersection.h" />
+    <ClInclude Include="rt\Node.h" />
+    <ClInclude Include="rt\ray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageRenderer.cpp" />
@@ -192,6 +200,14 @@
     <ClCompile Include="KinectFusion\KinectFusionProcessor.cpp" />
     <ClCompile Include="KinectFusion\KinectFusionProcessorFrame.cpp" />
     <ClCompile Include="KinectFusion\timer.cpp" />
+    <ClCompile Include="rt\bbox.cpp" />
+    <ClCompile Include="rt\bvh.cpp" />
+    <ClCompile Include="rt\core\float4.cpp" />
+    <ClCompile Include="rt\core\point.cpp" />
+    <ClCompile Include="rt\core\vector.cpp" />
+    <ClCompile Include="rt\Intersection.cpp" />
+    <ClCompile Include="rt\Node.cpp" />
+    <ClCompile Include="rt\ray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KinectFusionExplorer-D2D.rc" />

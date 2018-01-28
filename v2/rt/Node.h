@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "../bbox.h"
+#include "bbox.h"
 #include <stdio.h>
 #include "intersection.h"
 

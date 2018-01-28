@@ -2,8 +2,8 @@
 #define RAYTRACER_GROUPS_BVH_HEADER
 
 #include "Node.h"
-#include "../bbox.h"
-#include "../core/point.h"
+#include "bbox.h"
+#include "core/point.h"
 #include "intersection.h"
 
 namespace rt {

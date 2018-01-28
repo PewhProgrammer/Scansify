@@ -41,8 +41,10 @@ struct KinectFusionParams
 		m_bDisplayArmTracking(false),
 		m_bDisplayHandTracking(false),
 		m_bDisplayRayTracking(false),
+		m_bInitializeAnnotationMode(false),
         m_cColorIntegrationInterval(3),
         m_bTranslateResetPoseByMinDepthThreshold(true),
+		m_pMesh(nullptr),
         m_saveMeshType(Stl),
         m_cDeltaFromReferenceFrameCalculationInterval(2),
         m_cMinSuccessfulTrackingFramesForCameraPoseFinder(45), // only update the camera pose finder initially after 45 successful frames (1.5s)
@@ -78,9 +80,9 @@ struct KinectFusionParams
         // Define a cubic Kinect Fusion reconstruction volume, with the sensor at the center of the
         // front face and the volume directly in front of sensor.
         m_reconstructionParams.voxelsPerMeter = 256;    // 1000mm / 256vpm = ~3.9mm/voxel
-        m_reconstructionParams.voxelCountX = 384;       // 384 / 256vpm = 1.5m wide reconstruction
-        m_reconstructionParams.voxelCountY = 384;       // Memory = 384*384*384 * 4bytes per voxel
-        m_reconstructionParams.voxelCountZ = 384;       // This will require a GPU with at least 256MB
+        m_reconstructionParams.voxelCountX = 128;       // 384 / 256vpm = 1.5m wide reconstruction
+        m_reconstructionParams.voxelCountY = 256;       // Memory = 384*384*384 * 4bytes per voxel
+        m_reconstructionParams.voxelCountZ = 256;       // This will require a GPU with at least 256MB
 
         // This parameter sets whether GPU or CPU processing is used. Note that the CPU will likely be 
         // too slow for real-time processing.
@@ -172,6 +174,12 @@ struct KinectFusionParams
 	bool						m_bDisplayArmTracking;
 	bool						m_bDisplayHandTracking;
 	bool						m_bDisplayRayTracking;
+
+	/// <summary>
+	/// Initialize Annotation
+	/// </summary>
+	bool						m_bInitializeAnnotationMode;
+	INuiFusionColorMesh*		m_pMesh;
 
     /// <summary>
     /// Here we set a high limit on the maximum residual alignment energy where we consider the tracking

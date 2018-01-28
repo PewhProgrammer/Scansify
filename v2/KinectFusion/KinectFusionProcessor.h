@@ -396,6 +396,7 @@ private:
     bool                        m_bTrackingHasFailedPreviously;
     bool                        m_bCalculateDeltaFrame;
 
+
     /// <summary>
     /// Frame counter and timer.
     /// </summary>

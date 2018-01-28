@@ -15,6 +15,30 @@
       <Filter>KinectFusion</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="rt\core\point.cpp">
+      <Filter>RT\core</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\core\float4.cpp">
+      <Filter>RT\core</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\core\vector.cpp">
+      <Filter>RT\core</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\bbox.cpp">
+      <Filter>RT\traversal</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\bvh.cpp">
+      <Filter>RT\traversal</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\Intersection.cpp">
+      <Filter>RT\traversal</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\Node.cpp">
+      <Filter>RT\traversal</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\ray.cpp">
+      <Filter>RT\traversal</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageRenderer.h" />
@@ -38,6 +62,30 @@
     </ClInclude>
     <ClInclude Include="main.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="rt\core\point.h">
+      <Filter>RT\core</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\core\float4.h">
+      <Filter>RT\core</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\core\vector.h">
+      <Filter>RT\core</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\bbox.h">
+      <Filter>RT\traversal</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\bvh.h">
+      <Filter>RT\traversal</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\intersection.h">
+      <Filter>RT\traversal</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\Node.h">
+      <Filter>RT\traversal</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\ray.h">
+      <Filter>RT\traversal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KinectFusionExplorer-D2D.rc" />
@@ -48,6 +96,15 @@
   <ItemGroup>
     <Filter Include="KinectFusion">
       <UniqueIdentifier>{06c0db34-3fe2-4251-bf8b-14cf84c8294a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RT">
+      <UniqueIdentifier>{fff05b43-56e5-4955-ad1a-a7a7fcff481b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RT\core">
+      <UniqueIdentifier>{25d2c00c-0e0a-4b64-8b88-8b8623d31f14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RT\traversal">
+      <UniqueIdentifier>{7707a053-ed9d-458c-b96d-6e8c642406ed}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

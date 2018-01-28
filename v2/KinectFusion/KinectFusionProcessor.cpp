@@ -19,6 +19,9 @@
 #include "KinectFusionHelper.h"
 #include "../resource.h"
 
+// RT include
+#include "../rt/core/point.h"
+
 #define AssertOwnThread() \
     _ASSERT_EXPR(GetCurrentThreadId() == m_threadId, __FUNCTIONW__ L" called on wrong thread!");
 
@@ -805,6 +808,8 @@ HRESULT KinectFusionProcessor::InitializeKinectFusion()
     {
         return hr;
     }
+
+	
 
     // Depth frame generated from ray-casting the volume
     if (FAILED(hr = CreateFrame(NUI_FUSION_IMAGE_TYPE_FLOAT, width, height, &m_pRaycastDepthFloatImage)))
@@ -1901,8 +1906,64 @@ FinishFrame:
         }
     }
 
-    // Display raycast depth image when in pose finding mode
-    if (m_bTrackingFailed && cameraPoseFinderAvailable)
+	//	replace poseFinder window with annotationWindow
+	//  only draws annotated points
+	if (m_paramsCurrent.m_bInitializeAnnotationMode) {
+		UINT pitch = m_pRaycastPointCloud->pFrameBuffer->Pitch;
+		BYTE* bits = m_pRaycastPointCloud->pFrameBuffer->pBits;
+
+		unsigned int step = m_pRaycastPointCloud->pFrameBuffer->Pitch / m_pRaycastPointCloud->width;
+		INuiFusionColorMesh* mesh = m_paramsCurrent.m_pMesh;
+
+		const Vector3 *vertices = nullptr;
+		const Vector3 *normals = nullptr;
+
+		mesh->GetVertices(&vertices);
+		mesh->GetNormals(&normals);
+
+		UINT nCount = mesh->NormalCount();
+		UINT vCount = mesh->VertexCount();
+
+		for (uint16_t y = 0; y < m_pRaycastPointCloud->height; y++) {
+			for (uint16_t x = 0; x < m_pRaycastPointCloud->width; x++) {
+				float position[3];
+				float normal[3];
+
+				for (int coord = 0; coord < 3; coord++) {
+					position[coord] = *(float*)(bits + (step * (y * m_pRaycastPointCloud->width + x) + coord * sizeof(float)));
+					normal[coord] = *(float*)(bits + (step * (y * m_pRaycastPointCloud->width + x) + (coord + 3) * sizeof(float)));
+
+					if (position[coord] > 1.5f) {
+						*(float*)(bits + (step * (y * m_pRaycastPointCloud->width + x) + coord * sizeof(float))) = 0;
+						float t = *(float*)(bits + (step * (y * m_pRaycastPointCloud->width + x) + coord * sizeof(float)));
+					}
+				}
+
+
+				//*(float*)(bits + (step * (y * m_pRaycastPointCloud->width + x))) = 0;
+
+				float f = 2;
+			}
+		}
+
+
+
+		hr = NuiFusionShadePointCloud(
+			m_pRaycastPointCloud,
+			&m_worldToCameraTransform,
+			&m_worldToBGRTransform,
+			m_pShadedSurface,
+			m_paramsCurrent.m_bDisplaySurfaceNormals ? m_pShadedSurfaceNormals : nullptr);
+
+		if (SUCCEEDED(hr))
+		{
+			SetStatusMessage(L"Kinect Fusion NuiFusionShadePointCloud succeded.");
+			StoreImageToFrameBuffer(m_pShadedSurface, m_frame.m_pTrackingDataRGBX);
+		}
+
+	}
+	// Display raycast depth image when in pose finding mode
+    else if (m_bTrackingFailed && cameraPoseFinderAvailable)
     {
         StoreImageToFrameBuffer(m_pRaycastDepthFloatImage, m_frame.m_pTrackingDataRGBX);
     }
@@ -2063,7 +2124,9 @@ HRESULT KinectFusionProcessor::FindCameraPoseAlignPointClouds()
     double bestNeighborAlignmentEnergy = m_paramsCurrent.m_fMaxAlignPointCloudsEnergyForSuccess;
 
     // Run alignment with best matched poses (i.e. k nearest neighbors (kNN))
-    unsigned int maxTests = min(m_paramsCurrent.m_cMaxCameraPoseFinderPoseTests, cPoses);
+
+    unsigned int maxTests = std::min(m_paramsCurrent.m_cMaxCameraPoseFinderPoseTests, cPoses);
+	
 
     for (unsigned int n = 0; n < maxTests; n++)
     {
@@ -2249,7 +2312,7 @@ HRESULT KinectFusionProcessor::FindCameraPoseAlignDepthFloatToReconstruction()
     double bestNeighborAlignmentEnergy = m_paramsCurrent.m_fMaxAlignToReconstructionEnergyForSuccess;
 
     // Run alignment with best matched poses (i.e. k nearest neighbors (kNN))
-    unsigned int maxTests = min(m_paramsCurrent.m_cMaxCameraPoseFinderPoseTests, cPoses);
+    unsigned int maxTests = std::min(m_paramsCurrent.m_cMaxCameraPoseFinderPoseTests, cPoses);
 
     for (unsigned int n = 0; n < maxTests; n++)
     {

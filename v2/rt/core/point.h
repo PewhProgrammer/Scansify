@@ -16,6 +16,7 @@ private:
 public:
     float x, y, z;
 
+
     Point() {}
 	Point(float x, float y, float z);
 	float operator[](int idx) const;

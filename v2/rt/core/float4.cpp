@@ -49,7 +49,7 @@ namespace rt {
 	}
 
 	bool Float4::operator==(const Float4& b) const {
-		return f4[0] == b.f4[0] & f4[1] == b.f4[1] & f4[2] == b.f4[2] & f4[3] == b.f4[3];
+		return f4[0] == b.f4[0] && f4[1] == b.f4[1] && f4[2] == b.f4[2] && f4[3] == b.f4[3];
 	}
 	bool Float4::operator!=(const Float4& b) const {
 		return !(this->operator==(b));
