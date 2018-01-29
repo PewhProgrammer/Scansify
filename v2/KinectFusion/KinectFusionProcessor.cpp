@@ -1917,12 +1917,24 @@ FinishFrame:
 
 		const Vector3 *vertices = nullptr;
 		const Vector3 *normals = nullptr;
+		const int *index = new int();
+		const int **triangleIndices = &index;
 
 		mesh->GetVertices(&vertices);
 		mesh->GetNormals(&normals);
 
+		mesh->GetTriangleIndices(triangleIndices);
+
+		int p = triangleIndices[1][1];
+
+		for (int i = 0; i < mesh->TriangleVertexIndexCount(); i++) {
+			printf("(%d,%d,%d) \n", triangleIndices[i][0] );
+		}
+
+
 		UINT nCount = mesh->NormalCount();
 		UINT vCount = mesh->VertexCount();
+
 
 		for (uint16_t y = 0; y < m_pRaycastPointCloud->height; y++) {
 			for (uint16_t x = 0; x < m_pRaycastPointCloud->width; x++) {

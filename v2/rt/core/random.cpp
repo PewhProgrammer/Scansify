@@ -1,5 +1,5 @@
-#include <core/random.h>
-#include <core/macros.h>
+#include "random.h"
+#include "macros.h"
 #include <cstddef>
 
 namespace {

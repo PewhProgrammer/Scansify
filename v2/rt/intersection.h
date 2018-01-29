@@ -15,11 +15,12 @@ private:
 	Point uv;
 public:
     Ray ray;
-    float distance;
+    double distance;
+	Vector normal;
 
     Intersection() {}
     static Intersection failure();
-    Intersection(float distance, const Ray& ray, const Point& uv);
+	Intersection(double distance, const Ray& ray, Vector normal, const Point& uv) :distance(distance), ray(ray), normal(normal), uv(uv) {};
 
     Point hitPoint() const;
 

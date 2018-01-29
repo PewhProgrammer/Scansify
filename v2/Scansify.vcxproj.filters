@@ -39,6 +39,18 @@
     <ClCompile Include="rt\ray.cpp">
       <Filter>RT\traversal</Filter>
     </ClCompile>
+    <ClCompile Include="rt\primitives\striangle.cpp">
+      <Filter>RT\primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\primitives\infiniteplane.cpp">
+      <Filter>RT\primitives</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\core\random.cpp">
+      <Filter>RT\core</Filter>
+    </ClCompile>
+    <ClCompile Include="rt\core\interpolate.cpp">
+      <Filter>RT\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageRenderer.h" />
@@ -86,6 +98,12 @@
     <ClInclude Include="rt\ray.h">
       <Filter>RT\traversal</Filter>
     </ClInclude>
+    <ClInclude Include="rt\primitives\striangle.h">
+      <Filter>RT\primitives</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\primitives\infiniteplane.h">
+      <Filter>RT\primitives</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KinectFusionExplorer-D2D.rc" />
@@ -105,6 +123,9 @@
     </Filter>
     <Filter Include="RT\traversal">
       <UniqueIdentifier>{7707a053-ed9d-458c-b96d-6e8c642406ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RT\primitives">
+      <UniqueIdentifier>{0af78456-31f6-4b8a-985e-677d5a56f759}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

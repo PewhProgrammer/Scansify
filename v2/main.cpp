@@ -910,7 +910,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 	// If starting annotation process
 	if (IDC_BUTTON_MESH_DRAWING == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
 	{
-		SetStatusMessage(L"Saving mesh into memory. Please wait...");
+		SetStatusMessage(L"Reconstructing the mesh. Please wait...");
 
 		// Pause integration while we're saving
 		bool wasPaused = m_params.m_bPauseIntegration;
@@ -922,6 +922,8 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 		// Release the mesh in KinectFusionProcessor
 		HRESULT hr = m_processor.CalculateMesh(&m_params.m_pMesh);
+
+		SetStatusMessage(L"Building acceleration structure...");
 
 		if (SUCCEEDED(hr))
 		{

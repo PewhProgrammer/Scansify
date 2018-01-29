@@ -69,10 +69,10 @@
 #define IDC_COMBO_ROOM_X                1089
 #define IDC_COMBO_ROOM_Y                1090
 #define IDC_STATUS_Y_AXIS               1091
-#define IDC_COMBO_VOXELS4               1092
 #define IDC_COMBO_ROOM_Z                1092
 #define IDC_STATUS_X_AXIS               1093
 #define IDC_STATUS_Z_AXIS               1094
+#define IDC_PROGRESS1                   1095
 #define ID_Menu                         32771
 #define ID_VIEW_MIRRORDEPTH             32772
 #define ID_VIEW_CAPTURECOLOR            32773
@@ -121,7 +121,7 @@
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        138
 #define _APS_NEXT_COMMAND_VALUE         32810
-#define _APS_NEXT_CONTROL_VALUE         1095
+#define _APS_NEXT_CONTROL_VALUE         1096
 #define _APS_NEXT_SYMED_VALUE           111
 #endif
 #endif

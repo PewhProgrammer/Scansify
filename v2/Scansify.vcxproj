@@ -191,6 +191,8 @@
     <ClInclude Include="rt\core\vector.h" />
     <ClInclude Include="rt\intersection.h" />
     <ClInclude Include="rt\Node.h" />
+    <ClInclude Include="rt\primitives\infiniteplane.h" />
+    <ClInclude Include="rt\primitives\striangle.h" />
     <ClInclude Include="rt\ray.h" />
   </ItemGroup>
   <ItemGroup>
@@ -203,10 +205,14 @@
     <ClCompile Include="rt\bbox.cpp" />
     <ClCompile Include="rt\bvh.cpp" />
     <ClCompile Include="rt\core\float4.cpp" />
+    <ClCompile Include="rt\core\interpolate.cpp" />
     <ClCompile Include="rt\core\point.cpp" />
+    <ClCompile Include="rt\core\random.cpp" />
     <ClCompile Include="rt\core\vector.cpp" />
     <ClCompile Include="rt\Intersection.cpp" />
     <ClCompile Include="rt\Node.cpp" />
+    <ClCompile Include="rt\primitives\infiniteplane.cpp" />
+    <ClCompile Include="rt\primitives\striangle.cpp" />
     <ClCompile Include="rt\ray.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 
-#include <core/interpolate.h>
-#include <core/point.h>
-#include <core/float4.h>
+#include "interpolate.h"
+#include "point.h"
+#include "float4.h"
 
 namespace rt {
 
