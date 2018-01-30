@@ -16,9 +16,11 @@ namespace rt {
 		bc = C - B;
 		ac = C - A;
 
-		this->normals[0] = normals[0];
-		this->normals[1] = normals[1];
-		this->normals[2] = normals[2];
+		this->normals[0] = normals[0].normalize();
+		this->normals[1] = normals[1].normalize();
+		this->normals[2] = normals[2].normalize();
+
+		this->planeNormal = cross(ab, ac).normalize();
 
 		this->TriArea = cross(ab, ac).length() * 0.5f;
 		this->invTriArea = 1 / TriArea;
@@ -26,29 +28,18 @@ namespace rt {
 		boxmin = min(min(vertices[0], vertices[1]), vertices[2]);
 		boxmax = max(max(vertices[0], vertices[1]), vertices[2]);
 
-
+		m_bAnnotated = false;
 	}
 
 	rt::SmoothTriangle::SmoothTriangle(const Point & v1, const Point & v2, const Point & v3, const Vector & n1, const Vector & n2, const Vector & n3)
 	{
-		A = v1;
-		B = v2;
-		C = v3;
+		Point p[3];
+		Vector v[3];
 
-		ab = B - A;
-		bc = C - B;
-		ac = C - A;
+		p[0] = v1; p[1] = v2; p[2] = v3;
+		v[0] = n1; v[1] = n2; v[2] = n3;
 
-		this->normals[0] = n1;
-		this->normals[1] = n2;
-		this->normals[2] = n3;
-
-		this->TriArea = cross(ab, ac).length() * 0.5f;
-		this->invTriArea = 1 / TriArea;
-
-		boxmin = min(min(v1, v2), v3);
-		boxmax = max(max(v1, v2), v3);
-
+		SmoothTriangle(p, v);
 	}
 
 	BBox SmoothTriangle::getBounds() const
@@ -58,7 +49,7 @@ namespace rt {
 
 	Intersection rt::SmoothTriangle::intersect(const Ray & ray, float previousBestDistance) const
 	{
-		InfinitePlane plane = InfinitePlane(A, cross(ab, ac));
+		InfinitePlane plane = InfinitePlane(A, planeNormal);
 		Intersection hit = plane.intersect(ray, previousBestDistance);
 		if (!hit || hit.distance > previousBestDistance) return Intersection::failure();
 
@@ -81,9 +72,11 @@ namespace rt {
 
 		Vector normal = u*normals[2] + v*normals[1] + w*normals[0];
 		//Vector normal = lerpbar(normals[2], normals[1], normals[0], u, v); //essentially the same
+		const SmoothTriangle* k = this;
 
-		return Intersection(hit.distance, ray, normal, Point(u, v, w));
+		return Intersection(hit.distance, this, ray, normal, Point(u, v, w));
 	}
+
 	Point SmoothTriangle::sample() const
 	{
 

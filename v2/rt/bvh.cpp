@@ -22,19 +22,19 @@ Intersection BVH::intersect(const Ray& ray, float previousBestDistance) const {
 }
 void BVH::rebuildIndex() {
 	if (built_flag) return;
-	built_flag = true; 
-	depth = 8 + (int)std::round(( 1.3f * log(SceneObjects.size())));
+	depth = 8 + (int)std::round(( 1.3f * log10(SceneObjects.size())));
 	buildTree(Root);
+	built_flag = true;
 }
 
 rt::BVH::~BVH()
 {
 	free(Root);
 }
-void BVH::add(Point p) {
+void BVH::add(SmoothTriangle s) {
 
-	SceneObjects.push_back(p);
-	Root->add(p);
+	SceneObjects.push_back(s);
+	Root->add(s);
 }
 
 void BVH::buildTree(Node* node) {
@@ -72,21 +72,22 @@ void BVH::buildTree(Node* node) {
 
 void BVH::splitPane(Node* node) {
 
-	//f2 split = splitInTheMiddle(node);
-	f2 split = SAH(node);
+	f2 split = splitInTheMiddle(node);
+	//f2 split = SAH(node);
 
 	for (auto iter = node->objects.begin(); iter != node->objects.end(); ++iter) {
 
-		Point p = *iter;
-		
+		BBox box = iter->getBounds();
+
 		//median of prim bounds
-		float mid_box = (p[(int)split.first] + p[(int)split.first]) * 0.5f;
+		float mid_box = (box.min[split.first] + box.max[split.first]) * 0.5f;
 		if (mid_box <= split.second) {
-			node->left->add(p);
+			node->left->add(*iter);
 		}
 		else {
-			node->right->add(p);
+			node->right->add(*iter);
 		}
+
 	}
 }
 
@@ -152,14 +153,15 @@ std::pair<float, float> rt::BVH::SAH(Node* node)
 				v1 = (rand() % splits +  j*splits )% _primsize;
 			else v1 = j; 
 
-			Point prim = node->objects[v1];
+			SmoothTriangle prim = node->objects[v1];
 			//compute centroid
-			float cent_i = (prim[i]) * 0.5f;
+			float cent_i = (prim.getBounds().min[i] + prim.getBounds().max[i]) * 0.5f;
 			//compute surface area 
 			for (size_t k = 0; k < _primsize; k++) {
-				Point primk = node->objects[k];
-				float cent_k = (primk[i]) * 0.5f;
+				SmoothTriangle primk = node->objects[k];
+				float cent_k = (primk.getBounds().min[i] + primk.getBounds().max[i]) * 0.5f;
 				if (cent_k <= cent_i) countl++;
+
 			}
 
 			//Total Surface Area = 2(Areahw) + 2(Areahl) + 2(Areawl)

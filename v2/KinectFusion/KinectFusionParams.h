@@ -8,6 +8,10 @@
 
 #include "NuiKinectFusionApi.h"
 
+// RT includes
+#include "../rt/bvh.h"
+#include "../rt/cameras/perspective.h"
+
 enum KinectFusionMeshTypes
 {
     Stl = 0,
@@ -42,6 +46,7 @@ struct KinectFusionParams
 		m_bDisplayHandTracking(false),
 		m_bDisplayRayTracking(false),
 		m_bInitializeAnnotationMode(false),
+		m_bKeepAnnotation(true),
         m_cColorIntegrationInterval(3),
         m_bTranslateResetPoseByMinDepthThreshold(true),
 		m_pMesh(nullptr),
@@ -96,6 +101,11 @@ struct KinectFusionParams
         // GPUs, hence users should manually select GPU indices when multiple reconstruction volumes 
         // are required, each on a separate device.
         m_deviceIndex = -1;    // automatically choose device index for processing
+
+		// Construct default camera, prone to be manipulated by mouse picking
+		float fovy = 0.785398163397f * 2; // in rad => 45 degree opening
+		float ratio = (float)m_cDepthWidth / (float)m_cDepthHeight;
+		this->m_reconstructionCam = rt::PerspectiveCamera(rt::Point(0, 0, 0.3f), rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
     }
 
     /// <summary>
@@ -179,6 +189,7 @@ struct KinectFusionParams
 	/// Initialize Annotation
 	/// </summary>
 	bool						m_bInitializeAnnotationMode;
+	bool						m_bKeepAnnotation;
 	INuiFusionColorMesh*		m_pMesh;
 
     /// <summary>
@@ -245,6 +256,12 @@ struct KinectFusionParams
     /// </summary>
     float                       m_fMaxAlignPointCloudsEnergyForSuccess;
 
+
+	/// <summary>
+	/// Raytracing properties
+	/// </summary>
+	rt::BVH*                    m_sceneStructure;
+	rt::PerspectiveCamera		m_reconstructionCam;
     /// <summary>
     /// Here we set a low limit on the residual alignment energy, below which we reject a tracking
     /// success report from AlignPointClouds and believe it to have failed. This can typically be around 0.

@@ -19,20 +19,16 @@ bool rt::Node::isLeaf()
 Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 {
 	if (isLeaf()) {
-		/*Intersection mainBox = Intersection::failure(); 
+		Intersection mainBox = Intersection::failure(); 
 		for (auto &primitive : objects) {
-			Intersection hit = primitive->intersect(r, previousDistance);
+			Intersection hit = primitive.intersect(r, previousDistance);
+			hit.solid = &(SmoothTriangle)primitive;
 			if (hit) {
 				previousDistance = hit.distance;
 				mainBox = hit;
 			}
 		}
-		return mainBox; */
-		f2 result = this->boundingBox.intersect(r);
-		if (result.first > result.second) return Intersection::failure();
-
-		
-		return Intersection(result.first,r, Vector(0,0,0) ,rt::Point(0,0,0));
+		return mainBox;
 	}
 
 	f2 LBoundHit = left->boundingBox.intersect(r);
@@ -48,8 +44,8 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 	return LHit;
 }
 
-void rt::Node::add(Point prim)
+void rt::Node::add(SmoothTriangle prim)
 {
 	objects.push_back(prim);
-	boundingBox.extend(prim);
+	boundingBox.extend(prim.getBounds());
 }

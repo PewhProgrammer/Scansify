@@ -36,7 +36,7 @@ namespace rt {
 			
 			if (t > previousBestDistance || t < 0)
 				return Intersection::failure();
-			return Intersection(t, ray,  normal, ray.o + (float)t*ray.d);
+			return Intersection(t,nullptr, ray,  normal, ray.o + (float)t*ray.d);
 		}
 
 

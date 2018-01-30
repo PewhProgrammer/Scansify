@@ -21,6 +21,9 @@
 
 // RT include
 #include "../rt/core/point.h"
+#include "../rt/primitives/striangle.h"
+#include "../rt/cameras/perspective.h"
+#include "../rt/bvh.h"
 
 #define AssertOwnThread() \
     _ASSERT_EXPR(GetCurrentThreadId() == m_threadId, __FUNCTIONW__ L" called on wrong thread!");
@@ -114,7 +117,8 @@ KinectFusionProcessor::KinectFusionProcessor() :
     m_pDownsampledRaycastPointCloud(nullptr),
     m_bCalculateDeltaFrame(false),
     m_coordinateMappingChangedEvent(NULL),
-    m_bHaveValidCameraParameters(false)
+    m_bHaveValidCameraParameters(false),
+	m_bAnnotationKeep(true)
 {
     // Initialize synchronization objects
     InitializeCriticalSection(&m_lockParams);
@@ -1023,6 +1027,7 @@ HRESULT KinectFusionProcessor::RecreateVolume()
         &m_worldToCameraTransform,
         &m_pVolume);
 
+
     if (FAILED(hr))
     {
         if (E_NUI_GPU_FAIL == hr)
@@ -1909,33 +1914,19 @@ FinishFrame:
 	//	replace poseFinder window with annotationWindow
 	//  only draws annotated points
 	if (m_paramsCurrent.m_bInitializeAnnotationMode) {
+		if (!m_bAnnotationKeep)  
+			goto DisplayFPS;
+		m_bAnnotationKeep = false;
+		m_paramsCurrent.m_sceneStructure->built_flag;
+
+	
 		UINT pitch = m_pRaycastPointCloud->pFrameBuffer->Pitch;
 		BYTE* bits = m_pRaycastPointCloud->pFrameBuffer->pBits;
 
 		unsigned int step = m_pRaycastPointCloud->pFrameBuffer->Pitch / m_pRaycastPointCloud->width;
-		INuiFusionColorMesh* mesh = m_paramsCurrent.m_pMesh;
 
-		const Vector3 *vertices = nullptr;
-		const Vector3 *normals = nullptr;
-		const int *index = new int();
-		const int **triangleIndices = &index;
-
-		mesh->GetVertices(&vertices);
-		mesh->GetNormals(&normals);
-
-		mesh->GetTriangleIndices(triangleIndices);
-
-		int p = triangleIndices[1][1];
-
-		for (int i = 0; i < mesh->TriangleVertexIndexCount(); i++) {
-			printf("(%d,%d,%d) \n", triangleIndices[i][0] );
-		}
-
-
-		UINT nCount = mesh->NormalCount();
-		UINT vCount = mesh->VertexCount();
-
-
+	/*
+		// Extract framebuffer data
 		for (uint16_t y = 0; y < m_pRaycastPointCloud->height; y++) {
 			for (uint16_t x = 0; x < m_pRaycastPointCloud->width; x++) {
 				float position[3];
@@ -1945,7 +1936,7 @@ FinishFrame:
 					position[coord] = *(float*)(bits + (step * (y * m_pRaycastPointCloud->width + x) + coord * sizeof(float)));
 					normal[coord] = *(float*)(bits + (step * (y * m_pRaycastPointCloud->width + x) + (coord + 3) * sizeof(float)));
 
-					if (position[coord] > 1.5f) {
+					if (position[coord] > 0 && position[coord] < 1.5f) {
 						*(float*)(bits + (step * (y * m_pRaycastPointCloud->width + x) + coord * sizeof(float))) = 0;
 						float t = *(float*)(bits + (step * (y * m_pRaycastPointCloud->width + x) + coord * sizeof(float)));
 					}
@@ -1957,11 +1948,79 @@ FinishFrame:
 				float f = 2;
 			}
 		}
+	*/
 
+
+		NUI_FUSION_IMAGE_FRAME rayCastPointCloud;
+		rayCastPointCloud.width = m_pRaycastPointCloud->width;
+		rayCastPointCloud.height = m_pRaycastPointCloud->height;
+		rayCastPointCloud.imageType = m_pRaycastPointCloud->imageType;
+		rayCastPointCloud.pCameraParameters = m_pRaycastPointCloud->pCameraParameters;
+		rayCastPointCloud.pFrameBuffer = m_pRaycastPointCloud->pFrameBuffer;
+
+
+
+		/////////// ==========================              BEGIN -> OWN RAYCAST IMPLEMENTATION; OUTPUT: IMAGEFRAME FOR SHADER				============================ ///////////
+		
+		SetStatusMessage(L"Raycasting into volume...");
+
+		UINT resX = m_pRaycastPointCloud->width, resY = m_pRaycastPointCloud->height;
+		float scaleX, scaleY;
+		float fovy = 0.785398163397f * 2; // in rad
+		float ratio = (float)resX / (float)resY;
+		rt::PerspectiveCamera cam(rt::Point(0, 0, 0.3f), rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
+		
+		//#pragma omp parallel for
+		for (UINT i = 0; i < resX; i++) {
+			//#pragma omp parallel for
+			for (UINT j = 0; j < resY; j++) {
+				//#pragma omp parallel for
+					// Normalized device coordinates [0,1]
+					scaleX = (i + 0.5f) / resX;
+					scaleY = (j + 0.5f) / resY;
+
+					// Screen space coordinates [-1,1]
+					scaleX = (scaleX - 0.5f) * 2;
+					scaleY = (scaleY - 0.5f) * 2;
+
+					rt::Intersection hit = m_paramsCurrent.m_sceneStructure->intersect(
+						cam.getPrimaryRay(scaleX, scaleY), 
+						FLT_MAX);
+
+					if (hit) {
+						//printf("Wow, it actually hit at %f distance \n", hit.distance);
+
+
+						for (int coord = 0; coord < 3; coord++) {
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
+						}
+					}
+					else {
+						for (int coord = 0; coord < 3; coord++) {
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = 0;
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = 0;
+						}
+					}
+			}
+		}
+
+
+		
+		/////////// ==========================               END -> OWN RAYCAST IMPLEMENTATION; OUTPUT: IMAGEFRAME FOR SHADER				============================ ///////////
+
+
+
+
+		if (FAILED(hr))
+		{
+			SetStatusMessage(L"Kinect Fusion CalculatePointCloud call failed.");
+			goto FinishFrame;
+		}
 
 
 		hr = NuiFusionShadePointCloud(
-			m_pRaycastPointCloud,
+			&rayCastPointCloud,
 			&m_worldToCameraTransform,
 			&m_worldToBGRTransform,
 			m_pShadedSurface,
@@ -1969,7 +2028,7 @@ FinishFrame:
 
 		if (SUCCEEDED(hr))
 		{
-			SetStatusMessage(L"Kinect Fusion NuiFusionShadePointCloud succeded.");
+			SetStatusMessage(L"Shading output completed. Frame created.");
 			StoreImageToFrameBuffer(m_pShadedSurface, m_frame.m_pTrackingDataRGBX);
 		}
 
@@ -1996,6 +2055,8 @@ FinishFrame:
             }
         }
     }
+
+DisplayFPS:
 
     ////////////////////////////////////////////////////////
     // Periodically Display Fps

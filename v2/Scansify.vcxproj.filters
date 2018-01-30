@@ -51,6 +51,9 @@
     <ClCompile Include="rt\core\interpolate.cpp">
       <Filter>RT\core</Filter>
     </ClCompile>
+    <ClCompile Include="rt\cameras\perspective.cpp">
+      <Filter>RT\cam</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageRenderer.h" />
@@ -104,6 +107,9 @@
     <ClInclude Include="rt\primitives\infiniteplane.h">
       <Filter>RT\primitives</Filter>
     </ClInclude>
+    <ClInclude Include="rt\cameras\perspective.h">
+      <Filter>RT\cam</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KinectFusionExplorer-D2D.rc" />
@@ -126,6 +132,9 @@
     </Filter>
     <Filter Include="RT\primitives">
       <UniqueIdentifier>{0af78456-31f6-4b8a-985e-677d5a56f759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RT\cam">
+      <UniqueIdentifier>{95edc064-d149-4c5a-8c88-d8c0d3fd29c0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -10,13 +10,17 @@ namespace rt {
 
 class SmoothTriangle {
 private:
-	Vector normals[3];
 	Point A, B, C;
-	Vector ab, bc, ac;
-	float invTriArea;
-	float TriArea;
 	Point boxmin, boxmax;
+	Vector normals[3];
+	Vector planeNormal;
+	Vector ab, bc, ac;
+	float TriArea;
+	float invTriArea;
+
 public:
+	bool m_bAnnotated;
+
     SmoothTriangle() {}
     SmoothTriangle(Point vertices[3], Vector normals[3]);
     SmoothTriangle(const Point& v1, const Point& v2, const Point& v3, 

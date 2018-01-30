@@ -5,6 +5,7 @@
 #include "bbox.h"
 #include "core/point.h"
 #include "intersection.h"
+#include "primitives\striangle.h"
 
 namespace rt {
 
@@ -13,9 +14,8 @@ private:
 
 	int NodeNum = 0;
 
-	std::vector<Point> SceneObjects;
+	std::vector<SmoothTriangle> SceneObjects;
 	Node* Root;
-	bool built_flag = false; 
 	uint16_t depth;
 	uint8_t c_trav = 1;
 	uint8_t c_isect = 80;
@@ -25,12 +25,14 @@ private:
 	virtual std::pair<float, float> splitInTheMiddle(Node* node);
 	virtual std::pair<float, float> SAH(Node* node);
 public:
+	bool built_flag = false;
+
     BVH();
     virtual BBox getBounds() const;
     virtual Intersection intersect(const Ray& ray, float previousBestDistance=FLT_MAX) const;
     virtual void rebuildIndex();
 	virtual ~BVH();
-    virtual void add(Point p);
+    virtual void add(SmoothTriangle s);
 };
 
 }

@@ -765,7 +765,7 @@ void Scansify::SaveMesh(bool reconstruction) {
 
 		INuiFusionColorMesh *mesh = nullptr;
 		HRESULT hr = m_processor.CalculateMesh(&mesh);
-		
+	
 
 		if (SUCCEEDED(hr))
 		{
@@ -896,14 +896,21 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
 		// translate to screen coordinate [-1;1]
 
-
+		double x, y; 
 		if (ScreenToClient(reconstructionWindow, &point))
 		{
-			double x = ((double)(point.x - 0.f) / (width - 0.f)) * (1.f + 1.f) - 1.f;
-			double y = ((double)(point.y - 0.f) / (height - 0.f)) * (1.f + 1.f) - 1.f;
+			x = ((double)(point.x - 0.f) / (width - 0.f)) * (1.f + 1.f) - 1.f;
+			y = ((double)(point.y - 0.f) / (height - 0.f)) * (1.f + 1.f) - 1.f;
 
 			//p.x and p.y are now relative to hwnd's client area
 			printf("Clicked on: (%6.3f,%6.3f) \n", x,y);
+		}
+
+
+		// if structure has been built
+		if (m_params.m_sceneStructure->built_flag) {
+			rt::Ray r = m_params.m_reconstructionCam.getPrimaryRay(x, y);
+			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
 		}
 	}
 
@@ -927,8 +934,37 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 		if (SUCCEEDED(hr))
 		{
+			m_params.m_sceneStructure = new rt::BVH();
+
+			INuiFusionColorMesh* mesh = m_params.m_pMesh;
+
+			const Vector3 *vertices = nullptr;
+			const Vector3 *normals = nullptr;
+
+			unsigned int numVertices = mesh->VertexCount();
+			unsigned int numTriangles = numVertices / 3;
+
+			mesh->GetVertices(&vertices);
+			mesh->GetNormals(&normals);
+
+			// Iterate over generated mesh buffer and put data into vector
+			for (unsigned int t = 0; t < numTriangles; ++t)
+			{
+				rt::Point vertex[3];
+				rt::Vector normal[3];
+
+				// Sequentially write the 3 vertices and normals of the triangle, for each triangle
+				for (unsigned int v = 0; v<3; v++)
+				{
+					vertex[v] = rt::Point(vertices[(t * 3) + v].x, vertices[(t * 3) + v].y, vertices[(t * 3) + v].z);
+					normal[v] = rt::Vector(normals[(t * 3) + v].x, normals[(t * 3) + v].y, normals[(t * 3) + v].z);
+				}
+				rt::SmoothTriangle smoothT(vertex, normal);
+				m_params.m_sceneStructure->add(smoothT);
+			}
+
+			m_params.m_sceneStructure->rebuildIndex();
 			m_params.m_bInitializeAnnotationMode = true;
-			
 		}
 		else
 		{
@@ -964,7 +1000,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 
 	if (IDC_COMBO_VOXELS == LOWORD(wParam) && CBN_SELCHANGE == HIWORD(wParam)) {
-		LPCTSTR k = new WCHAR(); TCHAR buffer[60];
+		LPCTSTR k = new WCHAR; TCHAR buffer[60];
 
 		auto sel = SendMessage(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), CB_GETCURSEL, (WPARAM)0, (LPARAM)0);
 		wsprintf(buffer, TEXT("&#37;d"), sel);
@@ -978,7 +1014,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		else if (!wcscmp(k, L"128"))	m_params.m_reconstructionParams.voxelsPerMeter = 128.0f;
 		else SetStatusMessage(L"Failed to set voxels per meter");
 
-		delete k;
+		//delete k;
 	}
 
 
@@ -1002,7 +1038,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		else if (!wcscmp(k, L"128"))	m_params.m_reconstructionParams.voxelCountX = 128;
 		else SetStatusMessage(L"Failed to set x-axis resolution");
 
-		delete k;
+		//delete k;
 	}
 
 	if (IDC_COMBO_ROOM_Y == LOWORD(wParam) && CBN_SELCHANGE == HIWORD(wParam)) {
@@ -1019,7 +1055,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		else if (!wcscmp(k, L"128"))	m_params.m_reconstructionParams.voxelCountY = 128;
 		else SetStatusMessage(L"Failed to set y-axis resolution");
 
-		delete k;
+		//delete k;
 
 	}
 
@@ -1037,7 +1073,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		else if (!wcscmp(k, L"128"))	m_params.m_reconstructionParams.voxelCountZ = 128;
 		else SetStatusMessage(L"Failed to set z-axis resolution");
 
-		delete k;
+		//delete k;
 	}
 
     m_processor.SetParams(m_params);

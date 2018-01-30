@@ -186,6 +186,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="rt\bbox.h" />
     <ClInclude Include="rt\bvh.h" />
+    <ClInclude Include="rt\cameras\perspective.h" />
     <ClInclude Include="rt\core\float4.h" />
     <ClInclude Include="rt\core\point.h" />
     <ClInclude Include="rt\core\vector.h" />
@@ -204,6 +205,7 @@
     <ClCompile Include="KinectFusion\timer.cpp" />
     <ClCompile Include="rt\bbox.cpp" />
     <ClCompile Include="rt\bvh.cpp" />
+    <ClCompile Include="rt\cameras\perspective.cpp" />
     <ClCompile Include="rt\core\float4.cpp" />
     <ClCompile Include="rt\core\interpolate.cpp" />
     <ClCompile Include="rt\core\point.cpp" />

@@ -378,6 +378,8 @@ private:
     NUI_FUSION_IMAGE_FRAME*     m_pShadedDeltaFromReference;
     NUI_FUSION_IMAGE_FRAME*     m_pDownsampledShadedDeltaFromReference;
 
+
+	bool						m_bAnnotationKeep;
     /// <summary>
     /// Camera Tracking parameters.
     /// </summary>

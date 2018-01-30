@@ -8,6 +8,7 @@
 namespace rt {
 
 class Solid;
+class SmoothTriangle;
 
 class Intersection {
 private:
@@ -17,13 +18,13 @@ public:
     Ray ray;
     double distance;
 	Vector normal;
+	const SmoothTriangle* solid;
 
     Intersection() {}
     static Intersection failure();
-	Intersection(double distance, const Ray& ray, Vector normal, const Point& uv) :distance(distance), ray(ray), normal(normal), uv(uv) {};
+	Intersection(double distance,const SmoothTriangle* solid,  const Ray& ray, Vector normal, const Point& uv) :distance(distance), ray(ray), normal(normal), uv(uv) {};
 
     Point hitPoint() const;
-
     Point local() const;
 
     operator bool(); //this allows intersection object to be put directly in conditional statements. Becomes true iff there is an intersection

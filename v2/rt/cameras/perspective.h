@@ -2,10 +2,10 @@
 #define RAYTRACER_CAMERAS_PERSPECTIVE_HEADER
 
 
-#include "../../core/vector.h"
-#include "../../core/point.h"
+#include "../core/vector.h"
+#include "../core/point.h"
 
-#include "../../ray.h"
+#include "../ray.h"
 
 namespace rt {
 
@@ -18,6 +18,7 @@ private:
 public:
 	Point center;
 	Vector forward;
+	PerspectiveCamera();
 	PerspectiveCamera(
 		const Point& center,
 		const Vector& forward,
