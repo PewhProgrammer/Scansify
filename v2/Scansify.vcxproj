@@ -188,6 +188,7 @@
     <ClInclude Include="rt\bvh.h" />
     <ClInclude Include="rt\cameras\perspective.h" />
     <ClInclude Include="rt\core\float4.h" />
+    <ClInclude Include="rt\core\matrix.h" />
     <ClInclude Include="rt\core\point.h" />
     <ClInclude Include="rt\core\vector.h" />
     <ClInclude Include="rt\intersection.h" />
@@ -208,6 +209,7 @@
     <ClCompile Include="rt\cameras\perspective.cpp" />
     <ClCompile Include="rt\core\float4.cpp" />
     <ClCompile Include="rt\core\interpolate.cpp" />
+    <ClCompile Include="rt\core\matrix.cpp" />
     <ClCompile Include="rt\core\point.cpp" />
     <ClCompile Include="rt\core\random.cpp" />
     <ClCompile Include="rt\core\vector.cpp" />

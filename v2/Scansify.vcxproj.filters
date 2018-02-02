@@ -54,6 +54,9 @@
     <ClCompile Include="rt\cameras\perspective.cpp">
       <Filter>RT\cam</Filter>
     </ClCompile>
+    <ClCompile Include="rt\core\matrix.cpp">
+      <Filter>RT\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageRenderer.h" />
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="rt\cameras\perspective.h">
       <Filter>RT\cam</Filter>
+    </ClInclude>
+    <ClInclude Include="rt\core\matrix.h">
+      <Filter>RT\core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -21,6 +21,7 @@
 
 // RT include
 #include "../rt/core/point.h"
+#include "../rt/core/matrix.h"
 #include "../rt/primitives/striangle.h"
 #include "../rt/cameras/perspective.h"
 #include "../rt/bvh.h"
@@ -1968,9 +1969,18 @@ FinishFrame:
 		float scaleX, scaleY;
 		float fovy = 0.785398163397f * 2; // in rad
 		float ratio = (float)resX / (float)resY;
+		NUI_FUSION_CAMERA_PARAMETERS *param = m_pRaycastPointCloud->pCameraParameters;
 
-		rt::Point camPosition = rt::Point(0, 0, 0.3f);
-		
+		rt::Point camPosition = rt::Point(0, 0, 0.5f);
+		rt::Matrix camParameters = rt::Matrix(
+			rt::Float4(1, 0, 0, m_worldToCameraTransform.M41),
+			rt::Float4(0, 1, 0, m_worldToCameraTransform.M42),
+			rt::Float4(0, 0, 1, m_worldToCameraTransform.M43),
+			rt::Float4(0, 0, 0, m_worldToCameraTransform.M44)
+		);
+
+		//camPosition = camParameters * camPosition;
+
 		rt::PerspectiveCamera cam(camPosition, rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
 
 		
@@ -1998,11 +2008,12 @@ FinishFrame:
 							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
 							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
 						}
+						printf("Normals: (%f,%f,%f) \n", hit.normal[0], hit.normal[1], hit.normal[2]);
 					}
 					else {
 						for (int coord = 0; coord < 3; coord++) {
-							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = 0;
-							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = 0;
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = 255;
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = 255;
 						}
 					}
 			}
