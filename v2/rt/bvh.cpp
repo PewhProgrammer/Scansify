@@ -31,7 +31,7 @@ rt::BVH::~BVH()
 {
 	free(Root);
 }
-void BVH::add(SmoothTriangle s) {
+void BVH::add(SmoothTriangle* s) {
 
 	SceneObjects.push_back(s);
 	Root->add(s);
@@ -77,7 +77,7 @@ void BVH::splitPane(Node* node) {
 
 	for (auto iter = node->objects.begin(); iter != node->objects.end(); ++iter) {
 
-		BBox box = iter->getBounds();
+		BBox box = (*iter)->getBounds();
 
 		//median of prim bounds
 		float mid_box = (box.min[split.first] + box.max[split.first]) * 0.5f;
@@ -153,13 +153,13 @@ std::pair<float, float> rt::BVH::SAH(Node* node)
 				v1 = (rand() % splits +  j*splits )% _primsize;
 			else v1 = j; 
 
-			SmoothTriangle prim = node->objects[v1];
+			SmoothTriangle* prim = node->objects[v1];
 			//compute centroid
-			float cent_i = (prim.getBounds().min[i] + prim.getBounds().max[i]) * 0.5f;
+			float cent_i = (prim->getBounds().min[i] + prim->getBounds().max[i]) * 0.5f;
 			//compute surface area 
 			for (size_t k = 0; k < _primsize; k++) {
-				SmoothTriangle primk = node->objects[k];
-				float cent_k = (primk.getBounds().min[i] + primk.getBounds().max[i]) * 0.5f;
+				SmoothTriangle* primk = node->objects[k];
+				float cent_k = (primk->getBounds().min[i] + primk->getBounds().max[i]) * 0.5f;
 				if (cent_k <= cent_i) countl++;
 
 			}

@@ -1,7 +1,7 @@
-#ifndef CG1RAYTRACER_MATRIX_HEADER
-#define CG1RAYTRACER_MATRIX_HEADER
+#ifndef RAYTRACER_MATRIX_HEADER
+#define RAYTRACER_MATRIX_HEADER
 
-#include <core/float4.h>
+#include "float4.h"
 
 namespace rt {
 

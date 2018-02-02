@@ -18,6 +18,7 @@
 
 // RayTracing Includes
 #include "rt\bvh.h"
+#include "rt\cameras\perspective.h"
 
 
 
@@ -908,7 +909,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 
 		// if structure has been built
-		if (m_params.m_sceneStructure->built_flag) {
+		if (m_params.m_sceneStructure && m_params.m_sceneStructure->built_flag) {
 			rt::Ray r = m_params.m_reconstructionCam.getPrimaryRay(x, y);
 			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
 		}
@@ -959,7 +960,8 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 					vertex[v] = rt::Point(vertices[(t * 3) + v].x, vertices[(t * 3) + v].y, vertices[(t * 3) + v].z);
 					normal[v] = rt::Vector(normals[(t * 3) + v].x, normals[(t * 3) + v].y, normals[(t * 3) + v].z);
 				}
-				rt::SmoothTriangle smoothT(vertex, normal);
+				rt::SmoothTriangle* smoothT = new rt::SmoothTriangle(vertex, normal);
+				smoothT->m_bAnnotated = true;
 				m_params.m_sceneStructure->add(smoothT);
 			}
 

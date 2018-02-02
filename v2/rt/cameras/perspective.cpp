@@ -8,6 +8,9 @@ Easy computation of spanX/spanY Vector by using ratio of Opposite and Adjacent
 */
 
 namespace rt {
+	PerspectiveCamera::PerspectiveCamera()
+	{
+	}
 	PerspectiveCamera::PerspectiveCamera(const Point & center, const Vector & forward, const Vector & up, float verticalOpeningAngle, float horizonalOpeningAngle)
 	{
 

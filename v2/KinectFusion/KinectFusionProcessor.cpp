@@ -1968,7 +1968,11 @@ FinishFrame:
 		float scaleX, scaleY;
 		float fovy = 0.785398163397f * 2; // in rad
 		float ratio = (float)resX / (float)resY;
-		rt::PerspectiveCamera cam(rt::Point(0, 0, 0.3f), rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
+
+		rt::Point camPosition = rt::Point(0, 0, 0.3f);
+		
+		rt::PerspectiveCamera cam(camPosition, rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
+
 		
 		//#pragma omp parallel for
 		for (UINT i = 0; i < resX; i++) {
@@ -1987,9 +1991,8 @@ FinishFrame:
 						cam.getPrimaryRay(scaleX, scaleY), 
 						FLT_MAX);
 
-					if (hit) {
+					if (hit && hit.solid->m_bAnnotated) {
 						//printf("Wow, it actually hit at %f distance \n", hit.distance);
-
 
 						for (int coord = 0; coord < 3; coord++) {
 							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];

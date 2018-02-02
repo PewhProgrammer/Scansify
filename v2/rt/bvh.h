@@ -14,7 +14,7 @@ private:
 
 	int NodeNum = 0;
 
-	std::vector<SmoothTriangle> SceneObjects;
+	std::vector<SmoothTriangle*> SceneObjects;
 	Node* Root;
 	uint16_t depth;
 	uint8_t c_trav = 1;
@@ -32,7 +32,7 @@ public:
     virtual Intersection intersect(const Ray& ray, float previousBestDistance=FLT_MAX) const;
     virtual void rebuildIndex();
 	virtual ~BVH();
-    virtual void add(SmoothTriangle s);
+    virtual void add(SmoothTriangle* s);
 };
 
 }

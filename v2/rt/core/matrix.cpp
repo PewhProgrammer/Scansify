@@ -1,4 +1,4 @@
-#include <core/matrix.h>
+#include "matrix.h"
 
 namespace rt {
 	Matrix::Matrix(const Float4 & r1, const Float4 & r2, const Float4 & r3, const Float4 & r4)

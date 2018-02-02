@@ -12,7 +12,7 @@ class Node  {
 public:
 
 	int id;
-	std::vector<SmoothTriangle> objects;
+	std::vector<SmoothTriangle*> objects;
 
 	BBox boundingBox = BBox::empty();
 
@@ -24,7 +24,7 @@ public:
 	bool isLeaf();
 
 	Intersection searchIntersection(const Ray& r,float previousDistance);
-	void add(SmoothTriangle prim);
+	void add(SmoothTriangle* prim);
 };
 
 }
