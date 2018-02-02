@@ -369,7 +369,7 @@ void Scansify::HandleCompletedFrame()
 /// </summary>
 /// <param name="mesh">The mesh to save.</param>
 /// <returns>indicates success or failure</returns>
-HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes saveMeshType)
+HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes saveMeshType, bool reconstruction)
 {
     HRESULT hr = S_OK;
 
@@ -486,7 +486,10 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
 
                                     if (Stl == saveMeshType)
                                     {
-                                        hr = WriteBinarySTLMeshFile(pMesh, pwsz);
+										if (reconstruction)
+											hr = WriteBinarySTLMeshFile(pMesh, pwsz);
+										else
+											hr = WriteBinarySTLMeshFileAnnotated(m_params.m_vAnnotated, pwsz, false);
                                     }
                                     else if (Obj == saveMeshType)
                                     {
@@ -771,7 +774,7 @@ void Scansify::SaveMesh(bool reconstruction) {
 		if (SUCCEEDED(hr))
 		{
 			// Save mesh
-			hr = SaveMeshFile(mesh, m_saveMeshFormat);
+			hr = SaveMeshFile(mesh, m_saveMeshFormat, reconstruction);
 
 			if (SUCCEEDED(hr))
 			{
@@ -805,6 +808,13 @@ void Scansify::SaveMesh(bool reconstruction) {
 
 	// process save meshing with annotated drawing part
 
+	SetStatusMessage(L"Creating and saving mesh of annotation, please wait...");
+	m_bSavingMesh = true;
+
+	// Pause integration while we're saving
+	bool wasPaused = m_params.m_bPauseIntegration;
+	m_params.m_bPauseIntegration = true;
+	m_processor.SetParams(m_params);
 }
 
 
@@ -904,14 +914,18 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			y = ((double)(point.y - 0.f) / (height - 0.f)) * (1.f + 1.f) - 1.f;
 
 			//p.x and p.y are now relative to hwnd's client area
-			printf("Clicked on: (%6.3f,%6.3f) \n", x,y);
+			//printf("Clicked on: (%6.3f,%6.3f) \n", x,y);
 		}
 
 
 		// if structure has been built
-		if (m_params.m_sceneStructure && m_params.m_sceneStructure->built_flag) {
-			rt::Ray r = m_params.m_reconstructionCam.getPrimaryRay(x, y);
+		if (m_params.m_sceneStructure != nullptr && m_params.m_sceneStructure->built_flag) {
+			rt::Ray r = m_params.m_reconstructionCam.getPrimaryRay((float)x, (float)y);
 			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
+
+			if (hit) {
+				printf("Hit");
+			}
 		}
 	}
 
@@ -948,11 +962,17 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			mesh->GetVertices(&vertices);
 			mesh->GetNormals(&normals);
 
+			
+
 			// Iterate over generated mesh buffer and put data into vector
+			float k = 0;
 			for (unsigned int t = 0; t < numTriangles; ++t)
 			{
+				k++;
 				rt::Point vertex[3];
 				rt::Vector normal[3];
+				if ((k + 1.f) == numTriangles)
+					printf("hey");
 
 				// Sequentially write the 3 vertices and normals of the triangle, for each triangle
 				for (unsigned int v = 0; v<3; v++)
@@ -966,6 +986,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			}
 
 			m_params.m_sceneStructure->rebuildIndex();
+			
 			m_params.m_bInitializeAnnotationMode = true;
 		}
 		else

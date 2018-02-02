@@ -76,7 +76,7 @@ private:
     /// Save a mesh
     /// </summary>
     /// <returns>S_OK on success, otherwise failure code</returns>
-    HRESULT                     SaveMeshFile(INuiFusionColorMesh *mesh, KinectFusionMeshTypes saveMeshType);
+    HRESULT                     SaveMeshFile(INuiFusionColorMesh *mesh, KinectFusionMeshTypes saveMeshType, bool reconstruction);
 
     /// <summary>
     /// Handle a completed frame from the Kinect Fusion processor.

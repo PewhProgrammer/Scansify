@@ -8,6 +8,9 @@
 
 #include "NuiKinectFusionApi.h"
 
+// RT includes
+#include "../rt/primitives/striangle.h"
+
 /// <summary>
 /// Set Identity in a Matrix4
 /// </summary>
@@ -91,6 +94,16 @@ Matrix4 InvertMatrix4Pose(const Matrix4 &transform);
 /// <param name="flipYZ">Flag to determine whether the Y and Z values are flipped on save.</param>
 /// <returns>indicates success or failure</returns>
 HRESULT WriteBinarySTLMeshFile(INuiFusionColorMesh *mesh, LPOLESTR lpOleFileName, bool flipYZ = true);
+
+/// <summary>
+/// Write Binary .STL mesh file
+/// see http://en.wikipedia.org/wiki/STL_(file_format) for STL format
+/// </summary>
+/// <param name="mesh">The Kinect Fusion mesh object [annotated].</param>
+/// <param name="lpOleFileName">The full path and filename of the file to save.</param>
+/// <param name="flipYZ">Flag to determine whether the Y and Z values are flipped on save.</param>
+/// <returns>indicates success or failure</returns>
+HRESULT WriteBinarySTLMeshFileAnnotated(std::vector<rt::SmoothTriangle*> mesh, LPOLESTR lpOleFileName, bool flipYZ);
 
 /// <summary>
 /// Write ASCII Wavefront .OBJ mesh file

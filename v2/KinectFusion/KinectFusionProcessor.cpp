@@ -1973,13 +1973,13 @@ FinishFrame:
 
 		rt::Point camPosition = rt::Point(0, 0, 0.5f);
 		rt::Matrix camParameters = rt::Matrix(
-			rt::Float4(1, 0, 0, m_worldToCameraTransform.M41),
-			rt::Float4(0, 1, 0, m_worldToCameraTransform.M42),
-			rt::Float4(0, 0, 1, m_worldToCameraTransform.M43),
-			rt::Float4(0, 0, 0, m_worldToCameraTransform.M44)
+			rt::Float4(m_worldToCameraTransform.M14, m_worldToCameraTransform.M21, m_worldToCameraTransform.M31, m_worldToCameraTransform.M41),
+			rt::Float4(m_worldToCameraTransform.M24, m_worldToCameraTransform.M22, m_worldToCameraTransform.M32, m_worldToCameraTransform.M42),
+			rt::Float4(m_worldToCameraTransform.M34, m_worldToCameraTransform.M23, m_worldToCameraTransform.M33, m_worldToCameraTransform.M43),
+			rt::Float4(m_worldToCameraTransform.M44, m_worldToCameraTransform.M24, m_worldToCameraTransform.M34, m_worldToCameraTransform.M44)
 		);
 
-		//camPosition = camParameters * camPosition;
+		camPosition = camParameters * camPosition;
 
 		rt::PerspectiveCamera cam(camPosition, rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
 
@@ -2008,7 +2008,7 @@ FinishFrame:
 							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
 							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
 						}
-						printf("Normals: (%f,%f,%f) \n", hit.normal[0], hit.normal[1], hit.normal[2]);
+						//printf("Normals: (%f,%f,%f) \n", hit.normal[0], hit.normal[1], hit.normal[2]);
 					}
 					else {
 						for (int coord = 0; coord < 3; coord++) {

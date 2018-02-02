@@ -11,6 +11,7 @@
 // RT includes
 #include "../rt/bvh.h"
 #include "../rt/cameras/perspective.h"
+#include "../rt/primitives/striangle.h"
 
 enum KinectFusionMeshTypes
 {
@@ -191,6 +192,8 @@ struct KinectFusionParams
 	bool						m_bInitializeAnnotationMode;
 	bool						m_bKeepAnnotation;
 	INuiFusionColorMesh*		m_pMesh;
+	std::vector
+		<rt::SmoothTriangle*>	m_vAnnotated;
 
     /// <summary>
     /// Here we set a high limit on the maximum residual alignment energy where we consider the tracking
