@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // <copyright file="KinectFusionHelper.cpp" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Copyright (c) Microsoft Corporation.  All rights reserved. Additional modification by Thinh Tran
 // </copyright>
 //------------------------------------------------------------------------------
 
@@ -271,25 +271,35 @@ Matrix4 InvertMatrix4Pose(const Matrix4 &transform)
 /// </summary>
 /// <param name="mesh">The Kinect Fusion mesh object.</param>
 /// <param name="lpOleFileName">The full path and filename of the file to save.</param>
-/// <param name="flipYZ">Flag to determine whether the Y and Z values are flipped on save.</param>
 /// <returns>indicates success or failure</returns>
-HRESULT WriteBinarySTLMeshFileAnnotated(std::vector<rt::SmoothTriangle*> mesh, LPOLESTR lpOleFileName, bool flipYZ)
+HRESULT WriteBinarySVGCanvasFile(SvgHelper* data, LPOLESTR lpOleFileName)
 {
 	HRESULT hr = S_OK;
 
-	if (mesh.size() == 0)
+	/*
+	data->addData(2, 3);
+	data->addData(7, 11);
+	data->addData(11, 8);
+	data->addData(5,3);
+	*/
+
+	size_t coord_size = data->getData().size();
+	if ( coord_size == 0 && false)
 	{
 		return E_INVALIDARG;
 	}
 
-	unsigned int numVertices = mesh.size();
-	unsigned int numTriangles = numVertices / 3;
 
-	if (0 == numVertices || 0 != numVertices % 3 )
+	vector<f2> svg_coords = data->getData();
+	string style = data->getStyles();
+	uint16_t width = data->getDimensions().first;
+	uint16_t height = data->getDimensions().second;
+
+
+	if ((0 == width || 0 == height)  && false)
 	{
 		return E_INVALIDARG;
 	}
-
 
 	// Open File
 	std::string filename = std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(lpOleFileName);
@@ -303,46 +313,52 @@ HRESULT WriteBinarySTLMeshFileAnnotated(std::vector<rt::SmoothTriangle*> mesh, L
 	}
 
 	// Write the header line
-	const unsigned char header[80] = { 0 };   // initialize all values to 0
-	fwrite(&header, sizeof(unsigned char), ARRAYSIZE(header), meshFile);
+	std::string header = data->getHeader();
+	std::fwrite(header.c_str(), sizeof(char), header.length(), meshFile);
 
-	// Write number of triangles
-	fwrite(&numTriangles, sizeof(int), 1, meshFile);
+	// predefined tags
+	string open = "<line ";
+	string close = "/>\n";
 
 	// Sequentially write the normal, 3 vertices of the triangle and attribute, for each triangle
-	for (unsigned int t = 0; t < numTriangles; ++t)
+	for (unsigned int i = 1; i < coord_size; i++)
 	{
-		Vector3 normal;
 
-		if (flipYZ)
-		{
-			normal.y = -normal.y;
-			normal.z = -normal.z;
-		}
+		std::fwrite(open.c_str(), sizeof(char), open.length(), meshFile);
 
-		// Write normal
-		fwrite(&normal, sizeof(float), 3, meshFile);
 
-		// Write vertices
-		for (unsigned int v = 0; v<3; v++)
-		{
-			Vector3 vertex;
+		// Write lines
+		string line_content = "x1=\""+ std::to_string(svg_coords[i - 1].first)+"\" y1=\""+ std::to_string(svg_coords[i - 1].second)+"\" "
+			"x2=\"" + std::to_string(svg_coords[i].first) + "\" y2=\"" + std::to_string(svg_coords[i].second) + "\" ";
+		std::fwrite(line_content.c_str(), sizeof(char), line_content.length(), meshFile);
 
-			if (flipYZ)
-			{
-				vertex.y = -vertex.y;
-				vertex.z = -vertex.z;
-			}
+		// Write styles
+		std::fwrite(style.c_str(), sizeof(char), style.length(), meshFile);
 
-			fwrite(&vertex, sizeof(float), 3, meshFile);
-		}
-
-		unsigned short attribute = 0;
-		fwrite(&attribute, sizeof(unsigned short), 1, meshFile);
+		std::fwrite(close.c_str(), sizeof(char), close.length(), meshFile);
 	}
 
-	fflush(meshFile);
-	fclose(meshFile);
+	// close begin and end vertex
+
+	std::fwrite(open.c_str(), sizeof(char), open.length(), meshFile);
+	string line_content = "x1=\"" + std::to_string(svg_coords[coord_size - 1].first) + "\" y1=\"" + std::to_string(svg_coords[coord_size - 1].second) + "\" "
+		"x2=\"" + std::to_string(svg_coords[0].first) + "\" y2=\"" + std::to_string(svg_coords[0].second) + "\" ";
+	std::fwrite(line_content.c_str(), sizeof(char), line_content.length(), meshFile);
+
+
+
+
+	// Write styles
+	std::fwrite(style.c_str(), sizeof(char), style.length(), meshFile);
+
+	std::fwrite(close.c_str(), sizeof(char), close.length(), meshFile);
+
+	// Write the footer line
+	std::string footer = "\n</svg>";
+	std::fwrite(footer.c_str(), sizeof(char), footer.length(), meshFile);
+
+	std::fflush(meshFile);
+	std::fclose(meshFile);
 
 	return hr;
 }

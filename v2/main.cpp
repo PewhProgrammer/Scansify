@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="KinectFusionExplorer.cpp" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Copyright (c) Microsoft Corporation.  All rights reserved. Additional modification by Thinh Tran
 // </copyright>
 //------------------------------------------------------------------------------
 
@@ -315,7 +315,9 @@ void Scansify::HandleCompletedFrame()
         {
             m_pDrawDepth->Draw(pFrame->m_pDepthRGBX, pFrame->m_cbImageSize);
             m_pDrawReconstruction->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize);
-            m_pDrawTrackingResiduals->Draw(pFrame->m_pTrackingDataRGBX, pFrame->m_cbImageSize);
+			if(m_params.m_bInitializeAnnotationMode)
+				m_pDrawTrackingResiduals->DrawSVG(m_params.m_svgHelper);
+            else m_pDrawTrackingResiduals->Draw(pFrame->m_pTrackingDataRGBX, pFrame->m_cbImageSize);
         }
 
         SetStatusMessage(pFrame->m_statusMessage);
@@ -409,6 +411,12 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
             {
                 hr = pSaveDlg->SetFileName(L"MeshedReconstruction.ply");
             }
+			else if (Svg == saveMeshType)
+			{
+				hr = pSaveDlg->SetFileName(L"AnnotationSample.svg");
+			}
+
+
 
             if (SUCCEEDED(hr))
             {
@@ -425,6 +433,10 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
                 {
                     hr = pSaveDlg->SetDefaultExtension(L"ply");
                 }
+				else if (Svg == saveMeshType)
+				{
+					hr = pSaveDlg->SetDefaultExtension(L"svg");
+				}
 
                 if (SUCCEEDED(hr))
                 {
@@ -462,6 +474,17 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
                             ARRAYSIZE(allPossibleFileTypes),
                             allPossibleFileTypes );
                     }
+					else if (Svg == saveMeshType)
+					{
+						COMDLG_FILTERSPEC allPossibleFileTypes[] = {
+							{ L"SVG files", L"*.svg" },
+						{ L"All files", L"*.*" }
+						};
+
+						hr = pSaveDlg->SetFileTypes(
+							ARRAYSIZE(allPossibleFileTypes),
+							allPossibleFileTypes);
+					}
 
                     if (SUCCEEDED(hr))
                     {
@@ -486,10 +509,7 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
 
                                     if (Stl == saveMeshType)
                                     {
-										if (reconstruction)
 											hr = WriteBinarySTLMeshFile(pMesh, pwsz);
-										else
-											hr = WriteBinarySTLMeshFileAnnotated(m_params.m_vAnnotated, pwsz, false);
                                     }
                                     else if (Obj == saveMeshType)
                                     {
@@ -499,6 +519,10 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
                                     {
                                         hr = WriteAsciiPlyMeshFile(pMesh, pwsz, true, m_bColorCaptured);
                                     }
+									else if (Svg == saveMeshType)
+									{
+										hr = WriteBinarySVGCanvasFile(m_params.m_svgHelper, pwsz);
+									}
 
                                     CoTaskMemFree(pwsz);
                                 }
@@ -756,7 +780,6 @@ void Scansify::CheckMenu(WPARAM id, bool check) {
 }
 
 void Scansify::SaveMesh(bool reconstruction) {
-	if (reconstruction) {
 		// process saving mesh with reconstructed part
 
 		SetStatusMessage(L"Creating and saving mesh of reconstruction, please wait...");
@@ -769,7 +792,6 @@ void Scansify::SaveMesh(bool reconstruction) {
 
 		INuiFusionColorMesh *mesh = nullptr;
 		HRESULT hr = m_processor.CalculateMesh(&mesh);
-	
 
 		if (SUCCEEDED(hr))
 		{
@@ -804,20 +826,16 @@ void Scansify::SaveMesh(bool reconstruction) {
 
 
 		return;
-	}
-
-	// process save meshing with annotated drawing part
-
-	SetStatusMessage(L"Creating and saving mesh of annotation, please wait...");
-	m_bSavingMesh = true;
-
-	// Pause integration while we're saving
-	bool wasPaused = m_params.m_bPauseIntegration;
-	m_params.m_bPauseIntegration = true;
-	m_processor.SetParams(m_params);
 }
 
-
+uint16_t clicks = 0;
+static const std::pair<float,float> arr[] = { pair<float,float>(2.f,3.f),pair<float,float>(7.f,11.f),pair<float,float>(11.f,8.f), pair<float,float>(5.f,3.f) };
+std::vector<pair<float,float>> dataSVG(arr, arr + sizeof(arr) / sizeof(arr[0]));
+static const rt::Point points[] = { rt::Point(1,10,0), rt::Point(5,10,0), rt::Point(9,10,0),rt::Point(13,7,0),rt::Point(16,4,0),
+rt::Point(18,0,0),rt::Point(18,-4,-2),rt::Point(18,-7,-5),rt::Point(18,-9,-9),rt::Point(18,-9,-13),rt::Point(18,-7,-17),rt::Point(18,-1,-20),
+rt::Point(16,4,-20),rt::Point(12,8,-20),rt::Point(9,10,-20),rt::Point(5,10,-20),rt::Point(1,10,-20)
+};
+vector<rt::Point> data3D(points, points + sizeof(points) / sizeof(points[0]));
 
 /// <summary>
 /// Process the UI inputs
@@ -826,6 +844,7 @@ void Scansify::SaveMesh(bool reconstruction) {
 /// <param name="lParam">additional message data</param>
 void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 {
+
     // If it was for the display surface normals toggle this variable
     if (ID_MENU_VIEW_CAPTURECOLOR == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
@@ -894,8 +913,6 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 	// If clicked on reconstruction view, compute screen coordinate
 	if (IDC_RECONSTRUCTION_VIEW == LOWORD(wParam) && STN_CLICKED == HIWORD(wParam)) {
-		float k = 2;
-
 		POINT point;
 		GetCursorPos(&point);
 		RECT rect;
@@ -918,6 +935,35 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		}
 
 
+		////////////// AUTOMATICALLY PROCESS HIT IN TEST PHASE /////////////////////
+		///			   http://www.karldiab.com/3DPointPlotter/		to see tongue plot in 3D ///
+
+		/*
+		if(clicks < 4)
+		m_params.m_svgHelper->addData(dataSVG[clicks].first, dataSVG[clicks].second);
+		*/
+
+		clicks++;
+		rt::Point prev = data3D[clicks - 1];
+		rt::Point curr = data3D[clicks];
+		auto vec = curr - prev; // poitns to curr
+
+		if (clicks == 1) {
+			//init Matrix
+			m_params.m_svgHelper->addData(prev.x, prev.z);
+		}
+
+		float len = vec.length();
+		float diff = data3D[0].y - curr.y;
+		vec.y = 0;
+		vec = vec.normalize() * len;
+		
+		rt::Point fixedPrevPoint(m_params.m_svgHelper->getData()[clicks - 1].first, 0, m_params.m_svgHelper->getData()[clicks - 1].second);
+		curr = fixedPrevPoint + vec; // modified curr
+
+		m_params.m_svgHelper->addData(curr.x, curr.z);
+
+
 		// if structure has been built
 		if (m_params.m_sceneStructure != nullptr && m_params.m_sceneStructure->built_flag) {
 			rt::Ray r = m_params.m_reconstructionCam.getPrimaryRay((float)x, (float)y);
@@ -932,6 +978,15 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 	// If starting annotation process
 	if (IDC_BUTTON_MESH_DRAWING == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
 	{
+		// Initialize svghelper
+		delete m_params.m_svgHelper;
+		m_params.m_svgHelper = new SvgHelper();
+		m_processor.SetParams(m_params);
+		m_params.m_bInitializeAnnotationMode = true;
+
+		return;
+
+
 		SetStatusMessage(L"Reconstructing the mesh. Please wait...");
 
 		// Pause integration while we're saving
@@ -971,8 +1026,6 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 				k++;
 				rt::Point vertex[3];
 				rt::Vector normal[3];
-				if ((k + 1.f) == numTriangles)
-					printf("hey");
 
 				// Sequentially write the 3 vertices and normals of the triangle, for each triangle
 				for (unsigned int v = 0; v<3; v++)
@@ -1008,19 +1061,10 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		SaveMesh(true);
 	}
 
-	if (ID_MENU_EXPORT_ANNOTATION_STL == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
-		m_saveMeshFormat = Stl;
+	if (ID_MENU_EXPORT_ANNOTATION_SVG == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
+		m_saveMeshFormat = Svg;
 		SaveMesh(false);
 	}
-	if (ID_MENU_EXPORT_ANNOTATION_OBJ == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
-		m_saveMeshFormat = Obj;
-		SaveMesh(false);
-	}
-	if (ID_MENU_EXPORT_ANNOTATION_PLY == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
-		m_saveMeshFormat = Ply;
-		SaveMesh(false);
-	}
-
 
 	if (IDC_COMBO_VOXELS == LOWORD(wParam) && CBN_SELCHANGE == HIWORD(wParam)) {
 		LPCTSTR k = new WCHAR; TCHAR buffer[60];

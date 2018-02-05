@@ -57,6 +57,7 @@
     <ClCompile Include="rt\core\matrix.cpp">
       <Filter>RT\core</Filter>
     </ClCompile>
+    <ClCompile Include="svghelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageRenderer.h" />
@@ -116,6 +117,7 @@
     <ClInclude Include="rt\core\matrix.h">
       <Filter>RT\core</Filter>
     </ClInclude>
+    <ClInclude Include="svghelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KinectFusionExplorer-D2D.rc" />

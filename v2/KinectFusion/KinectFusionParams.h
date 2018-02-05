@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="KinectFusionParams.h" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Copyright (c) Microsoft Corporation.  All rights reserved. Additional modification by Thinh Tran
 // </copyright>
 //------------------------------------------------------------------------------
 
@@ -13,11 +13,14 @@
 #include "../rt/cameras/perspective.h"
 #include "../rt/primitives/striangle.h"
 
+#include "../svghelper.h"
+
 enum KinectFusionMeshTypes
 {
     Stl = 0,
     Obj = 1,
-    Ply = 2
+    Ply = 2,
+	Svg = 3
 };
 
 /// <summary>
@@ -31,26 +34,28 @@ struct KinectFusionParams
     /// <summary>
     /// Constructor
     /// </summary>
-    KinectFusionParams() :
-        m_bPauseIntegration(false),
-        m_bAutoResetReconstructionWhenLost(false),
-        m_bAutoResetReconstructionOnTimeout(false), // We now try to find the camera pose, however, setting this false will no longer auto reset on .xef file playback
-        m_bAutoFindCameraPoseWhenLost(true),
-        m_fMinDepthThreshold(NUI_FUSION_DEFAULT_MINIMUM_DEPTH),
-        m_fMaxDepthThreshold(NUI_FUSION_DEFAULT_MAXIMUM_DEPTH),
-        m_bMirrorDepthFrame(false),
-        m_cMaxIntegrationWeight(NUI_FUSION_DEFAULT_INTEGRATION_WEIGHT),
-        m_bDisplaySurfaceNormals(false),
-        m_bCaptureColor(false),
+	KinectFusionParams() :
+		m_bPauseIntegration(false),
+		m_bAutoResetReconstructionWhenLost(false),
+		m_bAutoResetReconstructionOnTimeout(false), // We now try to find the camera pose, however, setting this false will no longer auto reset on .xef file playback
+		m_bAutoFindCameraPoseWhenLost(true),
+		m_fMinDepthThreshold(NUI_FUSION_DEFAULT_MINIMUM_DEPTH),
+		m_fMaxDepthThreshold(NUI_FUSION_DEFAULT_MAXIMUM_DEPTH),
+		m_bMirrorDepthFrame(false),
+		m_cMaxIntegrationWeight(NUI_FUSION_DEFAULT_INTEGRATION_WEIGHT),
+		m_bDisplaySurfaceNormals(false),
+		m_bCaptureColor(false),
 		m_bDisplayFingerTracking(false),
 		m_bDisplayArmTracking(false),
 		m_bDisplayHandTracking(false),
 		m_bDisplayRayTracking(false),
 		m_bInitializeAnnotationMode(false),
 		m_bKeepAnnotation(true),
-        m_cColorIntegrationInterval(3),
-        m_bTranslateResetPoseByMinDepthThreshold(true),
+		m_cColorIntegrationInterval(3),
+		m_bTranslateResetPoseByMinDepthThreshold(true),
 		m_pMesh(nullptr),
+		m_svgHelper(nullptr),
+		m_sceneStructure(nullptr),
         m_saveMeshType(Stl),
         m_cDeltaFromReferenceFrameCalculationInterval(2),
         m_cMinSuccessfulTrackingFramesForCameraPoseFinder(45), // only update the camera pose finder initially after 45 successful frames (1.5s)
@@ -107,6 +112,7 @@ struct KinectFusionParams
 		float fovy = 0.785398163397f * 2; // in rad => 45 degree opening
 		float ratio = (float)m_cDepthWidth / (float)m_cDepthHeight;
 		this->m_reconstructionCam = rt::PerspectiveCamera(rt::Point(0, 0, 0.3f), rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
+		this->m_svgHelper = new SvgHelper();
     }
 
     /// <summary>
@@ -194,6 +200,8 @@ struct KinectFusionParams
 	INuiFusionColorMesh*		m_pMesh;
 	std::vector
 		<rt::SmoothTriangle*>	m_vAnnotated;
+	SvgHelper*					m_svgHelper;
+
 
     /// <summary>
     /// Here we set a high limit on the maximum residual alignment energy where we consider the tracking

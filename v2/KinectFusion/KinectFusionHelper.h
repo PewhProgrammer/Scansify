@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // <copyright file="KinectFusionHelper.h" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Copyright (c) Microsoft Corporation.  All rights reserved. Additional modification by Thinh Tran
 // </copyright>
 //------------------------------------------------------------------------------
 
@@ -10,6 +10,8 @@
 
 // RT includes
 #include "../rt/primitives/striangle.h"
+
+#include "../svghelper.h"
 
 /// <summary>
 /// Set Identity in a Matrix4
@@ -96,14 +98,13 @@ Matrix4 InvertMatrix4Pose(const Matrix4 &transform);
 HRESULT WriteBinarySTLMeshFile(INuiFusionColorMesh *mesh, LPOLESTR lpOleFileName, bool flipYZ = true);
 
 /// <summary>
-/// Write Binary .STL mesh file
+/// Write Binary .SVG canvas file
 /// see http://en.wikipedia.org/wiki/STL_(file_format) for STL format
 /// </summary>
 /// <param name="mesh">The Kinect Fusion mesh object [annotated].</param>
 /// <param name="lpOleFileName">The full path and filename of the file to save.</param>
-/// <param name="flipYZ">Flag to determine whether the Y and Z values are flipped on save.</param>
 /// <returns>indicates success or failure</returns>
-HRESULT WriteBinarySTLMeshFileAnnotated(std::vector<rt::SmoothTriangle*> mesh, LPOLESTR lpOleFileName, bool flipYZ);
+HRESULT WriteBinarySVGCanvasFile(SvgHelper* data, LPOLESTR lpOleFileName);
 
 /// <summary>
 /// Write ASCII Wavefront .OBJ mesh file

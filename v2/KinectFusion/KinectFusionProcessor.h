@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="KinectFusionProcessor.h" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Copyright (c) Microsoft Corporation.  All rights reserved. Additional modification by Thinh Tran
 // </copyright>
 //------------------------------------------------------------------------------
 

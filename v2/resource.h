@@ -112,6 +112,7 @@
 #define ID_MENU_EXPORT_ANNOTATION_STL   32807
 #define ID_MENU_EXPORT_ANNOTATION_OBJ   32808
 #define ID_MENU_EXPORT_ANNOTATION_PLY   32809
+#define ID_MENU_EXPORT_ANNOTATION_SVG   32810
 #define IDC_STATUS                      -1
 
 // Next default values for new objects
@@ -120,7 +121,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        138
-#define _APS_NEXT_COMMAND_VALUE         32810
+#define _APS_NEXT_COMMAND_VALUE         32811
 #define _APS_NEXT_CONTROL_VALUE         1096
 #define _APS_NEXT_SYMED_VALUE           111
 #endif

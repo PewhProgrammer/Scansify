@@ -196,6 +196,7 @@
     <ClInclude Include="rt\primitives\infiniteplane.h" />
     <ClInclude Include="rt\primitives\striangle.h" />
     <ClInclude Include="rt\ray.h" />
+    <ClInclude Include="svghelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ImageRenderer.cpp" />
@@ -218,6 +219,7 @@
     <ClCompile Include="rt\primitives\infiniteplane.cpp" />
     <ClCompile Include="rt\primitives\striangle.cpp" />
     <ClCompile Include="rt\ray.cpp" />
+    <ClCompile Include="svghelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="KinectFusionExplorer-D2D.rc" />

@@ -1,6 +1,6 @@
 ﻿//------------------------------------------------------------------------------
 // <copyright file="ImageRenderer.h" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.  All rights reserved.
+//     Copyright (c) Microsoft Corporation.  All rights reserved. Additional modification by Thinh Tran
 // </copyright>
 //------------------------------------------------------------------------------
 
@@ -9,6 +9,7 @@
 #pragma once
 
 #include <d2d1.h>
+#include "svghelper.h"
 
 class ImageRenderer
 {
@@ -43,6 +44,13 @@ public:
     /// <returns>indicates success or failure</returns>
     HRESULT Draw(BYTE* pImage, unsigned long cbImage);
 
+	/// <summary>
+	/// Draws a 32 bit per pixel image of the resulting svg file 
+	/// </summary>
+	/// <param name="pImage">image data in RGBX format</param>
+	/// <returns>indicates success or failure</returns>
+	HRESULT DrawSVG(SvgHelper* svg);
+
 private:
     HWND                     m_hWnd;
 
@@ -66,4 +74,13 @@ private:
     /// Dispose of Direct2d resources 
     /// </summary>
     void DiscardResources( );
+
+	/// <summary>
+	/// interpolates
+	/// </summary>
+	/// <returns>number</returns>
+	float interpolate(float Input, float InputLow, float InputHigh, float OutputLow, float OutputHigh)
+	{
+		return ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
+	}
 };
