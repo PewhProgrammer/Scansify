@@ -63,7 +63,6 @@
 #define IDC_BUTTON1                     1074
 #define IDC_TAB5                        1076
 #define IDC_MFCMENUBUTTON1              1077
-#define IDC_CHECK_MESH_UNWRAP           1084
 #define IDC_BUTTON_SHAPE_ORTHOGONAL_VIEW 1085
 #define IDC_COMBO_VOXELS                1088
 #define IDC_COMBO_ROOM_X                1089

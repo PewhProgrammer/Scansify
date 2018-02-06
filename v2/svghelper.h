@@ -28,6 +28,7 @@ typedef std::tuple<int, int, int> triple;
 struct Styles {
 	triple stroke = make_tuple(255, 0, 0);
 	uint16_t stroke_width = 2;
+	std::string fill = "none";
 };
 
 class SvgHelper
@@ -38,10 +39,16 @@ private:
 	int16_2 m_uHeight;
 
 	string footer;
+	bool m_bOffsetFlagX;
+	bool m_bOffsetFlagY;
 
 	Styles m_style;
 public:
-	SvgHelper():m_uWidth(INT_FAST16_MIN, INT_FAST16_MAX),m_uHeight(INT_FAST16_MIN, INT_FAST16_MAX){
+	bool m_bDirectionFlagX;
+	bool m_bPosX;
+
+	SvgHelper():m_uWidth(INT_FAST16_MIN, INT_FAST16_MAX),m_uHeight(INT_FAST16_MIN, INT_FAST16_MAX), m_bOffsetFlagY(false), m_bOffsetFlagX(false),
+	m_bDirectionFlagX(true){
 
 		// prereserve 10k spots for coordinates
 		m_vSvgData.reserve(10000);
@@ -99,6 +106,24 @@ public:
 	/// </summary>
 	/// <returns>complete string to insert into svg file</returns>
 	string						getStyles();
+
+	/// <summary>
+	/// Getter for coordinate X
+	/// </summary>
+	/// <returns>coordinate with appropriate offset</returns>
+	float						getX(unsigned int index);
+
+	/// <summary>
+	/// Getter for coordinate Y
+	/// </summary>
+	/// <returns>coordinate with appropriate offset</returns>
+	float						getY(unsigned int index);
+
+	/// <summary>
+	/// Getter for DirectionFlag of how to flatten the 3d shape into 2d plane
+	/// </summary>
+	/// <returns>coordinate with appropriate offset</returns>
+	bool						getDirectionX(float angle, float dirX);
 };
 
 #endif

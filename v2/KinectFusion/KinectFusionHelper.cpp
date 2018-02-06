@@ -317,41 +317,27 @@ HRESULT WriteBinarySVGCanvasFile(SvgHelper* data, LPOLESTR lpOleFileName)
 	std::fwrite(header.c_str(), sizeof(char), header.length(), meshFile);
 
 	// predefined tags
-	string open = "<line ";
-	string close = "/>\n";
+	string open = "<path d=\" M" + std::to_string(data->getX(0)) + " " + std::to_string(data->getY(0)) + " ";
+	string close = "Z\" " + style +"/>\n";
+
+	//open path tag
+	std::fwrite(open.c_str(), sizeof(char), open.length(), meshFile);
 
 	// Sequentially write the normal, 3 vertices of the triangle and attribute, for each triangle
 	for (unsigned int i = 1; i < coord_size; i++)
 	{
 
-		std::fwrite(open.c_str(), sizeof(char), open.length(), meshFile);
 
-
-		// Write lines
-		string line_content = "x1=\""+ std::to_string(svg_coords[i - 1].first)+"\" y1=\""+ std::to_string(svg_coords[i - 1].second)+"\" "
-			"x2=\"" + std::to_string(svg_coords[i].first) + "\" y2=\"" + std::to_string(svg_coords[i].second) + "\" ";
+		// Write lines in path
+		string line_content = "L" + std::to_string(data->getX(i)) + " " + std::to_string(data->getY(i)) + " ";
 		std::fwrite(line_content.c_str(), sizeof(char), line_content.length(), meshFile);
 
-		// Write styles
-		std::fwrite(style.c_str(), sizeof(char), style.length(), meshFile);
 
-		std::fwrite(close.c_str(), sizeof(char), close.length(), meshFile);
 	}
 
-	// close begin and end vertex
-
-	std::fwrite(open.c_str(), sizeof(char), open.length(), meshFile);
-	string line_content = "x1=\"" + std::to_string(svg_coords[coord_size - 1].first) + "\" y1=\"" + std::to_string(svg_coords[coord_size - 1].second) + "\" "
-		"x2=\"" + std::to_string(svg_coords[0].first) + "\" y2=\"" + std::to_string(svg_coords[0].second) + "\" ";
-	std::fwrite(line_content.c_str(), sizeof(char), line_content.length(), meshFile);
-
-
-
-
-	// Write styles
-	std::fwrite(style.c_str(), sizeof(char), style.length(), meshFile);
-
+	// close path tag and write styles
 	std::fwrite(close.c_str(), sizeof(char), close.length(), meshFile);
+
 
 	// Write the footer line
 	std::string footer = "\n</svg>";

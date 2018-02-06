@@ -207,7 +207,7 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 	ID2D1SolidColorBrush *pBrush;
 	float radius = 5.5f;
 	float x = m_sourceWidth * 0.5f;
-	float scale = 1.f;
+	float scale = 5.f;
 	D2D1_ELLIPSE e = D2D1::Ellipse(D2D1::Point2F(x, x), radius, radius);
 	D2D1_COLOR_F color = D2D1::ColorF(D2D1::ColorF::SkyBlue);
 	hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
@@ -217,16 +217,16 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 	// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
 	
 	auto dimRange = svg->getDimensionsRange();
-
+	UINT offsetY = 65;
+	UINT offsetX = 35;
 
 	// iterate over svg data points and draw them
 	for (int i = 1; i < dataSize; i++) {
 
-
-		auto x1 = interpolate(data[i - 1].first, dimRange.first.second, dimRange.first.first, 30, 200) * scale;
-		auto y1 = interpolate(data[i - 1].second, dimRange.second.second + 1, dimRange.second.first - 1, 0, 390) * scale;
-		auto x2 = interpolate(data[i].first, dimRange.first.second, dimRange.first.first, 30, 200) * scale;
-		auto y2 = interpolate(data[i].second, dimRange.second.second + 1, dimRange.second.first  - 1, 0, 390) * scale;
+		auto x1 = (data[i - 1].first + offsetX )	* scale;
+		auto y1 = (data[i - 1].second + offsetY)	* scale;
+		auto x2 = (data[i].first + offsetX)			* scale;
+		auto y2 = (data[i].second + offsetY)		* scale;
 
 		m_pRenderTarget->DrawLine(
 			D2D1::Point2F(x1,y1),
@@ -239,8 +239,8 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 		color = D2D1::ColorF(D2D1::ColorF::IndianRed);
 		hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
 		if (FAILED(hr)) { return hr; }
-		m_pRenderTarget->DrawLine(D2D1::Point2F(data[dataSize - 1].first * scale, data[dataSize - 1].second * scale), 
-			D2D1::Point2F(data[0].first * scale, data[0].second * scale), pBrush);
+		m_pRenderTarget->DrawLine(D2D1::Point2F((data[dataSize - 1].first + offsetX) * scale, (data[dataSize - 1].second + offsetY) * scale),
+			D2D1::Point2F((data[0].first + offsetX) * scale, (data[0].second + offsetY) * scale), pBrush);
 	}
 
 	hr = m_pRenderTarget->EndDraw();

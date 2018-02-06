@@ -833,7 +833,10 @@ static const std::pair<float,float> arr[] = { pair<float,float>(2.f,3.f),pair<fl
 std::vector<pair<float,float>> dataSVG(arr, arr + sizeof(arr) / sizeof(arr[0]));
 static const rt::Point points[] = { rt::Point(1,10,0), rt::Point(5,10,0), rt::Point(9,10,0),rt::Point(13,7,0),rt::Point(16,4,0),
 rt::Point(18,0,0),rt::Point(18,-4,-2),rt::Point(18,-7,-5),rt::Point(18,-9,-9),rt::Point(18,-9,-13),rt::Point(18,-7,-17),rt::Point(18,-1,-20),
-rt::Point(16,4,-20),rt::Point(12,8,-20),rt::Point(9,10,-20),rt::Point(5,10,-20),rt::Point(1,10,-20)
+rt::Point(16,4,-20),rt::Point(12,8,-20),rt::Point(9,10,-20),rt::Point(5,10,-20),rt::Point(1,10,-20),
+rt::Point(-4,10,-34),rt::Point(-7,10,-36),rt::Point(- 10,10,-36),rt::Point(- 14,10,-34),rt::Point(- 19,10,-30),rt::Point(- 22,10,-25),
+rt::Point(- 26,10,-20),rt::Point(- 26,6,-20),rt::Point(- 20,0,-20),rt::Point(- 20,-5,-15),rt::Point(- 20,-5,-10),rt::Point(- 20,0,-5),rt::Point(- 20,10,0)
+
 };
 vector<rt::Point> data3D(points, points + sizeof(points) / sizeof(points[0]));
 
@@ -943,25 +946,43 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		m_params.m_svgHelper->addData(dataSVG[clicks].first, dataSVG[clicks].second);
 		*/
 
-		clicks++;
-		rt::Point prev = data3D[clicks - 1];
-		rt::Point curr = data3D[clicks];
-		auto vec = curr - prev; // poitns to curr
+		if (clicks < data3D.size() - 1) {
+			clicks++;
+			rt::Point prev = data3D[clicks - 1];
+			rt::Point curr = data3D[clicks];
+			auto vec = curr - prev; // poitns to curr
 
-		if (clicks == 1) {
-			//init Matrix
-			m_params.m_svgHelper->addData(prev.x, prev.z);
+			if (clicks == 1) {
+				//init Matrix
+				m_params.m_svgHelper->addData(prev.x, prev.z);
+			}
+
+			// change direction flag if following vector would be crossing the z-axis because we are moving in x-axis 
+			// it's important to evaluate how we add the y value to the x one
+			auto dynamic = rt::dot(vec.normalize(), rt::Vector(0, -1, 0));
+			if (dynamic < 0)
+				m_params.m_svgHelper->m_bDirectionFlagX != m_params.m_svgHelper->m_bDirectionFlagX;
+
+			printf("dynamic: %f \n", dynamic);
+
+			float len = vec.length();
+			float diff = data3D[0].y - curr.y;
+			float storedY = vec.y;
+			vec.y = 0;
+			if (m_params.m_svgHelper->getDirectionX(dynamic)) {
+				vec.x += std::abs(storedY);
+			}
+			else {
+				vec.x -= std::abs(storedY);
+			}
+
+			vec = vec.normalize() * len;
+
+			rt::Point fixedPrevPoint(m_params.m_svgHelper->getData()[clicks - 1].first, 0, m_params.m_svgHelper->getData()[clicks - 1].second);
+			curr = fixedPrevPoint + vec; // modified curr
+
+			m_params.m_svgHelper->addData(curr.x, curr.z);
 		}
-
-		float len = vec.length();
-		float diff = data3D[0].y - curr.y;
-		vec.y = 0;
-		vec = vec.normalize() * len;
-		
-		rt::Point fixedPrevPoint(m_params.m_svgHelper->getData()[clicks - 1].first, 0, m_params.m_svgHelper->getData()[clicks - 1].second);
-		curr = fixedPrevPoint + vec; // modified curr
-
-		m_params.m_svgHelper->addData(curr.x, curr.z);
 
 
 		// if structure has been built
