@@ -122,7 +122,7 @@ public:
 	/// <summary>
 	/// Getter for DirectionFlag of how to flatten the 3d shape into 2d plane
 	/// </summary>
-	/// <returns>coordinate with appropriate offset</returns>
+	/// <returns>appriopriate case</returns>
 	bool						getDirectionX(float angle, float dirX);
 };
 

@@ -835,8 +835,8 @@ static const rt::Point points[] = { rt::Point(1,10,0), rt::Point(5,10,0), rt::Po
 rt::Point(18,0,0),rt::Point(18,-4,-2),rt::Point(18,-7,-5),rt::Point(18,-9,-9),rt::Point(18,-9,-13),rt::Point(18,-7,-17),rt::Point(18,-1,-20),
 rt::Point(16,4,-20),rt::Point(12,8,-20),rt::Point(9,10,-20),rt::Point(5,10,-20),rt::Point(1,10,-20),
 rt::Point(-4,10,-34),rt::Point(-7,10,-36),rt::Point(- 10,10,-36),rt::Point(- 14,10,-34),rt::Point(- 19,10,-30),rt::Point(- 22,10,-25),
-rt::Point(- 26,10,-20),rt::Point(- 26,6,-20),rt::Point(- 20,0,-20),rt::Point(- 20,-5,-15),rt::Point(- 20,-5,-10),rt::Point(- 20,0,-5),rt::Point(- 20,10,0)
-
+rt::Point(- 26,10,-20),rt::Point(- 26,6,-20),rt::Point(- 20,0,-20),rt::Point(- 20,-5,-15),rt::Point(- 20,-5,-10),rt::Point(- 20,0,-5),rt::Point(- 20,10,0),
+rt::Point(-20,20,0), rt::Point(-20,40,0),rt::Point(0,40,0)
 };
 vector<rt::Point> data3D(points, points + sizeof(points) / sizeof(points[0]));
 
@@ -969,7 +969,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			float diff = data3D[0].y - curr.y;
 			float storedY = vec.y;
 			vec.y = 0;
-			if (m_params.m_svgHelper->getDirectionX(dynamic)) {
+			if (m_params.m_svgHelper->getDirectionX(dynamic,vec.x)) {
 				vec.x += std::abs(storedY);
 			}
 			else {

@@ -104,15 +104,81 @@ float SvgHelper::getY(unsigned int index)
 	return result * 2.5f;
 }
 
+bool signX = true;
+bool dir_result = true;
+
+/// <summary>
+/// Getter for DirectionFlag of how to flatten the 3d shape into 2d plane
+/// <param name="angle">change of angle represents turn of momentum</param>
+/// <param name="dirX">the current direction the path is facing at</param>
+/// </summary>
+/// <returns>return the appropriate case; true indicates direction in positive axis</returns>
 bool SvgHelper::getDirectionX(float angle, float dirX)
 {
 	//TODO: FIX THIS METHOD ASAP
 	// Basically has to know when the angle turn point is and adjust
-	if (dirX < 0) m_bPosX = false;
-	else if (dirX > 0) m_bPosX = true;
+
+	m_bPosX = dirX < 0 ? false : true;
+
+	if ((dirX < 0 && !signX) || (dirX > 0 && signX)) {
+		m_bDirectionFlagX = false;
+	}
+
+	// toggle change of momentum; check for momentum change
+	if (!m_bDirectionFlagX && (angle < 0 || angle > 0)) {
+		m_bDirectionFlagX = true;
+		if (angle < 0) signX = false;
+		if (angle > 0) signX = true;
+	}
+
+	if (m_bDirectionFlagX) {
+		// if angle is positive before
+		if (signX) {
+			if (angle < 0) {
+				// momentum changes, change state => become normal state
+				signX = false;
+				dir_result = !dir_result;
+			}
+		}
+		else {
+			if (angle > 0) {
+				// momentum changes from negative to positive, change state => become normal state
+				signX = true;
+				dir_result = !dir_result;
+			}
+		}
+	}
+
+	return dir_result;
 
 
-	if (angle < 0 )
-		return false;
-	return true;
+
+	if (m_bDirectionFlagX) {
+		if (signX) {
+			if (angle < 0) {
+				// change of momentum; go for negative
+				return false;
+			}
+			else {
+				// normal state
+				return true;
+			}
+		}
+		else {
+			if (angle > 0) {
+				// change of momentum
+				if(m_bPosX)
+					return false;
+				return true;
+			}
+			else {
+				if (m_bPosX)
+					return true;
+				return false;
+			}
+		}
+	}
+
+	
+
 }
