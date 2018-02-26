@@ -287,6 +287,11 @@ bool KinectFusionProcessor::IsCameraPoseFinderAvailable()
         && m_pCameraPoseFinder->GetStoredPoseCount() > 0;
 }
 
+rt::PerspectiveCamera KinectFusionProcessor::ComputeRaytraceCamera()
+{
+	return m_perspectiveCamera;
+}
+
 /// <summary>
 /// Main processing function
 /// </summary>
@@ -1982,13 +1987,23 @@ FinishFrame:
 		camPosition = camParameters * camPosition;
 
 		rt::PerspectiveCamera cam(camPosition, rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
-
+		m_perspectiveCamera = cam;
 		
-		//#pragma omp parallel for
-		for (UINT i = 0; i < resX; i++) {
-			//#pragma omp parallel for
-			for (UINT j = 0; j < resY; j++) {
-				//#pragma omp parallel for
+
+		float minY = FLT_MAX;
+		float maxY = -FLT_MAX;
+
+		float minX = FLT_MAX;
+		float maxX = -FLT_MAX;
+
+		//omp_set_nested(1);
+
+		const clock_t begin_time = clock();
+
+		#pragma omp for schedule(dynamic,1) 
+		for (int i = 0; i < resX; i++) {
+			
+			for (int j = 0; j < resY; j++) {
 					// Normalized device coordinates [0,1]
 					scaleX = (i + 0.5f) / resX;
 					scaleY = (j + 0.5f) / resY;
@@ -2001,17 +2016,30 @@ FinishFrame:
 						cam.getPrimaryRay(scaleX, scaleY), 
 						FLT_MAX);
 
-					if (hit && hit.solid->m_bAnnotated) {
+					if (hit) {
 						//printf("Wow, it actually hit at %f distance \n", hit.distance);
 
+						if (scaleY < minY) minY = scaleY;
+						if (scaleY > maxY) maxY = scaleY;
+
+						if (scaleX < minX) minX = scaleX;
+						if (scaleX > maxX) maxX = scaleX;
+
 						for (int coord = 0; coord < 3; coord++) {
-							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
-							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
+							if (!hit.solid->m_bAnnotated) {
+								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
+								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
+							}
+							else {
+								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
+								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = coord * 100;
+							}
 						}
 						//printf("Normals: (%f,%f,%f) \n", hit.normal[0], hit.normal[1], hit.normal[2]);
 					}
 					else {
 						for (int coord = 0; coord < 3; coord++) {
+							
 							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = 255;
 							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = 255;
 						}
@@ -2019,7 +2047,8 @@ FinishFrame:
 			}
 		}
 
-
+		printf("x-axis box: (%f, %f)    y-axis box: (%f, %f) \n", minX, maxX,minY,maxY);
+		printf("Raytracing Traversal for whole image took %f seconds.\n", float(clock() - begin_time) / CLOCKS_PER_SEC);
 		
 		/////////// ==========================               END -> OWN RAYCAST IMPLEMENTATION; OUTPUT: IMAGEFRAME FOR SHADER				============================ ///////////
 

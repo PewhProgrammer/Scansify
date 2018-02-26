@@ -108,6 +108,11 @@ public:
     /// </summary>
     bool                        IsCameraPoseFinderAvailable();
 
+	/// <summary>
+	/// Compute the perspective camera and returns it.
+	/// </summary>
+	rt::PerspectiveCamera                        ComputeRaytraceCamera();
+
 private:
     KinectFusionParams          m_paramsNext;
     KinectFusionParams          m_paramsCurrent;
@@ -407,4 +412,9 @@ private:
     Timing::Timer               m_timer;
     double                      m_fFrameCounterStartTime;
     double                      m_fMostRecentRaycastTime;
+
+	/// <summary>
+	/// Raytracing properties.
+	/// </summary>
+	rt::PerspectiveCamera		m_perspectiveCamera;
 };

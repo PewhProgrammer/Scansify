@@ -7,6 +7,7 @@
 // System includes
 #include "KinectFusion/stdafx.h"
 #include <iostream>
+#include <time.h>
 //#include <afxdialogex.h>
 
 
@@ -19,6 +20,8 @@
 // RayTracing Includes
 #include "rt\bvh.h"
 #include "rt\cameras\perspective.h"
+
+
 
 
 
@@ -181,6 +184,9 @@ LRESULT CALLBACK Scansify::MessageRouter(
     return 0;
 }
 
+
+POINT pointPrev;
+
 /// <summary>
 /// Handle windows messages for the class instance
 /// </summary>
@@ -195,8 +201,39 @@ LRESULT CALLBACK Scansify::DlgProc(
     WPARAM wParam,
     LPARAM lParam)
 {
+
     switch (message)
     {
+	case WM_LBUTTONDOWN: {
+		GetCursorPos(&pointPrev);
+		RECT rect1;
+		HWND reconstructionWindow1 = GetDlgItem(m_hWnd, IDC_RECONSTRUCTION_VIEW);
+		GetWindowRect(reconstructionWindow1, &rect1);
+
+		ScreenToClient(reconstructionWindow1, &pointPrev);
+
+		printf("LBTN clicked on: (%d,%d)\n", pointPrev.x, pointPrev.y);
+		}
+		break;
+	case WM_LBUTTONUP:{
+		POINT point;
+		GetCursorPos(&point);
+		RECT rect2;
+		HWND reconstructionWindow2 = GetDlgItem(m_hWnd, IDC_RECONSTRUCTION_VIEW);
+		GetWindowRect(reconstructionWindow2, &rect2);
+
+		ScreenToClient(reconstructionWindow2, &point);
+
+		int diffX = point.x - pointPrev.x;
+		int diffY = point.y - pointPrev.y;
+		printf("LBTN released on: (%d,%d)\n", point.x, point.y);
+		printf("Distance difference: (%d,%d)\n", diffX, diffY);
+
+		// 1003 is wParam for window click; process lParam as it remains unused
+		if(diffX == diffY && diffX == 0) ProcessUI(1003, lParam);
+
+		}
+		break;
     case WM_INITDIALOG:
         {
             // Bind application window handle
@@ -289,6 +326,8 @@ LRESULT CALLBACK Scansify::DlgProc(
     case WM_FRAMEREADY:
         HandleCompletedFrame();
         break;
+	default:
+		break;
 
     }
 
@@ -313,11 +352,18 @@ void Scansify::HandleCompletedFrame()
     {
         if (m_processor.IsVolumeInitialized())
         {
-            m_pDrawDepth->Draw(pFrame->m_pDepthRGBX, pFrame->m_cbImageSize);
-            m_pDrawReconstruction->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize);
-			if(m_params.m_bInitializeAnnotationMode)
-				m_pDrawTrackingResiduals->DrawSVG(m_params.m_svgHelper);
-            else m_pDrawTrackingResiduals->Draw(pFrame->m_pTrackingDataRGBX, pFrame->m_cbImageSize);
+			if (m_params.m_bInitializeAnnotationMode) {
+				m_pDrawDepth->Draw(pFrame->m_pDepthRGBX, pFrame->m_cbImageSize);
+				m_pDrawReconstruction->Draw(pFrame->m_pTrackingDataRGBX, pFrame->m_cbImageSize);
+
+				//m_pDrawTrackingResiduals->DrawSVG(m_params.m_svgHelper);
+				m_pDrawTrackingResiduals->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize);
+			}
+			else {
+				m_pDrawDepth->Draw(pFrame->m_pDepthRGBX, pFrame->m_cbImageSize);
+				m_pDrawReconstruction->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize);
+				m_pDrawTrackingResiduals->Draw(pFrame->m_pTrackingDataRGBX, pFrame->m_cbImageSize);
+			}
         }
 
         SetStatusMessage(pFrame->m_statusMessage);
@@ -848,6 +894,7 @@ vector<rt::Point> data3D(points, points + sizeof(points) / sizeof(points[0]));
 void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 {
 
+	//printf("Received msg: %f\n", HIWORD(wParam));
     // If it was for the display surface normals toggle this variable
     if (ID_MENU_VIEW_CAPTURECOLOR == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
@@ -914,7 +961,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
         m_processor.ResetReconstruction();
     }
 
-	// If clicked on reconstruction view, compute screen coordinate
+	// If clicked on reconstruction window, compute screen coordinate
 	if (IDC_RECONSTRUCTION_VIEW == LOWORD(wParam) && STN_CLICKED == HIWORD(wParam)) {
 		POINT point;
 		GetCursorPos(&point);
@@ -934,7 +981,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			y = ((double)(point.y - 0.f) / (height - 0.f)) * (1.f + 1.f) - 1.f;
 
 			//p.x and p.y are now relative to hwnd's client area
-			//printf("Clicked on: (%6.3f,%6.3f) \n", x,y);
+			printf("Clicked on: (%6.3f,%6.3f) \n", x,y);
 		}
 
 
@@ -985,9 +1032,10 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		}
 
 
+
 		// if structure has been built
 		if (m_params.m_sceneStructure != nullptr && m_params.m_sceneStructure->built_flag) {
-			rt::Ray r = m_params.m_reconstructionCam.getPrimaryRay((float)x, (float)y);
+			rt::Ray r = m_processor.ComputeRaytraceCamera().getPrimaryRay((float)x, (float)y);
 			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
 
 			if (hit) {
@@ -1003,9 +1051,9 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		delete m_params.m_svgHelper;
 		m_params.m_svgHelper = new SvgHelper();
 		m_processor.SetParams(m_params);
-		m_params.m_bInitializeAnnotationMode = true;
+		//m_params.m_bInitializeAnnotationMode = true;
 
-		return;
+		//return;
 
 
 		SetStatusMessage(L"Reconstructing the mesh. Please wait...");
@@ -1022,6 +1070,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		HRESULT hr = m_processor.CalculateMesh(&m_params.m_pMesh);
 
 		SetStatusMessage(L"Building acceleration structure...");
+		const clock_t begin_time = clock();
 
 		if (SUCCEEDED(hr))
 		{
@@ -1055,18 +1104,20 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 					normal[v] = rt::Vector(normals[(t * 3) + v].x, normals[(t * 3) + v].y, normals[(t * 3) + v].z);
 				}
 				rt::SmoothTriangle* smoothT = new rt::SmoothTriangle(vertex, normal);
-				smoothT->m_bAnnotated = true;
+				//smoothT->m_bAnnotated = true;
 				m_params.m_sceneStructure->add(smoothT);
 			}
 
-			m_params.m_sceneStructure->rebuildIndex();
 			
+
+			m_params.m_sceneStructure->rebuildIndex();
 			m_params.m_bInitializeAnnotationMode = true;
+
+			printf("Acceleration structure built in %f seconds with %f polygons.\n", float(clock() - begin_time) / CLOCKS_PER_SEC, k);
+			
 		}
-		else
-		{
-			SetStatusMessage(L"Failed to create mesh of reconstruction.");
-		}
+		else SetStatusMessage(L"Failed to create mesh of reconstruction.");
+		
 	}
 
 	if (ID_MENU_EXPORT_RECONSTRUCTION_STL == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
