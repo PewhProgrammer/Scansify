@@ -111,7 +111,12 @@ public:
 	/// <summary>
 	/// Compute the perspective camera and returns it.
 	/// </summary>
-	rt::PerspectiveCamera                        ComputeRaytraceCamera();
+	rt::PerspectiveCamera*       ComputeRaytraceCamera();
+
+	/// <summary>
+	/// tell the processor to redraw the rendered 3d model
+	/// </summary>
+	void						RedrawRenderedImage();
 
 private:
     KinectFusionParams          m_paramsNext;
@@ -416,5 +421,5 @@ private:
 	/// <summary>
 	/// Raytracing properties.
 	/// </summary>
-	rt::PerspectiveCamera		m_perspectiveCamera;
+	rt::PerspectiveCamera*		m_perspectiveCamera;
 };

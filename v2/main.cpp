@@ -211,8 +211,6 @@ LRESULT CALLBACK Scansify::DlgProc(
 		GetWindowRect(reconstructionWindow1, &rect1);
 
 		ScreenToClient(reconstructionWindow1, &pointPrev);
-
-		printf("LBTN clicked on: (%d,%d)\n", pointPrev.x, pointPrev.y);
 		}
 		break;
 	case WM_LBUTTONUP:{
@@ -226,11 +224,18 @@ LRESULT CALLBACK Scansify::DlgProc(
 
 		int diffX = point.x - pointPrev.x;
 		int diffY = point.y - pointPrev.y;
-		printf("LBTN released on: (%d,%d)\n", point.x, point.y);
 		printf("Distance difference: (%d,%d)\n", diffX, diffY);
 
 		// 1003 is wParam for window click; process lParam as it remains unused
-		if(diffX == diffY && diffX == 0) ProcessUI(1003, lParam);
+		if (diffX == diffY && diffX == 0) {
+			ProcessUI(1003, lParam); break;
+		}
+
+		if(diffX > 0)
+		m_processor.ComputeRaytraceCamera()->center.z += 0.001f;
+		else
+			m_processor.ComputeRaytraceCamera()->center.z -= 0.001f;
+		m_processor.RedrawRenderedImage();
 
 		}
 		break;
@@ -1010,7 +1015,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			if (dynamic < 0)
 				m_params.m_svgHelper->m_bDirectionFlagX != m_params.m_svgHelper->m_bDirectionFlagX;
 
-			printf("dynamic: %f \n", dynamic);
+			//printf("dynamic: %f \n", dynamic);
 
 			float len = vec.length();
 			float diff = data3D[0].y - curr.y;
@@ -1035,11 +1040,11 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 		// if structure has been built
 		if (m_params.m_sceneStructure != nullptr && m_params.m_sceneStructure->built_flag) {
-			rt::Ray r = m_processor.ComputeRaytraceCamera().getPrimaryRay((float)x, (float)y);
+			rt::Ray r = (m_processor.ComputeRaytraceCamera())->getPrimaryRay((float)x, (float)y);
 			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
 
 			if (hit) {
-				printf("Hit");
+				//printf("Hit");
 			}
 		}
 	}

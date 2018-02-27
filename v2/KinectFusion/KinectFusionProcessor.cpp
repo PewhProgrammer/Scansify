@@ -119,7 +119,8 @@ KinectFusionProcessor::KinectFusionProcessor() :
     m_bCalculateDeltaFrame(false),
     m_coordinateMappingChangedEvent(NULL),
     m_bHaveValidCameraParameters(false),
-	m_bAnnotationKeep(true)
+	m_bAnnotationKeep(true),
+	m_perspectiveCamera(nullptr)
 {
     // Initialize synchronization objects
     InitializeCriticalSection(&m_lockParams);
@@ -287,9 +288,21 @@ bool KinectFusionProcessor::IsCameraPoseFinderAvailable()
         && m_pCameraPoseFinder->GetStoredPoseCount() > 0;
 }
 
-rt::PerspectiveCamera KinectFusionProcessor::ComputeRaytraceCamera()
+/// <summary>
+/// Fetches the current camera properties of the kinect camera into a pinhole model
+/// </summary>
+rt::PerspectiveCamera* KinectFusionProcessor::ComputeRaytraceCamera()
 {
+
 	return m_perspectiveCamera;
+}
+
+/// <summary>
+/// tell the processor to redraw the rendered 3d model
+/// </summary>
+void KinectFusionProcessor::RedrawRenderedImage()
+{
+	this->m_bAnnotationKeep = true;
 }
 
 /// <summary>
@@ -1976,18 +1989,20 @@ FinishFrame:
 		float ratio = (float)resX / (float)resY;
 		NUI_FUSION_CAMERA_PARAMETERS *param = m_pRaycastPointCloud->pCameraParameters;
 
-		rt::Point camPosition = rt::Point(0, 0, 0.5f);
-		rt::Matrix camParameters = rt::Matrix(
-			rt::Float4(m_worldToCameraTransform.M14, m_worldToCameraTransform.M21, m_worldToCameraTransform.M31, m_worldToCameraTransform.M41),
-			rt::Float4(m_worldToCameraTransform.M24, m_worldToCameraTransform.M22, m_worldToCameraTransform.M32, m_worldToCameraTransform.M42),
-			rt::Float4(m_worldToCameraTransform.M34, m_worldToCameraTransform.M23, m_worldToCameraTransform.M33, m_worldToCameraTransform.M43),
-			rt::Float4(m_worldToCameraTransform.M44, m_worldToCameraTransform.M24, m_worldToCameraTransform.M34, m_worldToCameraTransform.M44)
-		);
 
-		camPosition = camParameters * camPosition;
+		if (m_perspectiveCamera == nullptr) {
+			rt::Point camPosition = rt::Point(0.1f, 0, 0.2f);
+			rt::Matrix camParameters = rt::Matrix(
+				rt::Float4(m_worldToCameraTransform.M14, m_worldToCameraTransform.M21, m_worldToCameraTransform.M31, m_worldToCameraTransform.M41),
+				rt::Float4(m_worldToCameraTransform.M24, m_worldToCameraTransform.M22, m_worldToCameraTransform.M32, m_worldToCameraTransform.M42),
+				rt::Float4(m_worldToCameraTransform.M34, m_worldToCameraTransform.M23, m_worldToCameraTransform.M33, m_worldToCameraTransform.M43),
+				rt::Float4(m_worldToCameraTransform.M44, m_worldToCameraTransform.M24, m_worldToCameraTransform.M34, m_worldToCameraTransform.M44)
+			);
 
-		rt::PerspectiveCamera cam(camPosition, rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
-		m_perspectiveCamera = cam;
+			camPosition = camParameters * camPosition;
+
+			m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
+		}
 		
 
 		float minY = FLT_MAX;
@@ -2013,7 +2028,7 @@ FinishFrame:
 					scaleY = (scaleY - 0.5f) * 2;
 
 					rt::Intersection hit = m_paramsCurrent.m_sceneStructure->intersect(
-						cam.getPrimaryRay(scaleX, scaleY), 
+						m_perspectiveCamera->getPrimaryRay(scaleX, scaleY),
 						FLT_MAX);
 
 					if (hit) {
