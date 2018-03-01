@@ -199,8 +199,9 @@ struct KinectFusionParams
 	bool						m_bKeepAnnotation;
 	INuiFusionColorMesh*		m_pMesh;
 	std::vector
-		<rt::SmoothTriangle*>	m_vAnnotated;
+		<const rt::SmoothTriangle*>	m_vAnnotated;
 	SvgHelper*					m_svgHelper;
+
 
 
     /// <summary>

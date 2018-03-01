@@ -289,12 +289,54 @@ bool KinectFusionProcessor::IsCameraPoseFinderAvailable()
 }
 
 /// <summary>
+/// Retrieves the current camera paramateres
+/// </summary>
+rt::PerspectiveCamera* KinectFusionProcessor::GetRaytraceCamera() {
+	return m_perspectiveCamera;
+}
+
+vector<std::pair<float, float>> KinectFusionProcessor::ConsumeAnnotationCoordinates()
+{
+	auto result(m_annotationCoordinates);
+	m_annotationCoordinates.clear();
+	return result;
+}
+
+/// <summary>
+/// Consumes the information that the view change; used to re-render the frame
+/// </summary>
+bool KinectFusionProcessor::ConsumeViewRendered() {
+	auto result = m_bReconstructionViewRender;
+	m_bReconstructionViewRender = false;
+	return result;
+}
+
+/// <summary>
 /// Fetches the current camera properties of the kinect camera into a pinhole model
 /// </summary>
-rt::PerspectiveCamera* KinectFusionProcessor::ComputeRaytraceCamera()
+void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y)
 {
+	UINT resX = m_pRaycastPointCloud->width, resY = m_pRaycastPointCloud->height;
+	float fovy = 0.785398163397f * 2; // in rad
+	float ratio = (float)resX / (float)resY;
 
-	return m_perspectiveCamera;
+	m_worldToCameraTransform.M41 += (float)x/1000;
+
+	rt::Point camPosition = rt::Point(0.1f, 0, 0.2f);
+	rt::Matrix camParameters = rt::Matrix(
+		rt::Float4(m_worldToCameraTransform.M11, m_worldToCameraTransform.M21, m_worldToCameraTransform.M31, m_worldToCameraTransform.M41),
+		rt::Float4(m_worldToCameraTransform.M12, m_worldToCameraTransform.M22, m_worldToCameraTransform.M32, m_worldToCameraTransform.M42),
+		rt::Float4(m_worldToCameraTransform.M13, m_worldToCameraTransform.M23, m_worldToCameraTransform.M33, m_worldToCameraTransform.M43),
+		rt::Float4(m_worldToCameraTransform.M14, m_worldToCameraTransform.M24, m_worldToCameraTransform.M34, m_worldToCameraTransform.M44)
+	);
+
+	camPosition = camParameters * camPosition;
+	//camPosition.x += 0.005f;
+
+	delete m_perspectiveCamera;
+	m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
+
+	return;
 }
 
 /// <summary>
@@ -1936,6 +1978,7 @@ FinishFrame:
 		if (!m_bAnnotationKeep)  
 			goto DisplayFPS;
 		m_bAnnotationKeep = false;
+		m_bReconstructionViewRender = true;
 		m_paramsCurrent.m_sceneStructure->built_flag;
 
 	
@@ -1985,23 +2028,13 @@ FinishFrame:
 
 		UINT resX = m_pRaycastPointCloud->width, resY = m_pRaycastPointCloud->height;
 		float scaleX, scaleY;
-		float fovy = 0.785398163397f * 2; // in rad
-		float ratio = (float)resX / (float)resY;
-		NUI_FUSION_CAMERA_PARAMETERS *param = m_pRaycastPointCloud->pCameraParameters;
+
+		// empty annotation cache
+		m_annotationCoordinates.empty();
 
 
 		if (m_perspectiveCamera == nullptr) {
-			rt::Point camPosition = rt::Point(0.1f, 0, 0.2f);
-			rt::Matrix camParameters = rt::Matrix(
-				rt::Float4(m_worldToCameraTransform.M14, m_worldToCameraTransform.M21, m_worldToCameraTransform.M31, m_worldToCameraTransform.M41),
-				rt::Float4(m_worldToCameraTransform.M24, m_worldToCameraTransform.M22, m_worldToCameraTransform.M32, m_worldToCameraTransform.M42),
-				rt::Float4(m_worldToCameraTransform.M34, m_worldToCameraTransform.M23, m_worldToCameraTransform.M33, m_worldToCameraTransform.M43),
-				rt::Float4(m_worldToCameraTransform.M44, m_worldToCameraTransform.M24, m_worldToCameraTransform.M34, m_worldToCameraTransform.M44)
-			);
-
-			camPosition = camParameters * camPosition;
-
-			m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
+			ComputeRaytraceCamera(0, 0);
 		}
 		
 
@@ -2010,6 +2043,8 @@ FinishFrame:
 
 		float minX = FLT_MAX;
 		float maxX = -FLT_MAX;
+
+		UINT16 hitCount = 0;
 
 		//omp_set_nested(1);
 
@@ -2033,7 +2068,7 @@ FinishFrame:
 
 					if (hit) {
 						//printf("Wow, it actually hit at %f distance \n", hit.distance);
-
+						hitCount++;
 						if (scaleY < minY) minY = scaleY;
 						if (scaleY > maxY) maxY = scaleY;
 
@@ -2046,8 +2081,13 @@ FinishFrame:
 								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
 							}
 							else {
+								// annotated
+								m_annotationCoordinates.push_back(pair<float, float>(scaleX, scaleY));
+								//*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
+								//*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = coord * 100;
+
 								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
-								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = coord * 100;
+								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
 							}
 						}
 						//printf("Normals: (%f,%f,%f) \n", hit.normal[0], hit.normal[1], hit.normal[2]);
@@ -2055,15 +2095,16 @@ FinishFrame:
 					else {
 						for (int coord = 0; coord < 3; coord++) {
 							
-							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = 255;
-							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = 255;
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = 0.2f;
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = 0.4f;
 						}
 					}
 			}
 		}
 
-		printf("x-axis box: (%f, %f)    y-axis box: (%f, %f) \n", minX, maxX,minY,maxY);
-		printf("Raytracing Traversal for whole image took %f seconds.\n", float(clock() - begin_time) / CLOCKS_PER_SEC);
+		//printf("x-axis box: (%f, %f)    y-axis box: (%f, %f) \n", minX, maxX,minY,maxY);
+		//printf("Raytracing Traversal for whole image took %f seconds.\n", float(clock() - begin_time) / CLOCKS_PER_SEC);
+		//printf("It hit %u times \n", hitCount);
 		
 		/////////// ==========================               END -> OWN RAYCAST IMPLEMENTATION; OUTPUT: IMAGEFRAME FOR SHADER				============================ ///////////
 

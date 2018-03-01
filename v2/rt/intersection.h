@@ -18,7 +18,7 @@ public:
     Ray ray;
     double distance;
 	Vector normal;
-	const SmoothTriangle* solid;
+	SmoothTriangle* solid;
 
     Intersection() {}
     static Intersection failure();

@@ -109,9 +109,26 @@ public:
     bool                        IsCameraPoseFinderAvailable();
 
 	/// <summary>
-	/// Compute the perspective camera and returns it.
+	/// Compute the perspective camera and returns it
 	/// </summary>
-	rt::PerspectiveCamera*       ComputeRaytraceCamera();
+	void       ComputeRaytraceCamera(int x, int y);
+
+	/// <summary>
+	/// Retrieves the current camera parameters
+	/// </summary>
+	rt::PerspectiveCamera*       GetRaytraceCamera();
+
+	/// <summary>
+	/// Retrieves the current visible annotations
+	/// </summary>
+	vector<std::pair
+		<float, float>>	      ConsumeAnnotationCoordinates();
+
+	/// <summary>
+	/// Consumes the information that the view change; used to re-render the frame
+	/// </summary>
+	bool                 	  ConsumeViewRendered();
+
 
 	/// <summary>
 	/// tell the processor to redraw the rendered 3d model
@@ -390,6 +407,10 @@ private:
 
 
 	bool						m_bAnnotationKeep;
+	bool						m_bReconstructionViewRender;
+	vector<std::pair
+		<float,float>>			m_annotationCoordinates;
+
     /// <summary>
     /// Camera Tracking parameters.
     /// </summary>

@@ -7,6 +7,9 @@
 #include "KinectFusion/stdafx.h"
 #include "ImageRenderer.h"
 
+// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
+#define interpolate(input,iLow,iHigh,oLow,oHigh) ((input - iLow) / (iHigh - iLow)) * (oHigh - oLow) + oLow
+
 /// <summary>
 /// Constructor
 /// </summary>
@@ -179,8 +182,7 @@ HRESULT ImageRenderer::Draw(BYTE* pImage, unsigned long cbImage)
 /// <summary>
 /// Draws a 32 bit per pixel image of previously specified width, height, and stride to the associated hwnd
 /// </summary>
-/// <param name="pImage">image data in RGBX format</param>
-/// <param name="cbImage">size of image data in bytes</param>
+/// <param name="svg">svg data to draw</param>
 /// <returns>indicates success or failure</returns>
 HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 {
@@ -252,6 +254,67 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 		hr = S_OK;
 		DiscardResources();
 	}
+
+	return hr;
+}
+
+/// <summary>
+/// Draws a 32 bit per pixel image of previously specified width, height, and stride to the associated hwnd
+/// </summary>
+/// <param name="annotations">vector of const triangles that are annotated. Order determines edge relationship</param>
+/// <returns>indicates success or failure</returns>
+HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::pair
+	<float, float>> annotations)
+{
+	size_t len = annotations.size();
+	if (len == 0) return S_OK;
+
+	// create the resources for this draw device
+	// they will be recreated if previously lost
+	HRESULT hr = EnsureResources();
+
+	if (FAILED(hr)) { return hr; }
+
+	m_pRenderTarget->BeginDraw();
+
+	ID2D1SolidColorBrush *pBrush;
+	D2D1_COLOR_F color = D2D1::ColorF(D2D1::ColorF::SkyBlue);
+	hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
+
+	if (FAILED(hr)) { return hr; }
+
+	//draw first node
+	//printf("1st node: (%f, %f)\n", annotations[0].first, annotations[0].second);
+	auto prev = annotations[0];
+
+	// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
+	prev.first = interpolate(prev.first, -1, 1, 0, m_sourceWidth);
+	prev.second = interpolate(prev.second, -1, 1, 0, m_sourceHeight);
+
+	//draw subsequently edge and node
+	for (int i = 1; i < len; i++) {
+		auto curr = annotations[i];
+		curr.first = interpolate(curr.first,-1,1,0,m_sourceWidth);
+		curr.second = interpolate(curr.second, -1, 1, 0, m_sourceHeight);
+		
+		//printf(" --->  (%f, %f)\n", curr.first, curr.second);
+		m_pRenderTarget->DrawLine(
+			D2D1::Point2F(prev.first, prev.second),
+			D2D1::Point2F(curr.first, curr.second),
+			pBrush);
+		prev = curr;
+	}
+
+	hr = m_pRenderTarget->EndDraw();
+
+	// Device lost, need to recreate the render target
+	// We'll dispose it now and retry drawing
+	if (hr == D2DERR_RECREATE_TARGET)
+	{
+		hr = S_OK;
+		DiscardResources();
+	}
+
 
 	return hr;
 }

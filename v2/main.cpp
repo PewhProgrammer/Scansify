@@ -231,10 +231,11 @@ LRESULT CALLBACK Scansify::DlgProc(
 			ProcessUI(1003, lParam); break;
 		}
 
-		if(diffX > 0)
-		m_processor.ComputeRaytraceCamera()->center.z += 0.001f;
+		if (diffX > 0)
+			m_processor.ComputeRaytraceCamera(diffX, 0);
 		else
-			m_processor.ComputeRaytraceCamera()->center.z -= 0.001f;
+			m_processor.ComputeRaytraceCamera(0, 0);
+
 		m_processor.RedrawRenderedImage();
 
 		}
@@ -359,7 +360,12 @@ void Scansify::HandleCompletedFrame()
         {
 			if (m_params.m_bInitializeAnnotationMode) {
 				m_pDrawDepth->Draw(pFrame->m_pDepthRGBX, pFrame->m_cbImageSize);
-				m_pDrawReconstruction->Draw(pFrame->m_pTrackingDataRGBX, pFrame->m_cbImageSize);
+
+				if (m_processor.ConsumeViewRendered()) {
+					// Render the view if raytrace happened before
+					m_pDrawReconstruction->Draw(pFrame->m_pTrackingDataRGBX, pFrame->m_cbImageSize);
+					m_pDrawReconstruction->DrawAnnotationOnModel(m_processor.ConsumeAnnotationCoordinates()); // if no annotation happen, dont change the current output
+				}	
 
 				//m_pDrawTrackingResiduals->DrawSVG(m_params.m_svgHelper);
 				m_pDrawTrackingResiduals->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize);
@@ -998,6 +1004,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		m_params.m_svgHelper->addData(dataSVG[clicks].first, dataSVG[clicks].second);
 		*/
 
+		// TODO remove below part and exchange data set with existing annotation data set
 		if (clicks < data3D.size() - 1) {
 			clicks++;
 			rt::Point prev = data3D[clicks - 1];
@@ -1040,13 +1047,16 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 		// if structure has been built
 		if (m_params.m_sceneStructure != nullptr && m_params.m_sceneStructure->built_flag) {
-			rt::Ray r = (m_processor.ComputeRaytraceCamera())->getPrimaryRay((float)x, (float)y);
+			rt::Ray r = (m_processor.GetRaytraceCamera())->getPrimaryRay((float)x, (float)y);
 			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
-
+			
 			if (hit) {
-				//printf("Hit");
+				printf("Hit detected!\n" );
+				hit.solid->m_bAnnotated = true;
 			}
+			float k = 2;
 		}
+		float k = 2;
 	}
 
 	// If starting annotation process

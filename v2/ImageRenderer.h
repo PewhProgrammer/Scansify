@@ -10,6 +10,7 @@
 
 #include <d2d1.h>
 #include "svghelper.h"
+#include "rt\primitives\striangle.h"
 
 class ImageRenderer
 {
@@ -45,11 +46,19 @@ public:
     HRESULT Draw(BYTE* pImage, unsigned long cbImage);
 
 	/// <summary>
-	/// Draws a 32 bit per pixel image of the resulting svg file 
+	/// Draws a 32 bit per pixel image of previously specified width, height, and stride to the associated hwnd
 	/// </summary>
-	/// <param name="pImage">image data in RGBX format</param>
+	/// <param name="svg">svg data to draw</param>
 	/// <returns>indicates success or failure</returns>
 	HRESULT DrawSVG(SvgHelper* svg);
+
+	/// <summary>
+	/// Draws a 32 bit per pixel image of previously specified width, height, and stride to the associated hwnd
+	/// </summary>
+	/// <param name="annotations">vector of const triangles that are annotated. Order determines edge relationship</param>
+	/// <returns>indicates success or failure</returns>
+	HRESULT DrawAnnotationOnModel(vector<std::pair
+		<float, float>> annotations);
 
 private:
     HWND                     m_hWnd;

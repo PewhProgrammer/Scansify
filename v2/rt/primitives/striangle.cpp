@@ -28,7 +28,8 @@ namespace rt {
 		boxmin = min(min(vertices[0], vertices[1]), vertices[2]);
 		boxmax = max(max(vertices[0], vertices[1]), vertices[2]);
 
-		m_bAnnotated = false;
+		// TODO change this to false 
+		m_bAnnotated = true;
 	}
 
 	rt::SmoothTriangle::SmoothTriangle(const Point & v1, const Point & v2, const Point & v3, const Vector & n1, const Vector & n2, const Vector & n3)
