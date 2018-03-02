@@ -295,11 +295,21 @@ rt::PerspectiveCamera* KinectFusionProcessor::GetRaytraceCamera() {
 	return m_perspectiveCamera;
 }
 
+/// <summary>
+/// Consumes the information that the view change; used to re-render the frame
+/// </summary>
 vector<std::pair<float, float>> KinectFusionProcessor::ConsumeAnnotationCoordinates()
 {
 	auto result(m_annotationCoordinates);
 	m_annotationCoordinates.clear();
 	return result;
+}
+
+/// <summary>
+/// Retrieves the current annotated objects in 3D
+/// </summary>
+vector<const rt::SmoothTriangle*> KinectFusionProcessor::GetAnnotatedObjects() {
+	return m_vAnnotatedObjects;
 }
 
 /// <summary>
@@ -2081,8 +2091,11 @@ FinishFrame:
 								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
 							}
 							else {
+								// TODO annotated solids do not get registered here immediately
 								// annotated
 								m_annotationCoordinates.push_back(pair<float, float>(scaleX, scaleY));
+								m_vAnnotatedObjects.push_back(hit.solid);
+								
 								//*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
 								//*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = coord * 100;
 

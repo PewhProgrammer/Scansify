@@ -125,6 +125,12 @@ public:
 		<float, float>>	      ConsumeAnnotationCoordinates();
 
 	/// <summary>
+	/// Retrieves the current annotated objects in 3D
+	/// </summary>
+	vector<const 
+		rt::SmoothTriangle*>  GetAnnotatedObjects();
+
+	/// <summary>
 	/// Consumes the information that the view change; used to re-render the frame
 	/// </summary>
 	bool                 	  ConsumeViewRendered();
@@ -410,6 +416,8 @@ private:
 	bool						m_bReconstructionViewRender;
 	vector<std::pair
 		<float,float>>			m_annotationCoordinates;
+	vector<const
+		rt::SmoothTriangle*>	m_vAnnotatedObjects;
 
     /// <summary>
     /// Camera Tracking parameters.

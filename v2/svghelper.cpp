@@ -25,6 +25,7 @@ void SvgHelper::addData(float x, float y)
 
 uint2 SvgHelper::getDimensions()
 {
+	//first is low
 	return uint2(
 		std::max(m_uWidth.first,	std::abs((int)m_uWidth.first)	+		std::abs((int)m_uWidth.second)	),
 		std::max(m_uHeight.first,	std::abs((int)m_uHeight.first)	+		std::abs((int)m_uHeight.second) ));
@@ -115,7 +116,6 @@ bool dir_result = true;
 /// <returns>return the appropriate case; true indicates direction in positive axis</returns>
 bool SvgHelper::getDirectionX(float angle, float dirX)
 {
-	//TODO: FIX THIS METHOD ASAP
 	// Basically has to know when the angle turn point is and adjust
 
 	m_bPosX = dirX < 0 ? false : true;
@@ -150,35 +150,5 @@ bool SvgHelper::getDirectionX(float angle, float dirX)
 	}
 
 	return dir_result;
-
-
-
-	if (m_bDirectionFlagX) {
-		if (signX) {
-			if (angle < 0) {
-				// change of momentum; go for negative
-				return false;
-			}
-			else {
-				// normal state
-				return true;
-			}
-		}
-		else {
-			if (angle > 0) {
-				// change of momentum
-				if(m_bPosX)
-					return false;
-				return true;
-			}
-			else {
-				if (m_bPosX)
-					return true;
-				return false;
-			}
-		}
-	}
-
-	
 
 }

@@ -207,20 +207,25 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 	m_pRenderTarget->Clear(D2D1::ColorF(D2D1::ColorF::Black));
 
 	ID2D1SolidColorBrush *pBrush;
-	float radius = 5.5f;
-	float x = m_sourceWidth * 0.5f;
-	float scale = 5.f;
-	D2D1_ELLIPSE e = D2D1::Ellipse(D2D1::Point2F(x, x), radius, radius);
+
 	D2D1_COLOR_F color = D2D1::ColorF(D2D1::ColorF::SkyBlue);
 	hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
+
+
+
 	if (FAILED(hr)) { return hr; }
 
 	// interpolate svg data into frame dimensions
+	// Assume that the window will cover approximately 1 meter
 	// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
 	
+
 	auto dimRange = svg->getDimensionsRange();
-	UINT offsetY = 65;
-	UINT offsetX = 35;
+	UINT offsetY = 0;
+	UINT offsetX = 0;
+
+	float radius = 4.f;
+	float scale = 100.f;
 
 	// iterate over svg data points and draw them
 	for (int i = 1; i < dataSize; i++) {
@@ -230,10 +235,21 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 		auto x2 = (data[i].first + offsetX)			* scale;
 		auto y2 = (data[i].second + offsetY)		* scale;
 
+
+		// TODO the interpolation here doesnt perfectly work. needs to be scaled more refinely
+		x1 = ((data[i - 1].first - -0.5f) / (0.5f - -0.5f)) * (m_sourceWidth - 0) + 0;
+		x2 = ((data[i].first - -0.25f) / (0.5f - -0.25f)) * (m_sourceWidth - 0) + 0;
+		y1 = ((data[i - 1].second - -0.5f) / (0.5f - -0.5f)) * (m_sourceHeight - 0) + 0;
+		y2 = ((data[i].second - -0.25f) / (0.5f - -0.25f)) * (m_sourceHeight - 0) + 0;
+
 		m_pRenderTarget->DrawLine(
 			D2D1::Point2F(x1,y1),
 			D2D1::Point2F(x2,y2),
 			pBrush);
+
+		//Draw start point
+		D2D1_ELLIPSE e = D2D1::Ellipse(D2D1::Point2F(x1, y1), radius, radius);
+		m_pRenderTarget->FillEllipse(e, pBrush); // could also be DrawEllipse to draw outlier
 	}
 
 	// only if prev exists

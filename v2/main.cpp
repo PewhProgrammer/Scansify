@@ -367,8 +367,11 @@ void Scansify::HandleCompletedFrame()
 					m_pDrawReconstruction->DrawAnnotationOnModel(m_processor.ConsumeAnnotationCoordinates()); // if no annotation happen, dont change the current output
 				}	
 
-				//m_pDrawTrackingResiduals->DrawSVG(m_params.m_svgHelper);
-				m_pDrawTrackingResiduals->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize);
+				// TODO move this to the consumeViewRendered Condition
+				m_pDrawTrackingResiduals->DrawSVG(m_params.m_svgHelper);
+
+				// as comparisson
+				//m_pDrawTrackingResiduals->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize);
 			}
 			else {
 				m_pDrawDepth->Draw(pFrame->m_pDepthRGBX, pFrame->m_cbImageSize);
@@ -999,17 +1002,12 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		////////////// AUTOMATICALLY PROCESS HIT IN TEST PHASE /////////////////////
 		///			   http://www.karldiab.com/3DPointPlotter/		to see tongue plot in 3D ///
 
-		/*
-		if(clicks < 4)
-		m_params.m_svgHelper->addData(dataSVG[clicks].first, dataSVG[clicks].second);
-		*/
-
-		// TODO remove below part and exchange data set with existing annotation data set
-		if (clicks < data3D.size() - 1) {
+		auto marked = m_processor.GetAnnotatedObjects();
+		if (marked.size() > 1) {
 			clicks++;
-			rt::Point prev = data3D[clicks - 1];
-			rt::Point curr = data3D[clicks];
-			auto vec = curr - prev; // poitns to curr
+			rt::Point prev = marked[clicks - 1]->sample();
+			rt::Point curr = marked[clicks]->sample();
+			auto vec = curr - prev; // vector from previous to current node
 
 			if (clicks == 1) {
 				//init Matrix
@@ -1025,7 +1023,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			//printf("dynamic: %f \n", dynamic);
 
 			float len = vec.length();
-			float diff = data3D[0].y - curr.y;
+			float diff = marked[0]->sample().y - curr.y;
 			float storedY = vec.y;
 			vec.y = 0;
 			if (m_params.m_svgHelper->getDirectionX(dynamic,vec.x)) {
