@@ -323,14 +323,18 @@ bool KinectFusionProcessor::ConsumeViewRendered() {
 
 /// <summary>
 /// Fetches the current camera properties of the kinect camera into a pinhole model
+/// m_worldToCameraTransform represents the target matrix for rotational distortion while camPosition is the adjusted pinhole model for raytracing
+/// param z used for zooming
 /// </summary>
-void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y)
+void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 {
 	UINT resX = m_pRaycastPointCloud->width, resY = m_pRaycastPointCloud->height;
 	float fovy = 0.785398163397f * 2; // in rad
 	float ratio = (float)resX / (float)resY;
 
-	m_worldToCameraTransform.M41 += (float)x/1000;
+	m_worldToCameraTransform.M41 += ((float)x)/ 1000.f;
+	m_worldToCameraTransform.M42 += ((float)y) / 1000.f;
+	m_worldToCameraTransform.M43 += ((float)z) / 1000.f;
 
 	rt::Point camPosition = rt::Point(0.1f, 0, 0.2f);
 	rt::Matrix camParameters = rt::Matrix(
@@ -341,8 +345,70 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y)
 	);
 
 	camPosition = camParameters * camPosition;
-	//camPosition.x += 0.005f;
+	delete m_perspectiveCamera;
+	m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
 
+	return;
+}
+
+/// <summary>
+/// Fetches the current camera properties of the kinect camera into a pinhole model
+/// m_worldToCameraTransform represents the target matrix for rotational distortion while camPosition is the adjusted pinhole model for raytracing
+/// rotations: https://www.siggraph.org/education/materials/HyperGraph/modeling/mod_tran/3drota.htm
+/// </summary>
+void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
+{
+	// TODO It works, but we rotate around origin and the model is 0.5 in z direction <- need to use this
+	// TODO somehow the model changes it color upon rotation, really weird
+	UINT resX = m_pRaycastPointCloud->width, resY = m_pRaycastPointCloud->height;
+	float fovy = 0.785398163397f * 2; // in rad
+	float ratio = (float)resX / (float)resY;
+
+	printf("matrix value M41: %f           ", m_worldToCameraTransform.M41);
+	//m_worldToCameraTransform.M41 += ((float)x) / 1000.f;
+	//m_worldToCameraTransform.M42 += ((float)y) / 1000.f;
+
+	x += ((float)x) / 1000.f;
+	y += ((float)y) / 1000.f;
+	printf("After matrix value M41: %f \n", m_worldToCameraTransform.M41);
+
+	rt::Point camPosition = rt::Point(0.1f, 0, 0.2f);
+	rt::Matrix camParameters = rt::Matrix(
+		rt::Float4(m_worldToCameraTransform.M11, m_worldToCameraTransform.M21, m_worldToCameraTransform.M31, m_worldToCameraTransform.M41),
+		rt::Float4(m_worldToCameraTransform.M12, m_worldToCameraTransform.M22, m_worldToCameraTransform.M32, m_worldToCameraTransform.M42),
+		rt::Float4(m_worldToCameraTransform.M13, m_worldToCameraTransform.M23, m_worldToCameraTransform.M33, m_worldToCameraTransform.M43),
+		rt::Float4(m_worldToCameraTransform.M14, m_worldToCameraTransform.M24, m_worldToCameraTransform.M34, m_worldToCameraTransform.M44)
+	);
+
+	// X-Axis rotation
+	rt::Matrix xRotation = rt::Matrix(
+		rt::Float4(1,0,0,0),
+		rt::Float4(0, cos(y), sin(y), 0 ),
+		rt::Float4(0, -sin(y), cos(y), 0 ),
+		rt::Float4(0,0,0,1)
+	);
+
+	// Y-Axis rotation
+	rt::Matrix yRotation = rt::Matrix(
+		rt::Float4(cos(y),	0,		-sin(y),	0),
+		rt::Float4(0,		1,		0,			0),
+		rt::Float4(sin(y),	0,		cos(y),		0),
+		rt::Float4(0,		0,		0,			1)
+	);
+
+	auto ch = rt::product(camParameters, xRotation).transpose(); // camera helper
+	//rotatedMasterCamera = rt::product(rotatedMasterCamera, yRotation);
+
+	// apply configured camera props to Master camera
+	m_worldToCameraTransform = {	
+		ch[0][0], ch[1][0], ch[2][0], ch[3][0],
+		ch[0][1], ch[1][1], ch[2][1], ch[3][1],
+		ch[0][2], ch[1][2], ch[2][2], ch[3][2],
+		ch[0][3], ch[1][3], ch[2][3], ch[3][3], };
+
+	printf("camera position: (%f, %f, %f)           ", camPosition.x, camPosition.y, camPosition.z);
+	camPosition = rt::product(camParameters, xRotation) * camPosition;
+	printf("After camera position: (%f, %f, %f)           ", camPosition.x, camPosition.y, camPosition.z);
 	delete m_perspectiveCamera;
 	m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
 
@@ -1742,100 +1808,103 @@ bool KinectFusionProcessor::ProcessDepth()
 
     ////////////////////////////////////////////////////////
     // Perform Camera Tracking
+	// unless annotation mode
 
-    HRESULT tracking = E_NUI_FUSION_TRACKING_ERROR;
+	if (!m_paramsCurrent.m_bInitializeAnnotationMode) {
+		HRESULT tracking = E_NUI_FUSION_TRACKING_ERROR;
 
-    if (0 != m_cFrameCounter)
-    {
-        // Here we can either call or TrackCameraAlignDepthFloatToReconstruction or TrackCameraAlignPointClouds
-        // The TrackCameraAlignPointClouds function typically has higher performance with the camera pose finder 
-        // due to its wider basin of convergence, enabling it to more robustly regain tracking from nearby poses
-        // suggested by the camera pose finder after tracking is lost.
-        if (m_paramsCurrent.m_bAutoFindCameraPoseWhenLost)
-        {
-            tracking = TrackCameraAlignPointClouds(calculatedCameraPose, alignmentEnergy);
-        }
-        else
-        {
-            // If the camera pose finder is not turned on, we use AlignDepthFloatToReconstruction
-            tracking = TrackCameraAlignDepthFloatToReconstruction(calculatedCameraPose, alignmentEnergy);
-        }
-    }
+		if (0 != m_cFrameCounter)
+		{
+			// Here we can either call or TrackCameraAlignDepthFloatToReconstruction or TrackCameraAlignPointClouds
+			// The TrackCameraAlignPointClouds function typically has higher performance with the camera pose finder 
+			// due to its wider basin of convergence, enabling it to more robustly regain tracking from nearby poses
+			// suggested by the camera pose finder after tracking is lost.
+			if (m_paramsCurrent.m_bAutoFindCameraPoseWhenLost)
+			{
+				tracking = TrackCameraAlignPointClouds(calculatedCameraPose, alignmentEnergy);
+			}
+			else
+			{
+				// If the camera pose finder is not turned on, we use AlignDepthFloatToReconstruction
+				tracking = TrackCameraAlignDepthFloatToReconstruction(calculatedCameraPose, alignmentEnergy);
+			}
+		}
 
-    if (FAILED(tracking) && 0 != m_cFrameCounter)   // frame 0 always succeeds
-    {
-        SetTrackingFailed();
+		if (FAILED(tracking) && 0 != m_cFrameCounter)   // frame 0 always succeeds
+		{
+			SetTrackingFailed();
 
-        if (!cameraPoseFinderAvailable)
-        {
-            if (tracking == E_NUI_FUSION_TRACKING_ERROR)
-            {
-                WCHAR str[MAX_PATH];
-                swprintf_s(str, ARRAYSIZE(str), L"Kinect Fusion camera tracking FAILED! Align the camera to the last tracked position.");
-                SetStatusMessage(str);
-            }
-            else
-            {
-                SetStatusMessage(L"Kinect Fusion camera tracking call failed!");
-                goto FinishFrame;
-            }
-        }
-        else
-        {
-            // Here we try to find the correct camera pose, to re-localize camera tracking.
-            // We can call either the version using AlignDepthFloatToReconstruction or the version 
-            // using AlignPointClouds, which typically has a higher success rate with the camera pose finder.
-            //tracking = FindCameraPoseAlignDepthFloatToReconstruction();
-            tracking = FindCameraPoseAlignPointClouds();
+			if (!cameraPoseFinderAvailable)
+			{
+				if (tracking == E_NUI_FUSION_TRACKING_ERROR)
+				{
+					WCHAR str[MAX_PATH];
+					swprintf_s(str, ARRAYSIZE(str), L"Kinect Fusion camera tracking FAILED! Align the camera to the last tracked position.");
+					SetStatusMessage(str);
+				}
+				else
+				{
+					SetStatusMessage(L"Kinect Fusion camera tracking call failed!");
+					goto FinishFrame;
+				}
+			}
+			else
+			{
+				// Here we try to find the correct camera pose, to re-localize camera tracking.
+				// We can call either the version using AlignDepthFloatToReconstruction or the version 
+				// using AlignPointClouds, which typically has a higher success rate with the camera pose finder.
+				//tracking = FindCameraPoseAlignDepthFloatToReconstruction();
+				tracking = FindCameraPoseAlignPointClouds();
 
-            if (FAILED(tracking) && tracking != E_NUI_FUSION_TRACKING_ERROR)
-            {
-                SetStatusMessage(L"Kinect Fusion FindCameraPose call failed.");
-                goto FinishFrame;
-            }
-        }
-    }
-    else
-    {
-        if (m_bTrackingHasFailedPreviously)
-        {
-            WCHAR str[MAX_PATH];
-            if (!m_paramsCurrent.m_bAutoFindCameraPoseWhenLost)
-            {
-                swprintf_s(str, ARRAYSIZE(str), L"Kinect Fusion camera tracking RECOVERED! Residual energy=%f", alignmentEnergy);
-            }
-            else
-            {
-                swprintf_s(str, ARRAYSIZE(str), L"Kinect Fusion camera tracking RECOVERED!");
-            }
-            SetStatusMessage(str);
-        }
+				if (FAILED(tracking) && tracking != E_NUI_FUSION_TRACKING_ERROR)
+				{
+					SetStatusMessage(L"Kinect Fusion FindCameraPose call failed.");
+					goto FinishFrame;
+				}
+			}
+		}
+		else
+		{
+			if (m_bTrackingHasFailedPreviously)
+			{
+				WCHAR str[MAX_PATH];
+				if (!m_paramsCurrent.m_bAutoFindCameraPoseWhenLost)
+				{
+					swprintf_s(str, ARRAYSIZE(str), L"Kinect Fusion camera tracking RECOVERED! Residual energy=%f", alignmentEnergy);
+				}
+				else
+				{
+					swprintf_s(str, ARRAYSIZE(str), L"Kinect Fusion camera tracking RECOVERED!");
+				}
+				SetStatusMessage(str);
+			}
 
-        m_worldToCameraTransform = calculatedCameraPose;
-        SetTrackingSucceeded();
-    }
+			m_worldToCameraTransform = calculatedCameraPose;
+			SetTrackingSucceeded();
+		}
 
-    if (m_paramsCurrent.m_bAutoResetReconstructionWhenLost &&
-        m_bTrackingFailed &&
-        m_cLostFrameCounter >= cResetOnNumberOfLostFrames)
-    {
-        // Automatically Clear Volume and reset tracking if tracking fails
-        hr = InternalResetReconstruction();
+		if (m_paramsCurrent.m_bAutoResetReconstructionWhenLost &&
+			m_bTrackingFailed &&
+			m_cLostFrameCounter >= cResetOnNumberOfLostFrames)
+		{
+			// Automatically Clear Volume and reset tracking if tracking fails
+			hr = InternalResetReconstruction();
 
-        if (SUCCEEDED(hr))
-        {
-            // Set bad tracking message
-            SetStatusMessage(
-                L"Kinect Fusion camera tracking failed, "
-                L"automatically reset volume.");
-        }
-        else
-        {
-            SetStatusMessage(L"Kinect Fusion Reset Reconstruction call failed.");
-            goto FinishFrame;
-        }
-    }
+			if (SUCCEEDED(hr))
+			{
+				// Set bad tracking message
+				SetStatusMessage(
+					L"Kinect Fusion camera tracking failed, "
+					L"automatically reset volume.");
+			}
+			else
+			{
+				SetStatusMessage(L"Kinect Fusion Reset Reconstruction call failed.");
+				goto FinishFrame;
+			}
+		}
 
+	}
     ////////////////////////////////////////////////////////
     // Integrate Depth Data into volume
 
@@ -2044,7 +2113,7 @@ FinishFrame:
 
 
 		if (m_perspectiveCamera == nullptr) {
-			ComputeRaytraceCamera(0, 0);
+			ComputeRaytraceCamera(0, 0, 0);
 		}
 		
 

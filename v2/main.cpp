@@ -213,6 +213,23 @@ LRESULT CALLBACK Scansify::DlgProc(
 		ScreenToClient(reconstructionWindow1, &pointPrev);
 		}
 		break;
+	case WM_MOUSEWHEEL: {
+		if ((short)GET_WHEEL_DELTA_WPARAM(wParam) > 0)
+		{
+			m_processor.ComputeRaytraceCamera(0, 0, 100); // move camera uniformly
+		}
+		else if ((short)GET_WHEEL_DELTA_WPARAM(wParam) < 0)
+		{
+			m_processor.ComputeRaytraceCamera(0, 0, -100); // move camera uniformly
+		}
+		else {
+			break;
+		}
+
+		// TODO scrolling more than one unit at a time resolves in concurrency problems with the raytracing part. Use locks
+		m_processor.RedrawRenderedImage();
+	}
+	break;
 	case WM_LBUTTONUP:{
 		POINT point;
 		GetCursorPos(&point);
@@ -231,10 +248,12 @@ LRESULT CALLBACK Scansify::DlgProc(
 			ProcessUI(1003, lParam); break;
 		}
 
-		if (diffX > 0)
-			m_processor.ComputeRaytraceCamera(diffX, 0);
+		auto key = GetKeyState(VK_LSHIFT); // key handler for left_shift
+
+		if (key == -128)
+			m_processor.ComputeRaytraceCamera(diffX, diffY, 0); // move camera uniformly
 		else
-			m_processor.ComputeRaytraceCamera(0, 0);
+			m_processor.ComputeRotationalRaytraceCamera(diffX, diffY);
 
 		m_processor.RedrawRenderedImage();
 
@@ -1063,11 +1082,6 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		// Initialize svghelper
 		delete m_params.m_svgHelper;
 		m_params.m_svgHelper = new SvgHelper();
-		m_processor.SetParams(m_params);
-		//m_params.m_bInitializeAnnotationMode = true;
-
-		//return;
-
 
 		SetStatusMessage(L"Reconstructing the mesh. Please wait...");
 
@@ -1125,6 +1139,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 			m_params.m_sceneStructure->rebuildIndex();
 			m_params.m_bInitializeAnnotationMode = true;
+			m_processor.SetParams(m_params);
 
 			printf("Acceleration structure built in %f seconds with %f polygons.\n", float(clock() - begin_time) / CLOCKS_PER_SEC, k);
 			

@@ -111,7 +111,12 @@ public:
 	/// <summary>
 	/// Compute the perspective camera and returns it
 	/// </summary>
-	void       ComputeRaytraceCamera(int x, int y);
+	void       ComputeRaytraceCamera(int x, int y, int z);
+
+	/// <summary>
+	/// Compute the perspective camera and returns it
+	/// </summary>
+	void       ComputeRotationalRaytraceCamera(int x, int y);
 
 	/// <summary>
 	/// Retrieves the current camera parameters
