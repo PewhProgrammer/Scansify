@@ -241,7 +241,7 @@ LRESULT CALLBACK Scansify::DlgProc(
 
 		int diffX = point.x - pointPrev.x;
 		int diffY = point.y - pointPrev.y;
-		printf("Distance difference: (%d,%d)\n", diffX, diffY);
+		//printf("Distance difference: (%d,%d)\n", diffX, diffY);
 
 		// 1003 is wParam for window click; process lParam as it remains unused
 		if (diffX == diffY && diffX == 0) {
@@ -249,11 +249,14 @@ LRESULT CALLBACK Scansify::DlgProc(
 		}
 
 		auto key = GetKeyState(VK_LSHIFT); // key handler for left_shift
+		printf("Key: %d\n" , key);
 
-		if (key == -128)
+		if (key < 0) {
 			m_processor.ComputeRaytraceCamera(diffX, diffY, 0); // move camera uniformly
+		}
 		else
 			m_processor.ComputeRotationalRaytraceCamera(diffX, diffY);
+
 
 		m_processor.RedrawRenderedImage();
 

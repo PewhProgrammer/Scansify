@@ -336,7 +336,8 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 	m_worldToCameraTransform.M42 += ((float)y) / 1000.f;
 	m_worldToCameraTransform.M43 += ((float)z) / 1000.f;
 
-	rt::Point camPosition = rt::Point(0.1f, 0, 0.2f);
+	rt::Point camPosition = rt::Point(0, 0, 0);
+	rt::Vector focal = rt::Vector(0, 0, 1);
 	rt::Matrix camParameters = rt::Matrix(
 		rt::Float4(m_worldToCameraTransform.M11, m_worldToCameraTransform.M21, m_worldToCameraTransform.M31, m_worldToCameraTransform.M41),
 		rt::Float4(m_worldToCameraTransform.M12, m_worldToCameraTransform.M22, m_worldToCameraTransform.M32, m_worldToCameraTransform.M42),
@@ -344,9 +345,21 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 		rt::Float4(m_worldToCameraTransform.M14, m_worldToCameraTransform.M24, m_worldToCameraTransform.M34, m_worldToCameraTransform.M44)
 	);
 
+	// apply configured camera props to Master camera
+	/*m_worldToCameraTransform = {
+		1.f , -0.03f , -0.03f, -2.26f,
+	-0.007f, -0.85f, 0.51f, -0.31f, 
+	-0.04f, -0.5f, -0.85f, -0.01f,
+	0.f,0.f,0.f,1.f};*/
+
+
+
 	camPosition = camParameters * camPosition;
+	focal = camParameters * focal;
+	//camPosition = rt::Point(0.1f, -0.18f, 0.048f);
 	delete m_perspectiveCamera;
-	m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, rt::Vector(0, 0, 1), rt::Vector(0, 1, 0), fovy, fovy * ratio);
+	m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, focal, rt::Vector(0, 1, 0), fovy, fovy * ratio);
+	printf("After camera position: (%f, %f, %f)           ", camPosition.x, camPosition.y, camPosition.z);
 
 	return;
 }
@@ -364,13 +377,11 @@ void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 	float fovy = 0.785398163397f * 2; // in rad
 	float ratio = (float)resX / (float)resY;
 
-	printf("matrix value M41: %f           ", m_worldToCameraTransform.M41);
 	//m_worldToCameraTransform.M41 += ((float)x) / 1000.f;
 	//m_worldToCameraTransform.M42 += ((float)y) / 1000.f;
 
 	x += ((float)x) / 1000.f;
 	y += ((float)y) / 1000.f;
-	printf("After matrix value M41: %f \n", m_worldToCameraTransform.M41);
 
 	rt::Point camPosition = rt::Point(0.1f, 0, 0.2f);
 	rt::Matrix camParameters = rt::Matrix(
@@ -406,7 +417,7 @@ void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 		ch[0][2], ch[1][2], ch[2][2], ch[3][2],
 		ch[0][3], ch[1][3], ch[2][3], ch[3][3], };
 
-	printf("camera position: (%f, %f, %f)           ", camPosition.x, camPosition.y, camPosition.z);
+	printf("camera position: (%f, %f, %f)           ", m_perspectiveCamera->center.x, m_perspectiveCamera->center.y, m_perspectiveCamera->center.z);
 	camPosition = rt::product(camParameters, xRotation) * camPosition;
 	printf("After camera position: (%f, %f, %f)           ", camPosition.x, camPosition.y, camPosition.z);
 	delete m_perspectiveCamera;
@@ -2112,9 +2123,7 @@ FinishFrame:
 		m_annotationCoordinates.empty();
 
 
-		if (m_perspectiveCamera == nullptr) {
-			ComputeRaytraceCamera(0, 0, 0);
-		}
+		if (m_perspectiveCamera == nullptr) ComputeRaytraceCamera(0, 0, 0); // initialize camera parameters
 		
 
 		float minY = FLT_MAX;
@@ -2124,9 +2133,6 @@ FinishFrame:
 		float maxX = -FLT_MAX;
 
 		UINT16 hitCount = 0;
-
-		//omp_set_nested(1);
-
 		const clock_t begin_time = clock();
 
 		#pragma omp for schedule(dynamic,1) 
@@ -2146,7 +2152,6 @@ FinishFrame:
 						FLT_MAX);
 
 					if (hit) {
-						//printf("Wow, it actually hit at %f distance \n", hit.distance);
 						hitCount++;
 						if (scaleY < minY) minY = scaleY;
 						if (scaleY > maxY) maxY = scaleY;
@@ -2177,8 +2182,8 @@ FinishFrame:
 					else {
 						for (int coord = 0; coord < 3; coord++) {
 							
-							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = 0.2f;
-							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = 0.4f;
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = 0.f;
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = 0.f;
 						}
 					}
 			}
@@ -2198,7 +2203,6 @@ FinishFrame:
 			SetStatusMessage(L"Kinect Fusion CalculatePointCloud call failed.");
 			goto FinishFrame;
 		}
-
 
 		hr = NuiFusionShadePointCloud(
 			&rayCastPointCloud,
