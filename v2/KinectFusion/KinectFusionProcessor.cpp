@@ -374,8 +374,6 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 /// </summary>
 void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 {
-	// TODO It works, but we rotate around origin and the model is 0.5 in z direction <- need to use this
-	// TODO somehow the model changes it color upon rotation, really weird
 	UINT resX = m_pRaycastPointCloud->width, resY = m_pRaycastPointCloud->height;
 	float fovy = 0.785398163397f * 2; // in rad
 	float ratio = (float)resX / (float)resY;
@@ -424,6 +422,8 @@ void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 		ch[0][2], ch[1][2], ch[2][2], ch[3][2],
 		ch[0][3], ch[1][3], ch[2][3], ch[3][3], };
 
+
+	// TODO Origin rotation is right, just need to adjust up and focal vector
 	rt::Vector focal = rt::Vector(0, 0, 1);
 	rt::Vector up = rt::Vector(0, 1, 0);
 	up = rt::product(camParameters, xRotation) * up;
