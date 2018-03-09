@@ -16,9 +16,9 @@ namespace rt {
 		bc = C - B;
 		ac = C - A;
 
-		this->normals[0] = normals[0].normalize();
-		this->normals[1] = normals[1].normalize();
-		this->normals[2] = normals[2].normalize();
+		this->normals[0] = -normals[0].normalize();
+		this->normals[1] = -normals[1].normalize();
+		this->normals[2] = -normals[2].normalize();
 
 		this->planeNormal = cross(ab, ac).normalize();
 

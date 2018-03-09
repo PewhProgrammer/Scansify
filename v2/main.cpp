@@ -249,7 +249,7 @@ LRESULT CALLBACK Scansify::DlgProc(
 		}
 
 		auto key = GetKeyState(VK_LSHIFT); // key handler for left_shift
-		printf("Key: %d\n" , key);
+		printf("\n");
 
 		if (key < 0) {
 			m_processor.ComputeRaytraceCamera(diffX, diffY, 0); // move camera uniformly
