@@ -18,6 +18,7 @@ private:
 public:
 	Point center;
 	Vector forward;
+	Vector up;
 	PerspectiveCamera();
 	PerspectiveCamera(
 		const Point& center,

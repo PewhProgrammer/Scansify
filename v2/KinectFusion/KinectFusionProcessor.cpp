@@ -332,14 +332,18 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 	float fovy = 0.785398163397f * 2; // in rad
 	float ratio = (float)resX / (float)resY;
 
-	m_worldToCameraTransform.M41 += ((float)x)/ 1000.f;
-	m_worldToCameraTransform.M42 += ((float)y) / 1000.f;
-	m_worldToCameraTransform.M43 += ((float)z) / 1000.f;
 
+	// camera point set to world camera position
+	rt::Point camPosition = rt::Point(0, 0, 0); // A
+	rt::Point centroidModel = rt::Point(0, 0, 0.5f); // B
+	rt::Vector ab = rt::Point::rep(0.f) - centroidModel; // From B to A
 		
 
-	rt::Point camPosition = rt::Point(0, 0, 0);
 	rt::Vector focal = rt::Vector(0, 0, 1);
+
+	m_worldToCameraTransform.M41 += ((float)x) / 1000.f;
+	m_worldToCameraTransform.M42 += ((float)y) / 1000.f;
+	m_worldToCameraTransform.M43 += ((float)z) / 1000.f;
 
 	rt::Matrix camParameters = rt::Matrix(
 		rt::Float4(m_worldToCameraTransform.M11, m_worldToCameraTransform.M12, m_worldToCameraTransform.M13, m_worldToCameraTransform.M14),
@@ -348,13 +352,25 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 		rt::Float4(m_worldToCameraTransform.M41, m_worldToCameraTransform.M42, m_worldToCameraTransform.M43, m_worldToCameraTransform.M44)
 	).transpose();
 
-	  // apply configured camera props to Master camera
-	/*m_worldToCameraTransform = {
-		1.f , -0.03f , -0.03f, -2.26f,
-		-0.007f, -0.85f, 0.51f, -0.31f,
-		-0.04f, -0.5f, -0.85f, -0.01f,
-		0.f,0.f,0.f,1.f };
-		*/
+	/*
+
+	// X-Axis rotation null
+	rt::Matrix xRotation = rt::Matrix(
+		rt::Float4(1, 0, 0, 0),
+		rt::Float4(0, 1, 0, 0),
+		rt::Float4(0, 0,1, 0),
+		rt::Float4(0, 0, 0, 1)
+	);
+
+	camPosition = rt::product(camParameters, xRotation)  * (camPosition + ab);
+	camPosition = camPosition + (centroidModel - rt::Point::rep(0.f)); // put into original position
+
+
+
+	camPosition.x = ((float)x) / 1000.f;
+	camPosition.y = ((float)y) / 1000.f;
+	camPosition.z = ((float)z) / 1000.f;
+	*/
 
 	camPosition = camParameters * camPosition;
 	focal = camParameters * focal;
@@ -374,6 +390,7 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 /// </summary>
 void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 {
+
 	UINT resX = m_pRaycastPointCloud->width, resY = m_pRaycastPointCloud->height;
 	float fovy = 0.785398163397f * 2; // in rad
 	float ratio = (float)resX / (float)resY;
@@ -382,12 +399,8 @@ void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 	//m_worldToCameraTransform.M42 += ((float)y) / 1000.f;
 
 	auto x_axis = ((float)x) / 1000.f;
-	auto y_axis =  ((float)y) / 1000.f;
+	auto y_axis =  (((float)y) / 1000.f) * -1.f;
 
-	// camera point has to be zero, but is now z:0.2f because rotation of origin is nulled
-	rt::Point camPosition = rt::Point(0, 0, 0); // A
-	rt::Point centroidModel = rt::Point(0, 0, 0.5f); // B
-	rt::Vector ab = camPosition - centroidModel; // From B to A
 
 	rt::Matrix camParameters = rt::Matrix(
 		rt::Float4(m_worldToCameraTransform.M11, m_worldToCameraTransform.M12, m_worldToCameraTransform.M13, m_worldToCameraTransform.M14),
@@ -395,6 +408,11 @@ void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 		rt::Float4(m_worldToCameraTransform.M31, m_worldToCameraTransform.M32, m_worldToCameraTransform.M33, m_worldToCameraTransform.M34),
 		rt::Float4(m_worldToCameraTransform.M41, m_worldToCameraTransform.M42, m_worldToCameraTransform.M43, m_worldToCameraTransform.M44)
 	).transpose();
+
+	// camera point set to world camera position
+	rt::Point camPosition = rt::Point(m_worldToCameraTransform.M41, m_worldToCameraTransform.M42, m_worldToCameraTransform.M43); // A
+	rt::Point centroidModel = rt::Point(0, 0, 0.8f); // B
+	rt::Vector ab = rt::Point::rep(0.f) - centroidModel; // From B to A
 
 	// X-Axis rotation
 	rt::Matrix xRotation = rt::Matrix(
@@ -416,28 +434,49 @@ void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 	//rotatedMasterCamera = rt::product(rotatedMasterCamera, yRotation);
 
 	// apply configured camera props to Master camera
+	/*
 	m_worldToCameraTransform = {	
 		ch[0][0], ch[1][0], ch[2][0], ch[3][0],
 		ch[0][1], ch[1][1], ch[2][1], ch[3][1],
 		ch[0][2], ch[1][2], ch[2][2], ch[3][2],
 		ch[0][3], ch[1][3], ch[2][3], ch[3][3], };
+		*/
 
 
 	// TODO Origin rotation is right, just need to adjust up and focal vector
-	rt::Vector focal = rt::Vector(0, 0, 1);
-	rt::Vector up = rt::Vector(0, 1, 0);
-	up = rt::product(camParameters, xRotation) * up;
-	focal = rt::product(camParameters, xRotation) * focal;
+	rt::Vector focal = m_perspectiveCamera->forward;
+	rt::Vector up = m_perspectiveCamera->up;
+
+
+	// TODO focal and up vector does not change properly
+	focal = rt::Vector(0, 1, 0);
+	up = rt::Vector(0, 0, -1);
+	//up = rt::product(camParameters, xRotation) * up;
+	//focal = (rt::product(camParameters, xRotation) * focal).normalize();
 
 	//printf("camera position: (%f, %f, %f)           ", m_perspectiveCamera->center.x, m_perspectiveCamera->center.y, m_perspectiveCamera->center.z);
-	camPosition = rt::product(camParameters, xRotation)  * (camPosition + ab);
-	camPosition = camPosition + (centroidModel - rt::Point(0, 0, 0)); // put into original position
+	camPosition = xRotation  * (camPosition + ab);
+	camPosition = camPosition + (centroidModel - rt::Point::rep(0.f)); // put into original position
+
+	//camPosition = rt::Point(0.11f, -0.48f, 0.25f); // A
+
+	//store camPosition into world camera
+	
+	m_worldToCameraTransform.M41 = camPosition.x;
+	m_worldToCameraTransform.M42 = camPosition.y;
+	m_worldToCameraTransform.M43 = camPosition.z;
+	
+	rt::Vector lookAt = (centroidModel - camPosition).normalize();
 
 	printf("Camera position: (%f, %f, %f)           \n", camPosition.x, camPosition.y, camPosition.z);
-	printf("Focal direction: (%f, %f, %f)           \n", focal.x, focal.y, focal.z);
+	printf("Focal direction: (%f, %f, %f)        ", focal.x, focal.y, focal.z);			printf("direction to model centroid: (%f, %f, %f)    \n", lookAt.x, lookAt.y, lookAt.z);
 	printf("Up direction: (%f, %f, %f)           \n", up.x, up.y, up.z);
+	printf("check: %f          \n", rt::dot(focal,up));
+
+
 	delete m_perspectiveCamera;
 	m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, focal, up, fovy, fovy * ratio);
+
 
 	return;
 }

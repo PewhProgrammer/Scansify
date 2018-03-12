@@ -16,6 +16,7 @@ namespace rt {
 
 		this->center = center;  
 		this->forward = forward.normalize();
+		this->up = up.normalize();
 
 		float k = tan(horizonalOpeningAngle * 0.5f);
 
