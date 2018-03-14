@@ -216,17 +216,18 @@ LRESULT CALLBACK Scansify::DlgProc(
 	case WM_MOUSEWHEEL: {
 		if ((short)GET_WHEEL_DELTA_WPARAM(wParam) > 0)
 		{
-			m_processor.ComputeRaytraceCamera(0, 0, 100); // move camera uniformly
+			m_processor.ComputeRaytraceCamera(0, 0, -100); // move camera uniformly
 		}
 		else if ((short)GET_WHEEL_DELTA_WPARAM(wParam) < 0)
 		{
-			m_processor.ComputeRaytraceCamera(0, 0, -100); // move camera uniformly
+			m_processor.ComputeRaytraceCamera(0, 0, 100); // move camera uniformly
 		}
 		else {
 			break;
 		}
 
 		// TODO scrolling more than one unit at a time resolves in concurrency problems with the raytracing part. Use locks
+		// Does not happen in release!!
 		m_processor.RedrawRenderedImage();
 	}
 	break;
@@ -239,7 +240,7 @@ LRESULT CALLBACK Scansify::DlgProc(
 
 		ScreenToClient(reconstructionWindow2, &point);
 
-		int diffX = point.x - pointPrev.x;
+		int diffX = pointPrev.x - point.x;
 		int diffY = point.y - pointPrev.y;
 		//printf("Distance difference: (%d,%d)\n", diffX, diffY);
 
@@ -252,7 +253,7 @@ LRESULT CALLBACK Scansify::DlgProc(
 		printf("\n");
 
 		if (key < 0) {
-			m_processor.ComputeRaytraceCamera(diffX, diffY, 0); // move camera uniformly
+			m_processor.ComputeRaytraceCamera(diffX * -1, diffY, 0); // move camera uniformly
 		}
 		else
 			m_processor.ComputeRotationalRaytraceCamera(diffX, diffY);
@@ -1071,12 +1072,10 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
 			
 			if (hit) {
-				printf("Hit detected!\n" );
+				printf("Hit detected at: (%f, %f, %f)!\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z);
 				hit.solid->m_bAnnotated = true;
 			}
-			float k = 2;
 		}
-		float k = 2;
 	}
 
 	// If starting annotation process
@@ -1140,7 +1139,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 			
 
-			m_params.m_sceneStructure->rebuildIndex();
+			m_params.m_sceneStructure->rebuildIndex();	
 			m_params.m_bInitializeAnnotationMode = true;
 			m_processor.SetParams(m_params);
 
