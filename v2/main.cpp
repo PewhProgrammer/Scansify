@@ -214,6 +214,17 @@ LRESULT CALLBACK Scansify::DlgProc(
 		}
 		break;
 	case WM_MOUSEWHEEL: {
+		// If annotation mode disabled, disable camera steering
+		//if (!m_params.m_bInitializeAnnotationMode) break;
+
+		unsigned int processId = m_params.m_cReconstructionFrameProcessId++;
+		while (m_params.m_bReconstructionFrameLock) {
+			if (processId != m_params.m_cReconstructionFrameLockId); // sleep
+			else break;
+		}
+
+		m_params.m_bReconstructionFrameLock = true;
+
 		if ((short)GET_WHEEL_DELTA_WPARAM(wParam) > 0)
 		{
 			m_processor.ComputeRaytraceCamera(0, 0, -100); // move camera uniformly
@@ -226,12 +237,15 @@ LRESULT CALLBACK Scansify::DlgProc(
 			break;
 		}
 
-		// TODO scrolling more than one unit at a time resolves in concurrency problems with the raytracing part. Use locks
-		// Does not happen in release!!
 		m_processor.RedrawRenderedImage();
+		m_params.m_cReconstructionFrameLockId = processId + 1;
+		m_params.m_bReconstructionFrameLock = false;
 	}
 	break;
 	case WM_LBUTTONUP:{
+		// If annotation mode disabled, disable camera steering
+		if (!m_params.m_bInitializeAnnotationMode) break;
+
 		POINT point;
 		GetCursorPos(&point);
 		RECT rect2;
@@ -390,7 +404,7 @@ void Scansify::HandleCompletedFrame()
 					m_pDrawReconstruction->DrawAnnotationOnModel(m_processor.ConsumeAnnotationCoordinates()); // if no annotation happen, dont change the current output
 				}	
 
-				// TODO move this to the consumeViewRendered Condition
+				// TODO move this to the consumeViewRendered Condition. optionally
 				m_pDrawTrackingResiduals->DrawSVG(m_params.m_svgHelper);
 
 				// as comparisson
@@ -921,6 +935,8 @@ rt::Point(-4,10,-34),rt::Point(-7,10,-36),rt::Point(- 10,10,-36),rt::Point(- 14,
 rt::Point(- 26,10,-20),rt::Point(- 26,6,-20),rt::Point(- 20,0,-20),rt::Point(- 20,-5,-15),rt::Point(- 20,-5,-10),rt::Point(- 20,0,-5),rt::Point(- 20,10,0),
 rt::Point(-20,20,0), rt::Point(-20,40,0),rt::Point(0,40,0)
 };
+
+vector<const rt::SmoothTriangle*> m_vAnnotatedObjects;
 vector<rt::Point> data3D(points, points + sizeof(points) / sizeof(points[0]));
 
 /// <summary>
@@ -993,9 +1009,16 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
     // If it was the reset button clicked, clear the volume
     if (IDC_BUTTON_RESET_RECONSTRUCTION == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
-        // Un-check pause
-        CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
-        m_processor.ResetReconstruction();
+		if (m_params.m_bInitializeAnnotationMode) {
+			// reset camera
+			m_processor.ResetCamera();
+			m_processor.RedrawRenderedImage();
+		}
+		else {
+			// Un-check pause
+			CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
+			m_processor.ResetReconstruction();
+		}
     }
 
 	// If clicked on reconstruction window, compute screen coordinate
@@ -1018,14 +1041,30 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			y = ((double)(point.y - 0.f) / (height - 0.f)) * (1.f + 1.f) - 1.f;
 
 			//p.x and p.y are now relative to hwnd's client area
-			printf("Clicked on: (%6.3f,%6.3f) \n", x,y);
+			//printf("Clicked on: (%6.3f,%6.3f) \n", x,y);
 		}
 
+
+		// if structure has been built
+		if (m_params.m_sceneStructure != nullptr && m_params.m_sceneStructure->built_flag) {
+			rt::Ray r = (m_processor.GetRaytraceCamera())->getPrimaryRay((float)x, (float)y);
+			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
+			
+			if (hit) {
+				printf("Hit detected at coordinate (%f, %f, %f)\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z);
+				hit.solid->m_bAnnotated = true;
+				m_vAnnotatedObjects.push_back(hit.solid);
+				m_processor.RedrawRenderedImage();
+			}
+		}
 
 		////////////// AUTOMATICALLY PROCESS HIT IN TEST PHASE /////////////////////
 		///			   http://www.karldiab.com/3DPointPlotter/		to see tongue plot in 3D ///
 
-		auto marked = m_processor.GetAnnotatedObjects();
+
+		// TODO Unwraps along the wrong axis. In this iteration, Y gets discarded but it has to be Z
+		//auto marked = m_processor.GetAnnotatedObjects();
+		auto marked = m_vAnnotatedObjects;
 		if (marked.size() > 1) {
 			clicks++;
 			rt::Point prev = marked[clicks - 1]->sample();
@@ -1040,8 +1079,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			// change direction flag if following vector would be crossing the z-axis because we are moving in x-axis 
 			// it's important to evaluate how we add the y value to the x one
 			auto dynamic = rt::dot(vec.normalize(), rt::Vector(0, -1, 0));
-			if (dynamic < 0)
-				m_params.m_svgHelper->m_bDirectionFlagX != m_params.m_svgHelper->m_bDirectionFlagX;
+			if (dynamic < 0)	m_params.m_svgHelper->m_bDirectionFlagX = !m_params.m_svgHelper->m_bDirectionFlagX;
 
 			//printf("dynamic: %f \n", dynamic);
 
@@ -1049,7 +1087,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			float diff = marked[0]->sample().y - curr.y;
 			float storedY = vec.y;
 			vec.y = 0;
-			if (m_params.m_svgHelper->getDirectionX(dynamic,vec.x)) {
+			if (m_params.m_svgHelper->getDirectionX(dynamic, vec.x)) {
 				vec.x += std::abs(storedY);
 			}
 			else {
@@ -1064,89 +1102,146 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			m_params.m_svgHelper->addData(curr.x, curr.z);
 		}
 
-
-
-		// if structure has been built
-		if (m_params.m_sceneStructure != nullptr && m_params.m_sceneStructure->built_flag) {
-			rt::Ray r = (m_processor.GetRaytraceCamera())->getPrimaryRay((float)x, (float)y);
-			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
-			
-			if (hit) {
-				printf("Hit detected at: (%f, %f, %f)!\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z);
-				hit.solid->m_bAnnotated = true;
-			}
-		}
 	}
 
 	// If starting annotation process
 	if (IDC_BUTTON_MESH_DRAWING == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
 	{
-		// Initialize svghelper
-		delete m_params.m_svgHelper;
-		m_params.m_svgHelper = new SvgHelper();
+		// check if we are in annotation mode
+		if (m_params.m_bInitializeAnnotationMode) {
+			m_params.m_bInitializeAnnotationMode = false;
 
-		SetStatusMessage(L"Reconstructing the mesh. Please wait...");
+			// Show all unecessary window components //
+			ShowWindow(GetDlgItem(m_hWnd, IDC_RECON_VOLUME_SETTINGS_BOX), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_VOXELS_PER_METER_BOX), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_BOX), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_VOLUME_RESOLUTION_BOX), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_DEPTH_THRESHOLD_GROUP), SW_SHOW);
 
-		// Pause integration while we're saving
-		bool wasPaused = m_params.m_bPauseIntegration;
-		m_params.m_bPauseIntegration = true;
-		m_processor.SetParams(m_params);
+			// controls
+			ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_SLIDER), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_SHOW);
 
-		// Release the mesh from previous reconstruction
-		SafeRelease(m_params.m_pMesh);
+			//labels
+			ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_X_AXIS), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Y_AXIS), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Z_AXIS), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_TEXT), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_TEXT), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_DIST_TEXT), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_SHOW);
 
-		// Release the mesh in KinectFusionProcessor
-		HRESULT hr = m_processor.CalculateMesh(&m_params.m_pMesh);
+			// Change label names
+			SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Start Annotation");
+			SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Reconstruction");
+		}
+		else {
+			// Initialize svghelper
+			delete m_params.m_svgHelper;
+			m_params.m_svgHelper = new SvgHelper();
 
-		SetStatusMessage(L"Building acceleration structure...");
-		const clock_t begin_time = clock();
+			SetStatusMessage(L"Reconstructing the mesh. Please wait...");
 
-		if (SUCCEEDED(hr))
-		{
-			m_params.m_sceneStructure = new rt::BVH();
-
-			INuiFusionColorMesh* mesh = m_params.m_pMesh;
-
-			const Vector3 *vertices = nullptr;
-			const Vector3 *normals = nullptr;
-
-			unsigned int numVertices = mesh->VertexCount();
-			unsigned int numTriangles = numVertices / 3;
-
-			mesh->GetVertices(&vertices);
-			mesh->GetNormals(&normals);
-
-			
-
-			// Iterate over generated mesh buffer and put data into vector
-			float k = 0;
-			for (unsigned int t = 0; t < numTriangles; ++t)
-			{
-				k++;
-				rt::Point vertex[3];
-				rt::Vector normal[3];
-
-				// Sequentially write the 3 vertices and normals of the triangle, for each triangle
-				for (unsigned int v = 0; v<3; v++)
-				{
-					vertex[v] = rt::Point(vertices[(t * 3) + v].x, vertices[(t * 3) + v].y, vertices[(t * 3) + v].z);
-					normal[v] = rt::Vector(normals[(t * 3) + v].x, normals[(t * 3) + v].y, normals[(t * 3) + v].z);
-				}
-				rt::SmoothTriangle* smoothT = new rt::SmoothTriangle(vertex, normal);
-				//smoothT->m_bAnnotated = true;
-				m_params.m_sceneStructure->add(smoothT);
-			}
-
-			
-
-			m_params.m_sceneStructure->rebuildIndex();	
-			m_params.m_bInitializeAnnotationMode = true;
+			// Pause integration while we're saving
+			bool wasPaused = m_params.m_bPauseIntegration;
+			m_params.m_bPauseIntegration = true;
 			m_processor.SetParams(m_params);
 
-			printf("Acceleration structure built in %f seconds with %f polygons.\n", float(clock() - begin_time) / CLOCKS_PER_SEC, k);
-			
+			// Release the mesh from previous reconstruction
+			SafeRelease(m_params.m_pMesh);
+
+			// Release the mesh in KinectFusionProcessor
+			HRESULT hr = m_processor.CalculateMesh(&m_params.m_pMesh);
+
+			SetStatusMessage(L"Building acceleration structure...");
+			const clock_t begin_time = clock();
+
+			if (SUCCEEDED(hr))
+			{
+				m_params.m_sceneStructure = new rt::BVH();
+
+				INuiFusionColorMesh* mesh = m_params.m_pMesh;
+
+				const Vector3 *vertices = nullptr;
+				const Vector3 *normals = nullptr;
+
+				unsigned int numVertices = mesh->VertexCount();
+				unsigned int numTriangles = numVertices / 3;
+
+				mesh->GetVertices(&vertices);
+				mesh->GetNormals(&normals);
+
+
+
+				// Iterate over generated mesh buffer and put data into vector
+				float k = 0;
+				for (unsigned int t = 0; t < numTriangles; ++t)
+				{
+					k++;
+					rt::Point vertex[3];
+					rt::Vector normal[3];
+
+					// Sequentially write the 3 vertices and normals of the triangle, for each triangle
+					for (unsigned int v = 0; v<3; v++)
+					{
+						vertex[v] = rt::Point(vertices[(t * 3) + v].x, vertices[(t * 3) + v].y, vertices[(t * 3) + v].z);
+						normal[v] = rt::Vector(normals[(t * 3) + v].x, normals[(t * 3) + v].y, normals[(t * 3) + v].z);
+					}
+					rt::SmoothTriangle* smoothT = new rt::SmoothTriangle(vertex, normal);
+					//smoothT->m_bAnnotated = true;
+					m_params.m_sceneStructure->add(smoothT);
+				}
+
+				m_params.m_sceneStructure->rebuildIndex();
+				m_params.m_bInitializeAnnotationMode = true;
+				m_processor.SetParams(m_params);
+
+
+				// Hide all unecessary window components //
+				ShowWindow(GetDlgItem(m_hWnd, IDC_RECON_VOLUME_SETTINGS_BOX), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_VOXELS_PER_METER_BOX), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_BOX), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_VOLUME_RESOLUTION_BOX), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_DEPTH_THRESHOLD_GROUP), SW_HIDE);
+
+				// controls
+				ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_SLIDER), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_HIDE);
+
+				//labels
+				ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_X_AXIS), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Y_AXIS), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Z_AXIS), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_TEXT), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_TEXT), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_DIST_TEXT), SW_HIDE);
+				ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_HIDE);
+
+				// Change label names
+				SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Back to Reconstruction");
+				SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Camera");
+
+
+				printf("Acceleration structure built in %f seconds with %f polygons.\n", float(clock() - begin_time) / CLOCKS_PER_SEC, k);
+				m_processor.RedrawRenderedImage();
+			}
+			else SetStatusMessage(L"Failed to create mesh of reconstruction.");
 		}
-		else SetStatusMessage(L"Failed to create mesh of reconstruction.");
+
 		
 	}
 

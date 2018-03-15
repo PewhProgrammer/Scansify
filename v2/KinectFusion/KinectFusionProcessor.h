@@ -80,6 +80,12 @@ public:
     /// <returns>S_OK on success, otherwise failure code</returns>
     HRESULT                     ResetReconstruction();
 
+	/// <summary>
+	/// Reset the camera pose.
+	/// </summary>
+	/// <returns>S_OK on success, otherwise failure code</returns>
+	HRESULT                     ResetCamera();
+
     /// <summary>
     /// Calculate a mesh for the current volume.
     /// </summary>
@@ -419,6 +425,7 @@ private:
 
 	bool						m_bAnnotationKeep;
 	bool						m_bReconstructionViewRender;
+	float						m_fReconstructionFrameRatio;
 	vector<std::pair
 		<float,float>>			m_annotationCoordinates;
 	vector<const

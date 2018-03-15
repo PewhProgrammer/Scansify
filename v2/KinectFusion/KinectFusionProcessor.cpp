@@ -120,7 +120,8 @@ KinectFusionProcessor::KinectFusionProcessor() :
     m_coordinateMappingChangedEvent(NULL),
     m_bHaveValidCameraParameters(false),
 	m_bAnnotationKeep(true),
-	m_perspectiveCamera(nullptr)
+	m_perspectiveCamera(nullptr),
+	m_fReconstructionFrameRatio(0)
 {
     // Initialize synchronization objects
     InitializeCriticalSection(&m_lockParams);
@@ -328,35 +329,31 @@ bool KinectFusionProcessor::ConsumeViewRendered() {
 /// </summary>
 void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 {
-	UINT resX = m_pRaycastPointCloud->width, resY = m_pRaycastPointCloud->height;
+	if (m_fReconstructionFrameRatio == 0) return;
+
+
 	float fovy = 0.785398163397f * 2; // in rad
-	float ratio = (float)resX / (float)resY;
-	rt::Point camPosition = rt::Point(0, 0, 0); // A
-
-
-	m_worldToCameraTransform.M41 -= ((float)x) / 1000.f;
-	m_worldToCameraTransform.M42 -= ((float)y) / 1000.f;
-	m_worldToCameraTransform.M43 -= ((float)z) / 1000.f;
-
-
-	rt::Matrix camParameters = rt::Matrix(
-		rt::Float4(m_worldToCameraTransform.M11, m_worldToCameraTransform.M12, m_worldToCameraTransform.M13, m_worldToCameraTransform.M14),
-		rt::Float4(m_worldToCameraTransform.M21, m_worldToCameraTransform.M22, m_worldToCameraTransform.M23, m_worldToCameraTransform.M24),
-		rt::Float4(m_worldToCameraTransform.M31, m_worldToCameraTransform.M32, m_worldToCameraTransform.M33, m_worldToCameraTransform.M34),
-		rt::Float4(m_worldToCameraTransform.M41, m_worldToCameraTransform.M42, m_worldToCameraTransform.M43, m_worldToCameraTransform.M44)
-	).transpose();
-
+	//rt::Point camPosition = rt::Point(0, 0, 0); // A
 
 	rt::Vector up = (m_perspectiveCamera != nullptr) ? m_perspectiveCamera->up : rt::Vector(0,-1,0);
 	rt::Vector focal = (m_perspectiveCamera != nullptr) ?  m_perspectiveCamera->forward : rt::Vector(0,0,1);
 
+	auto zooming = focal * ((float)z) / 1000.f;
+
+	m_worldToCameraTransform.M41 -= (((float)x) / 1000.f) + zooming.x;
+	m_worldToCameraTransform.M42 -= (((float)y) / 1000.f) + zooming.y;
+	m_worldToCameraTransform.M43 -= zooming.z;
+
+
 	// camera point set to world camera position
-	camPosition = camParameters * camPosition;
+	rt::Point camPosition = rt::Point(m_worldToCameraTransform.M41,
+		m_worldToCameraTransform.M42,
+		m_worldToCameraTransform.M43);
 
 	delete m_perspectiveCamera;
-	m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, focal, up, fovy, fovy * ratio);
-	printf("Camera position + Shift: (%f, %f, %f) \n", camPosition.x, camPosition.y, camPosition.z);
-	printf("Focal direction: (%f, %f, %f)           \n", focal.x, focal.y, focal.z);
+	m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, focal, up, fovy, fovy * m_fReconstructionFrameRatio);
+	//printf("Camera position + Shift: (%f, %f, %f) \n", camPosition.x, camPosition.y, camPosition.z);
+	//printf("Focal direction: (%f, %f, %f)           \n", focal.x, focal.y, focal.z);
 
 	return;
 }
@@ -368,11 +365,10 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 /// </summary>
 void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 {
+	if (m_fReconstructionFrameRatio == 0) return;
 
-	UINT resX = m_pRaycastPointCloud->width, resY = m_pRaycastPointCloud->height;
+
 	float fovy = 0.785398163397f * 2; // in rad
-	float ratio = (float)resX / (float)resY;
-
 	auto x_axis = ((float)x) / 1000.f;
 	auto y_axis =  (((float)y) / 1000.f);
 
@@ -386,7 +382,8 @@ void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 
 	// camera point set to world camera position
 	rt::Point camPosition = rt::Point(m_worldToCameraTransform.M41, m_worldToCameraTransform.M42, m_worldToCameraTransform.M43); // A
-	rt::Point centroidModel = rt::Point(0, 0, 0.8f); // B
+	auto modelBox = m_paramsCurrent.m_sceneStructure->getBounds(); 
+	rt::Point centroidModel = modelBox.min + (modelBox.diagonal() * 0.5f); // B
 	rt::Vector ab = rt::Point::rep(0.f) - centroidModel; // From B to A
 
 	// X-Axis rotation
@@ -421,17 +418,13 @@ void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 	m_worldToCameraTransform.M42 = camPosition.y;
 	m_worldToCameraTransform.M43 = camPosition.z;
 	
-	rt::Vector lookAt = (centroidModel - camPosition).normalize();
-
-	printf("Camera position: (%f, %f, %f)      \n", camPosition.x, camPosition.y, camPosition.z);
-	printf("Focal direction: (%f, %f, %f)    ", focal.x, focal.y, focal.z);			printf("direction to model centroid: (%f, %f, %f)  \n", lookAt.x, lookAt.y, lookAt.z);
-	printf("Up direction: (%f, %f, %f)      \n", up.x, up.y, up.z);
-	printf("check: %f          \n", rt::dot(focal,up));
-
+	//printf("Camera position: (%f, %f, %f)      \n", camPosition.x, camPosition.y, camPosition.z);
+	//printf("Focal direction: (%f, %f, %f)    ", focal.x, focal.y, focal.z);			printf("direction to model centroid: (%f, %f, %f)  \n", lookAt.x, lookAt.y, lookAt.z);
+	//printf("Up direction: (%f, %f, %f)      \n", up.x, up.y, up.z);
+	//printf("check: %f          \n", rt::dot(focal,up));
 
 	delete m_perspectiveCamera;
-	m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, focal, up, fovy, fovy * ratio);
-
+	m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, focal, up, fovy, fovy * m_fReconstructionFrameRatio);
 
 	return;
 }
@@ -833,6 +826,8 @@ HRESULT KinectFusionProcessor::OnCoordinateMappingChanged()
     UpdateIntrinsics(m_pDownsampledSmoothDepthFloatImage, &m_cameraParameters);
     UpdateIntrinsics(m_pDepthPointCloud, &m_cameraParameters);
     UpdateIntrinsics(m_pDownsampledDepthPointCloud, &m_cameraParameters);
+
+	m_fReconstructionFrameRatio = ((float)m_pRaycastPointCloud->width / (float)m_pRaycastPointCloud->height);
 
     if (nullptr == m_pDepthUndistortedPixelBuffer)
     {
@@ -2212,7 +2207,7 @@ FinishFrame:
 		}
 
 
-		printf("z-axis box of model : (%f, %f) \n", minZModel, maxZModel);
+		//printf("z-axis box of model : (%f, %f) \n", minZModel, maxZModel);
 		//printf("x-axis box: (%f, %f)    y-axis box: (%f, %f) \n", minX, maxX,minY,maxY);
 		//printf("Raytracing Traversal for whole image took %f seconds.\n", float(clock() - begin_time) / CLOCKS_PER_SEC);
 		//printf("It hit %u times \n", hitCount);
@@ -2934,6 +2929,25 @@ HRESULT KinectFusionProcessor::ResetReconstruction()
     LeaveCriticalSection(&m_lockParams);
 
     return S_OK;
+}
+
+/// <summary>
+/// Reset the camera pose.
+/// </summary>
+/// <returns>S_OK on success, otherwise failure code</returns>
+HRESULT KinectFusionProcessor::ResetCamera()
+{
+	m_perspectiveCamera = new rt::PerspectiveCamera(rt::Point::rep(0), rt::Vector(0, 0, 1), rt::Vector(0, -1, 0), 
+		0.785398163397f * 2, 0.785398163397f * 2 * m_fReconstructionFrameRatio);
+
+	m_worldToCameraTransform = Matrix4{
+		1,0,0,0,
+		0,1,0,0,
+		0,0,1,0,
+		0,0,0,1
+	};
+
+	return S_OK;
 }
 
 /// <summary>

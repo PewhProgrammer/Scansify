@@ -196,6 +196,8 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 		return E_INVALIDARG;
 	}
 
+	//if (dataSize == 0) return S_OK;
+
 	// create the resources for this draw device
 	// they will be recreated if previously lost
 	HRESULT hr = EnsureResources();
@@ -227,6 +229,11 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 	float radius = 4.f;
 	float scale = 100.f;
 
+	float xLow = -0.4f;
+	float xHigh = 0.4f;
+	float yLow = 0.5f;
+	float yHigh = 1.5f;
+
 	// iterate over svg data points and draw them
 	for (int i = 1; i < dataSize; i++) {
 
@@ -236,11 +243,11 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 		auto y2 = (data[i].second + offsetY)		* scale;
 
 
-		// TODO the interpolation here doesnt perfectly work. needs to be scaled more refinely
-		x1 = ((data[i - 1].first - -0.5f) / (0.5f - -0.5f)) * (m_sourceWidth - 0) + 0;
-		x2 = ((data[i].first - -0.25f) / (0.5f - -0.25f)) * (m_sourceWidth - 0) + 0;
-		y1 = ((data[i - 1].second - -0.5f) / (0.5f - -0.5f)) * (m_sourceHeight - 0) + 0;
-		y2 = ((data[i].second - -0.25f) / (0.5f - -0.25f)) * (m_sourceHeight - 0) + 0;
+		//TODO the interpolation here doesnt perfectly work. needs to be scaled more refinely
+		x1 = ((data[i - 1].first - xLow) / (xHigh - xLow)) * (m_sourceWidth - 0) + 0;
+		x2 = ((data[i].first - xLow) / (xHigh - xLow)) * (m_sourceWidth - 0) + 0;
+		y1 = ((data[i - 1].second - yLow) / (yHigh - yLow)) * (m_sourceHeight - 0) + 0;
+		y2 = ((data[i].second - yLow) / (yHigh - yLow)) * (m_sourceHeight - 0) + 0;
 
 		m_pRenderTarget->DrawLine(
 			D2D1::Point2F(x1,y1),
@@ -253,7 +260,7 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 	}
 
 	// only if prev exists
-	if (dataSize > 1) {
+	if (dataSize > 2) {
 		color = D2D1::ColorF(D2D1::ColorF::IndianRed);
 		hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
 		if (FAILED(hr)) { return hr; }

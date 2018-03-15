@@ -53,6 +53,9 @@ struct KinectFusionParams
 		m_bKeepAnnotation(true),
 		m_cColorIntegrationInterval(3),
 		m_bTranslateResetPoseByMinDepthThreshold(true),
+		m_cReconstructionFrameProcessId(0),
+		m_cReconstructionFrameLockId(0),
+		m_bReconstructionFrameLock(false),
 		m_pMesh(nullptr),
 		m_svgHelper(nullptr),
 		m_sceneStructure(nullptr),
@@ -279,6 +282,9 @@ struct KinectFusionParams
     /// success report from AlignPointClouds and believe it to have failed. This can typically be around 0.
     /// </summary>
     float                       m_fMinAlignPointCloudsEnergyForSuccess;
+	unsigned int                m_cReconstructionFrameProcessId;
+	unsigned int                m_cReconstructionFrameLockId;
+	bool						m_bReconstructionFrameLock;
 
     /// <summary>
     /// Camera pose finder AlignPointClouds Camera Tracking related parameters
