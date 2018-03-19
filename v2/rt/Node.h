@@ -19,6 +19,12 @@ public:
 	Node* right;
 	Node* left;
 	bool Leaf = false; 
+	int m_annotationID = -1;
+
+	/// <summary>
+	/// flag to show annotated areas upon rendering process
+	/// </summary>
+	bool m_bAnnotated = false;
 
 	Node();
 	bool isLeaf();

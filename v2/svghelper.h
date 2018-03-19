@@ -27,7 +27,7 @@ typedef std::tuple<int, int, int> triple;
 /// </summary>
 struct Styles {
 	triple stroke = make_tuple(255, 0, 0);
-	uint16_t stroke_width = 2;
+	uint16_t stroke_width = 1;
 	std::string fill = "none";
 };
 

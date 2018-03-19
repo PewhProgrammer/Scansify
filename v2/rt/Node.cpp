@@ -26,6 +26,11 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 				hit.solid = primitive;
 				previousDistance = hit.distance;
 				mainBox = hit;
+				if (r.m_bMousePicking) {
+					this->m_bAnnotated = true;
+					mainBox.m_nodeCounter = 0;
+					mainBox.m_annotationID = r.m_annotationID;
+				}
 			}
 		}
 		return mainBox;
@@ -36,11 +41,35 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 	Intersection LHit = Intersection::failure(), RHit = Intersection::failure();
 
 	if (LBoundHit.first <= LBoundHit.second) LHit = left->searchIntersection(r,previousDistance);
-	if (LHit) previousDistance = (float)LHit.distance;
+	if (LHit) { 
+		if (LHit.m_nodeCounter == 0) {
+			this->m_bAnnotated = true; 
+			this->m_annotationID = r.m_annotationID;
+		}
+		LHit.m_nodeCounter--;
+
+		previousDistance = (float)LHit.distance;
+	}
 
 	if (RBoundHit.first <= RBoundHit.second) RHit = right->searchIntersection(r, previousDistance);
-	if (RHit) return RHit; 
+	if (RHit) { 
+		if (RHit.m_nodeCounter == 0) {
+			this->m_bAnnotated = true;
+			this->m_annotationID = r.m_annotationID;
+		}
+		RHit.m_nodeCounter--;
 
+		if (this->m_bAnnotated) {
+			RHit.m_annotationID = this->m_annotationID;
+			RHit.m_bShowAnnotation = true;
+		}
+		return RHit; 
+	}
+
+	if (this->m_bAnnotated) {
+		LHit.m_annotationID = this->m_annotationID;
+		LHit.m_bShowAnnotation = true;
+	}
 	return LHit;
 }
 

@@ -7,6 +7,7 @@
 #include "KinectFusion/stdafx.h"
 #include "ImageRenderer.h"
 
+
 // base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
 #define interpolate(input,iLow,iHigh,oLow,oHigh) ((input - iLow) / (iHigh - iLow)) * (oHigh - oLow) + oLow
 
@@ -155,15 +156,17 @@ HRESULT ImageRenderer::Draw(BYTE* pImage, unsigned long cbImage)
     // Draw the bitmap stretched to the size of the window
     m_pRenderTarget->DrawBitmap(m_pBitmap);
 
+	/*
 	ID2D1SolidColorBrush *pBrush;
 	float radius = 5.5f;
 	float x = m_sourceWidth * 0.5f;
-	D2D1_ELLIPSE e = D2D1::Ellipse(D2D1::Point2F(x, x), radius, radius);
-	const D2D1_COLOR_F color = D2D1::ColorF(D2D1::ColorF::SkyBlue);
-	hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
-	m_pRenderTarget->FillEllipse(e, pBrush); // could also be DrawEllipse to draw outlier
+	//D2D1_ELLIPSE e = D2D1::Ellipse(D2D1::Point2F(x, x), radius, radius);
+	//const D2D1_COLOR_F color = D2D1::ColorF(D2D1::ColorF::SkyBlue);
+	//hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
+	//m_pRenderTarget->FillEllipse(e, pBrush); // could also be DrawEllipse to draw outlier
 
 	// m_pRenderTarget->DrawLine(D2D1::Point2F(100,100),D2D1::Point2F(100,100), pBrush);
+	*/
 
     hr = m_pRenderTarget->EndDraw();
 
@@ -244,10 +247,11 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 
 
 		//TODO the interpolation here doesnt perfectly work. needs to be scaled more refinely
-		x1 = ((data[i - 1].first - xLow) / (xHigh - xLow)) * (m_sourceWidth - 0) + 0;
-		x2 = ((data[i].first - xLow) / (xHigh - xLow)) * (m_sourceWidth - 0) + 0;
-		y1 = ((data[i - 1].second - yLow) / (yHigh - yLow)) * (m_sourceHeight - 0) + 0;
-		y2 = ((data[i].second - yLow) / (yHigh - yLow)) * (m_sourceHeight - 0) + 0;
+		x1 = interpolate(data[i - 1].first, xLow, xHigh, 0, m_sourceWidth);
+		x2 = interpolate(data[i].first, xLow, xHigh, 0, m_sourceWidth);
+		y1 = interpolate(data[i - 1].second, yLow, yHigh, 0, m_sourceHeight);
+		y2 = interpolate(data[i].second, yLow, yHigh, 0, m_sourceHeight);
+
 
 		m_pRenderTarget->DrawLine(
 			D2D1::Point2F(x1,y1),
@@ -264,8 +268,12 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 		color = D2D1::ColorF(D2D1::ColorF::IndianRed);
 		hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
 		if (FAILED(hr)) { return hr; }
-		m_pRenderTarget->DrawLine(D2D1::Point2F((data[dataSize - 1].first + offsetX) * scale, (data[dataSize - 1].second + offsetY) * scale),
-			D2D1::Point2F((data[0].first + offsetX) * scale, (data[0].second + offsetY) * scale), pBrush);
+		m_pRenderTarget->DrawLine(
+			D2D1::Point2F(interpolate(data[dataSize - 1].first, xLow, xHigh, 0, m_sourceWidth),
+				interpolate(data[dataSize - 1].second, yLow, yHigh, 0, m_sourceHeight)),
+			D2D1::Point2F(interpolate(data[0].first, xLow, xHigh, 0, m_sourceWidth),
+				interpolate(data[0].second, yLow, yHigh, 0, m_sourceHeight)), pBrush);
+
 	}
 
 	hr = m_pRenderTarget->EndDraw();
@@ -281,13 +289,23 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 	return hr;
 }
 
+struct less_than_key
+{
+	inline bool operator() (const std::tuple
+		<float, float, int> tuple1, const std::tuple
+		<float, float, int> tuple2)
+	{
+		return (get<2>(tuple1) < get<2>(tuple2));
+	}
+};
+
 /// <summary>
 /// Draws a 32 bit per pixel image of previously specified width, height, and stride to the associated hwnd
 /// </summary>
 /// <param name="annotations">vector of const triangles that are annotated. Order determines edge relationship</param>
 /// <returns>indicates success or failure</returns>
-HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::pair
-	<float, float>> annotations)
+HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::tuple
+	<float, float, int>> annotations)
 {
 	size_t len = annotations.size();
 	if (len == 0) return S_OK;
@@ -306,9 +324,12 @@ HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::pair
 
 	if (FAILED(hr)) { return hr; }
 
+	std::sort(annotations.begin(), annotations.end(), less_than_key());
+
 	//draw first node
 	//printf("1st node: (%f, %f)\n", annotations[0].first, annotations[0].second);
-	auto prev = annotations[0];
+	auto prev = std::pair<float,float>(get<0>(annotations[0]), get<1>(annotations[0]));
+
 
 	// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
 	prev.first = interpolate(prev.first, -1, 1, 0, m_sourceWidth);
@@ -316,7 +337,7 @@ HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::pair
 
 	//draw subsequently edge and node
 	for (int i = 1; i < len; i++) {
-		auto curr = annotations[i];
+		auto curr = std::pair<float, float>(get<0>(annotations[i]), get<1>(annotations[i]));
 		curr.first = interpolate(curr.first,-1,1,0,m_sourceWidth);
 		curr.second = interpolate(curr.second, -1, 1, 0, m_sourceHeight);
 		

@@ -1048,12 +1048,15 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		// if structure has been built
 		if (m_params.m_sceneStructure != nullptr && m_params.m_sceneStructure->built_flag) {
 			rt::Ray r = (m_processor.GetRaytraceCamera())->getPrimaryRay((float)x, (float)y);
+			r.m_bMousePicking = true;
+			r.m_annotationID = m_vAnnotatedObjects.size();
 			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
 			
 			if (hit) {
 				printf("Hit detected at coordinate (%f, %f, %f)\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z);
 				hit.solid->m_bAnnotated = true;
 				m_vAnnotatedObjects.push_back(hit.solid);
+				m_processor.SetParams(m_params);
 				m_processor.RedrawRenderedImage();
 			}
 		}
@@ -1065,13 +1068,13 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		// TODO Unwraps along the wrong axis. In this iteration, Y gets discarded but it has to be Z
 		//auto marked = m_processor.GetAnnotatedObjects();
 		auto marked = m_vAnnotatedObjects;
+		auto annotatedCount = marked.size() - 1;
 		if (marked.size() > 1) {
-			clicks++;
-			rt::Point prev = marked[clicks - 1]->sample();
-			rt::Point curr = marked[clicks]->sample();
+			rt::Point prev = marked[annotatedCount - 1]->sample();
+			rt::Point curr = marked[annotatedCount]->sample();
 			auto vec = curr - prev; // vector from previous to current node
 
-			if (clicks == 1) {
+			if (annotatedCount == 1) {
 				//init Matrix
 				m_params.m_svgHelper->addData(prev.x, prev.z);
 			}
@@ -1096,7 +1099,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 			vec = vec.normalize() * len;
 
-			rt::Point fixedPrevPoint(m_params.m_svgHelper->getData()[clicks - 1].first, 0, m_params.m_svgHelper->getData()[clicks - 1].second);
+			rt::Point fixedPrevPoint(m_params.m_svgHelper->getData()[annotatedCount - 1].first, 0, m_params.m_svgHelper->getData()[annotatedCount - 1].second);
 			curr = fixedPrevPoint + vec; // modified curr
 
 			m_params.m_svgHelper->addData(curr.x, curr.z);
@@ -1141,6 +1144,9 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			// Change label names
 			SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Start Annotation");
 			SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Reconstruction");
+
+			// clear annotations
+			m_vAnnotatedObjects.clear();
 		}
 		else {
 			// Initialize svghelper
@@ -1232,7 +1238,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 				ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_HIDE);
 
 				// Change label names
-				SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Back to Reconstruction");
+				SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Rescan Model");
 				SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Camera");
 
 

@@ -13,10 +13,10 @@ SvgHelper::~SvgHelper(){}
 void SvgHelper::addData(float x, float y)
 {
 	this->m_vSvgData.push_back(pair<float,float>(x,y));
-	if (m_uWidth.first < x) m_uWidth.first = (int16_t)std::ceil(x);
+	if (m_uWidth.first < x) m_uWidth.first = (int16_t)std::floor(x);
 	if (m_uWidth.second > x) m_uWidth.second = (int16_t)std::ceil(x);
 
-	if (m_uHeight.first < y) m_uHeight.first = (int16_t)std::ceil(y);
+	if (m_uHeight.first < y) m_uHeight.first = (int16_t)std::floor(y);
 	if (m_uHeight.second > y) m_uHeight.second = (int16_t)std::ceil(y);
 
 	if (x < 0) m_bOffsetFlagX = true;
@@ -59,8 +59,9 @@ string SvgHelper::getHeader()
 		"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"
 		"<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"\n"
 		" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n\n"
-		"<!-- ##################################\n     # SVG file created by Scansify   "
-		"#\n     # Author: Thinh Tran             #\n     ################################## -->\n\n"
+		"<!-- ########################################################\n     # SVG file created by Scansify                         "
+		"#\n     # Github reference: https://github.com/PewhProgrammer  "
+		"#\n     # Author: Thinh Tran                                   #\n     ######################################################## -->\n\n"
 		"<svg width=\" 100%"
 		" \" height=\" 100% \" version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\" "
 		" >\n<title>Annotated Pattern</title>\n\n";
@@ -87,22 +88,22 @@ string SvgHelper::getStyles()
 float SvgHelper::getX(unsigned int index)
 {
 	int offset = 100;
-	float result = this->m_vSvgData[index].first + offset;
+	float result = this->m_vSvgData[index].first * offset;
 
-	if (!m_bOffsetFlagX)
-		result += +std::abs(this->m_uWidth.second);
+	if (m_bOffsetFlagX)
+		result += std::abs(this->m_uWidth.first * offset);
 
-	return result * 2.5f;
+	return result;
 }
 
 float SvgHelper::getY(unsigned int index)
 {
 	int offset = 100;
-	float result = this->m_vSvgData[index].second + offset;
-	if (!m_bOffsetFlagY)
-		result += std::abs(this->m_uHeight.second);
+	float result = this->m_vSvgData[index].second * offset;
+	if (m_bOffsetFlagY)
+		result += std::abs(this->m_uHeight.first * offset);
 
-	return result * 2.5f;
+	return result;
 }
 
 bool signX = true;

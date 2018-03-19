@@ -297,9 +297,9 @@ rt::PerspectiveCamera* KinectFusionProcessor::GetRaytraceCamera() {
 }
 
 /// <summary>
-/// Consumes the information that the view change; used to re-render the frame
+/// Consumes the information that the view change; used to re-render the frame : <x, y, id>
 /// </summary>
-vector<std::pair<float, float>> KinectFusionProcessor::ConsumeAnnotationCoordinates()
+vector<std::tuple<float, float, int>> KinectFusionProcessor::ConsumeAnnotationCoordinates()
 {
 	auto result(m_annotationCoordinates);
 	m_annotationCoordinates.clear();
@@ -338,11 +338,13 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 	rt::Vector up = (m_perspectiveCamera != nullptr) ? m_perspectiveCamera->up : rt::Vector(0,-1,0);
 	rt::Vector focal = (m_perspectiveCamera != nullptr) ?  m_perspectiveCamera->forward : rt::Vector(0,0,1);
 
-	auto zooming = focal * ((float)z) / 1000.f;
+	auto zooming = focal * (float)z / 1000.f;
+	auto paningUp = up * (float)y / 1000.f;
+	auto paningForward = rt::cross(focal,up) * (float)x / 1000.f;
 
-	m_worldToCameraTransform.M41 -= (((float)x) / 1000.f) + zooming.x;
-	m_worldToCameraTransform.M42 -= (((float)y) / 1000.f) + zooming.y;
-	m_worldToCameraTransform.M43 -= zooming.z;
+	m_worldToCameraTransform.M41 -= paningForward.x + -paningUp.x + zooming.x;
+	m_worldToCameraTransform.M42 -= paningForward.y + -paningUp.y + zooming.y;
+	m_worldToCameraTransform.M43 -= paningForward.z + -paningUp.z + zooming.z;
 
 
 	// camera point set to world camera position
@@ -2140,6 +2142,9 @@ FinishFrame:
 		float minZModel = FLT_MAX;
 		float maxZModel = -FLT_MAX;
 
+		// check for annotation id so it doesnt get included multiple times
+		int checkIDs[100] = { 0 };
+
 		UINT16 hitCount = 0;
 		const clock_t begin_time = clock();
 
@@ -2167,38 +2172,29 @@ FinishFrame:
 						if (scaleX < minX) minX = scaleX;
 						if (scaleX > maxX) maxX = scaleX;
 
-					
-
 						for (int coord = 0; coord < 3; coord++) {
-							if (!hit.solid->m_bAnnotated) {
-								auto axis = hit.hitPoint()[coord];
+							auto axis = hit.hitPoint()[coord];
 								
-								if (coord == 2) {
-									if (axis < minZModel) minZModel = axis;
-									if (axis > maxZModel) maxZModel = axis;
-								}
-
-								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = axis;
-								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
+							if (coord == 2) {
+								if (axis < minZModel) minZModel = axis;
+								if (axis > maxZModel) maxZModel = axis;
 							}
-							else {
-								// TODO annotated solids do not get registered here immediately
-								// annotated
-								m_annotationCoordinates.push_back(pair<float, float>(scaleX, scaleY));
-								m_vAnnotatedObjects.push_back(hit.solid);
-								
-								//*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
-								//*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = coord * 100;
 
-								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
-								*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = axis;
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
+							
+							if(hit.m_bShowAnnotation) {
+								// annotated
+								if (checkIDs[hit.m_annotationID] == 0) {
+									m_annotationCoordinates.push_back(std::tuple<float, float, int>(scaleX, scaleY, hit.m_annotationID));
+									checkIDs[hit.m_annotationID] = 1;
+								}
+								//m_vAnnotatedObjects.push_back(hit.solid);
 							}
 						}
-						//printf("Normals: (%f,%f,%f) \n", hit.normal[0], hit.normal[1], hit.normal[2]);
 					}
-					else {
+					else { // draw background black
 						for (int coord = 0; coord < 3; coord++) {
-							
 							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = 0.f;
 							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = 0.f;
 						}

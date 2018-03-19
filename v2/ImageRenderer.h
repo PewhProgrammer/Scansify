@@ -57,8 +57,8 @@ public:
 	/// </summary>
 	/// <param name="annotations">vector of const triangles that are annotated. Order determines edge relationship</param>
 	/// <returns>indicates success or failure</returns>
-	HRESULT DrawAnnotationOnModel(vector<std::pair
-		<float, float>> annotations);
+	HRESULT DrawAnnotationOnModel(vector<std::tuple
+		<float, float, int>> annotations);
 
 private:
     HWND                     m_hWnd;

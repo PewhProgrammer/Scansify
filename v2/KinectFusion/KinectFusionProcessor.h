@@ -130,10 +130,10 @@ public:
 	rt::PerspectiveCamera*       GetRaytraceCamera();
 
 	/// <summary>
-	/// Retrieves the current visible annotations
+	/// Retrieves the current visible annotations: <x, y, id>
 	/// </summary>
-	vector<std::pair
-		<float, float>>	      ConsumeAnnotationCoordinates();
+	vector<std::tuple
+		<float, float, int>>	  ConsumeAnnotationCoordinates();
 
 	/// <summary>
 	/// Retrieves the current annotated objects in 3D
@@ -151,6 +151,7 @@ public:
 	/// tell the processor to redraw the rendered 3d model
 	/// </summary>
 	void						RedrawRenderedImage();
+
 
 private:
     KinectFusionParams          m_paramsNext;
@@ -426,8 +427,8 @@ private:
 	bool						m_bAnnotationKeep;
 	bool						m_bReconstructionViewRender;
 	float						m_fReconstructionFrameRatio;
-	vector<std::pair
-		<float,float>>			m_annotationCoordinates;
+	vector<std::tuple
+		<float,float,int>>		m_annotationCoordinates;
 	vector<const
 		rt::SmoothTriangle*>	m_vAnnotatedObjects;
 
