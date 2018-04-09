@@ -4,6 +4,7 @@
 #include "ray.h"
 #include "core/vector.h"
 #include "core/scalar.h"
+#include <set>
 
 namespace rt {
 
@@ -21,11 +22,11 @@ public:
 	SmoothTriangle* solid;
 	bool m_bShowAnnotation = false;
 	int m_nodeCounter;
-	int m_annotationID;
+	std::set<int> m_annotationID;
 
     Intersection() {}
     static Intersection failure();
-	Intersection(double distance, const SmoothTriangle* solid,  const Ray& ray, Vector normal, const Point& uv) :distance(distance), ray(ray), normal(normal), uv(uv), m_nodeCounter(-1), m_annotationID(-1){};
+	Intersection(double distance, const SmoothTriangle* solid,  const Ray& ray, Vector normal, const Point& uv) :distance(distance), ray(ray), normal(normal), uv(uv), m_nodeCounter(-1), m_annotationID(){};
 
     Point hitPoint() const;
     Point local() const;

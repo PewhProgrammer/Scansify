@@ -264,7 +264,7 @@ LRESULT CALLBACK Scansify::DlgProc(
 		}
 
 		auto key = GetKeyState(VK_LSHIFT); // key handler for left_shift
-		printf("\n");
+		//printf("\n");
 
 		if (key < 0) {
 			m_processor.ComputeRaytraceCamera(diffX * -1, diffY, 0); // move camera uniformly
@@ -925,19 +925,7 @@ void Scansify::SaveMesh(bool reconstruction) {
 		return;
 }
 
-uint16_t clicks = 0;
-static const std::pair<float,float> arr[] = { pair<float,float>(2.f,3.f),pair<float,float>(7.f,11.f),pair<float,float>(11.f,8.f), pair<float,float>(5.f,3.f) };
-std::vector<pair<float,float>> dataSVG(arr, arr + sizeof(arr) / sizeof(arr[0]));
-static const rt::Point points[] = { rt::Point(1,10,0), rt::Point(5,10,0), rt::Point(9,10,0),rt::Point(13,7,0),rt::Point(16,4,0),
-rt::Point(18,0,0),rt::Point(18,-4,-2),rt::Point(18,-7,-5),rt::Point(18,-9,-9),rt::Point(18,-9,-13),rt::Point(18,-7,-17),rt::Point(18,-1,-20),
-rt::Point(16,4,-20),rt::Point(12,8,-20),rt::Point(9,10,-20),rt::Point(5,10,-20),rt::Point(1,10,-20),
-rt::Point(-4,10,-34),rt::Point(-7,10,-36),rt::Point(- 10,10,-36),rt::Point(- 14,10,-34),rt::Point(- 19,10,-30),rt::Point(- 22,10,-25),
-rt::Point(- 26,10,-20),rt::Point(- 26,6,-20),rt::Point(- 20,0,-20),rt::Point(- 20,-5,-15),rt::Point(- 20,-5,-10),rt::Point(- 20,0,-5),rt::Point(- 20,10,0),
-rt::Point(-20,20,0), rt::Point(-20,40,0),rt::Point(0,40,0)
-};
-
 vector<const rt::SmoothTriangle*> m_vAnnotatedObjects;
-vector<rt::Point> data3D(points, points + sizeof(points) / sizeof(points[0]));
 
 /// <summary>
 /// Process the UI inputs
@@ -1077,6 +1065,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			if (annotatedCount == 1) {
 				//init Matrix
 				m_params.m_svgHelper->addData(prev.x, prev.z);
+				printf("added svg data (%f, %f)\n", prev.x, prev.z);
 			}
 
 			// change direction flag if following vector would be crossing the z-axis because we are moving in x-axis 
@@ -1091,10 +1080,10 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			float storedY = vec.y;
 			vec.y = 0;
 			if (m_params.m_svgHelper->getDirectionX(dynamic, vec.x)) {
-				vec.x += std::abs(storedY);
+				vec.z += std::abs(storedY);
 			}
 			else {
-				vec.x -= std::abs(storedY);
+				vec.z -= std::abs(storedY);
 			}
 
 			vec = vec.normalize() * len;
@@ -1103,6 +1092,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			curr = fixedPrevPoint + vec; // modified curr
 
 			m_params.m_svgHelper->addData(curr.x, curr.z);
+			printf("added svg data (%f, %f)\n", curr.x, curr.z);
 		}
 
 	}
@@ -1144,6 +1134,10 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			// Change label names
 			SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Start Annotation");
 			SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Reconstruction");
+
+			// Un-check pause and reset reconstruction
+			CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
+			m_processor.ResetReconstruction();
 
 			// clear annotations
 			m_vAnnotatedObjects.clear();

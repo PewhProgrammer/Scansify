@@ -2185,11 +2185,15 @@ FinishFrame:
 							
 							if(hit.m_bShowAnnotation) {
 								// annotated
-								if (checkIDs[hit.m_annotationID] == 0) {
-									m_annotationCoordinates.push_back(std::tuple<float, float, int>(scaleX, scaleY, hit.m_annotationID));
-									checkIDs[hit.m_annotationID] = 1;
+								for (std::set<int>::iterator it = hit.m_annotationID.begin(); it != hit.m_annotationID.end(); ++it)
+								{
+									int id = *it; // Note the "*" here
+									if (checkIDs[id] == 0) {
+										m_annotationCoordinates.push_back(std::tuple<float, float, int>(scaleX, scaleY, id));
+										checkIDs[id] = 1;
+										printf("added id for drawing: %d\n", id);
+									}
 								}
-								//m_vAnnotatedObjects.push_back(hit.solid);
 							}
 						}
 					}

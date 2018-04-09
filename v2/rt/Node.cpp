@@ -29,7 +29,7 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 				if (r.m_bMousePicking) {
 					this->m_bAnnotated = true;
 					mainBox.m_nodeCounter = 0;
-					mainBox.m_annotationID = r.m_annotationID;
+					mainBox.m_annotationID.insert(r.m_annotationID);
 				}
 			}
 		}
@@ -44,7 +44,7 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 	if (LHit) { 
 		if (LHit.m_nodeCounter == 0) {
 			this->m_bAnnotated = true; 
-			this->m_annotationID = r.m_annotationID;
+			this->m_annotationID.insert(LHit.m_annotationID.begin(), LHit.m_annotationID.end());
 		}
 		LHit.m_nodeCounter--;
 
@@ -55,7 +55,7 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 	if (RHit) { 
 		if (RHit.m_nodeCounter == 0) {
 			this->m_bAnnotated = true;
-			this->m_annotationID = r.m_annotationID;
+			this->m_annotationID.insert(RHit.m_annotationID.begin(), RHit.m_annotationID.end());
 		}
 		RHit.m_nodeCounter--;
 

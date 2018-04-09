@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include<set>
 #include "bbox.h"
 #include <stdio.h>
 #include "intersection.h"
@@ -19,7 +20,7 @@ public:
 	Node* right;
 	Node* left;
 	bool Leaf = false; 
-	int m_annotationID = -1;
+	std::set<int> m_annotationID;
 
 	/// <summary>
 	/// flag to show annotated areas upon rendering process
