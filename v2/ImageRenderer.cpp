@@ -181,6 +181,110 @@ HRESULT ImageRenderer::Draw(BYTE* pImage, unsigned long cbImage)
     return hr;
 }
 
+/// <summary>
+/// Draws a 32 bit per pixel rectangle of where to hold the arm for the scan
+/// </summary>
+/// <param name="width">real world width to adjust rectangle</param>
+/// <param name="height">real world height to adjust rectangle</param>
+/// <returns>indicates success or failure</returns>
+HRESULT ImageRenderer::DrawScanArea(float width, float height)
+{
+	width = 35;
+	height = 6;
+
+	// incorrectly sized image data passed in
+	if (width <= 0 || height <= 0) { return E_INVALIDARG; }
+
+	// create the resources for this draw device
+	// they will be recreated if previously lost
+	HRESULT hr = EnsureResources();
+
+	if (FAILED(hr)) { return hr; }
+
+	m_pRenderTarget->BeginDraw();
+
+	ID2D1SolidColorBrush *pBrush;
+
+	D2D1_COLOR_F color = D2D1::ColorF(D2D1::ColorF::WhiteSmoke);
+	hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
+
+	if (FAILED(hr)) { return hr; }
+
+	float xOldLow = 0.f;
+	float xOldHigh = 60.f; // increase this to scale up the rectangle ration of width
+	float xNewLow = 0.f;
+	float xNewHigh = 256.f;
+
+	float yOldLow = 0.f;
+	float yOldHigh = 5.f; // increase this to scale up the rectangle ration of height
+	float yNewLow = 0.f;
+	float yNewHigh = 212.f;
+
+
+	float x1 = interpolate(width * 0.5f, xOldLow, xOldHigh,
+		xNewLow, xNewHigh);
+	float y1 = interpolate(height * 0.5f, yOldLow, yOldHigh,
+		yNewLow, yNewHigh);
+	float x2 = 512 - x1;
+	float y2 = 424 - y1;
+
+	// corners left
+	m_pRenderTarget->DrawLine(
+		D2D1::Point2F(x1, y1),
+		D2D1::Point2F(x1 + 25, y1),
+		pBrush);
+	m_pRenderTarget->DrawLine(
+		D2D1::Point2F(x1, y1),
+		D2D1::Point2F(x1, y1 +15),
+		pBrush);
+	m_pRenderTarget->DrawLine(
+		D2D1::Point2F(x1, y2),
+		D2D1::Point2F(x1 + 25, y2),
+		pBrush);
+	m_pRenderTarget->DrawLine(
+		D2D1::Point2F(x1, y2),
+		D2D1::Point2F(x1, y2 - 15),
+		pBrush);
+
+	// corners right
+	m_pRenderTarget->DrawLine(
+		D2D1::Point2F(x2, y1),
+		D2D1::Point2F(x2 - 25, y1),
+		pBrush);
+	m_pRenderTarget->DrawLine(
+		D2D1::Point2F(x2, y1),
+		D2D1::Point2F(x2, y1 + 15),
+		pBrush);
+	m_pRenderTarget->DrawLine(
+		D2D1::Point2F(x2, y2),
+		D2D1::Point2F(x2 - 25, y2),
+		pBrush);
+	m_pRenderTarget->DrawLine(
+		D2D1::Point2F(x2, y2),
+		D2D1::Point2F(x2, y2 - 15),
+		pBrush);
+
+	// lines in x direction
+	int xSteps = (x2 - x1 ) / 15.f; // 15px width per lines
+
+	// lines in y direction
+	float ySteps = (y2 - y1) / 15.f; // 15px width per lines
+
+
+
+	hr = m_pRenderTarget->EndDraw();
+
+	// Device lost, need to recreate the render target
+	// We'll dispose it now and retry drawing
+	if (hr == D2DERR_RECREATE_TARGET)
+	{
+		hr = S_OK;
+		DiscardResources();
+	}
+
+	return hr;
+}
+
 
 /// <summary>
 /// Draws a 32 bit per pixel image of previously specified width, height, and stride to the associated hwnd
@@ -232,10 +336,17 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 	float radius = 4.f;
 	float scale = 100.f;
 
-	float xLow = -0.4f;
-	float xHigh = 0.4f;
-	float yLow = 0.5f;
-	float yHigh = 1.5f;
+	float xLow = -0.3f;
+	float xHigh = 0.3f;
+	float yLow = 0.4f;
+	float yHigh = 0.8f;
+
+	// margin to make interpolating more feasible
+	float adjustedWidth_Min = 62; // 400 visible width
+	float adjustedWidth_Max = m_sourceWidth - 62; // 400 visible width
+
+	float adjustedHeight_Min = 79; // 400 visible width
+	float adjustedHeight_Max = m_sourceHeight - 79; // 266 visible height
 
 	// iterate over svg data points and draw them
 	for (int i = 1; i < dataSize; i++) {
@@ -247,10 +358,15 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 
 
 		//TODO the interpolation here doesnt perfectly work. needs to be scaled more refinely
-		x1 = interpolate(data[i - 1].first, xLow, xHigh, 0, m_sourceWidth);
-		x2 = interpolate(data[i].first, xLow, xHigh, 0, m_sourceWidth);
-		y1 = interpolate(data[i - 1].second, yLow, yHigh, 0, m_sourceHeight);
-		y2 = interpolate(data[i].second, yLow, yHigh, 0, m_sourceHeight);
+		x1 = interpolate(data[i - 1].first, xLow, xHigh, 
+			adjustedWidth_Min, adjustedWidth_Max);
+		x2 = interpolate(data[i].first, xLow, xHigh, 
+			adjustedWidth_Min, adjustedWidth_Max);
+
+		y1 = interpolate(data[i - 1].second, yLow, yHigh,
+			adjustedHeight_Min, adjustedHeight_Max);
+		y2 = interpolate(data[i].second, yLow, yHigh, 
+			adjustedHeight_Min, adjustedHeight_Max);
 
 
 		m_pRenderTarget->DrawLine(
@@ -269,10 +385,10 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 		hr = m_pRenderTarget->CreateSolidColorBrush(color, &pBrush);
 		if (FAILED(hr)) { return hr; }
 		m_pRenderTarget->DrawLine(
-			D2D1::Point2F(interpolate(data[dataSize - 1].first, xLow, xHigh, 0, m_sourceWidth),
-				interpolate(data[dataSize - 1].second, yLow, yHigh, 0, m_sourceHeight)),
-			D2D1::Point2F(interpolate(data[0].first, xLow, xHigh, 0, m_sourceWidth),
-				interpolate(data[0].second, yLow, yHigh, 0, m_sourceHeight)), pBrush);
+			D2D1::Point2F(interpolate(data[dataSize - 1].first, xLow, xHigh, adjustedWidth_Min, adjustedWidth_Max),
+				interpolate(data[dataSize - 1].second, yLow, yHigh, adjustedHeight_Min, adjustedHeight_Max)),
+			D2D1::Point2F(interpolate(data[0].first, xLow, xHigh, adjustedWidth_Min, adjustedWidth_Max),
+				interpolate(data[0].second, yLow, yHigh, adjustedHeight_Min, adjustedHeight_Max)), pBrush);
 
 	}
 

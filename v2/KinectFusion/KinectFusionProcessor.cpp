@@ -2188,10 +2188,11 @@ FinishFrame:
 								for (std::set<int>::iterator it = hit.m_annotationID.begin(); it != hit.m_annotationID.end(); ++it)
 								{
 									int id = *it; // Note the "*" here
+									//printf("%d | ", id);
 									if (checkIDs[id] == 0) {
 										m_annotationCoordinates.push_back(std::tuple<float, float, int>(scaleX, scaleY, id));
 										checkIDs[id] = 1;
-										printf("added id for drawing: %d\n", id);
+										//printf("\nadded id for drawing: %d\n", id);
 									}
 								}
 							}

@@ -53,6 +53,14 @@ public:
 	HRESULT DrawSVG(SvgHelper* svg);
 
 	/// <summary>
+	/// Draws a 32 bit per pixel rectangle of where to hold the arm for the scan
+	/// </summary>
+	/// <param name="width">real world width to adjust rectangle</param>
+	/// <param name="height">real world height to adjust rectangle</param>
+	/// <returns>indicates success or failure</returns>
+	HRESULT DrawScanArea(float width, float height);
+
+	/// <summary>
 	/// Draws a 32 bit per pixel image of previously specified width, height, and stride to the associated hwnd
 	/// </summary>
 	/// <param name="annotations">vector of const triangles that are annotated. Order determines edge relationship</param>

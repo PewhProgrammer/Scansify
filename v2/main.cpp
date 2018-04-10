@@ -414,6 +414,8 @@ void Scansify::HandleCompletedFrame()
 				m_pDrawDepth->Draw(pFrame->m_pDepthRGBX, pFrame->m_cbImageSize);
 				m_pDrawReconstruction->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize);
 				m_pDrawTrackingResiduals->Draw(pFrame->m_pTrackingDataRGBX, pFrame->m_cbImageSize);
+
+				m_pDrawReconstruction->DrawScanArea(35, 6);
 			}
         }
 
@@ -1053,7 +1055,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		///			   http://www.karldiab.com/3DPointPlotter/		to see tongue plot in 3D ///
 
 
-		// TODO Unwraps along the wrong axis. In this iteration, Y gets discarded but it has to be Z
+		// TODO energy flow is wrongly calculated
 		//auto marked = m_processor.GetAnnotatedObjects();
 		auto marked = m_vAnnotatedObjects;
 		auto annotatedCount = marked.size() - 1;
