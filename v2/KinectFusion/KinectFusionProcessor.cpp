@@ -322,6 +322,7 @@ bool KinectFusionProcessor::ConsumeViewRendered() {
 	return result;
 }
 
+
 /// <summary>
 /// Fetches the current camera properties of the kinect camera into a pinhole model
 /// m_worldToCameraTransform represents the target matrix for rotational distortion while camPosition is the adjusted pinhole model for raytracing
@@ -331,9 +332,7 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 {
 	if (m_fReconstructionFrameRatio == 0) return;
 
-
 	float fovy = 0.785398163397f * 2; // in rad
-	//rt::Point camPosition = rt::Point(0, 0, 0); // A
 
 	rt::Vector up = (m_perspectiveCamera != nullptr) ? m_perspectiveCamera->up : rt::Vector(0,-1,0);
 	rt::Vector focal = (m_perspectiveCamera != nullptr) ?  m_perspectiveCamera->forward : rt::Vector(0,0,1);
@@ -346,7 +345,6 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 	m_worldToCameraTransform.M42 -= paningForward.y + -paningUp.y + zooming.y;
 	m_worldToCameraTransform.M43 -= paningForward.z + -paningUp.z + zooming.z;
 
-
 	// camera point set to world camera position
 	rt::Point camPosition = rt::Point(m_worldToCameraTransform.M41,
 		m_worldToCameraTransform.M42,
@@ -354,8 +352,6 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 
 	delete m_perspectiveCamera;
 	m_perspectiveCamera = new rt::PerspectiveCamera(camPosition, focal, up, fovy, fovy * m_fReconstructionFrameRatio);
-	//printf("Camera position + Shift: (%f, %f, %f) \n", camPosition.x, camPosition.y, camPosition.z);
-	//printf("Focal direction: (%f, %f, %f)           \n", focal.x, focal.y, focal.z);
 
 	return;
 }
@@ -2938,7 +2934,7 @@ HRESULT KinectFusionProcessor::ResetReconstruction()
 /// <returns>S_OK on success, otherwise failure code</returns>
 HRESULT KinectFusionProcessor::ResetCamera()
 {
-	m_perspectiveCamera = new rt::PerspectiveCamera(rt::Point::rep(0), rt::Vector(0, 0, 1), rt::Vector(0, -1, 0), 
+	m_perspectiveCamera = new rt::PerspectiveCamera(rt::Point(0,0,0), rt::Vector(0, 0, 1), rt::Vector(0, -1, 0), 
 		0.785398163397f * 2, 0.785398163397f * 2 * m_fReconstructionFrameRatio);
 
 	m_worldToCameraTransform = Matrix4{

@@ -1060,7 +1060,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		auto marked = m_vAnnotatedObjects;
 		auto annotatedCount = marked.size() - 1;
 		if (marked.size() > 1) {
-			rt::Point prev = marked[annotatedCount - 1]->sample();
+			rt::Point prev = marked[annotatedCount - 1]->sample(); // TODO sample might possible be responsible for the misaligned rawing on the model
 			rt::Point curr = marked[annotatedCount]->sample();
 			auto vec = curr - prev; // vector from previous to current node
 
@@ -1237,6 +1237,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 				SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Rescan Model");
 				SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Camera");
 
+				m_processor.ResetCamera();
 
 				printf("Acceleration structure built in %f seconds with %f polygons.\n", float(clock() - begin_time) / CLOCKS_PER_SEC, k);
 				m_processor.RedrawRenderedImage();
