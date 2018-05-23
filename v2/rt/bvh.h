@@ -21,6 +21,7 @@ private:
 	uint8_t c_isect = 80;
 
 	virtual void buildTree(Node* node);
+	virtual void clearAnnotation(Node* node);
 	virtual void splitPane(Node* node);
 	virtual std::pair<float, float> splitInTheMiddle(Node* node);
 	virtual std::pair<float, float> SAH(Node* node);
@@ -30,7 +31,8 @@ public:
     BVH();
     virtual BBox getBounds() const;
     virtual Intersection intersect(const Ray& ray, float previousBestDistance=FLT_MAX) const;
-    virtual void rebuildIndex();
+    virtual void buildIndex();
+	virtual void rebuildIndex();
 	virtual ~BVH();
     virtual void add(SmoothTriangle* s);
 };

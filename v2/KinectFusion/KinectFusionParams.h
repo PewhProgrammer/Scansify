@@ -40,7 +40,7 @@ struct KinectFusionParams
 		m_bAutoResetReconstructionOnTimeout(false), // We now try to find the camera pose, however, setting this false will no longer auto reset on .xef file playback
 		m_bAutoFindCameraPoseWhenLost(true),
 		m_fMinDepthThreshold(NUI_FUSION_DEFAULT_MINIMUM_DEPTH),
-		m_fMaxDepthThreshold(0.7f), // changed to only capture arm
+		m_fMaxDepthThreshold(1.7f), // changed to only capture arm
 		m_bMirrorDepthFrame(false),
 		m_cMaxIntegrationWeight(NUI_FUSION_DEFAULT_INTEGRATION_WEIGHT),
 		m_bDisplaySurfaceNormals(false),

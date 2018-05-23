@@ -129,6 +129,7 @@ int Scansify::Run(HINSTANCE hInstance, int nCmdShow)
 
     // Show window
     ShowWindow(hWndApp, nCmdShow);
+	ShowWindow(hWndApp, SW_SHOWMAXIMIZED);
 
     // Main message loop
     while (WM_QUIT != msg.message)
@@ -607,7 +608,7 @@ HRESULT Scansify::ImportMeshFile(KinectFusionMeshTypes saveMeshType) {
 		}
 	}
 
-	m_params.m_sceneStructure->rebuildIndex();
+	m_params.m_sceneStructure->buildIndex();
 	UpdateMode(Scansify::Mode::Annotation);
 
 	return hr;
@@ -1214,8 +1215,9 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			m_vAnnotatedObjects.clear();
 			delete m_params.m_svgHelper;
 			m_params.m_svgHelper = new SvgHelper();
-			m_processor.SetParams(m_params);
+			m_params.m_sceneStructure->rebuildIndex();
 
+			m_processor.SetParams(m_params);
 			m_processor.RedrawRenderedImage();
 		}
 	}
@@ -1385,7 +1387,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 					m_params.m_sceneStructure->add(smoothT);
 				}
 
-				m_params.m_sceneStructure->rebuildIndex();
+				m_params.m_sceneStructure->buildIndex();
 				UpdateMode(Scansify::Mode::Annotation);
 
 				printf("\n\nAcceleration structure built in %.3f seconds with %.1f polygons.\n\n", float(clock() - begin_time) / CLOCKS_PER_SEC, k);

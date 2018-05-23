@@ -20,10 +20,16 @@ Intersection BVH::intersect(const Ray& ray, float previousBestDistance) const {
 	return Root->searchIntersection(ray, previousBestDistance);
 
 }
-void BVH::rebuildIndex() {
+void BVH::buildIndex() {
 	if (built_flag) return;
 	depth = 8 + (int)std::round(( 1.3f * log10(SceneObjects.size())));
 	buildTree(Root);
+	built_flag = true;
+}
+
+void BVH::rebuildIndex() {
+	depth = 8 + (int)std::round((1.3f * log10(SceneObjects.size())));
+	clearAnnotation(Root);
 	built_flag = true;
 }
 
@@ -35,6 +41,16 @@ void BVH::add(SmoothTriangle* s) {
 
 	SceneObjects.push_back(s);
 	Root->add(s);
+}
+
+void BVH::clearAnnotation(Node* node) {
+	node->m_bAnnotated = false;
+
+	if (!node->isLeaf()) {
+		clearAnnotation(node->left);
+		clearAnnotation(node->right);
+	}
+
 }
 
 void BVH::buildTree(Node* node) {
