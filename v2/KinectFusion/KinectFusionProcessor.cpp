@@ -363,7 +363,7 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 /// </summary>
 void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 {
-	if (m_fReconstructionFrameRatio == 0) return;
+	if (m_fReconstructionFrameRatio == 0 || m_perspectiveCamera == nullptr) return;
 
 
 	float fovy = 0.785398163397f * 2; // in rad
@@ -433,6 +433,7 @@ void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 void KinectFusionProcessor::RedrawRenderedImage()
 {
 	this->m_bAnnotationKeep = true;
+	m_bReconstructionViewRender = true;
 }
 
 /// <summary>
@@ -2115,7 +2116,7 @@ FinishFrame:
 
 
 
-		/////////// ==========================              BEGIN -> OWN RAYCAST IMPLEMENTATION; OUTPUT: IMAGEFRAME FOR SHADER				============================ ///////////
+		/////////// ==========================              BEGIN -> RAYCAST IMPLEMENTATION; OUTPUT: IMAGEFRAME FOR SHADER				============================ ///////////
 		
 		SetStatusMessage(L"Raycasting into volume...");
 
@@ -2128,15 +2129,6 @@ FinishFrame:
 
 		if (m_perspectiveCamera == nullptr) ComputeRaytraceCamera(0, 0, 0); // initialize camera parameters
 		
-
-		float minY = FLT_MAX;
-		float maxY = -FLT_MAX;
-
-		float minX = FLT_MAX;
-		float maxX = -FLT_MAX;
-
-		float minZModel = FLT_MAX;
-		float maxZModel = -FLT_MAX;
 
 		// check for annotation id so it doesnt get included multiple times
 		int checkIDs[100] = { 0 };
@@ -2162,32 +2154,20 @@ FinishFrame:
 
 					if (hit) {
 						hitCount++;
-						if (scaleY < minY) minY = scaleY;
-						if (scaleY > maxY) maxY = scaleY;
-
-						if (scaleX < minX) minX = scaleX;
-						if (scaleX > maxX) maxX = scaleX;
 
 						for (int coord = 0; coord < 3; coord++) {
-							auto axis = hit.hitPoint()[coord];
-								
-							if (coord == 2) {
-								if (axis < minZModel) minZModel = axis;
-								if (axis > maxZModel) maxZModel = axis;
-							}
 
-							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = axis;
+							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + coord * sizeof(float))) = hit.hitPoint()[coord];
 							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
 							
 							if(hit.m_bShowAnnotation) {
-								// annotated
 								for (std::set<int>::iterator it = hit.m_annotationID.begin(); it != hit.m_annotationID.end(); ++it)
 								{
-									int id = *it; // Note the "*" here
+									int id = *it;
 									//printf("%d | ", id);
 									if (checkIDs[id] == 0) {
-										m_annotationCoordinates.push_back(std::tuple<float, float, int>(scaleX, scaleY, id));
 										checkIDs[id] = 1;
+										m_annotationCoordinates.push_back(std::tuple<float, float, int>(scaleX, scaleY, id));
 										//printf("\nadded id for drawing: %d\n", id);
 									}
 								}
@@ -2204,14 +2184,10 @@ FinishFrame:
 		}
 
 
-		//printf("z-axis box of model : (%f, %f) \n", minZModel, maxZModel);
-		//printf("x-axis box: (%f, %f)    y-axis box: (%f, %f) \n", minX, maxX,minY,maxY);
 		//printf("Raytracing Traversal for whole image took %f seconds.\n", float(clock() - begin_time) / CLOCKS_PER_SEC);
 		//printf("It hit %u times \n", hitCount);
 		
-		/////////// ==========================               END -> OWN RAYCAST IMPLEMENTATION; OUTPUT: IMAGEFRAME FOR SHADER				============================ ///////////
-
-
+		/////////// ==========================               END -> RAYCAST IMPLEMENTATION; OUTPUT: IMAGEFRAME FOR SHADER				============================ ///////////
 
 
 		if (FAILED(hr))

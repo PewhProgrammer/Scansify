@@ -19,21 +19,22 @@ bool rt::Node::isLeaf()
 Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 {
 	if (isLeaf()) {
-		Intersection mainBox = Intersection::failure(); 
+		Intersection resultingHit = Intersection::failure(); 
 		for (auto &primitive : objects) {
 			Intersection hit = primitive->intersect(r, previousDistance);
 			if (hit) {
-				hit.solid = primitive;
-				previousDistance = hit.distance;
-				mainBox = hit;
+				resultingHit = hit;
+				resultingHit.solid = primitive;
 				if (r.m_bMousePicking) {
 					this->m_bAnnotated = true;
-					mainBox.m_nodeCounter = 0;
-					mainBox.m_annotationID.insert(r.m_annotationID);
+					resultingHit.m_nodeCounter = 0;
+					resultingHit.m_annotationID.insert(r.m_annotationID);
 				}
+
+				previousDistance = hit.distance;
 			}
 		}
-		return mainBox;
+		return resultingHit;
 	}
 
 	f2 LBoundHit = left->boundingBox.intersect(r);
@@ -57,7 +58,7 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 			this->m_bAnnotated = true;
 			this->m_annotationID.insert(RHit.m_annotationID.begin(), RHit.m_annotationID.end());
 		}
-		RHit.m_nodeCounter--;
+		 RHit.m_nodeCounter--;
 
 		if (this->m_bAnnotated) {
 			RHit.m_annotationID = this->m_annotationID;

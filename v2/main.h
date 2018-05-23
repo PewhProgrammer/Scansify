@@ -19,6 +19,10 @@ class Scansify
     static const ULONGLONG          cStatusTimeoutInMilliseconds = 5000;
 
 public:
+
+	enum Mode { Annotation, Reconstruction };
+
+
     /// <summary>
     /// Constructor
     /// </summary>
@@ -72,6 +76,18 @@ private:
     /// </summary>
     void                        Update();
 
+	/// <summary>
+	/// Update mode
+	/// </summary>
+	void						UpdateMode(Mode mode);
+
+	/// <summary>
+	/// Import mesh into tool
+	/// </summary>
+	/// <param name="saveMeshType">The mesh type to import.</param>
+	/// <returns>indicates success or failure</returns>
+	HRESULT Scansify::ImportMeshFile(KinectFusionMeshTypes saveMeshType);
+
     /// <summary>
     /// Save a mesh
     /// </summary>
@@ -102,6 +118,11 @@ private:
 	/// Save Mesh with given format
 	/// </summary>
 	void                        SaveMesh(bool reconstruction);
+
+	/// <summary>
+	/// Save Mesh with given format
+	/// </summary>
+	void                        ImportMesh();
 
     /// <summary>
     /// Update the internal variable values from the UI Horizontal sliders.

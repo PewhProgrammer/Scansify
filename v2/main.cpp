@@ -466,6 +466,154 @@ void Scansify::HandleCompletedFrame()
 }
 
 /// <summary>
+/// Import mesh into tool
+/// </summary>
+/// <param name="saveMeshType">The mesh type to import.</param>
+/// <returns>indicates success or failure</returns>
+HRESULT Scansify::ImportMeshFile(KinectFusionMeshTypes saveMeshType) {
+	HRESULT hr = S_OK;
+
+	CComPtr<IFileOpenDialog> pSaveDlg;
+
+	// Create the file save dialog object.
+	hr = pSaveDlg.CoCreateInstance(__uuidof(FileOpenDialog));
+
+	m_params.m_sceneStructure = new rt::BVH();
+
+
+	if (FAILED(hr))
+	{
+		return hr;
+	}
+
+	// Set the dialog title
+	hr = pSaveDlg->SetTitle(L"Import Kinect Fusion Mesh");
+	if (SUCCEEDED(hr))
+	{
+		// Set the button text
+		hr = pSaveDlg->SetOkButtonLabel(L"Import");
+		if (SUCCEEDED(hr))
+		{
+			// Set a default filename
+			if (Stl == saveMeshType)
+			{
+				hr = pSaveDlg->SetFileName(L"arm_model_.stl");
+			}
+			else if (Obj == saveMeshType)
+			{
+				hr = pSaveDlg->SetFileName(L"arm_model_.obj");
+			}
+			else if (Ply == saveMeshType)
+			{
+				hr = pSaveDlg->SetFileName(L"arm_model_.ply");
+			}
+
+
+			if (SUCCEEDED(hr))
+			{
+				// Set the file type extension
+				if (Stl == saveMeshType)
+				{
+					hr = pSaveDlg->SetDefaultExtension(L"stl");
+				}
+				else if (Obj == saveMeshType)
+				{
+					//hr = pSaveDlg->SetDefaultExtension(L"obj");
+				}
+				else if (Ply == saveMeshType)
+				{
+					//hr = pSaveDlg->SetDefaultExtension(L"ply");
+				}
+
+				if (SUCCEEDED(hr))
+				{
+					// Set the file type filters
+					if (Stl == saveMeshType)
+					{
+						COMDLG_FILTERSPEC allPossibleFileTypes[] = {
+							{ L"Stl mesh files", L"*.stl" },
+						{ L"All files", L"*.*" }
+						};
+
+						hr = pSaveDlg->SetFileTypes(
+							ARRAYSIZE(allPossibleFileTypes),
+							allPossibleFileTypes);
+					}
+					else if (Obj == saveMeshType)
+					{
+						COMDLG_FILTERSPEC allPossibleFileTypes[] = {
+							{ L"Obj mesh files", L"*.obj" },
+						{ L"All files", L"*.*" }
+						};
+
+						hr = pSaveDlg->SetFileTypes(
+							ARRAYSIZE(allPossibleFileTypes),
+							allPossibleFileTypes);
+					}
+					else if (Ply == saveMeshType)
+					{
+						COMDLG_FILTERSPEC allPossibleFileTypes[] = {
+							{ L"Ply mesh files", L"*.ply" },
+						{ L"All files", L"*.*" }
+						};
+
+						hr = pSaveDlg->SetFileTypes(
+							ARRAYSIZE(allPossibleFileTypes),
+							allPossibleFileTypes);
+					}
+
+					if (SUCCEEDED(hr))
+					{
+						// Show the file selection box
+						hr = pSaveDlg->Show(m_hWnd);
+
+						// Save the mesh to the chosen file.
+						if (SUCCEEDED(hr))
+						{
+							CComPtr<IShellItem> pItem;
+							hr = pSaveDlg->GetResult(&pItem);
+
+							if (SUCCEEDED(hr))
+							{
+								LPOLESTR pwsz = nullptr;
+								hr = pItem->GetDisplayName(SIGDN_FILESYSPATH, &pwsz);
+
+								if (SUCCEEDED(hr))
+								{
+									SetStatusMessage(L"Importing mesh file, please wait...");
+									SetCursor(LoadCursor(nullptr, MAKEINTRESOURCE(IDC_WAIT)));
+
+									if (Stl == saveMeshType)
+									{
+										hr = LoadBinarySTLMeshFile(pwsz, m_params.m_sceneStructure,true);
+										//hr = WriteBinarySTLMeshFile(pMesh, pwsz);
+									}
+									else if (Obj == saveMeshType)
+									{
+										//hr = WriteAsciiObjMeshFile(pMesh, pwsz);
+									}
+									else if (Ply == saveMeshType)
+									{
+										//hr = WriteAsciiPlyMeshFile(pMesh, pwsz, true, m_bColorCaptured);
+									}
+
+									CoTaskMemFree(pwsz);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	m_params.m_sceneStructure->rebuildIndex();
+	UpdateMode(Scansify::Mode::Annotation);
+
+	return hr;
+}
+
+/// <summary>
 /// Save Mesh to disk.
 /// </summary>
 /// <param name="mesh">The mesh to save.</param>
@@ -494,21 +642,21 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
     if (SUCCEEDED(hr))
     {
         // Set the button text
-        hr = pSaveDlg->SetOkButtonLabel (L"Save");
+        hr = pSaveDlg->SetOkButtonLabel (L"Import");
         if (SUCCEEDED(hr))
         {
             // Set a default filename
             if (Stl == saveMeshType)
             {
-                hr = pSaveDlg->SetFileName(L"MeshedReconstruction.stl");
+                hr = pSaveDlg->SetFileName(L"arm_model_.stl");
             }
             else if (Obj == saveMeshType)
             {
-                hr = pSaveDlg->SetFileName(L"MeshedReconstruction.obj");
+                hr = pSaveDlg->SetFileName(L"arm_model_.obj");
             }
             else if (Ply == saveMeshType)
             {
-                hr = pSaveDlg->SetFileName(L"MeshedReconstruction.ply");
+                hr = pSaveDlg->SetFileName(L"arm_model_.ply");
             }
 			else if (Svg == saveMeshType)
 			{
@@ -608,7 +756,7 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
 
                                     if (Stl == saveMeshType)
                                     {
-											hr = WriteBinarySTLMeshFile(pMesh, pwsz);
+										hr = WriteBinarySTLMeshFile(pMesh, pwsz);
                                     }
                                     else if (Obj == saveMeshType)
                                     {
@@ -927,6 +1075,52 @@ void Scansify::SaveMesh(bool reconstruction) {
 		return;
 }
 
+void Scansify::ImportMesh() {
+	// process saving mesh with reconstructed part
+
+	SetStatusMessage(L"Importing existing mesh into design tool, please wait...");
+	m_bSavingMesh = true;
+
+	// Pause integration while we're saving
+	bool wasPaused = m_params.m_bPauseIntegration;
+	m_params.m_bPauseIntegration = true;
+	m_processor.SetParams(m_params);
+
+	INuiFusionColorMesh *mesh = nullptr;
+	HRESULT hr = m_processor.CalculateMesh(&mesh);
+
+	if (SUCCEEDED(hr))
+	{
+		// Save mesh
+		hr = ImportMeshFile(m_saveMeshFormat);
+
+		if (SUCCEEDED(hr))
+		{
+			SetStatusMessage(L"Imported Kinect Fusion mesh.");
+		}
+		else if (HRESULT_FROM_WIN32(ERROR_CANCELLED) == hr)
+		{
+			SetStatusMessage(L"Import canceled.");
+		}
+		else
+		{
+			SetStatusMessage(L"Error importing 3d mesh into design tool!");
+		}
+
+		// Release the mesh
+		SafeRelease(mesh);
+	}
+	else SetStatusMessage(L"Error importing 3d mesh into design tool!");
+
+	// Restore pause state of integration
+	m_params.m_bPauseIntegration = wasPaused;
+	m_processor.SetParams(m_params);
+	m_bSavingMesh = false;
+
+
+	return;
+}
+
 vector<const rt::SmoothTriangle*> m_vAnnotatedObjects;
 
 /// <summary>
@@ -1011,6 +1205,21 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		}
     }
 
+	// If it was the reset button clicked, clear the annotations
+	if (IDC_BUTTON_RESET_ANNOTATION == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
+	{
+		// only if in annotation mode
+		if (m_params.m_bInitializeAnnotationMode && m_vAnnotatedObjects.size() > 0) {
+			// reset camera
+			m_vAnnotatedObjects.clear();
+			delete m_params.m_svgHelper;
+			m_params.m_svgHelper = new SvgHelper();
+			m_processor.SetParams(m_params);
+
+			m_processor.RedrawRenderedImage();
+		}
+	}
+
 	// If clicked on reconstruction window, compute screen coordinate
 	if (IDC_RECONSTRUCTION_VIEW == LOWORD(wParam) && STN_CLICKED == HIWORD(wParam)) {
 		POINT point;
@@ -1043,16 +1252,18 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
 			
 			if (hit) {
-				printf("Hit detected at coordinate (%f, %f, %f)\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z);
+				printf("Hit detected at coordinate (%f, %f, %f) %f\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z, hit.m_nodeCounter);
 				hit.solid->m_bAnnotated = true;
 				m_vAnnotatedObjects.push_back(hit.solid);
 				m_processor.SetParams(m_params);
 				m_processor.RedrawRenderedImage();
 			}
+			//else return; // no processing needed
 		}
 
 		////////////// AUTOMATICALLY PROCESS HIT IN TEST PHASE /////////////////////
 		///			   http://www.karldiab.com/3DPointPlotter/		to see tongue plot in 3D ///
+
 
 
 		// TODO energy flow is wrongly calculated
@@ -1081,7 +1292,9 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			float diff = marked[0]->sample().y - curr.y;
 			float storedY = vec.y;
 			vec.y = 0;
-			if (m_params.m_svgHelper->getDirectionX(dynamic, vec.x)) {
+			auto flag = m_params.m_svgHelper->getDirectionX(dynamic, vec.x);
+			printf("direction is: %s\n", flag ? "positive" : "negative");
+			if (flag) {
 				vec.z += std::abs(storedY);
 			}
 			else {
@@ -1106,39 +1319,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		if (m_params.m_bInitializeAnnotationMode) {
 			m_params.m_bInitializeAnnotationMode = false;
 
-			// Show all unecessary window components //
-			ShowWindow(GetDlgItem(m_hWnd, IDC_RECON_VOLUME_SETTINGS_BOX), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_VOXELS_PER_METER_BOX), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_BOX), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_VOLUME_RESOLUTION_BOX), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_DEPTH_THRESHOLD_GROUP), SW_SHOW);
-
-			// controls
-			ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_SLIDER), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_SHOW);
-
-			//labels
-			ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_X_AXIS), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Y_AXIS), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Z_AXIS), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_TEXT), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_TEXT), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_DIST_TEXT), SW_SHOW);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_SHOW);
-
-			// Change label names
-			SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Start Annotation");
-			SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Reconstruction");
-
-			// Un-check pause and reset reconstruction
-			CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
+			UpdateMode(Scansify::Mode::Reconstruction);
 			m_processor.ResetReconstruction();
 
 			// clear annotations
@@ -1151,6 +1332,8 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 			SetStatusMessage(L"Reconstructing the mesh. Please wait...");
 
+			m_processor.ResetCamera();
+
 			// Pause integration while we're saving
 			bool wasPaused = m_params.m_bPauseIntegration;
 			m_params.m_bPauseIntegration = true;
@@ -1158,6 +1341,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 			// Release the mesh from previous reconstruction
 			SafeRelease(m_params.m_pMesh);
+
 
 			// Release the mesh in KinectFusionProcessor
 			HRESULT hr = m_processor.CalculateMesh(&m_params.m_pMesh);
@@ -1202,44 +1386,9 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 				}
 
 				m_params.m_sceneStructure->rebuildIndex();
-				m_params.m_bInitializeAnnotationMode = true;
-				m_processor.SetParams(m_params);
+				UpdateMode(Scansify::Mode::Annotation);
 
-
-				// Hide all unecessary window components //
-				ShowWindow(GetDlgItem(m_hWnd, IDC_RECON_VOLUME_SETTINGS_BOX), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_VOXELS_PER_METER_BOX), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_BOX), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_VOLUME_RESOLUTION_BOX), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_DEPTH_THRESHOLD_GROUP), SW_HIDE);
-
-				// controls
-				ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_SLIDER), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_HIDE);
-
-				//labels
-				ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_X_AXIS), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Y_AXIS), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Z_AXIS), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_TEXT), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_TEXT), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_DIST_TEXT), SW_HIDE);
-				ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_HIDE);
-
-				// Change label names
-				SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Rescan Model");
-				SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Camera");
-
-				m_processor.ResetCamera();
-
-				printf("Acceleration structure built in %f seconds with %f polygons.\n", float(clock() - begin_time) / CLOCKS_PER_SEC, k);
+				printf("\n\nAcceleration structure built in %.3f seconds with %.1f polygons.\n\n", float(clock() - begin_time) / CLOCKS_PER_SEC, k);
 				m_processor.RedrawRenderedImage();
 			}
 			else SetStatusMessage(L"Failed to create mesh of reconstruction.");
@@ -1248,6 +1397,11 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		
 	}
 
+
+	if (ID_MENU_IMPORT_RECONSTRUCTION_STL == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
+		m_saveMeshFormat = Stl;
+		ImportMesh();
+	}
 	if (ID_MENU_EXPORT_RECONSTRUCTION_STL == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
 		m_saveMeshFormat = Stl;
 		SaveMesh(true);
@@ -1345,6 +1499,95 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
     m_processor.SetParams(m_params);
 }
+
+/// <summary>
+/// Update mode
+/// </summary>
+void Scansify::UpdateMode(Scansify::Mode mode) {
+
+	switch (mode) {
+	case Reconstruction:
+		// Show all unecessary window components //
+		ShowWindow(GetDlgItem(m_hWnd, IDC_RECON_VOLUME_SETTINGS_BOX), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VOXELS_PER_METER_BOX), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_BOX), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VOLUME_RESOLUTION_BOX), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_DEPTH_THRESHOLD_GROUP), SW_SHOW);
+
+		// controls
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_SLIDER), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_SHOW);
+
+		//labels
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_X_AXIS), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Y_AXIS), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Z_AXIS), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_TEXT), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_TEXT), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_DIST_TEXT), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_SHOW);
+
+		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_ANNOTATION), SW_HIDE);
+
+		// Change label names
+		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Start Annotation");
+		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Reconstruction");
+
+		// Un-check pause and reset reconstruction
+		CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
+		break;
+	case Annotation:
+		m_params.m_bInitializeAnnotationMode = true;
+		m_processor.SetParams(m_params);
+
+
+		// Hide all unecessary window components //
+		ShowWindow(GetDlgItem(m_hWnd, IDC_RECON_VOLUME_SETTINGS_BOX), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VOXELS_PER_METER_BOX), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_BOX), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VOLUME_RESOLUTION_BOX), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_DEPTH_THRESHOLD_GROUP), SW_HIDE);
+
+		// controls
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_SLIDER), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_HIDE);
+
+		//labels
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_X_AXIS), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Y_AXIS), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Z_AXIS), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_TEXT), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_TEXT), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_DIST_TEXT), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_HIDE);
+
+		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_ANNOTATION), SW_SHOW);
+
+		// Change label names
+		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Re-scan Arm");
+		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Fix Camera");
+
+		m_processor.ResetCamera();
+
+		//m_processor.RedrawRenderedImage();
+		break;
+	}
+}
+
 
 /// <summary>
 /// Update the internal variable values from the UI Horizontal sliders.

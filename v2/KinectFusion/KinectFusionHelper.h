@@ -10,6 +10,7 @@
 
 // RT includes
 #include "../rt/primitives/striangle.h"
+#include "../rt/bvh.h"
 
 #include "../svghelper.h"
 
@@ -86,6 +87,16 @@ Vector3 RotateVector(const Vector3 &vec, const Matrix4 &rot);
 /// <param name="transform">The camera pose transform matrix.</param>
 /// <returns>Returns a Matrix4 containing the inverted camera pose.</returns>
 Matrix4 InvertMatrix4Pose(const Matrix4 &transform);
+
+/// <summary>
+/// Import Binary .STL file
+/// see http://en.wikipedia.org/wiki/STL_(file_format) for STL format
+/// </summary>
+/// <param name="mesh">The Kinect Fusion mesh object.</param>
+/// <param name="lpOleFileName">The full path and filename of the file to save.</param>
+/// <param name="flipYZ">Flag to determine whether the Y and Z values are flipped on save.</param>
+/// <returns>indicates success or failure</returns>
+HRESULT LoadBinarySTLMeshFile(LPOLESTR lpOleFileName,rt::BVH* scene, bool flipYZ);
 
 /// <summary>
 /// Write Binary .STL mesh file
