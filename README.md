@@ -13,7 +13,7 @@ Equivalent incomplete .NET C# [implementation](https://github.com/PewhProgrammer
 All notable changes to this project will be documented in this file.
 
 
-### Timeline 2017
+### Timeline 2017/18
 
 | Week   |      Progress      |  Notes |
 |----------|-------------|------|
@@ -25,28 +25,11 @@ All notable changes to this project will be documented in this file.
 
 ## Built With
 
-* [Kinect 2] - Hardware
+* [Kinect v2] - Hardware
 * [Visual Studio 2017] - IDE
-* [Qt 5.9.3] - GUI application used for menu
-* [VTK 7.1] - framework for rendering 3D application
-* [PCL 1.8.1] - framework for computer vision/imaging processing and algorithms
-* [OpenGL 3] - standard library for high performance graphics
-* [FreeGlut/Glew/SDL] 
+* [KinectFusion] - Image processing framework
 
 Make sure you either install the x64 or x84 version.
-
-## Installation
-
-* [Setting up PCL with VS](https://stackoverflow.com/questions/16514762/setting-up-point-cloud-library-with-visual-studio)
-* [Setting up Kinect SDK 2 with VS] - Link inlude and libs
-* [DLL] - .dll files have to present on application folder
-* [PCL dependencies] - Recommended to use the All-In-One Installer (except for vtk, which should be built from source)
-
-Put all the dependencies into src/Lib
-
-Without CMake. Make sure GlobalPath Variable is loaded for references inc/lib. Restart VS if necessary.
-
-Configuration for Debug/Release separated.
 
 ## LICENSE
 
