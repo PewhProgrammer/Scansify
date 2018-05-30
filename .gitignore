@@ -1,5 +1,6 @@
 # Folders
 models/
+v1_deprecated/
 
 # Prerequisites
 *.d

@@ -166,6 +166,7 @@ LRESULT CALLBACK Scansify::MessageRouter(
 {
     Scansify* pThis = nullptr;
 
+
     if (WM_INITDIALOG == uMsg)
     {
         pThis = reinterpret_cast<Scansify*>(lParam);
@@ -202,6 +203,26 @@ LRESULT CALLBACK Scansify::DlgProc(
     WPARAM wParam,
     LPARAM lParam)
 {
+
+
+
+	// revert latest change
+	if (GetKeyState('Z') < 0) {
+		if (intersectedNodes.size() > 0) {
+			for (std::vector<rt::Node*>::iterator it = intersectedNodes.begin(); it != intersectedNodes.end(); ++it) {
+				/* std::cout << *it; ... */
+				(*it)->m_bAnnotated = false;
+			}
+			if (m_vAnnotatedObjects.size() > 0) {
+				m_params.m_svgHelper->removeLatestData();
+				m_vAnnotatedObjects.pop_back();
+			}
+
+
+			m_processor.SetParams(m_params);
+			m_processor.RedrawRenderedImage();
+		}
+	}
 
     switch (message)
     {
@@ -1122,7 +1143,6 @@ void Scansify::ImportMesh() {
 	return;
 }
 
-vector<const rt::SmoothTriangle*> m_vAnnotatedObjects;
 
 /// <summary>
 /// Process the UI inputs
@@ -1251,10 +1271,11 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			rt::Ray r = (m_processor.GetRaytraceCamera())->getPrimaryRay((float)x, (float)y);
 			r.m_bMousePicking = true;
 			r.m_annotationID = m_vAnnotatedObjects.size();
-			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX);
+			intersectedNodes.clear();
+			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX, intersectedNodes);
 			
 			if (hit) {
-				printf("Hit detected at coordinate (%f, %f, %f) %f\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z, hit.m_nodeCounter);
+				//printf("Hit detected at coordinate (%f, %f, %f) %f\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z, hit.m_nodeCounter);
 				hit.solid->m_bAnnotated = true;
 				m_vAnnotatedObjects.push_back(hit.solid);
 				m_processor.SetParams(m_params);
@@ -1271,6 +1292,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		// TODO energy flow is wrongly calculated
 		//auto marked = m_processor.GetAnnotatedObjects();
 		auto marked = m_vAnnotatedObjects;
+		printf("size: %d ", m_vAnnotatedObjects.size());
 		auto annotatedCount = marked.size() - 1;
 		if (marked.size() > 1) {
 			rt::Point prev = marked[annotatedCount - 1]->sample(); // TODO sample might possible be responsible for the misaligned rawing on the model
@@ -1280,7 +1302,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			if (annotatedCount == 1) {
 				//init Matrix
 				m_params.m_svgHelper->addData(prev.x, prev.z);
-				printf("added svg data (%f, %f)\n", prev.x, prev.z);
+				//printf("added svg data (%f, %f)\n", prev.x, prev.z);
 			}
 
 			// change direction flag if following vector would be crossing the z-axis because we are moving in x-axis 
@@ -1309,7 +1331,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			curr = fixedPrevPoint + vec; // modified curr
 
 			m_params.m_svgHelper->addData(curr.x, curr.z);
-			printf("added svg data (%f, %f)\n", curr.x, curr.z);
+			//printf("added svg data (%f, %f)\n", curr.x, curr.z);
 		}
 
 	}

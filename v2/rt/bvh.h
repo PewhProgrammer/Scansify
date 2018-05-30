@@ -30,7 +30,7 @@ public:
 
     BVH();
     virtual BBox getBounds() const;
-    virtual Intersection intersect(const Ray& ray, float previousBestDistance=FLT_MAX) const;
+    virtual Intersection intersect(const Ray& ray, float previousBestDistance = FLT_MAX, std::vector<Node*>& a = std::vector<Node*>()) const;
     virtual void buildIndex();
 	virtual void rebuildIndex();
 	virtual ~BVH();

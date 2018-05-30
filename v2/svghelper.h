@@ -89,6 +89,13 @@ public:
 
 
 	/// <summary>
+	/// Removes lates fetched data
+	/// </summary>
+	/// <returns>true if successfull</returns>
+	bool					removeLatestData();
+
+
+	/// <summary>
 	/// Getter for header string. Construct it inside header because of dynamic variable width,height
 	/// </summary>
 	/// <returns>complete string to insert into svg file</returns>

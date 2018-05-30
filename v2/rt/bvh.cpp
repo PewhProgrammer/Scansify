@@ -15,9 +15,12 @@ rt::BVH::BVH()
 BBox BVH::getBounds() const {
 	return Root->boundingBox; 
 }
-Intersection BVH::intersect(const Ray& ray, float previousBestDistance) const {
 
-	return Root->searchIntersection(ray, previousBestDistance);
+
+
+Intersection BVH::intersect(const Ray& ray, float previousBestDistance, std::vector<Node*>& a) const {
+
+	return Root->searchIntersection(ray, previousBestDistance, a);
 
 }
 void BVH::buildIndex() {

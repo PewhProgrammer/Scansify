@@ -16,7 +16,13 @@ bool rt::Node::isLeaf()
 	return false; 
 }
 
-Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
+Intersection rt::Node::searchIntersection(const Ray& r, float previousDistance)
+{
+	std::vector<Node*> k;
+	return searchIntersection(r, previousDistance, k);
+}
+
+Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance, std::vector<Node*>& annotated)
 {
 	if (isLeaf()) {
 		Intersection resultingHit = Intersection::failure(); 
@@ -29,6 +35,7 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 					this->m_bAnnotated = true;
 					resultingHit.m_nodeCounter = 0;
 					resultingHit.m_annotationID.insert(r.m_annotationID);
+					annotated.push_back(this);
 				}
 
 				previousDistance = hit.distance;
@@ -41,22 +48,24 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance)
 	f2 RBoundHit = right->boundingBox.intersect(r);
 	Intersection LHit = Intersection::failure(), RHit = Intersection::failure();
 
-	if (LBoundHit.first <= LBoundHit.second) LHit = left->searchIntersection(r,previousDistance);
+	if (LBoundHit.first <= LBoundHit.second) LHit = left->searchIntersection(r,previousDistance, annotated);
 	if (LHit) { 
 		if (LHit.m_nodeCounter == 0) {
 			this->m_bAnnotated = true; 
 			this->m_annotationID.insert(LHit.m_annotationID.begin(), LHit.m_annotationID.end());
+			annotated.push_back(this);
 		}
 		LHit.m_nodeCounter--;
 
 		previousDistance = (float)LHit.distance;
 	}
 
-	if (RBoundHit.first <= RBoundHit.second) RHit = right->searchIntersection(r, previousDistance);
+	if (RBoundHit.first <= RBoundHit.second) RHit = right->searchIntersection(r, previousDistance, annotated);
 	if (RHit) { 
 		if (RHit.m_nodeCounter == 0) {
 			this->m_bAnnotated = true;
 			this->m_annotationID.insert(RHit.m_annotationID.begin(), RHit.m_annotationID.end());
+			annotated.push_back(this);
 		}
 		 RHit.m_nodeCounter--;
 

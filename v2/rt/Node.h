@@ -30,7 +30,8 @@ public:
 	Node();
 	bool isLeaf();
 
-	Intersection searchIntersection(const Ray& r,float previousDistance);
+	Intersection searchIntersection(const Ray& r, float previousDistance);
+	Intersection searchIntersection(const Ray& r,float previousDistance, std::vector<Node*>& annotated);
 	void add(SmoothTriangle* prim);
 };
 

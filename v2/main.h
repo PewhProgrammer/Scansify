@@ -162,6 +162,9 @@ private:
     bool                        m_bSavingMesh;
     KinectFusionMeshTypes       m_saveMeshFormat;
     bool                        m_bColorCaptured;
+	vector<const 
+		rt::SmoothTriangle*>	m_vAnnotatedObjects;
+	vector<rt::Node*>			intersectedNodes;
 
     /// <summary>
     /// Most recently reported frame rate

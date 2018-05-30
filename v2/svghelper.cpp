@@ -41,6 +41,16 @@ vector<f2> SvgHelper::getData()
 	return this->m_vSvgData;
 }
 
+bool SvgHelper::removeLatestData()
+{
+	if (m_vSvgData.size() == 0) {
+		return false;
+	}
+
+	m_vSvgData.pop_back();
+	return true;
+}
+
 string SvgHelper::getHeader()
 {
 	/*
