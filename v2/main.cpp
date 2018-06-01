@@ -208,19 +208,21 @@ LRESULT CALLBACK Scansify::DlgProc(
 
 	// revert latest change
 	if (GetKeyState('Z') < 0) {
-		if (intersectedNodes.size() > 0) {
-			for (std::vector<rt::Node*>::iterator it = intersectedNodes.begin(); it != intersectedNodes.end(); ++it) {
-				/* std::cout << *it; ... */
-				(*it)->m_bAnnotated = false;
-			}
-			if (m_vAnnotatedObjects.size() > 0) {
-				m_params.m_svgHelper->removeLatestData();
-				m_vAnnotatedObjects.pop_back();
-			}
+		if (stackAnnotatedNodes.size() > 0) {
+			vector<rt::Node*> intersectedNodes = stackAnnotatedNodes.back();
+			stackAnnotatedNodes.pop_back();
+			if (intersectedNodes.size() > 0) { // remove on model annotations
+				for (std::vector<rt::Node*>::iterator it = intersectedNodes.begin(); it != intersectedNodes.end(); ++it) {
+					(*it)->m_bAnnotated = false;
+				}
+				if (m_vAnnotatedObjects.size() > 0) { // remove svg data
+					m_params.m_svgHelper->removeLatestData();
+					m_vAnnotatedObjects.pop_back();
+				}
 
-
-			m_processor.SetParams(m_params);
-			m_processor.RedrawRenderedImage();
+				m_processor.SetParams(m_params);
+				m_processor.RedrawRenderedImage();
+			}
 		}
 	}
 
@@ -1271,8 +1273,10 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			rt::Ray r = (m_processor.GetRaytraceCamera())->getPrimaryRay((float)x, (float)y);
 			r.m_bMousePicking = true;
 			r.m_annotationID = m_vAnnotatedObjects.size();
-			intersectedNodes.clear();
+
+			vector<rt::Node*> intersectedNodes; // buffer for annotated nodes
 			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX, intersectedNodes);
+			stackAnnotatedNodes.push_back(intersectedNodes); // put into stack to enable history changes
 			
 			if (hit) {
 				//printf("Hit detected at coordinate (%f, %f, %f) %f\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z, hit.m_nodeCounter);
@@ -1292,7 +1296,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		// TODO energy flow is wrongly calculated
 		//auto marked = m_processor.GetAnnotatedObjects();
 		auto marked = m_vAnnotatedObjects;
-		printf("size: %d ", m_vAnnotatedObjects.size());
+		//printf("size: %d ", m_vAnnotatedObjects.size());
 		auto annotatedCount = marked.size() - 1;
 		if (marked.size() > 1) {
 			rt::Point prev = marked[annotatedCount - 1]->sample(); // TODO sample might possible be responsible for the misaligned rawing on the model

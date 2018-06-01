@@ -164,7 +164,8 @@ private:
     bool                        m_bColorCaptured;
 	vector<const 
 		rt::SmoothTriangle*>	m_vAnnotatedObjects;
-	vector<rt::Node*>			intersectedNodes;
+	vector<vector<rt::Node*>>	stackAnnotatedNodes;
+
 
     /// <summary>
     /// Most recently reported frame rate
