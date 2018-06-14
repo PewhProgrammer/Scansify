@@ -1299,9 +1299,11 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		//printf("size: %d ", m_vAnnotatedObjects.size());
 		auto annotatedCount = marked.size() - 1;
 		if (marked.size() > 1) {
-			rt::Point prev = marked[annotatedCount - 1]->sample(); // TODO sample might possible be responsible for the misaligned rawing on the model
+			rt::Point prev = marked[annotatedCount - 1]->sample(); // TODO sample might possible be responsible for the misaligned drawing on the model
 			rt::Point curr = marked[annotatedCount]->sample();
 			auto vec = curr - prev; // vector from previous to current node
+
+			//printf("Target vector: (%.2f, %.2f, %.2f)				", vec.x, vec.y, vec.z);
 
 			if (annotatedCount == 1) {
 				//init Matrix
@@ -1314,7 +1316,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			auto dynamic = rt::dot(vec.normalize(), rt::Vector(0, -1, 0));
 			if (dynamic < 0)	m_params.m_svgHelper->m_bDirectionFlagX = !m_params.m_svgHelper->m_bDirectionFlagX;
 
-			//printf("dynamic: %f \n", dynamic);
+			//printf("dynamic: %f \n", dynamic); // changes correctly
 
 			float len = vec.length();
 			float diff = marked[0]->sample().y - curr.y;
@@ -1335,6 +1337,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			curr = fixedPrevPoint + vec; // modified curr
 
 			m_params.m_svgHelper->addData(curr.x, curr.z);
+			//printf("Fixed SVG Point: (%.2f, %.2f) \n", curr.x, curr.z);
 			//printf("added svg data (%f, %f)\n", curr.x, curr.z);
 		}
 
@@ -1352,6 +1355,12 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 			// clear annotations
 			m_vAnnotatedObjects.clear();
+			delete m_params.m_svgHelper;
+			m_params.m_svgHelper = new SvgHelper();
+			m_params.m_sceneStructure->rebuildIndex();
+
+			m_processor.SetParams(m_params);
+			m_processor.RedrawRenderedImage();
 		}
 		else {
 			// Initialize svghelper
