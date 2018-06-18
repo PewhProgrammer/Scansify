@@ -1293,10 +1293,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 
 
-		// TODO energy flow is wrongly calculated
-		//auto marked = m_processor.GetAnnotatedObjects();
 		auto marked = m_vAnnotatedObjects;
-		//printf("size: %d ", m_vAnnotatedObjects.size());
 		auto annotatedCount = marked.size() - 1;
 		if (marked.size() > 1) {
 			rt::Point prev = marked[annotatedCount - 1]->sample(); // TODO sample might possible be responsible for the misaligned drawing on the model
@@ -1308,13 +1305,21 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			if (annotatedCount == 1) {
 				//init Matrix
 				m_params.m_svgHelper->addData(prev.x, prev.z);
-				//printf("added svg data (%f, %f)\n", prev.x, prev.z);
 			}
 
 			// change direction flag if following vector would be crossing the z-axis because we are moving in x-axis 
 			// it's important to evaluate how we add the y value to the x one
+			auto test = vec;
+			//test.z = 0;
+			test = test.normalize();
+			
 			auto dynamic = rt::dot(vec.normalize(), rt::Vector(0, -1, 0));
-			if (dynamic < 0)	m_params.m_svgHelper->m_bDirectionFlagX = !m_params.m_svgHelper->m_bDirectionFlagX;
+			auto dynamicTest = rt::dot(test.normalize(), rt::Vector(0, -1, 0));
+
+
+			//TODO cant go around the arm with a straight line because angle changes
+			printf("direction is: (%.2f, %.2f, %.2f)\n", test.x, test.y, test.z);
+
 
 			//printf("dynamic: %f \n", dynamic); // changes correctly
 
@@ -1322,8 +1327,13 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			float diff = marked[0]->sample().y - curr.y;
 			float storedY = vec.y;
 			vec.y = 0;
-			auto flag = m_params.m_svgHelper->getDirectionX(dynamic, vec.x);
+			auto flag = m_params.m_svgHelper->getDirectionX(-dynamic, vec.x);
 			printf("direction is: %s\n", flag ? "positive" : "negative");
+
+			auto flag2 = m_params.m_svgHelper->getDirectionX(-dynamicTest, vec.x);
+			printf("Test direction is: %s\n", flag2 ? "positive" : "negative");
+
+
 			if (flag) {
 				vec.z += std::abs(storedY);
 			}

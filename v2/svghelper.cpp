@@ -127,20 +127,32 @@ bool dir_result = true;
 /// <returns>return the appropriate case; true indicates direction in positive axis</returns>
 bool SvgHelper::getDirectionX(float angle, float dirX)
 {
+
+	//printf("dir, signX: (%d, %d) ", m_bDirectionFlagX, signX);
+
 	// Basically has to know when the angle turn point is and adjust
 
 	m_bPosX = dirX < 0 ? false : true;
 
+	/*
 	if ((dirX < 0 && !signX) || (dirX > 0 && signX)) {
 		m_bDirectionFlagX = false;
 	}
+	*/
 
+	// 			if (dynamic < 0) m_params.m_svgHelper->m_bDirectionFlagX = !m_params.m_svgHelper->m_bDirectionFlagX;
+
+	
 	// toggle change of momentum; check for momentum change
 	if (!m_bDirectionFlagX && (angle < 0 || angle > 0)) {
 		m_bDirectionFlagX = true;
 		if (angle < 0) signX = false;
 		if (angle > 0) signX = true;
 	}
+	
+
+	//printf("dir, signX: (%d, %d) ", m_bDirectionFlagX, signX);
+	printf("angle: (%.2f)			", angle);
 
 	if (m_bDirectionFlagX) {
 		// if angle is positive before
