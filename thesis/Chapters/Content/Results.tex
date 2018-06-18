@@ -1,0 +1,102 @@
+
+
+%-----------------------------------------------------
+%
+%    Contents
+%
+%-----------------------------------------------------
+
+\sectionfix
+\section{Results}
+To evaluate and demonstrate the feasibility of our approach, we conducted a user study that sought to quantify the key performance characteristics of our system. At a high level, can OmniTouch correctly register touch events and how accurately can they be localized? At a meta-level, how large would interface elements have to be to enable reliable oper- ation of an ad hoc interface rendered on the hand?
+\subsection{Participants} 
+We recruited 12 participants from our local metropolitan area (6 female), ranging in age from 23 to 49, with a mean of 34. All participants were right handed and were required to have some experience with touch screen devices. The study took approximately one hour and included a gratuity.
+\subsection{Methodology}
+What kind of metrics do we use. how is it possible to evaluate intuitivness etc..
+\begin{itemize}
+\item Hypothesis 
+\item Participants (classification)
+\item Procedure (questionnaire, unstructured interview)
+\end{itemize}
+\subsection{Evaluation}
+\begin{itemize}
+\item Concluding results
+\begin{itemize}
+\item Try to resolve the hypothesis above, engage on the challenges proposed in the introduction. (flexibility, intuitiveness and rapidness)
+\end{itemize}
+\item Prototyping real sensors
+\begin{itemize}
+\item show the user the application range of the design tool. It is capable of creating a design for sensors.
+\end{itemize}
+\end{itemize}
+
+\subsection{Parameterization of depth cameras}
+\begin{itemize}
+\item Literature review of other depth cameras (incl. technical background of how cameras perceive depth)
+\item limitations affecting the use in 3D scan domain
+\item Using Kinect v2 (features/liabilities and why we chose it)
+\item research paper on review
+\begin{itemize}
+\item Using a Depth Camera as a Touch Sensor $\rightarrow$ depth camera primesense properties
+\item A Data-Driven Approach for Real-Time Full Body Pose Reconstruction
+from a Depth Camera  $\rightarrow$ using depth cameras in general
+\end{itemize}
+\end{itemize}
+
+\paragraph{Kinect v2}
+has mainly been chosen because it provides a low-cost hand-held scanning alternative to us. Furthermore, it's sdk provides us with incredible correct measurement of real-world object scans to the digital work flow such that we can print 1:1 layers on the body.
+
+\paragraph{Testing Kinect v2 dimensions}
+trial 20 times and take average from it. 
+real world measurement with help of third person. arm. 46 cm height and 10.5 cm width for arm. fingertip height was 8.5cm\\
+
+50 cm was minimum distance to kinect before depth data appears distorted. everything beyond 100cm was perceived the same. moving in between 50cm and 100cm only yielded abyssal small differences. \\[0.125in]
+0.5 - ~4 meters for bodytracking
+from research we have:\\ +3m in z.  	 -+0.2m in x. 	+-0.4m in y \\[0.125in]
+
+Affecting Depth Sensors:
+reflective and light-absorbing materials( black) interferes with infrared light reflection back to camera. Infrared interference caused by two separated source might also distort depth data.\\
+Kinect has usually no missing data but noisy/ (less) outliers data which makes surface reconstruction so hard.\\
+dimensions:
+
+\begin{center}
+    \begin{tabular}{ | l | l | p{5cm} |}
+    \hline
+     & 50 cm to kinect & 100 cm to kinect \\ \hline
+    arm height. 46cm & 45.18 cm & 45.09 cm \\ \hline
+    arm width. 10.5cm & 11.22 cm & 10.52 cm \\ \hline
+    fingertip height 8.5cm & 7.95 cm & 7.87 cm \\
+    \hline
+    \end{tabular}
+\end{center}
+
+Observation: Every scan value was considered into the measurements which yielded a score of half the expected size. (for 10.5cm it would’ve been above 5cm). Because of the noises from kinect and lack of smoothing for joints detection, there sometimes were misfits in measured values .The dimensions perceived looked promising on consecutive perfect scans.
+
+\subsection{3D Scan applications}
+There are tons of other applications which says that they are scanning apps but only scans the camera view and creates a point cloud. they do not create a whole mesh. Those apps were excluded from the list. The following represents the best apps for 3D scanning from the kinect and reconstructing the surface to a water-tight mesh.
+\begin{itemize}
+\item Skanect
+only works on kinect v1  and others. it states that v2 does not provide good enough scanning results
+yields good result
+\item ReconstructMe
+only works on kinect v1  and others
+for example cant detect outliers of mouth. sometimes too superficial with reconstruction
+\item Fablitec 
+only works on kinect v1 and others
+good results
+\item Recfusion
+only works on kinect v1 and others
+good results
+\item K-scan
+No longer supported. Can’t be downloaded officially. no further information if kinect v2 is supported.
+\item 3D Scan app by microsoft
+very hard to yield good results (self-tested)
+microsoft advertises it but cant find other sources of how the reconstruction looks like
+\item Mobile apps.\\SCANN3D, Forge, Fabb-It, MobileFusion. But they mostly uses either their own cameras. Couldn’t find one yet which utilizes the kinect.
+\item research paper on review
+\begin{itemize}
+\item 
+\end{itemize}
+\end{itemize}
+
+From the research, the kinect v2 is not really popular among the competition of 3d scanning applications even though it has been proven that the version 2 has a way better depth perception than its predecessor. Only Skanect has stated that their compatibility with only the kinect 1 was due to its better performance to kinect 2.
