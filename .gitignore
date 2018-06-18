@@ -2,6 +2,9 @@
 models/
 v1_deprecated/
 
+v2/computation/
+v2/stdafx.h
+
 # Prerequisites
 *.d
 
