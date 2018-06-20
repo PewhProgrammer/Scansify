@@ -8,6 +8,7 @@
 #define IDC_SENSORCHOOSER               1002
 #define IDC_RECONSTRUCTION_VIEW         1003
 #define IDC_DEPTH_VIEW                  1004
+#define IDC_VIEW_SUB                    1004
 #define IDC_TRACKING_RESIDUALS_VIEW     1005
 #define IDC_BUTTON_RESET_RECONSTRUCTION 1013
 #define IDC_BUTTON_MESH_RECONSTRUCTION  1014
@@ -73,6 +74,8 @@
 #define IDC_STATUS_X_AXIS               1093
 #define IDC_STATUS_Z_AXIS               1094
 #define IDC_PROGRESS1                   1095
+#define IDC_VIEW_CAPTION_SUB            1096
+#define IDC_COMMAND1                    1098
 #define ID_Menu                         32771
 #define ID_VIEW_MIRRORDEPTH             32772
 #define ID_VIEW_CAPTURECOLOR            32773
@@ -126,7 +129,7 @@
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        138
 #define _APS_NEXT_COMMAND_VALUE         32815
-#define _APS_NEXT_CONTROL_VALUE         1096
+#define _APS_NEXT_CONTROL_VALUE         1104
 #define _APS_NEXT_SYMED_VALUE           111
 #endif
 #endif

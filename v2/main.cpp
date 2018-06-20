@@ -64,7 +64,8 @@ m_hWnd(nullptr),
     m_saveMeshFormat(Stl),
     m_bInitializeError(false),
     m_bColorCaptured(false),
-    m_bUIUpdated(false)
+    m_bUIUpdated(false),
+	m_eMode(Scansify::Mode::Initial)
 {
 }
 
@@ -123,6 +124,8 @@ int Scansify::Run(HINSTANCE hInstance, int nCmdShow)
 
 	HMENU menu = LoadMenu(hInstance, MAKEINTRESOURCE(IDR_MENU1));
 	SetMenu(m_hWnd, menu);
+
+	UpdateMode(Scansify::Mode::Initial);
 	
 
 	//ID_MENU_VIEW_MIRRORDEPTH
@@ -205,7 +208,6 @@ LRESULT CALLBACK Scansify::DlgProc(
 {
 
 
-
 	// revert latest change
 	if (GetKeyState('Z') < 0) {
 		if (stackAnnotatedNodes.size() > 0) {
@@ -224,6 +226,10 @@ LRESULT CALLBACK Scansify::DlgProc(
 				m_processor.RedrawRenderedImage();
 			}
 		}
+	}else if(GetKeyState('V') < 0) {
+		// reset camera
+		m_processor.ResetCamera();
+		m_processor.RedrawRenderedImage();
 	}
 
     switch (message)
@@ -318,7 +324,7 @@ LRESULT CALLBACK Scansify::DlgProc(
             // We'll use this to draw the data we receive from the Kinect to the screen
             m_pDrawDepth = new ImageRenderer();
             HRESULT hr = m_pDrawDepth->Initialize(
-                GetDlgItem(m_hWnd, IDC_DEPTH_VIEW), // retrieves child window to parent
+                GetDlgItem(m_hWnd, IDC_VIEW_SUB), // retrieves child window to parent
                 m_pD2DFactory,
                 width,
                 height,
@@ -344,13 +350,15 @@ LRESULT CALLBACK Scansify::DlgProc(
                 m_bInitializeError = true;
             }
 
+			/*
             m_pDrawTrackingResiduals = new ImageRenderer();
             hr = m_pDrawTrackingResiduals->Initialize(
-                GetDlgItem(m_hWnd, IDC_TRACKING_RESIDUALS_VIEW),
+                GetDlgItem(m_hWnd, IDC_VIEW_SUB),
                 m_pD2DFactory,
                 width,
                 height,
                 width * sizeof(long));
+				*/
 
             if (FAILED(hr))
             {
@@ -419,28 +427,39 @@ void Scansify::HandleCompletedFrame()
     {
         if (m_processor.IsVolumeInitialized())
         {
-			if (m_params.m_bInitializeAnnotationMode) {
+
+			switch (m_eMode) {
+			case Initial: {
+				//m_pDrawReconstruction->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize); // color image
 				m_pDrawDepth->Draw(pFrame->m_pDepthRGBX, pFrame->m_cbImageSize);
+				break;
+			}
+			case Reconstruction: {
+				//m_pDrawDepth->Draw(pFrame->m_pDepthRGBX, pFrame->m_cbImageSize);
+				m_pDrawReconstruction->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize);
+				m_pDrawDepth->Draw(pFrame->m_pTrackingDataRGBX, pFrame->m_cbImageSize);
+
+				m_pDrawReconstruction->DrawScanArea(35, 6);
+				break;
+			}
+			case Annotation: {
 
 				if (m_processor.ConsumeViewRendered()) {
 					// Render the view if raytrace happened before
 					m_pDrawReconstruction->Draw(pFrame->m_pTrackingDataRGBX, pFrame->m_cbImageSize);
 					m_pDrawReconstruction->DrawAnnotationOnModel(m_processor.ConsumeAnnotationCoordinates()); // if no annotation happen, dont change the current output
-				}	
+				}
 
 				// TODO move this to the consumeViewRendered Condition. optionally
-				m_pDrawTrackingResiduals->DrawSVG(m_params.m_svgHelper);
+				m_pDrawDepth->DrawSVG(m_params.m_svgHelper);
 
 				// as comparisson
 				//m_pDrawTrackingResiduals->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize);
+				break;
 			}
-			else {
-				m_pDrawDepth->Draw(pFrame->m_pDepthRGBX, pFrame->m_cbImageSize);
-				m_pDrawReconstruction->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize);
-				m_pDrawTrackingResiduals->Draw(pFrame->m_pTrackingDataRGBX, pFrame->m_cbImageSize);
+					
+			}
 
-				m_pDrawReconstruction->DrawScanArea(35, 6);
-			}
         }
 
         SetStatusMessage(pFrame->m_statusMessage);
@@ -630,7 +649,7 @@ HRESULT Scansify::ImportMeshFile(KinectFusionMeshTypes saveMeshType) {
 			}
 		}
 	}
-
+	
 	m_params.m_sceneStructure->buildIndex();
 	UpdateMode(Scansify::Mode::Annotation);
 
@@ -1136,6 +1155,7 @@ void Scansify::ImportMesh() {
 	}
 	else SetStatusMessage(L"Error importing 3d mesh into design tool!");
 
+	UpdateMode(Scansify::Mode::Annotation);
 	// Restore pause state of integration
 	m_params.m_bPauseIntegration = wasPaused;
 	m_processor.SetParams(m_params);
@@ -1217,8 +1237,18 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
     if (IDC_BUTTON_RESET_RECONSTRUCTION == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
 		if (m_params.m_bInitializeAnnotationMode) {
-			// reset camera
-			m_processor.ResetCamera();
+			// BACK TO RECONSTRUCTION //
+			m_params.m_bInitializeAnnotationMode = false;
+			UpdateMode(Scansify::Mode::Reconstruction);
+			m_processor.ResetReconstruction();
+
+			// clear annotations
+			m_vAnnotatedObjects.clear();
+			delete m_params.m_svgHelper;
+			m_params.m_svgHelper = new SvgHelper();
+			m_params.m_sceneStructure->rebuildIndex();
+
+			m_processor.SetParams(m_params);
 			m_processor.RedrawRenderedImage();
 		}
 		else {
@@ -1356,7 +1386,95 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 	// If starting annotation process
 	if (IDC_BUTTON_MESH_DRAWING == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
 	{
+
 		// check if we are in annotation mode
+		switch (m_eMode) {
+			case Initial:
+				UpdateMode(Scansify::Mode::Reconstruction);
+				break;
+			case Reconstruction: {
+				// Initialize svghelper
+				delete m_params.m_svgHelper;
+				m_params.m_svgHelper = new SvgHelper();
+
+				SetStatusMessage(L"Reconstructing the mesh. Please wait...");
+
+				m_processor.ResetCamera();
+
+				// Pause integration while we're saving
+				bool wasPaused = m_params.m_bPauseIntegration;
+				m_params.m_bPauseIntegration = true;
+				m_processor.SetParams(m_params);
+
+				// Release the mesh from previous reconstruction
+				SafeRelease(m_params.m_pMesh);
+
+
+				// Release the mesh in KinectFusionProcessor
+				HRESULT hr = m_processor.CalculateMesh(&m_params.m_pMesh);
+
+				SetStatusMessage(L"Building acceleration structure...");
+				const clock_t begin_time = clock();
+
+				if (SUCCEEDED(hr))
+				{
+					m_params.m_sceneStructure = new rt::BVH();
+
+					INuiFusionColorMesh* mesh = m_params.m_pMesh;
+
+					const Vector3 *vertices = nullptr;
+					const Vector3 *normals = nullptr;
+
+					unsigned int numVertices = mesh->VertexCount();
+					unsigned int numTriangles = numVertices / 3;
+
+					mesh->GetVertices(&vertices);
+					mesh->GetNormals(&normals);
+
+
+
+					// Iterate over generated mesh buffer and put data into vector
+					float k = 0;
+					for (unsigned int t = 0; t < numTriangles; ++t)
+					{
+						k++;
+						rt::Point vertex[3];
+						rt::Vector normal[3];
+
+						// Sequentially write the 3 vertices and normals of the triangle, for each triangle
+						for (unsigned int v = 0; v<3; v++)
+						{
+							vertex[v] = rt::Point(vertices[(t * 3) + v].x, vertices[(t * 3) + v].y, vertices[(t * 3) + v].z);
+							normal[v] = rt::Vector(normals[(t * 3) + v].x, normals[(t * 3) + v].y, normals[(t * 3) + v].z);
+						}
+						rt::SmoothTriangle* smoothT = new rt::SmoothTriangle(vertex, normal);
+						//smoothT->m_bAnnotated = true;
+						m_params.m_sceneStructure->add(smoothT);
+					}
+
+					m_params.m_sceneStructure->buildIndex();
+					UpdateMode(Scansify::Mode::Annotation);
+
+					printf("\n\nAcceleration structure built in %.3f seconds with %.1f polygons.\n\n", float(clock() - begin_time) / CLOCKS_PER_SEC, k);
+					UpdateMode(Scansify::Mode::Annotation);
+					m_processor.RedrawRenderedImage();
+				}
+				else SetStatusMessage(L"Failed to create mesh of reconstruction.");
+			break;
+			}
+			case Annotation: {
+
+				m_saveMeshFormat = Svg;
+				SaveMesh(false);
+				SetStatusMessage(L"Successfully created a 2D shape.");
+
+			break;
+			}
+
+		}
+
+		/*
+
 		if (m_params.m_bInitializeAnnotationMode) {
 			m_params.m_bInitializeAnnotationMode = false;
 
@@ -1441,7 +1559,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			else SetStatusMessage(L"Failed to create mesh of reconstruction.");
 		}
 
-		
+		*/
 	}
 
 
@@ -1552,14 +1670,19 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 /// </summary>
 void Scansify::UpdateMode(Scansify::Mode mode) {
 
+	m_eMode = mode;
+
 	switch (mode) {
+	case Initial:
+
+		break;
 	case Reconstruction:
 		// Show all unecessary window components //
 		ShowWindow(GetDlgItem(m_hWnd, IDC_RECON_VOLUME_SETTINGS_BOX), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_VOXELS_PER_METER_BOX), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_BOX), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_VOLUME_RESOLUTION_BOX), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_DEPTH_THRESHOLD_GROUP), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_DEPTH_THRESHOLD_GROUP), SW_HIDE);
 
 		// controls
 		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), SW_SHOW);
@@ -1567,8 +1690,8 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_HIDE);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_SHOW);
 
 		//labels
@@ -1576,16 +1699,20 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_X_AXIS), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Y_AXIS), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Z_AXIS), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_TEXT), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_TEXT), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_DIST_TEXT), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_TEXT), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_TEXT), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_DIST_TEXT), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_HIDE);
 
+		// buttons
 		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_ANNOTATION), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), SW_SHOW);
+
 
 		// Change label names
 		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Start Annotation");
 		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Reconstruction");
+		SetWindowText(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_SUB), L"Residual Tracking.\n White marks everything that has been reconstructed.");
 
 		// Un-check pause and reset reconstruction
 		CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
@@ -1623,10 +1750,12 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_HIDE);
 
 		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_ANNOTATION), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), SW_SHOW);
 
 		// Change label names
-		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Re-scan Arm");
-		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Fix Camera");
+		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Create 2D Shape");
+		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Rescan the arm");
+		SetWindowText(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_SUB), L"Unwrapped 2D Shape.\n Red line indicates additional line to close the shape.");
 
 		m_processor.ResetCamera();
 

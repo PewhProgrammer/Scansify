@@ -20,7 +20,7 @@ class Scansify
 
 public:
 
-	enum Mode { Annotation, Reconstruction };
+	enum Mode { Annotation, Reconstruction, Initial };
 
 
     /// <summary>
@@ -155,17 +155,20 @@ private:
     /// <summary>
     /// The reconstruction processor
     /// </summary>
+	bool                        m_bUIUpdated;
+	bool                        m_bInitializeError;
+	bool                        m_bSavingMesh;
+	bool                        m_bColorCaptured;
     KinectFusionProcessor       m_processor;
-    bool                        m_bUIUpdated;
-
-    bool                        m_bInitializeError;
-    bool                        m_bSavingMesh;
     KinectFusionMeshTypes       m_saveMeshFormat;
-    bool                        m_bColorCaptured;
 	vector<const 
 		rt::SmoothTriangle*>	m_vAnnotatedObjects;
 	vector<vector<rt::Node*>>	stackAnnotatedNodes;
 
+	/// <summary>
+	/// Different states of the application
+	/// </summary>
+	Scansify::Mode				m_eMode;
 
     /// <summary>
     /// Most recently reported frame rate
