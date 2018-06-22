@@ -15,6 +15,7 @@
 KinectFusionProcessorFrame::KinectFusionProcessorFrame() :
     m_pReconstructionRGBX(nullptr),
     m_pDepthRGBX(nullptr),
+	m_pColorRGBX(nullptr),
     m_pTrackingDataRGBX(nullptr),
     m_cbImageSize(0),
     m_fFramesPerSecond(0),
@@ -53,14 +54,17 @@ HRESULT KinectFusionProcessorFrame::Initialize(int cImageSize)
         m_pReconstructionRGBX = new(std::nothrow) BYTE[m_cbImageSize];
         m_pDepthRGBX = new(std::nothrow) BYTE[m_cbImageSize];
         m_pTrackingDataRGBX = new(std::nothrow) BYTE[m_cbImageSize];
+		m_pColorRGBX = new(std::nothrow) BYTE[m_cbImageSize];
 
         if (nullptr != m_pReconstructionRGBX &&
             nullptr != m_pDepthRGBX &&
-            nullptr != m_pTrackingDataRGBX)
+            nullptr != m_pTrackingDataRGBX &&
+			nullptr != m_pColorRGBX)
         {
             ZeroMemory(m_pReconstructionRGBX, m_cbImageSize);
             ZeroMemory(m_pDepthRGBX, m_cbImageSize);
             ZeroMemory(m_pTrackingDataRGBX, m_cbImageSize);
+			ZeroMemory(m_pColorRGBX, m_cbImageSize);
         }
         else
         {
@@ -89,6 +93,7 @@ void KinectFusionProcessorFrame::FreeBuffers()
     SAFE_DELETE_ARRAY(m_pReconstructionRGBX);
     SAFE_DELETE_ARRAY(m_pDepthRGBX);
     SAFE_DELETE_ARRAY(m_pTrackingDataRGBX);
+	SAFE_DELETE_ARRAY(m_pColorRGBX);
 
     m_cbImageSize = 0;
 }

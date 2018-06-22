@@ -330,6 +330,15 @@ LRESULT CALLBACK Scansify::DlgProc(
                 height,
                 width * sizeof(long));
 
+
+			m_pDrawColor = new ImageRenderer();
+			hr = m_pDrawDepth->Initialize(
+				GetDlgItem(m_hWnd, IDC_VIEW_SUB), // retrieves child window to parent
+				m_pD2DFactory,
+				width,
+				height,
+				width * sizeof(long));
+
             if (FAILED(hr))
             {
                 SetStatusMessage(L"Failed to initialize the Direct2D draw device for Depth.");
@@ -430,7 +439,7 @@ void Scansify::HandleCompletedFrame()
 
 			switch (m_eMode) {
 			case Initial: {
-				//m_pDrawReconstruction->Draw(pFrame->m_pReconstructionRGBX, pFrame->m_cbImageSize); // color image
+				m_pDrawReconstruction->Draw(pFrame->m_pColorRGBX, pFrame->m_cbImageSize); // color image
 				m_pDrawDepth->Draw(pFrame->m_pDepthRGBX, pFrame->m_cbImageSize);
 				break;
 			}
@@ -1363,9 +1372,10 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			auto flag2 = m_params.m_svgHelper->getDirectionX(-dynamicTest, vec.x);
 			printf("Test direction is: %s\n", flag2 ? "positive" : "negative");
 
+			flag = true;
 
 			if (flag) {
-				vec.z += std::abs(storedY);
+				vec.z += storedY;
 			}
 			else {
 				vec.z -= std::abs(storedY);
@@ -1473,93 +1483,6 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 		}
 
-		/*
-
-		if (m_params.m_bInitializeAnnotationMode) {
-			m_params.m_bInitializeAnnotationMode = false;
-
-			UpdateMode(Scansify::Mode::Reconstruction);
-			m_processor.ResetReconstruction();
-
-			// clear annotations
-			m_vAnnotatedObjects.clear();
-			delete m_params.m_svgHelper;
-			m_params.m_svgHelper = new SvgHelper();
-			m_params.m_sceneStructure->rebuildIndex();
-
-			m_processor.SetParams(m_params);
-			m_processor.RedrawRenderedImage();
-		}
-		else {
-			// Initialize svghelper
-			delete m_params.m_svgHelper;
-			m_params.m_svgHelper = new SvgHelper();
-
-			SetStatusMessage(L"Reconstructing the mesh. Please wait...");
-
-			m_processor.ResetCamera();
-
-			// Pause integration while we're saving
-			bool wasPaused = m_params.m_bPauseIntegration;
-			m_params.m_bPauseIntegration = true;
-			m_processor.SetParams(m_params);
-
-			// Release the mesh from previous reconstruction
-			SafeRelease(m_params.m_pMesh);
-
-
-			// Release the mesh in KinectFusionProcessor
-			HRESULT hr = m_processor.CalculateMesh(&m_params.m_pMesh);
-
-			SetStatusMessage(L"Building acceleration structure...");
-			const clock_t begin_time = clock();
-
-			if (SUCCEEDED(hr))
-			{
-				m_params.m_sceneStructure = new rt::BVH();
-
-				INuiFusionColorMesh* mesh = m_params.m_pMesh;
-
-				const Vector3 *vertices = nullptr;
-				const Vector3 *normals = nullptr;
-
-				unsigned int numVertices = mesh->VertexCount();
-				unsigned int numTriangles = numVertices / 3;
-
-				mesh->GetVertices(&vertices);
-				mesh->GetNormals(&normals);
-
-
-
-				// Iterate over generated mesh buffer and put data into vector
-				float k = 0;
-				for (unsigned int t = 0; t < numTriangles; ++t)
-				{
-					k++;
-					rt::Point vertex[3];
-					rt::Vector normal[3];
-
-					// Sequentially write the 3 vertices and normals of the triangle, for each triangle
-					for (unsigned int v = 0; v<3; v++)
-					{
-						vertex[v] = rt::Point(vertices[(t * 3) + v].x, vertices[(t * 3) + v].y, vertices[(t * 3) + v].z);
-						normal[v] = rt::Vector(normals[(t * 3) + v].x, normals[(t * 3) + v].y, normals[(t * 3) + v].z);
-					}
-					rt::SmoothTriangle* smoothT = new rt::SmoothTriangle(vertex, normal);
-					//smoothT->m_bAnnotated = true;
-					m_params.m_sceneStructure->add(smoothT);
-				}
-
-				m_params.m_sceneStructure->buildIndex();
-				UpdateMode(Scansify::Mode::Annotation);
-
-				printf("\n\nAcceleration structure built in %.3f seconds with %.1f polygons.\n\n", float(clock() - begin_time) / CLOCKS_PER_SEC, k);
-				m_processor.RedrawRenderedImage();
-			}
-			else SetStatusMessage(L"Failed to create mesh of reconstruction.");
-		}
-
-		*/
 	}
 
 

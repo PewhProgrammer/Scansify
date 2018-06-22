@@ -69,6 +69,7 @@ private:
     ImageRenderer*              m_pDrawReconstruction;
     ImageRenderer*              m_pDrawTrackingResiduals;
     ImageRenderer*              m_pDrawDepth;
+	ImageRenderer*              m_pDrawColor;
     ID2D1Factory*               m_pD2DFactory;
 
     /// <summary>

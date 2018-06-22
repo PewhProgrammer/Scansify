@@ -44,7 +44,7 @@ struct KinectFusionParams
 		m_bMirrorDepthFrame(false),
 		m_cMaxIntegrationWeight(NUI_FUSION_DEFAULT_INTEGRATION_WEIGHT),
 		m_bDisplaySurfaceNormals(false),
-		m_bCaptureColor(false),
+		m_bCaptureColor(true),
 		m_bDisplayFingerTracking(false),
 		m_bDisplayArmTracking(false),
 		m_bDisplayHandTracking(false),

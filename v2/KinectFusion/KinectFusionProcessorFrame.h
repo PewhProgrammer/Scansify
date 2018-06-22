@@ -40,6 +40,7 @@ public:
     // Frame buffer data
     BYTE* m_pReconstructionRGBX;
     BYTE* m_pDepthRGBX;
+	BYTE* m_pColorRGBX;
     BYTE* m_pTrackingDataRGBX;
 
     // Count of bytes in each frame buffer

@@ -416,6 +416,7 @@ private:
     /// Images for display.
     /// </summary>
     NUI_FUSION_IMAGE_FRAME*     m_pDepthFloatImage;
+	NUI_FUSION_IMAGE_FRAME*     m_pColorFloatImage;
     NUI_FUSION_IMAGE_FRAME*     m_pShadedSurface;
     NUI_FUSION_IMAGE_FRAME*     m_pShadedSurfaceNormals;
     NUI_FUSION_IMAGE_FRAME*     m_pCapturedSurfaceColor;

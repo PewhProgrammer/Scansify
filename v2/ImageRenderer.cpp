@@ -423,6 +423,11 @@ struct less_than_key
 HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::tuple
 	<float, float, int>> annotations)
 {
+	/*
+	if(annotations.size() > 0)
+		printf("(%.2f, %.2f, %d) ", get<0>(annotations[0]), get<1>(annotations[1]), get<1>(annotations[2]) );
+		*/
+
 	size_t len = annotations.size();
 	if (len == 0) return S_OK;
 
@@ -451,19 +456,26 @@ HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::tuple
 	prev.first = interpolate(prev.first, -1, 1, 0, m_sourceWidth);
 	prev.second = interpolate(prev.second, -1, 1, 0, m_sourceHeight);
 
+
 	//draw subsequently edge and node
 	for (int i = 1; i < len; i++) {
-		auto curr = std::pair<float, float>(get<0>(annotations[i]), get<1>(annotations[i]));
-		curr.first = interpolate(curr.first,-1,1,0,m_sourceWidth);
-		curr.second = interpolate(curr.second, -1, 1, 0, m_sourceHeight);
-		
-		//printf(" --->  (%f, %f)\n", curr.first, curr.second);
-		m_pRenderTarget->DrawLine(
-			D2D1::Point2F(prev.first, prev.second),
-			D2D1::Point2F(curr.first, curr.second),
-			pBrush);
-		prev = curr;
+		if (get<2>(annotations[i]) == get<2>(annotations[i-1]) + 1) {
+			auto curr = std::pair<float, float>(get<0>(annotations[i]), get<1>(annotations[i]));
+			curr.first = interpolate(curr.first, -1, 1, 0, m_sourceWidth);
+			curr.second = interpolate(curr.second, -1, 1, 0, m_sourceHeight);
+
+			//printf(" --->  (%f, %f)\n", curr.first, curr.second);
+			m_pRenderTarget->DrawLine(
+				D2D1::Point2F(prev.first, prev.second),
+				D2D1::Point2F(curr.first, curr.second),
+				pBrush);
+			prev = curr;
+
+			printf("ids: %d->%d \n", get<2>(annotations[i - 1]), get<2>(annotations[i]));
+		}
 	}
+
+	printf("Finish \n\n");
 
 	hr = m_pRenderTarget->EndDraw();
 

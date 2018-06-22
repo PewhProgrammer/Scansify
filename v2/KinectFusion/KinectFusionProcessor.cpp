@@ -93,6 +93,7 @@ KinectFusionProcessor::KinectFusionProcessor() :
     m_pDepthDistortionLT(nullptr),
     m_pMapper(nullptr),
     m_pDepthFloatImage(nullptr),
+	m_pColorFloatImage(nullptr),
     m_pColorImage(nullptr),
     m_pResampledColorImage(nullptr),
     m_pResampledColorImageDepthAligned(nullptr),
@@ -1487,12 +1488,13 @@ HRESULT KinectFusionProcessor::GetKinectFrames(bool &colorSynchronized)
     ////////////////////////////////////////////////////////
     // Get a color frame from Kinect
 
-    if(m_paramsCurrent.m_bCaptureColor)
+    if(true)//m_paramsCurrent.m_bCaptureColor)
     {
         currentColorFrameTime = m_cLastColorFrameTimeStamp;
 
         IColorFrame* pColorFrame;
         hr = m_pColorFrameReader->AcquireLatestFrame(&pColorFrame);
+
 
         if (FAILED(hr))
         {
@@ -1504,6 +1506,7 @@ HRESULT KinectFusionProcessor::GetKinectFrames(bool &colorSynchronized)
             if (SUCCEEDED(hr))
             {
                 CopyColor(pColorFrame);
+				pColorFrame->CopyRawFrameDataToArray(m_paramsCurrent.m_cColorHeight*  m_paramsCurrent.m_cColorWidth, m_frame.m_pColorRGBX);
             }
 
             if (SUCCEEDED(hr))
@@ -1749,7 +1752,7 @@ HRESULT KinectFusionProcessor::TrackCameraAlignDepthFloatToReconstruction(Matrix
 }
 
 /// <summary>
-/// Handle new depth data and perform Kinect Fusion processing
+/// Handle new depth data/color and perform Kinect Fusion processing
 /// </summary>
 bool KinectFusionProcessor::ProcessDepth()
 {
@@ -1757,6 +1760,7 @@ bool KinectFusionProcessor::ProcessDepth()
 
     HRESULT hr = S_OK;
     bool depthAvailable = false;
+	bool colorAvailable = true;
     bool raycastFrame = false;
     bool cameraPoseFinderAvailable = IsCameraPoseFinderAvailable();
     bool integrateColor = m_paramsCurrent.m_bCaptureColor && ((m_cFrameCounter % m_paramsCurrent.m_cColorIntegrationInterval) == 0);
@@ -1803,6 +1807,8 @@ bool KinectFusionProcessor::ProcessDepth()
             m_paramsCurrent.m_fMaxDepthThreshold,
             m_paramsCurrent.m_bMirrorDepthFrame);
     }
+
+
 
     if (FAILED(hr))
     {
@@ -1936,7 +1942,7 @@ bool KinectFusionProcessor::ProcessDepth()
         // Reset this flag as we are now integrating data again
         m_bTrackingHasFailedPreviously = false;
 
-        if (integrateColor)
+        if (true)
         {
             // Map the color frame to the depth - this fills m_pResampledColorImageDepthAligned
             MapColorToDepth();
@@ -1956,11 +1962,12 @@ bool KinectFusionProcessor::ProcessDepth()
             // Integrate just the depth data into the volume from the calculated camera pose
             hr = m_pVolume->IntegrateFrame(
                 m_pDepthFloatImage,
-                nullptr,
+				nullptr,
                 m_paramsCurrent.m_cMaxIntegrationWeight,
                 NUI_FUSION_DEFAULT_COLOR_INTEGRATION_OF_ALL_ANGLES,
                 &m_worldToCameraTransform);
         }
+
 
         if (FAILED(hr))
         {
@@ -2049,6 +2056,10 @@ FinishFrame:
     {
         StoreImageToFrameBuffer(m_pDepthFloatImage, m_frame.m_pDepthRGBX);
     }
+
+	if (colorAvailable) {
+		StoreImageToFrameBuffer(m_pResampledColorImageDepthAligned, m_frame.m_pColorRGBX);
+	}
 
     if (raycastFrame)
     {
