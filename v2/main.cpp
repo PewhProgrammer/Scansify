@@ -1296,7 +1296,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
 		// translate to screen coordinate [-1;1]
 
-		double x, y; 
+		double x, y;
 		if (ScreenToClient(reconstructionWindow, &point))
 		{
 			x = ((double)(point.x - 0.f) / (width - 0.f)) * (1.f + 1.f) - 1.f;
@@ -1316,7 +1316,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			vector<rt::Node*> intersectedNodes; // buffer for annotated nodes
 			rt::Intersection hit = m_params.m_sceneStructure->intersect(r, FLT_MAX, intersectedNodes);
 			stackAnnotatedNodes.push_back(intersectedNodes); // put into stack to enable history changes
-			
+
 			if (hit) {
 				//printf("Hit detected at coordinate (%f, %f, %f) %f\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z, hit.m_nodeCounter);
 				hit.solid->m_bAnnotated = true;
@@ -1327,9 +1327,13 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			//else return; // no processing needed
 		}
 
+
+
 		////////////// AUTOMATICALLY PROCESS HIT IN TEST PHASE /////////////////////
 		///			   http://www.karldiab.com/3DPointPlotter/		to see tongue plot in 3D ///
 
+
+		//m_params.m_svgHelper->addAnnotation(m_vAnnotatedObjects);
 
 
 		auto marked = m_vAnnotatedObjects;
@@ -1390,6 +1394,8 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			//printf("Fixed SVG Point: (%.2f, %.2f) \n", curr.x, curr.z);
 			//printf("added svg data (%f, %f)\n", curr.x, curr.z);
 		}
+
+	
 
 	}
 

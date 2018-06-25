@@ -14,6 +14,8 @@
 #include <string>
 #include <tuple>
 
+#include "rt\primitives\striangle.h"
+
 using namespace std;
 typedef pair<float, float> f2;
 typedef pair<uint16_t, uint16_t> uint2;
@@ -66,6 +68,12 @@ public:
 	/// </summary>
 	/// <returns>nothing</returns>
 	void						addData(float x, float y);
+
+	/// <summary>
+	/// adds new annotation to the model
+	/// </summary>
+	/// <returns>nothing</returns>
+	void						addAnnotation(vector<const rt::SmoothTriangle*> data);
 
 	/// <summary>
 	/// Getter for width and height of svg

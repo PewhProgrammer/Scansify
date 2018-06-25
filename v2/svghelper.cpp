@@ -10,9 +10,43 @@
 
 SvgHelper::~SvgHelper(){}
 
+
+void SvgHelper::addAnnotation(vector<const rt::SmoothTriangle*> data)
+{
+	if (data.size() == 0) return;
+
+	m_vSvgData.clear();
+	m_vSvgData.resize(data.size());
+
+	// extract coordinates
+	vector<rt::Point> points;
+	points.reserve(data.size());
+
+	for (std::vector<const rt::SmoothTriangle*>::iterator it = data.begin(); it != data.end(); ++it) {
+		/* std::cout << *it; ... */
+		points.push_back((*it)->sample());
+	}
+
+	// build graph
+
+	// 1st point is focus point for plane
+	addData(points[0].x, points[0].y);
+
+	for (int i = 1; i < points.size(); i++) {
+		rt::Point A = points[i-1];
+		rt::Point B = points[i];
+
+		rt::Vector edgeAB = B - A;
+		float lenAB = edgeAB.length();
+
+
+	}
+
+}
+
 void SvgHelper::addData(float x, float y)
 {
-	this->m_vSvgData.push_back(pair<float,float>(x,y));
+	this->m_vSvgData.push_back(pair<float, float>(x, y));
 	if (m_uWidth.first < x) m_uWidth.first = (int16_t)std::floor(x);
 	if (m_uWidth.second > x) m_uWidth.second = (int16_t)std::ceil(x);
 
@@ -175,3 +209,4 @@ bool SvgHelper::getDirectionX(float angle, float dirX)
 	return dir_result;
 
 }
+
