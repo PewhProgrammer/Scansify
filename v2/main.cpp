@@ -8,6 +8,12 @@
 #include "KinectFusion/stdafx.h"
 #include <iostream>
 #include <time.h>
+#include <sstream>
+#include <string>
+
+#include <locale>
+#include <codecvt>
+#include <atlstr.h> 
 //#include <afxdialogex.h>
 
 
@@ -20,6 +26,7 @@
 // RayTracing Includes
 #include "rt\bvh.h"
 #include "rt\cameras\perspective.h"
+
 
 
 
@@ -67,6 +74,7 @@ m_hWnd(nullptr),
     m_bUIUpdated(false),
 	m_eMode(Scansify::Mode::Initial)
 {
+	initStudy();
 }
 
 /// <summary>
@@ -88,6 +96,94 @@ Scansify::~Scansify()
 
     // clean up Direct2D
     SafeRelease(m_pD2DFactory); 
+}
+
+/// <summary>
+/// Handles the study init; can be uncommented if not needed
+/// </summary>
+void Scansify::initStudy()
+{
+	
+	//ifstream myfile("D:\\Thinh\\Scansify\\study\\config.txt");
+	/*
+	if (myfile.is_open())
+	{
+		while (getline(myfile, line))
+		{
+			//cout << line << '\n';
+		}
+		myfile.close();
+	}
+	*/
+	LPOLESTR lpOleFileName = L"D:\\Thinh\\Scansify\\study\\config.txt";
+	HRESULT hr = S_OK;
+
+	// Open File
+	std::string filename = std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(lpOleFileName);
+
+
+	FILE *meshFile = NULL;
+	errno_t err = fopen_s(&meshFile, filename.c_str(), "rb");
+
+	// Could not open file for writing - return
+	if (0 != err || NULL == meshFile)
+	{
+		return;
+	}
+
+	int id = -1;
+	std::string name;
+
+	char line[256];
+
+	while (fgets(line, 255, meshFile) != NULL)
+	{
+		printf("line: %s", line);
+		// read id
+		id = std::stoi(line);
+
+		fgets(line, 255, meshFile);
+		// read name
+		name = line;
+		
+		// check if to test subject
+		std::string suffix = "!";
+		if (name.size() >= suffix.size() &&
+			name.compare(name.size() - suffix.size(), suffix.size(), suffix) == 0) {
+
+			m_sStudyName = name.substr(0, name.size() - 1);
+			// printf("Study about: %s ", name);
+			m_iStudyID = id;
+		}
+	}
+
+
+	fflush(meshFile);
+	fclose(meshFile);
+	
+
+	std::string participant = "part_"+m_sStudyName+"_0"+std::to_string(m_iStudyID); // initialized elsewhere
+	std::wstring output;
+
+	output = std::wstring(participant.begin(), participant.end());
+	output = std::wstring(L"D:\\Thinh\\Scansify\\study\\participants\\") + output; // or output += L" program";
+	const wchar_t *ptr = output.c_str();
+
+
+
+	if (CreateDirectory(ptr, NULL) ||
+		ERROR_ALREADY_EXISTS == GetLastError())
+	{
+		// CopyFile(...)
+		
+	}
+	else
+	{
+		printf("failed to create directory");
+		// Failed to create directory.
+	}
+
+	
 }
 
 /// <summary>
@@ -152,6 +248,8 @@ int Scansify::Run(HINSTANCE hInstance, int nCmdShow)
 
     return static_cast<int>(msg.wParam);
 }
+
+
 
 /// <summary>
 /// Handles window messages, passes most to the class instance to handle
@@ -538,6 +636,9 @@ HRESULT Scansify::ImportMeshFile(KinectFusionMeshTypes saveMeshType) {
 		return hr;
 	}
 
+	
+
+
 	// Set the dialog title
 	hr = pSaveDlg->SetTitle(L"Import Kinect Fusion Mesh");
 	if (SUCCEEDED(hr))
@@ -547,18 +648,39 @@ HRESULT Scansify::ImportMeshFile(KinectFusionMeshTypes saveMeshType) {
 		if (SUCCEEDED(hr))
 		{
 			// Set a default filename
+
+			std::string participant = "arm_"+ m_sStudyName + "_"; // initialized elsewhere
+			std::wstring output = std::wstring(participant.begin(), participant.end());
+			const wchar_t *ptr = output.c_str();
+
 			if (Stl == saveMeshType)
 			{
-				hr = pSaveDlg->SetFileName(L"arm_model_.stl");
+				output = output + std::wstring(L".stl");
+				const wchar_t *ptr = output.c_str();
+				hr = pSaveDlg->SetFileName(ptr);
 			}
 			else if (Obj == saveMeshType)
 			{
-				hr = pSaveDlg->SetFileName(L"arm_model_.obj");
+				output = output + std::wstring(L".obj");
+				const wchar_t *ptr = output.c_str();
+				hr = pSaveDlg->SetFileName(ptr);
 			}
 			else if (Ply == saveMeshType)
 			{
-				hr = pSaveDlg->SetFileName(L"arm_model_.ply");
+				output = output + std::wstring(L".ply");
+				const wchar_t *ptr = output.c_str();
+				hr = pSaveDlg->SetFileName(ptr);
 			}
+
+
+			// Set Folder Path
+			IShellItem *psi;
+			std::string path = "D:\\Thinh\\Scansify\\study\\participants\\part_" + m_sStudyName + "_0" + std::to_string(m_iStudyID);
+			printf("path: %s", path.c_str());
+			CString initPath = path.c_str();
+			SHCreateItemFromParsingName(initPath, NULL, IID_PPV_ARGS(&psi));
+
+			pSaveDlg->SetFolder(psi);
 
 
 			if (SUCCEEDED(hr))
@@ -694,26 +816,49 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
     if (SUCCEEDED(hr))
     {
         // Set the button text
-        hr = pSaveDlg->SetOkButtonLabel (L"Import");
+        hr = pSaveDlg->SetOkButtonLabel (L"Export");
         if (SUCCEEDED(hr))
         {
             // Set a default filename
-            if (Stl == saveMeshType)
-            {
-                hr = pSaveDlg->SetFileName(L"arm_model_.stl");
-            }
-            else if (Obj == saveMeshType)
-            {
-                hr = pSaveDlg->SetFileName(L"arm_model_.obj");
-            }
-            else if (Ply == saveMeshType)
-            {
-                hr = pSaveDlg->SetFileName(L"arm_model_.ply");
-            }
+
+			std::string participant = "arm_" + m_sStudyName + "_"; // initialized elsewhere
+			std::wstring output = std::wstring(participant.begin(), participant.end());
+			const wchar_t *ptr = output.c_str();
+
+			if (Stl == saveMeshType)
+			{
+				output = output + std::wstring(L".stl");
+				const wchar_t *ptr = output.c_str();
+				hr = pSaveDlg->SetFileName(ptr);
+			}
+			else if (Obj == saveMeshType)
+			{
+				output = output + std::wstring(L".obj");
+				const wchar_t *ptr = output.c_str();
+				hr = pSaveDlg->SetFileName(ptr);
+			}
+			else if (Ply == saveMeshType)
+			{
+				output = output + std::wstring(L".ply");
+				const wchar_t *ptr = output.c_str();
+				hr = pSaveDlg->SetFileName(ptr);
+			}
 			else if (Svg == saveMeshType)
 			{
-				hr = pSaveDlg->SetFileName(L"AnnotationSample.svg");
+				output = output + std::wstring(L".svg");
+				const wchar_t *ptr = output.c_str();
+				hr = pSaveDlg->SetFileName(ptr);
 			}
+
+
+			// Set Folder Path
+			IShellItem *psi;
+			std::string path = "D:\\Thinh\\Scansify\\study\\participants\\part_" + m_sStudyName + "_0" + std::to_string(m_iStudyID);
+			printf("path: %s", path.c_str());
+			CString initPath = path.c_str();
+			SHCreateItemFromParsingName(initPath, NULL, IID_PPV_ARGS(&psi));
+
+			pSaveDlg->SetFolder(psi);
 
 
 
@@ -1376,7 +1521,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			auto flag2 = m_params.m_svgHelper->getDirectionX(-dynamicTest, vec.x);
 			printf("Test direction is: %s\n", flag2 ? "positive" : "negative");
 
-			flag = true;
+			//flag = true;
 
 			if (flag) {
 				vec.z += storedY;

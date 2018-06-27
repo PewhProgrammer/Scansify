@@ -302,6 +302,7 @@ rt::PerspectiveCamera* KinectFusionProcessor::GetRaytraceCamera() {
 /// </summary>
 vector<std::tuple<float, float, int>> KinectFusionProcessor::ConsumeAnnotationCoordinates()
 {
+
 	auto result(m_annotationCoordinates);
 	m_annotationCoordinates.clear();
 	return result;
@@ -364,7 +365,7 @@ void KinectFusionProcessor::ComputeRaytraceCamera(int x, int y, int z)
 /// </summary>
 void KinectFusionProcessor::ComputeRotationalRaytraceCamera(int x, int y)
 {
-	if (m_fReconstructionFrameRatio == 0 || m_perspectiveCamera == nullptr) return;
+	if (m_fReconstructionFrameRatio == 0 || m_perspectiveCamera == nullptr || m_paramsCurrent.m_sceneStructure == nullptr) return;
 
 
 	float fovy = 0.785398163397f * 2; // in rad

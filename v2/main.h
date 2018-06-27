@@ -11,6 +11,7 @@
 #include "KinectFusion\KinectFusionParams.h"
 #include "KinectFusion\KinectFusionProcessor.h"
 
+
 /// <summary>
 /// KinectFusionExplorer sample.
 /// </summary>
@@ -32,6 +33,11 @@ public:
     /// Destructor
     /// </summary>
     ~Scansify();
+
+	/// <summary>
+	/// Handles the study init
+	/// </summary>
+	void                         initStudy();
 
     /// <summary>
     /// Handles window messages, passes most to the class instance to handle
@@ -71,6 +77,12 @@ private:
     ImageRenderer*              m_pDrawDepth;
 	ImageRenderer*              m_pDrawColor;
     ID2D1Factory*               m_pD2DFactory;
+
+	/// <summary>
+	/// study properties
+	/// </summary>
+	int							m_iStudyID;
+	std::string					m_sStudyName;
 
     /// <summary>
     /// Main processing function

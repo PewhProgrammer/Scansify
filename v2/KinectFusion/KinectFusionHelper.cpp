@@ -34,7 +34,7 @@ void SetIdentityMatrix(Matrix4 &mat)
     mat.M11 = 1; mat.M12 = 0; mat.M13 = 0; mat.M14 = 0;
     mat.M21 = 0; mat.M22 = 1; mat.M23 = 0; mat.M24 = 0;
     mat.M31 = 0; mat.M32 = 0; mat.M33 = 1; mat.M34 = 0;
-    mat.M41 = 0; mat.M42 = 0; mat.M43 = 0; mat.M44 = 1;
+    mat.M41 = 0; mat.M42 = 0; mat.M43 = 0; mat.M44 = 1; 
 }
 
 /// <summary>
@@ -357,7 +357,7 @@ HRESULT WriteBinarySVGCanvasFile(SvgHelper* data, LPOLESTR lpOleFileName)
 /// <param name="lpOleFileName">The full path and filename of the file to save.</param>
 /// <param name="flipYZ">Flag to determine whether the Y and Z values are flipped on save.</param>
 /// <returns>indicates success or failure</returns>
-HRESULT LoadBinarySTLMeshFile( LPOLESTR lpOleFileName,rt::BVH* scene, bool flipYZ)
+HRESULT LoadBinarySTLMeshFile(LPOLESTR lpOleFileName,rt::BVH* scene, bool flipYZ)
 {
 	HRESULT hr = S_OK;
 
