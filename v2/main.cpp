@@ -1624,6 +1624,11 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			break;
 			}
 			case Annotation: {
+				if (m_vAnnotatedObjects.size() < 2) {
+
+					SetStatusMessage(L"Not enough annotations!");
+					break;
+				}
 
 				m_saveMeshFormat = Svg;
 				SaveMesh(false);
@@ -1636,6 +1641,10 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 	}
 
+	if (ID_FILE_QUIT == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
+		PostMessage(m_hWnd, WM_CLOSE, 0, 0);
+		return;
+	}
 
 	if (ID_MENU_IMPORT_RECONSTRUCTION_STL == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
 		m_saveMeshFormat = Stl;

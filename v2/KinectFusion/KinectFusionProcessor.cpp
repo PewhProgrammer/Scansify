@@ -2130,7 +2130,7 @@ FinishFrame:
 
 		/////////// ==========================              BEGIN -> RAYCAST IMPLEMENTATION; OUTPUT: IMAGEFRAME FOR SHADER				============================ ///////////
 		
-		SetStatusMessage(L"Raycasting into volume...");
+		//SetStatusMessage(L"Raycasting into volume...");
 
 		int_fast16_t resX = m_pRaycastPointCloud->width, resY = m_pRaycastPointCloud->height;
 		float scaleX, scaleY;
@@ -2217,7 +2217,7 @@ FinishFrame:
 
 		if (SUCCEEDED(hr))
 		{
-			SetStatusMessage(L"Shading output completed. Frame created.");
+			//SetStatusMessage(L"Shading output completed. Frame created.");
 			StoreImageToFrameBuffer(m_pShadedSurface, m_frame.m_pTrackingDataRGBX);
 		}
 
