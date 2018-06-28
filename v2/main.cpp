@@ -71,9 +71,9 @@ m_hWnd(nullptr),
     m_saveMeshFormat(Stl),
     m_bInitializeError(false),
     m_bColorCaptured(false),
-    m_bUIUpdated(false),
-	m_eMode(Scansify::Mode::Initial)
+    m_bUIUpdated(false)
 {
+	Scansify::m_eMode = Scansify::Mode::Initial;
 	initStudy();
 }
 
@@ -324,7 +324,7 @@ LRESULT CALLBACK Scansify::DlgProc(
 				m_processor.RedrawRenderedImage();
 			}
 		}
-	}else if(GetKeyState('V') < 0) {
+	}else if(GetKeyState('R') < 0) {
 		// reset camera
 		m_processor.ResetCamera();
 		m_processor.RedrawRenderedImage();
@@ -1516,10 +1516,10 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			float storedY = vec.y;
 			vec.y = 0;
 			auto flag = m_params.m_svgHelper->getDirectionX(-dynamic, vec.x);
-			printf("direction is: %s\n", flag ? "positive" : "negative");
+			//printf("direction is: %s\n", flag ? "positive" : "negative");
 
 			auto flag2 = m_params.m_svgHelper->getDirectionX(-dynamicTest, vec.x);
-			printf("Test direction is: %s\n", flag2 ? "positive" : "negative");
+			//printf("Test direction is: %s\n", flag2 ? "positive" : "negative");
 
 			//flag = true;
 
@@ -1552,6 +1552,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		switch (m_eMode) {
 			case Initial:
 				UpdateMode(Scansify::Mode::Reconstruction);
+				m_processor.ResetReconstruction();
 				break;
 			case Reconstruction: {
 				// Initialize svghelper
@@ -1755,11 +1756,17 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 
 	m_eMode = mode;
 
+	
+
 	switch (mode) {
 	case Initial:
-
+		m_params.m_bInitMode = true;
+		m_processor.SetParams(m_params);
 		break;
 	case Reconstruction:
+		m_params.m_bInitMode = false;
+		m_processor.SetParams(m_params);
+
 		// Show all unecessary window components //
 		ShowWindow(GetDlgItem(m_hWnd, IDC_RECON_VOLUME_SETTINGS_BOX), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_VOXELS_PER_METER_BOX), SW_SHOW);
@@ -1801,6 +1808,7 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 		CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
 		break;
 	case Annotation:
+		m_params.m_bInitMode = false;
 		m_params.m_bInitializeAnnotationMode = true;
 		m_processor.SetParams(m_params);
 

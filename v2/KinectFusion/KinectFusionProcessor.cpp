@@ -18,6 +18,7 @@
 #include "KinectFusionProcessor.h"
 #include "KinectFusionHelper.h"
 #include "../resource.h"
+#include "../main.h"
 
 // RT include
 #include "../rt/core/point.h"
@@ -39,7 +40,7 @@ HRESULT KinectFusionProcessor::CopyDepth(
         // Check the frame pointer
         if (NULL == pDepthFrame)
         {
-            return E_INVALIDARG;
+            return E_INVALIDARG; 
         }
 
         UINT nBufferSize = 0;
@@ -1938,7 +1939,8 @@ bool KinectFusionProcessor::ProcessDepth()
     bool integrateData = !m_bTrackingFailed && !m_paramsCurrent.m_bPauseIntegration && 
         (!cameraPoseFinderAvailable || (cameraPoseFinderAvailable && !(m_bTrackingHasFailedPreviously && m_cSuccessfulFrameCounter < m_paramsCurrent.m_cMinSuccessfulTrackingFramesForCameraPoseFinderAfterFailure)));
 
-    if (integrateData)
+
+    if (integrateData || m_paramsCurrent.m_bInitMode)
     {
         // Reset this flag as we are now integrating data again
         m_bTrackingHasFailedPreviously = false;
@@ -1976,6 +1978,8 @@ bool KinectFusionProcessor::ProcessDepth()
             goto FinishFrame;
         }
     }
+
+	
 
     ////////////////////////////////////////////////////////
     // Check to see if we have time to raycast
@@ -2031,6 +2035,7 @@ bool KinectFusionProcessor::ProcessDepth()
 
     ////////////////////////////////////////////////////////
     // Update camera pose finder, adding key frames to the database
+
 
     if (m_paramsCurrent.m_bAutoFindCameraPoseWhenLost && !m_bTrackingHasFailedPreviously
         && m_cSuccessfulFrameCounter > m_paramsCurrent.m_cMinSuccessfulTrackingFramesForCameraPoseFinder

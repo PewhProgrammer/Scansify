@@ -40,6 +40,10 @@ private:
 	int16_2 m_uWidth;
 	int16_2 m_uHeight;
 
+	float m_fRealHeight, m_fRealWidth;
+	std::pair<float, float> m_pMin;
+	std::pair<float, float> m_pMax;
+
 	string footer;
 	bool m_bOffsetFlagX;
 	bool m_bOffsetFlagY;
@@ -49,8 +53,9 @@ public:
 	bool m_bDirectionFlagX;
 	bool m_bPosX;
 
-	SvgHelper():m_uWidth(INT_FAST16_MIN, INT_FAST16_MAX),m_uHeight(INT_FAST16_MIN, INT_FAST16_MAX), m_bOffsetFlagY(false), m_bOffsetFlagX(false),
-	m_bDirectionFlagX(true){
+	SvgHelper():m_uWidth(INT_FAST16_MIN, INT_FAST16_MAX),m_uHeight(INT_FAST16_MIN, INT_FAST16_MAX), m_pMin(FLT_MAX, FLT_MAX),
+		m_pMax(-FLT_MAX, -FLT_MAX), m_bOffsetFlagY(false), m_bOffsetFlagX(false),
+		m_bDirectionFlagX(true), m_fRealHeight(0.0f), m_fRealWidth(0.0f) {
 
 		// prereserve 10k spots for coordinates
 		m_vSvgData.reserve(10000);

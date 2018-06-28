@@ -316,8 +316,10 @@ HRESULT WriteBinarySVGCanvasFile(SvgHelper* data, LPOLESTR lpOleFileName)
 	std::string header = data->getHeader();
 	std::fwrite(header.c_str(), sizeof(char), header.length(), meshFile);
 
+	// scale
+
 	// predefined tags
-	string open = "<path d=\" M" + std::to_string(data->getX(0)) + " " + std::to_string(data->getY(0)) + " ";
+	string open = "	<g id = \"g3186\" transform = \"scale(10)\">\n   <path d=\" M" + std::to_string(data->getX(0)) + " " + std::to_string(data->getY(0)) + " ";
 	string close = "Z\" " + style +"/>\n";
 
 	//open path tag
@@ -340,7 +342,7 @@ HRESULT WriteBinarySVGCanvasFile(SvgHelper* data, LPOLESTR lpOleFileName)
 
 
 	// Write the footer line
-	std::string footer = "\n</svg>";
+	std::string footer = "\n	</g>\n\n</svg>";
 	std::fwrite(footer.c_str(), sizeof(char), footer.length(), meshFile);
 
 	std::fflush(meshFile);

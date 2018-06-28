@@ -447,6 +447,7 @@ HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::tuple
 
 	std::sort(annotations.begin(), annotations.end(), less_than_key());
 
+	
 
 	//draw first node
 	auto prev = std::pair<float,float>(get<0>(annotations[0]), get<1>(annotations[0]));

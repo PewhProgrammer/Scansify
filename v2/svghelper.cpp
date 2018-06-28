@@ -55,6 +55,17 @@ void SvgHelper::addData(float x, float y)
 
 	if (x < 0) m_bOffsetFlagX = true;
 	if (y < 0) m_bOffsetFlagY = true;
+
+	printf("pMax: %.3f\n", m_pMax.first);
+	printf("X: %.3f\n", x);
+
+	if (x > m_pMax.first)  m_pMax.first = x;
+	if (x < m_pMin.first) m_pMin.first = x;
+
+	if (y > m_pMax.second)  m_pMax.second = y;
+	if (y < m_pMin.second) m_pMin.second = y;
+
+	printf("\nAdd data (%.2f, %.2f)\n", x,y);
 }
 
 uint2 SvgHelper::getDimensions()
@@ -87,17 +98,9 @@ bool SvgHelper::removeLatestData()
 
 string SvgHelper::getHeader()
 {
-	/*
-	return 
-		"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"
-		"<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"\n"
-		" \"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">\n\n"
-		"<!-- ##################################\n     # SVG file created by Scansify   "
-		"#\n     # Author: Thinh Tran             #\n     ################################## -->\n\n"
-		"<svg width=\" " + std::to_string(getDimensions().first) +
-		" \" height=\" " + std::to_string(getDimensions().second) + " \" version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\" "
-		" >\n<title>Annotated Pattern</title>\n\n";
-	*/
+	printf("\n(%.2f, %.2f)\n" , std::fabs(m_pMax.first) , std::fabs(m_pMin.first));
+	m_fRealWidth = std::fabs(std::fabs(m_pMax.first) - std::fabs(m_pMin.first));
+	m_fRealHeight = std::fabs(std::fabs(m_pMax.second) - std::fabs(m_pMin.second));
 
 	return
 		"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"
@@ -106,8 +109,11 @@ string SvgHelper::getHeader()
 		"<!-- ########################################################\n     # SVG file created by Scansify                         "
 		"#\n     # Github reference: https://github.com/PewhProgrammer  "
 		"#\n     # Author: Thinh Tran                                   #\n     ######################################################## -->\n\n"
-		"<svg width=\" 100%"
-		" \" height=\" 100% \" version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\" "
+		"\n"
+		"<!-- height: "+ std::to_string(this->m_fRealHeight)  + "m   width: " + std::to_string(this->m_fRealWidth)  +"m -->"
+		"\n"
+		"<svg width=\" 1000px"
+		" \" height=\" 1000px \" version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\" "
 		" >\n<title>Annotated Pattern</title>\n\n";
 }
 

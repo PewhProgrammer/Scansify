@@ -50,6 +50,7 @@ struct KinectFusionParams
 		m_bDisplayHandTracking(false),
 		m_bDisplayRayTracking(false),
 		m_bInitializeAnnotationMode(false),
+		m_bInitMode(true),
 		m_bKeepAnnotation(true),
 		m_cColorIntegrationInterval(3),
 		m_bTranslateResetPoseByMinDepthThreshold(true),
@@ -198,10 +199,15 @@ struct KinectFusionParams
 	/// <summary>
 	/// Initialize Annotation
 	/// </summary>
-	bool						m_bInitializeAnnotationMode;
 	bool						m_bKeepAnnotation;
 	INuiFusionColorMesh*		m_pMesh;
 	SvgHelper*					m_svgHelper;
+
+	/// <summary>
+	/// Game state
+	/// </summary>
+	bool						m_bInitializeAnnotationMode;
+	bool						m_bInitMode;
 
 
 
@@ -268,6 +274,7 @@ struct KinectFusionParams
     /// (Lower residual alignment energy after relocalization is considered better.)
     /// </summary>
     float                       m_fMaxAlignPointCloudsEnergyForSuccess;
+
 
 
 	/// <summary>
