@@ -20,6 +20,7 @@ private:
 
 public:
 	bool m_bAnnotated;
+	Point hit;
 
     SmoothTriangle() {}
     SmoothTriangle(Point vertices[3], Vector normals[3]);

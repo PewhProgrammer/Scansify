@@ -318,8 +318,8 @@ HRESULT WriteBinarySVGCanvasFile(SvgHelper* data, LPOLESTR lpOleFileName)
 
 	// scale
 
-	// predefined tags
-	string open = "	<g id = \"g3186\" transform = \"scale(10)\">\n   <path d=\" M" + std::to_string(data->getX(0)) + " " + std::to_string(data->getY(0)) + " ";
+	// predefined tags //translate(860,-300)
+	string open = "	<g id = \"g3186\" transform = \"scale(6)\">\n   <path d=\" M" + std::to_string(data->getX(0)) + " " + std::to_string(data->getY(0)) + " ";
 	string close = "Z\" " + style +"/>\n";
 
 	//open path tag

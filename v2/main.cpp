@@ -138,7 +138,6 @@ void Scansify::initStudy()
 
 	while (fgets(line, 255, meshFile) != NULL)
 	{
-		printf("line: %s", line);
 		// read id
 		id = std::stoi(line);
 
@@ -289,6 +288,7 @@ LRESULT CALLBACK Scansify::MessageRouter(
 
 
 POINT pointPrev;
+bool zKeyFlag = true;
 
 /// <summary>
 /// Handle windows messages for the class instance
@@ -307,7 +307,9 @@ LRESULT CALLBACK Scansify::DlgProc(
 
 
 	// revert latest change
-	if (GetKeyState('Z') < 0) {
+	if (GetKeyState('Z') < 0 && zKeyFlag) {
+		zKeyFlag = false;
+		printf("pressed Z: %h \n", GetKeyState('Z'));
 		if (stackAnnotatedNodes.size() > 0) {
 			vector<rt::Node*> intersectedNodes = stackAnnotatedNodes.back();
 			stackAnnotatedNodes.pop_back();
@@ -320,11 +322,19 @@ LRESULT CALLBACK Scansify::DlgProc(
 					m_vAnnotatedObjects.pop_back();
 				}
 
+				printf("Remaining data: %d\n", m_vAnnotatedObjects.size());
+
 				m_processor.SetParams(m_params);
 				m_processor.RedrawRenderedImage();
 			}
 		}
-	}else if(GetKeyState('R') < 0) {
+	}
+	else if (GetAsyncKeyState('Z') == 0) {
+		zKeyFlag = true;
+	}
+	
+	
+	if(GetKeyState('R') < 0) {
 		// reset camera
 		m_processor.ResetCamera();
 		m_processor.RedrawRenderedImage();
@@ -676,7 +686,7 @@ HRESULT Scansify::ImportMeshFile(KinectFusionMeshTypes saveMeshType) {
 			// Set Folder Path
 			IShellItem *psi;
 			std::string path = "D:\\Thinh\\Scansify\\study\\participants\\part_" + m_sStudyName + "_0" + std::to_string(m_iStudyID);
-			printf("path: %s", path.c_str());
+			//printf("path: %s", path.c_str());
 			CString initPath = path.c_str();
 			SHCreateItemFromParsingName(initPath, NULL, IID_PPV_ARGS(&psi));
 
@@ -854,7 +864,7 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
 			// Set Folder Path
 			IShellItem *psi;
 			std::string path = "D:\\Thinh\\Scansify\\study\\participants\\part_" + m_sStudyName + "_0" + std::to_string(m_iStudyID);
-			printf("path: %s", path.c_str());
+			//printf("path: %s", path.c_str());
 			CString initPath = path.c_str();
 			SHCreateItemFromParsingName(initPath, NULL, IID_PPV_ARGS(&psi));
 
@@ -1056,6 +1066,8 @@ void Scansify::InitializeUIControls()
 
     swprintf_s(str, ARRAYSIZE(str), L"%u", m_params.m_cMaxIntegrationWeight);
     SetDlgItemText(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT, str);
+
+	
 
 	
 	HWND comboVoxel = GetDlgItem(m_hWnd, IDC_COMBO_VOXELS);
@@ -1465,6 +1477,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			if (hit) {
 				//printf("Hit detected at coordinate (%f, %f, %f) %f\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z, hit.m_nodeCounter);
 				hit.solid->m_bAnnotated = true;
+				hit.solid->hit = hit.hitPoint();
 				m_vAnnotatedObjects.push_back(hit.solid);
 				m_processor.SetParams(m_params);
 				m_processor.RedrawRenderedImage();
@@ -1483,61 +1496,70 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 		auto marked = m_vAnnotatedObjects;
 		auto annotatedCount = marked.size() - 1;
-		if (marked.size() > 1) {
-			rt::Point prev = marked[annotatedCount - 1]->sample(); // TODO sample might possible be responsible for the misaligned drawing on the model
-			rt::Point curr = marked[annotatedCount]->sample();
+
+		if (annotatedCount == 0) {
+			//init Matrix
+			auto p = marked[0]->hit;
+			printf("%d. 3D: (%.5f, %.5f, %.5f)    ",annotatedCount, p.x, p.y, p.z);
+			m_params.m_svgHelper->addData(p.x, p.z);
+		}
+		else {
+
+			auto p = marked[annotatedCount]->hit;
+			printf("\n%d. 3D: (%.5f, %.5f, %.5f)    ", annotatedCount, p.x, p.y, p.z);
+
+
+			rt::Point prev = marked[annotatedCount - 1]->hit; // TODO sample might possible be responsible for the misaligned drawing on the model
+			rt::Point curr = marked[annotatedCount]->hit;
 			auto vec = curr - prev; // vector from previous to current node
 
-			//printf("Target vector: (%.2f, %.2f, %.2f)				", vec.x, vec.y, vec.z);
+									//printf("Target vector: (%.2f, %.2f, %.2f)				", vec.x, vec.y, vec.z);
 
-			if (annotatedCount == 1) {
-				//init Matrix
-				m_params.m_svgHelper->addData(prev.x, prev.z);
-			}
-
-			// change direction flag if following vector would be crossing the z-axis because we are moving in x-axis 
-			// it's important to evaluate how we add the y value to the x one
+									// change direction flag if following vector would be crossing the z-axis because we are moving in x-axis 
+									// it's important to evaluate how we add the y value to the x one
 			auto test = vec;
 			//test.z = 0;
 			test = test.normalize();
-			
+
 			auto dynamic = rt::dot(vec.normalize(), rt::Vector(0, -1, 0));
 			auto dynamicTest = rt::dot(test.normalize(), rt::Vector(0, -1, 0));
 
 
 			//TODO cant go around the arm with a straight line because angle changes
-			printf("direction is: (%.2f, %.2f, %.2f)\n", test.x, test.y, test.z);
+			//printf("direction is: (%.2f, %.2f, %.2f)\n", test.x, test.y, test.z);
 
 
 			//printf("dynamic: %f \n", dynamic); // changes correctly
 
 			float len = vec.length();
-			float diff = marked[0]->sample().y - curr.y;
-			float storedY = vec.y;
-			vec.y = 0;
+
+			//float diff = marked[0]->hit.y - curr.y;
+
+			float storedY = vec.z;
+			vec.z = 0;
 			auto flag = m_params.m_svgHelper->getDirectionX(-dynamic, vec.x);
-			//printf("direction is: %s\n", flag ? "positive" : "negative");
+			printf("direction is: %s\n", flag ? "positive" : "negative");
 
-			auto flag2 = m_params.m_svgHelper->getDirectionX(-dynamicTest, vec.x);
-			//printf("Test direction is: %s\n", flag2 ? "positive" : "negative");
-
-			//flag = true;
 
 			if (flag) {
-				vec.z += storedY;
+				vec.y += std::abs(storedY);
 			}
 			else {
-				vec.z -= std::abs(storedY);
+				vec.y -= std::abs(storedY);
 			}
 
 			vec = vec.normalize() * len;
 
-			rt::Point fixedPrevPoint(m_params.m_svgHelper->getData()[annotatedCount - 1].first, 0, m_params.m_svgHelper->getData()[annotatedCount - 1].second);
+			rt::Point fixedPrevPoint(m_params.m_svgHelper->getData()[annotatedCount - 1].first, m_params.m_svgHelper->getData()[annotatedCount - 1].second, 0);
 			curr = fixedPrevPoint + vec; // modified curr
 
-			m_params.m_svgHelper->addData(curr.x, curr.z);
+
+			m_params.m_svgHelper->addData(curr.x, curr.y);
 			//printf("Fixed SVG Point: (%.2f, %.2f) \n", curr.x, curr.z);
 			//printf("added svg data (%f, %f)\n", curr.x, curr.z);
+
+			printf("Fixed: (%.5f, %.5f, %.5f)   Adjusted vector: (%.5f, %.5f, %.5f)   \n\n", fixedPrevPoint.x, fixedPrevPoint.y, fixedPrevPoint.z,
+				vec.x, vec.y, vec.z);
 		}
 
 	

@@ -56,8 +56,8 @@ void SvgHelper::addData(float x, float y)
 	if (x < 0) m_bOffsetFlagX = true;
 	if (y < 0) m_bOffsetFlagY = true;
 
-	printf("pMax: %.3f\n", m_pMax.first);
-	printf("X: %.3f\n", x);
+	//printf("pMax: %.3f\n", m_pMax.first);
+	//printf("X: %.3f\n", x);
 
 	if (x > m_pMax.first)  m_pMax.first = x;
 	if (x < m_pMin.first) m_pMin.first = x;
@@ -65,7 +65,7 @@ void SvgHelper::addData(float x, float y)
 	if (y > m_pMax.second)  m_pMax.second = y;
 	if (y < m_pMin.second) m_pMin.second = y;
 
-	printf("\nAdd data (%.2f, %.2f)\n", x,y);
+	printf("	--->	 (%.3f, %.3f)\n", x,y);
 }
 
 uint2 SvgHelper::getDimensions()
@@ -112,8 +112,8 @@ string SvgHelper::getHeader()
 		"\n"
 		"<!-- height: "+ std::to_string(this->m_fRealHeight)  + "m   width: " + std::to_string(this->m_fRealWidth)  +"m -->"
 		"\n"
-		"<svg width=\" 1000px"
-		" \" height=\" 1000px \" version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\" "
+		"<svg width=\" 100%"
+		" \" height=\" 100% \" version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid meet\" "
 		" >\n<title>Annotated Pattern</title>\n\n";
 }
 
