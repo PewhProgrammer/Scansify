@@ -307,9 +307,8 @@ LRESULT CALLBACK Scansify::DlgProc(
 
 
 	// revert latest change
-	if (GetKeyState('Z') < 0 && zKeyFlag) {
+	if (GetKeyState('Z') < 0 && zKeyFlag) { // keyFlag used to prevent multiple fire
 		zKeyFlag = false;
-		printf("pressed Z: %h \n", GetKeyState('Z'));
 		if (stackAnnotatedNodes.size() > 0) {
 			vector<rt::Node*> intersectedNodes = stackAnnotatedNodes.back();
 			stackAnnotatedNodes.pop_back();
@@ -1218,6 +1217,30 @@ void Scansify::InitializeUIControls()
     {
         CheckDlgButton(m_hWnd, IDC_CHECK_CAMERA_POSE_FINDER, BST_CHECKED);
     }
+
+
+	// Set font sizes
+
+	HFONT hFont = CreateFont(17, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET,
+		OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+		DEFAULT_PITCH | FF_DONTCARE, TEXT("Times New Roman"));
+	SendMessageW(GetDlgItem(m_hWnd, IDC_STATUS), WM_SETFONT, (WPARAM)hFont, TRUE);
+
+	hFont = CreateFont(25, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET,
+		OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+		DEFAULT_PITCH | FF_DONTCARE, TEXT("Tahoma"));
+	SendMessageW(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), WM_SETFONT, (WPARAM)hFont, TRUE);
+
+	hFont = CreateFont(17, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET,
+		OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+		DEFAULT_PITCH | FF_DONTCARE, TEXT("Times New Roman"));
+	SendMessageW(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_SUB), WM_SETFONT, (WPARAM)hFont, TRUE);
+
+	hFont = CreateFont(28, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET,
+		OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+		DEFAULT_PITCH | FF_DONTCARE, TEXT("Tahoma"));
+	SendMessageW(GetDlgItem(m_hWnd, IDC_STATUS_DRAWNOW), WM_SETFONT, (WPARAM)hFont, TRUE);
+
 	
 
 }
@@ -1495,18 +1518,36 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 
 		auto marked = m_vAnnotatedObjects;
-		auto annotatedCount = marked.size() - 1;
+		auto annotatedCount = marked.size();
 
-		if (annotatedCount == 0) {
-			//init Matrix
-			auto p = marked[0]->hit;
-			printf("%d. 3D: (%.5f, %.5f, %.5f)    ",annotatedCount, p.x, p.y, p.z);
-			m_params.m_svgHelper->addData(p.x, p.z);
+		if (annotatedCount == 0)
+		{
+			EnableWindow(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), FALSE);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_DRAWNOW), SW_SHOW);
 		}
 		else {
+			ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_DRAWNOW), SW_HIDE);
 
+			ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_1), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_2), SW_SHOW);
+			ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_3), SW_SHOW);
+		}
+
+		if (annotatedCount == 1) {
+			//init Matrix
+			auto p = marked[0]->hit;
+			printf("%d. 3D: (%.5f, %.5f, %.5f)    ",annotatedCount - 1, p.x, p.y, p.z);
+			m_params.m_svgHelper->addData(p.x, p.z);
+
+			EnableWindow(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), FALSE);
+		}
+		else if(annotatedCount > 1){
+			EnableWindow(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), TRUE);
+
+			annotatedCount -= 1;
 			auto p = marked[annotatedCount]->hit;
-			printf("\n%d. 3D: (%.5f, %.5f, %.5f)    ", annotatedCount, p.x, p.y, p.z);
+			printf("\n%hu. 3D: (%.5f, %.5f, %.5f)    ", annotatedCount, p.x, p.y, p.z);
 
 
 			rt::Point prev = marked[annotatedCount - 1]->hit; // TODO sample might possible be responsible for the misaligned drawing on the model
@@ -1804,7 +1845,7 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_HIDE);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_HIDE);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_SHOW);
+		//ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_SHOW);
 
 		//labels
 		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT), SW_SHOW);
@@ -1820,11 +1861,18 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_ANNOTATION), SW_HIDE);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), SW_SHOW);
 
+		// labels
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_DRAWNOW), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_1), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_2), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_3), SW_HIDE);
+
 
 		// Change label names
 		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Start Annotation");
 		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Reconstruction");
-		SetWindowText(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_SUB), L"Residual Tracking.\n White marks everything that has been reconstructed.");
+		SetWindowText(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_SUB), L"Residual Tracking. White areas are fully captured by the system.");
 
 		// Un-check pause and reset reconstruction
 		CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
@@ -1850,7 +1898,11 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_HIDE);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_HIDE);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_HIDE);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_HIDE);
+		//ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_HIDE);
+
+		// buttons
+
+		EnableWindow(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), FALSE);
 
 		//labels
 		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT), SW_HIDE);
@@ -1864,6 +1916,21 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 
 		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_ANNOTATION), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_DRAWNOW), SW_SHOW);
+
+
+		SendMessageW(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION), WM_SETFONT,
+			(WPARAM)CreateFont(24, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET,
+				OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+				DEFAULT_PITCH | FF_DONTCARE, TEXT("Times New Roman"))
+			, TRUE);
+		SetWindowText(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION), L"Hints");
+
+		SetWindowText(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_1), L"The system will always close the shape for you when you are finished");
+		SetWindowText(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_2), L"Press STRG + Z to revert the latest change");
+		SetWindowText(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_3), L"Press R to reset the camera view");
+
+	
 
 		// Change label names
 		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Create 2D Shape");
@@ -1928,6 +1995,8 @@ void Scansify::SetStatusMessage(const WCHAR * szMessage)
     {
         length = 0;
     }
+
+
 
     if (length > 0)
     {

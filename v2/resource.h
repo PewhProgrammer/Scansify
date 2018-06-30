@@ -75,8 +75,13 @@
 #define IDC_STATUS_Z_AXIS               1094
 #define IDC_PROGRESS1                   1095
 #define IDC_VIEW_CAPTION_SUB            1096
+#define IDC_VIEW_CAPTION_DESCRIPTION    1097
 #define IDC_COMMAND1                    1098
-#define IDC_TREE1                       1106
+#define IDC_VIEW_CAPTION_DESCRIPTION_1  1098
+#define IDC_VIEW_CAPTION_DESCRIPTION_2  1100
+#define IDC_VIEW_CAPTION_DESCRIPTION_3  1101
+#define IDC_STATUS_DRAWNOW              1108
+#define IDC_STATUS_DELIMITER            1109
 #define ID_Menu                         32771
 #define ID_VIEW_MIRRORDEPTH             32772
 #define ID_VIEW_CAPTURECOLOR            32773
@@ -130,7 +135,7 @@
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        138
 #define _APS_NEXT_COMMAND_VALUE         32815
-#define _APS_NEXT_CONTROL_VALUE         1107
+#define _APS_NEXT_CONTROL_VALUE         1110
 #define _APS_NEXT_SYMED_VALUE           111
 #endif
 #endif

@@ -2796,7 +2796,7 @@ HRESULT KinectFusionProcessor::UpdateCameraPoseFinder()
     if (TRUE == addedPose)
     {
         WCHAR str[MAX_PATH];
-        swprintf_s(str, ARRAYSIZE(str), L"Camera Pose Finder Added Frame! %u frames stored, minimum distance>=%f\n", m_pCameraPoseFinder->GetStoredPoseCount(), m_paramsCurrent.m_fCameraPoseFinderDistanceThresholdAccept);
+        //swprintf_s(str, ARRAYSIZE(str), L"Camera Pose Finder Added Frame! %u frames stored, minimum distance>=%f\n", m_pCameraPoseFinder->GetStoredPoseCount(), m_paramsCurrent.m_fCameraPoseFinderDistanceThresholdAccept);
         SetStatusMessage(str);
     }
 
