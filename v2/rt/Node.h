@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-#include<set>
 #include "bbox.h"
 #include <stdio.h>
 #include "intersection.h"
@@ -13,19 +12,30 @@ class Node  {
 public:
 
 	int id;
+	bool Leaf = false;
+
 	std::vector<SmoothTriangle*> objects;
-
 	BBox boundingBox = BBox::empty();
-
 	Node* right;
 	Node* left;
-	bool Leaf = false; 
-	std::set<int> m_annotationID;
+
 
 	/// <summary>
 	/// flag to show annotated areas upon rendering process
 	/// </summary>
 	bool m_bAnnotated = false;
+
+	/// <summary>
+	/// To see coherent annotations
+	/// </summary>
+	std::set<int> m_annotationID;
+
+	/// <summary>
+	/// outputs this hitpoint when already hit before
+	/// </summary>
+	Point m_annotatedHit;
+
+
 
 	Node();
 	bool isLeaf();

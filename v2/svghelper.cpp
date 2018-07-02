@@ -46,6 +46,8 @@ void SvgHelper::addAnnotation(vector<const rt::SmoothTriangle*> data)
 
 void SvgHelper::addData(float x, float y)
 {
+	printf(" ---> Resulting svg: (%.3f, %.3f)\n", x, y);
+
 	this->m_vSvgData.push_back(pair<float, float>(x, y));
 	if (m_uWidth.first < x) m_uWidth.first = (int16_t)std::floor(x);
 	if (m_uWidth.second > x) m_uWidth.second = (int16_t)std::ceil(x);
@@ -65,7 +67,6 @@ void SvgHelper::addData(float x, float y)
 	if (y > m_pMax.second)  m_pMax.second = y;
 	if (y < m_pMin.second) m_pMin.second = y;
 
-	printf("	--->	 (%.3f, %.3f)\n", x,y);
 }
 
 uint2 SvgHelper::getDimensions()

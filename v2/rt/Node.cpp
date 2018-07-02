@@ -31,13 +31,23 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance, s
 			if (hit) {
 				resultingHit = hit;
 				resultingHit.solid = primitive;
+
+				if (this->m_bAnnotated) {
+					auto len = (this->m_annotatedHit - hit.hitPoint()).length();
+					if(len <= 0.0012f)
+						resultingHit.m_bShowAnnotation = true;
+
+					//printf("Error measurement %s for: %.5f\n", (len <= 0.0012f) ? "succeded" : "failed",  len);
+				}
+
 				if (r.m_bMousePicking) {
+					if (!this->m_bAnnotated)
+						this->m_annotatedHit = hit.hitPoint();
 					this->m_bAnnotated = true;
 					resultingHit.m_nodeCounter = 0;
 					resultingHit.m_annotationID.insert(r.m_annotationID);
 					annotated.push_back(this);
 				}
-
 				previousDistance = hit.distance;
 			}
 		}
@@ -71,14 +81,14 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance, s
 
 		if (this->m_bAnnotated) {
 			RHit.m_annotationID = this->m_annotationID;
-			RHit.m_bShowAnnotation = true;
+			//RHit.m_bShowAnnotation = true;
 		}
 		return RHit; 
 	}
 
 	if (this->m_bAnnotated) {
 		LHit.m_annotationID = this->m_annotationID;
-		LHit.m_bShowAnnotation = true;
+		//LHit.m_bShowAnnotation = true;
 	}
 	return LHit;
 }

@@ -459,6 +459,8 @@ HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::tuple
 	size_t len = annotations.size();
 	if (len == 0) return S_OK;
 
+	//printf("Points: %d\n", len);
+
 	// create the resources for this draw device
 	// they will be recreated if previously lost
 	HRESULT hr = EnsureResources();
@@ -483,9 +485,12 @@ HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::tuple
 	prev.first = interpolate(prev.first, -1, 1, 0, m_sourceWidth);
 	prev.second = interpolate(prev.second, -1, 1, 0, m_sourceHeight);
 
-	//Draw start point
-	D2D1_ELLIPSE e = D2D1::Ellipse(D2D1::Point2F(prev.first, prev.second), 2.f, 2.f);
-	m_pRenderTarget->FillEllipse(e, pBrush); // could also be DrawEllipse to draw outlier
+	D2D1_ELLIPSE e;
+	//Draw start point only if id == 1
+	if (get<2>(annotations[0]) == 0) {
+		e = D2D1::Ellipse(D2D1::Point2F(prev.first, prev.second), 2.f, 2.f);
+		m_pRenderTarget->FillEllipse(e, pBrush); // could also be DrawEllipse to draw outlier
+	}
 
 	if (len > 1) {
 		hr = m_pRenderTarget->CreateSolidColorBrush(D2D1::ColorF(D2D1::ColorF::SkyBlue), &pBrush);

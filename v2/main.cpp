@@ -314,14 +314,24 @@ LRESULT CALLBACK Scansify::DlgProc(
 			stackAnnotatedNodes.pop_back();
 			if (intersectedNodes.size() > 0) { // remove on model annotations
 				for (std::vector<rt::Node*>::iterator it = intersectedNodes.begin(); it != intersectedNodes.end(); ++it) {
-					(*it)->m_bAnnotated = false;
+
+					// as soon as their are no IDs left, mark it annotated
+					if ((*it)->m_annotationID.size() == 0) {
+						(*it)->m_bAnnotated = false;
+					}
+					else {
+						// remove IDs one by one
+						(*it)->m_annotationID;
+					}
+
+
 				}
 				if (m_vAnnotatedObjects.size() > 0) { // remove svg data
 					m_params.m_svgHelper->removeLatestData();
 					m_vAnnotatedObjects.pop_back();
 				}
 
-				printf("Remaining data: %d\n", m_vAnnotatedObjects.size());
+				//printf("Remaining data on 3d model: %d              on svg: %d\n", m_vAnnotatedObjects.size() , m_params.m_svgHelper->getData().size());
 
 				m_processor.SetParams(m_params);
 				m_processor.RedrawRenderedImage();
@@ -1483,7 +1493,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			y = ((double)(point.y - 0.f) / (height - 0.f)) * (1.f + 1.f) - 1.f;
 
 			//p.x and p.y are now relative to hwnd's client area
-			//printf("Clicked on: (%6.3f,%6.3f) \n", x,y);
+			//printf("Clicked on: (%6.3f, %6.3f) \n", x,y);
 		}
 
 
@@ -1498,14 +1508,14 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			stackAnnotatedNodes.push_back(intersectedNodes); // put into stack to enable history changes
 
 			if (hit) {
-				//printf("Hit detected at coordinate (%f, %f, %f) %f\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z, hit.m_nodeCounter);
+				//printf("Mousepick outputs 3D coordinate: (%f, %f, %f) %f\n", hit.hitPoint().x, hit.hitPoint().y, hit.hitPoint().z, hit.m_nodeCounter);
 				hit.solid->m_bAnnotated = true;
 				hit.solid->hit = hit.hitPoint();
 				m_vAnnotatedObjects.push_back(hit.solid);
 				m_processor.SetParams(m_params);
 				m_processor.RedrawRenderedImage();
 			}
-			//else return; // no processing needed
+			else return; 
 		}
 
 
@@ -1554,21 +1564,13 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			rt::Point curr = marked[annotatedCount]->hit;
 			auto vec = curr - prev; // vector from previous to current node
 
-									//printf("Target vector: (%.2f, %.2f, %.2f)				", vec.x, vec.y, vec.z);
-
-									// change direction flag if following vector would be crossing the z-axis because we are moving in x-axis 
-									// it's important to evaluate how we add the y value to the x one
-			auto test = vec;
-			//test.z = 0;
-			test = test.normalize();
-
+			// change direction flag if following vector would be crossing the z-axis because we are moving in x-axis 
+			// it's important to evaluate how we add the y value to the x one
 			auto dynamic = rt::dot(vec.normalize(), rt::Vector(0, -1, 0));
-			auto dynamicTest = rt::dot(test.normalize(), rt::Vector(0, -1, 0));
 
 
 			//TODO cant go around the arm with a straight line because angle changes
 			//printf("direction is: (%.2f, %.2f, %.2f)\n", test.x, test.y, test.z);
-
 
 			//printf("dynamic: %f \n", dynamic); // changes correctly
 
@@ -1582,12 +1584,14 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			printf("direction is: %s\n", flag ? "positive" : "negative");
 
 
+			/*
 			if (flag) {
 				vec.y += std::abs(storedY);
 			}
 			else {
 				vec.y -= std::abs(storedY);
 			}
+			*/
 
 			vec = vec.normalize() * len;
 
@@ -1596,11 +1600,8 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 
 			m_params.m_svgHelper->addData(curr.x, curr.y);
-			//printf("Fixed SVG Point: (%.2f, %.2f) \n", curr.x, curr.z);
-			//printf("added svg data (%f, %f)\n", curr.x, curr.z);
 
-			printf("Fixed: (%.5f, %.5f, %.5f)   Adjusted vector: (%.5f, %.5f, %.5f)   \n\n", fixedPrevPoint.x, fixedPrevPoint.y, fixedPrevPoint.z,
-				vec.x, vec.y, vec.z);
+			printf("Prev: (%.5f, %.5f, %.5f)   Adjusted vector: (%.5f, %.5f, %.5f)   \n\n", fixedPrevPoint.x, fixedPrevPoint.y, fixedPrevPoint.z, vec.x, vec.y, vec.z);
 		}
 
 	

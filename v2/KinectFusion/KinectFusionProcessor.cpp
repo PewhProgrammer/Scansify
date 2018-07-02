@@ -2186,6 +2186,7 @@ FinishFrame:
 										checkIDs[id] = 1;
 										m_annotationCoordinates.push_back(std::tuple<float, float, int>(scaleX, scaleY, id));
 										//printf("\nadded id for drawing: %d\n", id);
+										//printf("\n%d.Rerendering gives: (%6.3f,%6.3f)\n", id, scaleX, scaleY);
 									}
 								}
 							}
