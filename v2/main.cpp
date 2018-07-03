@@ -1579,20 +1579,29 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			//float diff = marked[0]->hit.y - curr.y;
 
 			float storedY = vec.z;
-			vec.z = 0;
+			//vec.z = 0;
 			auto flag = m_params.m_svgHelper->getDirectionX(-dynamic, vec.x);
 			printf("direction is: %s\n", flag ? "positive" : "negative");
 
+			auto weight = vec.normalize();
+			auto weightX = storedY * weight.x;
+			auto weightY = storedY * weight.y;
+			printf("    weights:(%.3f, %.3f)\n", weightX, weightY);
 
-			/*
+			
 			if (flag) {
-				vec.y += std::abs(storedY);
+				vec.x += std::abs(weightX);
+				//vec.y += std::abs(weightY);
 			}
 			else {
-				vec.y -= std::abs(storedY);
+				vec.x -= std::abs(weightX);
+				vec.y -= std::abs(weightY);
 			}
-			*/
+			
 
+			weight = vec.normalize();
+			printf("normalized:(%.3f, %.3f, %.3f)		", weight.x, weight.y, weight.z);
+			printf("lenght:	%.3f	\n", len);
 			vec = vec.normalize() * len;
 
 			rt::Point fixedPrevPoint(m_params.m_svgHelper->getData()[annotatedCount - 1].first, m_params.m_svgHelper->getData()[annotatedCount - 1].second, 0);
