@@ -325,33 +325,30 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 		// Assume that the window will cover approximately 1 meter
 		// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
 
-
-		auto dimRange = svg->getDimensionsRange();
-		UINT offsetY = 0;
-		UINT offsetX = 0;
-
 		float radius = 2.5f;
-		float scale = 100.f;
+		float scale = 2.f;
 
 		float xLow = -0.3f;
 		float xHigh = 0.3f;
-		float yLow = 0.4f;
-		float yHigh = 0.8f;
+		float yLow = 0.3f;
+		float yHigh = 0.9f;
 
 		// margin to make interpolating more feasible
-		float adjustedWidth_Min = 62; // 400 visible width
+		float adjustedWidth_Min = 10; // 400 visible width
 		float adjustedWidth_Max = m_sourceWidth - 62; // 400 visible width
 
-		float adjustedHeight_Min = 79; // 400 visible width
-		float adjustedHeight_Max = m_sourceHeight - 79; // 266 visible height
+		float adjustedHeight_Min = 10; // 400 visible width
+		float adjustedHeight_Max = m_sourceWidth - 62; // 266 visible height
 
 
+		float x1_help = data[0].first;
+		float y1_help = data[0].second;
 
-														//Draw start point
+		//Draw start point
 		D2D1_ELLIPSE e = D2D1::Ellipse(D2D1::Point2F(
-			interpolate(data[0].first, xLow, xHigh,
+			interpolate(x1_help, xLow, xHigh,
 				adjustedWidth_Min, adjustedWidth_Max),
-			interpolate(data[0].second, yLow, yHigh,
+			interpolate(y1_help, yLow, yHigh,
 				adjustedHeight_Min, adjustedHeight_Max)),
 			radius, radius);
 
@@ -365,21 +362,28 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 			// iterate over svg data points and draw them
 			for (int i = 1; i < dataSize; i++) {
 
-				auto x1 = (data[i - 1].first + offsetX)	* scale;
-				auto y1 = (data[i - 1].second + offsetY)	* scale;
-				auto x2 = (data[i].first + offsetX)			* scale;
-				auto y2 = (data[i].second + offsetY)		* scale;
+				auto x1 = data[i - 1].first;
+				auto y1 = data[i - 1].second;
+				auto x2 = data[i].first;
+				auto y2 = data[i].second;
 
+				x2 = ((x2 - x1) * scale) + x1_help;
+				y2 = ((y2 - y1) * scale) + y1_help;
 
-				//TODO the interpolation here doesnt perfectly work. needs to be scaled more refinely
-				x1 = interpolate(data[i - 1].first, xLow, xHigh,
+				x1 = x1_help;
+				y1 = y1_help;
+
+				x1_help = x2;
+				y1_help = y2;
+			
+				x1 = interpolate(x1, xLow, xHigh,
 					adjustedWidth_Min, adjustedWidth_Max);
-				x2 = interpolate(data[i].first, xLow, xHigh,
+				x2 = interpolate(x2, xLow, xHigh,
 					adjustedWidth_Min, adjustedWidth_Max);
 
-				y1 = interpolate(data[i - 1].second, yLow, yHigh,
+				y1 = interpolate(y1, yLow, yHigh,
 					adjustedHeight_Min, adjustedHeight_Max);
-				y2 = interpolate(data[i].second, yLow, yHigh,
+				y2 = interpolate(y2, yLow, yHigh,
 					adjustedHeight_Min, adjustedHeight_Max);
 
 
@@ -394,22 +398,22 @@ HRESULT ImageRenderer::DrawSVG(SvgHelper* svg)
 				// draw end point
 				hr = m_pRenderTarget->CreateSolidColorBrush(D2D1::ColorF(D2D1::ColorF::IndianRed), &pBrush);
 				D2D1_ELLIPSE e = D2D1::Ellipse(D2D1::Point2F(
-					interpolate(data[dataSize - 1].first, xLow, xHigh,
+					interpolate(x1_help, xLow, xHigh,
 						adjustedWidth_Min, adjustedWidth_Max),
-					interpolate(data[dataSize - 1].second, yLow, yHigh,
+					interpolate(y1_help, yLow, yHigh,
 						adjustedHeight_Min, adjustedHeight_Max)),
 					radius, radius);
 
 				m_pRenderTarget->FillEllipse(e, pBrush); // could also be DrawEllipse to draw outlier
 
 
-														 // draw end line
+				// draw end line
 				hr = m_pRenderTarget->CreateSolidColorBrush(D2D1::ColorF(D2D1::ColorF::IndianRed), &pBrush);
 				if (FAILED(hr)) { return hr; }
 
 				m_pRenderTarget->DrawLine(
-					D2D1::Point2F(interpolate(data[dataSize - 1].first, xLow, xHigh, adjustedWidth_Min, adjustedWidth_Max),
-						interpolate(data[dataSize - 1].second, yLow, yHigh, adjustedHeight_Min, adjustedHeight_Max)),
+					D2D1::Point2F(interpolate(x1_help, xLow, xHigh, adjustedWidth_Min, adjustedWidth_Max),
+						interpolate(y1_help, yLow, yHigh, adjustedHeight_Min, adjustedHeight_Max)),
 					D2D1::Point2F(interpolate(data[0].first, xLow, xHigh, adjustedWidth_Min, adjustedWidth_Max),
 						interpolate(data[0].second, yLow, yHigh, adjustedHeight_Min, adjustedHeight_Max)), pBrush);
 			}

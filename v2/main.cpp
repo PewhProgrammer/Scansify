@@ -729,7 +729,7 @@ HRESULT Scansify::ImportMeshFile(KinectFusionMeshTypes saveMeshType) {
 						};
 
 						hr = pSaveDlg->SetFileTypes(
-							ARRAYSIZE(allPossibleFileTypes),
+							_ARRAYSIZE(allPossibleFileTypes),
 							allPossibleFileTypes);
 					}
 					else if (Obj == saveMeshType)
@@ -740,7 +740,7 @@ HRESULT Scansify::ImportMeshFile(KinectFusionMeshTypes saveMeshType) {
 						};
 
 						hr = pSaveDlg->SetFileTypes(
-							ARRAYSIZE(allPossibleFileTypes),
+							_ARRAYSIZE(allPossibleFileTypes),
 							allPossibleFileTypes);
 					}
 					else if (Ply == saveMeshType)
@@ -751,7 +751,7 @@ HRESULT Scansify::ImportMeshFile(KinectFusionMeshTypes saveMeshType) {
 						};
 
 						hr = pSaveDlg->SetFileTypes(
-							ARRAYSIZE(allPossibleFileTypes),
+							_ARRAYSIZE(allPossibleFileTypes),
 							allPossibleFileTypes);
 					}
 
@@ -912,7 +912,7 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
                         };
 
                         hr = pSaveDlg->SetFileTypes(
-                            ARRAYSIZE(allPossibleFileTypes),
+                            _ARRAYSIZE(allPossibleFileTypes),
                             allPossibleFileTypes);
                     }
                     else if (Obj == saveMeshType)
@@ -923,7 +923,7 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
                         };
 
                         hr = pSaveDlg->SetFileTypes(
-                            ARRAYSIZE(allPossibleFileTypes),
+                            _ARRAYSIZE(allPossibleFileTypes),
                             allPossibleFileTypes );
                     }
                     else if (Ply == saveMeshType)
@@ -934,7 +934,7 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
                         };
 
                         hr = pSaveDlg->SetFileTypes(
-                            ARRAYSIZE(allPossibleFileTypes),
+                            _ARRAYSIZE(allPossibleFileTypes),
                             allPossibleFileTypes );
                     }
 					else if (Svg == saveMeshType)
@@ -945,7 +945,7 @@ HRESULT Scansify::SaveMeshFile(INuiFusionColorMesh* pMesh, KinectFusionMeshTypes
 						};
 
 						hr = pSaveDlg->SetFileTypes(
-							ARRAYSIZE(allPossibleFileTypes),
+							_ARRAYSIZE(allPossibleFileTypes),
 							allPossibleFileTypes);
 					}
 
@@ -1068,12 +1068,12 @@ void Scansify::InitializeUIControls()
 
     // Update slider text
     WCHAR str[MAX_PATH];
-    swprintf_s(str, ARRAYSIZE(str), L"%4.2fm", m_params.m_fMinDepthThreshold);
+    swprintf_s(str, _ARRAYSIZE(str), L"%4.2fm", m_params.m_fMinDepthThreshold);
     SetDlgItemText(m_hWnd, IDC_MIN_DIST_TEXT, str);
-    swprintf_s(str, ARRAYSIZE(str), L"%4.2fm", m_params.m_fMaxDepthThreshold);
+    swprintf_s(str, _ARRAYSIZE(str), L"%4.2fm", m_params.m_fMaxDepthThreshold);
     SetDlgItemText(m_hWnd, IDC_MAX_DIST_TEXT, str);
 
-    swprintf_s(str, ARRAYSIZE(str), L"%u", m_params.m_cMaxIntegrationWeight);
+    swprintf_s(str, _ARRAYSIZE(str), L"%u", m_params.m_cMaxIntegrationWeight);
     SetDlgItemText(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT, str);
 
 	
@@ -1557,7 +1557,12 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 			annotatedCount -= 1;
 			auto p = marked[annotatedCount]->hit;
-			printf("\n%hu. 3D: (%.5f, %.5f, %.5f)    ", annotatedCount, p.x, p.y, p.z);
+			auto p1 = marked[annotatedCount-1]->hit; // delete
+			//printf("\n%hu. 3D: (%.5f, %.5f, %.5f)    ", annotatedCount, p.x, p.y, p.z);
+			float p3d_xdist = p.x - p1.x;
+			float p3d_ydist = p.y - p1.y;
+			float p3d_zdist = p.z - p1.z;
+			printf("\n%hu. 3D: (%.5f, %.5f, %.5f)    ", annotatedCount, p3d_xdist , p3d_ydist , p3d_zdist);
 
 
 			rt::Point prev = marked[annotatedCount - 1]->hit; // TODO sample might possible be responsible for the misaligned drawing on the model
@@ -1579,29 +1584,35 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			//float diff = marked[0]->hit.y - curr.y;
 
 			float storedY = vec.z;
-			//vec.z = 0;
+			vec.z = 0;
 			auto flag = m_params.m_svgHelper->getDirectionX(-dynamic, vec.x);
 			printf("direction is: %s\n", flag ? "positive" : "negative");
 
 			auto weight = vec.normalize();
 			auto weightX = storedY * weight.x;
 			auto weightY = storedY * weight.y;
-			printf("    weights:(%.3f, %.3f)\n", weightX, weightY);
+			//printf("  weights:(%.3f, %.3f)    ", weightX, weightY);
 
-			
+			auto normalY = vec.y;
+
+			/*
 			if (flag) {
 				vec.x += std::abs(weightX);
-				//vec.y += std::abs(weightY);
+				vec.y += std::abs(weightY);
 			}
 			else {
 				vec.x -= std::abs(weightX);
 				vec.y -= std::abs(weightY);
 			}
+			*/
+
+			//printf("			Y stretched by: %.3f, %.3f  -> %.3f \n", normalY , vec.y , vec.y / normalY );
+			
 			
 
 			weight = vec.normalize();
-			printf("normalized:(%.3f, %.3f, %.3f)		", weight.x, weight.y, weight.z);
-			printf("lenght:	%.3f	\n", len);
+			//printf("normalized:(%.3f, %.3f, %.3f)		", weight.x, weight.y, weight.z);
+			//printf("length:	%.3f	\n", len);
 			vec = vec.normalize() * len;
 
 			rt::Point fixedPrevPoint(m_params.m_svgHelper->getData()[annotatedCount - 1].first, m_params.m_svgHelper->getData()[annotatedCount - 1].second, 0);
@@ -1980,12 +1991,12 @@ void Scansify::UpdateHSliders()
 
     // update text
     WCHAR str[MAX_PATH];
-    swprintf_s(str, ARRAYSIZE(str), L"%4.2fm", m_params.m_fMinDepthThreshold);
+    swprintf_s(str, _ARRAYSIZE(str), L"%4.2fm", m_params.m_fMinDepthThreshold);
     SetDlgItemText(m_hWnd, IDC_MIN_DIST_TEXT, str);
-    swprintf_s(str, ARRAYSIZE(str), L"%4.2fm", m_params.m_fMaxDepthThreshold);
+    swprintf_s(str, _ARRAYSIZE(str), L"%4.2fm", m_params.m_fMaxDepthThreshold);
     SetDlgItemText(m_hWnd, IDC_MAX_DIST_TEXT, str);
 
-    swprintf_s(str, ARRAYSIZE(str), L"%u", m_params.m_cMaxIntegrationWeight);
+    swprintf_s(str, _ARRAYSIZE(str), L"%u", m_params.m_cMaxIntegrationWeight);
     SetDlgItemText(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT, str);
 
     m_processor.SetParams(m_params);
@@ -2037,7 +2048,7 @@ void Scansify::SetFramesPerSecond(float fFramesPerSecond)
         WCHAR str[MAX_PATH] = {0};
         if (fFramesPerSecond > 0)
         {
-            swprintf_s(str, ARRAYSIZE(str), L"%5.2f FPS", fFramesPerSecond);
+            swprintf_s(str, _ARRAYSIZE(str), L"%5.2f FPS", fFramesPerSecond);
         }
 
         SendDlgItemMessageW(m_hWnd, IDC_FRAMES_PER_SECOND, WM_SETTEXT, 0, (LPARAM)str);
