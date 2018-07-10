@@ -115,6 +115,7 @@ void Scansify::initStudy()
 		myfile.close();
 	}
 	*/
+
 	LPOLESTR lpOleFileName = L"D:\\Thinh\\Scansify\\study\\config.txt";
 	HRESULT hr = S_OK;
 
@@ -131,6 +132,7 @@ void Scansify::initStudy()
 		return;
 	}
 
+
 	int id = -1;
 	std::string name;
 
@@ -144,14 +146,14 @@ void Scansify::initStudy()
 		fgets(line, 255, meshFile);
 		// read name
 		name = line;
-		
+
 		// check if to test subject
 		std::string suffix = "!";
 		if (name.size() >= suffix.size() &&
 			name.compare(name.size() - suffix.size(), suffix.size(), suffix) == 0) {
 
 			m_sStudyName = name.substr(0, name.size() - 1);
-			// printf("Study about: %s ", name);
+			//printf("Study about: %s ", name);
 			m_iStudyID = id;
 		}
 	}
@@ -312,18 +314,20 @@ LRESULT CALLBACK Scansify::DlgProc(
 		if (stackAnnotatedNodes.size() > 0) {
 			vector<rt::Node*> intersectedNodes = stackAnnotatedNodes.back();
 			stackAnnotatedNodes.pop_back();
+			int IDtoDelete = m_vAnnotatedObjects.size() - 1;
 			if (intersectedNodes.size() > 0) { // remove on model annotations
 				for (std::vector<rt::Node*>::iterator it = intersectedNodes.begin(); it != intersectedNodes.end(); ++it) {
 
-					// as soon as their are no IDs left, mark it annotated
-					if ((*it)->m_annotationID.size() == 0) {
+					auto setIDs = &(*it)->m_annotationID;
+
+					// as soon as their are no IDs left, mark it annotated false
+					if (setIDs->size() == 0) {
 						(*it)->m_bAnnotated = false;
 					}
 					else {
 						// remove IDs one by one
-						(*it)->m_annotationID;
+						setIDs->erase(setIDs->find(IDtoDelete), setIDs->end());
 					}
-
 
 				}
 				if (m_vAnnotatedObjects.size() > 0) { // remove svg data
@@ -1894,6 +1898,8 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Start Annotation");
 		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Reconstruction");
 		SetWindowText(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_SUB), L"Residual Tracking. White areas are fully captured by the system.");
+
+		EnableWindow(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), TRUE);
 
 		// Un-check pause and reset reconstruction
 		CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);

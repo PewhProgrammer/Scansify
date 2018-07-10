@@ -460,8 +460,16 @@ HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::tuple
 		printf("(%.2f, %.2f, %d) ", get<0>(annotations[0]), get<1>(annotations[1]), get<1>(annotations[2]) );
 		*/
 
+	
+
 	size_t len = annotations.size();
 	if (len == 0) return S_OK;
+
+
+	printf("size: %d", len);
+	for (int i = 0; i < len; i++) {
+		printf("( %.3f, %.3f, %d) \n", get<0>(annotations[i]), get<1>(annotations[i]), get<2>(annotations[i]));
+	}
 
 	//printf("Points: %d\n", len);
 

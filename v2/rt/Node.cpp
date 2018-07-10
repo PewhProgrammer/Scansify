@@ -45,6 +45,7 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance, s
 						this->m_annotatedHit = hit.hitPoint();
 					this->m_bAnnotated = true;
 					resultingHit.m_nodeCounter = 0;
+					m_annotationID.insert(r.m_annotationID);
 					resultingHit.m_annotationID.insert(r.m_annotationID);
 					annotated.push_back(this);
 				}

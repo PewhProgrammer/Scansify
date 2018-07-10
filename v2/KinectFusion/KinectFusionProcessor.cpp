@@ -2182,7 +2182,12 @@ FinishFrame:
 								{
 									int id = *it;
 									//printf("%d | ", id);
+
 									if (checkIDs[id] == 0) {
+
+										if (id == 3) {
+											//printf("size of intersectionhit: %d \n", hit.m_annotationID.size());
+										}
 										checkIDs[id] = 1;
 										m_annotationCoordinates.push_back(std::tuple<float, float, int>(scaleX, scaleY, id));
 										//printf("\nadded id for drawing: %d\n", id);

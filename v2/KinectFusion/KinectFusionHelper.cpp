@@ -991,7 +991,7 @@ HRESULT WriteTexturedeAsciiObjMeshFile(INuiFusionColorMesh *mesh, LPOLESTR lpOle
     fclose(meshFile);
 
     // Write the material description file
-    header = "#\n# OBJ file created by Microsoft Kinect Fusion\n#\n";
+    header = "#\n# OBJ file created by Scansify.github@pewhprogrammer\n#\n";
     fwrite(header.c_str(), sizeof(char), header.length(), mtlFile);
 
     material = "newmtl material0\n";

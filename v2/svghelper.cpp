@@ -99,9 +99,8 @@ bool SvgHelper::removeLatestData()
 
 string SvgHelper::getHeader()
 {
-	printf("\n(%.2f, %.2f)\n" , std::fabs(m_pMax.first) , std::fabs(m_pMin.first));
-	m_fRealWidth = std::fabs(std::fabs(m_pMax.first) - std::fabs(m_pMin.first));
-	m_fRealHeight = std::fabs(std::fabs(m_pMax.second) - std::fabs(m_pMin.second));
+	m_fRealWidth = std::fabs(m_pMax.first - m_pMin.first);
+	m_fRealHeight = std::fabs(m_pMax.second - m_pMin.second);
 
 	return
 		"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"
@@ -141,8 +140,14 @@ float SvgHelper::getX(unsigned int index)
 	int offset = 100;
 	float result = this->m_vSvgData[index].first * offset;
 
+	/*
 	if (m_bOffsetFlagX)
 		result += std::abs(this->m_uWidth.first * offset);
+	*/
+
+	result += offset;
+
+	//printf("real x coordinate: %.4f; %d\n", result, this->m_uWidth.first);
 
 	return result;
 }
@@ -151,8 +156,13 @@ float SvgHelper::getY(unsigned int index)
 {
 	int offset = 100;
 	float result = this->m_vSvgData[index].second * offset;
+
+	/*
 	if (m_bOffsetFlagY)
 		result += std::abs(this->m_uHeight.first * offset);
+	*/
+
+	result += offset;
 
 	return result;
 }

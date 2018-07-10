@@ -31,9 +31,7 @@ void BVH::buildIndex() {
 }
 
 void BVH::rebuildIndex() {
-	depth = 8 + (int)std::round((1.3f * log10(SceneObjects.size())));
 	clearAnnotation(Root);
-	built_flag = true;
 }
 
 rt::BVH::~BVH()
@@ -48,6 +46,7 @@ void BVH::add(SmoothTriangle* s) {
 
 void BVH::clearAnnotation(Node* node) {
 	node->m_bAnnotated = false;
+	node->m_annotationID.clear();
 
 	if (!node->isLeaf()) {
 		clearAnnotation(node->left);
