@@ -471,7 +471,7 @@ DWORD KinectFusionProcessor::MainLoop()
         }
 
         HANDLE handles[] = { m_hStopProcessingEvent };
-        DWORD waitResult = WaitForMultipleObjects(ARRAYSIZE(handles), handles, FALSE, 0);
+        DWORD waitResult = WaitForMultipleObjects(_ARRAYSIZE(handles), handles, FALSE, 0);
 
         // Get parameters and other external signals
 
@@ -892,9 +892,9 @@ HRESULT KinectFusionProcessor::InitializeKinectFusion()
         m_paramsCurrent.m_processorType, 
         m_paramsCurrent.m_deviceIndex, 
         &description[0], 
-        ARRAYSIZE(description), 
+        _ARRAYSIZE(description), 
         &instancePath[0],
-        ARRAYSIZE(instancePath), 
+        _ARRAYSIZE(instancePath), 
         &m_frame.m_deviceMemory)))
     {
         if (hr ==  E_NUI_BADINDEX)
@@ -1188,25 +1188,25 @@ HRESULT KinectFusionProcessor::RecreateVolume()
         if (E_NUI_GPU_FAIL == hr)
         {
             WCHAR buf[MAX_PATH];
-            swprintf_s(buf, ARRAYSIZE(buf), L"Device %d not able to run Kinect Fusion, or error initializing.", m_paramsCurrent.m_deviceIndex);
+            swprintf_s(buf, _ARRAYSIZE(buf), L"Device %d not able to run Kinect Fusion, or error initializing.", m_paramsCurrent.m_deviceIndex);
             SetStatusMessage(buf);
         }
         else if (E_NUI_GPU_OUTOFMEMORY == hr)
         {
             WCHAR buf[MAX_PATH];
-            swprintf_s(buf, ARRAYSIZE(buf), L"Device %d out of memory error initializing reconstruction - try a smaller reconstruction volume.", m_paramsCurrent.m_deviceIndex);
+            swprintf_s(buf, _ARRAYSIZE(buf), L"Device %d out of memory error initializing reconstruction - try a smaller reconstruction volume.", m_paramsCurrent.m_deviceIndex);
             SetStatusMessage(buf);
         }
         else if (NUI_FUSION_RECONSTRUCTION_PROCESSOR_TYPE_CPU != m_paramsCurrent.m_processorType)
         {
             WCHAR buf[MAX_PATH];
-            swprintf_s(buf, ARRAYSIZE(buf), L"Failed to initialize Kinect Fusion reconstruction volume on device %d.", m_paramsCurrent.m_deviceIndex);
+            swprintf_s(buf, _ARRAYSIZE(buf), L"Failed to initialize Kinect Fusion reconstruction volume on device %d.", m_paramsCurrent.m_deviceIndex);
             SetStatusMessage(buf);
         }
         else
         {
             WCHAR buf[MAX_PATH];
-            swprintf_s(buf, ARRAYSIZE(buf), L"Failed to initialize Kinect Fusion reconstruction volume on CPU %d.", m_paramsCurrent.m_deviceIndex);
+            swprintf_s(buf, _ARRAYSIZE(buf), L"Failed to initialize Kinect Fusion reconstruction volume on CPU %d.", m_paramsCurrent.m_deviceIndex);
             SetStatusMessage(buf);
         }
 
@@ -1862,7 +1862,7 @@ bool KinectFusionProcessor::ProcessDepth()
 				if (tracking == E_NUI_FUSION_TRACKING_ERROR)
 				{
 					WCHAR str[MAX_PATH];
-					swprintf_s(str, ARRAYSIZE(str), L"Kinect Fusion camera tracking FAILED! Align the camera to the last tracked position.");
+					swprintf_s(str, _ARRAYSIZE(str), L"Kinect Fusion camera tracking FAILED! Align the camera to the last tracked position.");
 					SetStatusMessage(str);
 				}
 				else
@@ -1893,11 +1893,11 @@ bool KinectFusionProcessor::ProcessDepth()
 				WCHAR str[MAX_PATH];
 				if (!m_paramsCurrent.m_bAutoFindCameraPoseWhenLost)
 				{
-					swprintf_s(str, ARRAYSIZE(str), L"Kinect Fusion camera tracking RECOVERED! Residual energy=%f", alignmentEnergy);
+					swprintf_s(str, _ARRAYSIZE(str), L"Kinect Fusion camera tracking RECOVERED! Residual energy=%f", alignmentEnergy);
 				}
 				else
 				{
-					swprintf_s(str, ARRAYSIZE(str), L"Kinect Fusion camera tracking RECOVERED!");
+					swprintf_s(str, _ARRAYSIZE(str), L"Kinect Fusion camera tracking RECOVERED!");
 				}
 				SetStatusMessage(str);
 			}
@@ -2178,16 +2178,13 @@ FinishFrame:
 							*(float*)(bits + (step * (j * m_pRaycastPointCloud->width + i) + (coord + 3) * sizeof(float))) = hit.normal[coord];
 							
 							if(hit.m_bShowAnnotation) {
-								for (std::set<int>::iterator it = hit.m_annotationID.begin(); it != hit.m_annotationID.end(); ++it)
+								for (auto it = hit.m_IDtoPoints.begin(); it != hit.m_IDtoPoints.end(); ++it)
 								{
-									int id = *it;
+									int id = it->first;
 									//printf("%d | ", id);
 
 									if (checkIDs[id] == 0) {
 
-										if (id == 3) {
-											//printf("size of intersectionhit: %d \n", hit.m_annotationID.size());
-										}
 										checkIDs[id] = 1;
 										m_annotationCoordinates.push_back(std::tuple<float, float, int>(scaleX, scaleY, id));
 										//printf("\nadded id for drawing: %d\n", id);
@@ -2219,12 +2216,18 @@ FinishFrame:
 			goto FinishFrame;
 		}
 
+
+		auto temp = m_worldToCameraTransform.M43;  // move camera behind model for better perspective
+		m_worldToCameraTransform.M43 = -0.9f;
+
 		hr = NuiFusionShadePointCloud(
 			&rayCastPointCloud,
 			&m_worldToCameraTransform,
 			&m_worldToBGRTransform,
 			m_pShadedSurface,
 			m_paramsCurrent.m_bDisplaySurfaceNormals ? m_pShadedSurfaceNormals : nullptr);
+
+		m_worldToCameraTransform.M43 = temp;  
 
 		if (SUCCEEDED(hr))
 		{
@@ -2476,7 +2479,7 @@ HRESULT KinectFusionProcessor::FindCameraPoseAlignPointClouds()
         m_bCalculateDeltaFrame = false;
 
         WCHAR str[MAX_PATH];
-        swprintf_s(str, ARRAYSIZE(str), L"Camera Pose Finder SUCCESS! Residual energy=%f, %u frames stored, minimum distance=%f, best match index=%d", bestNeighborAlignmentEnergy, cPoses, minDistance, bestNeighborIndex);
+        swprintf_s(str, _ARRAYSIZE(str), L"Camera Pose Finder SUCCESS! Residual energy=%f, %u frames stored, minimum distance=%f, best match index=%d", bestNeighborAlignmentEnergy, cPoses, minDistance, bestNeighborIndex);
         SetStatusMessage(str);
     }
     else
@@ -2496,7 +2499,7 @@ HRESULT KinectFusionProcessor::FindCameraPoseAlignPointClouds()
 
         // Tracking Failed will be set again on the next iteration in ProcessDepth
         WCHAR str[MAX_PATH];
-        swprintf_s(str, ARRAYSIZE(str), L"Camera Pose Finder FAILED! Residual energy=%f, %u frames stored, minimum distance=%f, best match index=%d", smallestEnergy, cPoses, minDistance, smallestEnergyNeighborIndex);
+        swprintf_s(str, _ARRAYSIZE(str), L"Camera Pose Finder FAILED! Residual energy=%f, %u frames stored, minimum distance=%f, best match index=%d", smallestEnergy, cPoses, minDistance, smallestEnergyNeighborIndex);
         SetStatusMessage(str);
     }
 
@@ -2653,7 +2656,7 @@ HRESULT KinectFusionProcessor::FindCameraPoseAlignDepthFloatToReconstruction()
         m_bCalculateDeltaFrame = true;
 
         WCHAR str[MAX_PATH];
-        swprintf_s(str, ARRAYSIZE(str), L"Camera Pose Finder SUCCESS! Residual energy=%f, %u frames stored, minimum distance=%f, best match index=%d", bestNeighborAlignmentEnergy, cPoses, minDistance, bestNeighborIndex);
+        swprintf_s(str, _ARRAYSIZE(str), L"Camera Pose Finder SUCCESS! Residual energy=%f, %u frames stored, minimum distance=%f, best match index=%d", bestNeighborAlignmentEnergy, cPoses, minDistance, bestNeighborIndex);
         SetStatusMessage(str);
     }
     else
@@ -2671,7 +2674,7 @@ HRESULT KinectFusionProcessor::FindCameraPoseAlignDepthFloatToReconstruction()
 
         // Tracking Failed will be set again on the next iteration in ProcessDepth
         WCHAR str[MAX_PATH];
-        swprintf_s(str, ARRAYSIZE(str), L"Camera Pose Finder FAILED! Residual energy=%f, %u frames stored, minimum distance=%f, best match index=%d", smallestEnergy, cPoses, minDistance, smallestEnergyNeighborIndex);
+        swprintf_s(str, _ARRAYSIZE(str), L"Camera Pose Finder FAILED! Residual energy=%f, %u frames stored, minimum distance=%f, best match index=%d", smallestEnergy, cPoses, minDistance, smallestEnergyNeighborIndex);
         SetStatusMessage(str);
     }
 
@@ -2802,7 +2805,7 @@ HRESULT KinectFusionProcessor::UpdateCameraPoseFinder()
     if (TRUE == addedPose)
     {
         WCHAR str[MAX_PATH];
-        //swprintf_s(str, ARRAYSIZE(str), L"Camera Pose Finder Added Frame! %u frames stored, minimum distance>=%f\n", m_pCameraPoseFinder->GetStoredPoseCount(), m_paramsCurrent.m_fCameraPoseFinderDistanceThresholdAccept);
+        //swprintf_s(str, _ARRAYSIZE(str), L"Camera Pose Finder Added Frame! %u frames stored, minimum distance>=%f\n", m_pCameraPoseFinder->GetStoredPoseCount(), m_paramsCurrent.m_fCameraPoseFinderDistanceThresholdAccept);
         SetStatusMessage(str);
     }
 
@@ -3035,7 +3038,7 @@ void KinectFusionProcessor::SetStatusMessage(WCHAR * szMessage)
 {
     AssertOwnThread();
 
-    StringCchCopy(m_statusMessage, ARRAYSIZE(m_statusMessage), szMessage);
+    StringCchCopy(m_statusMessage, _ARRAYSIZE(m_statusMessage), szMessage);
 }
 
 /// <summary>

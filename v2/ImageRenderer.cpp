@@ -466,11 +466,6 @@ HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::tuple
 	if (len == 0) return S_OK;
 
 
-	printf("size: %d", len);
-	for (int i = 0; i < len; i++) {
-		printf("( %.3f, %.3f, %d) \n", get<0>(annotations[i]), get<1>(annotations[i]), get<2>(annotations[i]));
-	}
-
 	//printf("Points: %d\n", len);
 
 	// create the resources for this draw device
@@ -489,8 +484,14 @@ HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::tuple
 
 	std::sort(annotations.begin(), annotations.end(), less_than_key());
 
+	/*
+	printf("size: %d\n", len);
+	for (int i = 0; i < len; i++) {
+		printf("( %.3f, %.3f, %d) \n", get<0>(annotations[i]), get<1>(annotations[i]), get<2>(annotations[i]));
+	}
+	*/
 
-	//draw first node
+	// draw first node
 	auto prev = std::pair<float,float>(get<0>(annotations[0]), get<1>(annotations[0]));
 
 	// base formula for range interpolation: Result := ((Input - InputLow) / (InputHigh - InputLow)) * (OutputHigh - OutputLow) + OutputLow;
@@ -498,7 +499,7 @@ HRESULT ImageRenderer::DrawAnnotationOnModel(vector<std::tuple
 	prev.second = interpolate(prev.second, -1, 1, 0, m_sourceHeight);
 
 	D2D1_ELLIPSE e;
-	//Draw start point only if id == 1
+	// Draw start point only if id == 1
 	if (get<2>(annotations[0]) == 0) {
 		e = D2D1::Ellipse(D2D1::Point2F(prev.first, prev.second), 2.f, 2.f);
 		m_pRenderTarget->FillEllipse(e, pBrush); // could also be DrawEllipse to draw outlier

@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include "intersection.h"
 #include "primitives\striangle.h"
+#include <map>
 
 namespace rt{
 
@@ -28,7 +29,7 @@ public:
 	/// <summary>
 	/// To see coherent annotations
 	/// </summary>
-	std::set<int> m_annotationID;
+	std::map<int, Point> m_annotationMap;
 
 	/// <summary>
 	/// outputs this hitpoint when already hit before

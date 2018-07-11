@@ -318,7 +318,7 @@ LRESULT CALLBACK Scansify::DlgProc(
 			if (intersectedNodes.size() > 0) { // remove on model annotations
 				for (std::vector<rt::Node*>::iterator it = intersectedNodes.begin(); it != intersectedNodes.end(); ++it) {
 
-					auto setIDs = &(*it)->m_annotationID;
+					auto setIDs = &(*it)->m_annotationMap;
 
 					// as soon as their are no IDs left, mark it annotated false
 					if (setIDs->size() == 0) {
@@ -410,7 +410,8 @@ LRESULT CALLBACK Scansify::DlgProc(
 		//printf("Distance difference: (%d,%d)\n", diffX, diffY);
 
 		// 1003 is wParam for window click; process lParam as it remains unused
-		if (diffX == diffY && diffX == 0) {
+		printf("Diffs (%d, %d) \n", diffX, diffY);
+		if (abs(diffX) <= 20 && abs(diffY) <= 20) {
 			ProcessUI(1003, lParam); break;
 		}
 

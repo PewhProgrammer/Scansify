@@ -33,20 +33,25 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance, s
 				resultingHit.solid = primitive;
 
 				if (this->m_bAnnotated) {
-					auto len = (this->m_annotatedHit - hit.hitPoint()).length();
-					if(len <= 0.0012f)
-						resultingHit.m_bShowAnnotation = true;
+					std::map<int, Point> toAnnotate;
+					for (auto it = m_annotationMap.begin(); it != m_annotationMap.end(); it++) {
+						auto len = (it->second - hit.hitPoint()).length();
+						if (len <= 0.0012f) {
+							resultingHit.m_bShowAnnotation = true;
+							toAnnotate[it->first] = it->second;
+						}
+						//printf("Error measurement %s for: %.5f\n", (len <= 0.0012f) ? "succeded" : "failed",  len);
+					}
 
-					//printf("Error measurement %s for: %.5f\n", (len <= 0.0012f) ? "succeded" : "failed",  len);
+					resultingHit.m_IDtoPoints = toAnnotate;
 				}
 
 				if (r.m_bMousePicking) {
-					if (!this->m_bAnnotated)
-						this->m_annotatedHit = hit.hitPoint();
+
 					this->m_bAnnotated = true;
 					resultingHit.m_nodeCounter = 0;
-					m_annotationID.insert(r.m_annotationID);
-					resultingHit.m_annotationID.insert(r.m_annotationID);
+
+					m_annotationMap[r.m_annotationID] = hit.hitPoint(); // add hitpoint to map
 					annotated.push_back(this);
 				}
 				previousDistance = hit.distance;
@@ -63,7 +68,6 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance, s
 	if (LHit) { 
 		if (LHit.m_nodeCounter == 0) {
 			this->m_bAnnotated = true; 
-			this->m_annotationID.insert(LHit.m_annotationID.begin(), LHit.m_annotationID.end());
 			annotated.push_back(this);
 		}
 		LHit.m_nodeCounter--;
@@ -75,22 +79,14 @@ Intersection rt::Node::searchIntersection(const Ray& r,float previousDistance, s
 	if (RHit) { 
 		if (RHit.m_nodeCounter == 0) {
 			this->m_bAnnotated = true;
-			this->m_annotationID.insert(RHit.m_annotationID.begin(), RHit.m_annotationID.end());
 			annotated.push_back(this);
 		}
 		 RHit.m_nodeCounter--;
 
-		if (this->m_bAnnotated) {
-			RHit.m_annotationID = this->m_annotationID;
-			//RHit.m_bShowAnnotation = true;
-		}
 		return RHit; 
 	}
 
-	if (this->m_bAnnotated) {
-		LHit.m_annotationID = this->m_annotationID;
-		//LHit.m_bShowAnnotation = true;
-	}
+
 	return LHit;
 }
 

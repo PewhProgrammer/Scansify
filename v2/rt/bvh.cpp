@@ -46,7 +46,7 @@ void BVH::add(SmoothTriangle* s) {
 
 void BVH::clearAnnotation(Node* node) {
 	node->m_bAnnotated = false;
-	node->m_annotationID.clear();
+	node->m_annotationMap.clear();
 
 	if (!node->isLeaf()) {
 		clearAnnotation(node->left);
