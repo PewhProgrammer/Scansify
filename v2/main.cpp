@@ -104,17 +104,6 @@ Scansify::~Scansify()
 void Scansify::initStudy()
 {
 	
-	//ifstream myfile("D:\\Thinh\\Scansify\\study\\config.txt");
-	/*
-	if (myfile.is_open())
-	{
-		while (getline(myfile, line))
-		{
-			//cout << line << '\n';
-		}
-		myfile.close();
-	}
-	*/
 
 	LPOLESTR lpOleFileName = L"D:\\Thinh\\Scansify\\study\\config.txt";
 	HRESULT hr = S_OK;
@@ -149,6 +138,12 @@ void Scansify::initStudy()
 
 		// check if to test subject
 		std::string suffix = "!";
+		
+		//name[strcspn(name.c_str(), "\n")] = 0;
+
+		//printf("name: %s  ", name.c_str());
+		//printf("subj: %s\n", (name.compare(name.size() - suffix.size(), suffix.size(), suffix) == 0) ? "true" : "false");
+
 		if (name.size() >= suffix.size() &&
 			name.compare(name.size() - suffix.size(), suffix.size(), suffix) == 0) {
 
@@ -229,6 +224,8 @@ int Scansify::Run(HINSTANCE hInstance, int nCmdShow)
 
     // Show window
     ShowWindow(hWndApp, nCmdShow);
+	int cx = ::GetSystemMetrics(SM_CXSCREEN) / 2;
+	int cy = ::GetSystemMetrics(SM_CYSCREEN) / 2;
 	ShowWindow(hWndApp, SW_SHOWMAXIMIZED);
 
     // Main message loop
@@ -410,7 +407,6 @@ LRESULT CALLBACK Scansify::DlgProc(
 		//printf("Distance difference: (%d,%d)\n", diffX, diffY);
 
 		// 1003 is wParam for window click; process lParam as it remains unused
-		printf("Diffs (%d, %d) \n", diffX, diffY);
 		if (abs(diffX) <= 20 && abs(diffY) <= 20) {
 			ProcessUI(1003, lParam); break;
 		}
@@ -806,7 +802,6 @@ HRESULT Scansify::ImportMeshFile(KinectFusionMeshTypes saveMeshType) {
 	}
 	
 	m_params.m_sceneStructure->buildIndex();
-	UpdateMode(Scansify::Mode::Annotation);
 
 	return hr;
 }
@@ -1322,6 +1317,47 @@ void Scansify::SaveMesh(bool reconstruction) {
 		return;
 }
 
+void Scansify::showAdvanced() {
+	if (SendDlgItemMessage(m_hWnd, IDC_CHECK_ADVANCED, BM_GETCHECK, 0, 0)) {
+		ShowWindow(GetDlgItem(m_hWnd, IDC_RECON_VOLUME_SETTINGS_BOX), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VOXELS_PER_METER_BOX), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_BOX), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VOLUME_RESOLUTION_BOX), SW_SHOW);
+
+		//controls
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_SLIDER), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_SHOW);
+
+		//labels
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_X_AXIS), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Y_AXIS), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Z_AXIS), SW_SHOW);
+	}
+	else {
+		ShowWindow(GetDlgItem(m_hWnd, IDC_RECON_VOLUME_SETTINGS_BOX), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VOXELS_PER_METER_BOX), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_BOX), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_VOLUME_RESOLUTION_BOX), SW_HIDE);
+
+		//controls
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_SLIDER), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_HIDE);
+
+		//labels
+		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_X_AXIS), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Y_AXIS), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Z_AXIS), SW_HIDE);
+	}
+}
+
 void Scansify::ImportMesh() {
 	// process saving mesh with reconstructed part
 
@@ -1336,6 +1372,7 @@ void Scansify::ImportMesh() {
 	INuiFusionColorMesh *mesh = nullptr;
 	HRESULT hr = m_processor.CalculateMesh(&mesh);
 
+	
 	if (SUCCEEDED(hr))
 	{
 		// Save mesh
@@ -1344,6 +1381,7 @@ void Scansify::ImportMesh() {
 		if (SUCCEEDED(hr))
 		{
 			SetStatusMessage(L"Imported Kinect Fusion mesh.");
+			UpdateMode(Scansify::Mode::Annotation);
 		}
 		else if (HRESULT_FROM_WIN32(ERROR_CANCELLED) == hr)
 		{
@@ -1359,7 +1397,6 @@ void Scansify::ImportMesh() {
 	}
 	else SetStatusMessage(L"Error importing 3d mesh into design tool!");
 
-	UpdateMode(Scansify::Mode::Annotation);
 	// Restore pause state of integration
 	m_params.m_bPauseIntegration = wasPaused;
 	m_processor.SetParams(m_params);
@@ -1437,10 +1474,19 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 		CheckMenu(wParam, m_params.m_bDisplayRayTracking);
 	}
-    // If it was the reset button clicked, clear the volume
+    // If the reset button clicked, clear the volume
     if (IDC_BUTTON_RESET_RECONSTRUCTION == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
     {
-		if (m_params.m_bInitializeAnnotationMode) {
+
+		switch (m_eMode) {
+		case Initial:
+
+			break;
+		case Reconstruction:
+			// Un-check pause
+			UpdateMode(Scansify::Mode::Initial);
+			break;
+		case Annotation:
 			// BACK TO RECONSTRUCTION //
 			m_params.m_bInitializeAnnotationMode = false;
 			UpdateMode(Scansify::Mode::Reconstruction);
@@ -1454,27 +1500,37 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 			m_processor.SetParams(m_params);
 			m_processor.RedrawRenderedImage();
-		}
-		else {
-			// Un-check pause
-			CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
-			m_processor.ResetReconstruction();
+			break;
 		}
     }
 
 	// If it was the reset button clicked, clear the annotations
-	if (IDC_BUTTON_RESET_ANNOTATION == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
+	if (IDC_BUTTON_RESET_ALL == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam))
 	{
-		// only if in annotation mode
-		if (m_params.m_bInitializeAnnotationMode && m_vAnnotatedObjects.size() > 0) {
-			// reset camera
-			m_vAnnotatedObjects.clear();
-			delete m_params.m_svgHelper;
-			m_params.m_svgHelper = new SvgHelper();
-			m_params.m_sceneStructure->rebuildIndex();
 
-			m_processor.SetParams(m_params);
-			m_processor.RedrawRenderedImage();
+		switch (m_eMode) {
+		case Initial:
+
+			break;
+		case Reconstruction:
+			// Un-check pause
+			CheckDlgButton(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION, BST_UNCHECKED);
+			m_processor.ResetReconstruction();
+			break;
+		case Annotation:
+			if (m_vAnnotatedObjects.size() > 0) {
+				// reset camera
+				m_vAnnotatedObjects.clear();
+				delete m_params.m_svgHelper;
+				m_params.m_svgHelper = new SvgHelper();
+				m_params.m_sceneStructure->rebuildIndex();
+
+				ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_DRAWNOW), SW_SHOW); // show instruction window
+
+				m_processor.SetParams(m_params);
+				m_processor.RedrawRenderedImage();
+			}
+			break;
 		}
 	}
 
@@ -1538,21 +1594,23 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		if (annotatedCount == 0)
 		{
 			EnableWindow(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), FALSE);
-			ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_DRAWNOW), SW_SHOW);
 		}
-		else {
-			ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_DRAWNOW), SW_HIDE);
+		else if(annotatedCount > 0){
 
 			ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION), SW_SHOW);
 			ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_1), SW_SHOW);
 			ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_2), SW_SHOW);
 			ShowWindow(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_DESCRIPTION_3), SW_SHOW);
 		}
+		
+		if(annotatedCount > 3){
+			ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_DRAWNOW), SW_HIDE);
+		}
 
 		if (annotatedCount == 1) {
 			//init Matrix
 			auto p = marked[0]->hit;
-			printf("%d. 3D: (%.5f, %.5f, %.5f)    ",annotatedCount - 1, p.x, p.y, p.z);
+			//printf("%d. 3D: (%.5f, %.5f, %.5f)    ",annotatedCount - 1, p.x, p.y, p.z);
 			m_params.m_svgHelper->addData(p.x, p.z);
 
 			EnableWindow(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), FALSE);
@@ -1567,7 +1625,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 			float p3d_xdist = p.x - p1.x;
 			float p3d_ydist = p.y - p1.y;
 			float p3d_zdist = p.z - p1.z;
-			printf("\n%hu. 3D: (%.5f, %.5f, %.5f)    ", annotatedCount, p3d_xdist , p3d_ydist , p3d_zdist);
+			//printf("\n%hu. 3D: (%.5f, %.5f, %.5f)    ", annotatedCount, p3d_xdist , p3d_ydist , p3d_zdist);
 
 
 			rt::Point prev = marked[annotatedCount - 1]->hit; // TODO sample might possible be responsible for the misaligned drawing on the model
@@ -1590,8 +1648,8 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 			float storedY = vec.z;
 			vec.z = 0;
-			auto flag = m_params.m_svgHelper->getDirectionX(-dynamic, vec.x);
-			printf("direction is: %s\n", flag ? "positive" : "negative");
+			//auto flag = m_params.m_svgHelper->getDirectionX(-dynamic, vec.x);
+			//printf("direction is: %s\n", flag ? "positive" : "negative");
 
 			auto weight = vec.normalize();
 			auto weightX = storedY * weight.x;
@@ -1626,7 +1684,7 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 
 			m_params.m_svgHelper->addData(curr.x, curr.y);
 
-			printf("Prev: (%.5f, %.5f, %.5f)   Adjusted vector: (%.5f, %.5f, %.5f)   \n\n", fixedPrevPoint.x, fixedPrevPoint.y, fixedPrevPoint.z, vec.x, vec.y, vec.z);
+			//printf("Prev: (%.5f, %.5f, %.5f)   Adjusted vector: (%.5f, %.5f, %.5f)   \n\n", fixedPrevPoint.x, fixedPrevPoint.y, fixedPrevPoint.z, vec.x, vec.y, vec.z);
 		}
 
 	
@@ -1835,6 +1893,10 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 		//delete k;
 	}
 
+	if (IDC_CHECK_ADVANCED == LOWORD(wParam) && BN_CLICKED == HIWORD(wParam)) {
+		showAdvanced();
+	}
+
     m_processor.SetParams(m_params);
 }
 
@@ -1842,49 +1904,58 @@ void Scansify::ProcessUI(WPARAM wParam, LPARAM)
 /// Update mode
 /// </summary>
 void Scansify::UpdateMode(Scansify::Mode mode) {
-
 	m_eMode = mode;
-
-	
 
 	switch (mode) {
 	case Initial:
 		m_params.m_bInitMode = true;
 		m_processor.SetParams(m_params);
+
+		// depth
+		ShowWindow(GetDlgItem(m_hWnd, IDC_DEPTH_THRESHOLD_GROUP), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_SHOW);
+		//labels
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_TEXT), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_TEXT), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_DIST_TEXT), SW_SHOW);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_SHOW);
+
+		// advanced
+		CheckDlgButton(m_hWnd, IDC_CHECK_ADVANCED, BST_UNCHECKED);
+		showAdvanced();
+		ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_ADVANCED), SW_HIDE);
+
+		// buttons
+		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_ALL), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), SW_HIDE);
+
+		// Change label names
+		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Reconstruct Arm");
 		break;
 	case Reconstruction:
 		m_params.m_bInitMode = false;
 		m_processor.SetParams(m_params);
 
 		// Show all unecessary window components //
-		ShowWindow(GetDlgItem(m_hWnd, IDC_RECON_VOLUME_SETTINGS_BOX), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_VOXELS_PER_METER_BOX), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_BOX), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_VOLUME_RESOLUTION_BOX), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_DEPTH_THRESHOLD_GROUP), SW_HIDE);
 
-		// controls
-		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_SLIDER), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_X), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Y), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_ROOM_Z), SW_SHOW);
+
+		ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_ADVANCED), SW_SHOW);
+		showAdvanced();
+
 		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MIN), SW_HIDE);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_SLIDER_DEPTH_MAX), SW_HIDE);
 		//ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_PAUSE_INTEGRATION), SW_SHOW);
 
 		//labels
-		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_TEXT), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_X_AXIS), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Y_AXIS), SW_SHOW);
-		ShowWindow(GetDlgItem(m_hWnd, IDC_STATUS_Z_AXIS), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_TEXT), SW_HIDE);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_TEXT), SW_HIDE);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_MIN_DIST_TEXT), SW_HIDE);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_MAX_DIST_TEXT), SW_HIDE);
 
 		// buttons
-		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_ANNOTATION), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_ALL), SW_SHOW);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), SW_SHOW);
 
 		// labels
@@ -1896,8 +1967,9 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 
 
 		// Change label names
+		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_ALL), L"Recapture");
 		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Start Annotation");
-		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Reset Reconstruction");
+		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Return to filter");
 		SetWindowText(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_SUB), L"Residual Tracking. White areas are fully captured by the system.");
 
 		EnableWindow(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), TRUE);
@@ -1908,6 +1980,7 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 	case Annotation:
 		m_params.m_bInitMode = false;
 		m_params.m_bInitializeAnnotationMode = true;
+		m_processor.ResetCamera();
 		m_processor.SetParams(m_params);
 
 
@@ -1917,6 +1990,7 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 		ShowWindow(GetDlgItem(m_hWnd, IDC_INTEGRATION_WEIGHT_BOX), SW_HIDE);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_VOLUME_RESOLUTION_BOX), SW_HIDE);
 		ShowWindow(GetDlgItem(m_hWnd, IDC_DEPTH_THRESHOLD_GROUP), SW_HIDE);
+		ShowWindow(GetDlgItem(m_hWnd, IDC_CHECK_ADVANCED), SW_HIDE);
 
 		// controls
 		ShowWindow(GetDlgItem(m_hWnd, IDC_COMBO_VOXELS), SW_HIDE);
@@ -1961,11 +2035,11 @@ void Scansify::UpdateMode(Scansify::Mode mode) {
 	
 
 		// Change label names
+		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_ALL), L"Remove all annotations");
 		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_MESH_DRAWING), L"Create 2D Shape");
-		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Rescan the arm");
+		SetWindowText(GetDlgItem(m_hWnd, IDC_BUTTON_RESET_RECONSTRUCTION), L"Rescan");
 		SetWindowText(GetDlgItem(m_hWnd, IDC_VIEW_CAPTION_SUB), L"Unwrapped 2D Shape.\n Red line indicates additional line to close the shape.");
 
-		m_processor.ResetCamera();
 
 		//m_processor.RedrawRenderedImage();
 		break;

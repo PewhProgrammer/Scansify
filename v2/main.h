@@ -94,6 +94,12 @@ private:
 	/// </summary>
 	void						UpdateMode(Mode mode);
 
+
+	/// <summary>
+	/// display advanced Option
+	/// </summary>
+	void						showAdvanced();
+
 	/// <summary>
 	/// Import mesh into tool
 	/// </summary>

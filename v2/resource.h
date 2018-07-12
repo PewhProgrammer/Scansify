@@ -13,6 +13,7 @@
 #define IDC_BUTTON_RESET_RECONSTRUCTION 1013
 #define IDC_BUTTON_MESH_RECONSTRUCTION  1014
 #define IDC_BUTTON_RESET_ANNOTATION     1014
+#define IDC_BUTTON_RESET_ALL            1014
 #define IDC_CHECK_PAUSE_INTEGRATION     1015
 #define IDC_CHECK_MIRROR_DEPTH          1016
 #define IDC_DEPTH_THRESHOLD_GROUP       1017
@@ -82,6 +83,7 @@
 #define IDC_VIEW_CAPTION_DESCRIPTION_3  1101
 #define IDC_STATUS_DRAWNOW              1108
 #define IDC_STATUS_DELIMITER            1109
+#define IDC_CHECK_ADVANCED              1110
 #define ID_Menu                         32771
 #define ID_VIEW_MIRRORDEPTH             32772
 #define ID_VIEW_CAPTURECOLOR            32773
@@ -135,7 +137,7 @@
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        138
 #define _APS_NEXT_COMMAND_VALUE         32815
-#define _APS_NEXT_CONTROL_VALUE         1110
+#define _APS_NEXT_CONTROL_VALUE         1111
 #define _APS_NEXT_SYMED_VALUE           111
 #endif
 #endif
