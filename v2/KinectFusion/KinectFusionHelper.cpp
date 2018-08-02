@@ -291,7 +291,6 @@ HRESULT WriteBinarySVGCanvasFile(SvgHelper* data, LPOLESTR lpOleFileName)
 
 
 	vector<f2> svg_coords = data->getData();
-	string style = data->getStyles();
 	uint16_t width = data->getDimensions().first;
 	uint16_t height = data->getDimensions().second;
 
@@ -316,11 +315,10 @@ HRESULT WriteBinarySVGCanvasFile(SvgHelper* data, LPOLESTR lpOleFileName)
 	std::string header = data->getHeader();
 	std::fwrite(header.c_str(), sizeof(char), header.length(), meshFile);
 
-	// scale
 
 	// predefined tags //translate(860,-300)
-	string open = "	<g id = \"g3186\" transform = \"scale(6)\">\n   <path d=\" M" + std::to_string(data->getX(0)) + " " + std::to_string(data->getY(0)) + " ";
-	string close = "Z\" " + style +"/>\n";
+	string open = "	<g id = \"g3186\">\n   <path class=\"fil\" d=\" M" + std::to_string(data->getXRaw(0)) + " " + std::to_string(data->getYRaw(0)) + " ";
+	string close = "Z\" />\n";
 
 	//open path tag
 	std::fwrite(open.c_str(), sizeof(char), open.length(), meshFile);
@@ -331,7 +329,7 @@ HRESULT WriteBinarySVGCanvasFile(SvgHelper* data, LPOLESTR lpOleFileName)
 
 
 		// Write lines in path
-		string line_content = "L" + std::to_string(data->getX(i)) + " " + std::to_string(data->getY(i)) + " ";
+		string line_content = "L" + std::to_string(data->getXRaw(i)) + " " + std::to_string(data->getYRaw(i)) + " ";
 		std::fwrite(line_content.c_str(), sizeof(char), line_content.length(), meshFile);
 
 

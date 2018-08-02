@@ -28,9 +28,9 @@ typedef std::tuple<int, int, int> triple;
 /// Possible extensional approach can be added in this class
 /// </summary>
 struct Styles {
-	triple stroke = make_tuple(255, 0, 0);
-	float stroke_width = 0.09f;
 	std::string fill = "none";
+	std::string stroke = "#ff0404";
+	float stroke_width = 0.00055f;
 };
 
 class SvgHelper
@@ -138,6 +138,18 @@ public:
 	/// </summary>
 	/// <returns>coordinate with appropriate offset</returns>
 	float						getY(unsigned int index);
+
+	/// <summary>
+	/// Getter for coordinate X
+	/// </summary>
+	/// <returns>coordinate with appropriate offset</returns>
+	float						getXRaw(unsigned int index);
+
+	/// <summary>
+	/// Getter for coordinate Y
+	/// </summary>
+	/// <returns>coordinate with appropriate offset</returns>
+	float						getYRaw(unsigned int index);
 
 	/// <summary>
 	/// Getter for DirectionFlag of how to flatten the 3d shape into 2d plane

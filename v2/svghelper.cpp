@@ -102,6 +102,14 @@ string SvgHelper::getHeader()
 	m_fRealWidth = std::fabs(m_pMax.first - m_pMin.first);
 	m_fRealHeight = std::fabs(m_pMax.second - m_pMin.second);
 
+	float margin = 0.01f;
+
+	//adjust margin
+	m_pMin.first -= margin;
+	m_pMin.second -= margin;
+
+
+
 	return
 		"<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"
 		"<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.0//EN\"\n"
@@ -112,9 +120,13 @@ string SvgHelper::getHeader()
 		"\n"
 		"<!-- height: "+ std::to_string(this->m_fRealHeight)  + "m   width: " + std::to_string(this->m_fRealWidth)  +"m -->"
 		"\n"
-		"<svg width=\" 100%"
-		" \" height=\" 100% \" version=\"1.0\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid meet\" "
-		" >\n<title>Annotated Pattern</title>\n\n";
+		"<svg xmlns = \"http://www.w3.org/2000/svg\" xml:space = \"preserve\" version = \"1.1\" "
+		"style = \"shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd\" "
+		"viewBox = \""+std::to_string(m_pMin.first)+" "+ std::to_string(m_pMin.second) +" "+ std::to_string(m_fRealWidth + (m_fRealWidth*0.2f)) +" "+ std::to_string(m_fRealHeight + (m_fRealHeight * 0.2f)) +"\" xmlns:xlink = \"http://www.w3.org/1999/xlink\">"
+		"\n<title>Annotated Pattern</title>"
+		"\n<defs> <style type = \"text/css\"><![CDATA[.fil{"+getStyles()+"}"
+		"]]></style></defs>\n\n";
+
 }
 
 string SvgHelper::getFooter()
@@ -124,27 +136,18 @@ string SvgHelper::getFooter()
 
 string SvgHelper::getStyles()
 {
-	m_style.stroke;
-	string result = "style=\"stroke:rgb(" 
-		+ std::to_string(get<0>(m_style.stroke)) + ", "
-		+ std::to_string(get<1>(m_style.stroke))+", "
-		+ std::to_string(get<2>(m_style.stroke)) + "); "
-		"stroke-width:"+ std::to_string(m_style.stroke_width)  +"; "
-		"fill:"+ m_style.fill + " "
-		"\"";
+	string result = "fill:"+m_style.fill+"; stroke:"+m_style.stroke+"; stroke-width:"+ std::to_string(m_style.stroke_width) +";";
 	return result;
 }
 
 float SvgHelper::getX(unsigned int index)
 {
+	if (!m_bOffsetFlagX) {
+		return  this->m_vSvgData[index].first;
+	}
+
 	int offset = 100;
 	float result = this->m_vSvgData[index].first * offset;
-
-	/*
-	if (m_bOffsetFlagX)
-		result += std::abs(this->m_uWidth.first * offset);
-	*/
-
 	result += offset;
 
 	//printf("real x coordinate: %.4f; %d\n", result, this->m_uWidth.first);
@@ -154,17 +157,27 @@ float SvgHelper::getX(unsigned int index)
 
 float SvgHelper::getY(unsigned int index)
 {
+	if (!m_bOffsetFlagY) {
+		return  this->m_vSvgData[index].second;
+	}
+
 	int offset = 100;
 	float result = this->m_vSvgData[index].second * offset;
-
-	/*
-	if (m_bOffsetFlagY)
-		result += std::abs(this->m_uHeight.first * offset);
-	*/
-
 	result += offset;
 
 	return result;
+}
+
+
+float SvgHelper::getXRaw(unsigned int index)
+{
+			return  this->m_vSvgData[index].first;
+
+}
+
+float SvgHelper::getYRaw(unsigned int index)
+{
+		return  this->m_vSvgData[index].second;
 }
 
 bool signX = true;
